@@ -1,6 +1,22 @@
-/* Header-specific styles (optional) */
 header {
   position: sticky;
   top: 0;
   z-index: 50;
+  
+  // Active menu state
+  .nav-item-dropdown a.active {
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+  
+  // Smooth scroll behavior
+  scroll-behavior: smooth;
+  
+  // Backdrop blur for modern browsers
+  @supports (backdrop-filter: blur(10px)) {
+    .header-wrapper {
+      backdrop-filter: blur(10px);
+    }
+  }
 }
