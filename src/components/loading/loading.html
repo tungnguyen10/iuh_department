@@ -1,23 +1,27 @@
 <!-- Global Loading Overlay - Modern Minimal Design -->
-<div id="global-loading" class="loading-overlay fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white/95 backdrop-blur-sm transition-all duration-500">
+<div id="global-loading"
+  class="loading-overlay fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white/95 backdrop-blur-sm transition-all duration-500 px-4">
   <!-- Logo or Brand Icon (Optional) -->
-  <div class="mb-8 relative">
-    <div class="w-20 h-20 relative">
+  <div class="mb-6 md:mb-8 lg:mb-10 relative">
+    <div class="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 relative">
       <!-- Rotating rings -->
-      <div class="absolute inset-0 rounded-full border-[3px] border-gray-200"></div>
-      <div class="absolute inset-0 rounded-full border-[3px] border-transparent border-t-blue-600 animate-spin"></div>
-      <div class="absolute inset-2 rounded-full border-[3px] border-transparent border-t-indigo-500 animate-spin" style="animation-duration: 1.5s; animation-direction: reverse;"></div>
-      
+      <div class="absolute inset-0 rounded-full border-[3px] border-gray-100"></div>
+      <div class="absolute inset-0 rounded-full border-[3px] border-transparent border-t-primary-dark-blue animate-spin"></div>
+      <div class="absolute inset-2 rounded-full border-[3px] border-transparent border-t-primary-yellow animate-spin"
+        style="animation-duration: 1.5s; animation-direction: reverse;"></div>
+
       <!-- Center icon -->
       <div class="absolute inset-0 flex items-center justify-center">
-        <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg shadow-lg animate-pulse"></div>
+        <div class="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14">
+          <img src="/assets/svg/loading.svg" alt="Loading Icon" class="w-full h-full object-contain" />
+        </div>
       </div>
     </div>
   </div>
-  
+
   <!-- Loading Text -->
-  <div class="loading-text text-base font-medium text-gray-800 mb-3">
+  <div class="loading-text text-base md:text-lg font-semibold text-primary-dark-blue tracking-wide">
     Loading...
   </div>
-  
+
 </div>
