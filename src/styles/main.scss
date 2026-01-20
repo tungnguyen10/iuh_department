@@ -2,10 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import fonts */
+@import './fonts.scss';
+
 /* Custom styles */
 @layer base {
   body {
-    @apply antialiased;
+    @apply antialiased font-sans;
   }
 }
 

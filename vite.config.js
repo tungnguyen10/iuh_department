@@ -285,6 +285,9 @@ export default defineConfig(({ mode }) => {
             if (['png', 'jpg', 'jpeg', 'gif', 'webp', 'avif'].includes(ext)) {
               return 'assets/images/[name][extname]'
             }
+            if (['ttf', 'otf', 'woff', 'woff2', 'eot'].includes(ext)) {
+              return 'assets/fonts/[name][extname]'
+            }
             return 'assets/[name]-[hash][extname]'
           },
         },

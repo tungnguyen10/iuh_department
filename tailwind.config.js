@@ -11,7 +11,11 @@ export default {
   ],
   theme: {
     extend: {
-       colors: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        roboto: ['Roboto', 'system-ui', '-apple-system', 'sans-serif'],
+      },
+      colors: {
         'primary': {
           white: '#FFFFFF',
           yellow: '#F9B200',
