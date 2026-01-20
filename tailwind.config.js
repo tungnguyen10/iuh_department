@@ -12,8 +12,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        roboto: ['Roboto', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Roboto', 'system-ui', '-apple-system', 'sans-serif'],
+        inter: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
       },
       colors: {
         'primary': {
@@ -32,6 +32,7 @@ export default {
           DEFAULT: '#DD2F2C',
           light: '#FFEBEEFF',
         },
+        stroke: "#EEEEEE",
       },
     },
   },
