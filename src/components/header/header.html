@@ -1,8 +1,8 @@
 <!-- Header 2-Tier Design -->
 <header class="header-wrapper bg-primary-dark-blue">
   <!-- Top Bar (White) -->
-  <div class="bg-white">
-    <div class="container mx-auto max-w-[1180px] px-4 lg:px-0">
+  <div class="bg-white hidden lg:block">
+    <div class="container mx-auto px-4">
       <div class="flex items-center justify-between py-3">
         <!-- Left: Quick Links -->
         <div class="flex flex-row py-0.5 items-center gap-2.5 text-sm">
@@ -66,80 +66,152 @@
 
   <!-- Main Navigation (Blue) -->
   <div class="bg-primary-dark-blue">
-    <div class="container mx-auto max-w-[1180px] px-4 lg:px-0">
+    <div class="container mx-auto px-3 md:px-4">
       <div class="flex items-center justify-between h-20">
         <!-- Logo -->
-        <a href="/" class="flex items-center gap-3 flex-shrink-0">
-          <div class="flex items-center gap-1.5">
-            <img src="/assets/svg/logo.svg" alt="IUH Logo" class="h-[50px] w-auto text-primary-white" />
-            <img src="/assets/svg/line-logo.svg" alt="IUH Logo" class="h-[50px] w-auto" />
+        <a href="/" class="flex items-center gap-2 md:gap-3 flex-shrink-0">
+          <div class="flex items-center gap-1">
+            <img src="/assets/svg/logo.svg" alt="IUH Logo" class="h-[40px] md:h-[50px] w-auto text-primary-white" />
+            <img src="/assets/svg/line-logo.svg" alt="IUH Logo" class="h-[40px] md:h-[50px] w-auto" />
           </div>
           <div class="flex flex-col justify-between ">
-            <div class="flex flex-col gap-1.5">
-              <p class="text-white font-medium text-base leading-none uppercase tracking-tight">ĐẠI HỌC CÔNG NGHIỆP
+            <div class="flex flex-col gap-1">
+              <p class="text-white font-medium text-xs sm:text-xs md:text-base leading-none uppercase tracking-tight">
+                ĐẠI HỌC CÔNG
+                NGHIỆP
                 TP. HỒ CHÍ MINH</p>
-              <div class="bg-white h-[1.25px] w-full"></div>
-              <p class="text-white font-extrabold text-base leading-none uppercase tracking-tight">KHOA KHOA HỌC SỨC
+              <div class="bg-white h-[1px] md:h-[1.25px] w-full"></div>
+              <p
+                class="text-white font-extrabold text-xs sm:text-xs md:text-base leading-none uppercase tracking-tight">
+                KHOA KHOA
+                HỌC SỨC
                 KHOẺ</p>
             </div>
           </div>
         </a>
 
-        <!-- Desktop Navigation -->
-        <nav class="hidden lg:flex items-center gap-12">
-          <div class="flex items-center h-20">
+        <!-- Search & Hamburger (Mobile) -->
+        <div class="flex items-center gap-3 lg:hidden">
+          <button id="hamburger-menu" class="hamburger-menu text-white hover:text-primary-yellow transition-colors"
+            aria-label="Mở menu">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-width="2" d="M3 12H21M3 6H21M3 18H21"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Navigation Container with Overlay -->
+        <div id="nav-overlay" class="nav-overlay"></div>
+
+        <nav id="main-nav" class="main-nav lg:flex items-center gap-6">
+          <!-- Mobile Close Button & Logo (Hidden on desktop) -->
+          <div class="close-header lg:hidden">
+            <div class="relative overflow-hidden w-full">
+              <!-- Background với effects -->
+              <div class="absolute inset-0">
+                <div
+                  class="absolute inset-0 bg-gradient-to-br from-primary-dark-blue via-primary-dark-blue/95 to-primary-dark-blue/90">
+                </div>
+                <!-- Decorative shapes -->
+                <div class="absolute -right-8 -top-8 w-32 h-32">
+                  <div class="absolute inset-0 bg-white/10 rounded-full blur-2xl animate-pulse"></div>
+                </div>
+                <!-- Abstract lines -->
+                <div class="absolute inset-0 overflow-hidden">
+                  <div
+                    class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent">
+                  </div>
+                  <div
+                    class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Content -->
+              <div class="relative flex items-center justify-between px-4 py-5 z-10">
+                <a href="/" class="flex items-center gap-2 md:gap-3 flex-shrink-0">
+                  <div class="flex items-center gap-1">
+                    <img src="/assets/svg/logo.svg" alt="IUH Logo"
+                      class="h-[35px] md:h-[50px] w-auto text-primary-white" />
+                    <img src="/assets/svg/line-logo.svg" alt="IUH Logo" class="h-[35px] md:h-[50px] w-auto" />
+                  </div>
+                  <div class="flex flex-col justify-between ">
+                    <div class="flex flex-col gap-1">
+                      <p class="text-white font-medium text-xs md:text-base leading-none uppercase tracking-tight">ĐẠI
+                        HỌC CÔNG NGHIỆP
+                        TP. HỒ CHÍ MINH</p>
+                      <div class="bg-white h-[1px] md:h-[1.25px] w-full"></div>
+                      <p class="text-white font-extrabold text-xs md:text-base leading-none uppercase tracking-tight">
+                        KHOA KHOA HỌC SỨC
+                        KHOẺ</p>
+                    </div>
+                  </div>
+                </a>
+                <button id="close-menu"
+                  class="close-menu-btn group flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300"
+                  aria-label="Đóng menu">
+                  <svg class="w-5 h-5 text-white transform transition-transform duration-300 group-hover:rotate-90"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-width="2" d="M6 18L18 6M6 6L18 18"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="main-nav-container flex flex-col lg:flex-row items-start lg:items-center h-full w-full lg:h-20">
             <!-- GIỚI THIỆU - Dropdown Level 1 -->
             <div class="nav-item-dropdown relative group h-full" data-dropdown>
               <a href="#"
-                class="flex items-center justify-center px-3 h-full text-white font-medium text-[16px] hover:bg-white/10 transition-all duration-200 relative before:absolute before:bottom-0 before:left-0 before:right-0 before:h-0.5 before:bg-primary-yellow before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300">
+                class="flex items-center justify-center px-3 h-full text-white font-medium text-[16px] lg:hover:bg-white/10 lg:hover:text-primary-yellow transition-all duration-200 relative before:absolute before:bottom-0 before:left-0 before:right-0 before:h-0.5 before:bg-primary-yellow before:scale-x-0 lg:hover:before:scale-x-100 before:transition-transform before:duration-300">
                 GIỚI THIỆU
               </a>
               <!-- Dropdown Level 2 -->
               <div
-                class="dropdown-menu absolute top-full min-w-[250px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-b-lg opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-50"
+                class="dropdown-menu absolute top-full min-w-[250px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-b-lg opacity-0 invisible translate-y-2 lg:group-hover:opacity-100 lg:group-hover:visible lg:group-hover:translate-y-0 transition-all duration-300 z-50"
                 data-dropdown-menu>
                 <div class="border-t-2 border-primary-yellow"></div>
                 <a href="#"
-                  class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform">
+                  class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform">
                   <span class="font-medium">Lịch sử hình thành</span>
                 </a>
                 <a href="#"
-                  class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform">
+                  class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform">
                   <span class="font-medium">Chức năng nhiệm vụ</span>
                 </a>
 
                 <!-- Level 3 Sub-dropdown -->
                 <div class="relative group/sub" data-subdropdown>
                   <a href="#"
-                    class="flex items-center justify-between px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform">
+                    class="flex items-center justify-between px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform">
                     <span class="font-medium">Ban lãnh đạo</span>
-                    <svg class="chevron-icon w-4 h-4 transition-transform duration-200 group-hover/sub:translate-x-1"
+                    <svg class="chevron-icon w-4 h-4 transition-transform duration-200 lg:group-hover/sub:translate-x-1"
                       fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
                   </a>
                   <!-- Level 3 Menu -->
                   <div
-                    class="sub-dropdown absolute top-0 left-full min-w-[220px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-r-lg opacity-0 invisible pointer-events-none group-hover/sub:opacity-100 group-hover/sub:visible group-hover/sub:pointer-events-auto transition-all duration-300 overflow-hidden z-50"
+                    class="sub-dropdown absolute top-0 left-full min-w-[220px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-r-lg opacity-0 invisible pointer-events-none lg:group-hover/sub:opacity-100 lg:group-hover/sub:visible lg:group-hover/sub:pointer-events-auto transition-all duration-300 overflow-hidden z-50"
                     data-subdropdown-menu>
                     <div class="border-t-2 border-primary-yellow"></div>
                     <a href="#"
-                      class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform">
+                      class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform">
                       <span class="font-medium">Trưởng khoa</span>
                     </a>
                     <a href="#"
-                      class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform">
+                      class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform">
                       <span class="font-medium">Phó khoa</span>
                     </a>
                     <a href="#"
-                      class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform">
+                      class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform">
                       <span class="font-medium">Hội đồng khoa</span>
                     </a>
                   </div>
                 </div>
 
                 <a href="#"
-                  class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform">
+                  class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform">
                   <span class="font-medium">Cơ cấu tổ chức</span>
                 </a>
               </div>
@@ -148,50 +220,50 @@
             <!-- TIN TỨC – SỰ KIỆN - Dropdown Level 1 -->
             <div class="nav-item-dropdown relative group h-full" data-dropdown>
               <a href="#"
-                class="flex items-center justify-center px-3 h-full text-white font-medium text-[16px] hover:bg-white/10 transition-all duration-200 relative before:absolute before:bottom-0 before:left-0 before:right-0 before:h-0.5 before:bg-primary-yellow before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300">
+                class="flex items-center justify-center px-3 h-full text-white font-medium text-[16px] lg:hover:bg-white/10 lg:hover:text-primary-yellow transition-all duration-200 relative before:absolute before:bottom-0 before:left-0 before:right-0 before:h-0.5 before:bg-primary-yellow before:scale-x-0 lg:hover:before:scale-x-100 before:transition-transform before:duration-300">
                 TIN TỨC – SỰ KIỆN
               </a>
               <!-- Dropdown Level 2 -->
               <div
-                class="dropdown-menu absolute top-full min-w-[250px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-b-lg opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-50"
+                class="dropdown-menu absolute top-full min-w-[250px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-b-lg opacity-0 invisible translate-y-2 lg:group-hover:opacity-100 lg:group-hover:visible lg:group-hover:translate-y-0 transition-all duration-300 z-50"
                 data-dropdown-menu>
                 <div class="border-t-2 border-primary-yellow"></div>
 
                 <!-- Level 3 Sub-dropdown -->
                 <div class="relative group/sub" data-subdropdown>
                   <a href="#"
-                    class="flex items-center justify-between px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform">
+                    class="flex items-center justify-between px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform">
                     <span class="font-medium">Tin tức khoa</span>
-                    <svg class="chevron-icon w-4 h-4 transition-transform duration-200 group-hover/sub:translate-x-1"
+                    <svg class="chevron-icon w-4 h-4 transition-transform duration-200 lg:group-hover/sub:translate-x-1"
                       fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
                   </a>
                   <!-- Level 3 Menu -->
                   <div
-                    class="sub-dropdown absolute top-0 left-full min-w-[220px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-r-lg opacity-0 invisible pointer-events-none group-hover/sub:opacity-100 group-hover/sub:visible group-hover/sub:pointer-events-auto transition-all duration-300 overflow-hidden z-50"
+                    class="sub-dropdown absolute top-0 left-full min-w-[220px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-r-lg opacity-0 invisible pointer-events-none lg:group-hover/sub:opacity-100 lg:group-hover/sub:visible lg:group-hover/sub:pointer-events-auto transition-all duration-300 overflow-hidden z-50"
                     data-subdropdown-menu>
                     <div class="border-t-2 border-primary-yellow"></div>
                     <a href="#"
-                      class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                      class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                         class="font-medium">Tin học thuật</span></a>
                     <a href="#"
-                      class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                      class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                         class="font-medium">Tin hoạt động</span></a>
                     <a href="#"
-                      class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                      class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                         class="font-medium">Tin nội bộ</span></a>
                   </div>
                 </div>
 
                 <a href="#"
-                  class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                  class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                     class="font-medium">Sự kiện nổi bật</span></a>
                 <a href="#"
-                  class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                  class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                     class="font-medium">Thông báo</span></a>
                 <a href="#"
-                  class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                  class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                     class="font-medium">Hoạt động sinh viên</span></a>
               </div>
             </div>
@@ -199,50 +271,50 @@
             <!-- NGHIÊN CỨU KHOA HỌC - Dropdown Level 1 -->
             <div class="nav-item-dropdown relative group h-full" data-dropdown>
               <a href="#"
-                class="flex items-center justify-center px-3 h-full text-white font-medium text-[16px] hover:bg-white/10 transition-all duration-200 relative before:absolute before:bottom-0 before:left-0 before:right-0 before:h-0.5 before:bg-primary-yellow before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300">
+                class="flex items-center justify-center px-3 h-full text-white font-medium text-[16px] lg:hover:bg-white/10 lg:hover:text-primary-yellow transition-all duration-200 relative before:absolute before:bottom-0 before:left-0 before:right-0 before:h-0.5 before:bg-primary-yellow before:scale-x-0 lg:hover:before:scale-x-100 before:transition-transform before:duration-300">
                 NGHIÊN CỨU KHOA HỌC
               </a>
               <!-- Dropdown Level 2 -->
               <div
-                class="dropdown-menu absolute top-full min-w-[250px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-b-lg opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-50"
+                class="dropdown-menu absolute top-full min-w-[250px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-b-lg opacity-0 invisible translate-y-2 lg:group-hover:opacity-100 lg:group-hover:visible lg:group-hover:translate-y-0 transition-all duration-300 z-50"
                 data-dropdown-menu>
                 <div class="border-t-2 border-primary-yellow"></div>
                 <a href="#"
-                  class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                  class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                     class="font-medium">Đề tài nghiên cứu</span></a>
 
                 <!-- Level 3 Sub-dropdown -->
                 <div class="relative group/sub" data-subdropdown>
                   <a href="#"
-                    class="flex items-center justify-between px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform">
+                    class="flex items-center justify-between px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform">
                     <span class="font-medium">Công bố khoa học</span>
-                    <svg class="chevron-icon w-4 h-4 transition-transform duration-200 group-hover/sub:translate-x-1"
+                    <svg class="chevron-icon w-4 h-4 transition-transform duration-200 lg:group-hover/sub:translate-x-1"
                       fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
                   </a>
                   <!-- Level 3 Menu -->
                   <div
-                    class="sub-dropdown absolute top-0 left-full min-w-[220px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-r-lg opacity-0 invisible pointer-events-none group-hover/sub:opacity-100 group-hover/sub:visible group-hover/sub:pointer-events-auto transition-all duration-300 overflow-hidden z-50"
+                    class="sub-dropdown absolute top-0 left-full min-w-[220px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-r-lg opacity-0 invisible pointer-events-none lg:group-hover/sub:opacity-100 lg:group-hover/sub:visible lg:group-hover/sub:pointer-events-auto transition-all duration-300 overflow-hidden z-50"
                     data-subdropdown-menu>
                     <div class="border-t-2 border-primary-yellow"></div>
                     <a href="#"
-                      class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                      class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                         class="font-medium">Bài báo quốc tế</span></a>
                     <a href="#"
-                      class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                      class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                         class="font-medium">Bài báo trong nước</span></a>
                     <a href="#"
-                      class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                      class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                         class="font-medium">Hội nghị khoa học</span></a>
                   </div>
                 </div>
 
                 <a href="#"
-                  class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                  class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                     class="font-medium">Giải thưởng</span></a>
                 <a href="#"
-                  class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                  class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                     class="font-medium">Hợp tác nghiên cứu</span></a>
               </div>
             </div>
@@ -250,49 +322,49 @@
             <!-- ĐÀO TẠO - Dropdown Level 1 -->
             <div class="nav-item-dropdown relative group h-full" data-dropdown>
               <a href="#"
-                class="flex items-center justify-center px-3 h-full text-white font-medium text-[16px] hover:bg-white/10 transition-all duration-200 relative before:absolute before:bottom-0 before:left-0 before:right-0 before:h-0.5 before:bg-primary-yellow before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300">
+                class="flex items-center justify-center px-3 h-full text-white font-medium text-[16px] lg:hover:bg-white/10 lg:hover:text-primary-yellow transition-all duration-200 relative before:absolute before:bottom-0 before:left-0 before:right-0 before:h-0.5 before:bg-primary-yellow before:scale-x-0 lg:hover:before:scale-x-100 before:transition-transform before:duration-300">
                 ĐÀO TẠO
               </a>
               <!-- Dropdown Level 2 -->
               <div
-                class="dropdown-menu absolute top-full min-w-[250px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-b-lg opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-50"
+                class="dropdown-menu absolute top-full min-w-[250px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-b-lg opacity-0 invisible translate-y-2 lg:group-hover:opacity-100 lg:group-hover:visible lg:group-hover:translate-y-0 transition-all duration-300 z-50"
                 data-dropdown-menu>
                 <div class="border-t-2 border-primary-yellow"></div>
                 <!-- Level 3 Sub-dropdown -->
                 <div class="relative group/sub" data-subdropdown>
                   <a href="#"
-                    class="flex items-center justify-between px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform">
+                    class="flex items-center justify-between px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform">
                     <span class="font-medium">Chương trình đào tạo</span>
-                    <svg class="chevron-icon w-4 h-4 transition-transform duration-200 group-hover/sub:translate-x-1"
+                    <svg class="chevron-icon w-4 h-4 transition-transform duration-200 lg:group-hover/sub:translate-x-1"
                       fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
                   </a>
                   <!-- Level 3 Menu -->
                   <div
-                    class="sub-dropdown absolute top-0 left-full min-w-[220px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-r-lg opacity-0 invisible pointer-events-none group-hover/sub:opacity-100 group-hover/sub:visible group-hover/sub:pointer-events-auto transition-all duration-300 overflow-hidden z-50"
+                    class="sub-dropdown absolute top-0 left-full min-w-[220px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-r-lg opacity-0 invisible pointer-events-none lg:group-hover/sub:opacity-100 lg:group-hover/sub:visible lg:group-hover/sub:pointer-events-auto transition-all duration-300 overflow-hidden z-50"
                     data-subdropdown-menu>
                     <div class="border-t-2 border-primary-yellow"></div>
                     <a href="#"
-                      class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                      class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                         class="font-medium">Đại học</span></a>
                     <a href="#"
-                      class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                      class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                         class="font-medium">Cao học</span></a>
                     <a href="#"
-                      class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                      class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                         class="font-medium">Nghiên cứu sinh</span></a>
                   </div>
                 </div>
 
                 <a href="#"
-                  class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                  class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                     class="font-medium">Tuyển sinh</span></a>
                 <a href="#"
-                  class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                  class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                     class="font-medium">Kế hoạch giảng dạy</span></a>
                 <a href="#"
-                  class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                  class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                     class="font-medium">Đánh giá chất lượng</span></a>
               </div>
             </div>
@@ -300,32 +372,32 @@
             <!-- SINH VIÊN -->
             <div class="nav-item-dropdown relative group h-full" data-dropdown>
               <a href="#"
-                class="flex items-center justify-center px-3 h-full text-white font-medium text-[16px] hover:bg-white/10 transition-all duration-200 relative before:absolute before:bottom-0 before:left-0 before:right-0 before:h-0.5 before:bg-primary-yellow before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300">
+                class="flex items-center justify-center px-3 h-full text-white font-medium text-[16px] lg:hover:bg-white/10 lg:hover:text-primary-yellow transition-all duration-200 relative before:absolute before:bottom-0 before:left-0 before:right-0 before:h-0.5 before:bg-primary-yellow before:scale-x-0 lg:hover:before:scale-x-100 before:transition-transform before:duration-300">
                 SINH VIÊN
               </a>
               <!-- Dropdown Level 2 -->
               <div
-                class="dropdown-menu absolute top-full min-w-[250px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-b-lg opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-50"
+                class="dropdown-menu absolute top-full min-w-[250px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-b-lg opacity-0 invisible translate-y-2 lg:group-hover:opacity-100 lg:group-hover:visible lg:group-hover:translate-y-0 transition-all duration-300 z-50"
                 data-dropdown-menu>
                 <div class="border-t-2 border-primary-yellow"></div>
                 <a href="#"
-                  class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                  class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                     class="font-medium">Thông tin sinh viên</span></a>
                 <a href="#"
-                  class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                  class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                     class="font-medium">Lịch học - Lịch thi</span></a>
                 <a href="#"
-                  class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                  class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                     class="font-medium">Học bổng</span></a>
                 <a href="#"
-                  class="block px-5 py-3.5 text-black hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue transition-all duration-200 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 hover:before:scale-y-100 before:transition-transform"><span
+                  class="block px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform"><span
                     class="font-medium">Cựu sinh viên</span></a>
               </div>
             </div>
 
           </div>
           <button
-            class="w-10 h-10 flex items-center justify-center text-primary-yellow hover:bg-white/10 rounded-lg transition-all duration-200 hover:scale-110">
+            class="w-10 h-10 flex items-center justify-center text-primary-yellow lg:hover:bg-white/10 rounded-lg transition-all duration-200 lg:hover:scale-110">
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
               <path
                 d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
@@ -334,30 +406,6 @@
           </button>
         </nav>
 
-        <!-- Mobile Menu Toggle -->
-        <button id="mobile-menu-toggle" class="lg:hidden p-2 text-primary-dark-blue">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
-    <div class="container mx-auto px-4 py-4 space-y-2">
-      <a href="#" class="block py-2 text-primary-dark-blue font-medium hover:bg-gray-100 px-2 rounded">GIỚI THIỆU</a>
-      <a href="#" class="block py-2 text-primary-dark-blue font-medium hover:bg-gray-100 px-2 rounded">TIN TỨC – SỰ
-        KIỆN</a>
-      <a href="#" class="block py-2 text-primary-dark-blue font-medium hover:bg-gray-100 px-2 rounded">NGHIÊN CỨU KHOA
-        HỌC</a>
-      <a href="#" class="block py-2 text-primary-dark-blue font-medium hover:bg-gray-100 px-2 rounded">ĐÀO TẠO</a>
-      <a href="#" class="block py-2 text-primary-dark-blue font-medium hover:bg-gray-100 px-2 rounded">SINH VIÊN</a>
-      <div class="border-t pt-2 mt-2">
-        <a href="mailto:dhcn@iuh.edu.vn"
-          class="block py-2 text-black hover:bg-gray-100 px-2 rounded">dhcn@iuh.edu.vn</a>
-        <a href="tel:0283 8940 390" class="block py-2 text-black hover:bg-gray-100 px-2 rounded">0283 8940 390</a>
       </div>
     </div>
   </div>

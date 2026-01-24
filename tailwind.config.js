@@ -10,6 +10,22 @@ export default {
     "../js/**/*.js",
   ],
   theme: {
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '1120px',  // Custom breakpoint cho desktop navigation
+      xl: '1280px',
+      '2xl': '1536px',
+    },
+    container: {
+      screens: {
+        sm: '100%',
+        md: '100%',
+        lg: '100%',
+        xl: '1280px',
+        '2xl': '1536px',
+      },
+    },
     extend: {
       fontFamily: {
         sans: ['Roboto', 'system-ui', '-apple-system', 'sans-serif'],
