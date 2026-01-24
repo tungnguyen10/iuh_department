@@ -68,6 +68,66 @@
   <div class="bg-primary-dark-blue">
     <div class="container mx-auto px-3 md:px-4">
       <div class="flex items-center justify-between h-20">
+        <!-- Mobile-only decorative elements -->
+        <div class="absolute inset-0 menuMb:hidden pointer-events-none overflow-hidden" bis_skin_checked="1">
+          <!-- Dynamic mesh background -->
+          <div class="absolute inset-0" bis_skin_checked="1">
+            <div class="absolute w-full h-full opacity-10" bis_skin_checked="1">
+              <div class="absolute size-32 rounded-full border border-white/20 animate-[float_3s_ease-in-out_infinite]"
+                style="top: 0%; left: 0%; animation-delay: -0s;" bis_skin_checked="1"></div>
+              <div class="absolute size-32 rounded-full border border-white/20 animate-[float_4s_ease-in-out_infinite]"
+                style="top: 0%; left: 0%; animation-delay: -1s;" bis_skin_checked="1"></div>
+              <div class="absolute size-32 rounded-full border border-white/20 animate-[float_5s_ease-in-out_infinite]"
+                style="top: 0%; left: 0%; animation-delay: -2s;" bis_skin_checked="1"></div>
+              <div class="absolute size-32 rounded-full border border-white/20 animate-[float_6s_ease-in-out_infinite]"
+                style="top: 0%; left: 0%; animation-delay: -3s;" bis_skin_checked="1"></div>
+              <div class="absolute size-32 rounded-full border border-white/20 animate-[float_7s_ease-in-out_infinite]"
+                style="top: 0%; left: 0%; animation-delay: -4s;" bis_skin_checked="1"></div>
+              <div class="absolute size-32 rounded-full border border-white/20 animate-[float_8s_ease-in-out_infinite]"
+                style="top: 0%; left: 0%; animation-delay: -5s;" bis_skin_checked="1"></div>
+            </div>
+          </div>
+
+          <!-- Animated geometric shapes -->
+          <div class="absolute inset-0" bis_skin_checked="1">
+            <!-- Rotating hexagon -->
+            <div class="absolute -right-16 -top-16 size-48 animate-[spin_20s_linear_infinite]" bis_skin_checked="1">
+              <img src="/assets/svg/hexagon.svg" alt="" class="w-full h-full text-white/5" />
+            </div>
+
+            <!-- Floating triangles -->
+            <div class="absolute left-1/4 top-1/3" bis_skin_checked="1">
+              <div class="relative size-6 transform rotate-45 bg-white/10 animate-[float_4s_ease-in-out_infinite]"
+                bis_skin_checked="1"></div>
+            </div>
+            <div class="absolute right-1/3 bottom-1/4" bis_skin_checked="1">
+              <div class="relative size-4 transform -rotate-12 bg-white/5 animate-[float_5s_ease-in-out_infinite]"
+                style="animation-delay: -2s;" bis_skin_checked="1"></div>
+            </div>
+
+            <!-- Glowing orbs with trails -->
+            <div class="absolute inset-0" bis_skin_checked="1">
+              <div class="absolute size-3 animate-[moveAround_20s_linear_infinite]" style="animation-delay: -7s;"
+                bis_skin_checked="1">
+                <div class="absolute size-full rounded-full bg-white/20 blur-sm" bis_skin_checked="1"></div>
+                <div class="absolute size-full rounded-full bg-white/10 animate-ping"
+                  style="animation-duration: 3s; animation-delay: -1s" bis_skin_checked="1"></div>
+              </div>
+              <div class="absolute size-3 animate-[moveAround_25s_linear_infinite]" style="animation-delay: -14s;"
+                bis_skin_checked="1">
+                <div class="absolute size-full rounded-full bg-white/20 blur-sm" bis_skin_checked="1"></div>
+                <div class="absolute size-full rounded-full bg-white/10 animate-ping"
+                  style="animation-duration: 3s; animation-delay: -2s" bis_skin_checked="1"></div>
+              </div>
+              <div class="absolute size-3 animate-[moveAround_30s_linear_infinite]" style="animation-delay: -21s;"
+                bis_skin_checked="1">
+                <div class="absolute size-full rounded-full bg-white/20 blur-sm" bis_skin_checked="1"></div>
+                <div class="absolute size-full rounded-full bg-white/10 animate-ping"
+                  style="animation-duration: 3s; animation-delay: -3s" bis_skin_checked="1"></div>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- Logo -->
         <a href="/" class="flex items-center gap-2 md:gap-3 flex-shrink-0">
           <div class="flex items-center gap-1">
@@ -91,12 +151,13 @@
         </a>
 
         <!-- Search & Hamburger (Mobile) -->
-        <div class="flex items-center gap-3 lg:hidden">
+        <div class="flex items-center gap-1.5 lg:hidden">
+          <button class="text-white hover:text-primary-yellow transition-colors pr-2 border-r" aria-label="Tìm kiếm">
+            <img src="/assets/svg/search.svg" alt="Search" class="w-6 h-6" />
+          </button>
           <button id="hamburger-menu" class="hamburger-menu text-white hover:text-primary-yellow transition-colors"
             aria-label="Mở menu">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-width="2" d="M3 12H21M3 6H21M3 18H21"></path>
-            </svg>
+            <img src="/assets/svg/hamburger.svg" alt="Menu" class="w-7 h-7" />
           </button>
         </div>
 
@@ -113,19 +174,46 @@
                   class="absolute inset-0 bg-gradient-to-br from-primary-dark-blue via-primary-dark-blue/95 to-primary-dark-blue/90">
                 </div>
                 <!-- Decorative shapes -->
-                <div class="absolute -right-8 -top-8 w-32 h-32">
-                  <div class="absolute inset-0 bg-white/10 rounded-full blur-2xl animate-pulse"></div>
-                </div>
-                <!-- Abstract lines -->
-                <div class="absolute inset-0 overflow-hidden">
-                  <div
-                    class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent">
+                <div class="absolute inset-0" bis_skin_checked="1">
+                  <!-- Circle blob -->
+                  <div class="absolute -right-8 -top-8 w-32 h-32" bis_skin_checked="1">
+                    <div class="absolute inset-0 bg-white/10 rounded-full blur-2xl animate-pulse" bis_skin_checked="1">
+                    </div>
+                    <img src="/assets/svg/blob.svg" alt="" class="relative w-full h-full text-white/5" />
                   </div>
-                  <div
-                    class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent">
+
+                  <!-- Scattered dots -->
+                  <div class="absolute inset-0" bis_skin_checked="1">
+                    <div class="absolute h-1 w-1 bg-white/20 rounded-full top-1/4 left-1/4 animate-ping"
+                      bis_skin_checked="1"></div>
+                    <div class="absolute h-1.5 w-1.5 bg-white/20 rounded-full top-1/3 right-1/3 animate-ping"
+                      style="animation-delay: 0.5s" bis_skin_checked="1"></div>
+                    <div class="absolute h-1 w-1 bg-white/20 rounded-full bottom-1/4 right-1/4 animate-ping"
+                      style="animation-delay: 1s" bis_skin_checked="1"></div>
                   </div>
+
+                  <!-- Abstract lines -->
+                  <div class="absolute inset-0 overflow-hidden" bis_skin_checked="1">
+                    <div
+                      class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                      bis_skin_checked="1">
+                    </div>
+                    <div
+                      class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                      bis_skin_checked="1">
+                    </div>
+                    <div class="absolute -left-10 top-1/2 -rotate-45 w-32 h-px bg-white/10" bis_skin_checked="1"></div>
+                    <div class="absolute -right-10 top-1/2 rotate-45 w-32 h-px bg-white/10" bis_skin_checked="1"></div>
+                  </div>
+
+                  <!-- Glowing orbs -->
+                  <div class="absolute left-1/4 top-1/2 w-20 h-20 bg-white/5 rounded-full blur-xl" bis_skin_checked="1">
+                  </div>
+                  <div class="absolute right-1/4 bottom-0 w-16 h-16 bg-white/5 rounded-full blur-lg"
+                    bis_skin_checked="1"></div>
                 </div>
               </div>
+
 
               <!-- Content -->
               <div class="relative flex items-center justify-between px-4 py-5 z-10">
@@ -150,10 +238,7 @@
                 <button id="close-menu"
                   class="close-menu-btn group flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300"
                   aria-label="Đóng menu">
-                  <svg class="w-5 h-5 text-white transform transition-transform duration-300 group-hover:rotate-90"
-                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-width="2" d="M6 18L18 6M6 6L18 18"></path>
-                  </svg>
+                  <img src="/assets/svg/close.svg" alt="Close" class="w-5 h-5 text-white transform transition-transform duration-300 group-hover:rotate-90" />
                 </button>
               </div>
             </div>
@@ -185,10 +270,7 @@
                   <a href="#"
                     class="flex items-center justify-between px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform">
                     <span class="font-medium">Ban lãnh đạo</span>
-                    <svg class="chevron-icon w-4 h-4 transition-transform duration-200 lg:group-hover/sub:translate-x-1"
-                      fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
+                    <img src="/assets/svg/chevron-right.svg" alt="" class="chevron-icon w-4 h-4 transition-transform duration-200 lg:group-hover/sub:translate-x-1" />
                   </a>
                   <!-- Level 3 Menu -->
                   <div
@@ -234,10 +316,7 @@
                   <a href="#"
                     class="flex items-center justify-between px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform">
                     <span class="font-medium">Tin tức khoa</span>
-                    <svg class="chevron-icon w-4 h-4 transition-transform duration-200 lg:group-hover/sub:translate-x-1"
-                      fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
+                    <img src="/assets/svg/chevron-right.svg" alt="" class="chevron-icon w-4 h-4 transition-transform duration-200 lg:group-hover/sub:translate-x-1" />
                   </a>
                   <!-- Level 3 Menu -->
                   <div
@@ -288,10 +367,7 @@
                   <a href="#"
                     class="flex items-center justify-between px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform">
                     <span class="font-medium">Công bố khoa học</span>
-                    <svg class="chevron-icon w-4 h-4 transition-transform duration-200 lg:group-hover/sub:translate-x-1"
-                      fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
+                    <img src="/assets/svg/chevron-right.svg" alt="" class="chevron-icon w-4 h-4 transition-transform duration-200 lg:group-hover/sub:translate-x-1" />
                   </a>
                   <!-- Level 3 Menu -->
                   <div
@@ -335,10 +411,7 @@
                   <a href="#"
                     class="flex items-center justify-between px-5 py-3.5 text-black lg:hover:bg-primary-dark-blue/5 lg:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 lg:hover:before:scale-y-100 before:transition-transform">
                     <span class="font-medium">Chương trình đào tạo</span>
-                    <svg class="chevron-icon w-4 h-4 transition-transform duration-200 lg:group-hover/sub:translate-x-1"
-                      fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
+                    <img src="/assets/svg/chevron-right.svg" alt="" class="chevron-icon w-4 h-4 transition-transform duration-200 lg:group-hover/sub:translate-x-1" />
                   </a>
                   <!-- Level 3 Menu -->
                   <div
@@ -398,11 +471,7 @@
           </div>
           <button
             class="w-10 h-10 flex items-center justify-center text-primary-yellow lg:hover:bg-white/10 rounded-lg transition-all duration-200 lg:hover:scale-110">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+            <img src="/assets/svg/search.svg" alt="Search" class="w-5 h-5" />
           </button>
         </nav>
 
