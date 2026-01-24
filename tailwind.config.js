@@ -16,6 +16,7 @@ export default {
         inter: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
       },
       colors: {
+        black: '#616161',
         'primary': {
           white: '#FFFFFF',
           yellow: '#F9B200',

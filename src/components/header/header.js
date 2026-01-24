@@ -89,6 +89,36 @@ function initDropdowns() {
 }
 
 export function init() {
+  // Language switcher
+  const languageSwitcher = document.querySelector(".language-switcher");
+  const languageText = languageSwitcher?.querySelector(".language-switcher__text");
+  const languageImg = languageSwitcher?.querySelector(".language-switcher_img");
+  const isPageLoad = languageSwitcher?.dataset.openLink;
+  
+  if (languageSwitcher && languageText && languageImg) {
+    const updateLanguage = () => {
+      const isEnglish = languageSwitcher.dataset.openLink === "en/";
+      if (isEnglish) languageSwitcher.classList.add("active");
+      languageText.textContent = !isEnglish ? "ENG" : "VNI";
+      languageImg.style.background = !isEnglish
+        ? 'url("/assets/images/eng.webp") no-repeat center center/cover'
+        : 'url("/assets/images/vietnam.png") no-repeat center center/cover';
+    };
+    
+    updateLanguage(); // Cập nhật UI ban đầu
+
+    languageSwitcher.addEventListener("click", (e) => {
+      e.preventDefault();
+      languageSwitcher.dataset.openLink =
+        languageSwitcher.dataset.openLink === "en/" ? "vi/" : "en/";
+      languageSwitcher.classList.toggle("active");
+      updateLanguage();
+      setTimeout(() => {
+        window.location.assign(isPageLoad);
+      }, 400);
+    });
+  }
+  
   // Mobile menu toggle
   const toggleBtn = document.getElementById('mobile-menu-toggle')
   const mobileMenu = document.getElementById('mobile-menu')

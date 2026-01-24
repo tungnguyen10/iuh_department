@@ -1,4 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <circle cx="100" cy="100" r="80" fill="#3B82F6"/>
-  <text x="100" y="120" font-size="100" text-anchor="middle" fill="white" font-family="Arial">IUH</text>
+<svg width="43" height="50" viewBox="0 0 43 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.6144 22.7588L35.5073 19.549L28.4072 22.7588V35.8032L35.5073 32.5934L42.6144 35.8032V22.7588Z" fill="currentColor"/>
+<path d="M42.6144 3.20987L35.5073 3.05176e-05L28.4072 3.20987V16.2543L35.5073 13.0444L42.6144 16.2543V3.20987Z" fill="currentColor"/>
+<path d="M0 3.20973V16.2541L5.84833 0.00695801L0 3.20973Z" fill="currentColor"/>
+<path d="M8.35889 0.0071106L14.2072 16.2543V3.20988L8.35889 0.0071106Z" fill="currentColor"/>
+<path d="M5.89784 0V13.0444L0 16.2543L5.84833 0.00706625L5.89784 0Z" fill="#F9B200"/>
+<path d="M14.2072 16.2543L8.30933 13.0444V3.05176e-05L8.35881 0.00709677L14.2072 16.2543Z" fill="#F9B200"/>
+<path d="M14.2071 34.0427V22.2214H0V35.8738C0 43.6793 6.3292 49.9999 14.1293 49.9999H28.4072V35.796H15.9609C14.985 35.796 14.2001 35.0113 14.2001 34.0356L14.2071 34.0427Z" fill="currentColor"/>
 </svg>
