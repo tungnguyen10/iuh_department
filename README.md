@@ -145,7 +145,7 @@ SVGs are **auto-imported and inlined** for better styling:
 
 ```javascript
 // src/main.js
-const svgModules = import.meta.glob('./assets/svg/*.svg', { eager: true, query: '?url' })
+const svgModules = import.meta.glob('./assets/svgs/*.svg', { eager: true, query: '?url' })
 await inlineSVGs() // Inlines all SVGs with data-svg attribute
 ```
 

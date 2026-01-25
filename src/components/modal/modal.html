@@ -1,0 +1,25 @@
+<!-- Base Modal Component - Reusable -->
+<div class="modal fixed inset-0 z-[9999] flex items-center justify-center opacity-0 invisible pointer-events-none transition-all duration-300 ease-out" 
+     id="base-modal" 
+     data-modal>
+  <!-- Backdrop -->
+  <div class="modal__backdrop absolute inset-0 bg-primary-dark-blue/40 backdrop-blur-sm opacity-0 transition-opacity duration-300 cursor-pointer" 
+       data-modal-backdrop></div>
+  
+  <!-- Modal Container -->
+  <div class="modal__container relative z-10 w-[90%] max-w-[600px] max-h-[90vh] bg-white rounded-2xl shadow-2xl opacity-0 overflow-hidden transition-all duration-300 ease-out md:max-h-[90vh] max-md:w-full max-md:h-full max-md:max-w-full max-md:max-h-full max-md:rounded-none" 
+       data-modal-container>
+    <!-- Close Button -->
+    <button class="modal__close absolute top-4 right-4 z-10 flex items-center justify-center w-10 h-10 bg-primary-dark-blue/8 hover:bg-primary-dark-blue/15 rounded-full border-none cursor-pointer transition-all duration-200 active:scale-95" 
+            data-modal-close 
+            aria-label="Đóng">
+      <img src="/assets/svgs/close.svg" alt="Close" class="w-5 h-5 transition-transform duration-300 [.modal__close:hover_&]:rotate-90" style="filter: brightness(0) saturate(100%) invert(19%) sepia(47%) saturate(2446%) hue-rotate(187deg) brightness(94%) contrast(102%);" />
+    </button>
+    
+    <!-- Modal Content (Dynamic) -->
+    <div class="modal__content w-full h-full p-6 overflow-y-auto max-md:px-4 max-md:py-5" 
+         data-modal-content>
+      <!-- Content will be injected here -->
+    </div>
+  </div>
+</div>

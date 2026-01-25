@@ -1,0 +1,115 @@
+<div class="modal fixed inset-0 z-[9999] flex items-center justify-center opacity-0 invisible pointer-events-none transition-all duration-300 ease-out" 
+     id="search-modal" 
+     data-modal>
+  <!-- Backdrop -->
+  <div class="modal__backdrop absolute inset-0 bg-primary-dark-blue/40 backdrop-blur-sm opacity-0 transition-opacity duration-300 cursor-pointer" 
+       data-modal-backdrop></div>
+  
+  <!-- Modal Container -->
+  <div class="modal__container relative z-10 w-[90%] max-w-[600px] max-h-[90vh] bg-white rounded-2xl shadow-2xl opacity-0 overflow-hidden transition-all duration-300 ease-out md:max-h-[90vh] max-md:w-full max-md:h-full max-md:max-w-full max-md:max-h-full max-md:rounded-none" 
+       data-modal-container>
+    <!-- Close Button -->
+    <button class="modal__close absolute top-4 right-4 z-10 flex items-center justify-center w-10 h-10 bg-primary-dark-blue/8 hover:bg-primary-dark-blue/15 rounded-full border-none cursor-pointer transition-all duration-200 active:scale-95" 
+            data-modal-close 
+            aria-label="Đóng">
+      <img src="/assets/svgs/close.svg" alt="Close" class="w-5 h-5 transition-transform duration-300" style="filter: brightness(0) saturate(100%) invert(19%) sepia(47%) saturate(2446%) hue-rotate(187deg) brightness(94%) contrast(102%);" />
+    </button>
+    
+    <!-- Modal Content -->
+    <div class="modal__content w-full h-full p-6 overflow-y-auto max-md:px-4 max-md:py-5" 
+         data-modal-content>
+      
+      <!-- Search Modal Content -->
+      <div class="search-modal-content pt-10">
+        <!-- Search Input -->
+        <div class="relative mb-8">
+          <img src="/assets/svgs/search.svg" alt="Search" class="absolute left-5 top-1/2 -translate-y-1/2 w-6 h-6 opacity-40 pointer-events-none" />
+          <input 
+            type="text" 
+            placeholder="Tìm kiếm tin tức, bài viết, thông báo..."
+            class="search-input w-full px-14 py-[18px] text-lg font-medium text-primary-dark-blue bg-slate-50 border-2 border-transparent rounded-xl outline-none transition-all duration-300 placeholder:text-slate-400 focus:bg-white focus:border-primary-yellow focus:shadow-[0_0_0_4px_rgba(253,185,19,0.1)] max-md:text-base max-md:px-12 max-md:py-4"
+            id="search-input"
+            autocomplete="off"
+          />
+          <button class="search-input__clear absolute right-4 top-1/2 -translate-y-1/2 hidden items-center justify-center w-8 h-8 bg-primary-dark-blue/8 hover:bg-primary-dark-blue/15 rounded-full border-none cursor-pointer transition-all duration-200" 
+                  id="search-clear" 
+                  aria-label="Xóa">
+            <img src="/assets/svgs/close.svg" alt="Clear" class="w-3.5 h-3.5 opacity-60 hover:opacity-100" />
+          </button>
+        </div>
+
+        <!-- Search State: Initial (Popular Searches) -->
+        <div class="search-state animate-fade-in" data-search-state="initial">
+          <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Tìm kiếm phổ biến</h3>
+          <div class="flex flex-wrap gap-2 mb-8">
+            <a href="#" class="px-4 py-2 text-sm font-medium text-primary-dark-blue bg-slate-100 hover:bg-primary-yellow hover:text-white rounded-lg no-underline transition-all duration-200 hover:-translate-y-0.5">Tuyển sinh</a>
+            <a href="#" class="px-4 py-2 text-sm font-medium text-primary-dark-blue bg-slate-100 hover:bg-primary-yellow hover:text-white rounded-lg no-underline transition-all duration-200 hover:-translate-y-0.5">Học bổng</a>
+            <a href="#" class="px-4 py-2 text-sm font-medium text-primary-dark-blue bg-slate-100 hover:bg-primary-yellow hover:text-white rounded-lg no-underline transition-all duration-200 hover:-translate-y-0.5">Nghiên cứu khoa học</a>
+            <a href="#" class="px-4 py-2 text-sm font-medium text-primary-dark-blue bg-slate-100 hover:bg-primary-yellow hover:text-white rounded-lg no-underline transition-all duration-200 hover:-translate-y-0.5">Đào tạo</a>
+            <a href="#" class="px-4 py-2 text-sm font-medium text-primary-dark-blue bg-slate-100 hover:bg-primary-yellow hover:text-white rounded-lg no-underline transition-all duration-200 hover:-translate-y-0.5">Lịch thi</a>
+            <a href="#" class="px-4 py-2 text-sm font-medium text-primary-dark-blue bg-slate-100 hover:bg-primary-yellow hover:text-white rounded-lg no-underline transition-all duration-200 hover:-translate-y-0.5">Thông báo</a>
+          </div>
+
+          <div class="mt-6">
+            <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Danh mục</h3>
+            <div class="grid grid-cols-1 md:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-3">
+              <a href="#" class="search-category-item flex items-center gap-3 p-4 bg-slate-50 hover:bg-primary-yellow rounded-xl no-underline transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(253,185,19,0.3)]">
+                <span class="text-2xl">📰</span>
+                <span class="text-[15px] font-medium text-primary-dark-blue transition-colors duration-200">Tin tức - Sự kiện</span>
+              </a>
+              <a href="#" class="search-category-item flex items-center gap-3 p-4 bg-slate-50 hover:bg-primary-yellow rounded-xl no-underline transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(253,185,19,0.3)]">
+                <span class="text-2xl">🎓</span>
+                <span class="text-[15px] font-medium text-primary-dark-blue transition-colors duration-200">Đào tạo</span>
+              </a>
+              <a href="#" class="search-category-item flex items-center gap-3 p-4 bg-slate-50 hover:bg-primary-yellow rounded-xl no-underline transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(253,185,19,0.3)]">
+                <span class="text-2xl">🔬</span>
+                <span class="text-[15px] font-medium text-primary-dark-blue transition-colors duration-200">Nghiên cứu khoa học</span>
+              </a>
+              <a href="#" class="search-category-item flex items-center gap-3 p-4 bg-slate-50 hover:bg-primary-yellow rounded-xl no-underline transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(253,185,19,0.3)]">
+                <span class="text-2xl">👥</span>
+                <span class="text-[15px] font-medium text-primary-dark-blue transition-colors duration-200">Sinh viên</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search State: Loading -->
+        <div class="search-state animate-fade-in" data-search-state="loading" style="display: none;">
+          <div class="flex flex-col items-center justify-center py-15 px-5">
+            <div class="search-loader__spinner w-12 h-12 border-4 border-slate-200 border-t-primary-yellow rounded-full animate-spin"></div>
+            <p class="mt-4 text-base text-slate-500">Đang tìm kiếm...</p>
+          </div>
+        </div>
+
+        <!-- Search State: Results -->
+        <div class="search-state animate-fade-in" data-search-state="results" style="display: none;">
+          <div class="flex justify-between items-center mb-5 pb-3 border-b-2 border-slate-100">
+            <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wider">
+              Kết quả tìm kiếm cho "<span id="search-query-text"></span>"
+            </h3>
+            <span class="text-sm text-slate-500" id="search-results-count">0 kết quả</span>
+          </div>
+
+          <div class="flex flex-col gap-3 md:max-h-[450px] overflow-y-auto pr-1 custom-scrollbar" id="search-results-list">
+            <!-- Results will be dynamically inserted here -->
+          </div>
+        </div>
+
+        <!-- Search State: Empty -->
+        <div class="search-state animate-fade-in" data-search-state="empty" style="display: none;">
+          <div class="flex flex-col items-center justify-center py-15 px-5 text-center">
+            <img src="/assets/svgs/search.svg" alt="No results" class="w-16 h-16 opacity-20 mb-5" />
+            <h3 class="text-xl font-semibold text-primary-dark-blue mb-2">Không tìm thấy kết quả</h3>
+            <p class="text-base text-slate-500 mb-3">
+              Không có kết quả nào cho "<span id="search-empty-query"></span>"
+            </p>
+            <p class="text-sm text-slate-400">
+              Hãy thử tìm kiếm với từ khóa khác hoặc kiểm tra lại chính tả.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

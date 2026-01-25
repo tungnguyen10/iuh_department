@@ -2,7 +2,7 @@ import { defineConfig, loadEnv } from 'vite'
 import { resolve, extname, basename, dirname, isAbsolute } from 'path'
 import { glob } from 'glob'
 import { fileURLToPath } from 'url'
-import { copyFileSync, mkdirSync, existsSync, readFileSync } from 'fs'
+import { copyFileSync, mkdirSync, existsSync, readFileSync, readdirSync, statSync } from 'fs'
 import svgo from 'vite-plugin-svgo'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -212,6 +212,44 @@ const transformDataInclude = (base) => ({
 // Component JS đã được bundle vào main.js qua import.meta.glob
 // Không cần copy components nữa
 
+// Plugin to copy public/data to dist_iuh/data
+const copyPublicDataPlugin = (outDir) => ({
+  name: 'copy-public-data',
+  closeBundle() {
+    const publicDataDir = resolve(__dirname, 'public/data')
+    const distDataDir = resolve(outDir, 'data')
+    
+    if (!existsSync(publicDataDir)) return
+    
+    // Create dist/data if not exists
+    if (!existsSync(distDataDir)) {
+      mkdirSync(distDataDir, { recursive: true })
+    }
+    
+    // Copy all files from public/data to dist/data
+    const copyRecursive = (src, dest) => {
+      const entries = readdirSync(src, { withFileTypes: true })
+      
+      for (const entry of entries) {
+        const srcPath = resolve(src, entry.name)
+        const destPath = resolve(dest, entry.name)
+        
+        if (entry.isDirectory()) {
+          if (!existsSync(destPath)) {
+            mkdirSync(destPath, { recursive: true })
+          }
+          copyRecursive(srcPath, destPath)
+        } else {
+          copyFileSync(srcPath, destPath)
+          console.log(`Copied: ${entry.name} to data/`)
+        }
+      }
+    }
+    
+    copyRecursive(publicDataDir, distDataDir)
+  }
+})
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, __dirname, '')
   const base = normalizeBasePath(env.VITE_BASE_PATH || '/')
@@ -220,10 +258,12 @@ export default defineConfig(({ mode }) => {
   return {
     base,
     root: 'src/pages',
+    publicDir: resolve(__dirname, 'public'),
     plugins: [
       mapSrcRequests(),
       layoutPlugin(), // Chạy TRƯỚC để wrap layout
       transformDataInclude(base), // Chạy SAU để inject components vào layout
+      copyPublicDataPlugin(outDir), // Copy public/data to dist/data
       svgo({
         svgoConfig: {
           plugins: [

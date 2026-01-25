@@ -6,16 +6,19 @@
 import './styles/main.scss'
 import './components/header/header.scss'
 import './components/footer/footer.scss'
+import './components/modal/modal.scss'
+import './components/search/search-modal.scss'
 import { appEnv } from './config/env.js'
 import { inlineSVGs } from './js/svg-loader.js'
 import { loadingManager } from './js/loading.js'
 import { delay } from './js/utils.js'
+import { initSearchModal } from './components/search/search-modal.js'
 
 // Auto-import tất cả component JS files (eager import để bundle vào main.js)
 const componentModules = import.meta.glob('./components/**/*.js', { eager: true })
 
 // Auto-import tất cả SVG files để Vite bundle chúng
-const svgModules = import.meta.glob('./assets/svg/*.svg', { eager: true, query: '?url' })
+const svgModules = import.meta.glob('./assets/svgs/*.svg', { eager: true, query: '?url' })
 
 // Surface the current environment for debugging/styling hooks
 document.documentElement.dataset.appEnv = appEnv
@@ -41,6 +44,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   })
   await delay(500) // Test delay 1s
   await inlineSVGs()
+  
+  // Initialize search modal
+  initSearchModal()
+  
   loadingManager.hide()
   
   // Dispatch event để các page-specific JS biết components đã load xong

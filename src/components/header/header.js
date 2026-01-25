@@ -3,6 +3,8 @@
  * Handle mobile menu toggle and dynamic dropdown positioning
  */
 
+import { openSearchModal } from '../search/search-modal.js'
+
 /**
  * Calculate and set dropdown position dynamically
  * Prevents overflow on small viewports
@@ -255,6 +257,23 @@ export function init() {
   
   // Initialize desktop dropdowns
   initDropdowns()
+  
+  // Search buttons - bind to modal
+  const searchButtons = document.querySelectorAll('[data-search-trigger]')
+  searchButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault()
+      openSearchModal()
+    })
+  })
+  
+  // Optional: Keyboard shortcut (Ctrl/Cmd + K)
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      e.preventDefault()
+      openSearchModal()
+    }
+  })
   
   // Close mobile menu on resize to desktop
   window.addEventListener('resize', () => {

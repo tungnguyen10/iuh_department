@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "title": "Thông báo tuyển sinh Đại học năm 2024",
+    "excerpt": "Trường Đại học Công nghiệp TP.HCM thông báo tuyển sinh chương trình đại học chính quy năm 2024. Thời gian nhận hồ sơ từ tháng 3 đến tháng 8.",
+    "category": "Tuyển sinh",
+    "date": "15/01/2024",
+    "url": "#tuyen-sinh-2024"
+  },
+  {
+    "id": 2,
+    "title": "Học bổng du học Nhật Bản toàn phần",
+    "excerpt": "Chương trình học bổng toàn phần dành cho sinh viên xuất sắc du học Nhật Bản năm 2024. Bao gồm học phí, sinh hoạt phí và vé máy bay.",
+    "category": "Học bổng",
+    "date": "10/01/2024",
+    "url": "#hoc-bong-nhat-ban"
+  },
+  {
+    "id": 3,
+    "title": "Lịch thi cuối kỳ học kỳ 1 năm học 2023-2024",
+    "excerpt": "Lịch thi cuối kỳ học kỳ 1 năm học 2023-2024 cho tất cả các khoa. Sinh viên vui lòng kiểm tra lịch thi và phòng thi của mình.",
+    "category": "Thông báo",
+    "date": "05/01/2024",
+    "url": "#lich-thi-cuoi-ky"
+  },
+  {
+    "id": 4,
+    "title": "Hội thảo khoa học Công nghệ thông tin 2024",
+    "excerpt": "Hội thảo khoa học quốc tế về Công nghệ thông tin và Trí tuệ nhân tạo. Chào mừng sinh viên, giảng viên tham dự và gửi bài báo khoa học.",
+    "category": "Sự kiện",
+    "date": "20/12/2023",
+    "url": "#hoi-thao-cntt"
+  },
+  {
+    "id": 5,
+    "title": "Kết quả học bổng khuyến khích học tập kỳ 1",
+    "excerpt": "Công bố danh sách sinh viên đạt học bổng khuyến khích học tập học kỳ 1 năm học 2023-2024. Tổng giá trị học bổng 2 tỷ đồng.",
+    "category": "Học bổng",
+    "date": "18/12/2023",
+    "url": "#ket-qua-hoc-bong"
+  },
+  {
+    "id": 6,
+    "title": "Thông báo đăng ký học phần học kỳ 2",
+    "excerpt": "Sinh viên đăng ký học phần học kỳ 2 năm học 2023-2024 từ ngày 15/01 đến 25/01. Vui lòng đăng ký qua hệ thống Portal.",
+    "category": "Thông báo",
+    "date": "08/12/2023",
+    "url": "#dang-ky-hoc-phan"
+  },
+  {
+    "id": 7,
+    "title": "Tuyển sinh Thạc sĩ Quản trị kinh doanh MBA",
+    "excerpt": "Chương trình Thạc sĩ Quản trị kinh doanh MBA tuyển sinh đợt 1 năm 2024. Học phí ưu đãi cho đợt đăng ký sớm.",
+    "category": "Tuyển sinh",
+    "date": "01/12/2023",
+    "url": "#tuyen-sinh-mba"
+  },
+  {
+    "id": 8,
+    "title": "Giải thưởng sinh viên 5 tốt cấp thành phố",
+    "excerpt": "Chúc mừng 15 sinh viên IUH đạt giải thưởng Sinh viên 5 tốt cấp thành phố năm 2023. Đây là thành tích đáng tự hào của nhà trường.",
+    "category": "Sự kiện",
+    "date": "25/11/2023",
+    "url": "#sinh-vien-5-tot"
+  },
+  {
+    "id": 9,
+    "title": "Hướng dẫn làm đồ án tốt nghiệp năm 2024",
+    "excerpt": "Thông báo hướng dẫn quy trình làm đồ án tốt nghiệp cho sinh viên khóa 2020. Bao gồm đăng ký đề tài, tiến độ và lịch bảo vệ.",
+    "category": "Thông báo",
+    "date": "20/11/2023",
+    "url": "#huong-dan-do-an"
+  },
+  {
+    "id": 10,
+    "title": "Hội chợ việc làm Job Fair 2024",
+    "excerpt": "Hội chợ việc làm Job Fair 2024 với sự tham gia của hơn 100 doanh nghiệp lớn. Cơ hội tìm việc và thực tập cho sinh viên.",
+    "category": "Sự kiện",
+    "date": "15/11/2023",
+    "url": "#job-fair-2024"
+  }
+]
