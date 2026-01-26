@@ -4,15 +4,14 @@
  */
 
 import './styles/main.scss'
-import './components/header/header.scss'
-import './components/footer/footer.scss'
-import './components/modal/modal.scss'
-import './components/search/search-modal.scss'
 import { appEnv } from './config/env.js'
 import { inlineSVGs } from './js/svg-loader.js'
 import { loadingManager } from './js/loading.js'
 import { delay } from './js/utils.js'
 import { initSearchModal } from './components/search/search-modal.js'
+
+// Auto-import tất cả component SCSS files
+const componentStyles = import.meta.glob('./components/**/*.scss', { eager: true })
 
 // Auto-import tất cả component JS files (eager import để bundle vào main.js)
 const componentModules = import.meta.glob('./components/**/*.js', { eager: true })
