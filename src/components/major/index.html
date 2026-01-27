@@ -1,0 +1,51 @@
+<div class="w-full relative py-8 lg:py-14 overflow-hidden">
+    <!-- Background Image + Overlay -->
+    <div class="absolute inset-0 -z-10">
+        <img src="/assets/images/bg-major.jpg" alt="" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-b from-primary-dark-blue/85 to-primary-dark-blue/85"></div>
+    </div>
+
+    <div class="container mx-auto px-4 flex flex-col lg:flex-row gap-8 lg:gap-10">
+        <div class="w-full lg:w-4/12 text-primary-white flex flex-col gap-4 lg:items-start shrink-0">
+            <div data-include="@components/common/section-title.html" data-title="Chuyên ngành đào tạo"
+                data-title-class="text-primary-white" data-class="mt-1"></div>
+            <p class="text-sm lg:text-base leading-relaxed">
+                Các chuyên ngành thuộc Khoa Khoa học Sức khoẻ tập trung đào tạo kiến thức khoa học nền tảng về y sinh,
+                kỹ năng chuyên môn và khả năng ứng dụng thực tiễn. Chương trình hướng đến chăm sóc, bảo vệ và nâng cao
+                sức khoẻ cộng đồng, đáp ứng nhu cầu nhân lực cho hệ thống y tế, dự phòng, nghiên cứu và quản lý sức khoẻ
+                trong bối cảnh hiện đại.
+            </p>
+            <div id="mobile-carousel-container" class=" w-full"></div>
+            <div data-include="@components/button/button.html" data-variant="1" data-url="#" data-text="Xem tất cả"
+                data-class=""></div>
+        </div>
+        <div id="desktop-carousel-container" class="flex-1 w-full overflow-hidden">
+            <div class="major-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div data-include="@components/major/major-card.html" data-image="/assets/images/bg-major.jpg"
+                            data-title="KHOA HỌC THỰC PHẨM" data-class="">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-include="@components/major/major-card.html" data-image="/assets/images/bg-major.jpg"
+                            data-title="DINH DƯỠNG" data-class=""></div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-include="@components/major/major-card.html" data-image="/assets/images/bg-major.jpg"
+                            data-title="Y HỌC CỔ TRUYỀN" data-class="">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-include="@components/major/major-card.html" data-image="/assets/images/bg-major.jpg"
+                            data-title="ĐIỀU DƯỠNG" data-class=""></div>
+                    </div>
+                </div>
+                <!-- Pagination -->
+                <div class="major-pagination swiper-pagination !relative !bottom-0 mt-4"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

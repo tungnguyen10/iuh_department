@@ -160,41 +160,107 @@ const layoutPlugin = () => ({
 const transformDataInclude = (base) => ({
   name: 'transform-data-include',
   transformIndexHtml(html) {
-    let transformed = html
-    
-    // Inject HTML components directly into DOM during build
-    // Component JS đã được bundle vào main.js nên không cần inject script tag nữa
-    transformed = transformed.replace(
-      /<div\s+data-include=["']([^"']+)["'](?:\s+data-js=["'][^"']+["'])?\s*><\/div>/g,
-      (match, htmlPath) => {
-        try {
-          // Xử lý relative path từ pages
-          let componentPath = htmlPath
-          if (htmlPath.startsWith('../')) {
-            // ../components/header/header.html -> components/header/header.html
-            componentPath = htmlPath.replace(/^\.\.\//, '')
-          } else if (htmlPath.startsWith('./')) {
-            // ./header.html -> pages/header.html
-            componentPath = `pages/${htmlPath.slice(2)}`
-          } else if (base !== '/' && htmlPath.startsWith(base)) {
-            // Remove base path
-            componentPath = htmlPath.substring(base.length)
-          } else if (htmlPath.startsWith('/')) {
-            componentPath = htmlPath.substring(1)
-          }
-          
-          // Đọc file component HTML từ src
-          const fullComponentPath = resolve(__dirname, 'src', componentPath)
-          const componentHtml = readFileSync(fullComponentPath, 'utf-8').trim()
-          
-          // Chỉ trả về HTML, không cần script tag vì JS đã bundle trong main.js
-          return componentHtml
-        } catch (error) {
-          console.warn(`Failed to inject component: ${htmlPath}`, error.message)
-          return match // Giữ nguyên nếu có lỗi
-        }
+    // Recursive function to process nested data-include
+    const processIncludes = (content, depth = 0) => {
+      if (depth > 10) {
+        console.warn('⚠️  Max recursion depth reached for data-include')
+        return content
       }
-    )
+      
+      const transformed = content.replace(
+        /<div\s+data-include=["']([^"']+)["']([^>]*?)>\s*<\/div>/gs,
+        (match, htmlPath, attributes) => {
+          try {
+            // Extract all data-* attributes (support hyphenated names)
+            const dataAttrs = {}
+            const attrRegex = /data-([\w-]+)=["']([^"']+)["']/g
+            let attrMatch
+            while ((attrMatch = attrRegex.exec(attributes)) !== null) {
+              // Convert hyphenated to camelCase: data-title-class → titleClass
+              const key = attrMatch[1].replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
+              dataAttrs[key] = attrMatch[2]
+            }
+            
+            // Xử lý path từ pages
+            let componentPath = htmlPath
+            if (htmlPath.startsWith('@components/')) {
+              // @components/section-title/... → components/section-title/...
+              componentPath = htmlPath.replace('@components/', 'components/')
+            } else if (htmlPath.startsWith('@/')) {
+              // @/components/... → components/...
+              componentPath = htmlPath.substring(2)
+            } else if (htmlPath.startsWith('../')) {
+              // ../components/... → components/...
+              componentPath = htmlPath.replace(/^\.\.\//, '')
+            } else if (htmlPath.startsWith('./')) {
+              // ./header.html → pages/header.html
+              componentPath = `pages/${htmlPath.slice(2)}`
+            } else if (base !== '/' && htmlPath.startsWith(base)) {
+              componentPath = htmlPath.substring(base.length)
+            } else if (htmlPath.startsWith('/')) {
+              // /components/... → components/...
+              componentPath = htmlPath.substring(1)
+            }
+            
+            // Đọc file component HTML từ src
+            const fullComponentPath = resolve(__dirname, 'src', componentPath)
+            let componentHtml = readFileSync(fullComponentPath, 'utf-8').trim()
+            
+            // Handle variant selection - default to option 1 if no variant specified
+            const variantNumber = dataAttrs.variant || '1'
+            const variantRegex = new RegExp(
+              `<!-- option ${variantNumber}[^>]*?-->([\\s\\S]*?)(?=<!-- option \\d|$)`,
+              'i'
+            )
+            const variantMatch = componentHtml.match(variantRegex)
+            if (variantMatch) {
+              componentHtml = variantMatch[1].trim()
+            } else if (componentHtml.includes('<!-- option')) {
+              // File có options nhưng không tìm thấy variant → fallback về option 1
+              if (variantNumber !== '1') {
+                console.warn(`⚠️  Variant ${variantNumber} not found in ${componentPath}, falling back to option 1`)
+              }
+              const fallbackRegex = /<!-- option 1[^>]*?-->([\s\S]*?)(?=<!-- option \d|$)/i
+              const fallbackMatch = componentHtml.match(fallbackRegex)
+              if (fallbackMatch) {
+                componentHtml = fallbackMatch[1].trim()
+              } else {
+                // Không có option 1 → return empty với error comment
+                console.error(`❌ No option 1 found in ${componentPath}`)
+                return `<!-- ERROR: Variant ${variantNumber} not found and no fallback available -->`
+              }
+            }
+            // Nếu file không có comment options thì giữ nguyên (component bình thường không có variants)
+            
+            // Replace all {{key}} placeholders with data-key values
+            Object.entries(dataAttrs).forEach(([key, value]) => {
+              if (key !== 'include' && key !== 'js' && key !== 'variant') {
+                const placeholder = new RegExp(`\\{\\{${key}\\}\\}`, 'g')
+                componentHtml = componentHtml.replace(placeholder, value)
+              }
+            })
+            
+            // Remove entire lines containing only empty placeholders
+            // Match lines like: <tag ...>{{placeholder}}</tag>
+            componentHtml = componentHtml.replace(/^\s*<[^>]+>\s*\{\{[^}]+\}\}\s*<\/[^>]+>\s*$/gm, '')
+            
+            // Replace remaining placeholders with empty string
+            componentHtml = componentHtml.replace(/\{\{[^}]+\}\}/g, '')
+            
+            // Recursively process nested includes
+            return processIncludes(componentHtml, depth + 1)
+          } catch (error) {
+            console.warn(`Failed to inject component: ${htmlPath}`, error.message)
+            return match // Giữ nguyên nếu có lỗi
+          }
+        }
+      )
+      
+      // If no changes, return original to stop recursion
+      return transformed === content ? content : processIncludes(transformed, depth)
+    }
+    
+    let transformed = processIncludes(html)
     
     // Transform img src="/assets/..." to include base path
     transformed = transformed.replace(

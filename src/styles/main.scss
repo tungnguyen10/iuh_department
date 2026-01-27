@@ -12,6 +12,42 @@
   }
 }
 
+/* Custom Scrollbar - All Browsers */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #E3F6FDFF #FAFAFA;
+}
+
+/* Webkit Browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #FAFAFA;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #FAFAFA;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #FFF;
+  background-image: -webkit-linear-gradient(
+    top,
+    #E3F6FDFF 0%,
+    #8ED8F8 50%,
+    #8ED8F8 51%,
+    #153898 100%
+  );
+}
+
+/* Hide scrollbar arrow buttons */
+::-webkit-scrollbar-button {
+  display: none;
+}
+
 @layer components {
   /* Buttons with SCSS nesting */
   .btn {

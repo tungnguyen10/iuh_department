@@ -8,6 +8,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import { initMajorSwiper } from '@components/major/major.js'
 
 document.addEventListener('components-loaded', () => {
   const btn = document.getElementById('demo-btn')
@@ -54,4 +55,44 @@ document.addEventListener('components-loaded', () => {
       },
     },
   })
+
+  // Equalize height between intro and notification sections
+  function equalizeHeights() {
+    const intro = document.querySelector('.intro-section')
+    const notification = document.querySelector('.notification-section')
+    
+    if (!intro || !notification) return
+    
+    // Only apply on desktop (768px and above)
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches
+    
+    if (isDesktop) {
+      // Keep intro at natural height (as standard)
+      intro.style.height = 'auto'
+      console.log(intro.clientHeight);
+      
+      // Get natural height of intro section after reset
+      const introHeight = intro.offsetHeight
+      
+      // Set notification section to match intro height
+      notification.style.height = `${introHeight}px`
+    } else {
+      // Reset heights on mobile
+      intro.style.height = 'auto'
+      notification.style.height = 'auto'
+    }
+  }
+
+  // Run on load
+  equalizeHeights()
+
+  // Run on window resize
+  let resizeTimer
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer)
+    resizeTimer = setTimeout(equalizeHeights, 150)
+  })
+
+  // Initialize major cards Swiper carousel (desktop only)
+  initMajorSwiper()
 })

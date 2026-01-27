@@ -13,17 +13,19 @@ export default {
     screens: {
       sm: '640px',
       md: '768px',
-      lg: '1120px',  // Custom breakpoint cho desktop navigation
-      xl: '1280px',
-      '2xl': '1536px',
+      lg: '1024px',
+      xl: '1120px',  // Custom breakpoint cho desktop navigation
+      '2xl': '1280px',
+      '3xl': '1536px',
     },
     container: {
       screens: {
         sm: '100%',
         md: '100%',
         lg: '100%',
-        xl: '1280px',
-        '2xl': '1536px',
+        xl: '100%',
+        '2xl': '1280px',
+        '3xl': '1536px',
       },
     },
     extend: {
@@ -33,6 +35,11 @@ export default {
       },
       colors: {
         black: '#616161',
+        title: "#212121",
+        gray: {
+          DEFAULT: '#757575',
+          light: '#FAFAFA',
+        },
         'primary': {
           white: '#FFFFFF',
           yellow: '#F9B200',

@@ -6,9 +6,96 @@
 
 
 <section class="mx-auto ">
-  <!-- Hero Carousel Section -->
-  <div data-include="../components/carousel/carousel.html"></div>
-  
+  <div data-include="@components/carousel/carousel.html"></div>
+
+  <div class="w-full py-8 md:py-14">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-start gap-10">
+      <!-- intro -->
+      <div class="intro-section flex flex-col flex-1">
+        <div data-include="@components/common/section-title.html" data-title="Khoa học sức khoẻ"
+          data-subtitle="Giới Thiệu Khoa" data-class="mb-4 md:mb-6" data-title-class="text-title" data-subtitle-class="py-2.5 text-primary-dark-blue">
+        </div>
+        <div class="text-lg text-black leading-6 font-normal flex flex-col gap-3 mb-5 md:mb-9">
+          <p>Khoa Khoa học Sức khoẻ là đơn vị đào tạo và nghiên cứu trong các lĩnh vực liên quan đến chăm sóc, bảo vệ và
+            nâng cao sức khoẻ con người. Khoa hướng đến việc cung cấp nguồn nhân lực chất lượng cao, có kiến thức chuyên
+            môn, kỹ năng thực hành và tinh thần trách nhiệm, đáp ứng nhu cầu phát triển của hệ thống y tế và cộng đồng
+            trong bối cảnh hiện đại.</p>
+          <p>Chức năng và nhiệm vụ: <br />
+            Đào tạo trình độ đại học và sau đại học thuộc lĩnh vực khoa học sức khỏe<br />
+            Tổ chức hoạt động nghiên cứu khoa học và chuyển giao tri thức<br />
+            Tham gia phục vụ cộng đồng và các chương trình chăm sóc sức khỏe<br />
+            Hợp tác với các cơ sở y tế, viện nghiên cứu và tổ chức chuyên môn</p>
+        </div>
+        <div class="relative aspect-[780/250] rounded-3xl overflow-hidden">
+
+          <div class="absolute bottom-0 right-0 w-full h-full">
+            <img src="/assets/images/intro-image.png" alt="IUH - Khoa học sức khoẻ"
+              class="w-full h-full object-cover " />
+          </div>
+          <!-- CTA Buttons -->
+          <div class="flex gap-4 w-fit relative bg-white pb-5 pr-9 rounded-br-3xl pt-1 -mt-0.5">
+            <div data-include="@components/button/button.html" data-variant="4" data-url="#"
+              data-text="Kết nối với khoa"></div>
+            <a href="#"
+              class="inline-flex items-center gap-1.5 text-base font-roboto font-medium text-title hover:text-primary-dark-blue transition-colors">
+              <img src="/assets/svgs/learning-grid.svg" alt="" class="w-5 h-5" />
+              Xem chương trình đào tạo
+            </a>
+          </div>
+        </div>
+
+
+      </div>
+      <!-- notification -->
+      <div class="notification-section w-full md:w-1/3 shrink-0 flex flex-col gap-2.5">
+        <div data-include="@components/common/section-title.html" 
+          data-subtitle="Thông Báo Học Vụ"
+          data-title=""
+          data-title-class="text-title" 
+          data-subtitle-class="py-2.5 text-primary-dark-blue"></div>
+
+        <!-- Notification List -->
+        <div class="flex flex-col gap-2.5 flex-1 overflow-y-auto pr-2">
+          <div data-include="@components/common/notification-item.html"
+            data-title="Danh sách hội đồng và sinh viên bảo vệ khóa luận tốt nghiệp HK1 (2025-2026)"
+            data-date="27/09/2025" data-link="#"></div>
+
+          <div data-include="@components/common/notification-item.html"
+            data-title="Thông báo lịch thi giữa kỳ học kỳ 1 năm học 2025-2026" data-date="25/09/2025" data-link="#">
+          </div>
+
+          <div data-include="@components/common/notification-item.html"
+            data-title="Kế hoạch học tập và rèn luyện tuần 5" data-date="23/09/2025" data-link="#"></div>
+          <div data-include="@components/common/notification-item.html"
+            data-title="Danh sách hội đồng và sinh viên bảo vệ khóa luận tốt nghiệp HK1 (2025-2026)"
+            data-date="27/09/2025" data-link="#"></div>
+
+          <div data-include="@components/common/notification-item.html"
+            data-title="Thông báo lịch thi giữa kỳ học kỳ 1 năm học 2025-2026" data-date="25/09/2025" data-link="#">
+          </div>
+
+          <div data-include="@components/common/notification-item.html"
+            data-title="Kế hoạch học tập và rèn luyện tuần 5" data-date="23/09/2025" data-link="#"></div>
+          <div data-include="@components/common/notification-item.html"
+            data-title="Danh sách hội đồng và sinh viên bảo vệ khóa luận tốt nghiệp HK1 (2025-2026)"
+            data-date="27/09/2025" data-link="#"></div>
+
+          <div data-include="@components/common/notification-item.html"
+            data-title="Thông báo lịch thi giữa kỳ học kỳ 1 năm học 2025-2026" data-date="25/09/2025" data-link="#">
+          </div>
+
+          <div data-include="@components/common/notification-item.html"
+            data-title="Kế hoạch học tập và rèn luyện tuần 5" data-date="23/09/2025" data-link="#"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+   <div data-include="@components/major/index.html" ></div>
+ <!-- View All Button -->
+        <div data-include="@components/button/button-circle.html" data-variant="3" data-url="#" data-text="Xem tất cả"
+          data-class="mt-2.5"></div>
+        <div data-include="@components/button/button.html" data-variant="4" data-url="#" data-text="Xem tất cả"
+          data-class="mt-2.5"></div>
   <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
     <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
       <div
