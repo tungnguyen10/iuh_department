@@ -10,6 +10,12 @@ import { loadingManager } from './js/loading.js'
 import { delay } from './js/utils.js'
 import { initSearchModal } from './components/search/search-modal.js'
 
+// Swiper CSS (imported once for all carousels)
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+import 'swiper/css/effect-coverflow'
+
 // Auto-import tất cả component SCSS files
 const componentStyles = import.meta.glob('./components/**/*.scss', { eager: true })
 

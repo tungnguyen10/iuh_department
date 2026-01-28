@@ -4,8 +4,6 @@
  */
 import Swiper from 'swiper'
 import { FreeMode, Pagination } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/pagination'
 
 export function initMajorSwiper() {
   const carouselContainer = document.getElementById('desktop-carousel-container');
@@ -14,7 +12,10 @@ export function initMajorSwiper() {
   
   if (!carouselContainer || !mobileContainer || !desktopParent) return;
 
-  const isDesktop = () => window.innerWidth >= 768;
+  const isDesktop = () => window.innerWidth >= 1024;
+  
+  // Declare swiperInstance first
+  let swiperInstance = null;
 
   // Move carousel based on viewport
   const moveCarousel = () => {
@@ -44,8 +45,8 @@ export function initMajorSwiper() {
   // Move carousel on load
   moveCarousel();
 
-  // Initialize Swiper once
-  let swiperInstance = new Swiper('.major-swiper', {
+  // Initialize Swiper
+  swiperInstance = new Swiper('.major-swiper', {
     modules: [FreeMode, Pagination],
     slidesPerView: 1.2,
     spaceBetween: 16,

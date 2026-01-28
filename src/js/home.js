@@ -5,10 +5,8 @@
 
 import Swiper from 'swiper'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
 import { initMajorSwiper } from '@components/major/major.js'
+import { initAdmissionSwiper } from '@components/admission/admission.js'
 
 document.addEventListener('components-loaded', () => {
   const btn = document.getElementById('demo-btn')
@@ -79,7 +77,7 @@ document.addEventListener('components-loaded', () => {
     } else {
       // Reset heights on mobile
       intro.style.height = 'auto'
-      notification.style.height = 'auto'
+      notification.style.height = '450px'
     }
   }
 
@@ -95,4 +93,7 @@ document.addEventListener('components-loaded', () => {
 
   // Initialize major cards Swiper carousel (desktop only)
   initMajorSwiper()
+  
+  // Initialize admission cards Swiper carousel
+  initAdmissionSwiper()
 })
