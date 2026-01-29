@@ -1,68 +1,95 @@
 <!-- News & Events Section -->
 <section class="w-full py-8 md:py-14">
-  <div class="container mx-auto px-4 flex flex-col gap-6 md:gap-8">
-    <!-- Header -->
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-      <div data-include="@components/common/section-title.html"
-        data-subtitle="Tin tức - Sự kiện"
-        data-title="Hoạt động mới nhất"
-        data-class=""
-        data-title-class="text-title"
-        data-subtitle-class="text-primary-dark-blue"></div>
-
-      <div data-include="@components/button/button.html" data-variant="1" data-url="#" data-text="Xem tất cả"
-        data-class=""></div>
+  <div class="container mx-auto px-4 flex flex-col items-center">
+    <div data-include="@components/common/section-title.html" 
+      data-title="Tin Tức - Sự Kiện"
+      data-class=""
+      data-title-class="text-title text-center">
     </div>
 
-    <!-- Content -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <!-- Featured Card -->
-      <div class="lg:col-span-2">
-        <div data-include="@components/news/news-card.html"
-          data-image="/assets/images/default.jpg"
-          data-imageAlt="Tin tức nổi bật"
-          data-title="Ra mắt phòng Lab mới dành cho sinh viên Khoa CNTT"
-          data-excerpt="Khoa CNTT chính thức khai trương phòng Lab hiện đại, trang bị đầy đủ thiết bị phục vụ học tập và nghiên cứu cho sinh viên."
-          data-date="27/09/2025"
-          data-category="Sự kiện"
-          data-link="#"
-          data-class="news-card--featured">
-        </div>
-      </div>
+    <!-- News Carousel -->
+    <div class="w-full relative mb-6 md:mb-8">
+      <div class="news-swiper py-4 md:py-6 lg:py-8">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <div data-include="@components/news/news-card.html"
+              data-image="/assets/images/default.jpg"
+              data-imageAlt="Tin tức"
+              data-title="Thông báo về việc nộp và báo cáo môn học Thiết kế hệ thống thông gió và ĐHKK"
+              data-excerpt="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+              data-date="12 tháng 5, 2025"
+              data-link="#"
+              data-class="">
+            </div>
+          </div>
 
-      <!-- List Cards -->
-      <div class="flex flex-col gap-4">
-        <div data-include="@components/news/news-card.html"
-          data-image="/assets/images/default.jpg"
-          data-imageAlt="Tin tức"
-          data-title="Hội thảo chuyên đề: Xu hướng AI trong giáo dục"
-          data-excerpt="Chuyên gia trình bày về ứng dụng AI trong đào tạo và nghiên cứu, mở ra nhiều cơ hội phát triển cho sinh viên."
-          data-date="25/09/2025"
-          data-category="Tin tức"
-          data-link="#"
-          data-class="news-card--compact">
-        </div>
-        <div data-include="@components/news/news-card.html"
-          data-image="/assets/images/default.jpg"
-          data-imageAlt="Tin tức"
-          data-title="Sinh viên đạt giải Nhất cuộc thi lập trình cấp thành phố"
-          data-excerpt="Đội tuyển sinh viên khoa CNTT xuất sắc đạt giải Nhất, khẳng định năng lực chuyên môn vững vàng."
-          data-date="23/09/2025"
-          data-category="Thành tích"
-          data-link="#"
-          data-class="news-card--compact">
-        </div>
-        <div data-include="@components/news/news-card.html"
-          data-image="/assets/images/default.jpg"
-          data-imageAlt="Sự kiện"
-          data-title="Ngày hội việc làm 2025: Kết nối doanh nghiệp"
-          data-excerpt="Sự kiện kết nối doanh nghiệp và sinh viên, mở ra hàng trăm cơ hội thực tập và việc làm."
-          data-date="20/09/2025"
-          data-category="Sự kiện"
-          data-link="#"
-          data-class="news-card--compact">
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <div data-include="@components/news/news-card.html"
+              data-image="/assets/images/default.jpg"
+              data-imageAlt="Tin tức"
+              data-title="Lịch đăng ký học kì mới"
+              data-excerpt="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+              data-date="12 tháng 5, 2025"
+              data-link="#"
+              data-class="">
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <div data-include="@components/news/news-card.html"
+              data-image="/assets/images/default.jpg"
+              data-imageAlt="Tin tức"
+              data-title="Thông báo về thời hạn nộp khóa luận tốt nghiệp HK1 (2025-2026)"
+              data-excerpt="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+              data-date="12 tháng 5, 2025"
+              data-link="#"
+              data-class="">
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="swiper-slide">
+            <div data-include="@components/news/news-card.html"
+              data-image="/assets/images/default.jpg"
+              data-imageAlt="Tin tức"
+              data-title="Thông báo sinh viên đăng ký dự lễ tốt nghiệp năm 2025"
+              data-excerpt="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+              data-date="12 tháng 5, 2025"
+              data-link="#"
+              data-class="">
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="swiper-slide">
+            <div data-include="@components/news/news-card.html"
+              data-image="/assets/images/default.jpg"
+              data-imageAlt="Tin tức"
+              data-title="Hội thảo chuyên đề: Xu hướng AI trong giáo dục"
+              data-excerpt="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+              data-date="12 tháng 5, 2025"
+              data-link="#"
+              data-class="">
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="flex items-center gap-4 md:gap-5 lg:gap-[21px]">
+      <!-- Previous Button -->
+      <button class="news-nav-prev bg-primary-white border border-stroke rounded-full p-2 md:p-2.5 hover:border-primary-dark-blue hover:bg-primary-dark-blue/5 transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
+        <img src="/assets/svgs/icon-chevron-left.svg" alt="Previous" class="w-6 h-6 md:w-[30px] md:h-[30px]" />
+      </button>
+
+      <!-- Next Button -->
+      <button class="news-nav-next bg-primary-white border border-stroke rounded-full p-2 md:p-2.5 hover:border-primary-dark-blue hover:bg-primary-dark-blue/5 transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
+        <img src="/assets/svgs/icon-chevron-right.svg" alt="Next" class="w-6 h-6 md:w-[30px] md:h-[30px]" />
+      </button>
     </div>
   </div>
 </section>

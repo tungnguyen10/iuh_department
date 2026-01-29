@@ -1,5 +1,10 @@
 // News & Events styles
 
+.news-swiper {
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
 .news-card--featured {
   .aspect-\[16\/9\] {
     aspect-ratio: 16 / 10;

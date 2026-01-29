@@ -8,6 +8,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import { initMajorSwiper } from '@components/major/major.js'
 import { initAdmissionSwiper } from '@components/admission/admission.js'
 import { initStatsCards } from '@components/stats/stats-card.js'
+import { initNewsSwiper } from '@components/news/news.js'
 
 document.addEventListener('components-loaded', () => {
   const btn = document.getElementById('demo-btn')
@@ -100,4 +101,7 @@ document.addEventListener('components-loaded', () => {
 
   // Initialize stats cards with counting animation
   initStatsCards()
+
+  // Initialize news carousel
+  initNewsSwiper()
 })
