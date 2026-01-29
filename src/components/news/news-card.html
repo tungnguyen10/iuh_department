@@ -1,0 +1,38 @@
+<!-- News/Event Card Component -->
+<article class="group bg-primary-white rounded-xl overflow-hidden border border-stroke hover:border-secondary-blue hover:shadow-[0_8px_24px_rgba(21,56,152,0.15)] transition-all duration-300 {{class}}">
+  <!-- Image -->
+  <a href="{{link}}" class="block relative aspect-[16/9] overflow-hidden">
+    <img src="{{image}}" alt="{{imageAlt}}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+  </a>
+
+  <!-- Content -->
+  <div class="p-4 sm:p-5 flex flex-col gap-3">
+    <!-- Meta -->
+    <div class="flex items-center gap-2 text-xs sm:text-sm text-gray">
+      <span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-secondary-blue-light text-primary-dark-blue font-medium">
+        <img src="/assets/svgs/icon-calendar-check.svg" alt="" class="w-3.5 h-3.5" />
+        {{date}}
+      </span>
+      <span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-secondary-yellow-light text-primary-yellow font-medium">
+        <img src="/assets/svgs/icon-article.svg" alt="" class="w-3.5 h-3.5" />
+        {{category}}
+      </span>
+    </div>
+
+    <!-- Title -->
+    <a href="{{link}}" class="font-roboto font-semibold text-base sm:text-lg text-title line-clamp-2 group-hover:text-primary-dark-blue transition-colors">
+      {{title}}
+    </a>
+
+    <!-- Excerpt -->
+    <p class="text-xs sm:text-sm text-gray line-clamp-3">
+      {{excerpt}}
+    </p>
+
+    <!-- CTA -->
+    <a href="{{link}}" class="inline-flex items-center gap-2 text-sm font-medium text-primary-dark-blue hover:text-primary-yellow transition-colors">
+      Xem chi tiết
+      <img src="/assets/svgs/icon-arrow-right.svg" alt="" class="w-4 h-4" />
+    </a>
+  </div>
+</article>

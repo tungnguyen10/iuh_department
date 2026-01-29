@@ -1,0 +1,68 @@
+<!-- News & Events Section -->
+<section class="w-full py-8 md:py-14">
+  <div class="container mx-auto px-4 flex flex-col gap-6 md:gap-8">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+      <div data-include="@components/common/section-title.html"
+        data-subtitle="Tin tức - Sự kiện"
+        data-title="Hoạt động mới nhất"
+        data-class=""
+        data-title-class="text-title"
+        data-subtitle-class="text-primary-dark-blue"></div>
+
+      <div data-include="@components/button/button.html" data-variant="1" data-url="#" data-text="Xem tất cả"
+        data-class=""></div>
+    </div>
+
+    <!-- Content -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Featured Card -->
+      <div class="lg:col-span-2">
+        <div data-include="@components/news/news-card.html"
+          data-image="/assets/images/default.jpg"
+          data-imageAlt="Tin tức nổi bật"
+          data-title="Ra mắt phòng Lab mới dành cho sinh viên Khoa CNTT"
+          data-excerpt="Khoa CNTT chính thức khai trương phòng Lab hiện đại, trang bị đầy đủ thiết bị phục vụ học tập và nghiên cứu cho sinh viên."
+          data-date="27/09/2025"
+          data-category="Sự kiện"
+          data-link="#"
+          data-class="news-card--featured">
+        </div>
+      </div>
+
+      <!-- List Cards -->
+      <div class="flex flex-col gap-4">
+        <div data-include="@components/news/news-card.html"
+          data-image="/assets/images/default.jpg"
+          data-imageAlt="Tin tức"
+          data-title="Hội thảo chuyên đề: Xu hướng AI trong giáo dục"
+          data-excerpt="Chuyên gia trình bày về ứng dụng AI trong đào tạo và nghiên cứu, mở ra nhiều cơ hội phát triển cho sinh viên."
+          data-date="25/09/2025"
+          data-category="Tin tức"
+          data-link="#"
+          data-class="news-card--compact">
+        </div>
+        <div data-include="@components/news/news-card.html"
+          data-image="/assets/images/default.jpg"
+          data-imageAlt="Tin tức"
+          data-title="Sinh viên đạt giải Nhất cuộc thi lập trình cấp thành phố"
+          data-excerpt="Đội tuyển sinh viên khoa CNTT xuất sắc đạt giải Nhất, khẳng định năng lực chuyên môn vững vàng."
+          data-date="23/09/2025"
+          data-category="Thành tích"
+          data-link="#"
+          data-class="news-card--compact">
+        </div>
+        <div data-include="@components/news/news-card.html"
+          data-image="/assets/images/default.jpg"
+          data-imageAlt="Sự kiện"
+          data-title="Ngày hội việc làm 2025: Kết nối doanh nghiệp"
+          data-excerpt="Sự kiện kết nối doanh nghiệp và sinh viên, mở ra hàng trăm cơ hội thực tập và việc làm."
+          data-date="20/09/2025"
+          data-category="Sự kiện"
+          data-link="#"
+          data-class="news-card--compact">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
