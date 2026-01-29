@@ -1,0 +1,44 @@
+<!-- Research Featured Card Component -->
+<article class="group bg-primary-white border border-stroke hover:border-secondary-blue rounded-[5px] hover:rounded-[10px] overflow-hidden w-full h-full lg:h-[460px] flex flex-col p-2 md:p-2.5 pb-3 md:pb-4 hover:shadow-[2px_2px_15px_0_rgba(21,56,152,0.2)] transition-all duration-300 cursor-pointer {{class}}">
+  <!-- Image -->
+  <a href="{{link}}" class="block relative w-full aspect-[560/280] rounded-[5px] overflow-hidden mb-3 md:mb-4">
+    <img src="{{image}}" alt="{{imageAlt}}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+  </a>
+
+  <!-- Content -->
+  <div class="flex flex-col flex-1 justify-between w-full">
+    <!-- Title and Description -->
+    <div class="flex flex-col gap-3 md:gap-4 mb-3 md:mb-4">
+      <!-- Title -->
+      <h3 class="font-roboto font-medium text-lg md:text-xl leading-normal text-title group-hover:text-primary-dark-blue overflow-hidden line-clamp-2 transition-colors duration-300">
+        {{title}}
+      </h3>
+
+      <!-- Description -->
+      <p class="font-roboto font-normal text-sm md:text-base leading-normal text-gray overflow-hidden line-clamp-3">
+        {{description}}
+      </p>
+    </div>
+
+    <!-- Bottom section -->
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 md:gap-6">
+      <!-- CTA Button -->
+      <div data-include="@components/button/button.html" data-variant="4" data-url="{{link}}" data-text="Xem tất cả" data-class=""></div>
+
+      <!-- Meta -->
+      <div class="flex items-center gap-5 text-sm md:text-base">
+        <!-- Category -->
+        <div class="inline-flex items-center gap-1 md:gap-1.5 text-black group-hover:text-danger">
+          <img src="/assets/svgs/icon-education.svg" alt="" class="w-5 h-5 md:w-6 md:h-6 shrink-0 text-danger" />
+          <span class="font-roboto font-medium leading-normal">{{category}}</span>
+        </div>
+
+        <!-- Divider -->
+        <div class="h-5 md:h-6 w-0 border-l border-black"></div>
+
+        <!-- Date -->
+        <span class="font-roboto font-medium leading-normal text-black group-hover:text-danger">{{date}}</span>
+      </div>
+    </div>
+  </div>
+</article>
