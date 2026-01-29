@@ -1,0 +1,33 @@
+<!-- Stats Card Component with Number Counting -->
+<div class="group relative w-[280px] h-[270px] stats-card" data-count="{{count}}" data-suffix="{{suffix}}">
+  <!-- Background Image with Overlay -->
+  <div class="absolute inset-0 rounded-[10px] overflow-hidden">
+    <img src="{{bgImage}}" alt="" class="w-full h-full object-cover pointer-events-none" />
+  </div>
+
+  <!-- Content Overlay -->
+  <div class="absolute inset-0 bg-primary-white group-hover:bg-primary-dark-blue/90 rounded-[10px] shadow-[2px_2px_15px_0_rgba(21,56,152,0.2)] transition-all duration-500 flex flex-col items-center justify-center gap-[15px] px-5 py-10">
+    
+    <!-- Icon -->
+    <div class="w-[60px] h-[60px] shrink-0 stats-icon">
+      <img src="{{icon}}" alt="{{iconAlt}}" class="w-full h-full object-contain" />
+    </div>
+
+    <!-- Description -->
+    <div class="h-14 flex items-center justify-center w-full">
+      <p class="font-roboto font-medium text-2xl text-gray group-hover:text-white text-center leading-normal transition-colors duration-500">
+        {{description}}
+      </p>
+    </div>
+
+    <!-- Number Counter -->
+    <div class="flex items-center justify-center">
+      <p class="font-inter font-bold text-[50px] text-primary-dark-blue group-hover:text-primary-yellow text-center leading-normal transition-colors duration-500 stats-number">
+        0
+      </p>
+      <span class="font-inter font-bold text-[50px] text-primary-dark-blue group-hover:text-primary-yellow leading-normal transition-colors duration-500 stats-suffix">
+        {{suffix}}
+      </span>
+    </div>
+  </div>
+</div>

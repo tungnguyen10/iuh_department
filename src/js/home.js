@@ -7,6 +7,7 @@ import Swiper from 'swiper'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import { initMajorSwiper } from '@components/major/major.js'
 import { initAdmissionSwiper } from '@components/admission/admission.js'
+import { initStatsCards } from '@components/common/stats-card.js'
 
 document.addEventListener('components-loaded', () => {
   const btn = document.getElementById('demo-btn')
@@ -96,4 +97,7 @@ document.addEventListener('components-loaded', () => {
   
   // Initialize admission cards Swiper carousel
   initAdmissionSwiper()
+
+  // Initialize stats cards with counting animation
+  initStatsCards()
 })

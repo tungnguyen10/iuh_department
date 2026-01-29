@@ -1,0 +1,21 @@
+// Stats Card Styles
+.stats-card {
+  position: relative;
+  cursor: pointer;
+
+  // Smooth transitions
+  .stats-icon,
+  .stats-number,
+  p {
+    transition: all 0.5s ease;
+  }
+
+  // Icon color change on hover
+  .stats-icon img {
+    filter: brightness(0) saturate(100%) invert(16%) sepia(54%) saturate(2468%) hue-rotate(207deg) brightness(97%) contrast(98%);
+  }
+
+  &:hover .stats-icon img {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+  }
+}
