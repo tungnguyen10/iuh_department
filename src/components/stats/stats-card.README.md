@@ -16,7 +16,7 @@ Thẻ thống kê với animation đếm số và hiệu ứng hover.
 
 ```html
 <!-- Single Stats Card -->
-<div data-include="@components/common/stats-card.html"
+<div data-include="@components/stats-card/stats-card.html"
   data-count="2500"
   data-suffix="+"
   data-bgImage="/assets/images/stats-bg.jpg"
@@ -28,7 +28,7 @@ Thẻ thống kê với animation đếm số và hiệu ứng hover.
 <!-- Multiple Cards in Grid -->
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
   <!-- Card 1 -->
-  <div data-include="@components/common/stats-card.html"
+  <div data-include="@components/stats-card/stats-card.html"
     data-count="2500"
     data-suffix="+"
     data-bgImage="/assets/images/students-bg.jpg"
@@ -38,7 +38,7 @@ Thẻ thống kê với animation đếm số và hiệu ứng hover.
   </div>
 
   <!-- Card 2 -->
-  <div data-include="@components/common/stats-card.html"
+  <div data-include="@components/stats-card/stats-card.html"
     data-count="150"
     data-suffix="+"
     data-bgImage="/assets/images/faculty-bg.jpg"
@@ -48,7 +48,7 @@ Thẻ thống kê với animation đếm số và hiệu ứng hover.
   </div>
 
   <!-- Card 3 -->
-  <div data-include="@components/common/stats-card.html"
+  <div data-include="@components/stats-card/stats-card.html"
     data-count="50"
     data-suffix="+"
     data-bgImage="/assets/images/programs-bg.jpg"
@@ -58,7 +58,7 @@ Thẻ thống kê với animation đếm số và hiệu ứng hover.
   </div>
 
   <!-- Card 4 -->
-  <div data-include="@components/common/stats-card.html"
+  <div data-include="@components/stats-card/stats-card.html"
     data-count="95"
     data-suffix="%"
     data-bgImage="/assets/images/graduate-bg.jpg"
@@ -74,7 +74,7 @@ Thẻ thống kê với animation đếm số và hiệu ứng hover.
 Import và khởi tạo trong page JS:
 
 ```javascript
-import { initStatsCards } from '@components/common/stats-card.js'
+import { initStatsCards } from '@components/stats-card/stats-card.js'
 
 document.addEventListener('components-loaded', () => {
   initStatsCards()
@@ -127,9 +127,9 @@ document.addEventListener('components-loaded', () => {
 ## File Structure
 
 ```
-src/components/common/
+src/components/stats-card/
 ├── stats-card.html      # Component HTML template
 ├── stats-card.js        # Counting animation logic
 ├── stats-card.scss      # Component styles
-└── README.md           # This file
+└── stats-card.README.md # This file
 ```

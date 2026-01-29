@@ -11,54 +11,53 @@ export default {
   ],
   theme: {
     screens: {
-      sm: '640px',
-      md: '768px',
-      lg: '1024px',
-      xl: '1120px',  // Custom breakpoint cho desktop navigation
-      '2xl': '1280px',
-      '3xl': '1536px',
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1120px", // Custom breakpoint cho desktop navigation
+      "2xl": "1280px",
+      "3xl": "1536px",
     },
     container: {
       screens: {
-        sm: '100%',
-        md: '100%',
-        lg: '100%',
-        xl: '100%',
-        '2xl': '1280px',
-        '3xl': '1536px',
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1536px",
       },
     },
     extend: {
       fontFamily: {
-        sans: ['Roboto', 'system-ui', '-apple-system', 'sans-serif'],
-        inter: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ["Roboto", "system-ui", "-apple-system", "sans-serif"],
+        inter: ["Inter", "system-ui", "-apple-system", "sans-serif"],
       },
       colors: {
-        black: '#616161',
+        black: "#616161",
         title: "#212121",
         gray: {
-          DEFAULT: '#757575',
-          light: '#FAFAFA',
+          DEFAULT: "#757575",
+          light: "#FAFAFA",
         },
-        'primary': {
-          white: '#FFFFFF',
-          yellow: '#F9B200',
-          'dark-blue': '#153898',
+        primary: {
+          white: "#FFFFFF",
+          yellow: "#F9B200",
+          "dark-blue": "#153898",
         },
-        'secondary': {
-          green: '#75C7A3',
-          yellow: '#FFE293',
-          'yellow-light': '#FEF9E3',
-          blue: '#8ED8F8',
-          'blue-light': '#E3F6FDFF',
+        secondary: {
+          green: "#75C7A3",
+          yellow: "#FFE293",
+          "yellow-light": "#FEF9E3",
+          blue: "#8ED8F8",
+          "blue-light": "#E3F6FDFF",
         },
-        'danger': {
-          DEFAULT: '#DD2F2C',
-          light: '#FFEBEEFF',
+        danger: {
+          DEFAULT: "#DD2F2C",
+          light: "#FFEBEEFF",
         },
         stroke: "#EEEEEE",
       },
     },
   },
   plugins: [],
-}
+};

@@ -7,7 +7,7 @@ import Swiper from 'swiper'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import { initMajorSwiper } from '@components/major/major.js'
 import { initAdmissionSwiper } from '@components/admission/admission.js'
-import { initStatsCards } from '@components/common/stats-card.js'
+import { initStatsCards } from '@components/stats/stats-card.js'
 
 document.addEventListener('components-loaded', () => {
   const btn = document.getElementById('demo-btn')
