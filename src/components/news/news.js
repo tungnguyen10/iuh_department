@@ -3,15 +3,19 @@
  * Horizontal carousel with navigation buttons
  */
 import Swiper from 'swiper'
-import { Navigation } from 'swiper/modules'
+import { Navigation, Autoplay } from 'swiper/modules'
 
 export function initNewsSwiper() {
   const newsSwiper = new Swiper('.news-swiper', {
-    modules: [Navigation],
+    modules: [Navigation, Autoplay],
     slidesPerView: 1.2,
     spaceBetween: 10,
     loop: true,
     grabCursor: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
     navigation: {
       nextEl: '.news-nav-next',
       prevEl: '.news-nav-prev',

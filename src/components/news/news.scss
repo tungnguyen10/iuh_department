@@ -3,6 +3,10 @@
 .news-swiper {
   overflow-x: hidden;
   overflow-y: visible;
+
+  .swiper-slide {
+    height: auto;
+  }
 }
 
 .news-card--featured {
