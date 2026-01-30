@@ -7,8 +7,16 @@ import { initMajorSwiper } from '@components/major/major.js'
 import { initAdmissionSwiper } from '@components/admission/admission.js'
 import { initStatsCards } from '@components/stats/stats-card.js'
 import { initNewsSwiper } from '@components/news/news.js'
+import { initPatternCanvas } from '@components/research/research-background-canvas.js'
+import { initInfrastructure } from '@components/infrastructure/infrastructure.js'
 
 document.addEventListener('components-loaded', () => {
+
+  // Initialize pattern canvas animation
+  initPatternCanvas()
+  
+  // Initialize infrastructure section
+  initInfrastructure()
 
   // Equalize height between intro and notification sections
   function equalizeHeights() {
