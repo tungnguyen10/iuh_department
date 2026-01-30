@@ -9,6 +9,8 @@ import { initStatsCards } from '@components/stats/stats-card.js'
 import { initNewsSwiper } from '@components/news/news.js'
 import { initPatternCanvas } from '@components/research/research-background-canvas.js'
 import { initInfrastructure } from '@components/infrastructure/infrastructure.js'
+import { initBusinessConnectionSwiper } from '@components/careers/careers.js'
+import { initIndustryPartnershipSwiper } from '@components/industry-partnerships/industry-partnerships.js'
 
 document.addEventListener('components-loaded', () => {
 
@@ -66,4 +68,10 @@ document.addEventListener('components-loaded', () => {
 
   // Initialize news carousel
   initNewsSwiper()
+
+  // Initialize business connection events carousel (vertical)
+  initBusinessConnectionSwiper()
+
+  // Initialize industry partnership events carousel (vertical)
+  initIndustryPartnershipSwiper()
 })
