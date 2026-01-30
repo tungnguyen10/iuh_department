@@ -11,6 +11,10 @@ export function initIndustryPartnershipSwiper() {
   
   const slideCount = swiperEl.querySelectorAll('.swiper-slide').length;
   
+  // Cache DOM elements for performance
+  const partnershipsContainer = swiperEl.closest('.industry-partnerships-section');
+  const featuredImg = partnershipsContainer?.querySelector('.event-featured-image');
+  
   const industryPartnershipSwiper = new Swiper('.industry-partnership-swiper', {
     modules: [Navigation, Mousewheel],
     direction: 'vertical',
@@ -44,6 +48,18 @@ export function initIndustryPartnershipSwiper() {
       },
     },
   });
+
+  // Sync featured image with active carousel slide
+  if (featuredImg) {
+    industryPartnershipSwiper.on('slideChange', () => {
+      const activeSlide = industryPartnershipSwiper.slides[industryPartnershipSwiper.activeIndex];
+      const featuredImage = activeSlide?.dataset.featuredImage;
+      
+      if (featuredImage) {
+        featuredImg.src = featuredImage;
+      }
+    });
+  }
 
   return industryPartnershipSwiper;
 }

@@ -11,6 +11,10 @@ export function initBusinessConnectionSwiper() {
   
   const slideCount = swiperEl.querySelectorAll('.swiper-slide').length;
   
+  // Cache DOM elements for performance
+  const careersContainer = swiperEl.closest('.careers-section');
+  const featuredImg = careersContainer?.querySelector('.event-featured-image');
+  
   const businessConnectionSwiper = new Swiper('.business-connection-swiper', {
     modules: [Navigation, Mousewheel],
     direction: 'vertical',
@@ -44,6 +48,18 @@ export function initBusinessConnectionSwiper() {
       },
     },
   });
+
+  // Sync featured image with active carousel slide
+  if (featuredImg) {
+    businessConnectionSwiper.on('slideChange', () => {
+      const activeSlide = businessConnectionSwiper.slides[businessConnectionSwiper.activeIndex];
+      const featuredImage = activeSlide?.dataset.featuredImage;
+      
+      if (featuredImage) {
+        featuredImg.src = featuredImage;
+      }
+    });
+  }
 
   return businessConnectionSwiper;
 }

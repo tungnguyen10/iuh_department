@@ -1,9 +1,9 @@
 <!-- Event Featured Image with Navigation Component -->
 <div class="relative w-full h-56 sm:h-64 md:h-72 lg:h-80 group {{class}}">
-  <!-- Featured Background Image (Static) -->
-  <div class="w-full h-full relative rounded-lg overflow-hidden">
+  <!-- Featured Background Image (Dynamic - syncs with carousel) -->
+  <div class="w-full h-full relative rounded-lg overflow-hidden bg-gray-100">
     <img src="{{image}}" alt="{{imageAlt}}"
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full min-h-full object-cover " />
+      class="event-featured-image absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full object-cover" />
   </div>
 
   <!-- Overlay Icon (top-left) -->
