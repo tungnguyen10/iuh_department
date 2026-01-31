@@ -4,6 +4,7 @@
  */
 import Swiper from 'swiper'
 import { Navigation, Mousewheel } from 'swiper/modules'
+import './careers.scss'
 
 export function initBusinessConnectionSwiper() {
   const swiperEl = document.querySelector('.business-connection-swiper');

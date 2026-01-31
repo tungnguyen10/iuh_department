@@ -4,6 +4,7 @@
  */
 import Swiper from 'swiper'
 import { Navigation, Mousewheel } from 'swiper/modules'
+import './industry-partnerships.scss'
 
 export function initIndustryPartnershipSwiper() {
   const swiperEl = document.querySelector('.industry-partnership-swiper');
