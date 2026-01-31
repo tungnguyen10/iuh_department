@@ -27,6 +27,7 @@ export function initBusinessConnectionSwiper() {
       forceToAxis: true,
       sensitivity: 1,
       releaseOnEdges: true,
+      eventsTarget: '.business-connection-swiper',
     },
     navigation: {
       nextEl: '.business-connection-next', // Right button (chevron-right) goes DOWN

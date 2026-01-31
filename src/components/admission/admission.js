@@ -48,7 +48,7 @@ export function initAdmissionSwiper() {
     },
     on: {
       init: function () {
-        console.log('Admission swiper initialized')
+        // Swiper initialized
       },
       resize: function () {
         this.update()

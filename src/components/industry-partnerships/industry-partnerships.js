@@ -27,6 +27,7 @@ export function initIndustryPartnershipSwiper() {
       forceToAxis: true,
       sensitivity: 1,
       releaseOnEdges: true,
+      eventsTarget: '.industry-partnership-swiper',
     },
     navigation: {
       nextEl: '.industry-partnership-next',
