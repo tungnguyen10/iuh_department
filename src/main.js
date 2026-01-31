@@ -61,5 +61,3 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Final hide để show content
   await loadingManager.forceHide()
 })
-
-
