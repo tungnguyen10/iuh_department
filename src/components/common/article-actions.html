@@ -1,0 +1,24 @@
+<!-- Article Actions Bar Component -->
+<!-- Date badge + Share/Copy link buttons -->
+<div class="flex items-start justify-between flex-wrap gap-2 sm:gap-2.5 {{class}}">
+  <!-- Date Badge -->
+  <div class="inline-flex items-center gap-1.5 bg-danger-light rounded-[5px] px-1.5 py-[3px]">
+    <img src="/assets/svgs/icon-calendar-check.svg" alt="" class="w-5 h-5 text-danger" />
+    <span class="font-roboto font-medium text-sm text-danger">{{date}}</span>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="flex items-center gap-2 sm:gap-2.5">
+    <!-- Share Button -->
+    <button type="button" class="js-share-btn inline-flex items-center gap-1.5 px-1.5 py-[3px] bg-[#FAFAFA] hover:bg-stroke rounded-[5px] transition-colors duration-200">
+      <img src="/assets/svgs/icon-share.svg" alt="" class="w-5 h-5 shrink-0 text-gray-700" />
+      <span class="font-roboto font-medium text-sm leading-normal text-gray-700">Share</span>
+    </button>
+
+    <!-- Copy Link Button -->
+    <button type="button" class="js-copy-link-btn inline-flex items-center gap-1.5 px-1.5 py-[3px] bg-[#FAFAFA] hover:bg-stroke rounded-[5px] transition-colors duration-200">
+      <img src="/assets/svgs/icon-copy.svg" alt="" class="w-5 h-5 shrink-0 text-gray-700" />
+      <span class="font-roboto font-medium text-sm leading-normal text-gray-700">Copy link</span>
+    </button>
+  </div>
+</div>

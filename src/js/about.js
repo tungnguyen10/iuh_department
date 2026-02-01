@@ -3,12 +3,8 @@
  * Chỉ chạy trên trang about
  */
 
-import { initBreadcrumb } from '@components/common/breadcrumb.js'
-
 document.addEventListener('components-loaded', () => {
-  // Initialize breadcrumb
-  initBreadcrumb()
-  
+  // Counter button example
   const counterBtn = document.getElementById('about-counter')
   
   if (counterBtn) {
@@ -20,3 +16,4 @@ document.addEventListener('components-loaded', () => {
     })
   }
 })
+

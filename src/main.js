@@ -7,8 +7,9 @@ import './styles/main.scss'
 import { appEnv } from './config/env.js'
 import { inlineSVGs } from './js/svg-loader.js'
 import { loadingManager } from './js/loading.js'
-import { delay } from './js/utils.js'
+import { delay, showNotification, shareContent, copyToClipboard, createToast } from './js/utils.js'
 import { initSearchModal } from './components/search/search-modal.js'
+import { initI18n, t, getCurrentLang, setCurrentLang } from './js/i18n.js'
 import './js/global-widgets.js'
 
 // Swiper CSS (imported once for all carousels)
@@ -31,34 +32,83 @@ document.documentElement.dataset.appEnv = appEnv
 if (import.meta.env.DEV) {
   console.info(`[lab-iuh] Running in ${appEnv} mode`)
   console.info(`[lab-iuh] Loaded ${Object.keys(svgModules).length} SVG assets`)
+  
+  // Expose utility functions to global window for DEV testing only
+  window.showNotification = showNotification
+  window.shareContent = shareContent
+  window.copyToClipboard = copyToClipboard
+  window.t = t
+  window.getCurrentLang = getCurrentLang
+  window.setCurrentLang = setCurrentLang
 }
 
 // Khởi tạo tất cả components khi DOM ready
 document.addEventListener('DOMContentLoaded', async () => {
-  // Init loading manager
+  // 1. CRITICAL: Init loading manager và show ngay lập tức
   loadingManager.init()
-  
-  // Show loading cho từng operation
   loadingManager.show('Loading...')
-  await delay(500) // Test delay 1s
   
-  // Auto-init all components that have init() function
+  // 2. Create toast element (sync, fast)
+  createToast()
+  
+  // 3. Load i18n messages (async)
+  await initI18n()
+  
+  await delay(500) // Test delay
+  
+  // 4. Auto-init all components that have init() function
   Object.values(componentModules).forEach(module => {
     if (module.init && typeof module.init === 'function') {
       module.init()
     }
   })
-  await delay(500) // Test delay 1s
+  
+  await delay(500) // Test delay
   await inlineSVGs()
   
-  // Initialize search modal
+  // 5. Initialize global features
   initSearchModal()
+  initArticleActions()
   
+  // 6. Hide loading và dispatch events
   loadingManager.hide()
-  
-  // Dispatch event để các page-specific JS biết components đã load xong
   document.dispatchEvent(new Event('components-loaded'))
   
   // Final hide để show content
   await loadingManager.forceHide()
 })
+
+/**
+ * Initialize article share and copy link buttons (global)
+ */
+function initArticleActions() {
+  // Share button
+  const shareBtn = document.querySelector('.js-share-btn')
+  if (shareBtn) {
+    shareBtn.addEventListener('click', async () => {
+      const shareData = {
+        title: document.querySelector('h1')?.textContent || document.title,
+        // text: 'Xem bài viết này từ Khoa CNTT - IUH',
+        url: window.location.href
+      }
+      
+      const success = await shareContent(shareData)
+      if (success) {
+        showNotification(t('shareSuccess'), 'success')
+      }
+    })
+  }
+
+  // Copy link button
+  const copyBtn = document.querySelector('.js-copy-link-btn')
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async () => {
+      const success = await copyToClipboard(window.location.href)
+      if (success) {
+        showNotification(t('copySuccess'), 'success')
+      } else {
+        showNotification(t('copyError'), 'error')
+      }
+    })
+  }
+}

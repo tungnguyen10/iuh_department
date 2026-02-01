@@ -1,0 +1,26 @@
+<!-- Sidebar News Card - Featured (Large Image) -->
+<article class="group relative flex flex-col gap-2.5 w-full bg-[#FAFAFA] border border-stroke rounded-[5px] p-2 hover:bg-white hover:border-secondary-blue hover:rounded-lg hover:shadow-[2px_2px_15px_0_rgba(21,56,152,0.2)] transition-all duration-300 cursor-pointer {{class}}">
+  <!-- Absolute Link Overlay for Full Card Clickability -->
+  <a href="{{link}}" class="absolute inset-0 z-30 rounded-[5px] group-hover:rounded-lg" aria-label="{{title}}">
+    <span class="sr-only">{{title}}</span>
+  </a>
+
+  <!-- Image -->
+  <div class="relative w-full h-[150px] rounded-[5px] overflow-hidden">
+    <img src="{{image}}" alt="{{imageAlt}}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+  </div>
+
+  <!-- Content -->
+  <div class="flex flex-col gap-2.5">
+    <!-- Title -->
+    <h3 class="font-roboto font-medium text-base leading-normal text-gray-900 group-hover:text-primary-dark-blue transition-colors duration-200 line-clamp-3">
+      {{title}}
+    </h3>
+
+    <!-- Date Badge -->
+    <div class="inline-flex items-center gap-1.5 bg-danger-light rounded-[5px] px-1.5 py-[3px] self-start">
+      <img src="/assets/svgs/icon-calendar-check.svg" alt="" class="w-5 h-5 text-danger">
+      <span class="font-roboto font-medium text-sm text-danger">{{date}}</span>
+    </div>
+  </div>
+</article>

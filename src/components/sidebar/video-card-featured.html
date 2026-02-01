@@ -1,0 +1,22 @@
+<!-- Sidebar Video Card - Featured (YouTube Embed) -->
+<article class="group relative flex flex-col gap-2.5 w-full bg-[#FAFAFA] border border-stroke rounded-[5px] p-2 hover:bg-white hover:border-secondary-blue hover:rounded-lg hover:shadow-[2px_2px_15px_0_rgba(21,56,152,0.2)] transition-all duration-300 {{class}}">
+  <!-- YouTube Embed -->
+  <div class="relative w-full h-[150px] rounded-[5px] overflow-hidden">
+    <iframe 
+      src="https://www.youtube.com/embed/{{videoId}}" 
+      title="{{title}}"
+      class="absolute inset-0 w-full h-full"
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- Content -->
+  <div class="flex flex-col gap-2.5">
+    <!-- Title -->
+    <h3 class="font-roboto font-medium text-base leading-normal text-gray-900 group-hover:text-primary-dark-blue transition-colors duration-200 line-clamp-2">
+      {{title}}
+    </h3>
+  </div>
+</article>
