@@ -1,0 +1,16 @@
+<!-- Breadcrumb Component -->
+<!-- Usage: 
+  <div data-include="@components/common/breadcrumb.html" 
+       data-items='[{"text":"Trang chủ","link":"/"}, {"text":"Đội ngũ giảng viên","link":""}]'
+       data-class="custom-class">
+  </div>
+  
+  Note: Requires initBreadcrumb() to be called in page JS
+-->
+<nav class="w-full bg-secondary-blue-light py-5 {{class}}" aria-label="Breadcrumb" data-breadcrumb="{{items}}">
+  <div class="container mx-auto px-4">
+    <ol class="flex items-center gap-5 text-base leading-normal">
+      <!-- Items will be injected by breadcrumb.js -->
+    </ol>
+  </div>
+</nav>
