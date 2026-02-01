@@ -2,40 +2,29 @@
 <!-- Supports up to 3 levels: Home / Parent1 / Parent2 / Current -->
 <!-- Omit parent props for simpler breadcrumbs -->
 <nav class="w-full bg-secondary-blue-light py-3 {{class}}">
-  <div class="container mx-auto px-4">
-    <ol class="flex items-center gap-4 text-base leading-normal flex-wrap">
-      <!-- Home Link -->
-      <li>
-        <a href="/" class="font-roboto font-normal text-gray-700 hover:text-primary-dark-blue transition-colors duration-200">
-          Trang chủ
-        </a>
-      </li>
-      
-      <!-- Separator -->
-      <li class="font-roboto font-medium text-gray-700">/</li>
-      
-      <!-- Parent Level 1 (optional) -->
-      <li>
-        <a href="{{parentLink1}}" class="font-roboto font-normal text-gray-700 hover:text-primary-dark-blue transition-colors duration-200">
-          {{parentPage1}}
-        </a>
-      </li>
-      <li class="font-roboto font-medium text-gray-700">{{parentSeparator1}}</li>
-      
-      <!-- Parent Level 2 (optional) -->
-      <li>
-        <a href="{{parentLink2}}" class="font-roboto font-normal text-gray-700 hover:text-primary-dark-blue transition-colors duration-200">
-          {{parentPage2}}
-        </a>
-      </li>
-      <li class="font-roboto font-medium text-gray-700">{{parentSeparator2}}</li>
-      
-      <!-- Current Page -->
-      <li>
-        <span class="font-roboto font-normal text-primary-dark-blue">
-          {{currentPage}}
-        </span>
-      </li>
-    </ol>
-  </div>
+    <div class="container mx-auto px-4">
+        <ol class="flex items-center gap-4 text-base leading-normal flex-wrap">
+            <!-- Home Link -->
+            <li>
+                <a href="/"
+                    class="font-roboto font-normal text-gray-700 hover:text-primary-dark-blue transition-colors duration-200">
+                    Trang chủ
+                </a>
+            </li>
+
+            <!-- Separator / Parent Level 1 (optional) -->
+            <li class="font-roboto font-medium text-gray-700 {{parentPage1Class}}">/</li><li class="{{parentPage1Class}}"><a href="{{parentLink1}}" class="font-roboto font-normal text-gray-700 hover:text-primary-dark-blue transition-colors duration-200">{{parentPage1}}</a></li>
+
+            <!-- Separator / Parent Level 2 (optional) -->
+            <li class="font-roboto font-medium text-gray-700 {{parentPage2Class}}">/</li><li class="{{parentPage2Class}}"><a href="{{parentLink2}}" class="font-roboto font-normal text-gray-700 hover:text-primary-dark-blue transition-colors duration-200">{{parentPage2}}</a></li>
+
+            <!-- Separator / Current Page -->
+            <li class="font-roboto font-medium text-gray-700">/</li>
+            <li>
+                <span class="font-roboto font-normal text-primary-dark-blue">
+                    {{currentPage}}
+                </span>
+            </li>
+        </ol>
+    </div>
 </nav>
