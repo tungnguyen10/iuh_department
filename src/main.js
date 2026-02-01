@@ -9,6 +9,7 @@ import { inlineSVGs } from './js/svg-loader.js'
 import { loadingManager } from './js/loading.js'
 import { delay } from './js/utils.js'
 import { initSearchModal } from './components/search/search-modal.js'
+import './js/global-widgets.js'
 
 // Swiper CSS (imported once for all carousels)
 import 'swiper/css'
