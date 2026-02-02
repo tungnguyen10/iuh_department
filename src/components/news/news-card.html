@@ -1,47 +1,47 @@
 <!-- News/Event Card Component -->
-<article class="group relative bg-primary-white hover:rounded-[10px] overflow-hidden w-full h-full flex flex-col p-2.5 pb-4 hover:shadow-[2px_2px_15px_0_rgba(21,56,152,0.2)] transition-all duration-300 cursor-pointer {{class}}">
+<article class="group relative bg-primary-white hover:rounded-[10px] overflow-hidden w-full h-full flex flex-col p-2 md:p-2.5 pb-3 md:pb-4 hover:shadow-[2px_2px_15px_0_rgba(21,56,152,0.2)] transition-all duration-300 cursor-pointer {{class}}">
   <!-- Absolute Link Overlay for Full Card Clickability -->
   <a href="{{link}}" class="absolute inset-0 z-30" aria-label="{{title}}">
     <span class="sr-only">{{title}}</span>
   </a>
 
   <!-- Image -->
-  <div class="block relative w-full aspect-video rounded-[5px] overflow-hidden mb-2 sm:mb-2.5 md:mb-[10px]">
+  <div class="block relative w-full aspect-video rounded-[5px] overflow-hidden mb-2 md:mb-2.5">
     <img src="{{image}}" alt="{{imageAlt}}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
   </div>
 
   <!-- Content -->
   <div class="flex flex-col flex-1 justify-between w-full">
     <!-- Title and Excerpt -->
-    <div class="flex flex-col gap-2 sm:gap-2.5 md:gap-[10px]">
+    <div class="flex flex-col gap-2 md:gap-2.5">
       <!-- Title -->
-      <h3 class="font-roboto font-medium text-base sm:text-[17px] md:text-[18px] leading-normal text-title group-hover:text-primary-dark-blue overflow-hidden line-clamp-2 transition-colors duration-300">
+      <h3 class="font-roboto font-medium text-base md:text-lg leading-normal text-title group-hover:text-primary-dark-blue overflow-hidden line-clamp-2 transition-colors duration-300">
         {{title}}
       </h3>
 
       <!-- Excerpt -->
-      <p class="font-roboto font-normal text-sm sm:text-[15px] md:text-[16px] leading-normal text-black overflow-hidden line-clamp-3">
+      <p class="font-roboto font-normal text-sm md:text-base leading-normal text-black overflow-hidden line-clamp-3">
         {{excerpt}}
       </p>
     </div>
 
     <!-- Bottom section -->
-    <div class="flex flex-col gap-3 sm:gap-[13px] md:gap-[15px] mt-auto">
+    <div class="flex flex-col gap-3 md:gap-4 mt-auto">
       <!-- Divider -->
       <div class="w-full h-0 border-t border-stroke transition-colors duration-300"></div>
 
       <!-- Meta and CTA -->
       <div class="flex items-center justify-between">
         <!-- Date Badge -->
-        <div class="inline-flex items-center gap-1 sm:gap-1.5 md:gap-[5px] px-1.5 sm:px-2 md:px-[6px] py-1 md:py-[3px] bg-primary-white border border-danger rounded-[5px] group-hover:bg-danger-light transition-all duration-300">
-          <img src="/assets/svgs/icon-calendar-check.svg" alt="" class="w-4 h-4 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 text-danger shrink-0 transition-all duration-300" />
-          <span class="font-roboto font-medium text-xs sm:text-[13px] md:text-[14px] leading-normal text-danger transition-colors duration-300">
+        <div class="inline-flex items-center gap-1 md:gap-1.5 px-1.5 md:px-2 py-1 md:py-[3px] bg-primary-white border border-danger rounded-[5px] group-hover:bg-danger-light transition-all duration-300">
+          <img src="/assets/svgs/icon-calendar-check.svg" alt="" class="w-4 h-4 md:w-5 md:h-5 text-danger shrink-0 transition-all duration-300" />
+          <span class="font-roboto font-medium text-xs md:text-sm leading-normal text-danger transition-colors duration-300">
             {{date}}
           </span>
         </div>
 
         <!-- CTA -->
-        <span class="inline-flex items-center gap-[2px] font-roboto font-medium text-sm sm:text-[15px] md:text-[16px] leading-normal text-gray group-hover:text-primary-dark-blue transition-colors duration-300">
+        <span class="inline-flex items-center gap-[2px] font-roboto font-medium text-sm md:text-base leading-normal text-gray group-hover:text-primary-dark-blue transition-colors duration-300">
           Xem thêm
         </span>
       </div>

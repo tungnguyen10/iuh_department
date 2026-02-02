@@ -9,7 +9,7 @@ export function initNewsSwiper() {
   const newsSwiper = new Swiper('.news-swiper', {
     modules: [Navigation, Autoplay],
     slidesPerView: 1.2,
-    spaceBetween: 0,
+    spaceBetween: 5,
     loop: true,
     grabCursor: true,
     autoplay: {

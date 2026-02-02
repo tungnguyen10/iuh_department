@@ -1,0 +1,92 @@
+<!-- News Carousel Component - Responsive Swiper Carousel -->
+<div class="w-full py-8 md:py-12 {{class}}">
+    <!-- Section Title -->
+    <div data-include="@components/common/section-title.html" 
+      data-title="{{title}}" 
+      data-title-class="text-gray-900" 
+      data-class="">
+    </div>
+    <!-- Carousel Container -->
+    <div class="relative news-carousel-wrapper w-full">
+      <!-- Swiper -->
+      <div class="news-carousel-swiper py-6 md:py-8 overflow-hidden">
+        <div class="swiper-wrapper h-auto">
+          <!-- Slide 1 -->
+          <div class="swiper-slide h-auto">
+            <div data-include="@components/news/news-card.html"
+              data-link="/about"
+              data-image="/assets/images/default.jpg"
+              data-image-alt="Tin tức IUH"
+              data-title="Thông báo về việc nộp và báo cáo môn học Thiết kế hệ thống thông gió và ĐHKK"
+              data-excerpt="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+              data-date="12 tháng 5, 2025">
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="swiper-slide h-auto">
+            <div data-include="@components/news/news-card.html"
+              data-link="/about"
+              data-image="/assets/images/default.jpg"
+              data-image-alt="Tin tức IUH"
+              data-title="Lịch đăng ký học kì mới"
+              data-excerpt="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+              data-date="12 tháng 5, 2025">
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="swiper-slide h-auto">
+            <div data-include="@components/news/news-card.html"
+              data-link="/about"
+              data-image="/assets/images/default.jpg"
+              data-image-alt="Tin tức IUH"
+              data-title="Thông báo về thời hạn nộp khóa luận tốt nghiệp HK1 (2025-2026)"
+              data-excerpt="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+              data-date="12 tháng 5, 2025">
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="swiper-slide h-auto">
+            <div data-include="@components/news/news-card.html"
+              data-link="/about"
+              data-image="/assets/images/default.jpg"
+              data-image-alt="Tin tức IUH"
+              data-title="Thông báo về việc nộp và báo cáo môn học Thiết kế hệ thống thông gió và ĐHKK"
+              data-excerpt="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+              data-date="12 tháng 5, 2025">
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="swiper-slide h-auto">
+            <div data-include="@components/news/news-card.html"
+              data-link="/about"
+              data-image="/assets/images/default.jpg"
+              data-image-alt="Tin tức IUH"
+              data-title="Lịch đăng ký học kì mới"
+              data-excerpt="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+              data-date="12 tháng 5, 2025">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination (Mobile only) -->
+      <div class="news-carousel-pagination swiper-pagination md:hidden !relative !bottom-0"></div>
+
+      <!-- Navigation Buttons (Desktop only) -->
+      <button 
+        class="news-carousel-prev hidden md:flex absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2 z-10 bg-white border border-stroke rounded-full p-2 md:p-2.5 hover:border-primary-dark-blue hover:bg-primary-dark-blue/5 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
+        aria-label="Previous slide">
+        <img src="/assets/svgs/icon-chevron-left.svg" alt="" class="w-5 h-5 md:w-6 md:h-6" />
+      </button>
+
+      <button 
+        class="news-carousel-next hidden md:flex absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 z-10 bg-white border border-stroke rounded-full p-2 md:p-2.5 hover:border-primary-dark-blue hover:bg-primary-dark-blue/5 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
+        aria-label="Next slide">
+        <img src="/assets/svgs/icon-chevron-right.svg" alt="" class="w-5 h-5 md:w-6 md:h-6" />
+      </button>
+    </div>
+</div>

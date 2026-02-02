@@ -4,110 +4,132 @@
 <!-- LAYOUT: script="../js/about.js" -->
 
 <!-- Breadcrumb -->
-<div data-include="@components/common/breadcrumb.html" data-parent-page1="Tin tức" data-parent-link1="/news" data-current-page="Giới thiệu" data-parent-page2-class="hidden">
+<div data-include="@components/common/breadcrumb.html" data-parent-page1="Tin tức" data-parent-link1="/news"
+  data-current-page="Giới thiệu" data-parent-page2-class="hidden">
 </div>
-<section class="container mx-auto px-4 py-8 md:py-16 flex flex-col lg:flex-row gap-8">
-    <!-- Main Content -->
-    <div class="flex-1">
-      <!-- Article Detail -->
-      <article class="bg-white rounded-[10px] shadow-[1px_1px_10px_0_rgba(0,0,0,0.1)] p-4 md:p-6">
-        <!-- Header Section -->
-        <div class="flex flex-col gap-3 md:gap-4 mb-4 md:mb-5">
-          <!-- Title -->
-          <div data-include="@components/common/article-title.html"
-            data-title="Thông báo về việc nộp và báo cáo môn học Thiết kế hệ thống thông gió và ĐHKK">
-          </div>
-          <!-- Divider -->
-          <div data-include="@components/common/divider.html"></div>
-
-          <!-- Actions Bar: Date + Share/Copy -->
-          <div data-include="@components/common/article-actions.html" data-date="12 tháng 5, 2025">
-          </div>
+<section class="container mx-auto px-4 py-8 md:py-16 flex flex-col lg:flex-row gap-12 md:gap-8">
+  <!-- Main Content -->
+  <div class="flex-1 w-full lg:w-8/12 flex flex-col gap-6 md:gap-10">
+    <!-- Article Detail -->
+    <article class="bg-white rounded-[10px] shadow-[1px_1px_10px_0_rgba(0,0,0,0.1)] p-4 md:p-6">
+      <!-- Header Section -->
+      <div class="flex flex-col gap-3 md:gap-4 mb-4 md:mb-5">
+        <!-- Title -->
+        <div data-include="@components/common/article-title.html"
+          data-title="Thông báo về việc nộp và báo cáo môn học Thiết kế hệ thống thông gió và ĐHKK">
         </div>
-        <!-- Hero Image -->
-        <figure class="relative w-full aspect-video rounded-[5px] overflow-hidden mb-4 md:mb-5">
-          <img src="/assets/images/default.jpg" alt="Students at IUH" class="w-full h-full object-cover" />
-        </figure>
+        <!-- Divider -->
+        <div data-include="@components/common/divider.html"></div>
 
-        <!-- Article Body Content -->
-        <div class="article-content">
-          <p>Khoa Khoa học Sức khỏe - Trường Đại học Công nghiệp TP.HCM (IUH) là khoa đào tạo chuyên sâu trong lĩnh vực y tế và chăm sóc sức khỏe cộng đồng. Với sứ mệnh đào tạo đội ngũ nhân lực y tế chất lượng cao, đáp ứng nhu cầu ngày càng tăng về chăm sóc sức khỏe trong bối cảnh hội nhập quốc tế, khoa luôn chú trọng đến việc kết hợp giữa kiến thức y học hiện đại và kỹ năng thực hành lâm sàng.</p>
-
-          <h2>Lịch sử hình thành và phát triển</h2>
-          <p>Khoa Khoa học Sức khỏe được thành lập vào năm 2010, xuất phát từ nhu cầu cấp thiết về nguồn nhân lực y tế chất lượng tại khu vực phía Nam. <strong>Sau hơn 15 năm xây dựng và phát triển</strong>, khoa đã đào tạo hàng nghìn sinh viên, đóng góp tích cực vào hệ thống y tế quốc gia.</p>
-
-          <blockquote>
-            "Đào tạo thế hệ thầy thuốc tương lai với y đức cao, tay nghề giỏi, phục vụ cộng đồng" - Phương châm đào tạo của Khoa Khoa học Sức khỏe - IUH
-          </blockquote>
-
-          <h2>Các chương trình đào tạo</h2>
-          <p>Khoa hiện đang đào tạo nhiều chuyên ngành trong lĩnh vực sức khỏe và y tế, bao gồm:</p>
-
-          <h3>Bậc Đại học</h3>
-          <ul>
-            <li><strong>Điều dưỡng</strong> - Chương trình đào tạo chuẩn quốc tế</li>
-            <li><strong>Y tế công cộng</strong> - Tập trung vào quản lý và chăm sóc sức khỏe cộng đồng</li>
-            <li><strong>Kỹ thuật xét nghiệm y học</strong> - Đào tạo chuyên sâu về xét nghiệm lâm sàng</li>
-            <li><strong>Dinh dưỡng và An toàn thực phẩm</strong> - Quản lý dinh dưỡng và sức khỏe</li>
-          </ul>
-
-          <h3>Bậc Sau đại học</h3>
-          <ol>
-            <li>Thạc sĩ Y tế công cộng</li>
-            <li>Thạc sĩ Điều dưỡng</li>
-            <li>Nghiên cứu sinh chuyên ngành Y học</li>
-          </ol>
-
-          <h2>Cơ sở vật chất và trang thiết bị</h2>
-          <p>Khoa được đầu tư hiện đại với hệ thống phòng thực hành chuyên dụng, trang bị đầy đủ các thiết bị y tế tiên tiến. Ngoài ra, sinh viên còn được thực tập tại các bệnh viện lớn và trung tâm y tế uy tín, tạo điều kiện <em>rèn luyện kỹ năng lâm sàng</em> ngay từ khi còn ngồi trên ghế nhà trường.</p>
-
-          <h3>Các phòng thực hành chuyên biệt</h3>
-          <ul>
-            <li>Phòng thực hành Điều dưỡng nội - ngoại khoa</li>
-            <li>Phòng thực hành Sản - Nhi khoa</li>
-            <li>Phòng Lab Xét nghiệm y học</li>
-            <li>Phòng thực hành Cấp cứu và Hồi sức</li>
-          </ul>
-
-          <h2>Đội ngũ giảng viên</h2>
-          <p>Đội ngũ giảng viên của khoa gồm các <strong>bác sĩ, tiến sĩ, thạc sĩ</strong> có trình độ chuyên môn cao, nhiều kinh nghiệm giảng dạy và công tác lâm sàng. Nhiều giảng viên là các chuyên gia đầu ngành, có công trình nghiên cứu được công bố trên các tạp chí y học quốc tế uy tín.</p>
-
-          <h2>Hoạt động nghiên cứu khoa học</h2>
-          <p>Khoa luôn khuyến khích và tạo điều kiện cho sinh viên tham gia nghiên cứu khoa học. Các đề tài nghiên cứu tập trung vào các lĩnh vực:</p>
-          <ul>
-            <li>Sức khỏe cộng đồng và Dịch tễ học</li>
-            <li>Chăm sóc người cao tuổi</li>
-            <li>Dinh dưỡng và Bệnh lý liên quan</li>
-            <li>Phòng chống bệnh truyền nhiễm</li>
-            <li>Y học cổ truyền kết hợp Y học hiện đại</li>
-          </ul>
-
-          <h2>Liên kết đào tạo và hợp tác bệnh viện</h2>
-          <p>Khoa đã thiết lập mối quan hệ hợp tác với nhiều bệnh viện và cơ sở y tế lớn như <strong>Bệnh viện Chợ Rẫy, Bệnh viện Nhân dân 115, Bệnh viện Đại học Y Dược TP.HCM, Bệnh viện Nhi đồng 1</strong> và nhiều cơ sở y tế khác. Các hoạt động hợp tác bao gồm:</p>
-          <ol>
-            <li>Đào tạo theo nhu cầu của các cơ sở y tế</li>
-            <li>Thực tập và làm việc tại bệnh viện</li>
-            <li>Tham gia các ca bệnh thực tế</li>
-            <li>Tổ chức các buổi hội thảo chuyên đề y khoa</li>
-          </ol>
-
-          <h2>Thành tích nổi bật</h2>
-          <p>Trong những năm gần đây, sinh viên Khoa Khoa học Sức khỏe - IUH đã đạt được nhiều thành tích đáng tự hào tại các cuộc thi Olympic sinh viên Y Dược, các chương trình tình nguyện y tế cấp quốc gia. Tỷ lệ sinh viên có việc làm sau tốt nghiệp đạt <strong>trên 98%</strong>, với mức thu nhập ổn định và cơ hội thăng tiến trong nghề nghiệp.</p>
-
-          <hr>
-
-          <p><em>Với những nỗ lực không ngừng trong việc nâng cao chất lượng đào tạo, cập nhật kiến thức y học hiện đại, Khoa Khoa học Sức khỏe - IUH cam kết sẽ tiếp tục là địa chỉ tin cậy cho những ai đam mê và theo đuổi sự nghiệp trong lĩnh vực chăm sóc sức khỏe cộng đồng.</em></p>
+        <!-- Actions Bar: Date + Share/Copy -->
+        <div data-include="@components/common/article-actions.html" data-date="12 tháng 5, 2025">
         </div>
-      </article>
+      </div>
+      <!-- Hero Image -->
+      <figure class="relative w-full aspect-video rounded-[5px] overflow-hidden mb-4 md:mb-5">
+        <img src="/assets/images/default.jpg" alt="Students at IUH" class="w-full h-full object-cover" />
+      </figure>
+
+      <!-- Article Body Content -->
+      <div class="article-content">
+        <p>Khoa Khoa học Sức khỏe - Trường Đại học Công nghiệp TP.HCM (IUH) là khoa đào tạo chuyên sâu trong lĩnh vực y
+          tế và chăm sóc sức khỏe cộng đồng. Với sứ mệnh đào tạo đội ngũ nhân lực y tế chất lượng cao, đáp ứng nhu cầu
+          ngày càng tăng về chăm sóc sức khỏe trong bối cảnh hội nhập quốc tế, khoa luôn chú trọng đến việc kết hợp giữa
+          kiến thức y học hiện đại và kỹ năng thực hành lâm sàng.</p>
+
+        <h2>Lịch sử hình thành và phát triển</h2>
+        <p>Khoa Khoa học Sức khỏe được thành lập vào năm 2010, xuất phát từ nhu cầu cấp thiết về nguồn nhân lực y tế
+          chất lượng tại khu vực phía Nam. <strong>Sau hơn 15 năm xây dựng và phát triển</strong>, khoa đã đào tạo hàng
+          nghìn sinh viên, đóng góp tích cực vào hệ thống y tế quốc gia.</p>
+
+        <blockquote>
+          "Đào tạo thế hệ thầy thuốc tương lai với y đức cao, tay nghề giỏi, phục vụ cộng đồng" - Phương châm đào tạo
+          của Khoa Khoa học Sức khỏe - IUH
+        </blockquote>
+
+        <h2>Các chương trình đào tạo</h2>
+        <p>Khoa hiện đang đào tạo nhiều chuyên ngành trong lĩnh vực sức khỏe và y tế, bao gồm:</p>
+
+        <h3>Bậc Đại học</h3>
+        <ul>
+          <li><strong>Điều dưỡng</strong> - Chương trình đào tạo chuẩn quốc tế</li>
+          <li><strong>Y tế công cộng</strong> - Tập trung vào quản lý và chăm sóc sức khỏe cộng đồng</li>
+          <li><strong>Kỹ thuật xét nghiệm y học</strong> - Đào tạo chuyên sâu về xét nghiệm lâm sàng</li>
+          <li><strong>Dinh dưỡng và An toàn thực phẩm</strong> - Quản lý dinh dưỡng và sức khỏe</li>
+        </ul>
+
+        <h3>Bậc Sau đại học</h3>
+        <ol>
+          <li>Thạc sĩ Y tế công cộng</li>
+          <li>Thạc sĩ Điều dưỡng</li>
+          <li>Nghiên cứu sinh chuyên ngành Y học</li>
+        </ol>
+
+        <h2>Cơ sở vật chất và trang thiết bị</h2>
+        <p>Khoa được đầu tư hiện đại với hệ thống phòng thực hành chuyên dụng, trang bị đầy đủ các thiết bị y tế tiên
+          tiến. Ngoài ra, sinh viên còn được thực tập tại các bệnh viện lớn và trung tâm y tế uy tín, tạo điều kiện
+          <em>rèn luyện kỹ năng lâm sàng</em> ngay từ khi còn ngồi trên ghế nhà trường.
+        </p>
+
+        <h3>Các phòng thực hành chuyên biệt</h3>
+        <ul>
+          <li>Phòng thực hành Điều dưỡng nội - ngoại khoa</li>
+          <li>Phòng thực hành Sản - Nhi khoa</li>
+          <li>Phòng Lab Xét nghiệm y học</li>
+          <li>Phòng thực hành Cấp cứu và Hồi sức</li>
+        </ul>
+
+        <h2>Đội ngũ giảng viên</h2>
+        <p>Đội ngũ giảng viên của khoa gồm các <strong>bác sĩ, tiến sĩ, thạc sĩ</strong> có trình độ chuyên môn cao,
+          nhiều kinh nghiệm giảng dạy và công tác lâm sàng. Nhiều giảng viên là các chuyên gia đầu ngành, có công trình
+          nghiên cứu được công bố trên các tạp chí y học quốc tế uy tín.</p>
+
+        <h2>Hoạt động nghiên cứu khoa học</h2>
+        <p>Khoa luôn khuyến khích và tạo điều kiện cho sinh viên tham gia nghiên cứu khoa học. Các đề tài nghiên cứu tập
+          trung vào các lĩnh vực:</p>
+        <ul>
+          <li>Sức khỏe cộng đồng và Dịch tễ học</li>
+          <li>Chăm sóc người cao tuổi</li>
+          <li>Dinh dưỡng và Bệnh lý liên quan</li>
+          <li>Phòng chống bệnh truyền nhiễm</li>
+          <li>Y học cổ truyền kết hợp Y học hiện đại</li>
+        </ul>
+
+        <h2>Liên kết đào tạo và hợp tác bệnh viện</h2>
+        <p>Khoa đã thiết lập mối quan hệ hợp tác với nhiều bệnh viện và cơ sở y tế lớn như <strong>Bệnh viện Chợ Rẫy,
+            Bệnh viện Nhân dân 115, Bệnh viện Đại học Y Dược TP.HCM, Bệnh viện Nhi đồng 1</strong> và nhiều cơ sở y tế
+          khác. Các hoạt động hợp tác bao gồm:</p>
+        <ol>
+          <li>Đào tạo theo nhu cầu của các cơ sở y tế</li>
+          <li>Thực tập và làm việc tại bệnh viện</li>
+          <li>Tham gia các ca bệnh thực tế</li>
+          <li>Tổ chức các buổi hội thảo chuyên đề y khoa</li>
+        </ol>
+
+        <h2>Thành tích nổi bật</h2>
+        <p>Trong những năm gần đây, sinh viên Khoa Khoa học Sức khỏe - IUH đã đạt được nhiều thành tích đáng tự hào tại
+          các cuộc thi Olympic sinh viên Y Dược, các chương trình tình nguyện y tế cấp quốc gia. Tỷ lệ sinh viên có việc
+          làm sau tốt nghiệp đạt <strong>trên 98%</strong>, với mức thu nhập ổn định và cơ hội thăng tiến trong nghề
+          nghiệp.</p>
+
+        <hr>
+
+        <p><em>Với những nỗ lực không ngừng trong việc nâng cao chất lượng đào tạo, cập nhật kiến thức y học hiện đại,
+            Khoa Khoa học Sức khỏe - IUH cam kết sẽ tiếp tục là địa chỉ tin cậy cho những ai đam mê và theo đuổi sự
+            nghiệp trong lĩnh vực chăm sóc sức khỏe cộng đồng.</em></p>
+      </div>
+    </article>
+    <!-- News Carousel -->
+    <div data-include="@components/news/news-carousel.html" data-title="Tin Tức Liên Quan"></div>
+  </div>
+  <!-- Sidebar -->
+  <div class="w-full lg:w-4/12 shrink-0 flex flex-col gap-6 md:gap-8">
+    <div data-include="@components/sidebar/news.html" data-class="w-full">
     </div>
-    <!-- Sidebar News Component -->
-    <div class="w-full lg:w-[300px] shrink-0 flex flex-col gap-8">
-      <div data-include="@components/sidebar/news.html" data-class="w-full">
-      </div>
-      <div data-include="@components/sidebar/announcements.html" data-class="w-full ">
-      </div>
-      <div data-include="@components/sidebar/videos.html" data-class="w-full">
-      </div>
+    <div data-include="@components/sidebar/announcements.html" data-class="w-full">
     </div>
+    <div data-include="@components/sidebar/videos.html" data-class="w-full">
+    </div>
+  </div>
 </section>
 <div data-include="@components/partners/index.html"></div>
