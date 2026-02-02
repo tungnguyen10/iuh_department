@@ -14,25 +14,10 @@ class GlobalWidgets {
       document.addEventListener('DOMContentLoaded', () => {
         this.initScrollToTop();
         this.initSocialIcons();
-        this.initNewsCarousels();
       });
     } else {
       this.initScrollToTop();
       this.initSocialIcons();
-      this.initNewsCarousels();
-    }
-  }
-
-  /**
-   * News Carousels - Auto-init with dynamic import (performance optimized)
-   */
-  async initNewsCarousels() {
-    // Check if any news carousel exists on page
-    const carousels = document.querySelectorAll('.news-carousel-wrapper')
-    if (carousels.length > 0) {
-      // Only load the module when needed (code splitting)
-      const { initAllNewsCarousels } = await import('./news-carousel.js')
-      initAllNewsCarousels()
     }
   }
 

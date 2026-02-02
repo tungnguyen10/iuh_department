@@ -5,13 +5,11 @@
 
 import Swiper from 'swiper'
 import { Navigation, Pagination, Autoplay, EffectCoverflow } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css/effect-coverflow'
 
-// Initialize carousel after DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
+/**
+ * Initialize Hero Carousel
+ */
+export function initHeroCarousel() {
   const heroSwiper = new Swiper('.hero-swiper', {
     modules: [Navigation, Pagination, Autoplay, EffectCoverflow],
     effect: 'coverflow',
@@ -72,4 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
       heroSwiper.autoplay.start()
     }
   })
-})
+
+  return heroSwiper
+}

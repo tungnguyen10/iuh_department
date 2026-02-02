@@ -1,7 +1,7 @@
 /**
  * News Carousel Module
  * Swiper-based carousel for news cards
- * Usage: import { initNewsCarousel } from '@js/news-carousel.js'
+ * Usage: import { initNewsCarousel } from '@components/news/news-carousel.js'
  *        initNewsCarousel(containerSelector)
  */
 

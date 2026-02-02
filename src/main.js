@@ -21,9 +21,6 @@ import 'swiper/css/effect-coverflow'
 // Auto-import tất cả component SCSS files
 const componentStyles = import.meta.glob('./components/**/*.scss', { eager: true })
 
-// Auto-import tất cả component JS files (eager import để bundle vào main.js)
-const componentModules = import.meta.glob('./components/**/*.js', { eager: true })
-
 // Auto-import tất cả SVG files để Vite bundle chúng
 const svgModules = import.meta.glob('./assets/svgs/*.svg', { eager: true, query: '?url' })
 
@@ -56,12 +53,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   
   await delay(500) // Test delay
   
-  // 4. Auto-init all components that have init() function
-  Object.values(componentModules).forEach(module => {
-    if (module.init && typeof module.init === 'function') {
-      module.init()
-    }
-  })
+  // 4. Dynamic init components based on DOM presence (performance optimized)
+  await initComponentsOnDemand()
   
   await delay(500) // Test delay
   await inlineSVGs()
@@ -77,6 +70,89 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Final hide để show content
   await loadingManager.forceHide()
 })
+
+/**
+ * Initialize components only if their DOM elements exist (performance optimized)
+ */
+async function initComponentsOnDemand() {
+  // Hero Carousel (homepage)
+  if (document.querySelector('.hero-swiper')) {
+    const { initHeroCarousel } = await import('./components/carousel/carousel.js')
+    initHeroCarousel()
+  }
+
+  // News Swiper (homepage - different from news-carousel)
+  if (document.querySelector('.news-swiper')) {
+    const { initNewsSwiper } = await import('./components/news/news.js')
+    initNewsSwiper()
+  }
+
+  // Major Swiper
+  if (document.querySelector('.major-swiper')) {
+    const { initMajorSwiper } = await import('./components/major/major.js')
+    initMajorSwiper()
+  }
+
+  // Admission Swiper
+  if (document.querySelector('.admission-swiper')) {
+    const { initAdmissionSwiper } = await import('./components/admission/admission.js')
+    initAdmissionSwiper()
+  }
+
+  // Stats Cards Animation
+  if (document.querySelector('.stats-card')) {
+    const { initStatsCards } = await import('./components/stats/stats-card.js')
+    initStatsCards()
+  }
+
+  // Intro Section
+  if (document.querySelector('.intro-section')) {
+    const { initIntro } = await import('./components/intro/intro.js')
+    initIntro()
+  }
+
+  // Infrastructure
+  if (document.querySelector('.infrastructure-swiper')) {
+    const { initInfrastructure } = await import('./components/infrastructure/infrastructure.js')
+    initInfrastructure()
+  }
+
+  // Partners Canvas
+  if (document.querySelector('#partners-canvas')) {
+    const { initPartnersCanvas } = await import('./components/partners/partners.js')
+    initPartnersCanvas()
+  }
+
+  // Careers/Business Connection
+  if (document.querySelector('.business-connection-swiper')) {
+    const { initBusinessConnectionSwiper } = await import('./components/careers/careers.js')
+    initBusinessConnectionSwiper()
+  }
+
+  // Industry Partnerships
+  if (document.querySelector('.industry-partnerships-swiper')) {
+    const { initIndustryPartnershipSwiper } = await import('./components/industry-partnerships/industry-partnerships.js')
+    initIndustryPartnershipSwiper()
+  }
+
+  // Research Pattern Canvas
+  if (document.querySelector('#pattern-canvas')) {
+    const { initPatternCanvas } = await import('./components/research/research-background-canvas.js')
+    initPatternCanvas()
+  }
+
+  // News Carousel (used in news, about pages)
+  if (document.querySelector('.news-carousel-wrapper')) {
+    const { initAllNewsCarousels } = await import('./components/news/news-carousel.js')
+    initAllNewsCarousels()
+  }
+
+  // Header & Footer are always present, so load them
+  const { init: initHeader } = await import('./components/header/header.js')
+  const { init: initFooter } = await import('./components/footer/footer.js')
+  initHeader()
+  initFooter()
+}
 
 /**
  * Initialize article share and copy link buttons (global)
