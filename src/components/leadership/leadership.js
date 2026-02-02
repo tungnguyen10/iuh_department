@@ -8,13 +8,13 @@ const AVATAR_COLORS = [
   'bg-primary-yellow',
   'bg-primary-dark-blue',
   'bg-secondary-green',
-  'bg-[#E91E63]', // Pink
-  'bg-[#9C27B0]', // Purple
-  'bg-[#3F51B5]', // Indigo
-  'bg-[#00BCD4]', // Cyan
-  'bg-[#009688]', // Teal
-  'bg-[#FF5722]', // Deep Orange
-  'bg-[#795548]', // Brown
+  'bg-avatar-pink',
+  'bg-avatar-purple',
+  'bg-avatar-indigo',
+  'bg-avatar-cyan',
+  'bg-avatar-teal',
+  'bg-avatar-deep-orange',
+  'bg-avatar-brown',
 ]
 
 // Cache regex for better performance (reuse instead of recreate)

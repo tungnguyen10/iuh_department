@@ -56,6 +56,16 @@ export default {
           light: "#FFEBEEFF",
         },
         stroke: "#EEEEEE",
+        // Avatar colors for leadership component
+        avatar: {
+          pink: "#E91E63",
+          purple: "#9C27B0",
+          indigo: "#3F51B5",
+          cyan: "#00BCD4",
+          teal: "#009688",
+          "deep-orange": "#FF5722",
+          brown: "#795548",
+        },
       },
     },
   },
