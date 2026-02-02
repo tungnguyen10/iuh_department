@@ -316,6 +316,48 @@ const copyPublicDataPlugin = (outDir) => ({
   }
 })
 
+// Plugin to copy src/assets/images to dist_iuh/assets/images
+const copyImagesPlugin = (outDir) => ({
+  name: 'copy-images',
+  closeBundle() {
+    const srcImagesDir = resolve(__dirname, 'src/assets/images')
+    const distImagesDir = resolve(outDir, 'assets/images')
+    
+    if (!existsSync(srcImagesDir)) {
+      console.log('⚠️  No images folder found in src/assets/')
+      return
+    }
+    
+    // Create dist/assets/images if not exists
+    if (!existsSync(distImagesDir)) {
+      mkdirSync(distImagesDir, { recursive: true })
+    }
+    
+    // Copy all files recursively from src/assets/images to dist/assets/images
+    const copyRecursive = (src, dest) => {
+      const entries = readdirSync(src, { withFileTypes: true })
+      
+      for (const entry of entries) {
+        const srcPath = resolve(src, entry.name)
+        const destPath = resolve(dest, entry.name)
+        
+        if (entry.isDirectory()) {
+          if (!existsSync(destPath)) {
+            mkdirSync(destPath, { recursive: true })
+          }
+          copyRecursive(srcPath, destPath)
+        } else {
+          copyFileSync(srcPath, destPath)
+          console.log(`✓ Copied image: ${entry.name}`)
+        }
+      }
+    }
+    
+    console.log('📸 Copying images to assets/images...')
+    copyRecursive(srcImagesDir, distImagesDir)
+  }
+})
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, __dirname, '')
   const base = normalizeBasePath(env.VITE_BASE_PATH || '/')
@@ -330,6 +372,7 @@ export default defineConfig(({ mode }) => {
       layoutPlugin(), // Chạy TRƯỚC để wrap layout
       transformDataInclude(base), // Chạy SAU để inject components vào layout
       copyPublicDataPlugin(outDir), // Copy public/data to dist/data
+      copyImagesPlugin(outDir), // Copy src/assets/images to dist/assets/images
       svgo({
         svgoConfig: {
           plugins: [
