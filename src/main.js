@@ -129,6 +129,12 @@ async function initComponentsOnDemand() {
     initBusinessConnectionSwiper()
   }
 
+  // Leadership - Auto-generate avatar initials
+  if (document.querySelector('.avatar-teacher')) {
+    const { initLeadership } = await import('./components/leadership/leadership.js')
+    initLeadership()
+  }
+
   // Industry Partnerships
   if (document.querySelector('.industry-partnerships-swiper')) {
     const { initIndustryPartnershipSwiper } = await import('./components/industry-partnerships/industry-partnerships.js')

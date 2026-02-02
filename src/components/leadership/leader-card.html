@@ -1,0 +1,91 @@
+<!-- option 1: non-image -->
+<article
+    class="group flex justify-between w-full p-3 md:p-4 rounded-2xl flex-col items-center gap-4 md:gap-5 border border-stroke hover:border-secondary-blue bg-white hover:shadow-[2px_2px_15px_0px_rgba(21,56,152,0.2)] transition-all duration-300 cursor-pointer {{class}}">
+
+    <div
+        class="avatar-teacher size-20 md:size-24 lg:size-28 rounded-full flex items-center justify-center text-primary-white text-base md:text-lg font-medium transition-transform duration-300">
+    </div>
+
+    <div class="flex flex-col gap-1.5 md:gap-2 w-full">
+        <h2
+            class="text-title text-center font-inter text-base md:text-lg font-semibold group-hover:text-primary-dark-blue transition-colors duration-300">
+            {{name}}</h2>
+        <p class="text-gray text-center font-roboto text-sm md:text-base font-medium">{{position}}</p>
+        <a href="mailto:{{email}}"
+            class="flex gap-1 items-center justify-center hover:opacity-80 transition-opacity duration-200">
+            <span class="flex items-center rounded-full shrink-0">
+                <img src="/assets/svgs/icon-mail-outline.svg" alt=""
+                    class="w-4 h-4 md:w-5 md:h-5 text-primary-dark-blue" />
+            </span>
+            <span class="font-roboto text-xs md:text-sm font-medium text-primary-dark-blue text-center leading-normal">
+                {{email}}
+            </span>
+        </a>
+    </div>
+    <div class="grid grid-cols-3 gap-3 md:gap-4">
+        <a href="{{zaloLink}}"
+            class="flex items-center flex-col gap-1.5 md:gap-2 text-black text-xs md:text-sm hover:text-primary-dark-blue transition-colors duration-200"
+            target="_blank" rel="noopener noreferrer">
+            <img src="/assets/images/zalo.png" alt="Zalo"
+                class="w-7 h-7 md:w-8 md:h-8 transition-transform duration-300" /><span>Zalo</span>
+        </a>
+        <a href="{{xLink}}"
+            class="flex items-center flex-col gap-1.5 md:gap-2 text-black text-xs md:text-sm hover:text-primary-dark-blue transition-colors duration-200"
+            target="_blank" rel="noopener noreferrer">
+            <img src="/assets/images/x.png" alt="X"
+                class="w-7 h-7 md:w-8 md:h-8 transition-transform duration-300" /><span>X</span>
+        </a>
+        <a href="{{facebookLink}}"
+            class="flex items-center flex-col gap-1.5 md:gap-2 text-black text-xs md:text-sm hover:text-primary-dark-blue transition-colors duration-200"
+            target="_blank" rel="noopener noreferrer">
+            <img src="/assets/images/fb.png" alt="Facebook"
+                class="w-7 h-7 md:w-8 md:h-8 transition-transform duration-300" /><span>Facebook</span>
+        </a>
+    </div>
+</article>
+
+<!-- option 2: Image -->
+<article
+    class="group flex justify-between w-full p-3 md:p-4 rounded-2xl flex-col items-center gap-4 md:gap-5 border border-stroke hover:border-secondary-blue bg-white hover:shadow-[2px_2px_15px_0px_rgba(21,56,152,0.2)] transition-all duration-300 cursor-pointer {{class}}">
+
+    <div class="avatar-teacher-photo size-20 md:size-24 lg:size-28 rounded-full overflow-hidden">
+        <img src="/assets/images/default.jpg" alt="{{name}}" class="w-full h-full object-cover" />
+    </div>
+
+    <div class="flex flex-col gap-1.5 md:gap-2 w-full">
+        <h2
+            class="text-title text-center font-inter text-base md:text-lg font-semibold group-hover:text-primary-dark-blue transition-colors duration-300">
+            {{name}}</h2>
+        <p class="text-gray text-center font-roboto text-sm md:text-base font-medium">{{position}}</p>
+        <a href="mailto:{{email}}"
+            class="flex gap-1 items-center justify-center hover:opacity-80 transition-opacity duration-200">
+            <span class="flex items-center rounded-full shrink-0">
+                <img src="/assets/svgs/icon-mail-outline.svg" alt=""
+                    class="w-4 h-4 md:w-5 md:h-5 text-primary-dark-blue" />
+            </span>
+            <span class="font-roboto text-xs md:text-sm font-medium text-primary-dark-blue text-center leading-normal">
+                {{email}}
+            </span>
+        </a>
+    </div>
+    <div class="grid grid-cols-3 gap-3 md:gap-4">
+        <a href="{{zaloLink}}"
+            class="flex items-center flex-col gap-1.5 md:gap-2 text-black text-xs md:text-sm hover:text-primary-dark-blue transition-colors duration-200"
+            target="_blank" rel="noopener noreferrer">
+            <img src="/assets/images/zalo.png" alt="Zalo"
+                class="w-7 h-7 md:w-8 md:h-8 transition-transform duration-300" /><span>Zalo</span>
+        </a>
+        <a href="{{xLink}}"
+            class="flex items-center flex-col gap-1.5 md:gap-2 text-black text-xs md:text-sm hover:text-primary-dark-blue transition-colors duration-200"
+            target="_blank" rel="noopener noreferrer">
+            <img src="/assets/images/x.png" alt="X"
+                class="w-7 h-7 md:w-8 md:h-8 transition-transform duration-300" /><span>X</span>
+        </a>
+        <a href="{{facebookLink}}"
+            class="flex items-center flex-col gap-1.5 md:gap-2 text-black text-xs md:text-sm hover:text-primary-dark-blue transition-colors duration-200"
+            target="_blank" rel="noopener noreferrer">
+            <img src="/assets/images/fb.png" alt="Facebook"
+                class="w-7 h-7 md:w-8 md:h-8 transition-transform duration-300" /><span>Facebook</span>
+        </a>
+    </div>
+</article>
