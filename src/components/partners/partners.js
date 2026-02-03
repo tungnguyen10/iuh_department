@@ -2,7 +2,6 @@
  * Partners Background Canvas Animation
  * Dynamic particles with connecting lines and mouse interaction
  */
-import './partners.scss'
 
 export function initPartnersCanvas() {
   const canvas = document.querySelector('.partners-canvas');

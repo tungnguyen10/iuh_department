@@ -147,39 +147,37 @@
         <h2>Tiêu chí đánh giá</h2>
         
         <h3>5. Phân bổ điểm</h3>
-        <div class="overflow-x-auto">
-          <table class="min-w-full border-collapse border border-stroke">
-            <thead>
-              <tr class="bg-secondary-blue-light">
-                <th class="border border-stroke px-4 py-3 text-left font-semibold text-title">Hạng mục</th>
-                <th class="border border-stroke px-4 py-3 text-left font-semibold text-title">Tỷ trọng</th>
-                <th class="border border-stroke px-4 py-3 text-left font-semibold text-title">Ghi chú</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="border border-stroke px-4 py-3">Báo cáo viết</td>
-                <td class="border border-stroke px-4 py-3 font-medium">40%</td>
-                <td class="border border-stroke px-4 py-3 text-sm text-gray">Nội dung, format, tính toán</td>
-              </tr>
-              <tr class="bg-gray-light">
-                <td class="border border-stroke px-4 py-3">Bản vẽ thiết kế</td>
-                <td class="border border-stroke px-4 py-3 font-medium">25%</td>
-                <td class="border border-stroke px-4 py-3 text-sm text-gray">Độ chính xác, chuẩn kỹ thuật</td>
-              </tr>
-              <tr>
-                <td class="border border-stroke px-4 py-3">Thuyết trình</td>
-                <td class="border border-stroke px-4 py-3 font-medium">20%</td>
-                <td class="border border-stroke px-4 py-3 text-sm text-gray">Kỹ năng trình bày, trả lời câu hỏi</td>
-              </tr>
-              <tr class="bg-gray-light">
-                <td class="border border-stroke px-4 py-3">Mô phỏng/Demo</td>
-                <td class="border border-stroke px-4 py-3 font-medium">15%</td>
-                <td class="border border-stroke px-4 py-3 text-sm text-gray">Kết quả mô phỏng, demo hệ thống</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Hạng mục</th>
+              <th>Tỷ trọng</th>
+              <th>Ghi chú</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Báo cáo viết</td>
+              <td><strong>40%</strong></td>
+              <td>Nội dung, format, tính toán</td>
+            </tr>
+            <tr>
+              <td>Bản vẽ thiết kế</td>
+              <td><strong>25%</strong></td>
+              <td>Độ chính xác, chuẩn kỹ thuật</td>
+            </tr>
+            <tr>
+              <td>Thuyết trình</td>
+              <td><strong>20%</strong></td>
+              <td>Kỹ năng trình bày, trả lời câu hỏi</td>
+            </tr>
+            <tr>
+              <td>Mô phỏng/Demo</td>
+              <td><strong>15%</strong></td>
+              <td>Kết quả mô phỏng, demo hệ thống</td>
+            </tr>
+          </tbody>
+        </table>
 
         <h2>Tài liệu tham khảo</h2>
         <p>Sinh viên có thể tham khảo các tài liệu sau:</p>
@@ -189,27 +187,6 @@
           <li>Tiêu chuẩn Việt Nam TCVN 5687:2010 về hệ thống điều hòa không khí</li>
           <li>Slide bài giảng và tài liệu trên e-Learning</li>
         </ol>
-
-        <!-- Download Section -->
-        <div class="bg-primary-yellow/10 border border-primary-yellow rounded-lg p-4 md:p-6 mt-6">
-          <h3 class="font-bold text-title mb-4 flex items-center gap-2">
-            <svg class="w-5 h-5 text-primary-yellow" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
-            </svg>
-            Tải tài liệu
-          </h3>
-          <div class="space-y-2">
-            <a href="#" class="flex items-center gap-2 text-primary-dark-blue hover:text-primary-yellow transition-colors duration-200">
-              <span class="text-sm">📄 Mẫu báo cáo chuẩn.docx</span>
-            </a>
-            <a href="#" class="flex items-center gap-2 text-primary-dark-blue hover:text-primary-yellow transition-colors duration-200">
-              <span class="text-sm">📄 Template slide thuyết trình.pptx</span>
-            </a>
-            <a href="#" class="flex items-center gap-2 text-primary-dark-blue hover:text-primary-yellow transition-colors duration-200">
-              <span class="text-sm">📄 Hướng dẫn sử dụng AutoCAD.pdf</span>
-            </a>
-          </div>
-        </div>
 
         <!-- Footer Note -->
         <div class="mt-8 pt-6 border-t border-stroke">
@@ -223,26 +200,8 @@
       </div>
     </article>
 
-    <!-- Related Articles -->
-    <section>
-      <h2 class="text-xl md:text-2xl font-inter font-bold text-title mb-4 md:mb-6">Tin tức liên quan</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-        <div data-include="@components/news/news-card.html" 
-          data-link="/news" 
-          data-image="/assets/images/default.jpg"
-          data-title="Lịch thi cuối kỳ học kỳ 2 năm 2024-2025"
-          data-date="10 tháng 5, 2025"
-          data-category="Thông báo">
-        </div>
-        <div data-include="@components/news/news-card.html" 
-          data-link="/news" 
-          data-image="/assets/images/default.jpg"
-          data-title="Hội thảo khoa học: AI và Machine Learning trong công nghiệp"
-          data-date="08 tháng 5, 2025"
-          data-category="Sự kiện">
-        </div>
-      </div>
-    </section>
+     <!-- Related Articles -->
+    <div data-include="@components/news/news-carousel.html" data-title="Tin Tức Liên Quan"></div>
   </div>
 
   <!-- Sidebar -->
@@ -252,3 +211,4 @@
     <div data-include="@components/sidebar/videos.html" data-class="w-full"></div>
   </div>
 </section>
+<div data-include="@components/partners/index.html"></div>

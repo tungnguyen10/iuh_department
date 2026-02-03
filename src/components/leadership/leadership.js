@@ -34,17 +34,17 @@ function hashString(str) {
 }
 
 export class LeaderCard {
-  constructor(element) {
-    this.element = element
-    this.avatar = element.querySelector('.avatar-teacher')
-    this.nameElement = element.querySelector('h2')
+  constructor(avatarElement) {
+    this.avatar = avatarElement
+    this.element = avatarElement.closest('article, [data-leader-detail]')
+    this.nameElement = this.element?.querySelector('[data-leader-name]')
     
     // Mark as initialized
-    if (initializedCards.has(element)) {
-      console.warn('[LeaderCard] Card already initialized, skipping')
+    if (initializedCards.has(avatarElement)) {
+      console.warn('[LeaderCard] Avatar already initialized, skipping')
       return
     }
-    initializedCards.set(element, this)
+    initializedCards.set(avatarElement, this)
     
     this.init()
   }
@@ -55,23 +55,52 @@ export class LeaderCard {
       return
     }
      
-    // Check if card has photo image
-    const photoContainer = this.element.querySelector('.avatar-photo')
-    const photoImg = photoContainer?.querySelector('img')
-    const hasValidImage = photoImg && photoImg.src && !photoImg.src.includes('{{image}}')
+    // Check for data-photo-src attribute
+    const photoSrc = this.avatar.dataset.photoSrc
     
-    if (hasValidImage) {
-      // Hide avatar-teacher, show photo
-      this.avatar.classList.add('hidden')
-      photoContainer.classList.remove('hidden')
+    // If has data-photo-src, show image (or default placeholder)
+    if (photoSrc && photoSrc.length > 0 && !photoSrc.includes('{{image}}')) {
+      // Clear any existing text content first
+      this.avatar.textContent = ''
+      
+      // Create img tag with default placeholder
+      let img = this.avatar.querySelector('img')
+      if (!img) {
+        img = document.createElement('img')
+        img.src = '/assets/images/default.jpg'
+        img.alt = this.nameElement.textContent.trim()
+        img.className = 'w-full h-full object-cover transition-all duration-500 ease-out'
+        // Modern loading state: blur + scale + opacity
+        img.style.cssText = 'opacity: 0.4; filter: blur(8px); transform: scale(1.05)'
+        this.avatar.appendChild(img)
+      }
+      
+      // Preload and modern fade+scale transition
+      const tempImg = new Image()
+      tempImg.onload = () => {
+        // Modern reveal animation: blur out → swap → sharp reveal
+        img.style.cssText = 'opacity: 0; filter: blur(12px); transform: scale(0.95)'
+        setTimeout(() => {
+          // Wait for actual img element to load before revealing
+          img.onload = () => {
+            img.style.cssText = 'opacity: 1; filter: blur(0); transform: scale(1)'
+          }
+          img.src = photoSrc
+        }, 200)
+      }
+      tempImg.onerror = () => {
+        console.warn('[LeaderCard] Failed to load image:', photoSrc)
+        // Reveal default image smoothly
+        img.style.cssText = 'opacity: 1; filter: blur(0); transform: scale(1)'
+      }
+      tempImg.src = photoSrc
+      
+      // Remove initials-specific classes
+      this.avatar.classList.remove('bg-primary-dark-blue', ...AVATAR_COLORS)
       return // Skip initials generation
     }
     
-    // No valid image, use avatar with initials
-    if (photoContainer) {
-      photoContainer.classList.add('hidden')
-    }
-    
+    // No valid image - use initials mode
     // Check if avatar already has custom background color
     const hasCustomBg = this.avatar.classList.toString().match(BG_CLASS_REGEX)
     
@@ -90,6 +119,11 @@ export class LeaderCard {
     if (!fullName || fullName.includes('{{')) {
       console.warn('[LeaderCard] Invalid or placeholder name')
       return
+    }
+    
+    // Apply default background if none exists
+    if (!hasCustomBg) {
+      this.avatar.classList.add('bg-primary-dark-blue')
     }
     
     // Generate initials and apply color
@@ -155,7 +189,7 @@ export class LeaderCard {
 
   // Cleanup method for proper disposal
   destroy() {
-    initializedCards.delete(this.element)
+    initializedCards.delete(this.avatar)
     this.element = null
     this.avatar = null
     this.nameElement = null
@@ -163,15 +197,18 @@ export class LeaderCard {
 }
 
 export const initLeadership = (container = document) => {
-  const cards = container.querySelectorAll('article:has(.avatar-teacher)')
+  // Find all avatar-teacher elements
+  const avatars = container.querySelectorAll('.avatar-teacher')
   const instances = []
   
-  cards.forEach(card => {
+  avatars.forEach(avatar => {
     // Skip if already initialized
-    if (!initializedCards.has(card)) {
-      instances.push(new LeaderCard(card))
+    if (!initializedCards.has(avatar)) {
+      instances.push(new LeaderCard(avatar))
     }
   })
+  
+  console.info(`[Leadership] Initialized ${instances.length} avatar elements`)
   
   return instances
 }

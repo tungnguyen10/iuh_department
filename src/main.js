@@ -10,6 +10,7 @@ import { loadingManager } from './js/loading.js'
 import { delay, showNotification, shareContent, copyToClipboard, createToast } from './js/utils.js'
 import { initSearchModal } from './components/search/search-modal.js'
 import { initI18n, t, getCurrentLang, setCurrentLang } from './js/i18n.js'
+import { initTabs } from './components/tabs/tabs.js'
 import './js/global-widgets.js'
 
 // Swiper CSS (imported once for all carousels)
@@ -62,6 +63,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // 5. Initialize global features
   initSearchModal()
   initArticleActions()
+  initTabs()
   
   // 6. Hide loading và dispatch events
   loadingManager.hide()
@@ -136,7 +138,7 @@ async function initComponentsOnDemand() {
   }
 
   // Industry Partnerships
-  if (document.querySelector('.industry-partnerships-swiper')) {
+  if (document.querySelector('.industry-partnership-swiper')) {
     const { initIndustryPartnershipSwiper } = await import('./components/industry-partnerships/industry-partnerships.js')
     initIndustryPartnershipSwiper()
   }
