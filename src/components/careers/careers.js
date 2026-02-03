@@ -57,7 +57,12 @@ export function initBusinessConnectionSwiper() {
       const featuredImage = activeSlide?.dataset.featuredImage;
       
       if (featuredImage) {
-        featuredImg.src = featuredImage;
+        // Use base URL from Vite config for proper path resolution
+        const basePath = import.meta.env.BASE_URL || '/';
+        const imagePath = featuredImage.startsWith('/assets/') 
+          ? (basePath === '/' ? featuredImage : `${basePath}${featuredImage.slice(1)}`)
+          : featuredImage;
+        featuredImg.src = imagePath;
       }
     });
   }

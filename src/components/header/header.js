@@ -140,13 +140,22 @@ export function init() {
   const isPageLoad = languageSwitcher?.dataset.openLink;
   
   if (languageSwitcher && languageText && languageImg) {
+    // Get base path from Vite config
+    const basePath = import.meta.env.BASE_URL || '/';
+    const getAssetPath = (path) => {
+      if (path.startsWith('/assets/')) {
+        return basePath === '/' ? path : `${basePath}${path.slice(1)}`;
+      }
+      return path;
+    };
+    
     const updateLanguage = () => {
       const isEnglish = languageSwitcher.dataset.openLink === "en/";
       if (isEnglish) languageSwitcher.classList.add("active");
       languageText.textContent = !isEnglish ? "ENG" : "VNI";
       languageImg.style.background = !isEnglish
-        ? 'url("/assets/images/eng.webp") no-repeat center center/cover'
-        : 'url("/assets/images/vietnam.png") no-repeat center center/cover';
+        ? `url("${getAssetPath('/assets/images/eng.webp')}") no-repeat center center/cover`
+        : `url("${getAssetPath('/assets/images/vietnam.png')}") no-repeat center center/cover`;
     };
     
     updateLanguage();

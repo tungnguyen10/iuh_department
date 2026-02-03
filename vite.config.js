@@ -152,7 +152,7 @@ const layoutPlugin = () => ({
         .replace(/\{\{url\}\}/g, url)
         .replace('{{loadingComponent}}', loadingComponent)
         .replace('{{content}}', content)
-        .replace('{{pageScript}}', pageScript)
+        .replace(/\{\{pageScript\}\}/g, pageScript)
     }
   }
 })
@@ -268,6 +268,51 @@ const transformDataInclude = (base) => ({
       (match, before, assetPath, after) => {
         const finalPath = base === '/' ? `/assets/${assetPath}` : `${base}assets/${assetPath}`
         return `<img ${before}src="${finalPath}"${after}>`
+      }
+    )
+    
+    // Transform data-photo-src="/assets/..." to include base path
+    transformed = transformed.replace(
+      /data-photo-src=["']\/assets\/([^"']+)["']/g,
+      (match, assetPath) => {
+        const finalPath = base === '/' ? `/assets/${assetPath}` : `${base}assets/${assetPath}`
+        return `data-photo-src="${finalPath}"`
+      }
+    )
+    
+    // Transform srcset="/assets/..." to include base path
+    transformed = transformed.replace(
+      /srcset=["']\/assets\/([^"']+)["']/g,
+      (match, assetPath) => {
+        const finalPath = base === '/' ? `/assets/${assetPath}` : `${base}assets/${assetPath}`
+        return `srcset="${finalPath}"`
+      }
+    )
+    
+    // Transform data-image="/assets/..." to include base path
+    transformed = transformed.replace(
+      /data-image=["']\/assets\/([^"']+)["']/g,
+      (match, assetPath) => {
+        const finalPath = base === '/' ? `/assets/${assetPath}` : `${base}assets/${assetPath}`
+        return `data-image="${finalPath}"`
+      }
+    )
+    
+    // Transform data-featured-image="/assets/..." to include base path
+    transformed = transformed.replace(
+      /data-featured-image=["']\/assets\/([^"']+)["']/g,
+      (match, assetPath) => {
+        const finalPath = base === '/' ? `/assets/${assetPath}` : `${base}assets/${assetPath}`
+        return `data-featured-image="${finalPath}"`
+      }
+    )
+    
+    // Transform data-overlayIcon="/assets/..." to include base path
+    transformed = transformed.replace(
+      /data-overlayIcon=["']\/assets\/([^"']+)["']/g,
+      (match, assetPath) => {
+        const finalPath = base === '/' ? `/assets/${assetPath}` : `${base}assets/${assetPath}`
+        return `data-overlayIcon="${finalPath}"`
       }
     )
     
