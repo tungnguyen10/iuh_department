@@ -28,8 +28,8 @@ const svgModules = import.meta.glob('./assets/svgs/*.svg', { eager: true, query:
 // Surface the current environment for debugging/styling hooks
 document.documentElement.dataset.appEnv = appEnv
 if (import.meta.env.DEV) {
-  console.info(`[lab-iuh] Running in ${appEnv} mode`)
-  console.info(`[lab-iuh] Loaded ${Object.keys(svgModules).length} SVG assets`)
+  console.info(`Running in ${appEnv} mode`)
+  console.info(` Loaded ${Object.keys(svgModules).length} SVG assets`)
   
   // Expose utility functions to global window for DEV testing only
   window.showNotification = showNotification

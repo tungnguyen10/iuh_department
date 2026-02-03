@@ -10,7 +10,7 @@ export const createToast = () => {
   if (document.getElementById('toast')) return
   
   const toastHTML = `
-    <div id="toast-container" class="fixed top-4 right-4 z-50 pointer-events-none">
+    <div id="toast-container" class="fixed top-4 right-4 pointer-events-none" style="z-index: 9999;">
       <div id="toast" class="toast-notification pointer-events-auto px-4 py-3 rounded-lg shadow-lg flex items-center gap-2.5 min-w-[200px] max-w-[400px] translate-x-[120%] opacity-0 transition-all duration-300" role="alert" style="display: none;">
         <div id="toast-icon" class="shrink-0 w-5 h-5"></div>
         <span id="toast-message" class="font-roboto font-medium text-sm leading-normal flex-1"></span>

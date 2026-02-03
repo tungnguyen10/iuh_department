@@ -403,6 +403,40 @@ const copyImagesPlugin = (outDir) => ({
   }
 })
 
+// Plugin to copy src/assets/svgs to dist_iuh/assets/svgs
+const copySvgsPlugin = (outDir) => ({
+  name: 'copy-svgs',
+  closeBundle() {
+    const srcSvgsDir = resolve(__dirname, 'src/assets/svgs')
+    const distSvgsDir = resolve(outDir, 'assets/svgs')
+    
+    if (!existsSync(srcSvgsDir)) {
+      console.log('⚠️  No svgs folder found in src/assets/')
+      return
+    }
+    
+    // Create dist/assets/svgs if not exists
+    if (!existsSync(distSvgsDir)) {
+      mkdirSync(distSvgsDir, { recursive: true })
+    }
+    
+    // Copy all SVG files
+    const entries = readdirSync(srcSvgsDir, { withFileTypes: true })
+    let count = 0
+    
+    for (const entry of entries) {
+      if (entry.isFile() && entry.name.endsWith('.svg')) {
+        const srcPath = resolve(srcSvgsDir, entry.name)
+        const destPath = resolve(distSvgsDir, entry.name)
+        copyFileSync(srcPath, destPath)
+        count++
+      }
+    }
+    
+    console.log(`✓ Copied ${count} SVG files to assets/svgs/`)
+  }
+})
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, __dirname, '')
   const base = normalizeBasePath(env.VITE_BASE_PATH || '/')
@@ -418,6 +452,7 @@ export default defineConfig(({ mode }) => {
       transformDataInclude(base), // Chạy SAU để inject components vào layout
       copyPublicDataPlugin(outDir), // Copy public/data to dist/data
       copyImagesPlugin(outDir), // Copy src/assets/images to dist/assets/images
+      copySvgsPlugin(outDir), // Copy src/assets/svgs to dist/assets/svgs
       svgo({
         svgoConfig: {
           plugins: [

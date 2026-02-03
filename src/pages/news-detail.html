@@ -3,24 +3,22 @@
 <!-- LAYOUT: keywords="thông báo, nộp báo cáo, môn học, thiết kế hệ thống, IUH" -->
 
 <!-- Breadcrumb -->
-<div data-include="@components/common/breadcrumb.html" 
-  data-parent-page1="Tin tức - Sự kiện" data-parent-link1="/news"
-  data-current-page="Thông báo nộp báo cáo" 
-  data-parent-page2-class="hidden">
+<div data-include="@components/common/breadcrumb.html" data-parent-page1="Tin tức - Sự kiện" data-parent-link1="/news"
+  data-current-page="Thông báo nộp báo cáo" data-parent-page2="Tin tức" data-parent-link2="#" data-parent-page2-class="">
 </div>
 
 <section class="container mx-auto px-4 py-8 md:py-16 flex flex-col lg:flex-row gap-12 md:gap-8">
   <!-- Main Content -->
   <div class="flex-1 w-full lg:w-9/12 flex flex-col gap-6 md:gap-10">
     <!-- Article Detail -->
-    <article class="bg-white rounded-2xl border border-stroke shadow-sm p-6 md:p-8">
+    <article class="bg-white rounded-2xl border border-stroke shadow-sm p-4 md:p-6">
       <!-- Header Section -->
       <div class="flex flex-col gap-3 md:gap-4 mb-6 md:mb-8">
         <!-- Title -->
         <div data-include="@components/common/article-title.html"
           data-title="Thông báo về việc nộp và báo cáo môn học Thiết kế hệ thống thông gió và ĐHKK">
         </div>
-        
+
         <!-- Divider -->
         <div data-include="@components/common/divider.html"></div>
 
@@ -32,7 +30,8 @@
       <!-- Hero Image -->
       <figure class="relative w-full aspect-video rounded-xl overflow-hidden mb-6 md:mb-8">
         <img src="/assets/images/default.jpg" alt="Thông báo môn học" class="w-full h-full object-cover" />
-        <figcaption class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 text-white text-sm">
+        <figcaption
+          class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 text-white text-sm">
           Sinh viên thực hành tại phòng lab
         </figcaption>
       </figure>
@@ -41,7 +40,7 @@
       <div class="article-content">
         <!-- Introduction -->
         <p class="text-lg font-medium text-gray leading-relaxed mb-6">
-          Khoa Công nghệ Thông tin thông báo đến toàn thể sinh viên về lịch nộp và báo cáo đồ án môn học 
+          Khoa Công nghệ Thông tin thông báo đến toàn thể sinh viên về lịch nộp và báo cáo đồ án môn học
           <strong>Thiết kế hệ thống thông gió và Điều hòa không khí</strong> trong học kỳ 2 năm học 2024-2025.
         </p>
 
@@ -49,12 +48,14 @@
         <div class="bg-danger-light border-l-4 border-danger p-4 md:p-6 rounded-lg mb-6">
           <div class="flex gap-3">
             <svg class="w-6 h-6 text-danger flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+              <path fill-rule="evenodd"
+                d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                clip-rule="evenodd" />
             </svg>
             <div>
               <h3 class="font-bold text-danger mb-2">Lưu ý quan trọng</h3>
               <p class="text-sm text-gray">
-                Sinh viên cần nộp đầy đủ tài liệu theo đúng thời gian quy định. 
+                Sinh viên cần nộp đầy đủ tài liệu theo đúng thời gian quy định.
                 Trường hợp nộp trễ sẽ bị trừ điểm theo quy chế.
               </p>
             </div>
@@ -63,11 +64,11 @@
 
         <!-- Main Content Sections -->
         <h2>Thời gian và địa điểm</h2>
-        
+
         <h3>1. Thời gian nộp báo cáo</h3>
         <ul>
           <li><strong>Deadline nộp báo cáo viết:</strong> 23:59 ngày 20/05/2025</li>
-          <li><strong>Thời gian báo cáo trực tiếp:</strong> 
+          <li><strong>Thời gian báo cáo trực tiếp:</strong>
             <ul>
               <li>Đợt 1: 08:00 - 12:00, ngày 22/05/2025</li>
               <li>Đợt 2: 13:00 - 17:00, ngày 22/05/2025</li>
@@ -78,13 +79,15 @@
 
         <h3>2. Địa điểm</h3>
         <ul>
-          <li><strong>Nộp báo cáo online:</strong> Qua hệ thống e-Learning của trường tại <a href="https://elearning.iuh.edu.vn" target="_blank" rel="noopener noreferrer">elearning.iuh.edu.vn</a></li>
+          <li><strong>Nộp báo cáo online:</strong> Qua hệ thống e-Learning của trường tại <a
+              href="https://elearning.iuh.edu.vn" target="_blank" rel="noopener noreferrer">elearning.iuh.edu.vn</a>
+          </li>
           <li><strong>Báo cáo trực tiếp:</strong> Phòng C101, Nhà C, Khu A</li>
           <li><strong>Liên hệ:</strong> Phòng Khoa học Công nghệ - Phòng B201</li>
         </ul>
 
         <h2>Yêu cầu nội dung báo cáo</h2>
-        
+
         <h3>3. Báo cáo viết</h3>
         <p>Báo cáo cần bao gồm các phần sau:</p>
         <ol>
@@ -104,7 +107,7 @@
         </ol>
 
         <blockquote>
-          "Báo cáo cần thể hiện rõ quá trình tư duy, sáng tạo của sinh viên trong việc giải quyết bài toán 
+          "Báo cáo cần thể hiện rõ quá trình tư duy, sáng tạo của sinh viên trong việc giải quyết bài toán
           thiết kế thực tế. Đây là cơ hội để các em áp dụng kiến thức đã học vào thực tiễn."
           <br>- PGS.TS. Nguyễn Văn Minh, Trưởng khoa CNTT
         </blockquote>
@@ -128,7 +131,9 @@
         <div class="bg-secondary-blue-light border-l-4 border-secondary-blue p-4 md:p-6 rounded-lg my-6">
           <div class="flex gap-3">
             <svg class="w-6 h-6 text-primary-dark-blue flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+              <path fill-rule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                clip-rule="evenodd" />
             </svg>
             <div>
               <h3 class="font-bold text-primary-dark-blue mb-2">Hỗ trợ sinh viên</h3>
@@ -136,16 +141,16 @@
                 Khoa tổ chức các buổi hỗ trợ sinh viên giải đáp thắc mắc:
               </p>
               <ul class="text-sm text-gray space-y-1">
-                <li>• Thứ 3 và Thứ 5: 14:00 - 16:00 tại phòng B201</li>
-                <li>• Email hỗ trợ: daihoccongnghiep@iuh.edu.vn</li>
-                <li>• Hotline: 0283 8940 390 (ext. 123)</li>
+                <li> Thứ 3 và Thứ 5: 14:00 - 16:00 tại phòng B201</li>
+                <li> Email hỗ trợ: daihoccongnghiep@iuh.edu.vn</li>
+                <li> Hotline: 0283 8940 390 (ext. 123)</li>
               </ul>
             </div>
           </div>
         </div>
 
         <h2>Tiêu chí đánh giá</h2>
-        
+
         <h3>5. Phân bổ điểm</h3>
         <table>
           <thead>
@@ -200,7 +205,7 @@
       </div>
     </article>
 
-     <!-- Related Articles -->
+    <!-- Related Articles -->
     <div data-include="@components/news/news-carousel.html" data-title="Tin Tức Liên Quan"></div>
   </div>
 
