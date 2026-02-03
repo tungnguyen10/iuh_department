@@ -245,6 +245,21 @@
   }
 }
 
+
+/* Add base styles for fade animation */
+/* Add base styles for fade animation */
+.nttFade {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+.nttFade.nttFaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 /* Custom Scrollbar - All Browsers */
 /* Firefox */
 * {

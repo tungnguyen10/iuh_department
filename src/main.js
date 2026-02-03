@@ -7,7 +7,7 @@ import './styles/main.scss'
 import { appEnv } from './config/env.js'
 import { inlineSVGs } from './js/svg-loader.js'
 import { loadingManager } from './js/loading.js'
-import { delay, showNotification, shareContent, copyToClipboard, createToast } from './js/utils.js'
+import { delay, showNotification, shareContent, copyToClipboard, createToast, initFadeInOnScroll } from './js/utils.js'
 import { initSearchModal } from './components/search/search-modal.js'
 import { initI18n, t, getCurrentLang, setCurrentLang } from './js/i18n.js'
 import { initTabs } from './components/tabs/tabs.js'
@@ -65,7 +65,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   initArticleActions()
   initTabs()
   
-  // 6. Hide loading và dispatch events
+  // 6. Initialize fade-in on scroll animations (global)
+  initFadeInOnScroll({
+    threshold: 0.1,           // Trigger when 10% visible
+    rootMargin: '0px 0px -50px 0px',  // Trigger 50px before entering viewport
+    once: true                // Animate only once
+  })
+  
+  // 7. Hide loading và dispatch events
   loadingManager.hide()
   document.dispatchEvent(new Event('components-loaded'))
   
