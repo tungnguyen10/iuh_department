@@ -40,6 +40,11 @@ if (import.meta.env.DEV) {
   window.setCurrentLang = setCurrentLang
 }
 
+// Expose build signature (production only)
+if (typeof __BUILD_SIGNATURE__ !== 'undefined') {
+  window.BUILD_SIGNATURE = __BUILD_SIGNATURE__
+}
+
 // Khởi tạo tất cả components khi DOM ready
 document.addEventListener('DOMContentLoaded', async () => {
   // 1. CRITICAL: Init loading manager và show ngay lập tức

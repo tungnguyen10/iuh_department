@@ -3,10 +3,23 @@ import { resolve, extname, basename, dirname, isAbsolute } from 'path'
 import { glob } from 'glob'
 import { fileURLToPath } from 'url'
 import { copyFileSync, mkdirSync, existsSync, readFileSync, readdirSync, statSync } from 'fs'
+import { execSync } from 'child_process'
 import svgo from 'vite-plugin-svgo'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
+
+// Generate build signature: PREFIX_HASH_TIMESTAMP
+const getBuildSignature = () => {
+  let gitHash = 'no-git'
+  try {
+    gitHash = execSync('git rev-parse --short HEAD', { encoding: 'utf-8' }).trim()
+  } catch (error) {
+    // Fallback to 'no-git' if git is not available
+  }
+  const timestamp = new Date().toISOString()
+  return `2026TUNG's_${gitHash}_${timestamp}`
+}
 
 // Lấy tất cả page HTML
 const htmlFiles = glob.sync('**/*.html', {
@@ -441,11 +454,15 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, __dirname, '')
   const base = normalizeBasePath(env.VITE_BASE_PATH || '/')
   const outDir = resolveOutDir(env.VITE_OUT_DIR || '')
+  const buildSignature = mode === 'production' ? getBuildSignature() : 'dev-mode'
 
   return {
     base,
     root: 'src/pages',
     publicDir: resolve(__dirname, 'public'),
+    define: {
+      __BUILD_SIGNATURE__: JSON.stringify(buildSignature)
+    },
     plugins: [
       mapSrcRequests(),
       layoutPlugin(), // Chạy TRƯỚC để wrap layout
