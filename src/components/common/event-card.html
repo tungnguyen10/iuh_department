@@ -15,31 +15,31 @@
     <!-- Text Content -->
     <div class="flex-1 flex flex-col justify-between min-w-0">
       <!-- Title - Hidden on hover -->
-      <h3 class="font-roboto font-medium text-base sm:text-lg leading-normal text-gray-900 truncate ">
+      <h3 class="font-roboto font-medium text-base sm:text-lg leading-tight text-gray-900 line-clamp-2">
         {{title}}
       </h3>
 
       <!-- Badges -->
-      <div class="flex items-start justify-between gap-2 sm:gap-2.5 flex-wrap">
+      <div class="flex items-start justify-between gap-2 sm:gap-2.5 ">
         <!-- Left badges column -->
-        <div class="flex flex-col gap-2 sm:gap-2.5">
+        <div class="flex flex-col gap-2 sm:gap-2.5 min-w-0">
           <!-- Type Badge (filled) -->
           <div class="inline-flex items-center gap-1 px-1.5 py-0.5 bg-primary-dark-blue border border-primary-dark-blue rounded">
             <img src="{{typeIcon}}" alt="" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0 text-primary-white" />
-            <span class="font-roboto font-medium text-xs sm:text-sm leading-normal text-white">{{typeBadge}}</span>
+            <span class="font-roboto font-medium text-xs sm:text-sm leading-normal text-white truncate">{{typeBadge}}</span>
           </div>
 
           <!-- Location Badge (outline) -->
           <div class="inline-flex items-center gap-1 px-1.5 py-0.5 bg-white group-hover:bg-secondary-blue-light border border-primary-dark-blue rounded transition-colors duration-300">
             <img src="{{locationIcon}}" alt="" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0 text-primary-dark-blue" />
-            <span class="font-roboto font-medium text-xs sm:text-sm leading-normal text-primary-dark-blue">{{locationBadge}}</span>
+            <span class="font-roboto font-medium text-xs sm:text-sm leading-normal text-primary-dark-blue truncate">{{locationBadge}}</span>
           </div>
         </div>
 
         <!-- Right badge (Date) -->
-        <div class="inline-flex items-center gap-1 px-1.5 py-0.5 bg-white group-hover:bg-secondary-blue-light border border-primary-dark-blue rounded transition-colors duration-300">
+        <div class="inline-flex items-center gap-1 px-1.5 py-0.5 bg-white group-hover:bg-secondary-blue-light border border-primary-dark-blue rounded transition-colors duration-300 shrink-0">
           <img src="{{dateIcon}}" alt="" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0 text-primary-dark-blue" />
-          <span class="font-roboto font-medium text-xs sm:text-sm leading-normal text-primary-dark-blue">{{dateBadge}}</span>
+          <span class="font-roboto font-medium text-xs sm:text-sm leading-normal text-primary-dark-blue whitespace-nowrap">{{dateBadge}}</span>
         </div>
       </div>
     </div>
