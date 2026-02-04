@@ -1,12 +1,18 @@
 {
   "name": "lab-iuh",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "version:patch": "yarn version patch",
+    "version:minor": "yarn version minor",
+    "version:major": "yarn version major",
+    "build:patch": "yarn version:patch && yarn build",
+    "build:minor": "yarn version:minor && yarn build",
+    "build:major": "yarn version:major && yarn build"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
@@ -19,6 +25,7 @@
     "vite-plugin-svgo": "^2.0.0"
   },
   "dependencies": {
+    "firebase": "^12.8.0",
     "swiper": "^11.1.15"
   }
 }

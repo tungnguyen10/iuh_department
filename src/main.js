@@ -41,9 +41,32 @@ if (import.meta.env.DEV) {
   window.setCurrentLang = setCurrentLang
 }
 
-// Expose build signature (production only)
+// Expose build info globally
 if (typeof __BUILD_SIGNATURE__ !== 'undefined') {
   window.BUILD_SIGNATURE = __BUILD_SIGNATURE__
+}
+if (typeof __APP_VERSION__ !== 'undefined') {
+  window.APP_VERSION = __APP_VERSION__
+}
+if (typeof __BUILD_MODE__ !== 'undefined') {
+  window.BUILD_MODE = __BUILD_MODE__
+}
+
+// Display version banner in console
+const displayVersionBanner = () => {
+  const version = typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : 'dev'
+  const mode = typeof __BUILD_MODE__ !== 'undefined' ? __BUILD_MODE__ : 'development'
+  
+  const bannerStyle = 'background: linear-gradient(135deg, #153898 0%, #1e4bb8 100%); color: #F9B200; padding: 8px 16px; border-radius: 4px; font-weight: bold; font-size: 13px;'
+  
+  console.log('%c🎓 IUH | Version: ' + version + ' | Mode: ' + mode, bannerStyle)
+}
+
+// Call banner after DOM loads
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', displayVersionBanner)
+} else {
+  displayVersionBanner()
 }
 
 // Khởi tạo tất cả components khi DOM ready
@@ -74,7 +97,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     rootMargin: '0px 0px -50px 0px',  // Trigger 50px before entering viewport
     once: true                // Animate only once
   })
-  
+  await delay(300)
   // 7. Hide loading và dispatch events
   loadingManager.hide()
   document.dispatchEvent(new Event('components-loaded'))
@@ -130,7 +153,7 @@ async function initComponentsOnDemand() {
   }
 
   // Partners Canvas
-  if (document.querySelector('#partners-canvas')) {
+  if (document.querySelector('.partners-canvas')) {
     const { initPartnersCanvas } = await import('./components/partners/partners.js')
     initPartnersCanvas()
   }

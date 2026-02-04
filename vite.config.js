@@ -475,13 +475,19 @@ export default defineConfig(({ mode }) => {
   const base = normalizeBasePath(env.VITE_BASE_PATH || '/')
   const outDir = resolveOutDir(env.VITE_OUT_DIR || '')
   const buildSignature = mode === 'production' ? getBuildSignature() : 'dev-mode'
+  
+  // Read version from package.json
+  const pkg = JSON.parse(readFileSync(resolve(__dirname, 'package.json'), 'utf-8'))
+  const appVersion = pkg.version || '0.0.0'
 
   return {
     base,
     root: 'src/pages',
     publicDir: resolve(__dirname, 'public'),
     define: {
-      __BUILD_SIGNATURE__: JSON.stringify(buildSignature)
+      __BUILD_SIGNATURE__: JSON.stringify(buildSignature),
+      __APP_VERSION__: JSON.stringify(appVersion),
+      __BUILD_MODE__: JSON.stringify(mode)
     },
     plugins: [
       mapSrcRequests(),

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
+
   <!-- Primary Meta Tags -->
   <title>{{title}} | IUH - Đại học Công nghiệp TP.HCM</title>
   <meta name="title" content="{{title}} | IUH - Đại học Công nghiệp TP.HCM">
@@ -14,7 +15,7 @@
   <meta name="robots" content="index, follow">
   <meta name="language" content="Vietnamese">
   <meta name="revisit-after" content="7 days">
-  
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{url}}">
@@ -23,53 +24,54 @@
   <meta property="og:image" content="{{ogImage}}">
   <meta property="og:locale" content="vi_VN">
   <meta property="og:site_name" content="IUH - Đại học Công nghiệp TP.HCM">
-  
+
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="{{url}}">
   <meta name="twitter:title" content="{{title}} | IUH - Đại học Công nghiệp TP.HCM">
   <meta name="twitter:description" content="{{description}}">
   <meta name="twitter:image" content="{{ogImage}}">
-  
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-32x32.png" sizes="32x32">
   <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-16x16.png" sizes="16x16">
   <link rel="apple-touch-icon" href="/assets/images/favicons/apple-touch-icon.png">
   <link rel="manifest" href="/assets/images/favicons/site.webmanifest">
-  
+
   <!-- Canonical URL -->
   <link rel="canonical" href="{{url}}">
-  
+
   <!-- Theme Color & Mobile Web App -->
   <meta name="theme-color" content="#153898">
-  <meta name="msapplication-TileColor" content="#153898">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  
+
   <script type="module" src="../main.js"></script>
   {{pageScript}}
 </head>
-<body class="flex flex-col min-h-screen loading-active" >
-  
+
+<body class="flex flex-col min-h-screen loading-active">
+
   <!-- Global Loading Overlay - Render FIRST -->
   {{loadingComponent}}
-  
+
   <!-- Header Component -->
   <div data-include="../components/header/header.html" data-js="../components/header/header.js"></div>
-  
+
   <!-- Main Content -->
   <main class="flex-1">
     {{content}}
   </main>
   <!-- Footer Component -->
   <div data-include="../components/footer/footer.html" data-js="../components/footer/footer.js"></div>
-  
+
   <!-- Search Modal Component (Global) -->
   <div data-include="../components/search/search-modal-full.html"></div>
-  
+
   <!-- Scroll to Top Button -->
-  <button id="scrollToTop" 
-    class="size-12 fixed bottom-4 right-2 md:bottom-6 md:right-6 z-50 bg-primary-dark-blue hover:bg-primary-yellow text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center opacity-0 invisible" 
+  <button id="scrollToTop"
+    class="size-12 fixed bottom-4 right-2 md:bottom-6 md:right-6 z-50 bg-primary-dark-blue hover:bg-primary-yellow text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center opacity-0 invisible"
     aria-label="Scroll to top">
     <img src="/assets/svgs/icon-arrow-up.svg" alt="" class="size-5 md:size-6">
   </button>
@@ -78,73 +80,87 @@
   <div class="fixed bottom-4 left-4 md:bottom-8 md:left-8 z-50">
     <div class="relative">
       <!-- Toggle Button -->
-      <button id="socialToggle" 
-        class="w-12 h-12 bg-primary-dark-blue hover:bg-primary-yellow text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center relative" 
+      <button id="socialToggle"
+        class="w-12 h-12 bg-primary-dark-blue hover:bg-primary-yellow text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center relative"
         aria-label="Show Social Links">
         <img src="/assets/svgs/icon-help-circle.svg" alt="" class="w-6 h-6 relative z-[3]">
       </button>
 
       <!-- Social Icons List -->
-      <div id="socialList" class="absolute bottom-full left-0 mb-4 space-y-3 opacity-0 invisible transition-all duration-300">
+      <div id="socialList"
+        class="absolute bottom-full left-0 mb-4 space-y-3 opacity-0 invisible transition-all duration-300">
         <!-- Facebook -->
         <div class="group relative">
-          <a href="https://www.facebook.com/iuh.official" target="_blank" rel="noopener noreferrer" 
+          <a href="https://www.facebook.com/iuh.official" target="_blank" rel="noopener noreferrer"
             class="social-icon w-12 h-12 flex items-center justify-center bg-[#1877F2] text-white rounded-full shadow-lg transition-all duration-300 hover:scale-110 -translate-y-4 opacity-0">
             <img src="/assets/svgs/icon-facebook.svg" alt="" class="w-5 h-5">
           </a>
           <div class="absolute left-full ml-3 top-1/2 -translate-y-1/2 pointer-events-none">
-            <div class="relative bg-[#1877F2] px-3 py-1.5 rounded-lg shadow-lg transform -translate-x-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-x-0 transition-all duration-300">
+            <div
+              class="relative bg-[#1877F2] px-3 py-1.5 rounded-lg shadow-lg transform -translate-x-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-x-0 transition-all duration-300">
               <span class="block text-sm font-medium text-white whitespace-nowrap">Facebook</span>
-              <div class="absolute left-0 top-1/2 -translate-x-[6px] -translate-y-1/2 transform rotate-45 w-3 h-3 bg-[#1877F2]"></div>
+              <div
+                class="absolute left-0 top-1/2 -translate-x-[6px] -translate-y-1/2 transform rotate-45 w-3 h-3 bg-[#1877F2]">
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Youtube -->
         <div class="group relative">
-          <a href="https://www.youtube.com/@iuh.official" target="_blank" rel="noopener noreferrer" 
+          <a href="https://www.youtube.com/@iuh.official" target="_blank" rel="noopener noreferrer"
             class="social-icon w-12 h-12 flex items-center justify-center bg-[#FF0000] text-white rounded-full shadow-lg transition-all duration-300 hover:scale-110 -translate-y-4 opacity-0">
             <img src="/assets/svgs/icon-youtube.svg" alt="" class="w-5 h-5">
           </a>
           <div class="absolute left-full ml-3 top-1/2 -translate-y-1/2 pointer-events-none">
-            <div class="relative bg-[#FF0000] px-3 py-1.5 rounded-lg shadow-lg transform -translate-x-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-x-0 transition-all duration-300">
+            <div
+              class="relative bg-[#FF0000] px-3 py-1.5 rounded-lg shadow-lg transform -translate-x-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-x-0 transition-all duration-300">
               <span class="block text-sm font-medium text-white whitespace-nowrap">Youtube</span>
-              <div class="absolute left-0 top-1/2 -translate-x-[6px] -translate-y-1/2 transform rotate-45 w-3 h-3 bg-[#FF0000]"></div>
+              <div
+                class="absolute left-0 top-1/2 -translate-x-[6px] -translate-y-1/2 transform rotate-45 w-3 h-3 bg-[#FF0000]">
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Instagram -->
         <div class="group relative">
-          <a href="https://www.instagram.com/iuh.official" target="_blank" rel="noopener noreferrer" 
+          <a href="https://www.instagram.com/iuh.official" target="_blank" rel="noopener noreferrer"
             class="social-icon w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] text-white rounded-full shadow-lg transition-all duration-300 hover:scale-110 -translate-y-4 opacity-0">
             <img src="/assets/svgs/icon-instagram.svg" alt="" class="w-5 h-5">
           </a>
           <div class="absolute left-full ml-3 top-1/2 -translate-y-1/2 pointer-events-none">
-            <div class="relative bg-gradient-to-r from-[#833AB4] to-[#FD1D1D] px-3 py-1.5 rounded-lg shadow-lg transform -translate-x-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-x-0 transition-all duration-300">
+            <div
+              class="relative bg-gradient-to-r from-[#833AB4] to-[#FD1D1D] px-3 py-1.5 rounded-lg shadow-lg transform -translate-x-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-x-0 transition-all duration-300">
               <span class="block text-sm font-medium text-white whitespace-nowrap">Instagram</span>
-              <div class="absolute left-0 top-1/2 -translate-x-[6px] -translate-y-1/2 transform rotate-45 w-3 h-3 bg-[#833AB4]"></div>
+              <div
+                class="absolute left-0 top-1/2 -translate-x-[6px] -translate-y-1/2 transform rotate-45 w-3 h-3 bg-[#833AB4]">
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Phone -->
         <div class="group relative">
-          <a href="tel:+842838940390" 
+          <a href="tel:+842838940390"
             class="social-icon w-12 h-12 flex items-center justify-center bg-[#25D366] text-white rounded-full shadow-lg transition-all duration-300 hover:scale-110 -translate-y-4 opacity-0">
             <img src="/assets/svgs/icon-phone.svg" alt="" class="w-5 h-5">
           </a>
           <div class="absolute left-full ml-3 top-1/2 -translate-y-1/2 pointer-events-none">
-            <div class="relative bg-[#25D366] px-3 py-1.5 rounded-lg shadow-lg transform -translate-x-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-x-0 transition-all duration-300">
+            <div
+              class="relative bg-[#25D366] px-3 py-1.5 rounded-lg shadow-lg transform -translate-x-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-x-0 transition-all duration-300">
               <span class="block text-sm font-medium text-white whitespace-nowrap">0283 8940 390</span>
-              <div class="absolute left-0 top-1/2 -translate-x-[6px] -translate-y-1/2 transform rotate-45 w-3 h-3 bg-[#25D366]"></div>
+              <div
+                class="absolute left-0 top-1/2 -translate-x-[6px] -translate-y-1/2 transform rotate-45 w-3 h-3 bg-[#25D366]">
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
+
   {{pageScript}}
 </body>
+
 </html>
