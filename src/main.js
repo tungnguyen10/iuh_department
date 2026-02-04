@@ -12,6 +12,7 @@ import { initSearchModal } from './components/search/search-modal.js'
 import { initI18n, t, getCurrentLang, setCurrentLang } from './js/i18n.js'
 import { initTabs } from './components/tabs/tabs.js'
 import './js/global-widgets.js'
+import './js/module-manager.js' // Module toggle dev tool
 
 // Swiper CSS (imported once for all carousels)
 import 'swiper/css'
@@ -57,12 +58,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   // 3. Load i18n messages (async)
   await initI18n()
   
-  await delay(500) // Test delay
-  
   // 4. Dynamic init components based on DOM presence (performance optimized)
   await initComponentsOnDemand()
   
-  await delay(500) // Test delay
   await inlineSVGs()
   
   // 5. Initialize global features

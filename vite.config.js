@@ -116,7 +116,7 @@ const getLayoutTemplate = () => {
   return layoutCache
 }
 
-const layoutPlugin = () => ({
+const layoutPlugin = (base) => ({
   name: 'layout-plugin',
   transformIndexHtml: {
     order: 'pre', // Chạy TRƯỚC để wrap layout trước khi inject components
@@ -126,6 +126,7 @@ const layoutPlugin = () => ({
       const descMatch = html.match(/<!--\s*LAYOUT:\s*description="([^"]+)"\s*-->/)
       const keywordsMatch = html.match(/<!--\s*LAYOUT:\s*keywords="([^"]+)"\s*-->/)
       const ogImageMatch = html.match(/<!--\s*LAYOUT:\s*ogImage="([^"]+)"\s*-->/)
+      const urlMatch = html.match(/<!--\s*LAYOUT:\s*url="([^"]+)"\s*-->/)
       const scriptMatch = html.match(/<!--\s*LAYOUT:\s*script="([^"]+)"\s*-->/)
       
       // Nếu không có marker LAYOUT thì skip (giữ nguyên HTML - full page)
@@ -144,20 +145,25 @@ const layoutPlugin = () => ({
         .replace(/<!--\s*LAYOUT:[^>]+-->\s*/g, '')
         .trim()
       
+      // Helper: prepend base path nếu cần
+      const withBase = (path) => {
+        if (!path || path.startsWith('http') || path.startsWith('//')) return path
+        const normalized = path.startsWith('/') ? path : `/${path}`
+        return base === '/' ? normalized : `${base}${normalized}`.replace(/\/+/g, '/')
+      }
+      
       // Extract values với defaults
       const title = titleMatch[1]
       const description = descMatch?.[1] || 'Static website với Vite + Vanilla JS + TailwindCSS'
       const keywords = keywordsMatch?.[1] || 'vite, vanilla js, tailwindcss, static site'
-      const ogImage = ogImageMatch?.[1] || '/assets/image/og-default.png'
+      const ogImage = withBase(ogImageMatch?.[1] || '/assets/images/default.jpg')
+      const url = urlMatch?.[1] || withBase(path.replace(/\.html$/, ''))
       const pageScript = scriptMatch?.[1] 
         ? `<!-- Page-specific JS -->\n  <script type="module" src="${scriptMatch[1]}"></script>`
         : ''
       
-      // Tạo URL từ path (sẽ được thay thế bởi base path trong production)
-      const url = path.replace(/\.html$/, '')
-      
-      // Inject vào layout
-      return layout
+      // Inject vào layout với base path cho các assets
+      let result = layout
         .replace(/\{\{title\}\}/g, title)
         .replace(/\{\{description\}\}/g, description)
         .replace(/\{\{keywords\}\}/g, keywords)
@@ -166,6 +172,20 @@ const layoutPlugin = () => ({
         .replace('{{loadingComponent}}', loadingComponent)
         .replace('{{content}}', content)
         .replace(/\{\{pageScript\}\}/g, pageScript)
+      
+      // Apply base path cho favicon và assets trong layout
+      result = result
+        .replace(/href="\//g, (match) => {
+          return `href="${base === '/' ? '/' : base}`
+        })
+        .replace(/src="\//g, (match) => {
+          return `src="${base === '/' ? '/' : base}`
+        })
+        .replace(/content="\//g, (match) => {
+          return `content="${base === '/' ? '/' : base}`
+        })
+      
+      return result
     }
   }
 })
@@ -465,7 +485,7 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       mapSrcRequests(),
-      layoutPlugin(), // Chạy TRƯỚC để wrap layout
+      layoutPlugin(base), // Chạy TRƯỚC để wrap layout
       transformDataInclude(base), // Chạy SAU để inject components vào layout
       copyPublicDataPlugin(outDir), // Copy public/data to dist/data
       copyImagesPlugin(outDir), // Copy src/assets/images to dist/assets/images
