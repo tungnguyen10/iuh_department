@@ -71,6 +71,33 @@ yarn build
 
 Output: `dist_iuh/` folder (configured via VITE_OUT_DIR)
 
+#### Build with Auto Version Bump
+
+```bash
+# Tăng PATCH version (0.0.1 → 0.0.2) và build
+yarn build:patch
+
+# Tăng MINOR version (0.1.0 → 0.2.0) và build
+yarn build:minor
+
+# Tăng MAJOR version (1.0.0 → 2.0.0) và build
+yarn build:major
+```
+
+Version được lưu trong `package.json` và hiển thị trong console:
+```
+🎓 IUH | Version: 0.0.1 | Mode: development
+```
+
+#### Manual Version Management
+
+```bash
+# Chỉ bump version không build
+yarn version:patch
+yarn version:minor
+yarn version:major
+```
+
 ### 4. Preview Production Build
 
 ```bash
@@ -218,6 +245,116 @@ document.addEventListener('components-loaded', () => {
 - **TailwindCSS** - Utility-first CSS framework
 - **PostCSS** - CSS processing
 - **Swiper** - Touch slider for carousels
+
+## 🚀 Deployment
+
+### Deploy to Firebase Hosting
+
+```bash
+# Build production
+yarn build
+
+# Deploy to Firebase
+firebase deploy --only hosting
+
+# Deploy specific site
+firebase deploy --only hosting:iuh-department
+```
+
+### Firebase Configuration
+
+```json
+{
+  "hosting": {
+    "public": "dist_iuh",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}
+```
+
+### Build Output Structure
+
+```
+dist_iuh/
+├── index.html
+├── about.html
+├── leadership.html
+├── news.html
+├── assets/
+│   ├── css/
+│   │   ├── main-[hash].css      # Main styles
+│   │   └── vendor-[hash].css    # Vendor styles
+│   ├── js/
+│   │   ├── main-[hash].js       # Core functionality
+│   │   ├── vendor-[hash].js     # Third-party libs
+│   │   └── [component]-[hash].js # Component bundles
+│   ├── images/                   # Optimized images
+│   ├── fonts/                    # Web fonts
+│   └── svgs/                     # SVG icons
+└── data/
+    ├── messages-en.json
+    ├── messages-vi.json
+    └── search-data.json
+```
+
+### Build Features
+
+- **Code Splitting**: Main, vendor, và component bundles
+- **Asset Optimization**: Minified CSS/JS, optimized images
+- **Cache Strategy**: Hash-based filenames cho long-term caching
+- **Build Metadata**: Inject version, mode, build signature
+
+```javascript
+// Available at runtime
+__APP_VERSION__      // từ package.json
+__BUILD_MODE__       // 'production' | 'development'
+__BUILD_SIGNATURE__  // Git hash + timestamp
+```
+
+## 🐛 Troubleshooting
+
+### Build Fails
+
+```bash
+# Clear và reinstall dependencies
+rm -rf node_modules
+yarn install
+
+# Clear Vite cache
+rm -rf node_modules/.vite
+```
+
+### Version Not Updated
+
+```bash
+# Check current version
+cat package.json | grep version
+
+# Manual version update
+yarn version <new-version>
+```
+
+### Assets Not Found After Build
+
+- Check paths sử dụng `/assets/...` (absolute)
+- Verify files tồn tại trong `src/assets/` hoặc `public/`
+- Check `vite.config.js` copy plugins
+
+### Performance Optimization
+
+```bash
+# Analyze bundle size
+yarn build
+
+# Check output trong terminal
+# Hoặc add rollup-plugin-visualizer
+```
+
+**Tips:**
+- Use WebP images
+- Lazy load components khi có thể
+- Optimize images trước khi add vào project
+- Monitor bundle sizes trong build output
 
 ## ✨ Key Features
 
