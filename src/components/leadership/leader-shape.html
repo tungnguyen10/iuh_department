@@ -4,13 +4,13 @@
         <span class="sr-only">{{name}}</span>
     </a>
     <!-- Background -->
-    <div class="absolute inset-0 z-0 bg-gradient-to-br from-primary-dark-blue via-blue-900 to-primary-dark-blue"></div>
+    <!-- <div class="absolute inset-0 z-0 bg-gradient-to-br from-primary-dark-blue via-blue-900 to-primary-dark-blue"></div> -->
     <div
-        class="relative z-10 h-full p-4 flex flex-wrap items-start gap-3 backdrop-blur-md bg-white/10 border border-white/20 group-hover:border-primary-yellow/50 group-hover:bg-white/15 transition-all duration-500">
+        class="relative z-10 h-full p-4 flex flex-wrap items-start gap-3 backdrop-blur-md bg-primary-white/10 border border-primary-white/20 group-hover:border-primary-yellow/50 group-hover:bg-primary-white/15 transition-all duration-500">
         <!-- Header with Avatar Circle -->
         <div class="relative flex-shrink-0 group-hover:scale-110 transition-transform duration-500">
             <div data-photo-src="{{image}}"
-                class="avatar-teacher w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center text-primary-white ring-4 ring-white/30 group-hover:ring-primary-yellow/50 transition-all duration-500 backdrop-blur-sm overflow-hidden">
+                class="avatar-teacher w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center text-primary-white ring-4 ring-primary-white/30 group-hover:ring-primary-yellow/50 transition-all duration-500 backdrop-blur-sm overflow-hidden">
             </div>
             <div
                 class="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-primary-yellow flex items-center justify-center shadow-lg shadow-primary-yellow/30 group-hover:shadow-primary-yellow/60 transition-all duration-500">
@@ -19,7 +19,7 @@
         </div>
 
         <div class="flex-1 min-w-0">
-            <h3 class="font-inter font-semibold text-lg md:text-2xl  text-white mb-1.5 md:mb-2 drop-shadow-lg group-hover:text-primary-yellow transition-colors duration-300"
+            <h3 class="font-inter font-semibold text-lg md:text-2xl  text-primary-white mb-1.5 md:mb-2 drop-shadow-lg group-hover:text-primary-yellow transition-colors duration-300"
                 data-leader-name>
                 {{name}}
             </h3>
@@ -30,7 +30,7 @@
                 </span>
             </div>
             <a href="mailto:{{email}}"
-                class="inline-flex items-center gap-1 md:gap-1.5 text-xs md:text-sm text-white/90 hover:text-primary-yellow transition-colors ">
+                class="inline-flex items-center gap-1 md:gap-1.5 text-xs md:text-sm text-primary-white/90 hover:text-primary-yellow transition-colors ">
                 <img src="/assets/svgs/icon-mail-outline.svg" alt="Email"
                     class="w-3.5 h-3.5 md:w-4 md:h-4 brightness-0 invert" />
                 <span class="drop-shadow">{{email}}</span>
