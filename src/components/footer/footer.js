@@ -4,6 +4,12 @@
  */
 
 export function init() {
+  // Update copyright year dynamically
+  const yearElement = document.getElementById('footer-year');
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+
   class FooterAccordion {
     constructor(containerSelector = '[data-footer-accordion]') {
       this.container = document.querySelector(containerSelector);
