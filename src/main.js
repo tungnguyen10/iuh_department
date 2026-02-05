@@ -188,6 +188,12 @@ async function initComponentsOnDemand() {
     initAllNewsCarousels()
   }
 
+  // Major Quiz (majors page)
+  if (document.querySelector('#majorQuiz')) {
+    const { initMajorQuiz } = await import('./components/major/major-quiz.js')
+    window.majorQuizInstance = initMajorQuiz()
+  }
+
   // Header & Footer are always present, so load them
   const { init: initHeader } = await import('./components/header/header.js')
   const { init: initFooter } = await import('./components/footer/footer.js')

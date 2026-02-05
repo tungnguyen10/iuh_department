@@ -1,0 +1,404 @@
+<!-- LAYOUT: title="Sinh viên - Khoa Khoa học Sức khỏe" -->
+<!-- LAYOUT: description="Thông tin dành cho sinh viên: lịch học, học bổng, biểu mẫu, hoạt động ngoại khóa và câu lạc bộ tại Khoa Khoa học Sức khỏe - IUH." -->
+<!-- LAYOUT: keywords="sinh viên IUH, học bổng, lịch học, biểu mẫu, câu lạc bộ, hoạt động sinh viên" -->
+<!-- LAYOUT: url="https://iuh.edu.vn/students" -->
+<!-- LAYOUT: ogImage="/assets/images/default.jpg" -->
+
+<!-- Breadcrumb -->
+<div data-include="@components/common/breadcrumb.html" 
+  data-parent-page1="Trang chủ" 
+  data-parent-link1="/"
+  data-current-page="Sinh viên">
+</div>
+
+<!-- Hero Section -->
+<section class="relative w-full py-16 md:py-20 overflow-hidden">
+  <!-- Background Image + Overlay -->
+  <div class="absolute inset-0 -z-10">
+    <img src="/assets/images/bg-major.jpg" alt="" class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-br from-primary-dark-blue/90 to-secondary-blue/80"></div>
+  </div>
+
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 bg-primary-yellow/20 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
+        <img src="/assets/svgs/icon-graduation-cap.svg" alt="" class="w-6 h-6 brightness-0 invert" />
+        <span class="text-primary-yellow font-semibold text-sm">Dành cho sinh viên</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-inter font-bold text-white mb-4 md:mb-5">
+        Thông tin Sinh viên
+      </h1>
+
+      <!-- Description -->
+      <p class="text-base md:text-lg text-white/90 leading-relaxed mb-6 md:mb-8 max-w-3xl mx-auto">
+        Tất cả thông tin cần thiết cho sinh viên: lịch học, học bổng, biểu mẫu và hoạt động ngoại khóa
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="container mx-auto px-4 py-8 md:py-16 flex flex-col lg:flex-row gap-12 md:gap-8">
+  <!-- Main Content -->
+  <div class="flex-1 w-full lg:w-9/12 flex flex-col gap-6 md:gap-10">
+    <!-- Quick Links -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <!-- Link 1: Lịch học -->
+      <a href="#schedule" class="group bg-gradient-to-br from-secondary-blue-light to-white p-4 md:p-6 rounded-xl border border-secondary-blue/30 hover:border-primary-dark-blue hover:shadow-lg transition-all duration-300">
+        <div class="flex flex-col items-center text-center gap-3">
+          <div class="w-12 h-12 rounded-lg bg-primary-dark-blue flex items-center justify-center group-hover:scale-110 transition-transform">
+            <img src="/assets/svgs/icon-calendar-check.svg" alt="" class="w-6 h-6 brightness-0 invert" />
+          </div>
+          <span class="font-semibold text-gray-800 text-sm">Lịch học - Thi</span>
+        </div>
+      </a>
+
+      <!-- Link 2: Học bổng -->
+      <a href="#scholarship" class="group bg-gradient-to-br from-secondary-blue-light to-white p-4 md:p-6 rounded-xl border border-secondary-blue/30 hover:border-primary-dark-blue hover:shadow-lg transition-all duration-300">
+        <div class="flex flex-col items-center text-center gap-3">
+          <div class="w-12 h-12 rounded-lg bg-primary-dark-blue flex items-center justify-center group-hover:scale-110 transition-transform">
+            <img src="/assets/svgs/icon-money.svg" alt="" class="w-6 h-6 brightness-0 invert" />
+          </div>
+          <span class="font-semibold text-gray-800 text-sm">Học bổng</span>
+        </div>
+      </a>
+
+      <!-- Link 3: Biểu mẫu -->
+      <a href="#forms" class="group bg-gradient-to-br from-secondary-blue-light to-white p-4 md:p-6 rounded-xl border border-secondary-blue/30 hover:border-primary-dark-blue hover:shadow-lg transition-all duration-300">
+        <div class="flex flex-col items-center text-center gap-3">
+          <div class="w-12 h-12 rounded-lg bg-primary-dark-blue flex items-center justify-center group-hover:scale-110 transition-transform">
+            <img src="/assets/svgs/icon-article.svg" alt="" class="w-6 h-6 brightness-0 invert" />
+          </div>
+          <span class="font-semibold text-gray-800 text-sm">Biểu mẫu</span>
+        </div>
+      </a>
+
+      <!-- Link 4: Hoạt động -->
+      <a href="#activities" class="group bg-gradient-to-br from-secondary-blue-light to-white p-4 md:p-6 rounded-xl border border-secondary-blue/30 hover:border-primary-dark-blue hover:shadow-lg transition-all duration-300">
+        <div class="flex flex-col items-center text-center gap-3">
+          <div class="w-12 h-12 rounded-lg bg-primary-dark-blue flex items-center justify-center group-hover:scale-110 transition-transform">
+            <img src="/assets/svgs/icon-global-education.svg" alt="" class="w-6 h-6 brightness-0 invert" />
+          </div>
+          <span class="font-semibold text-gray-800 text-sm">Hoạt động</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Lịch học - Thi -->
+    <div id="schedule" class="scroll-mt-32">
+      <div data-include="@components/common/section-title.html" 
+        data-title="Lịch học - Lịch thi" 
+        data-description="Tra cứu lịch học, lịch thi và kế hoạch học tập trong học kỳ"
+        data-title-class="text-title" 
+        data-class="flex flex-col gap-3 mb-6">
+      </div>
+
+      <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+        <div class="p-4 md:p-8">
+          <div class="space-y-4">
+            <!-- Schedule Item 1 -->
+            <div class="flex items-start gap-4 p-4 md:p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+              <div class="w-16 h-16 rounded-lg bg-primary-dark-blue/10 flex flex-col items-center justify-center shrink-0">
+                <span class="text-2xl font-bold text-primary-dark-blue">15</span>
+                <span class="text-xs text-gray-600">Tháng 2</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-bold text-gray-800 mb-1">Thi giữa kỳ - Học kỳ 2 (2024-2025)</h3>
+                <p class="text-sm text-gray-600 mb-2">Thời gian: 15/02 - 20/02/2025</p>
+                <a href="#" class="text-sm text-primary-dark-blue hover:underline font-medium">Xem lịch chi tiết →</a>
+              </div>
+            </div>
+
+            <!-- Schedule Item 2 -->
+            <div class="flex items-start gap-4 p-4 md:p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+              <div class="w-16 h-16 rounded-lg bg-primary-dark-blue/10 flex flex-col items-center justify-center shrink-0">
+                <span class="text-2xl font-bold text-primary-dark-blue">01</span>
+                <span class="text-xs text-gray-600">Tháng 3</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-bold text-gray-800 mb-1">Đăng ký môn học Học kỳ 3</h3>
+                <p class="text-sm text-gray-600 mb-2">Thời gian: 01/03 - 05/03/2025</p>
+                <a href="#" class="text-sm text-primary-dark-blue hover:underline font-medium">Hướng dẫn đăng ký →</a>
+              </div>
+            </div>
+
+            <!-- Schedule Item 3 -->
+            <div class="flex items-start gap-4 p-4 md:p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+              <div class="w-16 h-16 rounded-lg bg-primary-dark-blue/10 flex flex-col items-center justify-center shrink-0">
+                <span class="text-2xl font-bold text-primary-dark-blue">10</span>
+                <span class="text-xs text-gray-600">Tháng 4</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-bold text-gray-800 mb-1">Thi cuối kỳ - Học kỳ 2 (2024-2025)</h3>
+                <p class="text-sm text-gray-600 mb-2">Thời gian: 10/04 - 25/04/2025</p>
+                <a href="#" class="text-sm text-primary-dark-blue hover:underline font-medium">Xem lịch chi tiết →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-6 border-t border-gray-200">
+            <div data-include="@components/button/button.html" 
+              data-variant="6" 
+              data-url="/schedule.html" 
+              data-text="Xem tất cả lịch học - thi" 
+              data-icon="/assets/svgs/icon-arrow-right.svg"
+              data-class="w-fit">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Học bổng -->
+    <div id="scholarship" class="scroll-mt-32">
+      <div data-include="@components/common/section-title.html" 
+        data-title="Học bổng & Hỗ trợ tài chính" 
+        data-description="Thông tin về các loại học bổng, điều kiện và cách thức đăng ký"
+        data-title-class="text-title" 
+        data-class="flex flex-col gap-3 mb-6">
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Scholarship Card 1 -->
+        <div class="bg-gradient-to-br from-primary-yellow/10 to-white p-4 md:p-6 rounded-xl border border-primary-yellow/30">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-12 h-12 rounded-lg bg-primary-yellow flex items-center justify-center shrink-0">
+              <img src="/assets/svgs/icon-award.svg" alt="" class="w-6 h-6 brightness-0" />
+            </div>
+            <div>
+              <h3 class="font-bold text-lg text-gray-800 mb-1">Học bổng Khuyến khích học tập</h3>
+              <span class="text-sm text-primary-yellow font-semibold">5-10 triệu/học kỳ</span>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 mb-4">Dành cho sinh viên đạt thành tích xuất sắc trong học tập với GPA từ 3.6 trở lên</p>
+          <ul class="space-y-2 mb-4">
+            <li class="flex items-center gap-2 text-sm text-gray-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary-yellow"></span>
+              <span>GPA ≥ 3.6</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary-yellow"></span>
+              <span>Không có môn dưới điểm C</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary-yellow"></span>
+              <span>Tham gia hoạt động khoa</span>
+            </li>
+          </ul>
+          <a href="#" class="inline-flex items-center gap-2 text-sm text-primary-dark-blue hover:underline font-medium">
+            <span>Xem chi tiết</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Scholarship Card 2 -->
+        <div class="bg-gradient-to-br from-secondary-blue-light to-white p-4 md:p-6 rounded-xl border border-secondary-blue/30">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-12 h-12 rounded-lg bg-primary-dark-blue flex items-center justify-center shrink-0">
+              <img src="/assets/svgs/icon-money.svg" alt="" class="w-6 h-6 brightness-0 invert" />
+            </div>
+            <div>
+              <h3 class="font-bold text-lg text-gray-800 mb-1">Học bổng Hỗ trợ sinh viên</h3>
+              <span class="text-sm text-primary-dark-blue font-semibold">3-5 triệu/học kỳ</span>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 mb-4">Dành cho sinh viên có hoàn cảnh khó khăn, có ý chí vươn lên trong học tập</p>
+          <ul class="space-y-2 mb-4">
+            <li class="flex items-center gap-2 text-sm text-gray-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary-dark-blue"></span>
+              <span>Hoàn cảnh khó khăn có xác nhận</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary-dark-blue"></span>
+              <span>GPA ≥ 2.5</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary-dark-blue"></span>
+              <span>Đạo đức tốt</span>
+            </li>
+          </ul>
+          <a href="#" class="inline-flex items-center gap-2 text-sm text-primary-dark-blue hover:underline font-medium">
+            <span>Xem chi tiết</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Scholarship Card 3 -->
+        <div class="bg-gradient-to-br from-secondary-green/10 to-white p-4 md:p-6 rounded-xl border border-secondary-green/30">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-12 h-12 rounded-lg bg-secondary-green flex items-center justify-center shrink-0">
+              <img src="/assets/svgs/icon-education.svg" alt="" class="w-6 h-6 brightness-0 invert" />
+            </div>
+            <div>
+              <h3 class="font-bold text-lg text-gray-800 mb-1">Học bổng Nghiên cứu khoa học</h3>
+              <span class="text-sm text-secondary-green font-semibold">10-20 triệu/đề tài</span>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 mb-4">Dành cho sinh viên tham gia nghiên cứu khoa học cấp trường và cấp bộ</p>
+          <ul class="space-y-2 mb-4">
+            <li class="flex items-center gap-2 text-sm text-gray-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-secondary-green"></span>
+              <span>Đề tài được duyệt</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-secondary-green"></span>
+              <span>GPA ≥ 3.0</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-secondary-green"></span>
+              <span>Có giảng viên hướng dẫn</span>
+            </li>
+          </ul>
+          <a href="#" class="inline-flex items-center gap-2 text-sm text-primary-dark-blue hover:underline font-medium">
+            <span>Xem chi tiết</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Scholarship Card 4 -->
+        <div class="bg-gradient-to-br from-primary-dark-blue/10 to-white p-4 md:p-6 rounded-xl border border-primary-dark-blue/30">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-12 h-12 rounded-lg bg-primary-dark-blue flex items-center justify-center shrink-0">
+              <img src="/assets/svgs/icon-globe.svg" alt="" class="w-6 h-6 brightness-0 invert" />
+            </div>
+            <div>
+              <h3 class="font-bold text-lg text-gray-800 mb-1">Học bổng Doanh nghiệp</h3>
+              <span class="text-sm text-primary-dark-blue font-semibold">Toàn phần - Bán phần</span>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 mb-4">Học bổng từ các doanh nghiệp đối tác, kèm cơ hội thực tập và làm việc</p>
+          <ul class="space-y-2 mb-4">
+            <li class="flex items-center gap-2 text-sm text-gray-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary-dark-blue"></span>
+              <span>Cam kết làm việc sau tốt nghiệp</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary-dark-blue"></span>
+              <span>GPA ≥ 3.0</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary-dark-blue"></span>
+              <span>Kỹ năng mềm tốt</span>
+            </li>
+          </ul>
+          <a href="#" class="inline-flex items-center gap-2 text-sm text-primary-dark-blue hover:underline font-medium">
+            <span>Xem chi tiết</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Biểu mẫu -->
+    <div id="forms" class="scroll-mt-32">
+      <div data-include="@components/common/section-title.html" 
+        data-title="Biểu mẫu sinh viên" 
+        data-description="Tải xuống các biểu mẫu cần thiết cho quá trình học tập"
+        data-title-class="text-title" 
+        data-class="flex flex-col gap-3 mb-6">
+      </div>
+
+      <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+        <div class="p-4 md:p-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            <!-- Form Item 1 -->
+            <a href="#" download class="flex items-center gap-4 p-4 md:p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors group">
+              <div class="w-10 h-10 rounded-lg bg-primary-dark-blue/10 flex items-center justify-center shrink-0 group-hover:bg-primary-dark-blue/20 transition-colors">
+                <img src="/assets/svgs/icon-article.svg" alt="" class="w-5 h-5" />
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-gray-800 text-sm mb-0.5">Đơn xin nghỉ học</h4>
+                <span class="text-xs text-gray-500">PDF, 120KB</span>
+              </div>
+              <img src="/assets/svgs/icon-download.svg" alt="" class="w-5 h-5 text-gray-400 group-hover:text-primary-dark-blue transition-colors" />
+            </a>
+
+            <!-- Form Item 2 -->
+            <a href="#" download class="flex items-center gap-4 p-4 md:p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors group">
+              <div class="w-10 h-10 rounded-lg bg-primary-dark-blue/10 flex items-center justify-center shrink-0 group-hover:bg-primary-dark-blue/20 transition-colors">
+                <img src="/assets/svgs/icon-article.svg" alt="" class="w-5 h-5" />
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-gray-800 text-sm mb-0.5">Đơn xin bảo lưu kết quả</h4>
+                <span class="text-xs text-gray-500">PDF, 95KB</span>
+              </div>
+              <img src="/assets/svgs/icon-download.svg" alt="" class="w-5 h-5 text-gray-400 group-hover:text-primary-dark-blue transition-colors" />
+            </a>
+
+            <!-- Form Item 3 -->
+            <a href="#" download class="flex items-center gap-4 p-4 md:p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors group">
+              <div class="w-10 h-10 rounded-lg bg-primary-dark-blue/10 flex items-center justify-center shrink-0 group-hover:bg-primary-dark-blue/20 transition-colors">
+                <img src="/assets/svgs/icon-article.svg" alt="" class="w-5 h-5" />
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-gray-800 text-sm mb-0.5">Đơn xin cấp giấy chứng nhận</h4>
+                <span class="text-xs text-gray-500">PDF, 110KB</span>
+              </div>
+              <img src="/assets/svgs/icon-download.svg" alt="" class="w-5 h-5 text-gray-400 group-hover:text-primary-dark-blue transition-colors" />
+            </a>
+
+            <!-- Form Item 4 -->
+            <a href="#" download class="flex items-center gap-4 p-4 md:p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors group">
+              <div class="w-10 h-10 rounded-lg bg-primary-dark-blue/10 flex items-center justify-center shrink-0 group-hover:bg-primary-dark-blue/20 transition-colors">
+                <img src="/assets/svgs/icon-article.svg" alt="" class="w-5 h-5" />
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-gray-800 text-sm mb-0.5">Đơn đăng ký học bổng</h4>
+                <span class="text-xs text-gray-500">PDF, 150KB</span>
+              </div>
+              <img src="/assets/svgs/icon-download.svg" alt="" class="w-5 h-5 text-gray-400 group-hover:text-primary-dark-blue transition-colors" />
+            </a>
+
+            <!-- Form Item 5 -->
+            <a href="#" download class="flex items-center gap-4 p-4 md:p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors group">
+              <div class="w-10 h-10 rounded-lg bg-primary-dark-blue/10 flex items-center justify-center shrink-0 group-hover:bg-primary-dark-blue/20 transition-colors">
+                <img src="/assets/svgs/icon-article.svg" alt="" class="w-5 h-5" />
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-gray-800 text-sm mb-0.5">Giấy xác nhận sinh viên</h4>
+                <span class="text-xs text-gray-500">PDF, 85KB</span>
+              </div>
+              <img src="/assets/svgs/icon-download.svg" alt="" class="w-5 h-5 text-gray-400 group-hover:text-primary-dark-blue transition-colors" />
+            </a>
+
+            <!-- Form Item 6 -->
+            <a href="#" download class="flex items-center gap-4 p-4 md:p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors group">
+              <div class="w-10 h-10 rounded-lg bg-primary-dark-blue/10 flex items-center justify-center shrink-0 group-hover:bg-primary-dark-blue/20 transition-colors">
+                <img src="/assets/svgs/icon-article.svg" alt="" class="w-5 h-5" />
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-gray-800 text-sm mb-0.5">Đơn đăng ký thực tập</h4>
+                <span class="text-xs text-gray-500">PDF, 130KB</span>
+              </div>
+              <img src="/assets/svgs/icon-download.svg" alt="" class="w-5 h-5 text-gray-400 group-hover:text-primary-dark-blue transition-colors" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hoạt động & Câu lạc bộ -->
+    <div id="activities" class="scroll-mt-32">
+      <div data-include="@components/news/news-carousel.html" data-title="Hoạt động nổi bật & Câu lạc bộ"></div>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="w-full lg:w-3/12 shrink-0 flex flex-col gap-6 md:gap-8">
+    <div data-include="@components/sidebar/news.html" data-class="w-full"></div>
+    <div data-include="@components/sidebar/announcements.html" data-class="w-full"></div>
+    <div data-include="@components/sidebar/videos.html" data-class="w-full"></div>
+  </div>
+</section>
+
+<div data-include="@components/partners/index.html"></div>

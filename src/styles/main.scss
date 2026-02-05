@@ -7,6 +7,10 @@
 
 /* Custom styles */
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply antialiased font-sans;
   }
