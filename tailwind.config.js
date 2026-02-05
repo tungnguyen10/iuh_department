@@ -19,10 +19,11 @@ export default {
       "3xl": "1536px",
     },
     container: {
+      center: true,
       screens: {
-        sm: "640px",
-        md: "768px",
-        lg: "1024px",
+        sm: "100%",
+        md: "100%",
+        lg: "100%",
         xl: "1280px",
         "2xl": "1536px",
       },
