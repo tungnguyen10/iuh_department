@@ -63,7 +63,7 @@ export function initMajorSwiper() {
     },
     breakpoints: {
       768: {
-        slidesPerView: 2,
+        slidesPerView: 2.1,
       }
     }
   });

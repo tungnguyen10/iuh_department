@@ -37,6 +37,32 @@
 }
 
 /**
+ * Major Card 3D Flip Effect
+ * Only handle 3D transform properties that Tailwind cannot handle
+ */
+.major-card {
+  perspective: 1000px;
+
+  &__inner {
+    transform-style: preserve-3d;
+  }
+
+  &__front,
+  &__back {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  &__back {
+    transform: rotateY(180deg);
+  }
+
+  &:hover &__inner {
+    transform: rotateY(180deg);
+  }
+}
+
+/**
  * Quiz Animations
  */
 @keyframes fadeIn {
