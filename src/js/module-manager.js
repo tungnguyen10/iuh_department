@@ -6,6 +6,20 @@
  */
 
 const STORAGE_KEY = 'sugi_module_states'
+const ORDER_KEY = 'sugi_module_order'
+
+const DEFAULT_ORDER = [
+  'carousel',
+  'intro',
+  'major',
+  'admission',
+  'stats',
+  'news',
+  'infrastructure',
+  'research',
+  'industry-careers',
+  'partners'
+]
 
 const DEFAULT_MODULES = {
   carousel: true,
@@ -36,11 +50,16 @@ const MODULE_LABELS = {
 class ModuleManager {
   constructor() {
     this.modules = this.loadState()
+    this.moduleOrder = this.loadOrder()
+    this.draggedItem = null
     this.panel = null
     this.isVisible = false
     this.initModules()
     this.createUI()
     this.bindKeyboard()
+    
+    // Apply saved order on page load
+    setTimeout(() => this.applyModuleOrder(), 50)
   }
 
   /**
@@ -78,7 +97,7 @@ class ModuleManager {
     header.innerHTML = `
       <div>
         <div style="font-size: 16px; font-weight: 700; margin-bottom: 2px;">SUGI Module Manager</div>
-        <div style="font-size: 11px; opacity: 0.9;">Toggle homepage modules</div>
+        <div style="font-size: 11px; opacity: 0.9;">Drag items to reorder • Click checkbox to toggle</div>
       </div>
       <button id="sugi-close-btn" style="
         background: rgba(255,255,255,0.2);
@@ -102,26 +121,51 @@ class ModuleManager {
       padding: 16px 20px;
     `
 
-    // Module checkboxes
-    Object.keys(this.modules).forEach(moduleName => {
-      const item = document.createElement('label')
+    // Module checkboxes with drag & drop
+    this.moduleOrder.forEach((moduleName, index) => {
+      const item = document.createElement('div')
+      item.draggable = true
+      item.dataset.module = moduleName
       item.style.cssText = `
         display: flex;
         align-items: center;
-        padding: 10px 12px;
+        padding: 10px 8px 10px 12px;
         margin-bottom: 6px;
         border-radius: 8px;
-        cursor: pointer;
-        transition: background 0.2s;
+        cursor: grab;
+        transition: all 0.2s;
         background: #f8fafc;
+        border: 2px solid transparent;
       `
       item.onmouseenter = () => item.style.background = '#e0f2fe'
       item.onmouseleave = () => item.style.background = '#f8fafc'
 
+      // Order number indicator
+      const orderNum = document.createElement('span')
+      orderNum.className = 'order-indicator'
+      orderNum.textContent = (index + 1).toString()
+      orderNum.style.cssText = `
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+        background: #e0f2fe;
+        color: #1e40af;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 700;
+        margin-right: 8px;
+        flex-shrink: 0;
+      `
+
+      // Checkbox wrapper
+      const label = document.createElement('label')
+      label.style.cssText = 'display: flex; align-items: center; flex: 1; cursor: pointer;'
+
       const checkbox = document.createElement('input')
       checkbox.type = 'checkbox'
       checkbox.checked = this.modules[moduleName]
-      checkbox.dataset.module = moduleName
       checkbox.style.cssText = `
         width: 18px;
         height: 18px;
@@ -131,17 +175,24 @@ class ModuleManager {
       `
       checkbox.onchange = (e) => this.toggleModule(moduleName, e.target.checked)
 
-      const label = document.createElement('span')
-      label.textContent = MODULE_LABELS[moduleName] || moduleName
-      label.style.cssText = `
+      const labelText = document.createElement('span')
+      labelText.textContent = MODULE_LABELS[moduleName] || moduleName
+      labelText.style.cssText = `
         font-size: 14px;
         color: #1e293b;
         font-weight: 500;
         flex: 1;
       `
 
-      item.appendChild(checkbox)
+      label.appendChild(checkbox)
+      label.appendChild(labelText)
+
+      item.appendChild(orderNum)
       item.appendChild(label)
+
+      // Bind drag events
+      this.bindDragEvents(item)
+
       content.appendChild(item)
     })
 
@@ -247,10 +298,114 @@ class ModuleManager {
    * Update checkbox state in UI
    */
   updateCheckbox(moduleName, enabled) {
-    const checkbox = this.panel?.querySelector(`input[data-module="${moduleName}"]`)
+    const checkbox = this.panel?.querySelector(`input[type="checkbox"][data-module="${moduleName}"]`)
     if (checkbox) {
       checkbox.checked = enabled
     }
+  }
+
+  /**
+   * Bind drag & drop events to item
+   */
+  bindDragEvents(item) {
+    item.addEventListener('dragstart', (e) => {
+      this.draggedItem = item
+      item.style.opacity = '0.5'
+      item.style.cursor = 'grabbing'
+      item.style.transform = 'scale(0.98)'
+      item.style.boxShadow = '0 8px 24px rgba(0,0,0,0.15)'
+      e.dataTransfer.effectAllowed = 'move'
+    })
+
+    item.addEventListener('dragend', () => {
+      item.style.opacity = '1'
+      item.style.cursor = 'grab'
+      item.style.transform = 'scale(1)'
+      item.style.boxShadow = 'none'
+      
+      // Clean all drop indicators
+      const allItems = this.panel.querySelectorAll('[data-module]')
+      allItems.forEach(i => {
+        i.style.borderTop = '2px solid transparent'
+        i.style.borderBottom = '2px solid transparent'
+      })
+      
+      this.draggedItem = null
+    })
+
+    item.addEventListener('dragover', (e) => {
+      e.preventDefault()
+      e.dataTransfer.dropEffect = 'move'
+
+      if (this.draggedItem && item !== this.draggedItem) {
+        const rect = item.getBoundingClientRect()
+        const midpoint = rect.top + rect.height / 2
+
+        // Show drop zone indicator
+        const allItems = this.panel.querySelectorAll('[data-module]')
+        allItems.forEach(i => {
+          i.style.borderTop = '2px solid transparent'
+          i.style.borderBottom = '2px solid transparent'
+        })
+
+        if (e.clientY < midpoint) {
+          item.style.borderTop = '2px solid #1e40af'
+          item.parentNode.insertBefore(this.draggedItem, item)
+        } else {
+          item.style.borderBottom = '2px solid #1e40af'
+          item.parentNode.insertBefore(this.draggedItem, item.nextSibling)
+        }
+      }
+    })
+
+    item.addEventListener('drop', (e) => {
+      e.preventDefault()
+      this.updateOrderFromDOM()
+      this.applyModuleOrder()
+      this.updateOrderIndicators()
+    })
+  }
+
+  /**
+   * Update module order from DOM structure
+   */
+  updateOrderFromDOM() {
+    const items = this.panel.querySelectorAll('[data-module]')
+    this.moduleOrder = Array.from(items).map(item => item.dataset.module)
+    this.saveOrder()
+    console.log('✓ Module order updated:', this.moduleOrder)
+  }
+
+  /**
+   * Update order number indicators in UI
+   */
+  updateOrderIndicators() {
+    const items = this.panel.querySelectorAll('[data-module]')
+    items.forEach((item, index) => {
+      const indicator = item.querySelector('.order-indicator')
+      if (indicator) {
+        indicator.textContent = (index + 1).toString()
+      }
+    })
+  }
+
+  /**
+   * Apply module order to DOM
+   */
+  applyModuleOrder() {
+    // Find the section container in index.html
+    const container = document.querySelector('section.mx-auto') 
+      || document.querySelector('main')
+      || document.body
+
+    this.moduleOrder.forEach(moduleName => {
+      const element = document.querySelector(`[data-module="${moduleName}"]`)
+      if (element && container.contains(element)) {
+        container.appendChild(element) // Move to end in correct order
+      }
+    })
+
+    console.log('✓ Modules reordered in DOM')
   }
 
   /**
@@ -276,6 +431,30 @@ class ModuleManager {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.modules))
     } catch (error) {
       console.error('Failed to save module states:', error)
+    }
+  }
+
+  /**
+   * Load module order from localStorage
+   */
+  loadOrder() {
+    try {
+      const saved = localStorage.getItem(ORDER_KEY)
+      return saved ? JSON.parse(saved) : [...DEFAULT_ORDER]
+    } catch (error) {
+      console.warn('Failed to load module order:', error)
+      return [...DEFAULT_ORDER]
+    }
+  }
+
+  /**
+   * Save module order to localStorage
+   */
+  saveOrder() {
+    try {
+      localStorage.setItem(ORDER_KEY, JSON.stringify(this.moduleOrder))
+    } catch (error) {
+      console.error('Failed to save module order:', error)
     }
   }
 
@@ -360,13 +539,31 @@ class ModuleManager {
    */
   resetDefault() {
     this.modules = { ...DEFAULT_MODULES }
+    this.moduleOrder = [...DEFAULT_ORDER]
     this.initModules()
-    Object.keys(this.modules).forEach(moduleName => {
-      this.updateCheckbox(moduleName, this.modules[moduleName])
-    })
+    this.applyModuleOrder()
+    
+    // Recreate UI to reflect new order
+    const content = this.panel.querySelector('div:nth-child(2)')
+    if (content) {
+      content.innerHTML = ''
+      this.moduleOrder.forEach(moduleName => {
+        // Recreate items (simplified - reuse createUI logic)
+        const checkbox = document.createElement('input')
+        checkbox.type = 'checkbox'
+        checkbox.checked = this.modules[moduleName]
+        this.updateCheckbox(moduleName, this.modules[moduleName])
+      })
+    }
+    
     this.saveState()
-    console.log('✓ Reset to default configuration')
+    this.saveOrder()
+    console.log('✓ Reset to default configuration (state + order)')
     this.getModules()
+    
+    // Refresh UI
+    this.hideUI()
+    setTimeout(() => this.showUI(), 100)
   }
 }
 
@@ -378,19 +575,24 @@ window.SUGI = {
   enableAll: () => manager.enableAll(),
   disableAll: () => manager.disableAll(),
   getModules: () => manager.getModules(),
+  getOrder: () => manager.moduleOrder,
   resetDefault: () => manager.resetDefault(),
   showUI: () => manager.showUI(),
   hideUI: () => manager.hideUI(),
-  toggleUI: () => manager.toggleUI()
+  toggleUI: () => manager.toggleUI(),
+  applyOrder: () => manager.applyModuleOrder()
 }
 
 // Dev mode info
 if (import.meta.env.DEV) {
   console.log('%c🎨 SUGI Module Manager', 'color: #1e40af; font-size: 16px; font-weight: bold')
   console.log('%cPress Ctrl+Shift+M to toggle UI panel', 'color: #059669; font-size: 13px; font-weight: bold')
+  console.log('%cDrag items to reorder modules', 'color: #f59e0b; font-size: 13px; font-weight: bold')
   console.log('%cOr use console commands:', 'color: #666; font-size: 12px')
   console.log('%c  SUGI.toggleUI()', 'color: #3b82f6; font-size: 12px')
   console.log('%c  SUGI.toggleModule(name, enabled)', 'color: #3b82f6; font-size: 12px')
+  console.log('%c  SUGI.getOrder()', 'color: #3b82f6; font-size: 12px')
+  console.log('%c  SUGI.applyOrder()', 'color: #3b82f6; font-size: 12px')
   console.log('%c  SUGI.enableAll()', 'color: #3b82f6; font-size: 12px')
   console.log('%c  SUGI.disableAll()', 'color: #3b82f6; font-size: 12px')
   console.log('%c  SUGI.resetDefault()', 'color: #3b82f6; font-size: 12px')
