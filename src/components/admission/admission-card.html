@@ -7,7 +7,7 @@
       class="flex flex-col md:flex-row gap-2.5 sm:gap-3 md:gap-4 lg:gap-[15px] items-stretch w-full px-1.5 sm:px-2 md:px-2.5">
       <!-- Image -->
       <div class="relative rounded-[5px] w-full md:w-[200px] lg:w-[250px] md:min-w-[200px] lg:min-w-[250px] shrink-0 aspect-[16/9] md:aspect-auto overflow-hidden">
-        <img src="{{image}}" alt="{{imageAlt}}" class="absolute md:relative inset-0 w-full h-full object-cover" />
+        <img src="{{image}}" alt="{{imageAlt}}" class="absolute md:relative inset-0 w-full h-full object-cover group-hover:scale-110 group-hover:brightness-95 transition-all duration-500" />
       </div>
 
       <!-- Content -->
@@ -30,7 +30,7 @@
           <div class="flex flex-col gap-1 sm:gap-1.5 md:gap-1.5 items-start w-full">
             <!-- Requirement 1 -->
             <div class="flex gap-1 sm:gap-1.5 items-center w-full">
-              <img src="/assets/svgs/category-icon.svg" alt="check" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+              <img src="/assets/svgs/category-icon.svg" alt="check" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0 group-hover:scale-110 transition-transform duration-300" />
               <p class="flex-1 font-roboto font-normal text-xs sm:text-sm md:text-base text-gray leading-normal line-clamp-3">
                 {{requirement1}}
               </p>
@@ -38,7 +38,7 @@
 
             <!-- Requirement 2 -->
             <div class="flex gap-1 sm:gap-1.5 items-start w-full">
-              <img src="/assets/svgs/category-icon.svg" alt="check" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+              <img src="/assets/svgs/category-icon.svg" alt="check" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0 group-hover:scale-110 transition-transform duration-300" />
               <p class="flex-1 font-roboto font-normal text-xs sm:text-sm md:text-base text-gray leading-normal line-clamp-3">
                 {{requirement2}}
               </p>
@@ -46,7 +46,7 @@
 
             <!-- Requirement 3 -->
             <div class="flex gap-1 sm:gap-1.5 items-start w-full">
-              <img src="/assets/svgs/category-icon.svg" alt="check" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+              <img src="/assets/svgs/category-icon.svg" alt="check" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0 group-hover:scale-110 transition-transform duration-300" />
               <p class="flex-1 font-roboto font-normal text-xs sm:text-sm md:text-base text-gray leading-normal line-clamp-3">
                 {{requirement3}}
               </p>
@@ -58,9 +58,9 @@
         <div class="flex flex-col sm:flex-row sm:flex-wrap gap-1.5 sm:gap-2 md:gap-2.5 items-start w-full mt-0">
           <!-- Programs Badge -->
           <div
-            class="bg-secondary-blue-light flex gap-0.5 sm:gap-1 md:gap-1.5 items-center justify-center px-1.5 sm:px-2 md:px-2.5 py-0.5 sm:py-1 md:py-[5px] rounded-[5px] w-full sm:w-auto">
+            class="bg-secondary-blue-light group-hover:bg-secondary-blue flex gap-0.5 sm:gap-1 md:gap-1.5 items-center justify-center px-1.5 sm:px-2 md:px-2.5 py-0.5 sm:py-1 md:py-[5px] rounded-[5px] w-full sm:w-auto transition-colors duration-300">
             <img src="/assets/svgs/learning-grid.svg" alt="programs"
-              class="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 shrink-0 text-primary-dark-blue" />
+              class="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 shrink-0 group-hover:scale-110 transition-transform duration-300 text-primary-dark-blue" />
             <p class="font-roboto font-medium text-[11px] sm:text-xs md:text-sm text-primary-dark-blue leading-normal">
               {{programsText}}
             </p>
@@ -68,25 +68,24 @@
 
           <!-- Timeline Badge -->
           <div
-            class="bg-secondary-blue-light flex gap-0.5 sm:gap-1 md:gap-1.5 items-center justify-center px-1.5 sm:px-2 md:px-2.5 py-0.5 sm:py-1 md:py-[5px] rounded-[5px] w-full sm:w-auto">
+            class="bg-secondary-blue-light group-hover:bg-secondary-blue flex gap-0.5 sm:gap-1 md:gap-1.5 items-center justify-center px-1.5 sm:px-2 md:px-2.5 py-0.5 sm:py-1 md:py-[5px] rounded-[5px] w-full sm:w-auto transition-colors duration-300">
             <img src="/assets/svgs/icon-calendar-clock.svg" alt="calendar"
-              class="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 shrink-0 text-primary-dark-blue" />
+              class="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 shrink-0 group-hover:scale-110 transition-transform duration-300 text-primary-dark-blue" />
             <p class="font-roboto font-medium text-[11px] sm:text-xs md:text-sm text-primary-dark-blue leading-normal">
               {{timelineText}}
             </p>
           </div>
         </div>
       </div>
-
       <!-- Register Button -->
       <a href="{{registerUrl}}"
-        class="bg-secondary-blue w-full border border-secondary-blue hover:bg-primary-yellow hover:border-primary-yellow hover:shadow-md flex gap-1.5 sm:gap-2 md:gap-2.5 h-[36px] sm:h-[40px] md:h-[50px] items-center justify-center px-2 sm:px-2.5 md:px-4 rounded-lg md:rounded-bl-[10px] md:rounded-br-[10px] md:rounded-tl-none md:rounded-tr- md:absolute md:bottom-0 md:left-0 md:right-0 md:opacity-0 md:translate-y-2 transition-all duration-300 md:group-hover:opacity-100 md:group-hover:translate-y-0 group/btn">
+        class="bg-secondary-blue w-full border border-secondary-blue hover:bg-primary-yellow hover:border-primary-yellow hover:shadow-lg flex gap-1.5 sm:gap-2 md:gap-2.5 h-[36px] sm:h-[40px] md:h-[50px] items-center justify-center px-2 sm:px-2.5 md:px-4 rounded-lg md:rounded-bl-[10px] md:rounded-br-[10px] md:rounded-tl-none md:rounded-tr-none md:absolute md:bottom-0 md:left-0 md:right-0 md:opacity-0 md:translate-y-2 md:z-20 transition-all duration-300 md:group-hover:opacity-100 md:group-hover:translate-y-0 group/btn">
         <p
-          class="font-roboto font-medium text-xs sm:text-sm md:text-base text-primary-dark-blue group-hover/btn:text-primary-white leading-normal whitespace-nowrap transition-colors duration-300">
+          class="font-roboto font-medium text-xs sm:text-sm md:text-base text-primary-dark-blue group-hover/btn:text-primary-dark-blue leading-normal whitespace-nowrap transition-colors duration-300">
           Đăng ký tuyển sinh
         </p>
         <img src="/assets/svgs/icon-arrow-up-right.svg" alt="arrow"
-          class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary-dark-blue group-hover/btn:text-primary-white transition-all duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+          class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 transition-all duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 text-primary-dark-blue" />
       </a>
     </div>
   </div>

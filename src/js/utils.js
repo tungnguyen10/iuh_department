@@ -106,10 +106,10 @@ export const showNotification = (message, type = 'success', duration = 3000) => 
   
   // Set colors based on type
   const colors = {
-    success: 'bg-secondary-green text-white',
-    error: 'bg-danger text-white',
+    success: 'bg-secondary-green text-primary-white',
+    error: 'bg-danger text-primary-white',
     warning: 'bg-primary-yellow text-gray-900',
-    info: 'bg-primary-dark-blue text-white'
+    info: 'bg-primary-dark-blue text-primary-white'
   }
   
   // Set icons based on type

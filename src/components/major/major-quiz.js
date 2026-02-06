@@ -59,10 +59,10 @@ export function initMajorQuiz(containerId = 'majorQuiz', dataUrl = '/data/quiz-d
                     <span class="text-2xl">⚡</span>
                     <span class="text-primary-yellow font-semibold text-sm">${quizData.badge}</span>
                 </div>
-                <h2 class="text-2xl md:text-3xl font-inter font-bold text-white mb-3">
+                <h2 class="text-2xl md:text-3xl font-inter font-bold text-primary-white mb-3">
                     ${quizData.title}
                 </h2>
-                <p class="text-white/80 text-sm md:text-base max-w-2xl mx-auto">
+                <p class="text-primary-white/80 text-sm md:text-base max-w-2xl mx-auto">
                     ${quizData.description}
                 </p>
             </div>
@@ -81,8 +81,8 @@ export function initMajorQuiz(containerId = 'majorQuiz', dataUrl = '/data/quiz-d
                             <div class="absolute inset-0 border-4 border-primary-yellow border-t-transparent rounded-full animate-spin"></div>
                         </div>
                         <div>
-                            <h3 class="text-white font-bold text-lg mb-2">Đang phân tích kết quả...</h3>
-                            <p class="text-white/70 text-sm">Vui lòng chờ trong giây lát</p>
+                            <h3 class="text-primary-white font-bold text-lg mb-2">Đang phân tích kết quả...</h3>
+                            <p class="text-primary-white/70 text-sm">Vui lòng chờ trong giây lát</p>
                         </div>
                     </div>
                 </div>
@@ -96,9 +96,9 @@ export function initMajorQuiz(containerId = 'majorQuiz', dataUrl = '/data/quiz-d
                             <span class="text-2xl">🎯</span>
                         </div>
                         <div class="flex-1">
-                            <h3 class="text-white font-bold text-lg mb-2 animate-fade-in">Chuyên ngành phù hợp với bạn:</h3>
+                            <h3 class="text-primary-white font-bold text-lg mb-2 animate-fade-in">Chuyên ngành phù hợp với bạn:</h3>
                             <div id="resultMajor" class="text-primary-yellow font-bold text-xl mb-3 animate-slide-up"></div>
-                            <p id="resultDescription" class="text-white/80 text-sm leading-relaxed mb-4 animate-fade-in-delay"></p>
+                            <p id="resultDescription" class="text-primary-white/80 text-sm leading-relaxed mb-4 animate-fade-in-delay"></p>
                             <a href="#" id="resultLink" class="inline-flex items-center gap-2 bg-primary-yellow hover:bg-primary-yellow/90 text-primary-dark-blue font-semibold px-6 py-3 rounded-lg transition-colors duration-300 animate-fade-in-delay-2">
                                 <span>Tìm hiểu chi tiết</span>
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -112,7 +112,7 @@ export function initMajorQuiz(containerId = 'majorQuiz', dataUrl = '/data/quiz-d
 
             <!-- CTA Section -->
             <div class="text-center pt-4 border-t border-white/10">
-                <p class="text-white/80 text-sm md:text-base mb-5">
+                <p class="text-primary-white/80 text-sm md:text-base mb-5">
                     ${quizData.cta.text}
                 </p>
                 <a href="${quizData.cta.buttonUrl}" 
@@ -141,7 +141,7 @@ export function initMajorQuiz(containerId = 'majorQuiz', dataUrl = '/data/quiz-d
     function renderQuestions() {
         return quizData.questions.map(question => `
             <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                <h3 class="text-white font-bold mb-4 flex items-center gap-2">
+                <h3 class="text-primary-white font-bold mb-4 flex items-center gap-2">
                     <span class="w-7 h-7 rounded-full bg-primary-yellow text-primary-dark-blue flex items-center justify-center text-sm font-bold">
                         ${question.id}
                     </span>
@@ -170,7 +170,7 @@ export function initMajorQuiz(containerId = 'majorQuiz', dataUrl = '/data/quiz-d
                         <div class="w-5 h-5 rounded-full border-2 border-white/40 group-hover:border-white/60 transition-colors peer-checked:border-primary-yellow peer-checked:bg-primary-yellow">
                             <div class="w-2 h-2 rounded-full bg-white opacity-0 peer-checked:opacity-100 m-auto mt-0.5"></div>
                         </div>
-                        <span class="text-white/90 font-medium peer-checked:text-white">${option.text}</span>
+                        <span class="text-primary-white/90 font-medium peer-checked:text-primary-white">${option.text}</span>
                     </div>
                 </div>
             </label>
@@ -325,7 +325,7 @@ export function initMajorQuiz(containerId = 'majorQuiz', dataUrl = '/data/quiz-d
         if (!container) return;
         
         container.innerHTML = `
-            <div class="text-center text-white/80 py-8">
+            <div class="text-center text-primary-white/80 py-8">
                 <p class="mb-4">⚠️ Không thể tải dữ liệu trắc nghiệm.</p>
                 <button onclick="location.reload()" class="text-primary-yellow hover:underline">
                     Thử lại

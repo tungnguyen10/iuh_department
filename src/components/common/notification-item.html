@@ -9,22 +9,22 @@
 
   <!-- Divider & Footer -->
   <div class="flex flex-col gap-1 md:gap-1.5 w-full">
-    <div class="border-t border-stroke"></div>
+    <div class="border-t border-stroke group-hover:border-secondary-blue transition-colors duration-300"></div>
 
     <div class="flex items-center justify-between w-full">
       <!-- Date Badge -->
       <div
-        class="bg-primary-white border border-danger rounded-[5px] px-1 md:px-1.5 py-[2px] md:py-[3px] flex items-center gap-1 md:gap-1.5 transition-transform duration-300 ">
-        <img src="/assets/svgs/icon-calendar-clock.svg" alt="calendar" class="w-4 h-4 md:w-5 md:h-5 text-danger">
+        class="bg-primary-white border border-danger rounded-[5px] px-1 md:px-1.5 py-[2px] md:py-[3px] flex items-center gap-1 md:gap-1.5 transition-all duration-300 group-hover:shadow-sm group-hover:scale-105">
+        <img src="/assets/svgs/icon-calendar-clock.svg" alt="calendar" class="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:scale-110 text-danger">
         <span class="font-roboto font-medium text-xs md:text-sm text-danger">{{date}}</span>
       </div>
 
       <!-- View More Link -->
       <a href="{{link}}"
-        class="flex items-center gap-0.5 font-roboto font-medium text-xs md:text-sm text-gray transition-all group-hover:text-primary-dark-blue group-hover:underline group-hover:gap-1 md:group-hover:gap-1.5 {{linkClass}}">
+        class="flex items-center gap-0.5 font-roboto font-medium text-xs md:text-sm text-gray transition-all duration-300 group-hover:text-primary-dark-blue group-hover:underline group-hover:gap-1 md:group-hover:gap-1.5 {{linkClass}}">
         Xem thêm
         <img src="/assets/svgs/arrow-right.svg" alt="arrow"
-          class="w-3 h-3 md:w-4 md:h-4 transition-transform group-hover:translate-x-1">
+          class="w-3 h-3 md:w-4 md:h-4 transition-all duration-300 group-hover:translate-x-1 group-hover:brightness-75">
       </a>
     </div>
   </div>
