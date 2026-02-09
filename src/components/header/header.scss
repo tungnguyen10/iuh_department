@@ -156,8 +156,10 @@ header {
           &::before {
             display: none;
           }
-          
-          // Thêm chevron cho items có submenu
+        }
+        
+        // Chỉ thêm chevron cho items có dropdown menu
+        &:has(.dropdown-menu) > a {
           &::after {
             content: '';
             display: block;
