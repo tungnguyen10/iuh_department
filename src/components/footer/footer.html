@@ -59,52 +59,52 @@
   <!-- Footer center -->
   <div class="w-full bg-white py-6 md:py-8 shadow-[2px_2px_10px_0_rgba(33,33,33,0.20)]">
     <div
-      class="container mx-auto px-4 flex flex-col lg:flex-row items-start justify-between gap-6 md:gap-8 lg:gap-[100px]">
-      <div class="w-full lg:max-w-[500px] lg:shrink-0" data-footer-accordion>
-        <!-- Accordion Item 1 - TRỤ SỞ CHÍNH -->
-        <div class="accordion-item h-full">
-          <button
-            class="accordion-header flex items-center justify-between w-full py-3 md:py-4 px-1 text-left focus:outline-none hover:opacity-80 transition-opacity"
-            data-footer-toggle aria-expanded="true" aria-controls="footer-location-1">
-            <h3 class="text-base font-medium text-primary-dark-blue font-roboto">TRỤ SỞ CHÍNH</h3>
-            <div class="accordion-icon transition-transform duration-300 rotate-90" data-footer-chevron>
-              <img src="assets/svgs/icon-chevron-right.svg" alt="" class="w-5 h-5 text-primary-dark-blue">
+      class="container mx-auto px-4 flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-[100px]">
+      
+      <!-- Location Map Section -->
+      <div class="w-full lg:max-w-[500px] lg:shrink-0 flex flex-col">
+        <div class="flex flex-col h-full">
+          <!-- Header -->
+          <div class="flex items-center justify-between py-3 md:py-4 px-1">
+            <h3 class="text-base font-medium text-primary-dark-blue font-roboto">XEM BẢN ĐỒ</h3>
+          </div>
+          
+          <!-- Content -->
+          <div class="flex flex-col gap-3 md:gap-4 flex-1">
+            <!-- Address -->
+            <div class="flex items-start gap-2 md:gap-2.5">
+              <img src="assets/svgs/icon-user-location.svg" alt="" class="w-4 h-4 md:w-5 md:h-5 mt-0.5 shrink-0">
+              <p class="flex-1 text-sm md:text-base text-gray-900 font-roboto">Địa chỉ: Số 12 Nguyễn Văn Bảo, Phường
+                4, Quận Gò
+                Vấp, Thành phố Hồ Chí Minh</p>
             </div>
-          </button>
-          <div class="accordion-content pb-3 md:pb-4 transition-all duration-300" id="footer-location-1">
-            <div class="flex flex-col gap-3 md:gap-4">
-              <div class="flex items-start gap-2 md:gap-2.5">
-                <img src="assets/svgs/icon-user-location.svg" alt="" class="w-4 h-4 md:w-5 md:h-5 mt-0.5 shrink-0">
-                <p class="flex-1 text-sm md:text-base text-gray-900 font-roboto">Địa chỉ: Số 12 Nguyễn Văn Bảo, Phường
-                  4, Quận Gò
-                  Vấp, Thành phố Hồ Chí Minh</p>
+            
+            <!-- Map Container -->
+            <div class="bg-white rounded-[10px] shadow-[1px_1px_5px_0px_rgba(21,56,152,0.15)] p-2 md:p-2.5 flex flex-col gap-1.5 flex-1">
+              <!-- Google Map -->
+              <div class="relative w-full aspect-video lg:aspect-auto lg:flex-1 rounded-[5px] overflow-hidden shadow-[inset_0px_2px_10px_0px_rgba(0,0,0,0.15)]">
+                <iframe class="absolute inset-0 w-full h-full"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.8581427425746!2d106.68334431533287!3d10.822158161284024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174deb3ef536f31%3A0x8b7bb8b7c956157b!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2hp4buHcCBUUC4gSENN!5e0!3m2!1svi!2s!4v1234567890123!5m2!1svi!2s"
+                  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
               </div>
-              <div
-                class="bg-white rounded-[10px] shadow-[1px_1px_5px_0px_rgba(21,56,152,0.15)] p-2 md:p-2.5 flex flex-col gap-1.5">
-                <div
-                  class="relative w-full aspect-[16/9] md:aspect-[480/200] rounded-[5px] overflow-hidden shadow-[inset_0px_2px_10px_0px_rgba(0,0,0,0.15)]">
-                  <iframe class="absolute inset-0 w-full h-full"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.8581427425746!2d106.68334431533287!3d10.822158161284024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174deb3ef536f31%3A0x8b7bb8b7c956157b!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2hp4buHcCBUUC4gSENN!5e0!3m2!1svi!2s!4v1234567890123!5m2!1svi!2s"
-                    style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                  </iframe>
-                </div>
-                <div class="flex flex-wrap items-center gap-1 sm:gap-1.5 px-1 sm:px-1.5 md:px-2.5 pt-1.5 sm:pt-2 border-t border-stroke">
-                  <span class="text-[10px] sm:text-xs text-gray-600 font-roboto">Chi nhánh khác:</span>
-                  <a href="#" class="text-[10px] sm:text-xs text-primary-dark-blue hover:underline font-roboto transition-all">Phạm Văn Chiều</a>
-                  <span class="text-gray-400 text-[10px] sm:text-xs">•</span>
-                  <a href="#" class="text-[10px] sm:text-xs text-primary-dark-blue hover:underline font-roboto transition-all">Nguyễn Văn Dung</a>
-                  <span class="text-gray-400 text-[10px] sm:text-xs">•</span>
-                  <a href="#" class="text-[10px] sm:text-xs text-primary-dark-blue hover:underline font-roboto transition-all">Thanh Hóa</a>
-                  <span class="text-gray-400 text-[10px] sm:text-xs">•</span>
-                  <a href="#" class="text-[10px] sm:text-xs text-primary-dark-blue hover:underline font-roboto transition-all">Quảng Ngãi</a>
-                  <span class="text-gray-400 text-[10px] sm:text-xs">•</span>
-                  <a href="#" class="text-[10px] sm:text-xs text-primary-dark-blue hover:underline font-roboto transition-all">Nhơn Trạch</a>
-                </div>
+              
+              <!-- Branch Links -->
+              <div class="flex flex-wrap items-center gap-1 sm:gap-1.5 px-1 sm:px-1.5 md:px-2.5 pt-1.5 sm:pt-2 border-t border-stroke">
+                <span class="text-[10px] sm:text-xs text-gray-600 font-roboto">Cơ sở khác:</span>
+                <a href="#" class="text-[10px] sm:text-xs text-primary-dark-blue hover:underline font-roboto transition-all">Phạm Văn Chiều</a>
+                <span class="text-gray-400 text-[10px] sm:text-xs">•</span>
+                <a href="#" class="text-[10px] sm:text-xs text-primary-dark-blue hover:underline font-roboto transition-all">Nguyễn Văn Dung</a>
+                <span class="text-gray-400 text-[10px] sm:text-xs">•</span>
+                <a href="#" class="text-[10px] sm:text-xs text-primary-dark-blue hover:underline font-roboto transition-all">Thanh Hóa</a>
+                <span class="text-gray-400 text-[10px] sm:text-xs">•</span>
+                <a href="#" class="text-[10px] sm:text-xs text-primary-dark-blue hover:underline font-roboto transition-all">Quảng Ngãi</a>
+                <span class="text-gray-400 text-[10px] sm:text-xs">•</span>
+                <a href="#" class="text-[10px] sm:text-xs text-primary-dark-blue hover:underline font-roboto transition-all">Nhơn Trạch</a>
               </div>
             </div>
           </div>
         </div>
-
       </div>
 
       <!-- Footer Navigation -->
@@ -141,14 +141,6 @@
                 <span>Biểu mẫu sinh viên</span>
               </a>
             </li>
-            <li>
-              <a href="#"
-                class="group flex items-center gap-1.5 text-sm md:text-base text-gray-900 font-roboto hover:text-primary-dark-blue transition-colors duration-200">
-                <img src="assets/svgs/icon-arrow-right.svg" alt=""
-                  class="w-0 group-hover:w-6 h-6 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out">
-                <span>Hoạt động</span>
-              </a>
-            </li>
           </ul>
         </div>
         <!-- Doanh nghiệp -->
@@ -172,14 +164,6 @@
                 <img src="assets/svgs/icon-arrow-right.svg" alt=""
                   class="w-0 group-hover:w-6 h-6 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out">
                 <span>Tuyển dụng</span>
-              </a>
-            </li>
-            <li>
-              <a href="#"
-                class="group flex items-center gap-1.5 text-sm md:text-base text-gray-900 font-roboto hover:text-primary-dark-blue transition-colors duration-200">
-                <img src="assets/svgs/icon-arrow-right.svg" alt=""
-                  class="w-0 group-hover:w-6 h-6 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out">
-                <span>Chương trình hợp tác</span>
               </a>
             </li>
             <li>
@@ -223,14 +207,6 @@
                 <span>Liên hệ</span>
               </a>
             </li>
-            <li>
-              <a href="#"
-                class="group flex items-center gap-1.5 text-sm md:text-base text-gray-900 font-roboto hover:text-primary-dark-blue transition-colors duration-200">
-                <img src="assets/svgs/icon-arrow-right.svg" alt=""
-                  class="w-0 group-hover:w-6 h-6 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out">
-                <span>Địa chỉ</span>
-              </a>
-            </li>
           </ul>
         </div>
         <!-- Mạng xã hội -->
@@ -252,13 +228,6 @@
                 class="group flex items-center gap-2 md:gap-2.5 text-sm md:text-base text-gray-700 hover:text-[#E4405F] font-roboto transition-colors duration-200">
                 <img src="assets/svgs/icon-instagram.svg" alt="" class="w-5 h-5 md:w-6 md:h-6">
                 <span>Instagram</span>
-              </a>
-            </li>
-            <li>
-              <a href="#"
-                class="group flex items-center gap-2 md:gap-2.5 text-sm md:text-base text-gray-700 hover:text-[#0084FF] font-roboto transition-colors duration-200">
-                <img src="assets/svgs/icon-messenger.svg" alt="" class="w-5 h-5 md:w-6 md:h-6">
-                <span>Messenger</span>
               </a>
             </li>
             <li>
