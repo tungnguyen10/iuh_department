@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     rootMargin: '0px 0px -50px 0px',  // Trigger 50px before entering viewport
     once: true                // Animate only once
   })
-  await delay(300)
+  await delay(150)
   // 7. Hide loading và dispatch events
   loadingManager.hide()
   document.dispatchEvent(new Event('components-loaded'))
