@@ -533,12 +533,12 @@ export default defineConfig(({ mode }) => {
         output: {
           entryFileNames: ({ name }) => {
             const mappedName = name === 'main' ? 'app' : name
-            return `assets/js/${mappedName}-[hash].js`
+            return `assets/js/${mappedName}.js`
           },
           chunkFileNames: ({ name }) => {
             const isVendor = name === 'vendor'
             const chunkName = isVendor ? 'vendor' : name
-            return `assets/js/${chunkName}-[hash].js`
+            return `assets/js/${chunkName}.js`
           },
           manualChunks(id) {
             if (id.includes('node_modules')) {
@@ -549,7 +549,7 @@ export default defineConfig(({ mode }) => {
             const ext = extname(assetInfo.name || '').slice(1)
             if (ext === 'css') {
               const cssName = getCssOutputName(assetInfo.name || '') || 'style'
-              return `assets/css/${cssName}-[hash][extname]`
+              return `assets/css/${cssName}[extname]`
             }
             if (ext === 'svg') {
               return 'assets/svgs/[name][extname]'
@@ -560,7 +560,7 @@ export default defineConfig(({ mode }) => {
             if (['ttf', 'otf', 'woff', 'woff2', 'eot'].includes(ext)) {
               return 'assets/fonts/[name][extname]'
             }
-            return 'assets/[name]-[hash][extname]'
+            return 'assets/[name][extname]'
           },
         },
       },
