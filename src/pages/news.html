@@ -6,7 +6,8 @@
 
 <!-- Breadcrumb -->
 <div data-include="@components/common/breadcrumb.html" data-parent-page1="Tin tức - Sự kiện" data-parent-link1="/news"
-  data-current-page="Thông báo nộp báo cáo" data-parent-page2="Tin tức" data-parent-link2="#" data-parent-page2-class="">
+  data-current-page="Thông báo nộp báo cáo" data-parent-page2="Tin tức" data-parent-link2="#"
+  data-parent-page2-class="">
 </div>
 
 <section class="container mx-auto px-4 py-8 md:py-16 flex flex-col lg:flex-row gap-12 md:gap-8">
@@ -87,8 +88,6 @@
     <!-- Pagination -->
     <div data-include="@components/common/pagination.html"></div>
 
-    <!-- News Carousel -->
-    <div data-include="@components/news/news-carousel.html" data-title="Tin Tức Liên Quan"></div>
   </div>
 
   <!-- Sidebar -->
@@ -102,6 +101,9 @@
   </div>
 </section>
 
-
+<div class="container mx-auto px-4">
+  <!-- News Carousel -->
+  <div data-include="@components/news/news-carousel.html" data-title="Tin Tức Liên Quan"></div>
+</div>
 
 <div data-include="@components/partners/index.html"></div>

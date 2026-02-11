@@ -51,7 +51,7 @@ export function initNewsCarousel(containerSelector = '.news-carousel-wrapper') {
       },
       // >= 1024px (lg) - Desktop
       1024: {
-        slidesPerView: 3,
+        slidesPerView: 4,
         spaceBetween: 5,
       },
     },
