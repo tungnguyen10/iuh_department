@@ -33,6 +33,9 @@ export default {
         sans: ["Roboto", "system-ui", "-apple-system", "sans-serif"],
         inter: ["Inter", "system-ui", "-apple-system", "sans-serif"],
       },
+      spacing: {
+        30: "110px",
+      },
       colors: {
         black: "#616161",
         title: "#212121",
