@@ -18,7 +18,7 @@ class SearchModal extends BaseModal {
     this.currentQuery = '';
     
     this.getReferences();
-    this.bindSearchEvents();
+    // this.bindSearchEvents();
   }
 
   getReferences() {
