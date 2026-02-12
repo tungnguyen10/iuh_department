@@ -71,6 +71,35 @@ export default {
           brown: "#795548",
         },
       },
+      // Custom animations for interactive elements
+      animation: {
+        'jelly': 'jelly 0.5s ease-in-out',        // Elastic bounce effect
+        'pop': 'pop 0.3s ease-in-out',            // Quick scale pulse
+        'shake': 'shake 0.5s ease-in-out',        // Error vibration
+        'success-pulse': 'success-pulse 0.5s ease-in-out', // Success glow
+      },
+      keyframes: {
+        jelly: {
+          '0%, 100%': { transform: 'scale(1, 1)' },
+          '25%': { transform: 'scale(0.9, 1.1)' },
+          '50%': { transform: 'scale(1.1, 0.9)' },
+          '75%': { transform: 'scale(0.95, 1.05)' },
+        },
+        pop: {
+          '0%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.15)' },
+          '100%': { transform: 'scale(1)' },
+        },
+        shake: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '10%, 30%, 50%, 70%, 90%': { transform: 'translateX(-5px)' },
+          '20%, 40%, 60%, 80%': { transform: 'translateX(5px)' },
+        },
+        'success-pulse': {
+          '0%, 100%': { boxShadow: '0 0 0 0 rgba(34, 197, 94, 0.7)' },
+          '50%': { boxShadow: '0 0 0 8px rgba(34, 197, 94, 0)' },
+        },
+      },
     },
   },
   plugins: [],

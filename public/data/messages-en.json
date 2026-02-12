@@ -1,5 +1,6 @@
 {
-  "copySuccess": "Copied!",
+  "copied": "Copied!",
+  "copySuccess": "Link copied to clipboard",
   "shareSuccess": "Shared successfully!",
   "saveSuccess": "Saved successfully!",
   "submitSuccess": "Submitted successfully!",

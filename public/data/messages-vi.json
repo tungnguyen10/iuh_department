@@ -1,5 +1,6 @@
 {
-  "copySuccess": "Đã sao chép!",
+  "copied": "Đã sao chép!",
+  "copySuccess": "Đã sao chép liên kết",
   "shareSuccess": "Đã chia sẻ thành công!",
   "saveSuccess": "Đã lưu thành công!",
   "submitSuccess": "Đã gửi thành công!",

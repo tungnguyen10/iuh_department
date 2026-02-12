@@ -7,7 +7,7 @@ import './styles/main.scss'
 import { appEnv } from './config/env.js'
 import { inlineSVGs } from './js/svg-loader.js'
 import { loadingManager } from './js/loading.js'
-import { delay, showNotification, shareContent, copyToClipboard, createToast, initFadeInOnScroll } from './js/utils.js'
+import { delay, shareContent, copyToClipboard, initFadeInOnScroll } from './js/utils.js'
 import { initSearchModal } from './components/search/search-modal.js'
 import { initI18n, t, getCurrentLang, setCurrentLang } from './js/i18n.js'
 import { initTabs } from './components/tabs/tabs.js'
@@ -33,7 +33,6 @@ if (import.meta.env.DEV) {
   console.info(` Loaded ${Object.keys(svgModules).length} SVG assets`)
   
   // Expose utility functions to global window for DEV testing only
-  window.showNotification = showNotification
   window.shareContent = shareContent
   window.copyToClipboard = copyToClipboard
   window.t = t
@@ -62,7 +61,7 @@ const displayVersionBanner = () => {
   console.log('%c🎓 IUH | Version: ' + version + ' | Mode: ' + mode, bannerStyle)
 }
 
-// Call banner after DOM loads
+// Call banner after DOM 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', displayVersionBanner)
 } else {
@@ -75,30 +74,27 @@ document.addEventListener('DOMContentLoaded', async () => {
   loadingManager.init()
   loadingManager.show('Loading...')
   
-  // 2. Create toast element (sync, fast)
-  createToast()
+  // 2. Load i18n messages (async)
+  // await initI18n()
   
-  // 3. Load i18n messages (async)
-  await initI18n()
-  
-  // 4. Dynamic init components based on DOM presence (performance optimized)
+  // 3. Dynamic init components based on DOM presence (performance optimized)
   await initComponentsOnDemand()
   
   await inlineSVGs()
   
-  // 5. Initialize global features
+  // 4. Initialize global features
   initSearchModal()
   initArticleActions()
   initTabs()
   
-  // 6. Initialize fade-in on scroll animations (global)
+  // 5. Initialize fade-in on scroll animations (global)
   initFadeInOnScroll({
     threshold: 0.1,           // Trigger when 10% visible
     rootMargin: '0px 0px -50px 0px',  // Trigger 50px before entering viewport
     once: true                // Animate only once
   })
   await delay(150)
-  // 7. Hide loading và dispatch events
+  // 6. Hide loading và dispatch events
   loadingManager.hide()
   document.dispatchEvent(new Event('components-loaded'))
   
@@ -205,33 +201,47 @@ async function initComponentsOnDemand() {
  * Initialize article share and copy link buttons (global)
  */
 function initArticleActions() {
-  // Share button
-  const shareBtn = document.querySelector('.js-share-btn')
-  if (shareBtn) {
+  // Share buttons
+  const shareBtns = document.querySelectorAll('.js-share-btn')
+  shareBtns.forEach(shareBtn => {
     shareBtn.addEventListener('click', async () => {
       const shareData = {
         title: document.querySelector('h1')?.textContent || document.title,
-        // text: 'Xem bài viết này từ Khoa CNTT - IUH',
         url: window.location.href
       }
       
       const success = await shareContent(shareData)
       if (success) {
-        showNotification(t('shareSuccess'), 'success')
+        shareBtn.classList.add('animate-pop')
+        setTimeout(() => shareBtn.classList.remove('animate-pop'), 300)
       }
     })
-  }
+  })
 
-  // Copy link button
-  const copyBtn = document.querySelector('.js-copy-link-btn')
-  if (copyBtn) {
+  // Copy link buttons
+  const copyBtns = document.querySelectorAll('.js-copy-link-btn')
+  copyBtns.forEach(copyBtn => {
     copyBtn.addEventListener('click', async () => {
+      const text = copyBtn.querySelector('span')
+      const originalText = text?.textContent
       const success = await copyToClipboard(window.location.href)
+      
       if (success) {
-        showNotification(t('copySuccess'), 'success')
+        // Success state
+        copyBtn.classList.add('!bg-green-500', 'animate-success-pulse')
+        text?.classList.add('!text-white')
+        if (text) text.textContent = t('copied') || 'Copied!'
+        
+        setTimeout(() => {
+          copyBtn.classList.remove('!bg-green-500', 'animate-success-pulse')
+          text?.classList.remove('!text-white')
+          if (text) text.textContent = originalText
+        }, 2000)
       } else {
-        showNotification(t('copyError'), 'error')
+        // Error shake
+        copyBtn.classList.add('animate-shake')
+        setTimeout(() => copyBtn.classList.remove('animate-shake'), 500)
       }
     })
-  }
+  })
 }
