@@ -9,8 +9,6 @@ import { inlineSVGs } from './js/svg-loader.js'
 import { loadingManager } from './js/loading.js'
 import { delay, shareContent, copyToClipboard, initFadeInOnScroll } from './js/utils.js'
 import { initSearchModal } from './components/search/search-modal.js'
-import { initI18n, t, getCurrentLang, setCurrentLang } from './js/i18n.js'
-import { initTabs } from './components/tabs/tabs.js'
 import './js/global-widgets.js'
 import './js/module-manager.js' // Module toggle dev tool
 
@@ -23,21 +21,14 @@ import 'swiper/css/effect-coverflow'
 // Auto-import tất cả component SCSS files
 const componentStyles = import.meta.glob('./components/**/*.scss', { eager: true })
 
-// Auto-import tất cả SVG files để Vite bundle chúng
-const svgModules = import.meta.glob('./assets/svgs/*.svg', { eager: true, query: '?url' })
-
 // Surface the current environment for debugging/styling hooks
 document.documentElement.dataset.appEnv = appEnv
 if (import.meta.env.DEV) {
   console.info(`Running in ${appEnv} mode`)
-  console.info(` Loaded ${Object.keys(svgModules).length} SVG assets`)
   
   // Expose utility functions to global window for DEV testing only
   window.shareContent = shareContent
   window.copyToClipboard = copyToClipboard
-  window.t = t
-  window.getCurrentLang = getCurrentLang
-  window.setCurrentLang = setCurrentLang
 }
 
 // Expose build info globally
@@ -82,10 +73,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   
   await inlineSVGs()
   
-  // 4. Initialize global features
-  initSearchModal()
-  initArticleActions()
-  initTabs()
+  // 4. Initialize global features (always present)
+  if (document.querySelector('#search-modal')) {
+    initSearchModal()
+  }
   
   // 5. Initialize fade-in on scroll animations (global)
   initFadeInOnScroll({
@@ -190,6 +181,16 @@ async function initComponentsOnDemand() {
     window.majorQuizInstance = initMajorQuiz()
   }
 
+  // Tabs (pages with tab components)
+  if (document.querySelector('.tabs-container, [data-tabs]')) {
+    initTabs()
+  }
+
+  // Article actions (share/copy buttons)
+  if (document.querySelector('.js-share-btn, .js-copy-link-btn')) {
+    initArticleActions()
+  }
+
   // Header & Footer are always present, so load them
   const { init: initHeader } = await import('./components/header/header.js')
   const { init: initFooter } = await import('./components/footer/footer.js')
@@ -230,7 +231,7 @@ function initArticleActions() {
         // Success state
         copyBtn.classList.add('!bg-green-500', 'animate-success-pulse')
         text?.classList.add('!text-white')
-        if (text) text.textContent = t('copied') || 'Copied!'
+        if (text) text.textContent = 'Copied!'
         
         setTimeout(() => {
           copyBtn.classList.remove('!bg-green-500', 'animate-success-pulse')
