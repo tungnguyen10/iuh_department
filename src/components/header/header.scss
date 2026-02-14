@@ -140,7 +140,8 @@ header {
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         height: auto;
         
-        > a {
+        > a,
+        > span {
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -159,7 +160,7 @@ header {
         }
         
         // Chỉ thêm chevron cho items có dropdown menu
-        &:has(.dropdown-menu) > a {
+        &:has(.dropdown-menu) > span {
           &::after {
             content: '';
             display: block;
@@ -195,7 +196,8 @@ header {
           display: block;
         }
         
-        a {
+        a,
+        span {
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -234,7 +236,8 @@ header {
           display: block;
         }
         
-        a {
+        a,
+        span {
           padding-left: 3.5rem !important;
           
           &:hover {
@@ -244,7 +247,7 @@ header {
       }
       
       // Chevron rotation for level 1
-      .nav-item-dropdown > a {
+      .nav-item-dropdown > span {
         &.submenu-open::after {
           transform: rotate(180deg);
         }

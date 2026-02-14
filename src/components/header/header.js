@@ -218,7 +218,7 @@ export function init() {
   function initMobileSubmenus() {
     const isMobile = () => window.innerWidth < 1120
     
-    document.querySelectorAll('[data-dropdown] > a, [data-subdropdown] > a').forEach(trigger => {
+    document.querySelectorAll('[data-dropdown] > a, [data-dropdown] > span, [data-subdropdown] > a, [data-subdropdown] > span').forEach(trigger => {
       // Prevent duplicate listeners
       if (trigger.dataset.listenerAdded) return
       trigger.dataset.listenerAdded = 'true'
