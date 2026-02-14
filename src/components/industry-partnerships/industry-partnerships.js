@@ -3,7 +3,7 @@
  * Vertical carousel for partnership event cards with navigation from event-featured
  */
 import Swiper from 'swiper'
-import { Navigation, Mousewheel } from 'swiper/modules'
+import { Navigation, Mousewheel, Autoplay } from 'swiper/modules'
 
 export function initIndustryPartnershipSwiper() {
   const swiperEl = document.querySelector('.industry-partnership-swiper');
@@ -16,11 +16,16 @@ export function initIndustryPartnershipSwiper() {
   const featuredImg = partnershipsContainer?.querySelector('.event-featured-image');
   
   const industryPartnershipSwiper = new Swiper('.industry-partnership-swiper', {
-    modules: [Navigation, Mousewheel],
+    modules: [Navigation, Mousewheel, Autoplay],
     direction: 'vertical',
     slidesPerView: Math.min(3, slideCount),
     spaceBetween: 16,
     grabCursor: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
     mousewheel: {
       enabled: true,
       forceToAxis: true,
