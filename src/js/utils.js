@@ -142,3 +142,65 @@ export const initFadeInOnScroll = (options = {}) => {
   }
 }
 
+/**
+ * Initialize article social media share buttons
+ * Optimized with cached values and early returns
+ */
+export const initArticleActions = () => {
+  // Early return if no share buttons exist
+  if (!document.querySelector('.js-share-facebook, .js-share-x, .js-share-linkedin')) {
+    return
+  }
+
+  // Cache values once (performance optimization)
+  const currentUrl = encodeURIComponent(window.location.href)
+  const pageTitle = encodeURIComponent(
+    document.querySelector('h1')?.textContent || document.title
+  )
+
+  // Helper function to open share popup
+  const openSharePopup = (url, name, width = 600, height = 400) => {
+    window.open(url, name, `width=${width},height=${height},scrollbars=yes`)
+  }
+
+  // Facebook Share
+  const facebookBtns = document.querySelectorAll('.js-share-facebook')
+  if (facebookBtns.length > 0) {
+    facebookBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        openSharePopup(
+          `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`,
+          'facebook-share'
+        )
+      })
+    })
+  }
+
+  // X (Twitter) Share
+  const xBtns = document.querySelectorAll('.js-share-x')
+  if (xBtns.length > 0) {
+    xBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        openSharePopup(
+          `https://twitter.com/intent/tweet?url=${currentUrl}&text=${pageTitle}`,
+          'x-share'
+        )
+      })
+    })
+  }
+
+  // LinkedIn Share
+  const linkedinBtns = document.querySelectorAll('.js-share-linkedin')
+  if (linkedinBtns.length > 0) {
+    linkedinBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        openSharePopup(
+          `https://www.linkedin.com/sharing/share-offsite/?url=${currentUrl}`,
+          'linkedin-share',
+          600,
+          600
+        )
+      })
+    })
+  }
+}

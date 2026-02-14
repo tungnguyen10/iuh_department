@@ -7,7 +7,7 @@ import './styles/main.scss'
 import { appEnv } from './config/env.js'
 import { inlineSVGs } from './js/svg-loader.js'
 import { loadingManager } from './js/loading.js'
-import { delay, shareContent, copyToClipboard, initFadeInOnScroll } from './js/utils.js'
+import { delay, shareContent, copyToClipboard, initFadeInOnScroll, initArticleActions } from './js/utils.js'
 import { initSearchModal } from './components/search/search-modal.js'
 import './js/global-widgets.js'
 import './js/module-manager.js' // Module toggle dev tool
@@ -186,8 +186,8 @@ async function initComponentsOnDemand() {
     initTabs()
   }
 
-  // Article actions (share/copy buttons)
-  if (document.querySelector('.js-share-btn, .js-copy-link-btn')) {
+  // Article actions (social media share)
+  if (document.querySelector('.js-share-facebook, .js-share-x, .js-share-linkedin')) {
     initArticleActions()
   }
 
@@ -196,53 +196,4 @@ async function initComponentsOnDemand() {
   const { init: initFooter } = await import('./components/footer/footer.js')
   initHeader()
   initFooter()
-}
-
-/**
- * Initialize article share and copy link buttons (global)
- */
-function initArticleActions() {
-  // Share buttons
-  const shareBtns = document.querySelectorAll('.js-share-btn')
-  shareBtns.forEach(shareBtn => {
-    shareBtn.addEventListener('click', async () => {
-      const shareData = {
-        title: document.querySelector('h1')?.textContent || document.title,
-        url: window.location.href
-      }
-      
-      const success = await shareContent(shareData)
-      if (success) {
-        shareBtn.classList.add('animate-pop')
-        setTimeout(() => shareBtn.classList.remove('animate-pop'), 300)
-      }
-    })
-  })
-
-  // Copy link buttons
-  const copyBtns = document.querySelectorAll('.js-copy-link-btn')
-  copyBtns.forEach(copyBtn => {
-    copyBtn.addEventListener('click', async () => {
-      const text = copyBtn.querySelector('span')
-      const originalText = text?.textContent
-      const success = await copyToClipboard(window.location.href)
-      
-      if (success) {
-        // Success state
-        copyBtn.classList.add('!bg-green-500', 'animate-success-pulse')
-        text?.classList.add('!text-white')
-        if (text) text.textContent = 'Copied!'
-        
-        setTimeout(() => {
-          copyBtn.classList.remove('!bg-green-500', 'animate-success-pulse')
-          text?.classList.remove('!text-white')
-          if (text) text.textContent = originalText
-        }, 2000)
-      } else {
-        // Error shake
-        copyBtn.classList.add('animate-shake')
-        setTimeout(() => copyBtn.classList.remove('animate-shake'), 500)
-      }
-    })
-  })
 }
