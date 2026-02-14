@@ -12,9 +12,9 @@
 
       <!-- Content -->
       <div
-        class="flex flex-col flex-1 items-start justify-between w-full min-h-full py-0.5 sm:py-1">
+        class="flex flex-col flex-1 items-start justify-between w-full min-h-full py-0.5 sm:py-1 gap-3 sm:gap-4 md:gap-5">
         <!-- Top Section -->
-        <div class="flex flex-col gap-1.5 sm:gap-2 md:gap-2.5 items-start w-full">
+        <div class="flex flex-col gap-2 sm:gap-2.5 md:gap-3 items-start w-full">
           <!-- Title -->
           <h3
             class="font-roboto font-medium text-base sm:text-lg md:text-xl text-title group-hover:text-primary-dark-blue leading-normal overflow-hidden text-ellipsis w-full line-clamp-2 transition-colors duration-300">
@@ -22,71 +22,38 @@
           </h3>
 
           <!-- Divider -->
-          <div
-            class="h-0 w-full border-t border-stroke group-hover:border-secondary-blue transition-colors duration-300">
-          </div>
+          <div class="h-0 w-full border-t-2 border-stroke group-hover:border-secondary-blue transition-colors duration-300"></div>
 
-          <!-- Requirements List -->
-          <div class="flex flex-col gap-1 sm:gap-1.5 md:gap-1.5 items-start w-full">
-            <!-- Requirement 1 -->
-            <div class="flex gap-1 sm:gap-1.5 items-center w-full">
-              <img src="/assets/svgs/category-icon.svg" alt="check" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0 group-hover:scale-110 transition-transform duration-300" />
-              <p class="flex-1 font-roboto font-normal text-xs sm:text-sm md:text-base text-gray leading-normal line-clamp-3">
-                {{requirement1}}
-              </p>
-            </div>
-
-            <!-- Requirement 2 -->
-            <div class="flex gap-1 sm:gap-1.5 items-start w-full">
-              <img src="/assets/svgs/category-icon.svg" alt="check" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0 group-hover:scale-110 transition-transform duration-300" />
-              <p class="flex-1 font-roboto font-normal text-xs sm:text-sm md:text-base text-gray leading-normal line-clamp-3">
-                {{requirement2}}
-              </p>
-            </div>
-
-            <!-- Requirement 3 -->
-            <div class="flex gap-1 sm:gap-1.5 items-start w-full">
-              <img src="/assets/svgs/category-icon.svg" alt="check" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0 group-hover:scale-110 transition-transform duration-300" />
-              <p class="flex-1 font-roboto font-normal text-xs sm:text-sm md:text-base text-gray leading-normal line-clamp-3">
-                {{requirement3}}
-              </p>
-            </div>
-          </div>
+          <!-- Description -->
+          <p class="font-roboto font-normal text-xs sm:text-sm md:text-base text-gray leading-relaxed line-clamp-3 sm:line-clamp-4 md:line-clamp-5 w-full">
+            {{description}}
+          </p>
         </div>
 
-        <!-- Bottom Section - Action Badges -->
-        <div class="flex flex-col sm:flex-row sm:flex-wrap gap-1.5 sm:gap-2 md:gap-2.5 items-start w-full mt-0">
-          <!-- Programs Badge -->
-          <div
-            class="bg-secondary-blue-light group-hover:bg-secondary-blue flex gap-0.5 sm:gap-1 md:gap-1.5 items-center justify-center px-1.5 sm:px-2 md:px-2.5 py-0.5 sm:py-1 md:py-[5px] rounded-[5px] w-full sm:w-auto transition-colors duration-300">
-            <img src="/assets/svgs/learning-grid.svg" alt="programs"
-              class="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 shrink-0 group-hover:scale-110 transition-transform duration-300 text-primary-dark-blue" />
-            <p class="font-roboto font-medium text-[11px] sm:text-xs md:text-sm text-primary-dark-blue leading-normal">
-              {{programsText}}
+        <!-- Bottom Section - CTA -->
+        <div class="flex items-center gap-2 sm:gap-2.5 w-full">
+          <a href="{{registerUrl}}"
+            class="bg-secondary-blue border border-secondary-blue hover:bg-primary-yellow hover:border-primary-yellow flex items-center justify-center gap-1.5 sm:gap-2 h-[38px] sm:h-[42px] md:h-[46px] px-3 sm:px-4 md:px-5 rounded-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 group/btn flex-1 relative overflow-hidden before:absolute before:inset-0 before:bg-primary-yellow before:scale-x-0 before:origin-left hover:before:scale-x-100 before:transition-transform before:duration-300 before:-z-10">
+            <p
+              class="font-roboto font-medium text-xs sm:text-sm md:text-base text-primary-dark-blue leading-normal whitespace-nowrap transition-all duration-300 relative z-10">
+              Đăng ký ngay
             </p>
-          </div>
-
-          <!-- Timeline Badge -->
-          <div
-            class="bg-secondary-blue-light group-hover:bg-secondary-blue flex gap-0.5 sm:gap-1 md:gap-1.5 items-center justify-center px-1.5 sm:px-2 md:px-2.5 py-0.5 sm:py-1 md:py-[5px] rounded-[5px] w-full sm:w-auto transition-colors duration-300">
-            <img src="/assets/svgs/icon-calendar-clock.svg" alt="calendar"
-              class="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 shrink-0 group-hover:scale-110 transition-transform duration-300 text-primary-dark-blue" />
-            <p class="font-roboto font-medium text-[11px] sm:text-xs md:text-sm text-primary-dark-blue leading-normal">
-              {{timelineText}}
+            <img src="/assets/svgs/icon-arrow-up-right.svg" alt="arrow"
+              class="w-4 h-4 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 transition-all duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 text-primary-dark-blue relative z-10" />
+          </a>
+          
+          <!-- Info Badge (Optional - Remove if not needed) -->
+          <div class="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 sm:py-2 bg-secondary-green/10 group-hover:bg-secondary-green/20 rounded-md border border-secondary-green/30 group-hover:border-secondary-green/50 transition-all duration-300 flex-shrink-0">
+            <span class="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-green opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-secondary-green"></span>
+            </span>
+            <p class="font-roboto font-medium text-[10px] sm:text-xs md:text-sm text-secondary-green leading-normal whitespace-nowrap">
+              Đang tuyển sinh
             </p>
           </div>
         </div>
       </div>
-      <!-- Register Button -->
-      <a href="{{registerUrl}}"
-        class="bg-secondary-blue w-full border border-secondary-blue hover:bg-primary-yellow hover:border-primary-yellow hover:shadow-lg flex gap-1.5 sm:gap-2 md:gap-2.5 h-[36px] sm:h-[40px] md:h-[50px] items-center justify-center px-2 sm:px-2.5 md:px-4 rounded-lg md:rounded-bl-[10px] md:rounded-br-[10px] md:rounded-tl-none md:rounded-tr-none md:absolute md:bottom-0 md:left-0 md:right-0 md:opacity-0 md:translate-y-2 md:z-20 transition-all duration-300 md:group-hover:opacity-100 md:group-hover:translate-y-0 group/btn">
-        <p
-          class="font-roboto font-medium text-xs sm:text-sm md:text-base text-primary-dark-blue group-hover/btn:text-primary-dark-blue leading-normal whitespace-nowrap transition-colors duration-300">
-          Đăng ký tuyển sinh
-        </p>
-        <img src="/assets/svgs/icon-arrow-up-right.svg" alt="arrow"
-          class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 transition-all duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 text-primary-dark-blue" />
-      </a>
     </div>
   </div>
 </div>
