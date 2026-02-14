@@ -77,6 +77,7 @@ export default {
         'pop': 'pop 0.3s ease-in-out',            // Quick scale pulse
         'shake': 'shake 0.5s ease-in-out',        // Error vibration
         'success-pulse': 'success-pulse 0.5s ease-in-out', // Success glow
+        'flash-badge': 'flash 2s cubic-bezier(0.4, 0, 0.6, 1) infinite', // Badge flash effect
       },
       keyframes: {
         jelly: {
@@ -98,6 +99,16 @@ export default {
         'success-pulse': {
           '0%, 100%': { boxShadow: '0 0 0 0 rgba(34, 197, 94, 0.7)' },
           '50%': { boxShadow: '0 0 0 8px rgba(34, 197, 94, 0)' },
+        },
+        flash: {
+          '0%, 100%': {
+            opacity: '1',
+            transform: 'scale(1)',
+          },
+          '50%': {
+            opacity: '1',
+            transform: 'scale(0.85)',
+          },
         },
       },
     },

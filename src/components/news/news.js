@@ -30,7 +30,7 @@ export function initNewsSwiper() {
         slidesPerView: 3,
         // spaceBetween: 10,
       },
-      1024: {
+      1180: {
         slidesPerView: 4,
         // spaceBetween: 10,
       },
