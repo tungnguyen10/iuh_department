@@ -33,7 +33,7 @@ export function initNewsCarousel(containerSelector = '.news-carousel-wrapper') {
     console.warn('Swiper container not found in news carousel')
     return null
   }
-
+  
   // Initialize Swiper
   const swiper = new Swiper(swiperContainer, {
     modules: [Navigation, Pagination],
