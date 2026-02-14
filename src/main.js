@@ -7,7 +7,7 @@ import './styles/main.scss'
 import { appEnv } from './config/env.js'
 import { inlineSVGs } from './js/svg-loader.js'
 import { loadingManager } from './js/loading.js'
-import { delay, shareContent, copyToClipboard, initFadeInOnScroll, initArticleActions } from './js/utils.js'
+import { delay, shareContent, copyToClipboard, initFadeInOnScroll, initArticleActions, initPDFViewer } from './js/utils.js'
 import { initSearchModal } from './components/search/search-modal.js'
 import './js/global-widgets.js'
 import './js/module-manager.js' // Module toggle dev tool
@@ -189,6 +189,11 @@ async function initComponentsOnDemand() {
   // Article actions (social media share)
   if (document.querySelector('.js-share-facebook, .js-share-x, .js-share-linkedin')) {
     initArticleActions()
+  }
+
+  // PDF Viewer (document detail pages)
+  if (document.getElementById('pdf-object')) {
+    initPDFViewer()
   }
 
   // Header & Footer are always present, so load them

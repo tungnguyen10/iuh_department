@@ -204,3 +204,80 @@ export const initArticleActions = () => {
     })
   }
 }
+
+/**
+ * Initialize PDF Viewer with Browser Support Detection
+ * Handles PDF loading, fallback for unsupported browsers, and error states
+ * Optimized with event listener cleanup and early returns
+ */
+export const initPDFViewer = () => {
+  const pdfObject = document.getElementById('pdf-object')
+  const pdfViewer = document.getElementById('pdf-viewer')
+  const pdfLoading = document.getElementById('pdf-loading')
+  const pdfFallback = document.getElementById('pdf-fallback')
+  
+  // Early return if elements don't exist
+  if (!pdfObject || !pdfLoading || !pdfFallback) return
+  
+  let loadAttempted = false
+  let timeoutId = null
+  
+  /**
+   * Check if browser supports inline PDF viewing
+   * @returns {boolean} True if supported
+   */
+  const checkPDFSupport = () => {
+    const ua = navigator.userAgent.toLowerCase()
+    const isIOS = /iphone|ipad|ipod/.test(ua)
+    const isAndroid = /android/.test(ua) && !/chrome|firefox|edg/.test(ua)
+    
+    return !(isIOS || isAndroid)
+  }
+  
+  /**
+   * Handle successful PDF load
+   */
+  const handleLoadComplete = () => {
+    if (!loadAttempted) {
+      loadAttempted = true
+      pdfLoading.classList.add('hidden')
+      if (timeoutId) clearTimeout(timeoutId)
+    }
+  }
+  
+  /**
+   * Show fallback download message
+   */
+  const showFallback = () => {
+    pdfLoading.classList.add('hidden')
+    pdfFallback.classList.remove('hidden')
+    pdfFallback.classList.add('flex', 'items-center', 'justify-center')
+    if (timeoutId) clearTimeout(timeoutId)
+  }
+  
+  // Check support and show fallback immediately if not supported
+  if (!checkPDFSupport()) {
+    showFallback()
+    return
+  }
+  
+  // Event handlers
+  const handleLoad = () => handleLoadComplete()
+  const handleError = () => showFallback()
+  
+  // Add listeners with auto-cleanup (once: true)
+  pdfObject.addEventListener('load', handleLoad, { once: true })
+  pdfObject.addEventListener('error', handleError, { once: true })
+  
+  if (pdfViewer) {
+    pdfViewer.addEventListener('load', handleLoad, { once: true })
+    pdfViewer.addEventListener('error', handleError, { once: true })
+  }
+  
+  // Fallback timeout - show download if nothing loads in 5 seconds
+  timeoutId = setTimeout(() => {
+    if (!loadAttempted) {
+      showFallback()
+    }
+  }, 5000)
+}
