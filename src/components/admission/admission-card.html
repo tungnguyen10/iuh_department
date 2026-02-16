@@ -7,7 +7,12 @@
       class="flex flex-col md:flex-row gap-2.5 sm:gap-3 md:gap-4 lg:gap-[15px] items-stretch w-full px-1.5 sm:px-2 md:px-2.5">
       <!-- Image -->
       <div class="relative rounded-[5px] w-full md:w-[200px] lg:w-[250px] md:min-w-[200px] lg:min-w-[250px] shrink-0 aspect-[16/9] md:aspect-auto overflow-hidden">
-        <img src="{{image}}" alt="{{imageAlt}}" class="absolute md:relative inset-0 w-full h-full object-cover group-hover:scale-110 group-hover:brightness-95 transition-all duration-500" />
+        <img src="{{image}}" alt="{{imageAlt}}" class="absolute md:relative inset-0 w-full h-full object-cover group-hover:scale-110 group-hover:brightness-110 transition-all duration-700 ease-out" />
+        <!-- Date Badge -->
+        <div class="absolute bottom-2 right-2 flex gap-1.5 items-center bg-primary-dark-blue/90 backdrop-blur-md px-3 py-1.5 rounded-lg shadow-lg border border-primary-dark-blue/30 transition-all duration-500 ease-out group-hover:bg-primary-yellow group-hover:border-primary-yellow group-hover:-translate-y-1 group-hover:shadow-[0_8px_30px_rgba(255,196,0,0.6)]">
+          <img src="/assets/svgs/icon-calendar-clock.svg" alt="calendar" class="w-4 h-4 md:w-5 md:h-5 transition-all duration-500 ease-out text-primary-white group-hover:text-primary-dark-blue">
+          <span class="font-roboto font-bold text-xs text-primary-white group-hover:text-primary-dark-blue whitespace-nowrap transition-all duration-300">{{date}}</span>
+        </div>
       </div>
 
       <!-- Content -->
@@ -42,7 +47,7 @@
               class="w-4 h-4 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 transition-all duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 text-primary-dark-blue relative z-10" />
           </a>
           
-          <!-- Info Badge (Optional - Remove if not needed) -->
+          <!-- Info Badge (Optional - Remove if not needed)
           <div class="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 sm:py-2 bg-secondary-green/10 group-hover:bg-secondary-green/20 rounded-md border border-secondary-green/30 group-hover:border-secondary-green/50 transition-all duration-300 flex-shrink-0">
             <span class="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-green opacity-75"></span>
@@ -51,7 +56,7 @@
             <p class="font-roboto font-medium text-[10px] sm:text-xs md:text-sm text-secondary-green leading-normal whitespace-nowrap">
               Đang tuyển sinh
             </p>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
