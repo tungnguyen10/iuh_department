@@ -528,6 +528,11 @@ export default defineConfig(({ mode }) => {
       outDir,
       emptyOutDir: true,
       assetsInlineLimit: 0,
+      // Performance optimizations
+      minify: 'esbuild', // Fast minification
+      cssMinify: true,
+      reportCompressedSize: true,
+      chunkSizeWarningLimit: 1000, // Warn if chunk > 1MB
       rollupOptions: {
         input,
         output: {

@@ -165,11 +165,11 @@ export function initTabs(container = document) {
   return instances
 }
 
-// Auto-init on DOM ready
-if (typeof window !== 'undefined') {
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => initTabs())
-  } else {
-    initTabs()
-  }
-}
+// Auto-init disabled - initialized via main.js on demand
+// if (typeof window !== 'undefined') {
+//   if (document.readyState === 'loading') {
+//     document.addEventListener('DOMContentLoaded', () => initTabs())
+//   } else {
+//     initTabs()
+//   }
+// }
