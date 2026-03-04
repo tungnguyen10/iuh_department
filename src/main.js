@@ -242,14 +242,6 @@ async function initComponentsOnDemand() {
       "Intro Section",
     ),
 
-    // Infrastructure
-    safeInit(
-      ".infrastructure-swiper",
-      () => import("./components/infrastructure/infrastructure.js"),
-      "initInfrastructure",
-      "Infrastructure",
-    ),
-
     // Partners Canvas
     safeInit(
       ".partners-canvas",
@@ -282,14 +274,6 @@ async function initComponentsOnDemand() {
       "Industry Partnerships",
     ),
 
-    // Research Pattern Canvas
-    safeInit(
-      "#pattern-canvas",
-      () => import("./components/research/research-background-canvas.js"),
-      "initPatternCanvas",
-      "Pattern Canvas",
-    ),
-
     // News Carousel (used in news, about pages)
     safeInit(
       ".news-carousel-wrapper",
@@ -306,17 +290,6 @@ async function initComponentsOnDemand() {
       "Tabs",
     ),
   ]);
-
-  // Major Quiz (majors page) - special handling for window assignment
-  if (document.querySelector("#majorQuiz")) {
-    try {
-      const { initMajorQuiz } =
-        await import("./components/major/major-quiz.js");
-      window.majorQuizInstance = initMajorQuiz();
-    } catch (error) {
-      console.error("Failed to init Major Quiz:", error);
-    }
-  }
 
   // Article actions (social media share)
   if (
