@@ -1,0 +1,36 @@
+<!-- Article Actions Bar Component -->
+<!-- Date badge + Social share buttons + View count -->
+<div class="flex items-center justify-between flex-wrap gap-2 sm:gap-2.5 {{class}}">
+  <!-- Date Badge -->
+  <div class="inline-flex items-center gap-1.5 bg-danger-light rounded-[5px] px-1.5 py-[3px]">
+    <img src="/assets/svgs/icon-calendar-check.svg" alt="" class="w-4 h-4 sm:w-5 sm:h-5 text-danger" />
+    <span class="font-roboto font-medium text-xs sm:text-sm text-danger">{{date}}</span>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="flex items-center gap-1.5 sm:gap-2">
+    <!-- Facebook Share Button -->
+    <button type="button" aria-label="Share on Facebook"
+      class="js-share-facebook group inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 bg-[#1877F2] hover:bg-[#0C63D4] rounded-[5px] transition-all duration-300 hover:scale-105 hover:shadow-md active:scale-95">
+      <img src="/assets/svgs/icon-facebook.svg" alt="" class="w-4 h-4 sm:w-5 sm:h-5 text-white transition-transform duration-300 group-hover:scale-110" />
+    </button>
+
+    <!-- X (Twitter) Share Button -->
+    <button type="button" aria-label="Share on X"
+      class="js-share-x group inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 bg-black hover:bg-gray-800 rounded-[5px] transition-all duration-300 hover:scale-105 hover:shadow-md active:scale-95">
+      <img src="/assets/svgs/icon-x.svg" alt="" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white transition-transform duration-300 group-hover:scale-110" />
+    </button>
+
+    <!-- LinkedIn Share Button -->
+    <button type="button" aria-label="Share on LinkedIn"
+      class="js-share-linkedin group inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 bg-[#0A66C2] hover:bg-[#004182] rounded-[5px] transition-all duration-300 hover:scale-105 hover:shadow-md active:scale-95">
+      <img src="/assets/svgs/icon-linkedin.svg" alt="" class="w-4 h-4 sm:w-5 sm:h-5 text-white transition-transform duration-300 group-hover:scale-110" />
+    </button>
+
+    <!-- View Count -->
+    <div class="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-gray-600 ml-1 sm:ml-2">
+      <img src="/assets/svgs/icon-eye.svg" alt="" class="w-5 h-5 sm:w-6 sm:h-6 shrink-0 text-gray-600" />
+      <span class="whitespace-nowrap">3399 <span class="hidden sm:inline">lượt xem</span></span>
+    </div>
+  </div>
+</div>

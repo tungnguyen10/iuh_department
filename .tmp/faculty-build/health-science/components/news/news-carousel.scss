@@ -1,0 +1,53 @@
+// News Carousel Component Styles
+.news-carousel-wrapper {
+  width: 100%;
+  position: relative;
+
+  // Swiper container
+  .news-carousel-swiper {
+    overflow: hidden;
+  }
+
+  // Pagination (Mobile only)
+  .news-carousel-pagination {
+    position: relative;
+    bottom: 0 !important;
+    display: block !important;
+
+    @media (min-width: 768px) {
+      display: none !important; // Hide on desktop
+    }
+  }
+
+  .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(245, 158, 11, 0.4);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+
+    @media (max-width: 768px) {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+    background-color: #f59e0b;
+    width: 30px;
+    border-radius: 6px;
+
+    @media (max-width: 768px) {
+      width: 24px;
+    }
+  }
+
+  // Navigation buttons (Desktop only)
+  .news-carousel-prev,
+  .news-carousel-next {
+    @media (max-width: 767px) {
+      display: none !important;
+    }
+  }
+}

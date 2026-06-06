@@ -1,0 +1,110 @@
+// ========================================
+// SEARCH MODAL SPECIFIC STYLES
+// Chỉ giữ lại những phần cần custom
+// ========================================
+
+// Clear button visibility toggle
+.search-input__clear.is-visible {
+  display: flex;
+}
+
+// Category hover - text color change
+.search-category-item:hover span:last-child {
+  color: white;
+}
+
+// Custom scrollbar for search results (can't be done with Tailwind)
+.custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #F1F5F9;
+    border-radius: 3px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 3px;
+    
+    &:hover {
+      background: #94A3B8;
+    }
+  }
+}
+
+// Search result items with dynamic content
+.search-result-item {
+  padding: 16px;
+  background: #E3F6FDFF; // secondary-blue-light from config
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #FEF9E3; // secondary-yellow-light from config
+    box-shadow: 0 4px 12px rgba(21, 56, 152, 0.08); // primary-dark-blue with opacity
+    transform: translateX(4px);
+  }
+}
+
+.search-result-item__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #153898; // primary-dark-blue from config
+  margin-bottom: 6px;
+  
+  mark {
+    background: #F9B200; // primary-yellow from config
+    color: white;
+    padding: 2px 4px;
+    border-radius: 3px;
+  }
+}
+
+.search-result-item__excerpt {
+  font-size: 14px;
+  color: #64748B; // slate-500
+  line-height: 1.6;
+  margin-bottom: 8px;
+  
+  mark {
+    background: #F9B200; // secondary-yellow-light from config
+    color: #153898; // primary-dark-blue from config
+    font-weight: 500;
+  }
+}
+
+.search-result-item__meta {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: #94A3B8;
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease;
+}
+
+.animate-spin {
+  animation: spin 0.8s linear infinite;
+}

@@ -1,13 +1,34 @@
 import { defineConfig, loadEnv } from 'vite'
-import { resolve, extname, basename, dirname, isAbsolute } from 'path'
+import { resolve, extname, basename, dirname, isAbsolute, relative } from 'path'
 import { glob } from 'glob'
 import { fileURLToPath } from 'url'
-import { copyFileSync, mkdirSync, existsSync, readFileSync, readdirSync, statSync } from 'fs'
+import { copyFileSync, mkdirSync, existsSync, readFileSync, readdirSync, writeFileSync, rmSync } from 'fs'
 import { execSync } from 'child_process'
 import svgo from 'vite-plugin-svgo'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
+
+const DEFAULT_FACULTY_ID = 'health-science'
+const FACULTY_REQUIRED_FIELDS = ['id', 'name', 'shortName', 'email', 'phone', 'nav', 'topBar', 'social', 'colors']
+const FACULTY_COLOR_KEYS = ['brand-primary', 'brand-accent', 'brand-tint', 'brand-surface']
+const SOCIAL_CONFIG = {
+  facebook: {
+    label: 'Facebook',
+    icon: 'assets/svgs/icon-facebook.svg',
+    hoverClass: 'hover:text-[#1877F2]',
+  },
+  instagram: {
+    label: 'Instagram',
+    icon: 'assets/svgs/icon-instagram.svg',
+    hoverClass: 'hover:text-[#E4405F]',
+  },
+  youtube: {
+    label: 'Youtube',
+    icon: 'assets/svgs/icon-youtube.svg',
+    hoverClass: 'hover:text-[#FF0000]',
+  },
+}
 
 // Generate build signature: PREFIX_HASH_TIMESTAMP
 const getBuildSignature = () => {
@@ -21,71 +42,13 @@ const getBuildSignature = () => {
   return `2026TUNG's_${gitHash}_${timestamp}`
 }
 
-// Lấy tất cả page HTML
-const htmlFiles = glob.sync('**/*.html', {
-  cwd: resolve(__dirname, 'src/pages')
-})
-
-// Map page cho Rollup
-const input = {}
-htmlFiles.forEach(file => {
-  const name = file.replace('.html', '')
-  input[name] = resolve(__dirname, 'src/pages', file)
-})
-
-const mapSrcRequests = () => ({
-  name: 'map-src-requests',
-  configureServer(server) {
-    server.middlewares.use((req, _res, next) => {
-      if (!req.url) return next()
-      const mapped = mapUrlToFsPath(req.url)
-      if (mapped) {
-        req.url = `/@fs/${mapped}`
-      }
-      next()
-    })
-  },
-  configurePreviewServer(server) {
-    server.middlewares.use((req, _res, next) => {
-      if (!req.url) return next()
-      const mapped = mapUrlToFsPath(req.url)
-      if (mapped) {
-        req.url = `/@fs/${mapped}`
-      }
-      next()
-    })
-  },
-})
-
-const mapUrlToFsPath = (url) => {
-  if (url === '/main.js') {
-    return resolve(__dirname, 'src/main.js')
-  }
-  if (url.startsWith('/js/')) {
-    return resolve(__dirname, 'src', url.slice(1))
-  }
-  if (url.startsWith('/components/')) {
-    return resolve(__dirname, 'src', url.slice(1))
-  }
-  if (url.startsWith('/assets/')) {
-    return resolve(__dirname, 'src', url.slice(1))
-  }
-  return null
-}
-
-const getCssOutputName = (name) => {
-  if (!name) return 'style'
-  const normalized = name.replace(/\\/g, '/')
-  const marker = 'styles/'
-  const idx = normalized.lastIndexOf(marker)
-  if (idx >= 0) {
-    return normalized
-      .slice(idx + marker.length)
-      .replace(/\.css$/i, '')
-      .replace(/\//g, '-')
-  }
-  return basename(normalized, '.css')
-}
+const escapeHtml = (value = '') =>
+  String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
 
 const normalizeBasePath = (value = '/') => {
   if (!value || value === '.') {
@@ -107,6 +70,388 @@ const resolveOutDir = (value = '') => {
   return isAbsolute(finalTarget) ? finalTarget : resolve(__dirname, finalTarget)
 }
 
+const withBaseFactory = (base) => (value = '') => {
+  if (!value || value.startsWith('http') || value.startsWith('//') || value.startsWith('mailto:') || value.startsWith('tel:')) {
+    return value
+  }
+  const normalized = value.startsWith('/') ? value : `/${value}`
+  return base === '/' ? normalized : `${base}${normalized}`.replace(/\/+/g, '/')
+}
+
+const hexToRgbSpace = (hex) => {
+  const normalized = String(hex || '').trim()
+  const match = normalized.match(/^#?([0-9a-fA-F]{6})$/)
+  if (!match) {
+    throw new Error(`Invalid hex color "${hex}"`)
+  }
+
+  const color = match[1]
+  const red = Number.parseInt(color.slice(0, 2), 16)
+  const green = Number.parseInt(color.slice(2, 4), 16)
+  const blue = Number.parseInt(color.slice(4, 6), 16)
+  return `${red} ${green} ${blue}`
+}
+
+const loadFaculty = (facultyId) => {
+  const facultyDir = resolve(__dirname, 'src/faculties', facultyId)
+  const facultyPath = resolve(facultyDir, 'faculty.json')
+
+  if (!existsSync(facultyPath)) {
+    throw new Error(`Faculty '${facultyId}' not found at src/faculties/${facultyId}/`)
+  }
+
+  const faculty = JSON.parse(readFileSync(facultyPath, 'utf-8'))
+
+  for (const field of FACULTY_REQUIRED_FIELDS) {
+    if (faculty[field] === undefined || faculty[field] === null || faculty[field] === '') {
+      throw new Error(`Missing required faculty field: ${field}`)
+    }
+  }
+
+  if (!Array.isArray(faculty.nav)) {
+    throw new Error('Missing required faculty field: nav')
+  }
+
+  if (!Array.isArray(faculty.topBar)) {
+    throw new Error('Missing required faculty field: topBar')
+  }
+
+  if (typeof faculty.social !== 'object' || Array.isArray(faculty.social)) {
+    throw new Error('Missing required faculty field: social')
+  }
+
+  if (typeof faculty.colors !== 'object' || Array.isArray(faculty.colors)) {
+    throw new Error('Missing required faculty field: colors')
+  }
+
+  for (const colorKey of FACULTY_COLOR_KEYS) {
+    if (!faculty.colors[colorKey]) {
+      throw new Error(`Missing required faculty field: colors.${colorKey}`)
+    }
+    hexToRgbSpace(faculty.colors[colorKey])
+  }
+
+  return faculty
+}
+
+const getFacultyPagePath = (facultyId, pageName) => {
+  const normalized = pageName.replace(/^\/+/, '')
+  const facultyPage = resolve(__dirname, 'src/faculties', facultyId, 'pages', normalized)
+  if (existsSync(facultyPage)) {
+    return facultyPage
+  }
+  return resolve(__dirname, 'src/pages', normalized)
+}
+
+const collectFacultyPages = (facultyId) => {
+  const sharedPagesDir = resolve(__dirname, 'src/pages')
+  const facultyPagesDir = resolve(__dirname, 'src/faculties', facultyId, 'pages')
+  const pageMap = new Map()
+
+  for (const file of glob.sync('*.html', { cwd: sharedPagesDir })) {
+    pageMap.set(file, resolve(sharedPagesDir, file))
+  }
+
+  if (existsSync(facultyPagesDir)) {
+    for (const file of glob.sync('*.html', { cwd: facultyPagesDir })) {
+      pageMap.set(file, resolve(facultyPagesDir, file))
+    }
+  }
+
+  return pageMap
+}
+
+const prepareFacultyWorkspace = (facultyId) => {
+  const tempRoot = resolve(__dirname, '.tmp/faculty-build', facultyId)
+  const tempPagesDir = resolve(tempRoot, 'pages')
+  const pageMap = collectFacultyPages(facultyId)
+  const mirrorDir = (src, dest) => {
+    if (!existsSync(src)) return
+
+    mkdirSync(dest, { recursive: true })
+    for (const entry of readdirSync(src, { withFileTypes: true })) {
+      const srcPath = resolve(src, entry.name)
+      const destPath = resolve(dest, entry.name)
+      if (entry.isDirectory()) {
+        mirrorDir(srcPath, destPath)
+      } else {
+        copyFileSync(srcPath, destPath)
+      }
+    }
+  }
+
+  rmSync(tempRoot, { recursive: true, force: true })
+  mkdirSync(tempPagesDir, { recursive: true })
+  copyFileSync(resolve(__dirname, 'src/main.js'), resolve(tempRoot, 'main.js'))
+  for (const dirName of ['components', 'config', 'js', 'styles']) {
+    mirrorDir(resolve(__dirname, 'src', dirName), resolve(tempRoot, dirName))
+  }
+
+  const input = {}
+  for (const [fileName, sourcePath] of pageMap.entries()) {
+    const targetPath = resolve(tempPagesDir, fileName)
+    copyFileSync(sourcePath, targetPath)
+    input[fileName.replace(/\.html$/i, '')] = targetPath
+  }
+
+  return {
+    rootDir: tempRoot,
+    pagesDir: tempPagesDir,
+    input,
+  }
+}
+
+const buildFacultyCssVars = (faculty) => {
+  const declarations = FACULTY_COLOR_KEYS
+    .map((key) => `--color-${key}: ${hexToRgbSpace(faculty.colors[key])};`)
+    .join('')
+  return `<style>:root{${declarations}}</style>`
+}
+
+const generateNavHtml = (navArray, base) => {
+  const withBase = withBaseFactory(base)
+  const baseItemClass =
+    'flex items-center justify-center px-3 h-full text-primary-white font-medium text-[16px] xl:hover:bg-white/10 xl:hover:text-primary-yellow transition-all duration-200 relative before:absolute before:bottom-0 before:left-0 before:right-0 before:h-0.5 before:bg-primary-yellow before:scale-x-0 xl:hover:before:scale-x-100 before:transition-transform before:duration-300'
+  const dropdownItemClass =
+    'block px-5 py-3.5 text-black xl:hover:bg-primary-dark-blue/5 xl:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 xl:hover:before:scale-y-100 before:transition-transform'
+  const dropdownItemLastClass =
+    'block px-5 py-3.5 text-black xl:hover:bg-primary-dark-blue/5 xl:hover:text-primary-dark-blue transition-all duration-200 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 xl:hover:before:scale-y-100 before:transition-transform'
+
+  const renderTrigger = (item, extraClass = '') => {
+    const classes = `${baseItemClass}${extraClass ? ` ${extraClass}` : ''}`
+    const label = escapeHtml(item.label)
+    if (item.url) {
+      return `<a href="${escapeHtml(withBase(item.url))}" class="${classes}">${label}</a>`
+    }
+    return `<span class="${classes} cursor-pointer">${label}</span>`
+  }
+
+  const renderLevelThree = (items = []) =>
+    items
+      .map((item, index) => {
+        const itemClass = index === items.length - 1 ? dropdownItemLastClass : dropdownItemClass
+        return `<a href="${escapeHtml(withBase(item.url || '#'))}" class="${itemClass}"><span class="font-medium">${escapeHtml(item.label)}</span></a>`
+      })
+      .join('')
+
+  const renderLevelTwo = (items = []) =>
+    items
+      .map((item, index) => {
+        if (Array.isArray(item.children) && item.children.length > 0) {
+          const itemClass = index === items.length - 1 ? dropdownItemLastClass : dropdownItemClass
+          return `<div class="relative group/sub" data-subdropdown>
+  <span class="flex items-center justify-between px-5 py-3.5 text-black xl:hover:bg-primary-dark-blue/5 xl:hover:text-primary-dark-blue transition-all duration-200 ${index === items.length - 1 ? '' : 'border-b border-gray-100 '}relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 xl:hover:before:scale-y-100 before:transition-transform cursor-pointer">
+    <span class="font-medium">${escapeHtml(item.label)}</span>
+    <img src="/assets/svgs/chevron-right.svg" alt="" class="chevron-icon w-4 h-4 transition-transform duration-200 xl:group-hover/sub:translate-x-1" />
+  </span>
+  <div class="sub-dropdown absolute top-0 left-full min-w-[220px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-r-lg opacity-0 invisible pointer-events-none xl:group-hover/sub:opacity-100 xl:group-hover/sub:visible xl:group-hover/sub:pointer-events-auto transition-all duration-300 overflow-hidden z-50" data-subdropdown-menu>
+    <div class="border-t-2 border-primary-yellow"></div>
+    ${renderLevelThree(item.children)}
+  </div>
+</div>`
+        }
+
+        const itemClass = index === items.length - 1 ? dropdownItemLastClass : dropdownItemClass
+        return `<a href="${escapeHtml(withBase(item.url || '#'))}" class="${itemClass}"><span class="font-medium">${escapeHtml(item.label)}</span></a>`
+      })
+      .join('')
+
+  return navArray
+    .map((item) => {
+      if (Array.isArray(item.children) && item.children.length > 0) {
+        return `<div class="nav-item-dropdown relative group h-full" data-dropdown>
+  ${renderTrigger(item, 'cursor-pointer')}
+  <div class="dropdown-menu absolute top-full min-w-[250px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-b-lg opacity-0 invisible translate-y-2 xl:group-hover:opacity-100 xl:group-hover:visible xl:group-hover:translate-y-0 transition-all duration-300 z-50" data-dropdown-menu>
+    <div class="border-t-2 border-primary-yellow"></div>
+    ${renderLevelTwo(item.children)}
+  </div>
+</div>`
+      }
+
+      return `<div class="nav-item-dropdown relative group h-full" data-dropdown>${renderTrigger(item)}</div>`
+    })
+    .join('')
+}
+
+const generateTopBarHtml = (topBarArray, base) => {
+  const withBase = withBaseFactory(base)
+  return topBarArray
+    .map(
+      (item, index) =>
+        `${index > 0 ? '<span class="h-full w-auto border-l-[1px] border-stroke relative"></span>' : ''}<a href="${escapeHtml(withBase(item.url || '#'))}" class="flex items-center gap-2.5 px-1.5 py-0.5 font-medium text-sm text-primary-dark-blue rounded-[5px] hover:text-primary-yellow transition-colors">${escapeHtml(item.label)}</a>`
+    )
+    .join('')
+}
+
+const generateMobileTopBarHtml = (topBarArray, faculty, base) => {
+  const withBase = withBaseFactory(base)
+  const quickLinks = topBarArray.slice(0, 3).map((item, index) => {
+    const icons = [
+      '/assets/svgs/icon-briefcase.svg',
+      '/assets/svgs/icon-graduation-cap.svg',
+      '/assets/svgs/icon-building.svg',
+    ]
+    return `<a href="${escapeHtml(withBase(item.url || '#'))}" class="flex flex-col items-center gap-2 p-2.5 bg-primary-dark-blue/5 rounded-lg transition-all duration-300">
+  <div class="w-9 h-9 flex items-center justify-center">
+    <img src="${icons[index]}" alt="" class="w-6 h-6 text-primary-dark-blue" />
+  </div>
+  <span class="text-[11px] font-medium text-primary-dark-blue text-center leading-tight">${escapeHtml(item.label)}</span>
+</a>`
+  })
+
+  return `${quickLinks.join('')}
+<a href="#" class="flex flex-col items-center gap-2 p-2.5 bg-primary-dark-blue/5 rounded-lg transition-all duration-300">
+  <div class="w-9 h-9 flex items-center justify-center">
+    <img src="/assets/svgs/icon-article.svg" alt="" class="w-6 h-6 text-primary-dark-blue" />
+  </div>
+  <span class="text-[11px] font-medium text-primary-dark-blue text-center leading-tight">E-OFFICE</span>
+</a>
+<a href="mailto:${escapeHtml(faculty.email)}" class="flex flex-col items-center gap-2 p-2.5 bg-primary-dark-blue/5 rounded-lg transition-all duration-300">
+  <div class="w-9 h-9 flex items-center justify-center">
+    <img src="/assets/svgs/icon-mail-outline.svg" alt="" class="w-6 h-6 text-primary-dark-blue" />
+  </div>
+  <span class="text-[11px] font-medium text-primary-dark-blue text-center leading-tight">Email</span>
+</a>
+<a href="tel:${escapeHtml(faculty.phone.replace(/[^\d+]/g, ''))}" class="flex flex-col items-center gap-2 p-2.5 bg-primary-dark-blue/5 rounded-lg transition-all duration-300">
+  <div class="w-9 h-9 flex items-center justify-center">
+    <img src="/assets/svgs/icon-phone.svg" alt="" class="w-6 h-6 text-primary-dark-blue" />
+  </div>
+  <span class="text-[11px] font-medium text-primary-dark-blue text-center leading-tight">Hotline</span>
+</a>`
+}
+
+const generateSocialHtml = (social = {}) =>
+  Object.entries(SOCIAL_CONFIG)
+    .filter(([key]) => Boolean(social[key]))
+    .map(
+      ([key, config]) => `<li>
+  <a href="${escapeHtml(social[key])}" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2 md:gap-2.5 text-sm md:text-base text-gray-700 ${config.hoverClass} font-roboto transition-colors duration-200">
+    <img src="${config.icon}" alt="" class="w-5 h-5 md:w-6 md:h-6">
+    <span>${config.label}</span>
+  </a>
+</li>`
+    )
+    .join('')
+
+const applyFacultyTemplateVars = (html, faculty, base) => {
+  const replacements = {
+    '{{faculty.id}}': escapeHtml(faculty.id),
+    '{{faculty.name}}': escapeHtml(faculty.name),
+    '{{faculty.shortName}}': escapeHtml(faculty.shortName),
+    '{{faculty.email}}': escapeHtml(faculty.email),
+    '{{faculty.phone}}': escapeHtml(faculty.phone),
+    '{{faculty.navHtml}}': generateNavHtml(faculty.nav, base),
+    '{{faculty.topBarHtml}}': generateTopBarHtml(faculty.topBar, base),
+    '{{faculty.mobileTopBarHtml}}': generateMobileTopBarHtml(faculty.topBar, faculty, base),
+    '{{faculty.socialHtml}}': generateSocialHtml(faculty.social),
+  }
+
+  let result = html
+  for (const [placeholder, value] of Object.entries(replacements)) {
+    result = result.split(placeholder).join(value)
+  }
+  return result
+}
+
+const resolveIncludePath = (htmlPath, facultyId) => {
+  if (htmlPath.startsWith('@faculty/')) {
+    const relativePath = htmlPath.slice('@faculty/'.length)
+    const facultyComponentPath = resolve(__dirname, 'src/faculties', facultyId, 'components', relativePath)
+    if (existsSync(facultyComponentPath)) {
+      return facultyComponentPath
+    }
+    return resolve(__dirname, 'src/components', relativePath)
+  }
+
+  let componentPath = htmlPath
+  if (htmlPath.startsWith('@components/')) {
+    componentPath = htmlPath.replace('@components/', 'components/')
+  } else if (htmlPath.startsWith('@/')) {
+    componentPath = htmlPath.substring(2)
+  } else if (htmlPath.startsWith('../')) {
+    componentPath = htmlPath.replace(/^\.\.\//, '')
+  } else if (htmlPath.startsWith('./')) {
+    componentPath = `pages/${htmlPath.slice(2)}`
+  } else if (htmlPath.startsWith('/')) {
+    componentPath = htmlPath.substring(1)
+  }
+
+  return resolve(__dirname, 'src', componentPath)
+}
+
+const mapUrlToFsPath = (url, facultyId, workspace) => {
+  const [pathname] = url.split('?')
+
+  if (pathname === '/' || pathname === '/index.html') {
+    return resolve(workspace.pagesDir, 'index.html')
+  }
+
+  if (pathname === '/main.js') {
+    return resolve(workspace.rootDir, 'main.js')
+  }
+
+  if (/^\/[^/]+\.html$/i.test(pathname)) {
+    return resolve(workspace.pagesDir, pathname.slice(1))
+  }
+
+  if (pathname.startsWith('/js/')) {
+    return resolve(__dirname, 'src', pathname.slice(1))
+  }
+
+  if (pathname.startsWith('/components/')) {
+    return resolve(__dirname, 'src', pathname.slice(1))
+  }
+
+  if (pathname.startsWith('/assets/')) {
+    const relativeAssetPath = pathname.slice('/assets/'.length)
+    const facultyAssetPath = resolve(__dirname, 'src/faculties', facultyId, 'assets', relativeAssetPath)
+    if (existsSync(facultyAssetPath)) {
+      return facultyAssetPath
+    }
+    return resolve(__dirname, 'src/assets', relativeAssetPath)
+  }
+
+  return null
+}
+
+const mapSrcRequests = (facultyId, workspace) => ({
+  name: 'map-src-requests',
+  configureServer(server) {
+    server.middlewares.use((req, _res, next) => {
+      if (!req.url) return next()
+      const mapped = mapUrlToFsPath(req.url, facultyId, workspace)
+      if (mapped) {
+        req.url = `/@fs/${mapped}`
+      }
+      next()
+    })
+  },
+  configurePreviewServer(server) {
+    server.middlewares.use((req, _res, next) => {
+      if (!req.url) return next()
+      const mapped = mapUrlToFsPath(req.url, facultyId, workspace)
+      if (mapped) {
+        req.url = `/@fs/${mapped}`
+      }
+      next()
+    })
+  },
+})
+
+const getCssOutputName = (name) => {
+  if (!name) return 'style'
+  const normalized = name.replace(/\\/g, '/')
+  const marker = 'styles/'
+  const idx = normalized.lastIndexOf(marker)
+  if (idx >= 0) {
+    return normalized
+      .slice(idx + marker.length)
+      .replace(/\.css$/i, '')
+      .replace(/\//g, '-')
+  }
+  return basename(normalized, '.css')
+}
+
 // Layout template cache để tránh đọc file nhiều lần
 let layoutCache = null
 const getLayoutTemplate = () => {
@@ -116,53 +461,37 @@ const getLayoutTemplate = () => {
   return layoutCache
 }
 
-const layoutPlugin = (base) => ({
+const layoutPlugin = (base, faculty, workspace) => ({
   name: 'layout-plugin',
   transformIndexHtml: {
-    order: 'pre', // Chạy TRƯỚC để wrap layout trước khi inject components
-    handler(html, { path }) {
-      // Extract metadata từ HTML comments
+    order: 'pre',
+    handler(html, { path, filename }) {
       const titleMatch = html.match(/<!--\s*LAYOUT:\s*title="([^"]+)"\s*-->/)
       const descMatch = html.match(/<!--\s*LAYOUT:\s*description="([^"]+)"\s*-->/)
       const keywordsMatch = html.match(/<!--\s*LAYOUT:\s*keywords="([^"]+)"\s*-->/)
       const ogImageMatch = html.match(/<!--\s*LAYOUT:\s*ogImage="([^"]+)"\s*-->/)
       const urlMatch = html.match(/<!--\s*LAYOUT:\s*url="([^"]+)"\s*-->/)
       const scriptMatch = html.match(/<!--\s*LAYOUT:\s*script="([^"]+)"\s*-->/)
-      
-      // Nếu không có marker LAYOUT thì skip (giữ nguyên HTML - full page)
+
       if (!titleMatch) {
-        return html
+        return applyFacultyTemplateVars(html, faculty, base)
       }
-      
-      // Load layout template (cached)
+
       const layout = getLayoutTemplate()
-      
-      // Load loading component (inline CSS critical)
       const loadingComponent = readFileSync(resolve(__dirname, 'src/components/loading/loading.html'), 'utf-8')
-      
-      // Extract content: Lấy toàn bộ sau metadata markers
-      let content = html
-        .replace(/<!--\s*LAYOUT:[^>]+-->\s*/g, '')
-        .trim()
-      
-      // Helper: prepend base path nếu cần
-      const withBase = (path) => {
-        if (!path || path.startsWith('http') || path.startsWith('//')) return path
-        const normalized = path.startsWith('/') ? path : `/${path}`
-        return base === '/' ? normalized : `${base}${normalized}`.replace(/\/+/g, '/')
-      }
-      
-      // Extract values với defaults
+      const withBase = withBaseFactory(base)
+      const sourceFile = filename || resolve(workspace.pagesDir, path.replace(/^\/+/, '') || 'index.html')
+      const mainScriptPath = relative(dirname(sourceFile), resolve(workspace.rootDir, 'main.js')).replace(/\\/g, '/')
+      const content = html.replace(/<!--\s*LAYOUT:[^>]+-->\s*/g, '').trim()
       const title = titleMatch[1]
       const description = descMatch?.[1] || 'Static website với Vite + Vanilla JS + TailwindCSS'
       const keywords = keywordsMatch?.[1] || 'vite, vanilla js, tailwindcss, static site'
       const ogImage = withBase(ogImageMatch?.[1] || '/assets/images/default.jpg')
       const url = urlMatch?.[1] || withBase(path.replace(/\.html$/, ''))
-      const pageScript = scriptMatch?.[1] 
+      const pageScript = scriptMatch?.[1]
         ? `<!-- Page-specific JS -->\n  <script type="module" src="${scriptMatch[1]}"></script>`
         : ''
-      
-      // Inject vào layout với base path cho các assets
+
       let result = layout
         .replace(/\{\{title\}\}/g, title)
         .replace(/\{\{description\}\}/g, description)
@@ -172,74 +501,50 @@ const layoutPlugin = (base) => ({
         .replace('{{loadingComponent}}', loadingComponent)
         .replace('{{content}}', content)
         .replace(/\{\{pageScript\}\}/g, pageScript)
-      
-      // Apply base path cho favicon và assets trong layout
+        .replace('src="/main.js"', `src="${mainScriptPath}"`)
+
+      result = result.replace('</head>', `  ${buildFacultyCssVars(faculty)}\n</head>`)
+      result = applyFacultyTemplateVars(result, faculty, base)
+
       result = result
-        .replace(/href="\//g, (match) => {
-          return `href="${base === '/' ? '/' : base}`
-        })
-        .replace(/src="\//g, (match) => {
-          return `src="${base === '/' ? '/' : base}`
-        })
-        .replace(/content="\//g, (match) => {
-          return `content="${base === '/' ? '/' : base}`
-        })
-      
+        .replace(/href="\//g, `href="${base === '/' ? '/' : base}`)
+        .replace(/src="\//g, `src="${base === '/' ? '/' : base}`)
+        .replace(/content="\//g, `content="${base === '/' ? '/' : base}`)
+
       return result
     }
   }
 })
 
-const transformDataInclude = (base) => ({
+const transformDataInclude = (base, faculty) => ({
   name: 'transform-data-include',
   transformIndexHtml(html) {
-    // Recursive function to process nested data-include
+    const withResolvedAssetBase = (assetPath) => {
+      const normalizedAssetPath = assetPath.replace(/^\/?assets\//, '')
+      return base === '/' ? `/assets/${normalizedAssetPath}` : `${base}assets/${normalizedAssetPath}`
+    }
+
     const processIncludes = (content, depth = 0) => {
       if (depth > 10) {
-        console.warn('⚠️  Max recursion depth reached for data-include')
+        console.warn('Max recursion depth reached for data-include')
         return content
       }
-      
+
       const transformed = content.replace(
         /<div\s+data-include=["']([^"']+)["']([^>]*?)>\s*<\/div>/gs,
         (match, htmlPath, attributes) => {
           try {
-            // Extract all data-* attributes (support hyphenated names)
             const dataAttrs = {}
             const attrRegex = /data-([\w-]+)=["']([^"']+)["']/g
             let attrMatch
             while ((attrMatch = attrRegex.exec(attributes)) !== null) {
-              // Convert hyphenated to camelCase: data-title-class → titleClass
               const key = attrMatch[1].replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
               dataAttrs[key] = attrMatch[2]
             }
-            
-            // Xử lý path từ pages
-            let componentPath = htmlPath
-            if (htmlPath.startsWith('@components/')) {
-              // @components/section-title/... → components/section-title/...
-              componentPath = htmlPath.replace('@components/', 'components/')
-            } else if (htmlPath.startsWith('@/')) {
-              // @/components/... → components/...
-              componentPath = htmlPath.substring(2)
-            } else if (htmlPath.startsWith('../')) {
-              // ../components/... → components/...
-              componentPath = htmlPath.replace(/^\.\.\//, '')
-            } else if (htmlPath.startsWith('./')) {
-              // ./header.html → pages/header.html
-              componentPath = `pages/${htmlPath.slice(2)}`
-            } else if (base !== '/' && htmlPath.startsWith(base)) {
-              componentPath = htmlPath.substring(base.length)
-            } else if (htmlPath.startsWith('/')) {
-              // /components/... → components/...
-              componentPath = htmlPath.substring(1)
-            }
-            
-            // Đọc file component HTML từ src
-            const fullComponentPath = resolve(__dirname, 'src', componentPath)
+
+            const fullComponentPath = resolveIncludePath(htmlPath, faculty.id)
             let componentHtml = readFileSync(fullComponentPath, 'utf-8').trim()
-            
-            // Handle variant selection - default to option 1 if no variant specified
+
             const variantNumber = dataAttrs.variant || '1'
             const variantRegex = new RegExp(
               `<!-- option ${variantNumber}[^>]*?-->([\\s\\S]*?)(?=<!-- option \\d|$)`,
@@ -249,240 +554,223 @@ const transformDataInclude = (base) => ({
             if (variantMatch) {
               componentHtml = variantMatch[1].trim()
             } else if (componentHtml.includes('<!-- option')) {
-              // File có options nhưng không tìm thấy variant → fallback về option 1
               if (variantNumber !== '1') {
-                console.warn(`⚠️  Variant ${variantNumber} not found in ${componentPath}, falling back to option 1`)
+                console.warn(`Variant ${variantNumber} not found in ${htmlPath}, falling back to option 1`)
               }
               const fallbackRegex = /<!-- option 1[^>]*?-->([\s\S]*?)(?=<!-- option \d|$)/i
               const fallbackMatch = componentHtml.match(fallbackRegex)
               if (fallbackMatch) {
                 componentHtml = fallbackMatch[1].trim()
               } else {
-                // Không có option 1 → return empty với error comment
-                console.error(`❌ No option 1 found in ${componentPath}`)
-                return `<!-- ERROR: Variant ${variantNumber} not found and no fallback available -->`
+                console.error(`No option 1 found in ${htmlPath}`)
+                return '<!-- ERROR: Variant not found and no fallback available -->'
               }
             }
-            // Nếu file không có comment options thì giữ nguyên (component bình thường không có variants)
-            
-            // Replace all {{key}} placeholders with data-key values
+
             Object.entries(dataAttrs).forEach(([key, value]) => {
               if (key !== 'include' && key !== 'js' && key !== 'variant') {
                 const placeholder = new RegExp(`\\{\\{${key}\\}\\}`, 'g')
                 componentHtml = componentHtml.replace(placeholder, value)
               }
             })
-            
-            // Remove entire lines containing only empty placeholders
-            // Match lines like: <tag ...>{{placeholder}}</tag>
-            componentHtml = componentHtml.replace(/^\s*<[^>]+>\s*\{\{[^}]+\}\}\s*<\/[^>]+>\s*$/gm, '')
-            
-            // Replace remaining placeholders with empty string
-            componentHtml = componentHtml.replace(/\{\{[^}]+\}\}/g, '')
-            
-            // Recursively process nested includes
+
+            componentHtml = applyFacultyTemplateVars(componentHtml, faculty, base)
+            componentHtml = componentHtml.replace(/^\s*<[^>]+>\s*\{\{(?!faculty\.)[^}]+\}\}\s*<\/[^>]+>\s*$/gm, '')
+            componentHtml = componentHtml.replace(/\{\{(?!faculty\.)[^}]+\}\}/g, '')
             return processIncludes(componentHtml, depth + 1)
           } catch (error) {
             console.warn(`Failed to inject component: ${htmlPath}`, error.message)
-            return match // Giữ nguyên nếu có lỗi
+            return match
           }
         }
       )
-      
-      // If no changes, return original to stop recursion
+
       return transformed === content ? content : processIncludes(transformed, depth)
     }
-    
-    let transformed = processIncludes(html)
-    
-    // Transform img src="/assets/..." to include base path
+
+    let transformed = processIncludes(applyFacultyTemplateVars(html, faculty, base))
+
     transformed = transformed.replace(
-      /<img\s+([^>]*?)src=["']\/assets\/([^"']+)["']([^>]*?)>/g,
+      /<img\s+([^>]*?)src=["'](\/?assets\/[^"']+)["']([^>]*?)>/g,
       (match, before, assetPath, after) => {
-        const finalPath = base === '/' ? `/assets/${assetPath}` : `${base}assets/${assetPath}`
-        return `<img ${before}src="${finalPath}"${after}>`
+        return `<img ${before}src="${withResolvedAssetBase(assetPath)}"${after}>`
       }
     )
-    
-    // Transform data-photo-src="/assets/..." to include base path
+
     transformed = transformed.replace(
-      /data-photo-src=["']\/assets\/([^"']+)["']/g,
-      (match, assetPath) => {
-        const finalPath = base === '/' ? `/assets/${assetPath}` : `${base}assets/${assetPath}`
-        return `data-photo-src="${finalPath}"`
-      }
+      /data-photo-src=["'](\/?assets\/[^"']+)["']/g,
+      (match, assetPath) => `data-photo-src="${withResolvedAssetBase(assetPath)}"`
     )
-    
-    // Transform srcset="/assets/..." to include base path
+
     transformed = transformed.replace(
-      /srcset=["']\/assets\/([^"']+)["']/g,
-      (match, assetPath) => {
-        const finalPath = base === '/' ? `/assets/${assetPath}` : `${base}assets/${assetPath}`
-        return `srcset="${finalPath}"`
-      }
+      /srcset=["'](\/?assets\/[^"']+)["']/g,
+      (match, assetPath) => `srcset="${withResolvedAssetBase(assetPath)}"`
     )
-    
-    // Transform data-image="/assets/..." to include base path
+
     transformed = transformed.replace(
-      /data-image=["']\/assets\/([^"']+)["']/g,
-      (match, assetPath) => {
-        const finalPath = base === '/' ? `/assets/${assetPath}` : `${base}assets/${assetPath}`
-        return `data-image="${finalPath}"`
-      }
+      /data-image=["'](\/?assets\/[^"']+)["']/g,
+      (match, assetPath) => `data-image="${withResolvedAssetBase(assetPath)}"`
     )
-    
-    // Transform data-featured-image="/assets/..." to include base path
+
     transformed = transformed.replace(
-      /data-featured-image=["']\/assets\/([^"']+)["']/g,
-      (match, assetPath) => {
-        const finalPath = base === '/' ? `/assets/${assetPath}` : `${base}assets/${assetPath}`
-        return `data-featured-image="${finalPath}"`
-      }
+      /data-featured-image=["'](\/?assets\/[^"']+)["']/g,
+      (match, assetPath) => `data-featured-image="${withResolvedAssetBase(assetPath)}"`
     )
-    
-    // Transform data-overlayIcon="/assets/..." to include base path
+
     transformed = transformed.replace(
-      /data-overlayIcon=["']\/assets\/([^"']+)["']/g,
-      (match, assetPath) => {
-        const finalPath = base === '/' ? `/assets/${assetPath}` : `${base}assets/${assetPath}`
-        return `data-overlayIcon="${finalPath}"`
-      }
+      /data-overlayIcon=["'](\/?assets\/[^"']+)["']/g,
+      (match, assetPath) => `data-overlayIcon="${withResolvedAssetBase(assetPath)}"`
     )
-    
+
     return transformed
   }
 })
 
-// Component JS đã được bundle vào main.js qua import.meta.glob
-// Không cần copy components nữa
+const deepMerge = (baseValue, overrideValue) => {
+  if (Array.isArray(baseValue) || Array.isArray(overrideValue)) {
+    return overrideValue
+  }
 
-// Plugin to copy public/data to dist_iuh/data
-const copyPublicDataPlugin = (outDir) => ({
+  if (
+    baseValue &&
+    overrideValue &&
+    typeof baseValue === 'object' &&
+    typeof overrideValue === 'object'
+  ) {
+    const result = { ...baseValue }
+    for (const [key, value] of Object.entries(overrideValue)) {
+      result[key] = key in result ? deepMerge(result[key], value) : value
+    }
+    return result
+  }
+
+  return overrideValue
+}
+
+const copyDirectory = (src, dest) => {
+  if (!existsSync(src)) return
+
+  const entries = readdirSync(src, { withFileTypes: true })
+  for (const entry of entries) {
+    const srcPath = resolve(src, entry.name)
+    const destPath = resolve(dest, entry.name)
+
+    if (entry.isDirectory()) {
+      mkdirSync(destPath, { recursive: true })
+      copyDirectory(srcPath, destPath)
+      continue
+    }
+
+    mkdirSync(dirname(destPath), { recursive: true })
+    copyFileSync(srcPath, destPath)
+  }
+}
+
+// Plugin to copy public/data to dist/data with faculty overrides
+const copyPublicDataPlugin = (outDir, facultyId) => ({
   name: 'copy-public-data',
   closeBundle() {
-    const publicDataDir = resolve(__dirname, 'public/data')
+    const sharedDataDir = resolve(__dirname, 'public/data')
+    const facultyDataDir = resolve(__dirname, 'src/faculties', facultyId, 'data')
     const distDataDir = resolve(outDir, 'data')
-    
-    if (!existsSync(publicDataDir)) return
-    
-    // Create dist/data if not exists
-    if (!existsSync(distDataDir)) {
-      mkdirSync(distDataDir, { recursive: true })
-    }
-    
-    // Copy all files from public/data to dist/data
-    const copyRecursive = (src, dest) => {
-      const entries = readdirSync(src, { withFileTypes: true })
-      
-      for (const entry of entries) {
-        const srcPath = resolve(src, entry.name)
-        const destPath = resolve(dest, entry.name)
-        
-        if (entry.isDirectory()) {
-          if (!existsSync(destPath)) {
-            mkdirSync(destPath, { recursive: true })
-          }
-          copyRecursive(srcPath, destPath)
-        } else {
-          copyFileSync(srcPath, destPath)
-          console.log(`Copied: ${entry.name} to data/`)
-        }
+
+    if (!existsSync(sharedDataDir) && !existsSync(facultyDataDir)) return
+
+    mkdirSync(distDataDir, { recursive: true })
+
+    const fileNames = new Set()
+    if (existsSync(sharedDataDir)) {
+      for (const entry of readdirSync(sharedDataDir, { withFileTypes: true })) {
+        if (entry.isFile()) fileNames.add(entry.name)
       }
     }
-    
-    copyRecursive(publicDataDir, distDataDir)
+    if (existsSync(facultyDataDir)) {
+      for (const entry of readdirSync(facultyDataDir, { withFileTypes: true })) {
+        if (entry.isFile()) fileNames.add(entry.name)
+      }
+    }
+
+    for (const fileName of fileNames) {
+      const sharedPath = resolve(sharedDataDir, fileName)
+      const facultyPath = resolve(facultyDataDir, fileName)
+      const destPath = resolve(distDataDir, fileName)
+      const isJson = fileName.endsWith('.json')
+
+      if (isJson && existsSync(sharedPath) && existsSync(facultyPath)) {
+        const merged = deepMerge(
+          JSON.parse(readFileSync(sharedPath, 'utf-8')),
+          JSON.parse(readFileSync(facultyPath, 'utf-8'))
+        )
+        writeFileSync(destPath, JSON.stringify(merged, null, 2))
+      } else if (existsSync(facultyPath)) {
+        copyFileSync(facultyPath, destPath)
+      } else if (existsSync(sharedPath)) {
+        copyFileSync(sharedPath, destPath)
+      }
+    }
   }
 })
 
-// Plugin to copy src/assets/images to dist_iuh/assets/images
+// Plugin to copy src/assets/images to dist/assets/images
 const copyImagesPlugin = (outDir) => ({
   name: 'copy-images',
   closeBundle() {
     const srcImagesDir = resolve(__dirname, 'src/assets/images')
     const distImagesDir = resolve(outDir, 'assets/images')
-    
+
     if (!existsSync(srcImagesDir)) {
-      console.log('⚠️  No images folder found in src/assets/')
       return
     }
-    
-    // Create dist/assets/images if not exists
-    if (!existsSync(distImagesDir)) {
-      mkdirSync(distImagesDir, { recursive: true })
-    }
-    
-    // Copy all files recursively from src/assets/images to dist/assets/images
-    const copyRecursive = (src, dest) => {
-      const entries = readdirSync(src, { withFileTypes: true })
-      
-      for (const entry of entries) {
-        const srcPath = resolve(src, entry.name)
-        const destPath = resolve(dest, entry.name)
-        
-        if (entry.isDirectory()) {
-          if (!existsSync(destPath)) {
-            mkdirSync(destPath, { recursive: true })
-          }
-          copyRecursive(srcPath, destPath)
-        } else {
-          copyFileSync(srcPath, destPath)
-          console.log(`✓ Copied image: ${entry.name}`)
-        }
-      }
-    }
-    
-    console.log('📸 Copying images to assets/images...')
-    copyRecursive(srcImagesDir, distImagesDir)
+
+    mkdirSync(distImagesDir, { recursive: true })
+    copyDirectory(srcImagesDir, distImagesDir)
   }
 })
 
-// Plugin to copy src/assets/svgs to dist_iuh/assets/svgs
+// Plugin to copy src/assets/svgs to dist/assets/svgs
 const copySvgsPlugin = (outDir) => ({
   name: 'copy-svgs',
   closeBundle() {
     const srcSvgsDir = resolve(__dirname, 'src/assets/svgs')
     const distSvgsDir = resolve(outDir, 'assets/svgs')
-    
+
     if (!existsSync(srcSvgsDir)) {
-      console.log('⚠️  No svgs folder found in src/assets/')
       return
     }
-    
-    // Create dist/assets/svgs if not exists
-    if (!existsSync(distSvgsDir)) {
-      mkdirSync(distSvgsDir, { recursive: true })
+
+    mkdirSync(distSvgsDir, { recursive: true })
+    copyDirectory(srcSvgsDir, distSvgsDir)
+  }
+})
+
+const copyFacultyAssetsPlugin = (outDir, facultyId) => ({
+  name: 'copy-faculty-assets',
+  closeBundle() {
+    const facultyAssetsDir = resolve(__dirname, 'src/faculties', facultyId, 'assets')
+    if (!existsSync(facultyAssetsDir)) {
+      return
     }
-    
-    // Copy all SVG files
-    const entries = readdirSync(srcSvgsDir, { withFileTypes: true })
-    let count = 0
-    
-    for (const entry of entries) {
-      if (entry.isFile() && entry.name.endsWith('.svg')) {
-        const srcPath = resolve(srcSvgsDir, entry.name)
-        const destPath = resolve(distSvgsDir, entry.name)
-        copyFileSync(srcPath, destPath)
-        count++
-      }
-    }
-    
-    console.log(`✓ Copied ${count} SVG files to assets/svgs/`)
+
+    copyDirectory(facultyAssetsDir, resolve(outDir, 'assets'))
   }
 })
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, __dirname, '')
+  const facultyId = env.VITE_FACULTY || DEFAULT_FACULTY_ID
+  const faculty = loadFaculty(facultyId)
+  const workspace = prepareFacultyWorkspace(facultyId)
   const base = normalizeBasePath(env.VITE_BASE_PATH || '/')
   const outDir = resolveOutDir(env.VITE_OUT_DIR || '')
   const buildSignature = mode === 'production' ? getBuildSignature() : 'dev-mode'
-  
-  // Read version from package.json
+  const input = workspace.input
+
   const pkg = JSON.parse(readFileSync(resolve(__dirname, 'package.json'), 'utf-8'))
   const appVersion = pkg.version || '0.0.0'
 
   return {
     base,
-    root: 'src/pages',
+    root: workspace.pagesDir,
     publicDir: resolve(__dirname, 'public'),
     define: {
       __BUILD_SIGNATURE__: JSON.stringify(buildSignature),
@@ -490,12 +778,13 @@ export default defineConfig(({ mode }) => {
       __BUILD_MODE__: JSON.stringify(mode)
     },
     plugins: [
-      mapSrcRequests(),
-      layoutPlugin(base), // Chạy TRƯỚC để wrap layout
-      transformDataInclude(base), // Chạy SAU để inject components vào layout
-      copyPublicDataPlugin(outDir), // Copy public/data to dist/data
-      copyImagesPlugin(outDir), // Copy src/assets/images to dist/assets/images
-      copySvgsPlugin(outDir), // Copy src/assets/svgs to dist/assets/svgs
+      mapSrcRequests(facultyId, workspace),
+      layoutPlugin(base, faculty, workspace),
+      transformDataInclude(base, faculty),
+      copyPublicDataPlugin(outDir, facultyId),
+      copyImagesPlugin(outDir),
+      copySvgsPlugin(outDir),
+      copyFacultyAssetsPlugin(outDir, facultyId),
       svgo({
         svgoConfig: {
           plugins: [
@@ -520,7 +809,7 @@ export default defineConfig(({ mode }) => {
     server: {
       open: true,
       fs: {
-        allow: ['..'],
+        allow: ['..', resolve(__dirname)],
       },
     },
 
@@ -528,11 +817,10 @@ export default defineConfig(({ mode }) => {
       outDir,
       emptyOutDir: true,
       assetsInlineLimit: 0,
-      // Performance optimizations
-      minify: 'esbuild', // Fast minification
+      minify: 'esbuild',
       cssMinify: true,
       reportCompressedSize: true,
-      chunkSizeWarningLimit: 1000, // Warn if chunk > 1MB
+      chunkSizeWarningLimit: 1000,
       rollupOptions: {
         input,
         output: {

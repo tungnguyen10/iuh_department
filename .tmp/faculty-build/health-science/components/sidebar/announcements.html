@@ -1,0 +1,36 @@
+<!-- Sidebar Announcements Component - Complete with Header and Sample Cards -->
+<aside class="flex flex-col gap-3 md:gap-4 w-full {{class}}">
+  <!-- Header -->
+  <div data-include="@components/common/child-title.html"
+       data-title="THÔNG BÁO">
+  </div>
+
+  <!-- Announcements Cards Container -->
+  <div class="flex flex-col gap-2 md:gap-2.5">
+    <!-- Featured Card (with image) -->
+    <div data-include="@components/sidebar/news-card-featured.html"
+         data-image="/assets/images/default.jpg"
+         data-image-alt="Hội đồng bảo vệ khóa luận"
+         data-title="Danh sách hội đồng và sinh viên bảo vệ khóa luận tốt nghiệp HK1 (2025-2026)"
+         data-link="/news.html"
+         data-date="12 tháng 5, 2025">
+    </div>
+
+    <!-- Compact Cards (text only - hide image with data-image-class="hidden") -->
+    <div data-include="@components/sidebar/news-card-compact.html"
+         data-image=""
+         data-image-class="hidden"
+         data-title="Danh sách hội đồng và sinh viên bảo vệ khóa luận tốt nghiệp HK1 (2025 - 2026)"
+         data-link="/news.html"
+         data-date="12 tháng 5, 2025">
+    </div>
+
+    <div data-include="@components/sidebar/news-card-compact.html"
+         data-image=""
+         data-image-class="hidden"
+         data-title="Danh sách hội đồng và sinh viên bảo vệ khóa luận tốt nghiệp HK1 (2025 - 2026)"
+         data-link="/news.html"
+         data-date="12 tháng 5, 2025">
+    </div>
+  </div>
+</aside>

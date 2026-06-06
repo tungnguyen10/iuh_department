@@ -1,0 +1,37 @@
+<!-- Event Card Component -->
+<article class="group relative bg-[#FAFAFA] border border-stroke rounded-md h-30 sm:h-36 md:h-[136px] p-2 sm:p-2.5 w-full hover:bg-white hover:border-secondary-blue hover:rounded-lg hover:shadow-[2px_2px_15px_0_rgba(21,56,152,0.2)] transition-all duration-300 cursor-pointer {{class}}">
+  <a href="{{link}}" class="absolute inset-0 z-30 rounded-md group-hover:rounded-lg" aria-label="{{title}}">
+    <span class="sr-only">{{title}}</span>
+  </a>
+
+  <div class="flex gap-3 sm:gap-4 md:gap-5 h-full">
+    <div class="shrink-0 aspect-square rounded-md overflow-hidden">
+      <img src="{{image}}" alt="{{imageAlt}}" class="w-full h-full object-cover group-hover:scale-110 group-hover:brightness-95 transition-all duration-500" />
+    </div>
+
+    <div class="flex-1 flex flex-col justify-between min-w-0 ">
+      <h3 class="font-roboto font-medium text-base sm:text-lg leading-none text-gray-900 group-hover:text-primary-dark-blue line-clamp-2 transition-colors duration-300">
+        {{title}}
+      </h3>
+
+      <div class="flex items-start justify-between gap-2 sm:gap-2.5">
+        <div class="flex flex-col gap-2 sm:gap-2.5 min-w-0">
+          <div class="inline-flex items-center gap-1 px-1.5 py-0.5 bg-primary-dark-blue border border-primary-dark-blue rounded">
+            <img src="{{typeIcon}}" alt="" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0 brightness-0 invert text-primary-dark-blue" />
+            <span class="font-roboto font-medium text-xs sm:text-sm text-primary-white truncate">{{typeBadge}}</span>
+          </div>
+
+          <div class="inline-flex items-center gap-1 px-1.5 py-0.5 bg-white group-hover:bg-secondary-blue-light border border-primary-dark-blue rounded transition-colors duration-300">
+            <img src="{{locationIcon}}" alt="" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0 text-primary-dark-blue" />
+            <span class="font-roboto font-medium text-xs sm:text-sm text-primary-dark-blue truncate">{{locationBadge}}</span>
+          </div>
+        </div>
+
+        <div class="inline-flex items-center gap-1 px-1.5 py-0.5 bg-white group-hover:bg-secondary-blue-light border border-primary-dark-blue rounded transition-colors duration-300 shrink-0">
+          <img src="{{dateIcon}}" alt="" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0 text-primary-dark-blue" />
+          <span class="font-roboto font-medium text-xs sm:text-sm text-primary-dark-blue whitespace-nowrap">{{dateBadge}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

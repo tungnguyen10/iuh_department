@@ -1,0 +1,73 @@
+{
+  "id": "health-science",
+  "name": "Khoa Khoa học Sức khỏe",
+  "shortName": "KKSK",
+  "email": "dhcn@iuh.edu.vn",
+  "phone": "0283 8940 390",
+  "nav": [
+    { "label": "GIỚI THIỆU", "url": "/about.html" },
+    { "label": "TIN TỨC - SỰ KIỆN", "url": "/news.html" },
+    {
+      "label": "NGHIÊN CỨU KHOA HỌC",
+      "children": [
+        { "label": "Đề tài nghiên cứu", "url": "/news.html" },
+        {
+          "label": "Công bố khoa học",
+          "children": [
+            { "label": "Bài báo quốc tế", "url": "/news.html" },
+            { "label": "Bài báo trong nước", "url": "/news.html" },
+            { "label": "Hội nghị khoa học", "url": "/news.html" }
+          ]
+        },
+        { "label": "Giải thưởng", "url": "/news.html" },
+        { "label": "Hợp tác nghiên cứu", "url": "/news.html" }
+      ]
+    },
+    {
+      "label": "ĐÀO TẠO",
+      "children": [
+        { "label": "Chuyên ngành đào tạo", "url": "/majors.html" },
+        {
+          "label": "Chương trình đào tạo",
+          "children": [
+            { "label": "Đại học", "url": "/about.html" },
+            { "label": "Cao học", "url": "/about.html" },
+            { "label": "Nghiên cứu sinh", "url": "/about.html" }
+          ]
+        },
+        { "label": "Tuyển sinh", "url": "/contact.html" },
+        { "label": "Kế hoạch giảng dạy", "url": "/about.html" },
+        { "label": "Đánh giá chất lượng", "url": "/form.html" }
+      ]
+    },
+    {
+      "label": "SINH VIÊN",
+      "children": [
+        { "label": "Thông tin sinh viên", "url": "/students.html" },
+        { "label": "Biểu mẫu", "url": "/form.html" },
+        { "label": "Tin tức", "url": "/news.html" },
+        { "label": "Liên hệ", "url": "/contact.html" },
+        { "label": "Chi tiết giảng viên", "url": "/leadership-detail.html" },
+        { "label": "Ban lãnh đạo", "url": "/leadership.html" },
+        { "label": "Chi tiết tin tức", "url": "/news-detail.html" },
+        { "label": "PDF View", "url": "/document-detail.html" }
+      ]
+    }
+  ],
+  "topBar": [
+    { "label": "Tuyển Dụng - Việc Làm", "url": "#" },
+    { "label": "Sinh Viên", "url": "/students.html" },
+    { "label": "Kết Nối Doanh Nghiệp", "url": "#" }
+  ],
+  "social": {
+    "facebook": "https://www.facebook.com/iuh.official",
+    "instagram": "https://www.instagram.com/iuh.official",
+    "youtube": "https://www.youtube.com/@iuh.official"
+  },
+  "colors": {
+    "brand-primary": "#153898",
+    "brand-accent": "#F9B200",
+    "brand-tint": "#8ED8F8",
+    "brand-surface": "#E3F6FD"
+  }
+}

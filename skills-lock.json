@@ -12,6 +12,12 @@
       "sourceType": "github",
       "skillPath": "plugins/tailwindcss-master/skills/tailwindcss-advanced-layouts/SKILL.md",
       "computedHash": "159d8a8f9eb20136492a9971633fd8658be1e34d5f8dc3bcf1afe7bbb4511bdf"
+    },
+    "vite": {
+      "source": "antfu/skills",
+      "sourceType": "github",
+      "skillPath": "skills/vite/SKILL.md",
+      "computedHash": "1cdc4bbecaa89544e6ef92566b015db989994bf90c4472683ac64f7a114dc3af"
     }
   }
 }

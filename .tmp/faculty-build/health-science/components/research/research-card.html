@@ -1,0 +1,35 @@
+<!-- Research Card Component -->
+<article class="group relative bg-primary-white border border-stroke hover:border-secondary-blue rounded-[5px] overflow-hidden w-full h-[200px] md:h-[220px] flex flex-col p-2 md:p-2.5 hover:shadow-[2px_2px_15px_0_rgba(21,56,152,0.2)] transition-all duration-300 cursor-pointer  {{class}}">
+  <!-- Absolute Link Overlay for Full Card Clickability -->
+  <a href="{{link}}" class="absolute inset-0 z-30" aria-label="{{title}}">
+    <span class="sr-only">{{title}}</span>
+  </a>
+
+  <!-- Image -->
+  <div class="block relative w-full aspect-[260/120] rounded-[5px] overflow-hidden mb-2 md:mb-2.5">
+    <img src="{{image}}" alt="{{imageAlt}}" class="w-full h-full object-cover group-hover:scale-110 group-hover:brightness-95 transition-all duration-500" />
+  </div>
+
+  <!-- Content -->
+  <div class="flex flex-col gap-2 md:gap-2.5 w-full">
+    <!-- Meta -->
+    <div class="flex items-center gap-2 md:gap-2.5 text-sm">
+      <!-- Category -->
+      <div class="inline-flex items-center gap-1 text-black group-hover:text-danger transition-colors duration-300">
+        <img src="/assets/svgs/icon-education.svg" alt="" class="w-4 h-4 md:w-5 md:h-5 shrink-0 group-hover:brightness-50 group-hover:saturate-150 transition-all duration-300" />
+        <span class="font-roboto font-medium leading-normal">{{category}}</span>
+      </div>
+
+      <!-- Divider -->
+      <div class="h-4 md:h-5 w-0 border-l border-black group-hover:border-danger transition-colors duration-300"></div>
+
+      <!-- Date -->
+      <span class="font-roboto font-medium leading-normal text-black group-hover:text-danger transition-colors duration-300">{{date}}</span>
+    </div>
+
+    <!-- Title -->
+    <h3 class="font-roboto font-medium text-base leading-normal text-title group-hover:text-primary-dark-blue overflow-hidden line-clamp-2 transition-colors duration-300">
+      {{title}}
+    </h3>
+  </div>
+</article>
