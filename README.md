@@ -41,6 +41,28 @@ vite.config.js         # Vite config with custom plugins
 dist_iuh/              # Build output folder
 ```
 
+### Agent Instruction Surfaces
+
+Shared agent instructions live in:
+
+- `.agents/skills/`
+- `.agents/prompts/`
+
+Consumer-specific paths stay readable through generated per-item symlinks:
+
+- `.codex/skills/*`
+- `.github/skills/*`
+- `.github/prompts/*`
+- `.agents/codex/skills/*`
+- `.agents/github/skills/*`
+- `.agents/github/prompts/*`
+
+After adding or renaming anything under `.agents`, regenerate those views with:
+
+```bash
+yarn agents:sync
+```
+
 ## 🚀 Quick Start
 
 ### 1. Install Dependencies

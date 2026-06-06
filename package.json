@@ -4,6 +4,7 @@
   "version": "0.0.26",
   "type": "module",
   "scripts": {
+    "agents:sync": "./scripts/sync-agent-links.sh",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
