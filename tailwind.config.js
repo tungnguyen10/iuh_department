@@ -4,6 +4,7 @@ export default {
     "./src/pages/**/*.html",
     "./src/components/**/*.{html,js}",
     "./src/js/**/*.js",
+    "./src/faculties/**/*.{html,js}",
     // Nếu dùng root: 'src/pages', cần thêm path tương đối
     "./**/*.html",
     "../components/**/*.{html,js}",
@@ -60,6 +61,17 @@ export default {
           light: "#FFEBEEFF",
         },
         stroke: "#EEEEEE",
+        // ─────────────────────────────────────────────────────────────────
+        // Brand tokens — thay đổi theo từng khoa, inject từ faculty.json
+        // Dùng RGB format để hỗ trợ opacity modifier: bg-brand-primary/40
+        // Giá trị mặc định: Khoa Khoa học Sức khoẻ (#153898, #F9B200, ...)
+        // ─────────────────────────────────────────────────────────────────
+        brand: {
+          primary: "rgb(var(--color-brand-primary) / <alpha-value>)",   // Màu chủ đạo (header, button, nav)
+          accent:  "rgb(var(--color-brand-accent) / <alpha-value>)",    // Màu nhấn (hover CTA, highlight)
+          tint:    "rgb(var(--color-brand-tint) / <alpha-value>)",      // Màu tint nhẹ (icon bg, badge)
+          surface: "rgb(var(--color-brand-surface) / <alpha-value>)",   // Màu nền section (research bg, topbar)
+        },
         // Avatar colors for leadership component
         avatar: {
           pink: "#E91E63",

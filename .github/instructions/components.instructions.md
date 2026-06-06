@@ -1,0 +1,1 @@
+../../.agents/instructions/components.instructions.md

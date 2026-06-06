@@ -1,0 +1,1 @@
+../../.agents/instructions/multi-faculty.instructions.md

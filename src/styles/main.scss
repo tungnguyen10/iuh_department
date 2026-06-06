@@ -7,6 +7,22 @@
 
 /* Custom styles */
 @layer base {
+  /* ─────────────────────────────────────────────────────────────────────────
+   * Brand tokens — RGB values (space-separated, NOT hex) để Tailwind
+   * opacity modifier hoạt động: bg-brand-primary/40, text-brand-primary/80
+   *
+   * Mặc định: Khoa Khoa học Sức khoẻ
+   * Override: layoutPlugin trong vite.config.js inject từ faculty.json
+   *           vào <head> khi build từng khoa
+   * ─────────────────────────────────────────────────────────────────────────
+   */
+  :root {
+    --color-brand-primary: 21 56 152;     /* #153898 — navy blue  */
+    --color-brand-accent:  249 178 0;     /* #F9B200 — yellow     */
+    --color-brand-tint:    142 216 248;   /* #8ED8F8 — light blue */
+    --color-brand-surface: 227 246 253;   /* #E3F6FD — pale blue  */
+  }
+
   html {
     scroll-behavior: smooth;
   }
