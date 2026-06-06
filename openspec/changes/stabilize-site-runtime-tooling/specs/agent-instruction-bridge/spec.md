@@ -23,9 +23,11 @@ The repository SHALL expose `.agents` as the canonical shared instruction surfac
 - **WHEN** an agent or developer lists `.github/prompts`
 - **THEN** each shared prompt entry SHALL be a symlink to the corresponding file in `.agents/prompts`
 
-#### Scenario: Bridge compatibility views remain discoverable
-- **WHEN** an agent or developer lists `.agents/codex/skills`, `.agents/github/skills`, or `.agents/github/prompts`
-- **THEN** those grouped paths SHALL resolve to the same canonical entries under `.agents/skills` or `.agents/prompts`
+#### Scenario: Optional instructions surface is bridged when present
+- **WHEN** `.agents/instructions/` exists and an agent or developer lists `.github/instructions`
+- **THEN** each shared instruction entry SHALL be a symlink to the corresponding entry in `.agents/instructions`
+- **AND WHEN** `.agents/instructions/` does not exist
+- **THEN** no `.github/instructions/` directory SHALL be created
 
 ### Requirement: Preserve Source Instruction Directories
 The repository MUST keep `.codex` and `.github` readable at their original paths even though `.agents` is the canonical shared source.
@@ -43,7 +45,7 @@ The repository SHALL support a simple synchronization and verification flow so n
 
 #### Scenario: New canonical prompt is projected to GitHub surfaces
 - **WHEN** a developer adds a new shared prompt under `.agents/prompts` and runs the documented sync command
-- **THEN** matching symlink entries SHALL exist under `.github/prompts` and `.agents/github/prompts`
+- **THEN** a matching symlink entry SHALL exist under `.github/prompts`
 
 #### Scenario: Symlink targets exist
 - **WHEN** a developer runs a file listing over `.codex`, `.github`, and `.agents`

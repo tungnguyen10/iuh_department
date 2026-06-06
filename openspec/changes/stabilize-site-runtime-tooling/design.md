@@ -31,24 +31,22 @@ Agent instructions currently exist in parallel surfaces: `.codex/skills`, `.gith
 
 - `.agents/skills/<skill>` stores the real shared skill directory
 - `.agents/prompts/<prompt>` stores the real shared prompt file
+- `.agents/instructions/<instruction>` (optional) stores shared instruction entries when present
 
 Consumer surfaces remain grouped directories with per-item symlinks:
 
 - `.codex/skills/<skill> -> ../../.agents/skills/<skill>`
 - `.github/skills/<skill> -> ../../.agents/skills/<skill>`
 - `.github/prompts/<prompt> -> ../../.agents/prompts/<prompt>`
+- `.github/instructions/<instruction> -> ../../.agents/instructions/<instruction>` (only when `.agents/instructions/` exists)
 
-Compatibility views remain available inside `.agents` for discovery:
-
-- `.agents/codex/skills/<skill> -> ../../skills/<skill>`
-- `.agents/github/skills/<skill> -> ../../skills/<skill>`
-- `.agents/github/prompts/<prompt> -> ../../prompts/<prompt>`
+No intermediate `.agents/codex` or `.agents/github` views are kept. The audit found no tool reads from those paths; keeping them only as a bridge would duplicate the directory tree without serving a real consumer.
 
 Rationale: this matches the requested workflow: add or edit shared instructions under `.agents`, then let `.codex` and `.github` resolve them without duplicating content or symlinking entire top-level trees.
 
 ### Decision 1a: Regenerate per-item symlinks with a local sync script
 
-The repository will include a small local sync script that reconciles `.codex/skills`, `.github/skills`, `.github/prompts`, and the `.agents/{codex,github}` compatibility views from the canonical `.agents/{skills,prompts}` directories.
+The repository will include a small local sync script that reconciles `.codex/skills`, `.github/skills`, `.github/prompts`, and (when `.agents/instructions/` exists) `.github/instructions/` from the canonical `.agents/{skills,prompts,instructions}` directories.
 
 Rationale: per-item symlink fan-out cannot appear automatically when a new file or directory is created under `.agents`. A deterministic sync command keeps the structure reproducible and easy to verify.
 

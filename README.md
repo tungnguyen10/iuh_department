@@ -53,9 +53,6 @@ Consumer-specific paths stay readable through generated per-item symlinks:
 - `.codex/skills/*`
 - `.github/skills/*`
 - `.github/prompts/*`
-- `.agents/codex/skills/*`
-- `.agents/github/skills/*`
-- `.agents/github/prompts/*`
 
 After adding or renaming anything under `.agents`, regenerate those views with:
 
@@ -65,19 +62,44 @@ yarn agents:sync
 
 ## 🚀 Quick Start
 
+### Prerequisites
+
+This project uses **Yarn PnP** (`.pnp.cjs` / `.pnp.loader.mjs`) and requires:
+
+- **Node.js 22.12+** (or 20.19+). Vite 7 will not start on older versions.
+- **Yarn 4** as the package manager. `npm` commands will fail because `node_modules` is not populated.
+
+Verify your environment:
+
+```bash
+node --version   # should be v22.x or v20.19+
+yarn --version   # should be 4.x
+```
+
+If the default shell resolves an older Node, use [nvm](https://github.com/nvm-sh/nvm) or [fnm](https://github.com/Schniz/fnm):
+
+```bash
+nvm use 22       # or fnm use 22
+```
+
+OpenSpec commands also require Node 22+:
+
+```bash
+# If openspec fails with ESM syntax errors, switch Node first:
+nvm use 22 && openspec list
+```
+
 ### 1. Install Dependencies
 
 ```bash
-npm install
-# or
 yarn install
 ```
+
+> `npm install` is **not supported** while the workspace uses Yarn PnP. Running it will not populate `node_modules` with executable binaries.
 
 ### 2. Development Mode
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
@@ -86,8 +108,6 @@ Opens http://localhost:5173
 ### 3. Build for Production
 
 ```bash
-npm run build
-# or
 yarn build
 ```
 
@@ -123,9 +143,21 @@ yarn version:major
 ### 4. Preview Production Build
 
 ```bash
-npm run preview
-# or
 yarn preview
+```
+
+### Deployment
+
+This project is deployed to **Firebase Hosting at the domain root** (`/`). Root-only deployment is the supported and tested configuration.
+
+A `VITE_BASE_PATH` environment variable is accepted by `vite.config.js` and will rewrite `href="/…"`, `src="/…"`, and `content="/…"` attributes in generated HTML at build time. Runtime data fetches (`search-data.json`, `quiz-data.json`) also respect `BASE_URL` via the shared `dataUrl()` helper in `src/js/utils.js`.
+
+However, subpath navigation (`data-link` attributes, client-side route transitions) is **not fully tested under non-root bases** and is out of scope for the current deployment. Do not assume subpath builds are fully supported without additional testing.
+
+To build for a subpath:
+
+```bash
+VITE_BASE_PATH=/iuh/test/ yarn build
 ```
 
 ## 🎯 Architecture Overview
@@ -165,28 +197,23 @@ The `layoutPlugin` wraps this content with `src/layouts/default.html`, which inc
 
 ### Auto Component Bundling
 
-All component JavaScript is **automatically bundled** into main.js:
+All component JavaScript is **lazily initialized based on DOM presence**:
 
 ```javascript
-// src/main.js
-const componentModules = import.meta.glob('./components/**/*.js', { eager: true })
+// src/main.js — simplified
+await initComponentsOnDemand();
 
-// Auto-init all components
-Object.values(componentModules).forEach(module => {
-  if (module.init && typeof module.init === 'function') {
-    module.init()
+async function initComponentsOnDemand() {
+  // Each component is dynamically imported only if its selector exists in the DOM
+  if (document.querySelector('.hero-swiper')) {
+    const { initHeroCarousel } = await import('./components/carousel/carousel.js')
+    initHeroCarousel()
   }
-})
-```
-
-No need to manually import each component - just export an `init()` function:
-
-```javascript
-// src/components/header/header.js
-export function init() {
-  // Component initialization logic
+  // ... similar pattern for each component
 }
 ```
+
+Components do **not** auto-initialize on import. Each module exports a named `init*` function that `src/main.js` calls after confirming the relevant selector is present. This avoids duplicate binding when the same module is imported more than once.
 
 ### Auto SVG Loading
 

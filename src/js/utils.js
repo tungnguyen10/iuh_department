@@ -3,6 +3,21 @@
  */
 
 /**
+ * Returns a base-path-safe URL for a public data file.
+ * Uses import.meta.env.BASE_URL so builds with VITE_BASE_PATH set correctly
+ * prefix the path rather than assuming the domain root.
+ *
+ * @param {string} path - Path relative to the public root, e.g. "data/search-data.json"
+ * @returns {string}
+ */
+export const dataUrl = (path) => {
+  const base = import.meta.env.BASE_URL ?? '/'
+  const normalizedBase = base.endsWith('/') ? base : `${base}/`
+  const normalizedPath = path.startsWith('/') ? path.slice(1) : path
+  return `${normalizedBase}${normalizedPath}`
+}
+
+/**
  * Delay execution for a specified time
  * @param {number} ms - Milliseconds to delay
  * @returns {Promise<void>}

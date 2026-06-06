@@ -3,6 +3,7 @@
  * Extends BaseModal for open/close behaviors
  */
 import BaseModal from '../modal/modal.js';
+import { dataUrl } from '../../js/utils.js';
 
 class SearchModal extends BaseModal {
   constructor() {
@@ -18,7 +19,7 @@ class SearchModal extends BaseModal {
     this.currentQuery = '';
     
     this.getReferences();
-    // this.bindSearchEvents();
+    this.bindSearchEvents();
   }
 
   getReferences() {
@@ -91,7 +92,7 @@ class SearchModal extends BaseModal {
 
   async simulateAPICall(query) {
     try {
-      const response = await fetch('/data/search-data.json');
+      const response = await fetch(dataUrl('data/search-data.json'));
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

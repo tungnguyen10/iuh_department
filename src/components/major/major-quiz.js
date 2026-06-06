@@ -16,7 +16,12 @@
  * @param {string} dataUrl - URL của quiz data JSON
  * @returns {object} - Quiz instance với public methods
  */
-export function initMajorQuiz(containerId = 'majorQuiz', dataUrl = '/data/quiz-data.json') {
+export function initMajorQuiz(containerId = 'majorQuiz', dataUrl = null) {
+    // Compute base-path-safe default if no explicit URL provided
+    if (dataUrl === null) {
+        const base = (import.meta.env.BASE_URL ?? '/').replace(/\/$/, '')
+        dataUrl = `${base}/data/quiz-data.json`
+    }
     const container = document.getElementById(containerId);
     if (!container) {
         console.warn(`Major Quiz: Container #${containerId} not found`);

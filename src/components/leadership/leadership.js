@@ -212,10 +212,3 @@ export const initLeadership = (container = document) => {
   
   return instances
 }
-
-// Auto-init on DOM ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initLeadership)
-} else {
-  initLeadership()
-}

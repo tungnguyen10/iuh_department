@@ -27,7 +27,7 @@ This change establishes a stable instruction bridge and defines the contract for
 
 ## Impact
 
-- Affected instruction paths: `.agents/skills/`, `.agents/prompts/`, `.agents/codex/skills/`, `.agents/github/skills/`, `.agents/github/prompts/`, `.codex/skills/`, `.github/skills/`, `.github/prompts/`.
+- Affected instruction paths: `.agents/skills/`, `.agents/prompts/`, `.agents/instructions/` (optional), `.codex/skills/`, `.github/skills/`, `.github/prompts/`, `.github/instructions/` (optional).
 - Affected build/tooling files: `package.json`, lockfiles/tooling docs, `README.md`, `vite.config.js`, environment expectations.
 - Affected runtime files: `src/main.js`, `src/layouts/default.html`, `src/components/search/search-modal.js`, `src/components/major/major-quiz.js`, component auto-init modules, public data JSON, and placeholder-heavy components/pages.
 - Deployment behavior must remain valid for the current root Firebase hosting configuration while making subpath behavior explicit and testable.

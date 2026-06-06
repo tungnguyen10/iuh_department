@@ -68,13 +68,6 @@ export function initInfrastructure() {
   }
 }
 
-// Auto-initialize if DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initInfrastructure);
-} else {
-  initInfrastructure();
-}
-
 export default {
   initInfrastructure
 };
