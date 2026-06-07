@@ -5,47 +5,69 @@ Defines how the Vite build pipeline handles per-faculty builds, page resolution,
 
 ## Requirements
 ### Requirement: Per-faculty build command
-Build system SHALL support `VITE_FACULTY={faculty-id}` env var để build static site riêng cho từng khoa vào output directory riêng.
+Build system SHALL support `VITE_FACULTY={faculty-id}` env var to build a static site for a specific faculty into a faculty-specific output directory.
 
-`package.json` SHALL có scripts: `dev:{faculty-id}` và `build:{faculty-id}` cho mỗi khoa đã config. `build:all` script SHALL build tất cả faculties sequentially.
+`package.json` SHALL include `dev:{faculty-id}` and `build:{faculty-id}` scripts for each configured faculty. `build:all` SHALL build all faculties sequentially.
 
-#### Scenario: Build faculty cụ thể ra dist riêng
-- **WHEN** chạy `yarn build:health-science`
-- **THEN** static files được output vào `dist/health-science/` với đúng faculty colors và content
+Current faculties: `health-science`, `dormitory-management`.
 
-#### Scenario: Dev server cho faculty cụ thể
-- **WHEN** chạy `yarn dev:health-science`
-- **THEN** dev server start với KKSK faculty data, colors, và components
+#### Scenario: Build faculty ra dist rieng
+- **WHEN** running `yarn build:health-science`
+- **THEN** static files are written to `dist/health-science/` with the correct faculty colors and content
 
-#### Scenario: build:all chạy tất cả faculties
-- **WHEN** chạy `yarn build:all`
-- **THEN** mỗi faculty được build sequentially, mỗi cái ra dist folder riêng
+#### Scenario: Dev server cho faculty cu the
+- **WHEN** running `yarn dev:health-science`
+- **THEN** the dev server starts with Health Science faculty data, colors, and components
+
+#### Scenario: Build khoa thu 2 dormitory-management
+- **WHEN** running `yarn build:dormitory-management`
+- **THEN** `dist/dormitory-management/` is created with Dormitory Management identity, colors, contact info, and nav; it does not leak Health Science identity content
+
+#### Scenario: build:all chay tat ca faculties
+- **WHEN** running `yarn build:all`
+- **THEN** each faculty is built sequentially into its own dist folder
 
 ### Requirement: Faculty-specific page glob
-Vite build SHALL tìm page HTML files trong `src/faculties/{FACULTY}/pages/` trước, merge với `src/pages/` (shared). Nếu cùng tên file tồn tại ở cả hai nơi, faculty-specific file có priority.
+Vite build SHALL resolve HTML pages from `src/faculties/{FACULTY}/pages/` first, then merge with `src/pages/`. If the same relative page path exists in both places, the faculty-specific page wins.
+
+Pages under `src/pages/_dev/` SHALL be excluded from production builds for every faculty, but SHALL remain reachable in dev server mode.
+
+Pages named in `faculty.json.excludePages` SHALL be excluded from the build for that faculty.
 
 #### Scenario: Faculty index page override shared
-- **WHEN** `src/faculties/health-science/pages/index.html` tồn tại
-- **THEN** build dùng faculty page thay vì `src/pages/index.html`
+- **WHEN** `src/faculties/health-science/pages/index.html` exists
+- **THEN** the build uses that page instead of `src/pages/index.html`
 
-#### Scenario: Shared pages không override
-- **WHEN** faculty không có `pages/news.html` nhưng `src/pages/news.html` tồn tại
-- **THEN** build include `news.html` từ shared
+#### Scenario: Shared pages khong override
+- **WHEN** a faculty has no `pages/news.html` but `src/pages/news.html` exists
+- **THEN** the build includes the shared `news.html`
 
-#### Scenario: Faculty-only page được include
-- **WHEN** `src/faculties/information-tech/pages/labs.html` tồn tại và không có shared equivalent
-- **THEN** build include page này
+#### Scenario: Faculty-only page duoc include
+- **WHEN** `src/faculties/dormitory-management/pages/services.html` exists and there is no shared equivalent
+- **THEN** the build includes that page
+
+#### Scenario: Page trong _dev/ khong build vao production
+- **WHEN** `src/pages/_dev/form.html` exists and `yarn build:health-science` runs
+- **THEN** `dist/health-science/form.html` does not exist
+
+#### Scenario: Page trong _dev/ van serve duoc trong dev
+- **WHEN** the dev server is running and `/_dev/form.html` is requested
+- **THEN** the page renders with the normal layout
+
+#### Scenario: Page trong excludePages bi bo qua
+- **WHEN** `excludePages: ["majors.html"]` and `src/pages/majors.html` exists
+- **THEN** that faculty build does not output `majors.html`
 
 ### Requirement: Faculty assets trong build output
-Build system SHALL copy assets từ `src/faculties/{FACULTY}/assets/` (nếu tồn tại) vào dist output, merge với shared assets. Faculty assets override shared assets của cùng tên file.
+Build system SHALL copy assets from `src/faculties/{FACULTY}/assets/` into dist output and merge them with shared assets. Faculty assets override shared assets with the same relative path.
 
 #### Scenario: Faculty logo override shared logo
-- **WHEN** `src/faculties/information-tech/assets/images/intro-image.png` tồn tại
-- **THEN** dist/information-tech/ chứa faculty-specific image thay vì shared version
+- **WHEN** `src/faculties/information-tech/assets/images/intro-image.png` exists
+- **THEN** the faculty dist contains the faculty-specific image instead of the shared version
 
 ### Requirement: Data file cascade
-`public/data/messages-vi.json` và `messages-en.json` SHALL được đọc theo order: faculty-specific (`src/faculties/{FACULTY}/data/`) override shared (`public/data/`). Deep merge SHALL được áp dụng — faculty chỉ cần override keys thay đổi.
+Files under `public/data/` SHALL be read with faculty-specific overrides from `src/faculties/{FACULTY}/data/`. For JSON files, deep merge SHALL be applied so a faculty can override only the changed keys.
 
-#### Scenario: Faculty override một số keys trong messages
-- **WHEN** `faculty/data/messages-vi.json` chỉ chứa `{"faculty.name": "Khoa CNTT"}` và shared có 50 keys
-- **THEN** built site dùng faculty value cho `faculty.name` và shared values cho 49 keys còn lại
+#### Scenario: Faculty override mot so keys trong messages
+- **WHEN** `faculty/data/messages-vi.json` contains only `{"faculty.name": "Khoa CNTT"}` and shared data contains many more keys
+- **THEN** the built site uses the faculty value for `faculty.name` and shared values for all remaining keys

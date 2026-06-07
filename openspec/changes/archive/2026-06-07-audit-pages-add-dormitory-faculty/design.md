@@ -109,7 +109,7 @@ Page vẫn dev được qua URL trực tiếp `/_dev/form.html` ở dev server (
 `faculty.json` cho khoa Ký túc xá:
 - `id`: `dormitory-management`
 - `name`: `"Phòng Quản Lý Ký Túc Xá"`
-- `shortName`: `"KTX"` (cần xác nhận với user)
+- `shortName`: `"KTX"` (standardized short label for this smoke-test faculty)
 - `excludePages`: `["majors.html", "major-detail.html", "leadership-detail.html"]` (đề xuất; user có thể điều chỉnh)
 - `nav`: structure phù hợp đơn vị quản lý (vd: Giới thiệu / Dịch vụ / Quy định / Tin tức / Liên hệ)
 - `colors`: bộ màu khác KKSK để verify brand token system hoạt động (vd primary green/teal)
@@ -147,7 +147,6 @@ Audit script (optional, không bắt buộc trong change này): thêm npm script
 
 ## Open Questions
 
-1. **Tên ngắn (`shortName`) chính thức của Phòng Quản Lý Ký Túc Xá là gì?** Đề xuất `KTX`, cần xác nhận user.
-2. **Phòng QLKTX có dùng template `leadership.html` không?** Có "Trưởng phòng" — có thể dùng. Hay cần tier mới `staff-list` riêng?
-3. **`excludePages` có nên áp dụng cho cả `news.html`?** Có lẽ không — phòng nào cũng có thông báo. Giữ default trong shared.
-4. **URL deployment** cho khoa thứ 2 là gì? (Không ảnh hưởng change này, nhưng cần biết khi tới phase deploy.)
+1. **Phòng QLKTX có dùng template `leadership.html` không?** Có "Trưởng phòng" — có thể dùng. Hay cần tier mới `staff-list` riêng?
+2. **`excludePages` có nên áp dụng cho cả `news.html`?** Có lẽ không — phòng nào cũng có thông báo. Giữ default trong shared.
+3. **URL deployment** cho khoa thứ 2 là gì? (Không ảnh hưởng change này, nhưng cần biết khi tới phase deploy.)

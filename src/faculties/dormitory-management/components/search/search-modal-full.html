@@ -1,0 +1,35 @@
+<div id="searchModal" class="fixed inset-0 bg-black/50 z-[100] opacity-0 invisible transition-all duration-300">
+    <div class="bg-white w-full max-w-4xl mx-auto mt-20 rounded-2xl shadow-2xl transform -translate-y-4 transition-transform duration-300" id="searchModalContent">
+        <div class="p-6 md:p-8">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-2xl font-inter font-bold text-primary-dark-blue">Tìm kiếm nhanh</h3>
+                <button id="closeSearchModal" class="w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center transition-colors">
+                    <img src="/assets/svgs/icon-close.svg" alt="Đóng" class="w-5 h-5" />
+                </button>
+            </div>
+            
+            <div class="relative mb-6">
+                <input 
+                    type="text" 
+                    id="searchInput"
+                    placeholder="Tìm kiếm thông báo, hỗ trợ cư dân, đầu mối liên hệ..."
+                    class="w-full px-6 py-4 pl-14 border-2 border-gray-200 rounded-xl focus:border-brand-primary focus:outline-none text-lg transition-colors"
+                />
+                <img src="/assets/svgs/icon-search.svg" alt="Search" class="absolute left-5 top-1/2 transform -translate-y-1/2 w-6 h-6 opacity-50" />
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <a href="/about.html" class="px-4 py-2 text-sm font-medium text-primary-dark-blue bg-slate-100 hover:bg-brand-accent hover:text-primary-white rounded-lg no-underline transition-all duration-200 hover:-translate-y-0.5">Giới thiệu</a>
+                <a href="/students.html" class="px-4 py-2 text-sm font-medium text-primary-dark-blue bg-slate-100 hover:bg-brand-accent hover:text-primary-white rounded-lg no-underline transition-all duration-200 hover:-translate-y-0.5">Cư dân ký túc</a>
+                <a href="/contact.html" class="px-4 py-2 text-sm font-medium text-primary-dark-blue bg-slate-100 hover:bg-brand-accent hover:text-primary-white rounded-lg no-underline transition-all duration-200 hover:-translate-y-0.5">Liên hệ hỗ trợ</a>
+            </div>
+            
+            <div id="searchResults" class="max-h-96 overflow-y-auto">
+                <div class="text-center py-8 text-gray-500">
+                    <img src="/assets/svgs/icon-search.svg" alt="Search" class="w-16 h-16 mx-auto mb-4 opacity-30" />
+                    <p>Nhập từ khóa để bắt đầu tìm kiếm</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

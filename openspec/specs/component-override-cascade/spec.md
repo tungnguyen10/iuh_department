@@ -1,51 +1,57 @@
 # component-override-cascade Specification
 
 ## Purpose
-Defines the @faculty/ alias resolution mechanism for component overrides and the conventions for faculty-specific components.
+Defines the `@faculty/` alias resolution mechanism for component overrides and the conventions for faculty-specific components.
 
 ## Requirements
-### Requirement: @faculty/ alias resolve với shared fallback
-Vite build system SHALL resolve `@faculty/` prefix trong `data-include` attributes theo priority: faculty-specific component trước, shared component làm fallback.
+### Requirement: @faculty alias resolve voi shared fallback
+Vite build SHALL resolve `@faculty/` paths in `data-include` attributes by checking the faculty-specific component first, then falling back to the shared component.
 
 ```
 @faculty/intro/index.html
-  → src/faculties/{FACULTY}/components/intro/index.html  (nếu file tồn tại)
-  → src/components/intro/index.html                       (fallback)
+  -> src/faculties/{FACULTY}/components/intro/index.html
+  -> src/components/intro/index.html
 ```
 
-#### Scenario: Faculty có component override
-- **WHEN** `data-include="@faculty/intro/index.html"` và `src/faculties/health-science/components/intro/index.html` tồn tại
-- **THEN** faculty-specific component được include (không phải shared)
+This resolution scope applies only to HTML includes through `data-include`. JS modules and SCSS files are not resolved through the faculty cascade.
 
-#### Scenario: Faculty không có override dùng shared fallback
-- **WHEN** `data-include="@faculty/news/index.html"` và faculty không có `components/news/`
-- **THEN** `src/components/news/index.html` được include thay thế
+#### Scenario: Faculty co component override
+- **WHEN** `data-include="@faculty/intro/index.html"` and `src/faculties/health-science/components/intro/index.html` exists
+- **THEN** the faculty-specific component is included
 
-#### Scenario: @components/ alias không bị ảnh hưởng
+#### Scenario: Faculty khong co override dung shared fallback
+- **WHEN** `data-include="@faculty/news/index.html"` and the faculty has no `components/news/`
+- **THEN** `src/components/news/index.html` is included
+
+#### Scenario: @components alias khong bi anh huong
 - **WHEN** `data-include="@components/common/breadcrumb.html"`
-- **THEN** luôn resolve về `src/components/common/breadcrumb.html`, không bị intercept bởi @faculty/ logic
+- **THEN** it always resolves to `src/components/common/breadcrumb.html`
 
-### Requirement: Faculty override component dùng brand tokens
-Component HTML files trong `src/faculties/{X}/components/` SHALL dùng `brand-*` Tailwind tokens thay vì hardcoded `primary-dark-blue` hay `primary-yellow`.
+#### Scenario: JS module khong resolve qua @faculty
+- **WHEN** code uses `import('@faculty/foo.js')`
+- **THEN** Vite does not apply the faculty cascade to that module path
 
-#### Scenario: Faculty override component render đúng màu
-- **WHEN** `src/faculties/information-tech/components/intro/index.html` dùng `bg-brand-primary`
-- **THEN** rendered section hiển thị với `--color-brand-primary` của CNTT (không phải màu KKSK cứng)
+### Requirement: Faculty override component dung brand tokens
+Component HTML files in `src/faculties/{id}/components/` SHALL use `brand-*` Tailwind tokens instead of hardcoded shared brand colors.
+
+#### Scenario: Faculty override component render dung mau
+- **WHEN** `src/faculties/information-tech/components/intro/index.html` uses `bg-brand-primary`
+- **THEN** the rendered section uses that faculty's `--color-brand-primary`
 
 #### Scenario: Opacity modifier trong faculty component
-- **WHEN** faculty component dùng `bg-brand-primary/40`
-- **THEN** CSS output có `rgb(var(--color-brand-primary) / 0.4)` với giá trị faculty-specific
+- **WHEN** a faculty component uses `bg-brand-primary/40`
+- **THEN** CSS output uses the faculty-specific RGB variable with the requested opacity
 
-### Requirement: Faculty-specific section (không có shared equivalent)
-Faculty SHALL có thể tạo section component hoàn toàn mới không tồn tại trong shared, reference nó trong faculty's `pages/index.html`.
+### Requirement: Faculty-specific section khong co shared equivalent
+Faculties SHALL be able to create entirely new section components with no shared equivalent and include them in faculty pages.
 
-#### Scenario: Faculty thêm section đặc thù
-- **WHEN** `src/faculties/information-tech/components/labs/index.html` tồn tại và được include trong CNTT's `pages/index.html`
-- **THEN** CNTT build include labs section; KKSK build không bị ảnh hưởng
+#### Scenario: Faculty them section dac thu
+- **WHEN** `src/faculties/information-tech/components/labs/index.html` exists and is included in that faculty's `pages/index.html`
+- **THEN** the Information Technology build includes the labs section and other faculties are unaffected
 
 ### Requirement: Instruction files active cho component development
-`.agents/instructions/components.instructions.md` và `design-system.instructions.md` SHALL có `applyTo` patterns đúng để agent tự động follow rules khi làm việc với files trong `src/`.
+Instruction files for components and design system rules SHALL target the correct `src/` paths so automated editing follows the expected conventions.
 
-#### Scenario: Agent tạo faculty override component follow đúng patterns
-- **WHEN** agent tạo file trong `src/faculties/{X}/components/`
-- **THEN** instruction files được load và brand token rules được follow
+#### Scenario: Agent tao faculty override component follow dung patterns
+- **WHEN** an agent creates a file under `src/faculties/{id}/components/`
+- **THEN** the relevant instruction files are applied and brand-token rules are followed

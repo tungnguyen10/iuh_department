@@ -1,5 +1,5 @@
 ---
-applyTo: "src/faculties/**,vite.config.js,package.json"
+applyTo: "src/faculties/**,src/pages/**,vite.config.js,package.json,README.md"
 ---
 
 # IUH Department — Multi-Faculty Architecture
@@ -13,7 +13,8 @@ Source dùng chung cho nhiều khoa. Mỗi khoa build ra 1 static site riêng, d
 ```
 src/
 ├── components/          ← SHARED BASE — không sửa khi thêm khoa mới
-├── pages/               ← SHARED FALLBACK pages
+├── pages/               ← SHARED pages + tier comments
+│   └── _dev/            ← Dev-only playground pages, never ship to dist
 ├── layouts/
 │   └── default.html     ← SHARED layout (header/footer inject từ faculty.json)
 ├── js/, styles/         ← SHARED scripts và styles
@@ -43,7 +44,27 @@ src/
 
 ---
 
-## 2. `faculty.json` — Schema bắt buộc
+## 2. Page Tiers
+
+Every page in `src/pages/` must start with one of these comments:
+
+```html
+<!-- TIER: shared-template | shared-with-vars | faculty-content | dev-only -->
+```
+
+- `shared-template`: shared frame/content that is safe to build for every faculty
+- `shared-with-vars`: shared page that only depends on `faculty.json` placeholders
+- `faculty-content`: page content differs by faculty and should be overridden under `src/faculties/{id}/pages/`
+- `dev-only`: playground/demo page stored under `src/pages/_dev/` and excluded from production builds
+
+Current baseline mapping:
+
+- `index.html`, `about.html`, `majors.html`, `major-detail.html`, `students.html`: `faculty-content`
+- `news.html`, `news-detail.html`, `leadership.html`, `leadership-detail.html`, `partners.html`, `document-detail.html`: `shared-template`
+- `contact.html`: `shared-with-vars`
+- `_dev/form.html`: `dev-only`
+
+## 3. `faculty.json` — Schema bắt buộc
 
 Mỗi khoa **phải có** file này. Là nguồn duy nhất để config identity.
 
@@ -71,6 +92,7 @@ Mỗi khoa **phải có** file này. Là nguồn duy nhất để config identit
     "facebook": "https://facebook.com/...",
     "youtube": "https://youtube.com/..."
   },
+  "excludePages": ["majors.html", "major-detail.html"],
   "colors": {
     "brand-primary": "#153898",
     "brand-accent":  "#F9B200",
@@ -79,6 +101,8 @@ Mỗi khoa **phải có** file này. Là nguồn duy nhất để config identit
   }
 }
 ```
+
+`excludePages` is optional. It allows a faculty to opt out of shared or overridden pages by basename. `vite.config.js` validates that no `nav[*].url` or nested nav child points at an excluded page.
 
 **Colors field**: `vite.config.js` đọc file này, convert hex → RGB space-separated, inject vào `<head>` của mỗi page:
 ```html
@@ -94,7 +118,7 @@ Mỗi khoa **phải có** file này. Là nguồn duy nhất để config identit
 
 ---
 
-## 3. Resolve Priority — Component và Pages
+## 4. Resolve Priority — Component và Pages
 
 ```
 @faculty/intro/index.html  resolves:
@@ -114,16 +138,16 @@ data/messages-vi.json  resolves:
 
 ---
 
-## 4. Build Commands
+## 5. Build Commands
 
 ```bash
 # Dev server cho từng khoa
 VITE_FACULTY=health-science yarn dev
-VITE_FACULTY=information-tech yarn dev
+VITE_FACULTY=dormitory-management yarn dev
 
 # Build từng khoa ra dist riêng
 VITE_FACULTY=health-science yarn build --outDir dist/health-science
-VITE_FACULTY=information-tech yarn build --outDir dist/information-tech
+VITE_FACULTY=dormitory-management yarn build --outDir dist/dormitory-management
 
 # Build tất cả (script trong package.json)
 yarn build:all
@@ -132,21 +156,27 @@ yarn build:all
 `package.json` scripts pattern:
 ```json
 "dev:health-science":   "VITE_FACULTY=health-science vite",
+"dev:dormitory-management": "VITE_FACULTY=dormitory-management vite",
 "build:health-science": "VITE_FACULTY=health-science vite build --outDir dist/health-science",
-"build:all": "yarn build:health-science && yarn build:information-tech"
+"build:dormitory-management": "VITE_FACULTY=dormitory-management vite build --outDir dist/dormitory-management",
+"build:all": "yarn build:health-science && yarn build:dormitory-management"
 ```
+
+Production builds skip `src/pages/_dev/**`. The dev server still serves those pages via routes like `/_dev/form.html`.
 
 ---
 
-## 5. Rules khi tạo Faculty mới
+## 6. Rules khi tạo Faculty mới
 
 ### Bắt buộc
 - [ ] Tạo `src/faculties/{faculty-id}/faculty.json` với đủ fields theo schema
 - [ ] Tạo `src/faculties/{faculty-id}/data/messages-vi.json` với content riêng
 - [ ] `faculty-id` dùng kebab-case: `health-science`, `information-tech`, `economics`
+- [ ] Đánh giá page nào cần `excludePages` ngay từ đầu nếu đơn vị không dùng route đó
 
 ### Chỉ tạo khi cần override
 - `pages/index.html` — chỉ khi sections index.html **khác** so với shared
+- `pages/about.html`, `pages/students.html`, `pages/majors.html` — khi page thuộc tier `faculty-content`
 - `components/intro/` — chỉ khi text/image giới thiệu khác (thường phải override)
 - `components/major/` — chỉ khi danh sách ngành học khác (luôn phải override)
 - `components/{section-mới}/` — section đặc thù chỉ khoa đó có
@@ -154,10 +184,11 @@ yarn build:all
 ### Không làm
 - Không copy nguyên file shared vào faculty folder chỉ để thay đổi màu → dùng `brand-*` tokens
 - Không sửa file trong `src/components/` vì lý do của 1 khoa cụ thể
+- Không đặt page playground ở `src/pages/` top-level; dùng `src/pages/_dev/`
 
 ---
 
-## 6. Component mới trong Faculty Override
+## 7. Component mới trong Faculty Override
 
 Khi tạo component trong `src/faculties/{X}/components/`:
 
@@ -173,7 +204,7 @@ Xem `design-system.instructions.md` cho full color token rules.
 
 ---
 
-## 7. `messages-vi.json` — Content data-driven
+## 8. `messages-vi.json` — Content data-driven
 
 Nội dung thay đổi theo khoa (text, không phải structure) nên để trong messages JSON thay vì override component:
 
@@ -193,11 +224,12 @@ Component đọc qua `t('intro.title')` — xem `src/js/i18n.js`.
 
 ---
 
-## 8. Tóm tắt — Minimum để ra 1 khoa mới
+## 9. Tóm tắt — Minimum để ra 1 khoa mới
 
 ```
 src/faculties/new-faculty/
 ├── faculty.json              ← name, nav, contact, colors
+├── pages/                    ← override các page tier `faculty-content` nếu cần
 └── data/
     ├── messages-vi.json      ← nội dung text riêng
     └── messages-en.json
@@ -206,3 +238,4 @@ src/faculties/new-faculty/
 Nếu index sections giống shared → không cần `pages/`
 Nếu intro/major text riêng nhưng layout giống → dùng messages JSON, không cần override component
 Nếu có section đặc thù → tạo `components/{section}/` trong faculty folder
+Nếu không dùng một route shared nào đó → khai báo `excludePages` trong `faculty.json`

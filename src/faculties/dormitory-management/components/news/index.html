@@ -1,0 +1,65 @@
+<!-- News & Events Section -->
+<section data-module="news" class="w-full py-8 md:py-14 {{class}}">
+  <div class="container mx-auto px-4 flex flex-col items-center">
+    <div data-include="@components/common/section-title.html"
+      data-title="Thông Báo - Hoạt Động"
+      data-title-class="text-title text-center">
+    </div>
+
+    <div class="w-full relative">
+      <div class="news-swiper py-4 md:py-6 lg:py-8">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div data-include="@components/news/news-card.html"
+              data-image="/assets/images/default.jpg"
+              data-imageAlt="Thông báo nội trú"
+              data-title="Mở đăng ký chỗ ở nội trú học kỳ mới"
+              data-excerpt="Phòng Quản Lý Ký Túc Xá tiếp nhận hồ sơ đăng ký, gia hạn lưu trú và cập nhật danh sách cư dân theo từng đợt."
+              data-date="12 tháng 5, 2025"
+              data-link="/news-detail.html">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div data-include="@components/news/news-card.html"
+              data-image="/assets/images/default.jpg"
+              data-imageAlt="An toàn ký túc xá"
+              data-title="Lịch kiểm tra an toàn và PCCC khu nội trú"
+              data-excerpt="Thông tin về lịch kiểm tra định kỳ, diễn tập thoát hiểm và đầu mối tiếp nhận phản ánh liên quan đến an toàn cư dân."
+              data-date="10 tháng 5, 2025"
+              data-link="/news-detail.html">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div data-include="@components/news/news-card.html"
+              data-image="/assets/images/default.jpg"
+              data-imageAlt="Hỗ trợ cư dân"
+              data-title="Cập nhật quy trình hỗ trợ sự cố điện, nước, internet"
+              data-excerpt="Cư dân có thể gửi yêu cầu hỗ trợ vận hành và theo dõi tiến độ xử lý qua các kênh liên hệ của Phòng Quản Lý Ký Túc Xá."
+              data-date="08 tháng 5, 2025"
+              data-link="/news-detail.html">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div data-include="@components/news/news-card.html"
+              data-image="/assets/images/default.jpg"
+              data-imageAlt="Sinh hoạt nội trú"
+              data-title="Tuần sinh hoạt cư dân đầu học kỳ"
+              data-excerpt="Chương trình phổ biến nội quy, hướng dẫn sử dụng tiện ích chung và kết nối cư dân mới vào môi trường nội trú."
+              data-date="05 tháng 5, 2025"
+              data-link="/news-detail.html">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-4 md:gap-5 lg:gap-[21px]">
+      <button class="news-nav-prev bg-primary-white border border-stroke rounded-full p-2 md:p-2.5 hover:border-primary-dark-blue hover:bg-primary-dark-blue/5 transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
+        <img src="/assets/svgs/icon-chevron-left.svg" alt="Previous" class="w-6 h-6 md:w-[30px] md:h-[30px]" />
+      </button>
+      <button class="news-nav-next bg-primary-white border border-stroke rounded-full p-2 md:p-2.5 hover:border-primary-dark-blue hover:bg-primary-dark-blue/5 transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
+        <img src="/assets/svgs/icon-chevron-right.svg" alt="Next" class="w-6 h-6 md:w-[30px] md:h-[30px]" />
+      </button>
+    </div>
+  </div>
+</section>

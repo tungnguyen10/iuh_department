@@ -1,0 +1,31 @@
+{
+  "id": "dormitory-management",
+  "name": "Phòng Quản Lý Ký Túc Xá",
+  "shortName": "KTX",
+  "email": "ktx@iuh.edu.vn",
+  "phone": "0283 8940 390",
+  "excludePages": ["majors.html", "major-detail.html", "leadership-detail.html"],
+  "nav": [
+    { "label": "GIỚI THIỆU", "url": "/about.html" },
+    { "label": "TIN TỨC - THÔNG BÁO", "url": "/news.html" },
+    { "label": "BAN ĐIỀU HÀNH", "url": "/leadership.html" },
+    { "label": "CƯ DÂN KÝ TÚC", "url": "/students.html" },
+    { "label": "ĐỐI TÁC", "url": "/partners.html" },
+    { "label": "LIÊN HỆ", "url": "/contact.html" }
+  ],
+  "topBar": [
+    { "label": "Nội quy lưu trú", "url": "/about.html#regulations" },
+    { "label": "Hỗ trợ cư dân", "url": "/students.html#support" },
+    { "label": "Thông báo mới", "url": "/news.html" }
+  ],
+  "social": {
+    "facebook": "https://www.facebook.com/iuh.official",
+    "youtube": "https://www.youtube.com/@iuh.official"
+  },
+  "colors": {
+    "brand-primary": "#0F766E",
+    "brand-accent": "#F59E0B",
+    "brand-tint": "#99F6E4",
+    "brand-surface": "#ECFEFF"
+  }
+}

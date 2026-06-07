@@ -12,6 +12,7 @@ const __dirname = dirname(__filename)
 const DEFAULT_FACULTY_ID = 'health-science'
 const FACULTY_REQUIRED_FIELDS = ['id', 'name', 'shortName', 'email', 'phone', 'nav', 'topBar', 'social', 'colors']
 const FACULTY_COLOR_KEYS = ['brand-primary', 'brand-accent', 'brand-tint', 'brand-surface']
+const VALID_PAGE_TIERS = new Set(['shared-template', 'shared-with-vars', 'faculty-content', 'dev-only'])
 const SOCIAL_CONFIG = {
   facebook: {
     label: 'Facebook',
@@ -92,6 +93,79 @@ const hexToRgbSpace = (hex) => {
   return `${red} ${green} ${blue}`
 }
 
+const normalizePageBasename = (value = '') => basename(String(value).trim().replace(/\\/g, '/'))
+
+const parseTierComment = (content = '') => {
+  const match = content.match(/^\s*<!--\s*TIER:\s*([a-z-]+)\s*-->/i)
+  if (!match) {
+    return null
+  }
+  const tier = match[1].toLowerCase()
+  return VALID_PAGE_TIERS.has(tier) ? tier : null
+}
+
+const readPageMeta = (rootDir, relativePath) => {
+  const normalizedPath = relativePath.replace(/\\/g, '/')
+  const absolutePath = resolve(rootDir, relativePath)
+  const content = readFileSync(absolutePath, 'utf-8')
+  const tier = parseTierComment(content)
+
+  if (!tier) {
+    console.warn(`Page ${normalizedPath} chua duoc phan loai tier`)
+  }
+
+  return {
+    absolutePath,
+    basename: normalizePageBasename(relativePath),
+    relativePath: normalizedPath,
+    tier,
+  }
+}
+
+const collectPageMetas = (rootDir) => {
+  const pageMetas = []
+  for (const file of glob.sync('**/*.html', { cwd: rootDir, nodir: true })) {
+    pageMetas.push(readPageMeta(rootDir, file))
+  }
+  return pageMetas
+}
+
+const validateFacultyPages = (facultyId, faculty, sharedPageMetas, facultyPageMetas, includeDevPages) => {
+  const facultyPageBasenames = new Set(facultyPageMetas.map((page) => page.basename))
+  const excludedPages = new Set(faculty.excludePages)
+  const knownPageBasenames = new Set([
+    ...sharedPageMetas.map((page) => page.basename),
+    ...facultyPageMetas.map((page) => page.basename),
+  ])
+
+  for (const excludedPage of excludedPages) {
+    if (!knownPageBasenames.has(excludedPage)) {
+      console.warn(`Faculty '${facultyId}' excludePages contains unknown page "${excludedPage}"`)
+    }
+  }
+
+  for (const page of sharedPageMetas) {
+    if (!includeDevPages && page.relativePath.startsWith('_dev/')) {
+      continue
+    }
+    if (page.tier === 'faculty-content' && !excludedPages.has(page.basename) && !facultyPageBasenames.has(page.basename)) {
+      throw new Error(`Faculty '${facultyId}' missing required faculty-content page: ${page.basename}`)
+    }
+  }
+}
+
+const collectNavUrls = (items = [], urls = []) => {
+  for (const item of items) {
+    if (item?.url) {
+      urls.push(item.url)
+    }
+    if (Array.isArray(item?.children) && item.children.length > 0) {
+      collectNavUrls(item.children, urls)
+    }
+  }
+  return urls
+}
+
 const loadFaculty = (facultyId) => {
   const facultyDir = resolve(__dirname, 'src/faculties', facultyId)
   const facultyPath = resolve(facultyDir, 'faculty.json')
@@ -124,11 +198,25 @@ const loadFaculty = (facultyId) => {
     throw new Error('Missing required faculty field: colors')
   }
 
+  // Optional schema fields:
+  // - excludePages: array of shared/faculty page basenames to omit from production builds
+  faculty.excludePages = Array.isArray(faculty.excludePages)
+    ? [...new Set(faculty.excludePages.map(normalizePageBasename).filter(Boolean))]
+    : []
+
   for (const colorKey of FACULTY_COLOR_KEYS) {
     if (!faculty.colors[colorKey]) {
       throw new Error(`Missing required faculty field: colors.${colorKey}`)
     }
     hexToRgbSpace(faculty.colors[colorKey])
+  }
+
+  const excludedPages = new Set(faculty.excludePages)
+  for (const url of collectNavUrls(faculty.nav)) {
+    const pageName = normalizePageBasename(url)
+    if (excludedPages.has(pageName)) {
+      throw new Error(`Faculty nav url "${url}" points to excluded page "${pageName}"`)
+    }
   }
 
   return faculty
@@ -143,28 +231,46 @@ const getFacultyPagePath = (facultyId, pageName) => {
   return resolve(__dirname, 'src/pages', normalized)
 }
 
-const collectFacultyPages = (facultyId) => {
+const collectFacultyPages = (facultyId, options = {}) => {
   const sharedPagesDir = resolve(__dirname, 'src/pages')
   const facultyPagesDir = resolve(__dirname, 'src/faculties', facultyId, 'pages')
   const pageMap = new Map()
+  const excludedPages = new Set((options.excludePages || []).map(normalizePageBasename))
+  const includeDevPages = options.includeDevPages ?? true
+  const sharedPageMetas = collectPageMetas(sharedPagesDir)
+  const facultyPageMetas = existsSync(facultyPagesDir) ? collectPageMetas(facultyPagesDir) : []
 
-  for (const file of glob.sync('*.html', { cwd: sharedPagesDir })) {
-    pageMap.set(file, resolve(sharedPagesDir, file))
+  validateFacultyPages(facultyId, { excludePages: [...excludedPages] }, sharedPageMetas, facultyPageMetas, includeDevPages)
+
+  for (const page of sharedPageMetas) {
+    if (!includeDevPages && page.relativePath.startsWith('_dev/')) {
+      continue
+    }
+    if (excludedPages.has(page.basename)) {
+      continue
+    }
+    pageMap.set(page.relativePath, page.absolutePath)
   }
 
-  if (existsSync(facultyPagesDir)) {
-    for (const file of glob.sync('*.html', { cwd: facultyPagesDir })) {
-      pageMap.set(file, resolve(facultyPagesDir, file))
+  if (facultyPageMetas.length > 0) {
+    for (const page of facultyPageMetas) {
+      if (excludedPages.has(page.basename)) {
+        continue
+      }
+      pageMap.set(page.relativePath, page.absolutePath)
     }
   }
 
   return pageMap
 }
 
-const prepareFacultyWorkspace = (facultyId) => {
+const prepareFacultyWorkspace = (facultyId, faculty, options = {}) => {
   const tempRoot = resolve(__dirname, '.tmp/faculty-build', facultyId)
   const tempPagesDir = resolve(tempRoot, 'pages')
-  const pageMap = collectFacultyPages(facultyId)
+  const pageMap = collectFacultyPages(facultyId, {
+    includeDevPages: options.includeDevPages,
+    excludePages: faculty.excludePages,
+  })
   const mirrorDir = (src, dest) => {
     if (!existsSync(src)) return
 
@@ -190,8 +296,9 @@ const prepareFacultyWorkspace = (facultyId) => {
   const input = {}
   for (const [fileName, sourcePath] of pageMap.entries()) {
     const targetPath = resolve(tempPagesDir, fileName)
+    mkdirSync(dirname(targetPath), { recursive: true })
     copyFileSync(sourcePath, targetPath)
-    input[fileName.replace(/\.html$/i, '')] = targetPath
+    input[fileName.replace(/\.html$/i, '').replace(/\\/g, '/')] = targetPath
   }
 
   return {
@@ -390,8 +497,13 @@ const mapUrlToFsPath = (url, facultyId, workspace) => {
     return resolve(workspace.rootDir, 'main.js')
   }
 
-  if (/^\/[^/]+\.html$/i.test(pathname)) {
-    return resolve(workspace.pagesDir, pathname.slice(1))
+  if (/\.html$/i.test(pathname)) {
+    const normalizedPagePath = pathname.replace(/^\/+/, '')
+    const pagePath = resolve(workspace.pagesDir, normalizedPagePath)
+    if (relative(workspace.pagesDir, pagePath).startsWith('..')) {
+      return null
+    }
+    return pagePath
   }
 
   if (pathname.startsWith('/js/')) {
@@ -755,11 +867,13 @@ const copyFacultyAssetsPlugin = (outDir, facultyId) => ({
   }
 })
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, __dirname, '')
   const facultyId = env.VITE_FACULTY || DEFAULT_FACULTY_ID
   const faculty = loadFaculty(facultyId)
-  const workspace = prepareFacultyWorkspace(facultyId)
+  const workspace = prepareFacultyWorkspace(facultyId, faculty, {
+    includeDevPages: command !== 'build',
+  })
   const base = normalizeBasePath(env.VITE_BASE_PATH || '/')
   const outDir = resolveOutDir(env.VITE_OUT_DIR || '')
   const buildSignature = mode === 'production' ? getBuildSignature() : 'dev-mode'

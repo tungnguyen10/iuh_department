@@ -12,6 +12,10 @@ node_modules
 dist
 dist-ssr
 dist_iuh
+dist_*/
+src/**/dist/
+src/dist/
+.tmp/
 *.local
 .firebaserc
 firebase.json

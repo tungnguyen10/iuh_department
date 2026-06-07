@@ -5,44 +5,78 @@ Defines the faculty identity schema and build-time injection of faculty data int
 
 ## Requirements
 ### Requirement: Faculty JSON schema
-Mỗi khoa SHALL có file `src/faculties/{faculty-id}/faculty.json` tuân theo schema cố định. File này là nguồn duy nhất cho faculty identity.
+Each faculty SHALL have `src/faculties/{faculty-id}/faculty.json` as the single source of faculty identity.
 
-Required fields: `id` (kebab-case string), `name` (string), `shortName` (string), `email` (string), `phone` (string), `nav` (array), `topBar` (array), `social` (object), `colors` (object với keys: `brand-primary`, `brand-accent`, `brand-tint`, `brand-surface`).
+Required fields: `id`, `name`, `shortName`, `email`, `phone`, `nav`, `topBar`, `social`, and `colors` with keys `brand-primary`, `brand-accent`, `brand-tint`, `brand-surface`.
 
-`colors` values SHALL là hex strings (ví dụ `"#153898"`).
+Optional fields: `excludePages` (array of strings).
 
-#### Scenario: Valid faculty.json được load thành công
-- **WHEN** `VITE_FACULTY=health-science` được set và `src/faculties/health-science/faculty.json` tồn tại với đủ required fields
-- **THEN** build system đọc file, không throw error, faculty data available cho layout injection
+`colors` values SHALL be hex strings such as `#153898`.
 
-#### Scenario: Missing required field gây build error
-- **WHEN** `faculty.json` thiếu field `colors.brand-primary`
-- **THEN** build system throw error với message rõ ràng chỉ ra field nào thiếu
+#### Scenario: Valid faculty.json duoc load thanh cong
+- **WHEN** `VITE_FACULTY=health-science` and `src/faculties/health-science/faculty.json` exists with all required fields
+- **THEN** the build reads the file without throwing and exposes faculty data to layout injection
 
-#### Scenario: Invalid VITE_FACULTY gây build error
-- **WHEN** `VITE_FACULTY=nonexistent-faculty` được set nhưng `src/faculties/nonexistent-faculty/faculty.json` không tồn tại
-- **THEN** build system throw error: "Faculty 'nonexistent-faculty' not found at src/faculties/nonexistent-faculty/"
+#### Scenario: Missing required field gay build error
+- **WHEN** `faculty.json` is missing `colors.brand-primary`
+- **THEN** the build throws a clear error naming the missing field
 
-### Requirement: Faculty identity injected vào layout
-Build system SHALL inject faculty data từ `faculty.json` vào `default.html` layout template dưới dạng template variables.
+#### Scenario: Invalid VITE_FACULTY gay build error
+- **WHEN** `VITE_FACULTY=nonexistent-faculty` and `src/faculties/nonexistent-faculty/faculty.json` does not exist
+- **THEN** the build throws `Faculty 'nonexistent-faculty' not found at src/faculties/nonexistent-faculty/`
 
-Template variables available: `{{faculty.name}}`, `{{faculty.shortName}}`, `{{faculty.email}}`, `{{faculty.phone}}`, `{{faculty.id}}`.
+#### Scenario: Optional excludePages parse duoc
+- **WHEN** `faculty.json` contains `"excludePages": ["majors.html"]`
+- **THEN** the field is loaded as an array without error
 
-#### Scenario: Faculty name hiển thị đúng trong header
-- **WHEN** `VITE_FACULTY=information-tech` và `faculty.json` có `"name": "Khoa Công nghệ Thông tin"`
-- **THEN** built HTML có "Khoa Công nghệ Thông tin" thay cho text KKSK
+### Requirement: Optional excludePages field
+`faculty.json` SHALL support an optional `excludePages` field listing page filenames that a faculty does not want emitted into its dist output.
 
-#### Scenario: Nav links generated từ faculty.json
-- **WHEN** `faculty.json` có `nav` array với 6 items
-- **THEN** header HTML chứa đúng 6 nav items với đúng labels và URLs
+Each entry matches a page file in either `src/pages/` or `src/faculties/{id}/pages/`. If the field is omitted, the default is an empty array.
 
-#### Scenario: TopBar links generated từ faculty.json
-- **WHEN** `faculty.json` có `topBar` array với 3 items
-- **THEN** header top bar chứa đúng 3 links
+#### Scenario: Faculty exclude page khong thuoc noi dung minh
+- **WHEN** Dormitory Management sets `"excludePages": ["majors.html", "major-detail.html"]`
+- **THEN** `dist/dormitory-management/` does not contain those files
 
-### Requirement: VITE_FACULTY mặc định khi không set
-Khi `VITE_FACULTY` env var không được set, build system SHALL dùng `health-science` làm default để đảm bảo backward compatibility.
+#### Scenario: Field thieu mac dinh khong exclude
+- **WHEN** `faculty.json` omits `excludePages`
+- **THEN** the build includes all pages as before
 
-#### Scenario: Build không có VITE_FACULTY env var
-- **WHEN** chạy `vite build` hoặc `vite dev` mà không set `VITE_FACULTY`
-- **THEN** build thành công dùng `src/faculties/health-science/faculty.json`
+#### Scenario: excludePages co entry tro toi file khong ton tai duoc warning
+- **WHEN** `excludePages` contains `"nonexistent.html"` and no page by that name exists
+- **THEN** the build logs a warning and still succeeds
+
+### Requirement: Nav links khong tro toi page bi exclude
+Build-time faculty validation SHALL ensure every `nav` URL, including nested child items, does not point to a page named in `excludePages`.
+
+#### Scenario: Nav link tro toi excluded page gay build fail
+- **WHEN** `excludePages: ["majors.html"]` and `nav` contains `url: "/majors.html"`
+- **THEN** the build fails with a clear excluded-page nav error
+
+#### Scenario: Nav links hop le build thanh cong
+- **WHEN** `excludePages: ["majors.html"]` and `nav` contains no `/majors.html` link
+- **THEN** validation passes and the build continues
+
+### Requirement: Faculty identity injected vao layout
+Build system SHALL inject faculty data from `faculty.json` into `default.html` layout templates through template variables.
+
+Available variables: `{{faculty.name}}`, `{{faculty.shortName}}`, `{{faculty.email}}`, `{{faculty.phone}}`, `{{faculty.id}}`.
+
+#### Scenario: Faculty name hien thi dung trong header
+- **WHEN** `VITE_FACULTY=information-tech` and `faculty.json` contains `"name": "Khoa Cong nghe Thong tin"`
+- **THEN** built HTML shows that faculty name instead of Health Science text
+
+#### Scenario: Nav links generated tu faculty.json
+- **WHEN** `faculty.json` contains a `nav` array with 6 items
+- **THEN** the header HTML contains those 6 nav items with matching labels and URLs
+
+#### Scenario: TopBar links generated tu faculty.json
+- **WHEN** `faculty.json` contains a `topBar` array with 3 items
+- **THEN** the header top bar contains those 3 links
+
+### Requirement: VITE_FACULTY mac dinh khi khong set
+If `VITE_FACULTY` is not set, the build SHALL default to `health-science` for backward compatibility.
+
+#### Scenario: Build khong co VITE_FACULTY env var
+- **WHEN** `vite build` or `vite dev` runs without `VITE_FACULTY`
+- **THEN** the build succeeds using `src/faculties/health-science/faculty.json`

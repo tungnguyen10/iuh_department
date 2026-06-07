@@ -37,14 +37,14 @@
         },
         { "label": "Tuyển sinh", "url": "/contact.html" },
         { "label": "Kế hoạch giảng dạy", "url": "/about.html" },
-        { "label": "Đánh giá chất lượng", "url": "/form.html" }
+        { "label": "Đánh giá chất lượng", "url": "/students.html#forms" }
       ]
     },
     {
       "label": "SINH VIÊN",
       "children": [
         { "label": "Thông tin sinh viên", "url": "/students.html" },
-        { "label": "Biểu mẫu", "url": "/form.html" },
+        { "label": "Biểu mẫu", "url": "/students.html#forms" },
         { "label": "Tin tức", "url": "/news.html" },
         { "label": "Liên hệ", "url": "/contact.html" },
         { "label": "Chi tiết giảng viên", "url": "/leadership-detail.html" },

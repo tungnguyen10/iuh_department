@@ -113,6 +113,22 @@ yarn build
 
 Output: `dist_iuh/` folder (configured via VITE_OUT_DIR)
 
+### Multi-Faculty Commands
+
+```bash
+yarn dev:health-science
+yarn dev:dormitory-management
+
+yarn build:health-science
+yarn build:dormitory-management
+yarn build:all
+```
+
+Outputs:
+
+- `dist/health-science/`
+- `dist/dormitory-management/`
+
 #### Build with Auto Version Bump
 
 ```bash
@@ -417,6 +433,18 @@ yarn build
 ✅ **Fast HMR** - Instant updates in dev mode  
 ✅ **Production-ready** - Optimized static output  
 ✅ **No complex frameworks** - Simple, maintainable code  
+
+## Adding a New Faculty
+
+Use `src/faculties/dormitory-management/` as the current reference implementation.
+
+Checklist:
+
+1. Add `src/faculties/<faculty-id>/faculty.json` with identity, colors, nav, top bar, social, and optional `excludePages`.
+2. Override only the `faculty-content` pages your unit actually needs under `src/faculties/<faculty-id>/pages/`.
+3. Add faculty-only components under `src/faculties/<faculty-id>/components/` when shared components are not enough.
+4. Keep dev/demo pages under `src/pages/_dev/`; production builds exclude them automatically.
+5. Add `dev:<faculty-id>` and `build:<faculty-id>` scripts, then include the new build in `yarn build:all`.
 
 ## 🎨 Adding New Pages
 

@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "Mở đăng ký chỗ ở nội trú học kỳ mới",
+    "excerpt": "Phòng Quản Lý Ký Túc Xá tiếp nhận hồ sơ đăng ký, gia hạn lưu trú và cập nhật danh sách cư dân theo từng đợt.",
+    "category": "Thông báo",
+    "date": "12/05/2025",
+    "url": "/news.html"
+  },
+  {
+    "id": 2,
+    "title": "Lịch kiểm tra an toàn và PCCC khu nội trú",
+    "excerpt": "Thông tin về lịch kiểm tra định kỳ, diễn tập thoát hiểm và đầu mối tiếp nhận phản ánh liên quan đến an toàn cư dân.",
+    "category": "An toàn",
+    "date": "10/05/2025",
+    "url": "/news-detail.html"
+  },
+  {
+    "id": 3,
+    "title": "Quy trình hỗ trợ sự cố điện, nước, internet",
+    "excerpt": "Cư dân có thể gửi yêu cầu hỗ trợ vận hành và theo dõi tiến độ xử lý qua các kênh liên hệ của Phòng Quản Lý Ký Túc Xá.",
+    "category": "Hỗ trợ cư dân",
+    "date": "08/05/2025",
+    "url": "/students.html#support"
+  },
+  {
+    "id": 4,
+    "title": "Biểu mẫu gia hạn chỗ ở và chuyển phòng",
+    "excerpt": "Danh mục hồ sơ thường dùng cho cư dân nội trú, bao gồm đề nghị chuyển phòng, gia hạn chỗ ở và xác nhận cư trú.",
+    "category": "Biểu mẫu",
+    "date": "05/05/2025",
+    "url": "/students.html#forms"
+  },
+  {
+    "id": 5,
+    "title": "Giới thiệu Phòng Quản Lý Ký Túc Xá",
+    "excerpt": "Thông tin về chức năng, nhiệm vụ và định hướng vận hành khu nội trú của Trường Đại học Công nghiệp TP.HCM.",
+    "category": "Giới thiệu",
+    "date": "01/05/2025",
+    "url": "/about.html"
+  },
+  {
+    "id": 6,
+    "title": "Thông tin đối tác phục vụ đời sống cư dân",
+    "excerpt": "Danh sách các đối tác cung cấp dịch vụ, tiện ích và hỗ trợ vận hành cho khu ký túc xá.",
+    "category": "Đối tác",
+    "date": "28/04/2025",
+    "url": "/partners.html"
+  }
+]

@@ -1,0 +1,56 @@
+<!-- TIER: faculty-content -->
+<!-- LAYOUT: title="Đối tác hỗ trợ đời sống cư dân" -->
+<!-- LAYOUT: description="Danh sách các đơn vị phối hợp vận hành, dịch vụ và hỗ trợ cư dân của Phòng Quản Lý Ký Túc Xá IUH." -->
+<!-- LAYOUT: keywords="đối tác ký túc xá, dịch vụ nội trú, vận hành cư dân, IUH dormitory partners" -->
+<!-- LAYOUT: url="https://iuh.edu.vn/partners" -->
+<!-- LAYOUT: ogImage="/assets/images/default.jpg" -->
+
+<div data-include="@components/common/breadcrumb.html" data-parent-page1="Trang chủ" data-parent-link1="/"
+  data-current-page="Đối tác hỗ trợ đời sống cư dân"></div>
+
+<section class="container mx-auto px-4 py-8 md:py-12 flex flex-col lg:flex-row gap-12 md:gap-8">
+  <div class="flex-1 w-full lg:w-9/12 flex flex-col gap-6 md:gap-10">
+    <div data-include="@components/common/section-title.html"
+      data-title="Đối tác hỗ trợ đời sống cư dân"
+      data-description="Các đơn vị phối hợp cung cấp tiện ích, bảo trì, an toàn và dịch vụ thiết yếu cho khu ký túc xá."
+      data-title-class="text-title"
+      data-class="flex flex-col gap-3">
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-5">
+      <div data-include="@components/partners/partner-logo.html" data-image="/assets/images/partners/partner-1.jpg" data-alt="Đối tác vận hành" data-link="#"></div>
+      <div data-include="@components/partners/partner-logo.html" data-image="/assets/images/partners/partner-2.jpg" data-alt="Đối tác an ninh" data-link="#"></div>
+      <div data-include="@components/partners/partner-logo.html" data-image="/assets/images/partners/partner-3.jpg" data-alt="Đối tác hạ tầng" data-link="#"></div>
+      <div data-include="@components/partners/partner-logo.html" data-image="/assets/images/partners/partner-4.jpg" data-alt="Đối tác dịch vụ cư dân" data-link="#"></div>
+    </div>
+
+    <div class="bg-gradient-to-br from-primary-dark-blue to-blue-900 rounded-2xl p-6 md:p-8 text-primary-white">
+      <div class="flex flex-col gap-6">
+        <div data-include="@components/common/section-title.html"
+          data-title="Kết nối cùng hệ sinh thái phục vụ cư dân"
+          data-description="Phòng Quản Lý Ký Túc Xá ưu tiên các đối tác có khả năng phản hồi nhanh, vận hành ổn định và đảm bảo trải nghiệm an toàn cho cư dân."
+          data-title-class="text-primary-white"
+          data-description-class="text-primary-white opacity-90 line-clamp-none"
+          data-class="flex flex-col gap-3">
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <div data-include="@components/button/button.html"
+            data-variant="6"
+            data-url="/contact.html"
+            data-text="Liên hệ phối hợp"
+            data-icon="/assets/svgs/icon-arrow-right.svg"
+            data-class="w-fit">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full lg:w-3/12 shrink-0 flex flex-col gap-6 md:gap-8">
+    <div data-include="@faculty/sidebar/news.html" data-class="w-full"></div>
+    <div data-include="@components/sidebar/announcements.html" data-class="w-full"></div>
+    <div data-include="@components/sidebar/videos.html" data-class="w-full"></div>
+  </div>
+</section>
+
+<div data-include="@components/partners/index.html"></div>

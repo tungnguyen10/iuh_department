@@ -1,0 +1,55 @@
+<!-- TIER: faculty-content -->
+<!-- LAYOUT: title="Thông báo - Hoạt động cư dân" -->
+<!-- LAYOUT: description="Cập nhật thông báo vận hành, hoạt động cư dân và lịch hỗ trợ từ Phòng Quản Lý Ký Túc Xá IUH." -->
+<!-- LAYOUT: keywords="thông báo ký túc xá, hoạt động cư dân, hỗ trợ nội trú, IUH dormitory" -->
+<!-- LAYOUT: url="https://iuh.edu.vn/news" -->
+<!-- LAYOUT: ogImage="/assets/images/default.jpg" -->
+
+<div data-include="@components/common/breadcrumb.html" data-parent-page1="Trang chủ" data-parent-link1="/"
+  data-current-page="Thông báo - Hoạt động cư dân"></div>
+
+<section class="container mx-auto px-4 py-8 md:py-12 flex flex-col lg:flex-row gap-12 md:gap-8">
+  <div class="flex-1 w-full lg:w-9/12 flex flex-col gap-6 md:gap-10">
+    <div data-include="@components/common/section-title.html"
+      data-title="Thông Báo - Hoạt Động Cư Dân"
+      data-description="Các cập nhật mới về vận hành nội trú, an toàn cư dân và hoạt động tập thể trong khu ký túc xá."
+      data-title-class="text-title"
+      data-class="flex flex-col gap-3">
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <div data-include="@components/news/news-event-card.html" data-link="/news-detail.html"
+        data-image="/assets/images/default.jpg" data-image-alt="Đăng ký nội trú"
+        data-title="Mở đăng ký chỗ ở nội trú học kỳ mới"
+        data-description="Thông tin hồ sơ, thời gian tiếp nhận và quy trình xét duyệt chỗ ở cho cư dân đăng ký mới hoặc gia hạn."
+        data-date="12 tháng 5, 2025">
+      </div>
+      <div data-include="@components/news/news-event-card.html" data-link="/news-detail.html"
+        data-image="/assets/images/default.jpg" data-image-alt="PCCC ký túc xá"
+        data-title="Lịch kiểm tra an toàn và PCCC khu nội trú"
+        data-description="Kế hoạch diễn tập, kiểm tra lối thoát hiểm và phối hợp giữa cư dân với bộ phận vận hành."
+        data-date="10 tháng 5, 2025">
+      </div>
+      <div data-include="@components/news/news-event-card.html" data-link="/document-detail.html"
+        data-image="/assets/images/default.jpg" data-image-alt="Biểu mẫu cư dân"
+        data-title="Ban hành bộ biểu mẫu hỗ trợ cư dân nội trú"
+        data-description="Danh mục hồ sơ thường dùng cho chuyển phòng, gia hạn chỗ ở và xác nhận cư trú."
+        data-date="08 tháng 5, 2025">
+      </div>
+    </div>
+
+    <div data-include="@components/common/pagination.html"></div>
+  </div>
+
+  <div class="w-full lg:w-3/12 shrink-0 flex flex-col gap-6 md:gap-8">
+    <div data-include="@faculty/sidebar/news.html" data-class="w-full"></div>
+    <div data-include="@components/sidebar/announcements.html" data-class="w-full"></div>
+    <div data-include="@components/sidebar/videos.html" data-class="w-full"></div>
+  </div>
+</section>
+
+<div class="container mx-auto px-4">
+  <div data-include="@faculty/news/news-carousel.html" data-title="Thông báo liên quan"></div>
+</div>
+
+<div data-include="@components/partners/index.html"></div>
