@@ -1,9 +1,10 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 set -euo pipefail
-setopt null_glob
+shopt -s nullglob
 
-repo_root=${0:A:h:h}
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+repo_root="$(cd -- "${script_dir}/.." && pwd)"
 cd "$repo_root"
 
 mkdir -p \
@@ -45,7 +46,7 @@ link_children() {
 
   for entry in "$source_dir"/*; do
     [[ -e "$entry" || -L "$entry" ]] || continue
-    name=${entry:t}
+    name=$(basename "$entry")
     ln -s "${relative_prefix}/${name}" "${target_dir}/${name}"
   done
 }

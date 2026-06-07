@@ -135,6 +135,7 @@ data/messages-vi.json  resolves:
 ```
 
 **Khi tạo faculty mới**: Chỉ tạo file khi nội dung/structure KHÁC shared. Không copy file chỉ để có.
+Faculty override file SHALL NOT trùng byte-for-byte với shared. Nếu identical với `src/components/...`, xoá override để cascade fallback về shared.
 
 ---
 
@@ -142,12 +143,12 @@ data/messages-vi.json  resolves:
 
 ```bash
 # Dev server cho từng khoa
-VITE_FACULTY=health-science yarn dev
-VITE_FACULTY=dormitory-management yarn dev
+yarn dev:health-science
+yarn dev:dormitory-management
 
 # Build từng khoa ra dist riêng
-VITE_FACULTY=health-science yarn build --outDir dist/health-science
-VITE_FACULTY=dormitory-management yarn build --outDir dist/dormitory-management
+yarn build:health-science
+yarn build:dormitory-management
 
 # Build tất cả (script trong package.json)
 yarn build:all
@@ -155,12 +156,14 @@ yarn build:all
 
 `package.json` scripts pattern:
 ```json
-"dev:health-science":   "VITE_FACULTY=health-science vite",
-"dev:dormitory-management": "VITE_FACULTY=dormitory-management vite",
-"build:health-science": "VITE_FACULTY=health-science vite build --outDir dist/health-science",
-"build:dormitory-management": "VITE_FACULTY=dormitory-management vite build --outDir dist/dormitory-management",
+"dev:health-science": "cross-env VITE_FACULTY=health-science vite",
+"dev:dormitory-management": "cross-env VITE_FACULTY=dormitory-management vite",
+"build:health-science": "cross-env VITE_FACULTY=health-science VITE_OUT_DIR=dist/health-science vite build",
+"build:dormitory-management": "cross-env VITE_FACULTY=dormitory-management VITE_OUT_DIR=dist/dormitory-management vite build",
 "build:all": "yarn build:health-science && yarn build:dormitory-management"
 ```
+
+Windows users chỉ cần `yarn install` rồi chạy các script trên. Không cần Git Bash hay shell-specific env syntax.
 
 Production builds skip `src/pages/_dev/**`. The dev server still serves those pages via routes like `/_dev/form.html`.
 
@@ -180,6 +183,7 @@ Production builds skip `src/pages/_dev/**`. The dev server still serves those pa
 - `components/intro/` — chỉ khi text/image giới thiệu khác (thường phải override)
 - `components/major/` — chỉ khi danh sách ngành học khác (luôn phải override)
 - `components/{section-mới}/` — section đặc thù chỉ khoa đó có
+- Trước khi commit 1 override file HTML/CSS/JS, compare hash hoặc nội dung với shared tương ứng; nếu trùng byte-for-byte thì xoá override
 
 ### Không làm
 - Không copy nguyên file shared vào faculty folder chỉ để thay đổi màu → dùng `brand-*` tokens

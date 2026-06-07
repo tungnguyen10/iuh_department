@@ -124,6 +124,8 @@ yarn build:dormitory-management
 yarn build:all
 ```
 
+These scripts use `cross-env`, so they run the same way in Windows PowerShell, `cmd.exe`, and POSIX shells without Git Bash-specific syntax.
+
 Outputs:
 
 - `dist/health-science/`
@@ -445,6 +447,7 @@ Checklist:
 3. Add faculty-only components under `src/faculties/<faculty-id>/components/` when shared components are not enough.
 4. Keep dev/demo pages under `src/pages/_dev/`; production builds exclude them automatically.
 5. Add `dev:<faculty-id>` and `build:<faculty-id>` scripts, then include the new build in `yarn build:all`.
+6. Compare any faculty override against its shared counterpart before committing; if it matches byte-for-byte, delete the override and rely on the shared fallback.
 
 ## 🎨 Adding New Pages
 
