@@ -3,10 +3,10 @@
  * Import Tailwind CSS và khởi tạo components
  */
 
-import "./styles/main.scss";
+import "./shared/styles/main.scss";
 import { appEnv } from "./config/env.js";
-import { inlineSVGs } from "./js/svg-loader.js";
-import { loadingManager } from "./js/loading.js";
+import { inlineSVGs } from "./shared/js/svg-loader.js";
+import { loadingManager } from "./shared/js/loading.js";
 import {
   delay,
   shareContent,
@@ -14,10 +14,11 @@ import {
   initFadeInOnScroll,
   initArticleActions,
   initPDFViewer,
-} from "./js/utils.js";
-import { initSearchModal } from "./components/search/search-modal.js";
-import "./js/global-widgets.js";
-import "./js/module-manager.js"; // Module toggle dev tool
+} from "./shared/js/utils.js";
+import { initSearchModal } from "./shared/components/search/search-modal.js";
+import facultyConfig from "@faculty/faculty.config.js";
+import "./shared/js/global-widgets.js";
+import "./shared/js/module-manager.js"; // Module toggle dev tool
 
 // Swiper CSS (imported once for all carousels)
 import "swiper/css";
@@ -26,7 +27,7 @@ import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
 
 // Auto-import tất cả component SCSS files
-const componentStyles = import.meta.glob("./components/**/*.scss", {
+const sharedComponentStyles = import.meta.glob("./shared/components/**/*.scss", {
   eager: true,
 });
 
@@ -154,7 +155,13 @@ document.addEventListener("DOMContentLoaded", async () => {
  */
 async function initComponentsOnDemand() {
   // Helper: safe init - if one fails, others continue
-  const safeInit = async (selector, importFn, initFn, componentName) => {
+  const safeInit = async ({
+    selector,
+    load,
+    init: initFn,
+    name: componentName,
+    assignToWindow,
+  }) => {
     if (!document.querySelector(selector)) return;
     
     const startTime = performance.now()
@@ -163,7 +170,7 @@ async function initComponentsOnDemand() {
     }
 
     try {
-      const module = await importFn();
+      const module = await load();
       const init = module[initFn];
 
       if (!init) {
@@ -181,6 +188,9 @@ async function initComponentsOnDemand() {
       }
 
       const result = init();
+      if (assignToWindow) {
+        window[assignToWindow] = result;
+      }
       if (import.meta.env.DEV) {
         const duration = (performance.now() - startTime).toFixed(2)
         console.log(`✅ ${componentName} initialized in ${duration}ms`);
@@ -192,131 +202,44 @@ async function initComponentsOnDemand() {
     }
   };
 
-  // Load all independent components in parallel for better performance
+  const sharedRuntimeModules = [
+    {
+      selector: ".news-swiper",
+      load: () => import("./shared/components/news/news.js"),
+      init: "initNewsSwiper",
+      name: "News Swiper",
+    },
+    {
+      selector: ".stats-card",
+      load: () => import("./shared/components/stats/stats-card.js"),
+      init: "initStatsCards",
+      name: "Stats Cards",
+    },
+    {
+      selector: ".partners-canvas",
+      load: () => import("./shared/components/partners/partners.js"),
+      init: "initPartnersCanvas",
+      name: "Partners Canvas",
+    },
+    {
+      selector: ".news-carousel-wrapper",
+      load: () => import("./shared/components/news/news-carousel.js"),
+      init: "initAllNewsCarousels",
+      name: "News Carousel",
+    },
+    {
+      selector: ".tabs-container, [data-tabs]",
+      load: () => import("./shared/components/tabs/tabs.js"),
+      init: "initTabs",
+      name: "Tabs",
+    },
+  ];
+
+  // Load all independent components in parallel for better performance.
   await Promise.allSettled([
-    // Hero Carousel (homepage)
-    safeInit(
-      ".hero-swiper",
-      () => import("./components/carousel/carousel.js"),
-      "initHeroCarousel",
-      "Hero Carousel",
-    ),
-
-    // News Swiper (homepage - different from news-carousel)
-    safeInit(
-      ".news-swiper",
-      () => import("./components/news/news.js"),
-      "initNewsSwiper",
-      "News Swiper",
-    ),
-
-    // Major Swiper
-    safeInit(
-      ".major-swiper",
-      () => import("./components/major/major.js"),
-      "initMajorSwiper",
-      "Major Swiper",
-    ),
-
-    // Admission Swiper
-    safeInit(
-      ".admission-swiper",
-      () => import("./components/admission/admission.js"),
-      "initAdmissionSwiper",
-      "Admission Swiper",
-    ),
-
-    // Stats Cards Animation
-    safeInit(
-      ".stats-card",
-      () => import("./components/stats/stats-card.js"),
-      "initStatsCards",
-      "Stats Cards",
-    ),
-
-    // Intro Section
-    safeInit(
-      ".intro-section",
-      () => import("./components/intro/intro.js"),
-      "initIntro",
-      "Intro Section",
-    ),
-
-    // Infrastructure
-    safeInit(
-      ".infrastructure-swiper",
-      () => import("./components/infrastructure/infrastructure.js"),
-      "initInfrastructure",
-      "Infrastructure",
-    ),
-
-    // Partners Canvas
-    safeInit(
-      ".partners-canvas",
-      () => import("./components/partners/partners.js"),
-      "initPartnersCanvas",
-      "Partners Canvas",
-    ),
-
-    // Careers/Business Connection
-    safeInit(
-      ".business-connection-swiper",
-      () => import("./components/careers/careers.js"),
-      "initBusinessConnectionSwiper",
-      "Business Connection",
-    ),
-
-    // Leadership - Auto-generate avatar initials
-    safeInit(
-      ".avatar-teacher",
-      () => import("./components/leadership/leadership.js"),
-      "initLeadership",
-      "Leadership",
-    ),
-
-    // Industry Partnerships
-    safeInit(
-      ".industry-partnership-swiper",
-      () => import("./components/industry-partnerships/industry-partnerships.js"),
-      "initIndustryPartnershipSwiper",
-      "Industry Partnerships",
-    ),
-
-    // Research Pattern Canvas
-    safeInit(
-      "#pattern-canvas",
-      () => import("./components/research/research-background-canvas.js"),
-      "initPatternCanvas",
-      "Pattern Canvas",
-    ),
-
-    // News Carousel (used in news, about pages)
-    safeInit(
-      ".news-carousel-wrapper",
-      () => import("./components/news/news-carousel.js"),
-      "initAllNewsCarousels",
-      "News Carousel",
-    ),
-
-    // Tabs (pages with tab components)
-    safeInit(
-      ".tabs-container, [data-tabs]",
-      () => import("./components/tabs/tabs.js"),
-      "initTabs",
-      "Tabs",
-    ),
-  ]);
-
-  // Major Quiz (majors page) - special handling for window assignment
-  if (document.querySelector("#majorQuiz")) {
-    try {
-      const { initMajorQuiz } =
-        await import("./components/major/major-quiz.js");
-      window.majorQuizInstance = initMajorQuiz();
-    } catch (error) {
-      console.error("Failed to init Major Quiz:", error);
-    }
-  }
+    ...facultyConfig.runtimeModules,
+    ...sharedRuntimeModules,
+  ].map((runtimeModule) => safeInit(runtimeModule)));
 
   // Article actions (social media share)
   if (
@@ -343,8 +266,8 @@ async function initComponentsOnDemand() {
   // Header & Footer are always present, so load them in parallel
   try {
     const [headerModule, footerModule] = await Promise.all([
-      import("./components/header/header.js"),
-      import("./components/footer/footer.js"),
+      import("./shared/components/header/header.js"),
+      import("./shared/components/footer/footer.js"),
     ]);
     
     headerModule.init();

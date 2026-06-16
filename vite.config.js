@@ -1,5 +1,5 @@
 import { defineConfig, loadEnv } from 'vite'
-import { resolve, extname, basename, dirname, isAbsolute } from 'path'
+import { resolve, relative, extname, basename, dirname, isAbsolute } from 'path'
 import { glob } from 'glob'
 import { fileURLToPath } from 'url'
 import { copyFileSync, mkdirSync, existsSync, readFileSync, readdirSync, statSync } from 'fs'
@@ -8,6 +8,9 @@ import svgo from 'vite-plugin-svgo'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
+const repoRoot = __dirname
+const srcRoot = resolve(repoRoot, 'src')
+const defaultFacultyId = 'health-science'
 
 // Generate build signature: PREFIX_HASH_TIMESTAMP
 const getBuildSignature = () => {
@@ -21,24 +24,66 @@ const getBuildSignature = () => {
   return `2026TUNG's_${gitHash}_${timestamp}`
 }
 
-// Lấy tất cả page HTML
-const htmlFiles = glob.sync('**/*.html', {
-  cwd: resolve(__dirname, 'src/pages')
-})
+const createSourcePaths = (facultyId) => {
+  const selectedFacultyRoot = resolve(srcRoot, 'faculties', facultyId)
 
-// Map page cho Rollup
-const input = {}
-htmlFiles.forEach(file => {
-  const name = file.replace('.html', '')
-  input[name] = resolve(__dirname, 'src/pages', file)
-})
+  return {
+    repoRoot,
+    srcRoot,
+    sharedRoot: resolve(srcRoot, 'shared'),
+    selectedFacultyRoot,
+    selectedFacultyPagesRoot: resolve(selectedFacultyRoot, 'pages'),
+    selectedFacultyDataRoot: resolve(selectedFacultyRoot, 'data'),
+    selectedFacultyAssetsRoot: resolve(selectedFacultyRoot, 'assets'),
+  }
+}
 
-const mapSrcRequests = () => ({
+const resolveFacultyContext = (facultyId = defaultFacultyId) => {
+  const selectedFacultyId = facultyId.trim() || defaultFacultyId
+  const paths = createSourcePaths(selectedFacultyId)
+
+  if (!existsSync(paths.selectedFacultyRoot)) {
+    throw new Error(
+      `FACULTY="${selectedFacultyId}" does not match an existing faculty directory at ${paths.selectedFacultyRoot}.`
+    )
+  }
+
+  if (!existsSync(paths.selectedFacultyPagesRoot)) {
+    throw new Error(
+      `FACULTY="${selectedFacultyId}" does not have a pages directory at ${paths.selectedFacultyPagesRoot}.`
+    )
+  }
+
+  return {
+    selectedFacultyId,
+    paths,
+    pagesRoot: paths.selectedFacultyPagesRoot,
+  }
+}
+
+const createHtmlInput = (pagesRoot) => {
+  const htmlFiles = glob.sync('**/*.html', { cwd: pagesRoot })
+  const input = {}
+
+  htmlFiles.forEach(file => {
+    const name = file.replace(/\.html$/, '')
+    input[name] = resolve(pagesRoot, file)
+  })
+
+  return input
+}
+
+const relativeModulePath = (fromDir, toFile) => {
+  const relativePath = relative(fromDir, toFile).replace(/\\/g, '/')
+  return relativePath.startsWith('.') ? relativePath : `./${relativePath}`
+}
+
+const mapSrcRequests = (pagesRoot) => ({
   name: 'map-src-requests',
   configureServer(server) {
     server.middlewares.use((req, _res, next) => {
       if (!req.url) return next()
-      const mapped = mapUrlToFsPath(req.url)
+      const mapped = mapUrlToFsPath(req.url, pagesRoot)
       if (mapped) {
         req.url = `/@fs/${mapped}`
       }
@@ -48,7 +93,7 @@ const mapSrcRequests = () => ({
   configurePreviewServer(server) {
     server.middlewares.use((req, _res, next) => {
       if (!req.url) return next()
-      const mapped = mapUrlToFsPath(req.url)
+      const mapped = mapUrlToFsPath(req.url, pagesRoot)
       if (mapped) {
         req.url = `/@fs/${mapped}`
       }
@@ -57,18 +102,25 @@ const mapSrcRequests = () => ({
   },
 })
 
-const mapUrlToFsPath = (url) => {
-  if (url === '/main.js') {
-    return resolve(__dirname, 'src/main.js')
+const mapUrlToFsPath = (url, pagesRoot) => {
+  const pathname = url.split('?')[0]
+
+  if (pathname === '/' || pathname.endsWith('.html')) {
+    const htmlFile = pathname === '/' ? 'index.html' : pathname.slice(1)
+    const mappedPage = resolve(pagesRoot, htmlFile)
+    if (existsSync(mappedPage)) {
+      return mappedPage
+    }
   }
-  if (url.startsWith('/js/')) {
-    return resolve(__dirname, 'src', url.slice(1))
+
+  if (pathname === '/main.js') {
+    return resolve(srcRoot, 'main.js')
   }
-  if (url.startsWith('/components/')) {
-    return resolve(__dirname, 'src', url.slice(1))
+  if (pathname.startsWith('/js/')) {
+    return resolve(srcRoot, pathname.slice(1))
   }
-  if (url.startsWith('/assets/')) {
-    return resolve(__dirname, 'src', url.slice(1))
+  if (pathname.startsWith('/assets/')) {
+    return resolve(srcRoot, pathname.slice(1))
   }
   return null
 }
@@ -111,12 +163,12 @@ const resolveOutDir = (value = '') => {
 let layoutCache = null
 const getLayoutTemplate = () => {
   if (!layoutCache) {
-    layoutCache = readFileSync(resolve(__dirname, 'src/layouts/default.html'), 'utf-8')
+    layoutCache = readFileSync(resolve(__dirname, 'src/shared/layouts/default.html'), 'utf-8')
   }
   return layoutCache
 }
 
-const layoutPlugin = (base) => ({
+const layoutPlugin = (base, mainScript) => ({
   name: 'layout-plugin',
   transformIndexHtml: {
     order: 'pre', // Chạy TRƯỚC để wrap layout trước khi inject components
@@ -138,7 +190,7 @@ const layoutPlugin = (base) => ({
       const layout = getLayoutTemplate()
       
       // Load loading component (inline CSS critical)
-      const loadingComponent = readFileSync(resolve(__dirname, 'src/components/loading/loading.html'), 'utf-8')
+      const loadingComponent = readFileSync(resolve(__dirname, 'src/shared/components/loading/loading.html'), 'utf-8')
       
       // Extract content: Lấy toàn bộ sau metadata markers
       let content = html
@@ -171,6 +223,7 @@ const layoutPlugin = (base) => ({
         .replace(/\{\{url\}\}/g, url)
         .replace('{{loadingComponent}}', loadingComponent)
         .replace('{{content}}', content)
+        .replace(/\{\{mainScript\}\}/g, mainScript)
         .replace(/\{\{pageScript\}\}/g, pageScript)
       
       // Apply base path cho favicon và assets trong layout
@@ -190,7 +243,7 @@ const layoutPlugin = (base) => ({
   }
 })
 
-const transformDataInclude = (base) => ({
+const transformDataInclude = (base, facultyId) => ({
   name: 'transform-data-include',
   transformIndexHtml(html) {
     // Recursive function to process nested data-include
@@ -216,23 +269,15 @@ const transformDataInclude = (base) => ({
             
             // Xử lý path từ pages
             let componentPath = htmlPath
-            if (htmlPath.startsWith('@components/')) {
-              // @components/section-title/... → components/section-title/...
-              componentPath = htmlPath.replace('@components/', 'components/')
-            } else if (htmlPath.startsWith('@/')) {
-              // @/components/... → components/...
-              componentPath = htmlPath.substring(2)
-            } else if (htmlPath.startsWith('../')) {
-              // ../components/... → components/...
-              componentPath = htmlPath.replace(/^\.\.\//, '')
+            if (htmlPath.startsWith('@shared/components/')) {
+              componentPath = htmlPath.replace('@shared/', 'shared/')
+            } else if (htmlPath.startsWith('@faculty/components/')) {
+              componentPath = htmlPath.replace('@faculty/', `faculties/${facultyId}/`)
             } else if (htmlPath.startsWith('./')) {
               // ./header.html → pages/header.html
               componentPath = `pages/${htmlPath.slice(2)}`
             } else if (base !== '/' && htmlPath.startsWith(base)) {
               componentPath = htmlPath.substring(base.length)
-            } else if (htmlPath.startsWith('/')) {
-              // /components/... → components/...
-              componentPath = htmlPath.substring(1)
             }
             
             // Đọc file component HTML từ src
@@ -356,125 +401,95 @@ const transformDataInclude = (base) => ({
 // Component JS đã được bundle vào main.js qua import.meta.glob
 // Không cần copy components nữa
 
-// Plugin to copy public/data to dist_iuh/data
-const copyPublicDataPlugin = (outDir) => ({
-  name: 'copy-public-data',
+const copyDirectoryContents = (src, dest, onFileCopied) => {
+  const entries = readdirSync(src, { withFileTypes: true })
+
+  for (const entry of entries) {
+    const srcPath = resolve(src, entry.name)
+    const destPath = resolve(dest, entry.name)
+
+    if (entry.isDirectory()) {
+      if (!existsSync(destPath)) {
+        mkdirSync(destPath, { recursive: true })
+      }
+      copyDirectoryContents(srcPath, destPath, onFileCopied)
+    } else {
+      copyFileSync(srcPath, destPath)
+      onFileCopied?.(entry.name)
+    }
+  }
+}
+
+// Plugin to copy selected faculty data to dist_iuh/data
+const copyFacultyDataPlugin = (outDir, facultyDataRoot) => ({
+  name: 'copy-faculty-data',
   closeBundle() {
-    const publicDataDir = resolve(__dirname, 'public/data')
     const distDataDir = resolve(outDir, 'data')
     
-    if (!existsSync(publicDataDir)) return
+    if (!existsSync(facultyDataRoot)) return
     
-    // Create dist/data if not exists
     if (!existsSync(distDataDir)) {
       mkdirSync(distDataDir, { recursive: true })
     }
     
-    // Copy all files from public/data to dist/data
-    const copyRecursive = (src, dest) => {
-      const entries = readdirSync(src, { withFileTypes: true })
-      
-      for (const entry of entries) {
-        const srcPath = resolve(src, entry.name)
-        const destPath = resolve(dest, entry.name)
-        
-        if (entry.isDirectory()) {
-          if (!existsSync(destPath)) {
-            mkdirSync(destPath, { recursive: true })
-          }
-          copyRecursive(srcPath, destPath)
-        } else {
-          copyFileSync(srcPath, destPath)
-          console.log(`Copied: ${entry.name} to data/`)
-        }
-      }
-    }
-    
-    copyRecursive(publicDataDir, distDataDir)
+    copyDirectoryContents(facultyDataRoot, distDataDir, (fileName) => {
+      console.log(`Copied faculty data: ${fileName} to data/`)
+    })
   }
 })
 
-// Plugin to copy src/assets/images to dist_iuh/assets/images
-const copyImagesPlugin = (outDir) => ({
-  name: 'copy-images',
+// Plugin to copy selected faculty documents to dist_iuh/assets/documents
+const copyFacultyDocumentsPlugin = (outDir, facultyDocumentsRoot) => ({
+  name: 'copy-faculty-documents',
   closeBundle() {
-    const srcImagesDir = resolve(__dirname, 'src/assets/images')
-    const distImagesDir = resolve(outDir, 'assets/images')
-    
-    if (!existsSync(srcImagesDir)) {
-      console.log('⚠️  No images folder found in src/assets/')
-      return
+    const distDocumentsDir = resolve(outDir, 'assets/documents')
+
+    if (!existsSync(facultyDocumentsRoot)) return
+
+    if (!existsSync(distDocumentsDir)) {
+      mkdirSync(distDocumentsDir, { recursive: true })
     }
-    
-    // Create dist/assets/images if not exists
-    if (!existsSync(distImagesDir)) {
-      mkdirSync(distImagesDir, { recursive: true })
-    }
-    
-    // Copy all files recursively from src/assets/images to dist/assets/images
-    const copyRecursive = (src, dest) => {
-      const entries = readdirSync(src, { withFileTypes: true })
-      
-      for (const entry of entries) {
-        const srcPath = resolve(src, entry.name)
-        const destPath = resolve(dest, entry.name)
-        
-        if (entry.isDirectory()) {
-          if (!existsSync(destPath)) {
-            mkdirSync(destPath, { recursive: true })
-          }
-          copyRecursive(srcPath, destPath)
-        } else {
-          copyFileSync(srcPath, destPath)
-          console.log(`✓ Copied image: ${entry.name}`)
-        }
-      }
-    }
-    
-    console.log('📸 Copying images to assets/images...')
-    copyRecursive(srcImagesDir, distImagesDir)
+
+    copyDirectoryContents(facultyDocumentsRoot, distDocumentsDir, (fileName) => {
+      console.log(`Copied faculty document: ${fileName} to assets/documents/`)
+    })
   }
 })
 
-// Plugin to copy src/assets/svgs to dist_iuh/assets/svgs
-const copySvgsPlugin = (outDir) => ({
-  name: 'copy-svgs',
+const copyAssetRootsPlugin = (outDir, assetType, sourceRoots) => ({
+  name: `copy-${assetType}`,
   closeBundle() {
-    const srcSvgsDir = resolve(__dirname, 'src/assets/svgs')
-    const distSvgsDir = resolve(outDir, 'assets/svgs')
-    
-    if (!existsSync(srcSvgsDir)) {
-      console.log('⚠️  No svgs folder found in src/assets/')
+    const distAssetDir = resolve(outDir, 'assets', assetType)
+    const existingRoots = sourceRoots.filter((sourceRoot) => existsSync(sourceRoot))
+
+    if (!existingRoots.length) {
+      console.log(`⚠️  No ${assetType} asset roots found`)
       return
     }
-    
-    // Create dist/assets/svgs if not exists
-    if (!existsSync(distSvgsDir)) {
-      mkdirSync(distSvgsDir, { recursive: true })
+
+    if (!existsSync(distAssetDir)) {
+      mkdirSync(distAssetDir, { recursive: true })
     }
-    
-    // Copy all SVG files
-    const entries = readdirSync(srcSvgsDir, { withFileTypes: true })
+
     let count = 0
-    
-    for (const entry of entries) {
-      if (entry.isFile() && entry.name.endsWith('.svg')) {
-        const srcPath = resolve(srcSvgsDir, entry.name)
-        const destPath = resolve(distSvgsDir, entry.name)
-        copyFileSync(srcPath, destPath)
+    console.log(`Copying ${assetType} assets...`)
+    for (const sourceRoot of existingRoots) {
+      copyDirectoryContents(sourceRoot, distAssetDir, () => {
         count++
-      }
+      })
     }
-    
-    console.log(`✓ Copied ${count} SVG files to assets/svgs/`)
+    console.log(`✓ Copied ${count} ${assetType} assets to assets/${assetType}/`)
   }
 })
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, __dirname, '')
+  const faculty = resolveFacultyContext(process.env.FACULTY || env.FACULTY || defaultFacultyId)
   const base = normalizeBasePath(env.VITE_BASE_PATH || '/')
   const outDir = resolveOutDir(env.VITE_OUT_DIR || '')
   const buildSignature = mode === 'production' ? getBuildSignature() : 'dev-mode'
+  const input = createHtmlInput(faculty.pagesRoot)
+  const mainScript = relativeModulePath(faculty.pagesRoot, resolve(srcRoot, 'main.js'))
   
   // Read version from package.json
   const pkg = JSON.parse(readFileSync(resolve(__dirname, 'package.json'), 'utf-8'))
@@ -482,20 +497,27 @@ export default defineConfig(({ mode }) => {
 
   return {
     base,
-    root: 'src/pages',
-    publicDir: resolve(__dirname, 'public'),
+    root: faculty.pagesRoot,
+    publicDir: false,
     define: {
       __BUILD_SIGNATURE__: JSON.stringify(buildSignature),
       __APP_VERSION__: JSON.stringify(appVersion),
       __BUILD_MODE__: JSON.stringify(mode)
     },
     plugins: [
-      mapSrcRequests(),
-      layoutPlugin(base), // Chạy TRƯỚC để wrap layout
-      transformDataInclude(base), // Chạy SAU để inject components vào layout
-      copyPublicDataPlugin(outDir), // Copy public/data to dist/data
-      copyImagesPlugin(outDir), // Copy src/assets/images to dist/assets/images
-      copySvgsPlugin(outDir), // Copy src/assets/svgs to dist/assets/svgs
+      mapSrcRequests(faculty.pagesRoot),
+      layoutPlugin(base, mainScript), // Chạy TRƯỚC để wrap layout
+      transformDataInclude(base, faculty.selectedFacultyId), // Chạy SAU để inject components vào layout
+      copyFacultyDataPlugin(outDir, faculty.paths.selectedFacultyDataRoot), // Copy selected faculty data to dist/data
+      copyFacultyDocumentsPlugin(outDir, resolve(faculty.paths.selectedFacultyAssetsRoot, 'documents')), // Copy selected faculty documents
+      copyAssetRootsPlugin(outDir, 'images', [
+        resolve(faculty.paths.sharedRoot, 'assets/images'),
+        resolve(faculty.paths.selectedFacultyAssetsRoot, 'images'),
+      ]),
+      copyAssetRootsPlugin(outDir, 'svgs', [
+        resolve(faculty.paths.sharedRoot, 'assets/svgs'),
+        resolve(faculty.paths.selectedFacultyAssetsRoot, 'svgs'),
+      ]),
       svgo({
         svgoConfig: {
           plugins: [
@@ -574,10 +596,11 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src'),
-        '@components': resolve(__dirname, 'src/components'),
-        '@js': resolve(__dirname, 'src/js'),
-        '@styles': resolve(__dirname, 'src/styles'),
-        '@assets': resolve(__dirname, 'src/assets'),
+        '@shared': resolve(__dirname, 'src/shared'),
+        '@faculty': faculty.paths.selectedFacultyRoot,
+        '@js': resolve(__dirname, 'src/shared/js'),
+        '@styles': resolve(__dirname, 'src/shared/styles'),
+        '@assets': resolve(__dirname, 'src/shared/assets'),
       },
     },
   }

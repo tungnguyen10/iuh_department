@@ -1,505 +1,376 @@
-# Lab IUH - Static Website
+# Lab IUH - Static Faculty Website
 
-Modern static website built with Vite + Vanilla JS + TailwindCSS, featuring build-time optimization and component bundling.
+Static IUH faculty website built with Vite, Vanilla JavaScript, TailwindCSS, SCSS, and Swiper. The source is organized as a shared platform plus selected faculty modules. The current faculty module is `health-science`.
 
-## 📁 Project Structure
+## Project Structure
 
-```
+```text
 src/
-├─ pages/              # HTML pages (content-only)
-│  ├─ index.html
-│  ├─ about.html
-│  └─ contact.html
-├─ layouts/            # Layout templates
-│  └─ default.html     # Default layout with SEO
-├─ components/         # Components (HTML + JS + CSS)
-│  ├─ header/
-│  │  ├─ header.html
-│  │  ├─ header.js
-│  │  └─ header.css
-│  ├─ footer/
-│  │  ├─ footer.html
-│  │  └─ footer.css
-│  └─ loading/
-│     └─ loading.html  # Global loading overlay
-├─ js/
-│  ├─ loading.js       # LoadingManager (global loading API)
-│  ├─ svg-loader.js    # Auto SVG inlining
-│  ├─ utils.js         # Utility functions (delay, etc)
-│  ├─ home.js          # Home page specific JS
-│  └─ about.js         # About page specific JS
-├─ styles/
-│  └─ main.css         # Tailwind entry + custom components
-├─ assets/
-│  ├─ images/
-│  └─ svg/             # SVG icons (auto-loaded)
 ├─ config/
-│  └─ env.js           # Environment config
-└─ main.js             # Vite entry point
-
-vite.config.js         # Vite config with custom plugins
-dist_iuh/              # Build output folder
+│  └─ env.js
+├─ faculties/
+│  └─ health-science/
+│     ├─ assets/
+│     │  ├─ documents/
+│     │  ├─ images/
+│     │  └─ svgs/
+│     ├─ components/
+│     │  ├─ home/
+│     │  ├─ careers/
+│     │  ├─ industry-partnerships/
+│     │  ├─ leadership/
+│     │  └─ major/
+│     ├─ data/
+│     ├─ faculty.config.js
+│     └─ pages/
+├─ shared/
+│  ├─ assets/
+│  │  ├─ fonts/
+│  │  ├─ images/
+│  │  └─ svgs/
+│  ├─ components/
+│  ├─ js/
+│  ├─ layouts/
+│  └─ styles/
+└─ main.js
 ```
 
-### Agent Instruction Surfaces
+Canonical ownership:
+
+| Source | Owner |
+| --- | --- |
+| `src/shared/components` | Cross-faculty UI, layout chrome, search, tabs, common content blocks |
+| `src/shared/js` | Cross-faculty runtime helpers and global widgets |
+| `src/shared/styles` | Global Tailwind/SCSS entry and font declarations |
+| `src/shared/assets` | Fonts, IUH logos, system icons, favicons, social/language images, true defaults |
+| `src/faculties/<faculty>/pages` | Faculty HTML pages |
+| `src/faculties/<faculty>/components` | Faculty-specific modules and feature components |
+| `src/faculties/<faculty>/data` | Faculty runtime JSON copied to `/data` |
+| `src/faculties/<faculty>/assets` | Faculty images, SVGs, and documents copied to `/assets/...` |
+
+The old roots `src/pages`, `src/components`, `src/assets`, `src/layouts`, `src/styles`, `src/js`, and `public` are not canonical source locations.
+
+## Quick Start
+
+This project uses Yarn PnP and Vite 7.
+
+Requirements:
+
+- Node.js 22.12+ or 20.19+
+- Yarn 4 through Corepack
+
+```bash
+corepack enable
+corepack yarn install
+```
+
+Development:
+
+```bash
+FACULTY=health-science corepack yarn dev
+```
+
+Production build:
+
+```bash
+FACULTY=health-science corepack yarn build
+```
+
+Preview:
+
+```bash
+FACULTY=health-science corepack yarn preview
+```
+
+`yarn build` also works when your shell has Yarn available, but `FACULTY=health-science corepack yarn build` is the explicit verified command for this repository.
+
+Output is written to `dist_iuh/` through `VITE_OUT_DIR`.
+
+## Architecture
+
+### Selected Faculty Build
+
+`vite.config.js` reads `FACULTY`, defaults to `health-science`, and builds from:
+
+```text
+src/faculties/<faculty>/pages
+src/faculties/<faculty>/data
+src/faculties/<faculty>/assets
+src/faculties/<faculty>/faculty.config.js
+```
+
+The Vite root is the selected faculty page directory so generated HTML stays at the output root (`dist_iuh/index.html`, `dist_iuh/about.html`, etc.).
+
+### Build-Time Component Injection
+
+Pages are content-only HTML with `LAYOUT` metadata and `data-include` markers:
+
+```html
+<!-- src/faculties/health-science/pages/index.html -->
+<!-- LAYOUT: title="Khoa Khoa học Sức khỏe" -->
+<!-- LAYOUT: description="Khoa Khoa học Sức khỏe IUH" -->
+<!-- LAYOUT: keywords="iuh, khoa hoc suc khoe" -->
+
+<section>
+  <div data-include="@shared/components/common/section-title.html" data-title="Tin tức"></div>
+  <div data-include="@faculty/components/home/intro/index.html"></div>
+</section>
+```
+
+`layoutPlugin` wraps pages with `src/shared/layouts/default.html`. `transformDataInclude` resolves includes and injects HTML at build time.
+
+Include aliases:
+
+| Alias | Use |
+| --- | --- |
+| `@shared/components/...` | Shared component HTML |
+| `@faculty/components/...` | Selected faculty component HTML |
+
+There is no long-term `@components` include alias.
+
+### Runtime Initialization
+
+`src/main.js` owns shared/global bootstrapping:
+
+- shared styles
+- loading manager
+- SVG inlining
+- search modal
+- fade-in behavior
+- article share actions
+- PDF fallback
+- header/footer
+- global widgets
+- shared runtime modules
+
+Faculty-specific runtime modules live in `src/faculties/health-science/faculty.config.js`:
+
+```javascript
+export default {
+  id: "health-science",
+  runtimeModules: [
+    {
+      selector: ".hero-swiper",
+      load: () => import("./components/home/carousel/carousel.js"),
+      init: "initHeroCarousel",
+      name: "Hero Carousel",
+    },
+  ],
+};
+```
+
+Modules export named `init*` functions and do not auto-bind on import.
+
+### Import Aliases
+
+| Alias | Target |
+| --- | --- |
+| `@` | `src` |
+| `@shared` | `src/shared` |
+| `@faculty` | selected faculty root |
+| `@js` | `src/shared/js` |
+| `@styles` | `src/shared/styles` |
+| `@assets` | `src/shared/assets` |
+
+### Assets And Public URLs
+
+Internal ownership changed, but public output URLs are preserved:
+
+| Source | Output |
+| --- | --- |
+| `src/shared/assets/images` + `src/faculties/<faculty>/assets/images` | `/assets/images` |
+| `src/shared/assets/svgs` + `src/faculties/<faculty>/assets/svgs` | `/assets/svgs` |
+| `src/shared/assets/fonts` | `/assets/fonts` |
+| `src/faculties/<faculty>/assets/documents` | `/assets/documents` |
+| `src/faculties/<faculty>/data` | `/data` |
+
+Use root public URLs in HTML when referencing generated files, for example `/assets/images/default.jpg`.
+
+For JavaScript data fetches, use `dataUrl()` from `src/shared/js/utils.js` so `VITE_BASE_PATH` is respected:
+
+```javascript
+import { dataUrl } from "@js/utils.js";
+
+const response = await fetch(dataUrl("data/search-data.json"));
+```
+
+## Adding Pages
+
+Add pages to the selected faculty:
+
+```text
+src/faculties/health-science/pages/new-page.html
+```
+
+Minimum page shape:
+
+```html
+<!-- LAYOUT: title="Trang mới" -->
+<!-- LAYOUT: description="Mô tả trang mới" -->
+<!-- LAYOUT: keywords="iuh, khoa hoc suc khoe" -->
+<!-- LAYOUT: url="https://iuh.edu.vn/trang-moi" -->
+<!-- LAYOUT: ogImage="/assets/images/default.jpg" -->
+
+<section class="container mx-auto px-4 py-8">
+  <div data-include="@shared/components/common/section-title.html" data-title="Trang mới"></div>
+</section>
+```
+
+Vite auto-discovers `*.html` under the selected faculty pages directory.
+
+## Adding Components
+
+Shared component:
+
+```text
+src/shared/components/example/
+├─ index.html
+├─ example.scss
+└─ example.js
+```
+
+Faculty component:
+
+```text
+src/faculties/health-science/components/example/
+├─ index.html
+├─ example.scss
+└─ example.js
+```
+
+Use shared components with `@shared/components/...` and faculty components with `@faculty/components/...`.
+
+For JS, export a named init function:
+
+```javascript
+export function initExample() {
+  const root = document.querySelector(".example");
+  if (!root) return;
+}
+```
+
+Register shared modules in `src/main.js`; register faculty modules in `src/faculties/health-science/faculty.config.js`.
+
+## Adding A New Faculty
+
+Create:
+
+```text
+src/faculties/<faculty-id>/
+├─ assets/
+│  ├─ documents/
+│  ├─ images/
+│  └─ svgs/
+├─ components/
+├─ data/
+├─ faculty.config.js
+└─ pages/
+```
+
+Then build with:
+
+```bash
+FACULTY=<faculty-id> corepack yarn build
+```
+
+Shared assets/components should move into `src/shared` only after there is real cross-faculty reuse. Faculty-specific content should stay in the faculty module.
+
+## Build Output
+
+```text
+dist_iuh/
+├─ index.html
+├─ about.html
+├─ ...
+├─ assets/
+│  ├─ css/
+│  ├─ documents/
+│  ├─ fonts/
+│  ├─ images/
+│  ├─ js/
+│  └─ svgs/
+└─ data/
+   ├─ messages-en.json
+   ├─ messages-vi.json
+   ├─ quiz-data.json
+   └─ search-data.json
+```
+
+## Deployment
+
+The supported deployment is Firebase Hosting at the domain root (`/`).
+
+```bash
+FACULTY=health-science corepack yarn build
+firebase deploy --only hosting
+```
+
+`VITE_BASE_PATH` exists for generated HTML/data URL rewriting, but subpath navigation is not fully tested.
+
+```bash
+VITE_BASE_PATH=/iuh/test/ FACULTY=health-science corepack yarn build
+```
+
+## Common Commands
+
+```bash
+corepack yarn install
+FACULTY=health-science corepack yarn dev
+FACULTY=health-science corepack yarn build
+FACULTY=health-science corepack yarn preview
+corepack yarn agents:sync
+openspec list --json
+```
+
+Version scripts:
+
+```bash
+corepack yarn version:patch
+corepack yarn version:minor
+corepack yarn version:major
+corepack yarn build:patch
+corepack yarn build:minor
+corepack yarn build:major
+```
+
+## Agent Instruction Surfaces
 
 Shared agent instructions live in:
 
 - `.agents/skills/`
 - `.agents/prompts/`
 
-Consumer-specific paths stay readable through generated per-item symlinks:
+Generated consumer views:
 
 - `.codex/skills/*`
 - `.github/skills/*`
 - `.github/prompts/*`
 
-After adding or renaming anything under `.agents`, regenerate those views with:
+After adding or renaming anything under `.agents`, run:
 
 ```bash
-yarn agents:sync
+corepack yarn agents:sync
 ```
 
-## 🚀 Quick Start
+## Troubleshooting
 
-### Prerequisites
+Build cannot find a faculty:
 
-This project uses **Yarn PnP** (`.pnp.cjs` / `.pnp.loader.mjs`) and requires:
+- Check `FACULTY=<faculty-id>`.
+- Confirm `src/faculties/<faculty-id>/pages` exists.
 
-- **Node.js 22.12+** (or 20.19+). Vite 7 will not start on older versions.
-- **Yarn 4** as the package manager. `npm` commands will fail because `node_modules` is not populated.
+Assets are missing after build:
 
-Verify your environment:
+- Check source ownership in `src/shared/assets` or `src/faculties/<faculty>/assets`.
+- Check public references use `/assets/...`.
+- Check the selected faculty build output in `dist_iuh/assets`.
 
-```bash
-node --version   # should be v22.x or v20.19+
-yarn --version   # should be 4.x
-```
+Data fetch fails:
 
-If the default shell resolves an older Node, use [nvm](https://github.com/nvm-sh/nvm) or [fnm](https://github.com/Schniz/fnm):
+- Put faculty JSON in `src/faculties/<faculty>/data`.
+- Fetch with `dataUrl("data/file.json")`.
 
-```bash
-nvm use 22       # or fnm use 22
-```
+Dependency commands fail:
 
-OpenSpec commands also require Node 22+:
-
-```bash
-# If openspec fails with ESM syntax errors, switch Node first:
-nvm use 22 && openspec list
-```
-
-### 1. Install Dependencies
-
-```bash
-yarn install
-```
-
-> `npm install` is **not supported** while the workspace uses Yarn PnP. Running it will not populate `node_modules` with executable binaries.
-
-### 2. Development Mode
-
-```bash
-yarn dev
-```
-
-Opens http://localhost:5173
-
-### 3. Build for Production
-
-```bash
-yarn build
-```
-
-Output: `dist_iuh/` folder (configured via VITE_OUT_DIR)
-
-#### Build with Auto Version Bump
-
-```bash
-# Tăng PATCH version (0.0.1 → 0.0.2) và build
-yarn build:patch
-
-# Tăng MINOR version (0.1.0 → 0.2.0) và build
-yarn build:minor
-
-# Tăng MAJOR version (1.0.0 → 2.0.0) và build
-yarn build:major
-```
-
-Version được lưu trong `package.json` và hiển thị trong console:
-```
-🎓 IUH | Version: 0.0.1 | Mode: development
-```
-
-#### Manual Version Management
-
-```bash
-# Chỉ bump version không build
-yarn version:patch
-yarn version:minor
-yarn version:major
-```
-
-### 4. Preview Production Build
-
-```bash
-yarn preview
-```
-
-### Deployment
-
-This project is deployed to **Firebase Hosting at the domain root** (`/`). Root-only deployment is the supported and tested configuration.
-
-A `VITE_BASE_PATH` environment variable is accepted by `vite.config.js` and will rewrite `href="/…"`, `src="/…"`, and `content="/…"` attributes in generated HTML at build time. Runtime data fetches (`search-data.json`, `quiz-data.json`) also respect `BASE_URL` via the shared `dataUrl()` helper in `src/js/utils.js`.
-
-However, subpath navigation (`data-link` attributes, client-side route transitions) is **not fully tested under non-root bases** and is out of scope for the current deployment. Do not assume subpath builds are fully supported without additional testing.
-
-To build for a subpath:
-
-```bash
-VITE_BASE_PATH=/iuh/test/ yarn build
-```
-
-## 🎯 Architecture Overview
-
-### Build-Time Component Injection
-
-Components are **injected at build time** (not runtime) using custom Vite plugin:
-
-```html
-<!-- In page HTML -->
-<div data-include="../../components/header/header.html"></div>
-```
-
-During build, the plugin reads `header.html` and injects its content directly, eliminating HTTP requests.
-
-### Layout Template System
-
-Pages use a **content-only format** with metadata markers:
-
-```html
-<!-- src/pages/index.html -->
-<!-- LAYOUT: title="Home - Lab IUH" -->
-<!-- LAYOUT: description="Welcome to Lab IUH" -->
-<!-- LAYOUT: keywords="vite, tailwind, lab" -->
-<!-- LAYOUT: script="../js/home.js" -->
-
-<section class="hero">
-  <!-- Your content -->
-</section>
-```
-
-The `layoutPlugin` wraps this content with `src/layouts/default.html`, which includes:
-- Full SEO meta tags (OG, Twitter Card, keywords)
-- Header/Footer structure
-- Global loading overlay
-- Page-specific script injection
-
-### Auto Component Bundling
-
-All component JavaScript is **lazily initialized based on DOM presence**:
-
-```javascript
-// src/main.js — simplified
-await initComponentsOnDemand();
-
-async function initComponentsOnDemand() {
-  // Each component is dynamically imported only if its selector exists in the DOM
-  if (document.querySelector('.hero-swiper')) {
-    const { initHeroCarousel } = await import('./components/carousel/carousel.js')
-    initHeroCarousel()
-  }
-  // ... similar pattern for each component
-}
-```
-
-Components do **not** auto-initialize on import. Each module exports a named `init*` function that `src/main.js` calls after confirming the relevant selector is present. This avoids duplicate binding when the same module is imported more than once.
-
-### Auto SVG Loading
-
-SVGs are **auto-imported and inlined** for better styling:
-
-```javascript
-// src/main.js
-const svgModules = import.meta.glob('./assets/svgs/*.svg', { eager: true, query: '?url' })
-await inlineSVGs() // Inlines all SVGs with data-svg attribute
-```
-
-Usage in HTML:
-```html
-<img data-svg="logo" alt="Logo">
-<!-- Becomes inline SVG at runtime for CSS styling -->
-```
-
-### Global Loading System
-
-**LoadingManager** provides a global loading API with counter pattern:
-
-```javascript
-import { loadingManager } from './js/loading.js'
-
-// Manual control
-loadingManager.show('Loading data...')
-await fetchData()
-loadingManager.hide()
-
-// Or wrap async functions
-const fetchData = loadingManager.wrap(
-  async () => {
-    const res = await fetch('/api/data')
-    return res.json()
-  },
-  'Loading data...'
-)
-
-// Force hide (reset counter)
-loadingManager.forceHide()
-```
-
-The counter pattern tracks multiple concurrent operations - loading only hides when all operations complete.
-
-### Page Lifecycle
-
-```javascript
-document.addEventListener('components-loaded', () => {
-  // Your page-specific logic
-  // All components initialized, SVGs loaded
-})
-```
-
-## 🔧 Custom Vite Plugins
-
-### layoutPlugin
-
-- **Order**: `pre` (runs before other transforms)
-- **Purpose**: Wraps page content with layout template
-- **Features**:
-  - Extracts metadata from `<!-- LAYOUT: key="value" -->` comments
-  - Injects loading component
-  - Replaces placeholders: `{{title}}`, `{{content}}`, `{{pageScript}}`, etc.
-
-### transformDataInclude
-
-- **Purpose**: Build-time component HTML injection
-- **Features**:
-  - Finds `<div data-include="path">` tags
-  - Reads component HTML files
-  - Replaces tags with actual HTML content
-  - No runtime overhead
-
-## 📦 Tech Stack
-
-- **Vite 7.3.1** - Lightning-fast build tool & dev server
-- **Vanilla JavaScript** - No frameworks, pure web standards
-- **TailwindCSS** - Utility-first CSS framework
-- **PostCSS** - CSS processing
-- **Swiper** - Touch slider for carousels
-
-## 🚀 Deployment
-
-### Deploy to Firebase Hosting
-
-```bash
-# Build production
-yarn build
-
-# Deploy to Firebase
-firebase deploy --only hosting
-
-# Deploy specific site
-firebase deploy --only hosting:iuh-department
-```
-
-### Firebase Configuration
-
-```json
-{
-  "hosting": {
-    "public": "dist_iuh",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
-  }
-}
-```
-
-### Build Output Structure
-
-```
-dist_iuh/
-├── index.html
-├── about.html
-├── leadership.html
-├── news.html
-├── assets/
-│   ├── css/
-│   │   ├── main-[hash].css      # Main styles
-│   │   └── vendor-[hash].css    # Vendor styles
-│   ├── js/
-│   │   ├── main-[hash].js       # Core functionality
-│   │   ├── vendor-[hash].js     # Third-party libs
-│   │   └── [component]-[hash].js # Component bundles
-│   ├── images/                   # Optimized images
-│   ├── fonts/                    # Web fonts
-│   └── svgs/                     # SVG icons
-└── data/
-    ├── messages-en.json
-    ├── messages-vi.json
-    └── search-data.json
-```
-
-### Build Features
-
-- **Code Splitting**: Main, vendor, và component bundles
-- **Asset Optimization**: Minified CSS/JS, optimized images
-- **Cache Strategy**: Hash-based filenames cho long-term caching
-- **Build Metadata**: Inject version, mode, build signature
-
-```javascript
-// Available at runtime
-__APP_VERSION__      // từ package.json
-__BUILD_MODE__       // 'production' | 'development'
-__BUILD_SIGNATURE__  // Git hash + timestamp
-```
-
-## 🐛 Troubleshooting
-
-### Build Fails
-
-```bash
-# Clear và reinstall dependencies
-rm -rf node_modules
-yarn install
-
-# Clear Vite cache
-rm -rf node_modules/.vite
-```
-
-### Version Not Updated
-
-```bash
-# Check current version
-cat package.json | grep version
-
-# Manual version update
-yarn version <new-version>
-```
-
-### Assets Not Found After Build
-
-- Check paths sử dụng `/assets/...` (absolute)
-- Verify files tồn tại trong `src/assets/` hoặc `public/`
-- Check `vite.config.js` copy plugins
-
-### Performance Optimization
-
-```bash
-# Analyze bundle size
-yarn build
-
-# Check output trong terminal
-# Hoặc add rollup-plugin-visualizer
-```
-
-**Tips:**
-- Use WebP images
-- Lazy load components khi có thể
-- Optimize images trước khi add vào project
-- Monitor bundle sizes trong build output
-
-## ✨ Key Features
-
-✅ **Build-time component injection** - Zero runtime overhead  
-✅ **Layout template system** - DRY HTML structure  
-✅ **Auto component bundling** - import.meta.glob  
-✅ **Auto SVG inlining** - Better CSS styling  
-✅ **Global loading system** - Counter pattern for async ops  
-✅ **SEO optimized** - OG tags, Twitter Card, meta tags  
-✅ **Content-only pages** - Metadata marker pattern  
-✅ **Fast HMR** - Instant updates in dev mode  
-✅ **Production-ready** - Optimized static output  
-✅ **No complex frameworks** - Simple, maintainable code  
-
-## 🎨 Adding New Pages
-
-1. Create content-only HTML in `src/pages/`:
-
-```html
-<!-- src/pages/services.html -->
-<!-- LAYOUT: title="Services - Lab IUH" -->
-<!-- LAYOUT: description="Our services" -->
-<!-- LAYOUT: keywords="services, web, design" -->
-<!-- LAYOUT: script="../js/services.js" -->
-
-<section class="container mx-auto py-12">
-  <h1>Our Services</h1>
-  <!-- Your content -->
-</section>
-```
-
-2. Create page-specific JS (optional):
-
-```javascript
-// src/js/services.js
-document.addEventListener('components-loaded', () => {
-  // Page initialization
-})
-```
-
-Vite auto-detects and builds the new page!
-
-## 🔧 Adding New Components
-
-1. Create component folder in `src/components/`:
-
-```
-src/components/card/
-├─ card.html
-├─ card.js (optional)
-└─ card.css (optional)
-```
-
-2. Use in pages:
-
-```html
-<div data-include="../../components/card/card.html"></div>
-```
-
-3. Add JS if needed:
-
-```javascript
-// src/components/card/card.js
-export function init() {
-  // Component logic
-}
-```
-
-The component is auto-imported and initialized!
-
-## 🛠️ Utility Functions
-
-```javascript
-import { delay } from './js/utils.js'
-
-// Delay execution
-await delay(1000) // Wait 1 second
-```
-
-## 🌍 Environment Configuration
-
-```javascript
-// src/config/env.js
-export const appEnv = import.meta.env.MODE // 'development' | 'production'
-export const basePath = import.meta.env.VITE_BASE_PATH // '/iuh/test/'
-```
-
-Usage in code:
-```javascript
-import { appEnv, basePath } from './config/env.js'
-
-if (appEnv === 'development') {
-  console.log('Dev mode')
-}
-```
-
-## 📝 License
-
-MIT
+- Use Corepack/Yarn 4.
+- Do not rely on `node_modules`; this workspace uses Yarn PnP.
