@@ -1,0 +1,7 @@
+.infrastructure-card {
+  opacity: 0.96;
+
+  &.infrastructure-card--visible {
+    opacity: 1;
+  }
+}

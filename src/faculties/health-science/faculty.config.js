@@ -21,6 +21,48 @@ export const healthScienceFacultyConfig = {
     documents: "/assets/documents",
   },
   styles: facultyComponentStyles,
+  header: {
+    unitName: "KHOA KHOA HỌC SỨC KHỎE",
+    email: "dhcn@iuh.edu.vn",
+    phone: "0283 8940 390",
+    quickLinks: [
+      { text: "Tuyển dụng - Việc làm", href: "#" },
+      { text: "Sinh viên", href: "/students.html" },
+      { text: "Kết nối doanh nghiệp", href: "#" },
+    ],
+    navItems: [
+      { text: "GIỚI THIỆU", href: "/about.html" },
+      { text: "TIN TỨC - SỰ KIỆN", href: "/news.html" },
+      {
+        text: "NGHIÊN CỨU KHOA HỌC",
+        children: [
+          { text: "Đề tài nghiên cứu", href: "/news.html" },
+          { text: "Công bố khoa học", href: "/news.html" },
+          { text: "Giải thưởng", href: "/news.html" },
+          { text: "Hợp tác nghiên cứu", href: "/news.html" },
+        ],
+      },
+      {
+        text: "ĐÀO TẠO",
+        children: [
+          { text: "Chuyên ngành đào tạo", href: "/majors.html" },
+          { text: "Chương trình đào tạo", href: "/about.html" },
+          { text: "Tuyển sinh", href: "/contact.html" },
+          { text: "Kế hoạch giảng dạy", href: "/about.html" },
+          { text: "Đánh giá chất lượng", href: "/form.html" },
+        ],
+      },
+      {
+        text: "SINH VIÊN",
+        children: [
+          { text: "Thông tin sinh viên", href: "/students.html" },
+          { text: "Biểu mẫu", href: "/form.html" },
+          { text: "Tin tức", href: "/news.html" },
+          { text: "Liên hệ", href: "/contact.html" },
+        ],
+      },
+    ],
+  },
   runtimeModules: [
     {
       selector: ".hero-swiper",

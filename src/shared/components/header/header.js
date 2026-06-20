@@ -4,6 +4,102 @@
  */
 
 import { openSearchModal } from '../search/search-modal.js'
+import facultyConfig from '@faculty/faculty.config.js'
+
+const universityName = 'ĐẠI HỌC CÔNG NGHIỆP TP. HỒ CHÍ MINH'
+
+function navItemMarkup(item) {
+  const baseClass = 'flex items-center justify-center px-3 h-full text-primary-white font-medium text-[16px] xl:hover:bg-white/10 xl:hover:text-primary-yellow transition-all duration-200 relative before:absolute before:bottom-0 before:left-0 before:right-0 before:h-0.5 before:bg-primary-yellow before:scale-x-0 xl:hover:before:scale-x-100 before:transition-transform before:duration-300'
+
+  if (!item.children?.length) {
+    return `
+      <div class="nav-item-dropdown relative group h-full" data-dropdown>
+        <a href="${item.href || '#'}" class="${baseClass}">
+          ${item.text}
+        </a>
+      </div>
+    `
+  }
+
+  const children = item.children.map((child) => `
+    <a href="${child.href || '#'}"
+      class="block px-5 py-3.5 text-black xl:hover:bg-primary-dark-blue/5 xl:hover:text-primary-dark-blue transition-all duration-200 border-b border-gray-100 relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary-yellow before:scale-y-0 xl:hover:before:scale-y-100 before:transition-transform">
+      <span class="font-medium">${child.text}</span>
+    </a>
+  `).join('')
+
+  return `
+    <div class="nav-item-dropdown relative group h-full" data-dropdown>
+      <span class="${baseClass} cursor-pointer">
+        ${item.text}
+      </span>
+      <div class="dropdown-menu absolute top-full min-w-[250px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] rounded-b-lg opacity-0 invisible translate-y-2 xl:group-hover:opacity-100 xl:group-hover:visible xl:group-hover:translate-y-0 transition-all duration-300 z-50" data-dropdown-menu>
+        <div class="border-t-2 border-primary-yellow"></div>
+        ${children}
+      </div>
+    </div>
+  `
+}
+
+function mobileQuickLinkMarkup(item) {
+  return `
+    <a href="${item.href || '#'}"
+      class="flex flex-col items-center gap-2 p-2.5 bg-primary-dark-blue/5 rounded-lg transition-all duration-300">
+      <div class="w-9 h-9 flex items-center justify-center">
+        <img src="/assets/svgs/icon-help-circle.svg" alt="" class="w-6 h-6 text-primary-dark-blue" />
+      </div>
+      <span class="text-[11px] font-medium text-primary-dark-blue text-center leading-tight">${item.text}</span>
+    </a>
+  `
+}
+
+function applyFacultyHeader() {
+  const header = document.querySelector('.header-wrapper')
+  const headerConfig = facultyConfig.header
+  if (!header || !headerConfig) return
+
+  const logoTexts = header.querySelectorAll('a[href="/"] p')
+  logoTexts.forEach((element, index) => {
+    element.textContent = index % 2 === 0 ? universityName : headerConfig.unitName
+  })
+
+  const emailHref = `mailto:${headerConfig.email}`
+  header.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+    link.href = emailHref
+    const label = link.querySelector('span')
+    if (label) label.textContent = headerConfig.email
+  })
+
+  const phoneHref = `tel:${headerConfig.phone.replace(/\s+/g, '')}`
+  header.querySelectorAll('a[href^="tel:"]').forEach((link) => {
+    link.href = phoneHref
+    const label = link.querySelector('span')
+    if (label) label.textContent = headerConfig.phone
+  })
+
+  const topBar = header.querySelector(':scope > .bg-white')
+  const quickLinksWrap = topBar?.querySelector('[class*="flex-row"]')
+  if (quickLinksWrap && headerConfig.quickLinks?.length) {
+    quickLinksWrap.innerHTML = headerConfig.quickLinks.map((item, index) => `
+      ${index === 0 ? '' : '<span class="h-full w-auto border-l-[1px] border-stroke relative"></span>'}
+      <a href="${item.href || '#'}"
+        class="flex items-center gap-2.5 px-1.5 py-0.5 font-medium text-sm text-primary-dark-blue rounded-[5px] hover:text-primary-yellow transition-colors">
+        ${item.text}
+      </a>
+    `).join('')
+  }
+
+  const navContainer = header.querySelector('.main-nav-container')
+  if (navContainer && headerConfig.navItems?.length) {
+    navContainer.innerHTML = headerConfig.navItems.map(navItemMarkup).join('')
+  }
+
+  const mobileQuickSection = header.querySelector('.xl\\:hidden.w-full.px-4')
+  const mobileQuickGrid = mobileQuickSection?.querySelector('.grid')
+  if (mobileQuickGrid && headerConfig.quickLinks?.length) {
+    mobileQuickGrid.innerHTML = headerConfig.quickLinks.map(mobileQuickLinkMarkup).join('')
+  }
+}
 
 /**
  * Calculate and set dropdown position dynamically
@@ -133,6 +229,8 @@ function initDropdowns() {
 }
 
 export function init() {
+  applyFacultyHeader()
+
   // Language switcher
   const languageSwitcher = document.querySelector(".language-switcher");
   const languageText = languageSwitcher?.querySelector(".language-switcher__text");

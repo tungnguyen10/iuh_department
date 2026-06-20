@@ -1,6 +1,6 @@
 # Lab IUH - Static Faculty Website
 
-Static IUH faculty website built with Vite, Vanilla JavaScript, TailwindCSS, SCSS, and Swiper. The source is organized as a shared platform plus selected faculty modules. The current faculty module is `health-science`.
+Static IUH faculty website built with Vite, Vanilla JavaScript, TailwindCSS, SCSS, and Swiper. The source is organized as a shared platform plus selected faculty modules. Runnable faculty modules include `health-science` and `dormitory-management`.
 
 ## Project Structure
 
@@ -9,7 +9,9 @@ src/
 ├─ config/
 │  └─ env.js
 ├─ faculties/
-│  └─ health-science/
+│  ├─ health-science/
+│  ├─ dormitory-management/
+│  └─ _template/
 │     ├─ assets/
 │     │  ├─ documents/
 │     │  ├─ images/
@@ -52,39 +54,104 @@ The old roots `src/pages`, `src/components`, `src/assets`, `src/layouts`, `src/s
 
 ## Quick Start
 
-This project uses Yarn PnP and Vite 7.
+This project uses Yarn PnP and Vite 7. Use Yarn through Corepack for install, dev, build, and preview.
+
+### Install
 
 Requirements:
 
 - Node.js 22.12+ or 20.19+
-- Yarn 4 through Corepack
+- Corepack enabled
 
-```bash
+Install dependencies:
+
+```powershell
 corepack enable
 corepack yarn install
 ```
 
-Development:
+### Run Development
 
-```bash
-FACULTY=health-science corepack yarn dev
+Run Dormitory Management on Windows PowerShell:
+
+```powershell
+$env:FACULTY='dormitory-management'
+corepack yarn dev --host 127.0.0.1 --port 5173
 ```
 
-Production build:
+Open:
 
-```bash
-FACULTY=health-science corepack yarn build
+```text
+http://127.0.0.1:5173/
+http://127.0.0.1:5173/contact.html
 ```
 
-Preview:
+Run Health Science instead:
 
-```bash
-FACULTY=health-science corepack yarn preview
+```powershell
+$env:FACULTY='health-science'
+corepack yarn dev --host 127.0.0.1 --port 5173
 ```
 
-`yarn build` also works when your shell has Yarn available, but `FACULTY=health-science corepack yarn build` is the explicit verified command for this repository.
+If port `5173` is already busy, use another port:
 
-Output is written to `dist_iuh/` through `VITE_OUT_DIR`.
+```powershell
+corepack yarn dev --host 127.0.0.1 --port 5174
+```
+
+### Build
+
+Build Dormitory Management:
+
+```powershell
+$env:FACULTY='dormitory-management'
+corepack yarn build
+```
+
+Build Health Science:
+
+```powershell
+$env:FACULTY='health-science'
+corepack yarn build
+```
+
+Build output is written to `dist_iuh/` through `VITE_OUT_DIR`.
+
+### Preview
+
+Preview the last build:
+
+```powershell
+$env:FACULTY='dormitory-management'
+corepack yarn preview --host 127.0.0.1 --port 4173
+```
+
+Open:
+
+```text
+http://127.0.0.1:4173/
+```
+
+### macOS/Linux
+
+Use inline environment variable syntax:
+
+```bash
+FACULTY=dormitory-management corepack yarn dev --host 127.0.0.1 --port 5173
+FACULTY=dormitory-management corepack yarn build
+FACULTY=dormitory-management corepack yarn preview --host 127.0.0.1 --port 4173
+```
+
+### Faculty IDs
+
+`FACULTY` defaults to `health-science`, but explicit `FACULTY=<faculty-id>` commands are preferred so the selected module is unambiguous.
+
+Current runnable ids:
+
+| Faculty id | Display name |
+| --- | --- |
+| `health-science` | Khoa Khoa học Sức khỏe |
+| `dormitory-management` | Phòng Quản lý Ký túc xá |
 
 ## Architecture
 
@@ -277,6 +344,13 @@ FACULTY=<faculty-id> corepack yarn build
 
 Shared assets/components should move into `src/shared` only after there is real cross-faculty reuse. Faculty-specific content should stay in the faculty module.
 
+Current runnable faculty ids:
+
+| Faculty id | Display name | Notes |
+| --- | --- | --- |
+| `health-science` | Khoa Khoa hoc Suc khoe | Existing full Health Science module |
+| `dormitory-management` | Phong Quan ly Ky Tuc Xa | Home, contact, Dormitory-owned content, assets, and search data |
+
 ## Build Output
 
 ```text
@@ -315,11 +389,17 @@ VITE_BASE_PATH=/iuh/test/ FACULTY=health-science corepack yarn build
 
 ## Common Commands
 
-```bash
+```powershell
 corepack yarn install
-FACULTY=health-science corepack yarn dev
-FACULTY=health-science corepack yarn build
-FACULTY=health-science corepack yarn preview
+
+$env:FACULTY='dormitory-management'
+corepack yarn dev --host 127.0.0.1 --port 5173
+corepack yarn build
+corepack yarn preview --host 127.0.0.1 --port 4173
+
+$env:FACULTY='health-science'
+corepack yarn build
+
 corepack yarn agents:sync
 openspec list --json
 ```

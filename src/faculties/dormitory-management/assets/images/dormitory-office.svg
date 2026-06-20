@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#f7fbff"/>
+  <rect x="130" y="180" width="940" height="430" rx="28" fill="#153898"/>
+  <rect x="190" y="245" width="460" height="300" rx="18" fill="#ffffff"/>
+  <rect x="700" y="245" width="310" height="300" rx="18" fill="#8ed8f8"/>
+  <rect x="240" y="300" width="340" height="34" rx="17" fill="#153898"/>
+  <rect x="240" y="370" width="300" height="28" rx="14" fill="#8ed8f8"/>
+  <rect x="240" y="430" width="260" height="28" rx="14" fill="#8ed8f8"/>
+  <circle cx="855" cy="360" r="80" fill="#f9b200"/>
+  <path d="M805 385 L845 425 L915 315" fill="none" stroke="#153898" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="170" y="690" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="#153898">Văn phòng tiếp nhận hỗ trợ sinh viên</text>
+</svg>

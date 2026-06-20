@@ -1,12 +1,12 @@
 # Tong quan source IUH Department
 
-Ngay cap nhat: 2026-06-16
+Ngay cap nhat: 2026-06-20
 
 Tai lieu nay mo ta source hien tai cua website `lab-iuh` sau khi chuyen sang kien truc `Shared Platform + Faculty Modules`.
 
 ## 1. Tom tat nhanh
 
-Website hien tai la site tinh cho Khoa Khoa hoc Suc khoe IUH, xay bang Vite, Vanilla JavaScript, TailwindCSS, SCSS va Swiper. Source khong dung framework SPA. Moi page HTML cua faculty duoc viet trong `src/faculties/<faculty>/pages`; Vite boc layout, inject component HTML, bundle CSS/JS, va copy data/assets cua selected faculty ra `dist_iuh`.
+Website hien tai la site tinh theo kien truc shared platform + selected faculty, xay bang Vite, Vanilla JavaScript, TailwindCSS, SCSS va Swiper. Source khong dung framework SPA. Moi page HTML cua faculty duoc viet trong `src/faculties/<faculty>/pages`; Vite boc layout, inject component HTML, bundle CSS/JS, va copy data/assets cua selected faculty ra `dist_iuh`.
 
 Stack hien tai:
 
@@ -19,6 +19,7 @@ Stack hien tai:
 | Carousel | Swiper 11 |
 | Output | `dist_iuh/`, cau hinh boi `VITE_OUT_DIR` |
 | Faculty mac dinh | `health-science` |
+| Faculty runnable | `health-science`, `dormitory-management` |
 
 ## 2. Source tree
 
@@ -27,7 +28,14 @@ src/
 |-- config/
 |   `-- env.js
 |-- faculties/
-|   `-- health-science/
+|   |-- health-science/
+|   |-- dormitory-management/
+|   |   |-- assets/
+|   |   |-- components/
+|   |   |-- data/
+|   |   |-- faculty.config.js
+|   |   `-- pages/
+|   `-- _template/
 |       |-- assets/
 |       |   |-- documents/
 |       |   |-- images/
@@ -100,6 +108,13 @@ Khoa Health Science hien co 13 page:
 | `contact.html` | Lien he |
 | `document-detail.html` | Xem/tai PDF |
 | `form.html` | Demo form controls/style |
+
+Phong Quan ly Ky Tuc Xa (`dormitory-management`) hien co:
+
+| Page | Muc dich |
+| --- | --- |
+| `index.html` | Trang chu: carousel, stats, thong bao, co so vat chat, don vi phoi hop |
+| `contact.html` | Lien he Phong Quan ly Ky Tuc Xa va noi dung tiep nhan ho tro sinh vien noi tru |
 
 Moi page dung metadata `LAYOUT`:
 
@@ -217,6 +232,7 @@ Build commands:
 FACULTY=health-science corepack yarn dev
 FACULTY=health-science corepack yarn build
 FACULTY=health-science corepack yarn preview
+FACULTY=dormitory-management corepack yarn build
 ```
 
 `FACULTY` defaults to `health-science`, but explicit commands are preferred in docs and CI.
@@ -236,7 +252,7 @@ FACULTY=health-science corepack yarn preview
 
 ## 9. Data, documents, and assets
 
-Health Science data:
+Selected faculty data:
 
 | Source | Output |
 | --- | --- |
@@ -244,6 +260,7 @@ Health Science data:
 | `src/faculties/health-science/data/quiz-data.json` | `/data/quiz-data.json` |
 | `src/faculties/health-science/data/messages-vi.json` | `/data/messages-vi.json` |
 | `src/faculties/health-science/data/messages-en.json` | `/data/messages-en.json` |
+| `src/faculties/dormitory-management/data/search-data.json` | `/data/search-data.json` when `FACULTY=dormitory-management` |
 
 Assets:
 
@@ -251,10 +268,13 @@ Assets:
 | --- | --- |
 | `src/shared/assets/images` | `/assets/images` |
 | `src/faculties/health-science/assets/images` | `/assets/images` |
+| `src/faculties/dormitory-management/assets/images` | `/assets/images` |
 | `src/shared/assets/svgs` | `/assets/svgs` |
 | `src/faculties/health-science/assets/svgs` | `/assets/svgs` |
+| `src/faculties/dormitory-management/assets/svgs` | `/assets/svgs` |
 | `src/shared/assets/fonts` | `/assets/fonts` |
 | `src/faculties/health-science/assets/documents` | `/assets/documents` |
+| `src/faculties/dormitory-management/assets/documents` | `/assets/documents` |
 
 Data fetch trong JS nen dung:
 

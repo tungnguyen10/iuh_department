@@ -1,0 +1,31 @@
+<div data-module="stats"
+  class="self-stretch py-8 md:py-14 relative bg-secondary-blue-light shadow-[inset_0px_0px_20px_0px_rgba(142,216,248,0.80)] inline-flex flex-col justify-start items-center overflow-hidden w-full {{class}}">
+  <div class="container mx-auto px-4 mb-8">
+    <div data-include="@shared/components/common/section-title.html"
+      data-title="Dịch vụ Ký túc xá"
+      data-description="Các chỉ số vận hành nội trú được theo dõi để hỗ trợ sinh viên sinh hoạt ổn định trong khu ký túc xá."
+      data-class="max-w-3xl"
+      data-title-class="text-title"
+      data-description-class="text-gray-700">
+    </div>
+  </div>
+  <div class="container px-4 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 justify-items-center">
+    <div data-include="@shared/components/common/core-deco.html" data-class="wave absolute opacity-20 w-[180px] sm:w-[300px] lg:w-[320px] left-[calc(50%-200px)] sm:left-[calc(50%-300px)] lg:left-[calc(50%-830px)] xl:left-[calc(50%-930px)] -bottom-[10%] sm:-bottom-[12%] lg:-bottom-[15%]"></div>
+    <div data-include="@shared/components/stats/stats-card.html" data-count="3200" data-suffix="+"
+      data-bgImage="/assets/images/dormitory-campus.svg" data-icon="/assets/svgs/icon-building.svg"
+      data-iconAlt="Chỗ ở" data-description="Chỗ ở sinh viên">
+    </div>
+    <div data-include="@shared/components/stats/stats-card.html" data-count="24" data-suffix="/7"
+      data-bgImage="/assets/images/dormitory-support.svg" data-icon="/assets/svgs/icon-shield-check.svg"
+      data-iconAlt="An ninh" data-description="Giám sát an ninh">
+    </div>
+    <div data-include="@shared/components/stats/stats-card.html" data-count="6" data-suffix=""
+      data-bgImage="/assets/images/dormitory-office.svg" data-icon="/assets/svgs/icon-help-circle.svg"
+      data-iconAlt="Dịch vụ" data-description="Nhóm dịch vụ hỗ trợ">
+    </div>
+    <div data-include="@shared/components/stats/stats-card.html" data-count="48" data-suffix="h"
+      data-bgImage="/assets/images/dormitory-maintenance.svg" data-icon="/assets/svgs/icon-check-circle.svg"
+      data-iconAlt="Bảo trì" data-description="Xử lý yêu cầu bảo trì">
+    </div>
+  </div>
+</div>

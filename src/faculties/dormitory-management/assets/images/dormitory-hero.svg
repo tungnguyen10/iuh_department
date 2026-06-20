@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="620" viewBox="0 0 1600 620" role="img" aria-labelledby="title desc">
+  <title id="title">Phòng Quản lý Ký túc xá IUH</title>
+  <desc id="desc">Illustration of a dormitory campus with student support services</desc>
+  <rect width="1600" height="620" fill="#153898"/>
+  <path d="M0 420 C240 350 390 500 620 420 C860 338 1030 445 1240 368 C1390 312 1500 322 1600 352 L1600 620 L0 620 Z" fill="#8ed8f8"/>
+  <path d="M0 500 C220 438 420 530 640 475 C900 410 1070 515 1300 455 C1430 422 1520 430 1600 458 L1600 620 L0 620 Z" fill="#f9b200"/>
+  <rect x="162" y="152" width="330" height="310" rx="18" fill="#ffffff"/>
+  <rect x="545" y="112" width="440" height="350" rx="18" fill="#ffffff"/>
+  <rect x="1038" y="166" width="360" height="296" rx="18" fill="#ffffff"/>
+  <g fill="#153898">
+    <rect x="205" y="198" width="58" height="58" rx="6"/>
+    <rect x="295" y="198" width="58" height="58" rx="6"/>
+    <rect x="385" y="198" width="58" height="58" rx="6"/>
+    <rect x="205" y="292" width="58" height="58" rx="6"/>
+    <rect x="295" y="292" width="58" height="58" rx="6"/>
+    <rect x="385" y="292" width="58" height="58" rx="6"/>
+    <rect x="610" y="170" width="68" height="66" rx="6"/>
+    <rect x="720" y="170" width="68" height="66" rx="6"/>
+    <rect x="830" y="170" width="68" height="66" rx="6"/>
+    <rect x="610" y="278" width="68" height="66" rx="6"/>
+    <rect x="720" y="278" width="68" height="66" rx="6"/>
+    <rect x="830" y="278" width="68" height="66" rx="6"/>
+    <rect x="1095" y="214" width="64" height="60" rx="6"/>
+    <rect x="1200" y="214" width="64" height="60" rx="6"/>
+    <rect x="1305" y="214" width="64" height="60" rx="6"/>
+    <rect x="1095" y="314" width="64" height="60" rx="6"/>
+    <rect x="1200" y="314" width="64" height="60" rx="6"/>
+    <rect x="1305" y="314" width="64" height="60" rx="6"/>
+  </g>
+  <rect x="710" y="372" width="120" height="90" rx="8" fill="#f9b200"/>
+  <text x="120" y="96" font-family="Arial, sans-serif" font-size="44" font-weight="700" fill="#ffffff">Phòng Quản lý Ký túc xá</text>
+  <text x="120" y="140" font-family="Arial, sans-serif" font-size="24" fill="#ffffff">Hỗ trợ chỗ ở, an ninh và đời sống sinh viên IUH</text>
+</svg>

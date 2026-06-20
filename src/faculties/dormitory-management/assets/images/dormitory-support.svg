@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#153898"/>
+  <circle cx="310" cy="330" r="115" fill="#f9b200"/>
+  <circle cx="610" cy="300" r="135" fill="#8ed8f8"/>
+  <circle cx="900" cy="335" r="115" fill="#f9b200"/>
+  <rect x="195" y="455" width="830" height="155" rx="36" fill="#ffffff"/>
+  <rect x="270" y="508" width="210" height="32" rx="16" fill="#153898"/>
+  <rect x="520" y="508" width="170" height="32" rx="16" fill="#153898"/>
+  <rect x="730" y="508" width="210" height="32" rx="16" fill="#153898"/>
+  <text x="224" y="698" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="#ffffff">Kết nối cộng đồng sinh viên nội trú</text>
+</svg>

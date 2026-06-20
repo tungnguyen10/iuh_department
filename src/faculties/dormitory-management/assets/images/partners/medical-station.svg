@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="180" viewBox="0 0 360 180">
+  <rect width="360" height="180" rx="18" fill="#ffffff"/>
+  <rect x="38" y="58" width="68" height="68" rx="12" fill="#8ed8f8"/>
+  <path d="M72 72 v40 M52 92 h40" stroke="#153898" stroke-width="14" stroke-linecap="round"/>
+  <text x="135" y="82" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#153898">Trạm y tế</text>
+  <text x="135" y="114" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#153898">IUH</text>
+</svg>

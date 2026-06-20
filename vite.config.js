@@ -116,14 +116,8 @@ const firstExisting = (...candidates) => candidates.find((candidate) => candidat
 const mapUrlToFsPath = (url, paths) => {
   const pathname = url.split('?')[0]
 
-  // Pages: served from selected faculty pages root
-  if (pathname === '/' || pathname.endsWith('.html')) {
-    const htmlFile = pathname === '/' ? 'index.html' : pathname.slice(1)
-    const mappedPage = resolve(paths.selectedFacultyPagesRoot, htmlFile)
-    if (existsSync(mappedPage)) {
-      return mappedPage
-    }
-  }
+  // HTML pages are served by Vite from the selected faculty pages root so
+  // transformIndexHtml plugins can wrap the shared layout and inject includes.
 
   // Runtime entry script lives at repo src root
   if (pathname === '/main.js') {

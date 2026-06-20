@@ -1,0 +1,31 @@
+<section data-module="partners" class="partners-section w-full py-8 md:py-14 bg-primary-dark-blue relative {{class}}">
+  <canvas class="partners-canvas absolute inset-0 w-full h-full opacity-60"></canvas>
+  <canvas class="partners-logo-canvas absolute -top-3 md:-top-5 left-0 w-full h-6 md:h-10 pointer-events-none"></canvas>
+
+  <div class="relative z-20 container mx-auto px-4 flex flex-col lg:flex-row items-start md:items-center justify-between gap-8 md:gap-10">
+    <div class="flex flex-col gap-6 md:gap-10 w-full lg:w-auto">
+      <div data-include="@shared/components/common/section-title.html"
+        data-title="Đơn vị phối hợp"
+        data-description="Các đầu mối trong IUH cùng phối hợp để hỗ trợ đời sống, an ninh, y tế và hoạt động cộng đồng cho sinh viên nội trú."
+        data-class="flex flex-col gap-3 md:gap-[15px]"
+        data-title-class="text-primary-white"
+        data-description-class="text-primary-white max-w-[420px]">
+      </div>
+      <div data-include="@shared/components/button/button.html"
+        data-variant="6"
+        data-text="Liên hệ"
+        data-url="/contact.html"
+        data-class="w-fit">
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 flex-1 w-full lg:max-w-2xl">
+      <div data-include="@shared/components/partners/partner-logo.html" data-image="/assets/images/partners/student-affairs.svg" data-alt="Phòng Công tác sinh viên" data-link="/contact.html"></div>
+      <div data-include="@shared/components/partners/partner-logo.html" data-image="/assets/images/partners/security-team.svg" data-alt="Bộ phận an ninh" data-link="/contact.html"></div>
+      <div data-include="@shared/components/partners/partner-logo.html" data-image="/assets/images/partners/maintenance-team.svg" data-alt="Bộ phận bảo trì" data-link="/contact.html"></div>
+      <div data-include="@shared/components/partners/partner-logo.html" data-image="/assets/images/partners/medical-station.svg" data-alt="Trạm y tế" data-link="/contact.html"></div>
+      <div data-include="@shared/components/partners/partner-logo.html" data-image="/assets/images/partners/youth-union.svg" data-alt="Đoàn Thanh niên" data-link="/contact.html"></div>
+      <div data-include="@shared/components/partners/partner-logo.html" data-image="/assets/images/partners/student-community.svg" data-alt="Cộng đồng sinh viên nội trú" data-link="/contact.html"></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#f7fbff"/>
+  <rect x="160" y="165" width="880" height="470" rx="30" fill="#153898"/>
+  <rect x="240" y="245" width="720" height="310" rx="20" fill="#ffffff"/>
+  <circle cx="430" cy="400" r="95" fill="#8ed8f8"/>
+  <path d="M395 445 L495 345" stroke="#153898" stroke-width="34" stroke-linecap="round"/>
+  <path d="M760 325 h95 v55 h-95 z M700 430 h155 v55 h-155 z" fill="#f9b200"/>
+  <text x="250" y="705" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="#153898">Bảo trì và dịch vụ ký túc xá</text>
+</svg>
