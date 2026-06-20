@@ -249,7 +249,7 @@ export function initExample() {
 }
 ```
 
-Register shared modules in `src/main.js`; register faculty modules in `src/faculties/health-science/faculty.config.js`.
+Register shared modules in `src/shared/shared.config.js`; register faculty modules in `src/faculties/<faculty-id>/faculty.config.js`.
 
 ## Adding A New Faculty
 
@@ -266,6 +266,8 @@ src/faculties/<faculty-id>/
 ├─ faculty.config.js
 └─ pages/
 ```
+
+You can start from the minimal scaffold at `src/faculties/_template`. Copy it to `src/faculties/<faculty-id>`, then update `faculty.config.js` id/name/source paths and replace `pages/index.html`.
 
 Then build with:
 

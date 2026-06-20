@@ -149,9 +149,8 @@ DOMContentLoaded
   -> loadingManager.init()
   -> initComponentsOnDemand()
        -> faculty runtime modules from @faculty/faculty.config.js
-       -> shared runtime modules from src/main.js
+       -> shared runtime modules from src/shared/shared.config.js
   -> inlineSVGs()
-  -> initSearchModal()
   -> initFadeInOnScroll()
   -> dispatch "components-loaded"
   -> hide loading
@@ -287,8 +286,8 @@ src/faculties/health-science/components/<name>/
 
 Neu component co JS, export ham `init*` va dang ky:
 
-- shared module: `src/main.js`
-- faculty module: `src/faculties/health-science/faculty.config.js`
+- shared module: `src/shared/shared.config.js`
+- faculty module: `src/faculties/<faculty-id>/faculty.config.js`
 
 Them faculty moi:
 
@@ -303,6 +302,8 @@ src/faculties/<faculty-id>/
 |-- faculty.config.js
 `-- pages/
 ```
+
+Co the copy scaffold toi thieu tu `src/faculties/_template`, sau do sua `faculty.config.js` id/name/source paths va thay noi dung `pages/index.html`.
 
 Build:
 

@@ -78,50 +78,103 @@ const relativeModulePath = (fromDir, toFile) => {
   return relativePath.startsWith('.') ? relativePath : `./${relativePath}`
 }
 
-const mapSrcRequests = (pagesRoot) => ({
+const ASSET_PREFIX_RE = /^\/(?:assets|data)\//
+
+const installSrcRequestMiddleware = (server, paths) => {
+  server.middlewares.use((req, res, next) => {
+    if (!req.url) return next()
+    const pathname = req.url.split('?')[0]
+    const mapped = mapUrlToFsPath(req.url, paths)
+    if (mapped) {
+      req.url = `/@fs/${mapped}`
+      return next()
+    }
+    // Unmatched asset/data requests should fail loudly instead of falling
+    // back to the SPA index.html (which corrupts <img>/<script>/fetch responses).
+    if (ASSET_PREFIX_RE.test(pathname)) {
+      res.statusCode = 404
+      res.setHeader('Content-Type', 'text/plain; charset=utf-8')
+      res.end(`Not found: ${pathname}`)
+      return
+    }
+    next()
+  })
+}
+
+const mapSrcRequests = (paths) => ({
   name: 'map-src-requests',
   configureServer(server) {
-    server.middlewares.use((req, _res, next) => {
-      if (!req.url) return next()
-      const mapped = mapUrlToFsPath(req.url, pagesRoot)
-      if (mapped) {
-        req.url = `/@fs/${mapped}`
-      }
-      next()
-    })
+    installSrcRequestMiddleware(server, paths)
   },
   configurePreviewServer(server) {
-    server.middlewares.use((req, _res, next) => {
-      if (!req.url) return next()
-      const mapped = mapUrlToFsPath(req.url, pagesRoot)
-      if (mapped) {
-        req.url = `/@fs/${mapped}`
-      }
-      next()
-    })
+    installSrcRequestMiddleware(server, paths)
   },
 })
 
-const mapUrlToFsPath = (url, pagesRoot) => {
+const firstExisting = (...candidates) => candidates.find((candidate) => candidate && existsSync(candidate)) || null
+
+const mapUrlToFsPath = (url, paths) => {
   const pathname = url.split('?')[0]
 
+  // Pages: served from selected faculty pages root
   if (pathname === '/' || pathname.endsWith('.html')) {
     const htmlFile = pathname === '/' ? 'index.html' : pathname.slice(1)
-    const mappedPage = resolve(pagesRoot, htmlFile)
+    const mappedPage = resolve(paths.selectedFacultyPagesRoot, htmlFile)
     if (existsSync(mappedPage)) {
       return mappedPage
     }
   }
 
+  // Runtime entry script lives at repo src root
   if (pathname === '/main.js') {
-    return resolve(srcRoot, 'main.js')
+    return resolve(paths.srcRoot, 'main.js')
   }
-  if (pathname.startsWith('/js/')) {
-    return resolve(srcRoot, pathname.slice(1))
+
+  // Faculty data: /data/foo.json -> <facultyRoot>/data/foo.json
+  if (pathname.startsWith('/data/')) {
+    const dataFile = resolve(paths.selectedFacultyDataRoot, pathname.slice('/data/'.length))
+    if (existsSync(dataFile)) return dataFile
   }
+
+  // Faculty documents: /assets/documents/foo.pdf -> <facultyRoot>/assets/documents/foo.pdf
+  if (pathname.startsWith('/assets/documents/')) {
+    const docFile = resolve(paths.selectedFacultyAssetsRoot, 'documents', pathname.slice('/assets/documents/'.length))
+    if (existsSync(docFile)) return docFile
+  }
+
+  // Fonts: /assets/fonts/foo.ttf -> <sharedRoot>/assets/fonts/foo.ttf
+  if (pathname.startsWith('/assets/fonts/')) {
+    const fontFile = resolve(paths.sharedRoot, 'assets/fonts', pathname.slice('/assets/fonts/'.length))
+    if (existsSync(fontFile)) return fontFile
+  }
+
+  // Images: faculty wins, shared fallback
+  if (pathname.startsWith('/assets/images/')) {
+    const sub = pathname.slice('/assets/images/'.length)
+    return firstExisting(
+      resolve(paths.selectedFacultyAssetsRoot, 'images', sub),
+      resolve(paths.sharedRoot, 'assets/images', sub),
+    )
+  }
+
+  // SVGs: faculty wins, shared fallback
+  if (pathname.startsWith('/assets/svgs/')) {
+    const sub = pathname.slice('/assets/svgs/'.length)
+    return firstExisting(
+      resolve(paths.selectedFacultyAssetsRoot, 'svgs', sub),
+      resolve(paths.sharedRoot, 'assets/svgs', sub),
+    )
+  }
+
+  // Generic /assets/* fallback: try shared then faculty
   if (pathname.startsWith('/assets/')) {
-    return resolve(srcRoot, pathname.slice(1))
+    const sub = pathname.slice('/assets/'.length)
+    return firstExisting(
+      resolve(paths.sharedRoot, 'assets', sub),
+      resolve(paths.selectedFacultyAssetsRoot, sub),
+    )
   }
+
   return null
 }
 
@@ -405,6 +458,8 @@ const copyDirectoryContents = (src, dest, onFileCopied) => {
   const entries = readdirSync(src, { withFileTypes: true })
 
   for (const entry of entries) {
+    if (entry.name.startsWith('.')) continue
+
     const srcPath = resolve(src, entry.name)
     const destPath = resolve(dest, entry.name)
 
@@ -505,7 +560,7 @@ export default defineConfig(({ mode }) => {
       __BUILD_MODE__: JSON.stringify(mode)
     },
     plugins: [
-      mapSrcRequests(faculty.pagesRoot),
+      mapSrcRequests(faculty.paths),
       layoutPlugin(base, mainScript), // Chạy TRƯỚC để wrap layout
       transformDataInclude(base, faculty.selectedFacultyId), // Chạy SAU để inject components vào layout
       copyFacultyDataPlugin(outDir, faculty.paths.selectedFacultyDataRoot), // Copy selected faculty data to dist/data
@@ -542,7 +597,15 @@ export default defineConfig(({ mode }) => {
     server: {
       open: true,
       fs: {
-        allow: ['..'],
+        // Allow Vite to serve files from the repo root so /@fs/ rewrites
+        // can reach src/main.js, src/shared/**, and the selected faculty root.
+        allow: [repoRoot],
+      },
+    },
+
+    preview: {
+      fs: {
+        allow: [repoRoot],
       },
     },
 

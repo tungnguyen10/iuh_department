@@ -12,10 +12,8 @@ import {
   shareContent,
   copyToClipboard,
   initFadeInOnScroll,
-  initArticleActions,
-  initPDFViewer,
 } from "./shared/js/utils.js";
-import { initSearchModal } from "./shared/components/search/search-modal.js";
+import sharedConfig from "./shared/shared.config.js";
 import facultyConfig from "@faculty/faculty.config.js";
 import "./shared/js/global-widgets.js";
 import "./shared/js/module-manager.js"; // Module toggle dev tool
@@ -98,12 +96,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     performance.mark('svg-load-end')
     performance.measure('SVG Loading', 'svg-load-start', 'svg-load-end')
 
-    // 4. Initialize global features (always present)
-    if (document.querySelector("#search-modal")) {
-      initSearchModal();
-    }
-
-    // 5. Initialize fade-in on scroll animations (global)
+    // 4. Initialize fade-in on scroll animations (global)
     initFadeInOnScroll({
       threshold: 0.1, // Trigger when 10% visible
       rootMargin: "0px 0px -50px 0px", // Trigger 50px before entering viewport
@@ -112,7 +105,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     await delay(150);
 
-    // 6. Dispatch events
+    // 5. Dispatch events
     document.dispatchEvent(new Event("components-loaded"));
     
     performance.mark('app-init-end')
@@ -157,13 +150,14 @@ async function initComponentsOnDemand() {
   // Helper: safe init - if one fails, others continue
   const safeInit = async ({
     selector,
+    always,
     load,
     init: initFn,
     name: componentName,
     assignToWindow,
   }) => {
-    if (!document.querySelector(selector)) return;
-    
+    if (!always && !document.querySelector(selector)) return;
+
     const startTime = performance.now()
     if (import.meta.env.DEV) {
       console.log(`🔄 Loading ${componentName}...`);
@@ -171,6 +165,16 @@ async function initComponentsOnDemand() {
 
     try {
       const module = await load();
+
+      // Side-effect-only module (no init function declared)
+      if (!initFn) {
+        if (import.meta.env.DEV) {
+          const duration = (performance.now() - startTime).toFixed(2)
+          console.log(`✅ ${componentName} loaded in ${duration}ms`);
+        }
+        return;
+      }
+
       const init = module[initFn];
 
       if (!init) {
@@ -202,77 +206,14 @@ async function initComponentsOnDemand() {
     }
   };
 
-  const sharedRuntimeModules = [
-    {
-      selector: ".news-swiper",
-      load: () => import("./shared/components/news/news.js"),
-      init: "initNewsSwiper",
-      name: "News Swiper",
-    },
-    {
-      selector: ".stats-card",
-      load: () => import("./shared/components/stats/stats-card.js"),
-      init: "initStatsCards",
-      name: "Stats Cards",
-    },
-    {
-      selector: ".partners-canvas",
-      load: () => import("./shared/components/partners/partners.js"),
-      init: "initPartnersCanvas",
-      name: "Partners Canvas",
-    },
-    {
-      selector: ".news-carousel-wrapper",
-      load: () => import("./shared/components/news/news-carousel.js"),
-      init: "initAllNewsCarousels",
-      name: "News Carousel",
-    },
-    {
-      selector: ".tabs-container, [data-tabs]",
-      load: () => import("./shared/components/tabs/tabs.js"),
-      init: "initTabs",
-      name: "Tabs",
-    },
-  ];
+  // Drive both shared platform modules and selected faculty modules from
+  // config so main.js stays free of hard-coded faculty wiring.
+  const sharedModules = sharedConfig.runtimeModules || [];
+  const facultyModules = facultyConfig.runtimeModules || [];
 
-  // Load all independent components in parallel for better performance.
-  await Promise.allSettled([
-    ...facultyConfig.runtimeModules,
-    ...sharedRuntimeModules,
-  ].map((runtimeModule) => safeInit(runtimeModule)));
-
-  // Article actions (social media share)
-  if (
-    document.querySelector(
-      ".js-share-facebook, .js-share-x, .js-share-linkedin",
-    )
-  ) {
-    try {
-      initArticleActions();
-    } catch (error) {
-      console.error("Failed to init Article Actions:", error);
-    }
-  }
-
-  // PDF Viewer (document detail pages)
-  if (document.getElementById("pdf-object")) {
-    try {
-      initPDFViewer();
-    } catch (error) {
-      console.error("Failed to init PDF Viewer:", error);
-    }
-  }
-
-  // Header & Footer are always present, so load them in parallel
-  try {
-    const [headerModule, footerModule] = await Promise.all([
-      import("./shared/components/header/header.js"),
-      import("./shared/components/footer/footer.js"),
-    ]);
-    
-    headerModule.init();
-    footerModule.init();
-  } catch (error) {
-    console.error("Failed to init Header/Footer:", error);
-  }
+  await Promise.allSettled(
+    [...sharedModules, ...facultyModules].map((runtimeModule) =>
+      safeInit(runtimeModule),
+    ),
+  );
 }
