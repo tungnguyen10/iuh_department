@@ -94,7 +94,7 @@ Rationale: the user specifically asked for a runnable Dormitory site with the li
 - Broken asset references -> Put Dormitory-owned images under `src/faculties/dormitory-management/assets/images` or intentionally use shared defaults until real Dormitory imagery exists.
 - Duplicated section markup -> Accept small Dormitory-owned wrappers first; promote to shared later only when a second module proves the abstraction.
 - Search data missing or irrelevant -> Add Dormitory-specific `data/search-data.json` and verify search modal fetches selected faculty data.
-- Build tool mismatch -> Use the repo's currently working `npm.cmd run build`/direct Vite path for verification if Yarn remains blocked by lockfile/toolchain mismatch.
+- Build tool mismatch -> Use the repo's documented `corepack yarn build` path for verification.
 
 ## Migration Plan
 

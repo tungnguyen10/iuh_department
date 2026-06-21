@@ -46,6 +46,22 @@ export const dormitoryManagementFacultyConfig = {
       { text: "LIÊN HỆ", href: "/contact.html" },
     ],
   },
+  search: {
+    quickLinks: [
+      { text: "Đăng ký nội trú", href: "/contact.html" },
+      { text: "Bảo trì phòng ở", href: "/contact.html" },
+      { text: "An ninh ký túc xá", href: "/contact.html" },
+      { text: "Cơ sở vật chất", href: "/#infrastructure-section" },
+      { text: "Thông báo", href: "/" },
+      { text: "Liên hệ", href: "/contact.html" },
+    ],
+    categories: [
+      { text: "Thông báo", href: "/", icon: "TB" },
+      { text: "Dịch vụ nội trú", href: "/contact.html", icon: "DV" },
+      { text: "Cơ sở vật chất", href: "/#infrastructure-section", icon: "CS" },
+      { text: "Liên hệ hỗ trợ", href: "/contact.html", icon: "LH" },
+    ],
+  },
   runtimeModules: [
     {
       selector: ".hero-swiper",

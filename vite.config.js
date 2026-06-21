@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url'
 import { copyFileSync, mkdirSync, existsSync, readFileSync, readdirSync, statSync } from 'fs'
 import { execSync } from 'child_process'
 import svgo from 'vite-plugin-svgo'
+import { copyReferencedSvgs } from './scripts/svg-assets.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -151,13 +152,11 @@ const mapUrlToFsPath = (url, paths) => {
     )
   }
 
-  // SVGs: faculty wins, shared fallback
+  // SVGs are canonical shared assets. Faculty SVG overrides are intentionally unsupported.
   if (pathname.startsWith('/assets/svgs/')) {
     const sub = pathname.slice('/assets/svgs/'.length)
-    return firstExisting(
-      resolve(paths.selectedFacultyAssetsRoot, 'svgs', sub),
-      resolve(paths.sharedRoot, 'assets/svgs', sub),
-    )
+    const svgFile = resolve(paths.sharedRoot, 'assets/svgs', sub)
+    return existsSync(svgFile) ? svgFile : null
   }
 
   // Generic /assets/* fallback: try shared then faculty
@@ -531,6 +530,19 @@ const copyAssetRootsPlugin = (outDir, assetType, sourceRoots) => ({
   }
 })
 
+const copyReferencedSvgsPlugin = (outDir, sharedSvgRoot, sourceRoots) => ({
+  name: 'copy-referenced-svgs',
+  closeBundle() {
+    const result = copyReferencedSvgs({
+      distDir: outDir,
+      sharedSvgRoot,
+      sourceRoots,
+      sourceBaseDir: repoRoot,
+    })
+    console.log(`Copied ${result.copied} referenced SVG assets to assets/svgs/`)
+  }
+})
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, __dirname, '')
   const faculty = resolveFacultyContext(process.env.FACULTY || env.FACULTY || defaultFacultyId)
@@ -563,9 +575,9 @@ export default defineConfig(({ mode }) => {
         resolve(faculty.paths.sharedRoot, 'assets/images'),
         resolve(faculty.paths.selectedFacultyAssetsRoot, 'images'),
       ]),
-      copyAssetRootsPlugin(outDir, 'svgs', [
-        resolve(faculty.paths.sharedRoot, 'assets/svgs'),
-        resolve(faculty.paths.selectedFacultyAssetsRoot, 'svgs'),
+      copyReferencedSvgsPlugin(outDir, resolve(faculty.paths.sharedRoot, 'assets/svgs'), [
+        faculty.paths.sharedRoot,
+        faculty.paths.selectedFacultyRoot,
       ]),
       svgo({
         svgoConfig: {

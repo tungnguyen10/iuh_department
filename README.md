@@ -246,7 +246,7 @@ Internal ownership changed, but public output URLs are preserved:
 | Source | Output |
 | --- | --- |
 | `src/shared/assets/images` + `src/faculties/<faculty>/assets/images` | `/assets/images` |
-| `src/shared/assets/svgs` + `src/faculties/<faculty>/assets/svgs` | `/assets/svgs` |
+| `src/shared/assets/svgs` | `/assets/svgs` |
 | `src/shared/assets/fonts` | `/assets/fonts` |
 | `src/faculties/<faculty>/assets/documents` | `/assets/documents` |
 | `src/faculties/<faculty>/data` | `/data` |
@@ -349,7 +349,7 @@ Current runnable faculty ids:
 | Faculty id | Display name | Notes |
 | --- | --- | --- |
 | `health-science` | Khoa Khoa hoc Suc khoe | Existing full Health Science module |
-| `dormitory-management` | Phong Quan ly Ky Tuc Xa | Home, contact, Dormitory-owned content, assets, and search data |
+| `dormitory-management` | Phòng Quản lý Ký túc xá | Home, contact, Dormitory-owned content, assets, and search data |
 
 ## Build Output
 

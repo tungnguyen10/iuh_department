@@ -36,7 +36,7 @@ The site now supports a shared platform plus selected faculty modules, but it on
 - Affected documentation:
   - README and/or `docs/source-overview.md` should mention the new runnable faculty id and build command if implementation adds the module.
 - Verification:
-  - `FACULTY=dormitory-management npm.cmd run build` succeeds.
-  - `FACULTY=health-science npm.cmd run build` still succeeds.
+  - `FACULTY=dormitory-management corepack yarn build` succeeds.
+  - `FACULTY=health-science corepack yarn build` still succeeds.
   - Dormitory home page renders header, footer, carousel, stats, news, infrastructure, partners, and search modal without Health Science-only content.
   - Dormitory contact page renders Dormitory contact content.

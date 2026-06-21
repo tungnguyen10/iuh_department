@@ -15,6 +15,8 @@
  *   - assignToWindow: optional global property name to expose result on window.
  */
 
+import * as utils from './js/utils.js'
+
 export const sharedRuntimeModules = [
   {
     selector: '.news-swiper',
@@ -54,13 +56,13 @@ export const sharedRuntimeModules = [
   },
   {
     selector: '.js-share-facebook, .js-share-x, .js-share-linkedin',
-    load: () => import('./js/utils.js'),
+    load: () => Promise.resolve(utils),
     init: 'initArticleActions',
     name: 'Article Actions',
   },
   {
     selector: '#pdf-object',
-    load: () => import('./js/utils.js'),
+    load: () => Promise.resolve(utils),
     init: 'initPDFViewer',
     name: 'PDF Viewer',
   },

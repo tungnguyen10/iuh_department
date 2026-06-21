@@ -4,6 +4,36 @@
  */
 import BaseModal from '../modal/modal.js';
 import { dataUrl } from '../../js/utils.js';
+import facultyConfig from '@faculty/faculty.config.js';
+
+const quickLinkClass = 'px-4 py-2 text-sm font-medium text-primary-dark-blue bg-slate-100 hover:bg-primary-yellow hover:text-primary-white rounded-lg no-underline transition-all duration-200 hover:-translate-y-0.5';
+const categoryClass = 'search-category-item flex items-center gap-3 p-4 bg-slate-50 hover:bg-primary-yellow rounded-xl no-underline transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(253,185,19,0.3)]';
+
+function escapeHtml(value = '') {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function linkHref(value = '#') {
+  return value || '#';
+}
+
+function quickLinkMarkup(item) {
+  return `<a href="${linkHref(item.href)}" class="${quickLinkClass}">${escapeHtml(item.text)}</a>`;
+}
+
+function categoryMarkup(item) {
+  return `
+    <a href="${linkHref(item.href)}" class="${categoryClass}">
+      <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/80 text-xs font-semibold text-primary-dark-blue">${escapeHtml(item.icon || '')}</span>
+      <span class="text-[15px] font-medium text-primary-dark-blue transition-colors duration-200">${escapeHtml(item.text)}</span>
+    </a>
+  `;
+}
 
 class SearchModal extends BaseModal {
   constructor() {
@@ -15,10 +45,13 @@ class SearchModal extends BaseModal {
     this.clearBtn = null;
     this.states = {};
     this.resultsContainer = null;
+    this.quickLinksContainer = null;
+    this.categoriesContainer = null;
     this.debounceTimer = null;
     this.currentQuery = '';
     
     this.getReferences();
+    this.renderConfiguredContent();
     this.bindSearchEvents();
   }
 
@@ -31,6 +64,8 @@ class SearchModal extends BaseModal {
     this.resultsCount = content.querySelector('#search-results-count');
     this.queryText = content.querySelector('#search-query-text');
     this.emptyQuery = content.querySelector('#search-empty-query');
+    this.quickLinksContainer = content.querySelector('[data-search-quick-links]');
+    this.categoriesContainer = content.querySelector('[data-search-categories]');
     
     this.states = {
       initial: content.querySelector('[data-search-state="initial"]'),
@@ -38,6 +73,22 @@ class SearchModal extends BaseModal {
       results: content.querySelector('[data-search-state="results"]'),
       empty: content.querySelector('[data-search-state="empty"]')
     };
+  }
+
+  renderConfiguredContent() {
+    const searchConfig = facultyConfig.search || {};
+
+    if (this.quickLinksContainer) {
+      this.quickLinksContainer.innerHTML = (searchConfig.quickLinks || [])
+        .map(quickLinkMarkup)
+        .join('');
+    }
+
+    if (this.categoriesContainer) {
+      this.categoriesContainer.innerHTML = (searchConfig.categories || [])
+        .map(categoryMarkup)
+        .join('');
+    }
   }
 
   bindSearchEvents() {

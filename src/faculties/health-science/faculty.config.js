@@ -63,6 +63,22 @@ export const healthScienceFacultyConfig = {
       },
     ],
   },
+  search: {
+    quickLinks: [
+      { text: "Tuyển sinh", href: "/majors.html" },
+      { text: "Học bổng", href: "/students.html" },
+      { text: "Nghiên cứu khoa học", href: "/news.html" },
+      { text: "Đào tạo", href: "/majors.html" },
+      { text: "Lịch thi", href: "/students.html" },
+      { text: "Thông báo", href: "/news.html" },
+    ],
+    categories: [
+      { text: "Tin tức - Sự kiện", href: "/news.html", icon: "TT" },
+      { text: "Đào tạo", href: "/majors.html", icon: "DT" },
+      { text: "Nghiên cứu khoa học", href: "/news.html", icon: "NC" },
+      { text: "Sinh viên", href: "/students.html", icon: "SV" },
+    ],
+  },
   runtimeModules: [
     {
       selector: ".hero-swiper",

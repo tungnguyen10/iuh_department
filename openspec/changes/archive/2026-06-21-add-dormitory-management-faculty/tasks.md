@@ -31,9 +31,9 @@
 
 ## 5. Verification And Documentation
 
-- [x] 5.1 Run `FACULTY=dormitory-management npm.cmd run build` and confirm the build succeeds.
+- [x] 5.1 Run `FACULTY=dormitory-management corepack yarn build` and confirm the build succeeds.
 - [x] 5.2 Inspect Dormitory output for home, contact, selected data, shared assets, and Dormitory-owned assets.
 - [x] 5.3 Verify Dormitory search modal uses Dormitory search data.
-- [x] 5.4 Run `FACULTY=health-science npm.cmd run build` and confirm the existing Health Science build still succeeds.
+- [x] 5.4 Run `FACULTY=health-science corepack yarn build` and confirm the existing Health Science build still succeeds.
 - [x] 5.5 Run `openspec validate add-dormitory-management-faculty --strict`.
 - [x] 5.6 Update README and/or `docs/source-overview.md` with the new `dormitory-management` faculty id and build command.
