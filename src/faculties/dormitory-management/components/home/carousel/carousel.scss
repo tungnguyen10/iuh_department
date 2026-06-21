@@ -9,6 +9,11 @@
     height: 100%;
   }
 
+  .hero-swiper {
+    --swiper-navigation-size: 18px;
+    --swiper-navigation-sides-offset: 24px;
+  }
+
   .carousel-slide-content img {
     min-height: 360px;
     max-height: 620px;
@@ -17,28 +22,60 @@
 
   .hero-nav-next,
   .hero-nav-prev {
-    color: white;
-    width: 50px;
-    height: 50px;
-    background-color: rgba(21, 56, 152, 0.72);
+    color: #153898;
+    width: 44px;
+    height: 44px;
+    background-color: rgba(255, 255, 255, 0.86);
+    border: 1px solid rgba(255, 255, 255, 0.72);
     border-radius: 50%;
-    transition: all 0.3s ease;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(8px);
+    caret-color: transparent;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition:
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      color 0.25s ease,
+      transform 0.25s ease;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #ffffff;
+      outline-offset: 3px;
+    }
 
     &:hover {
+      color: #ffffff;
       background-color: rgba(249, 178, 0, 0.95);
+      border-color: rgba(249, 178, 0, 0.95);
+      transform: scale(1.05);
     }
 
     &::after {
-      font-size: 1.25rem;
+      font-size: 1rem;
       font-weight: 700;
     }
 
+    .swiper-navigation-icon {
+      width: 18px;
+      height: 18px;
+    }
+
     @media (max-width: 768px) {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
 
       &::after {
-        font-size: 1rem;
+        font-size: 0.85rem;
+      }
+
+      .swiper-navigation-icon {
+        width: 16px;
+        height: 16px;
       }
     }
 
@@ -48,21 +85,63 @@
   }
 
   .hero-pagination {
-    bottom: 15px !important;
+    left: 50% !important;
+    bottom: 18px !important;
+    width: auto !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background-color: rgba(21, 56, 152, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
+    transform: translateX(-50%);
+    caret-color: transparent;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+
+    @media (max-width: 768px) {
+      bottom: 10px !important;
+      gap: 6px;
+      padding: 6px 8px;
+    }
   }
 
   .swiper-pagination-bullet {
-    width: 12px;
-    height: 12px;
-    background-color: white;
-    opacity: 0.65;
-    transition: all 0.3s ease;
+    width: 8px;
+    height: 8px;
+    margin: 0 !important;
+    background-color: rgba(255, 255, 255, 0.92);
+    opacity: 0.75;
+    transition:
+      width 0.25s ease,
+      background-color 0.25s ease,
+      opacity 0.25s ease;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #ffffff;
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 768px) {
+      width: 7px;
+      height: 7px;
+    }
   }
 
   .swiper-pagination-bullet-active {
     opacity: 1;
     background-color: #f9b200;
-    width: 30px;
-    border-radius: 6px;
+    width: 26px;
+    border-radius: 999px;
+
+    @media (max-width: 768px) {
+      width: 22px;
+    }
   }
 }
