@@ -47,7 +47,7 @@ Canonical ownership:
 | `src/shared/assets` | Fonts, IUH logos, system icons, favicons, social/language images, true defaults |
 | `src/faculties/<faculty>/pages` | Faculty HTML pages |
 | `src/faculties/<faculty>/components` | Faculty-specific modules and feature components |
-| `src/faculties/<faculty>/data` | Faculty runtime JSON copied to `/data` |
+| `src/faculties/<faculty>/data` | Faculty JSON data. Runtime data is copied to `/data`; build-time content data such as `news.json` is read during HTML transform |
 | `src/faculties/<faculty>/assets` | Faculty images, SVGs, and documents copied to `/assets/...` |
 
 The old roots `src/pages`, `src/components`, `src/assets`, `src/layouts`, `src/styles`, `src/js`, and `public` are not canonical source locations.
@@ -195,6 +195,22 @@ Include aliases:
 
 There is no long-term `@components` include alias.
 
+### Shared Content Components
+
+When a component is shared across faculties and only its content differs, keep the UI in `src/shared/components` and put selected-faculty content in `src/faculties/<faculty>/data`.
+
+For static content that does not need runtime personalization, prefer build-time HTML injection. The news feature is the reference pattern:
+
+```text
+src/shared/components/news/              # shared UI shells
+src/faculties/<faculty>/data/news.json   # faculty-owned source content
+vite.config.js                           # reads news.json and injects static HTML
+```
+
+`news.json` is a build-time source file. It is not fetched by the browser and is intentionally skipped when copying faculty data to `dist_iuh/data`.
+
+Use runtime JSON only when browser-side behavior genuinely needs to fetch data, such as search or quiz data.
+
 ### Runtime Initialization
 
 `src/main.js` owns shared/global bootstrapping:
@@ -249,11 +265,11 @@ Internal ownership changed, but public output URLs are preserved:
 | `src/shared/assets/svgs` | `/assets/svgs` |
 | `src/shared/assets/fonts` | `/assets/fonts` |
 | `src/faculties/<faculty>/assets/documents` | `/assets/documents` |
-| `src/faculties/<faculty>/data` | `/data` |
+| `src/faculties/<faculty>/data` | `/data` for runtime JSON; build-time source files such as `news.json` are not copied |
 
 Use root public URLs in HTML when referencing generated files, for example `/assets/images/default.jpg`.
 
-For JavaScript data fetches, use `dataUrl()` from `src/shared/js/utils.js` so `VITE_BASE_PATH` is respected:
+For JavaScript data fetches, use `dataUrl()` from `src/shared/js/utils.js` so `VITE_BASE_PATH` is respected. Do this only for runtime data; build-time content such as news should already be injected into HTML.
 
 ```javascript
 import { dataUrl } from "@js/utils.js";
@@ -372,6 +388,8 @@ dist_iuh/
    └─ search-data.json
 ```
 
+`news.json` does not appear in `dist_iuh/data`; news content is already injected into `news.html`, `news-detail.html`, home news sections, sidebars, and related carousels during the HTML transform.
+
 ## Deployment
 
 The supported deployment is Firebase Hosting at the domain root (`/`).
@@ -451,6 +469,7 @@ Data fetch fails:
 
 - Put faculty JSON in `src/faculties/<faculty>/data`.
 - Fetch with `dataUrl("data/file.json")`.
+- Do not fetch build-time content files such as `news.json`; check generated HTML instead.
 
 Dependency commands fail:
 

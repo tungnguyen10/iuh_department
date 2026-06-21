@@ -5,7 +5,7 @@
     "excerpt": "Hướng dẫn sinh viên IUH đăng ký, gia hạn và cập nhật thông tin phòng ở tại Phòng Quản lý Ký túc xá.",
     "category": "Nội trú",
     "date": "12/06/2026",
-    "url": "/contact.html"
+    "url": "/news-detail.html"
   },
   {
     "id": 2,
@@ -21,7 +21,7 @@
     "excerpt": "Các nội dung cần lưu ý về ra vào, tiếp khách, vệ sinh, an ninh và phòng cháy chữa cháy trong khu ký túc xá.",
     "category": "Nội quy",
     "date": "10/06/2026",
-    "url": "/"
+    "url": "/news-detail.html"
   },
   {
     "id": 4,
@@ -29,7 +29,7 @@
     "excerpt": "Kênh tiếp nhận phản ánh về điện, nước, internet, tài sản dùng chung và các nhu cầu sửa chữa trong ký túc xá.",
     "category": "Bảo trì",
     "date": "08/06/2026",
-    "url": "/contact.html"
+    "url": "/news-detail.html"
   },
   {
     "id": 5,
@@ -37,6 +37,6 @@
     "excerpt": "Thông tin liên hệ khi sinh viên cần hỗ trợ về an ninh, y tế hoặc sự cố khẩn cấp tại khu nhà ở.",
     "category": "Hỗ trợ",
     "date": "05/06/2026",
-    "url": "/contact.html"
+    "url": "/news-detail.html"
   }
 ]

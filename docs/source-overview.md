@@ -84,7 +84,7 @@ public
 | `src/shared/assets` | Fonts, IUH logos, system icons, favicons, social/language images, default images |
 | `src/faculties/<faculty>/pages` | Page HTML cua faculty |
 | `src/faculties/<faculty>/components` | Module/feature rieng cua faculty |
-| `src/faculties/<faculty>/data` | JSON runtime cua faculty, output thanh `/data` |
+| `src/faculties/<faculty>/data` | JSON cua faculty. Runtime JSON output thanh `/data`; content build-time nhu `news.json` duoc doc luc transform HTML |
 | `src/faculties/<faculty>/assets` | Anh, SVG, documents cua faculty, output thanh `/assets/...` |
 
 Quy tac phan loai: neu component/asset chua co nhu cau tai su dung giua nhieu faculty, giu no trong faculty module. Chi dua vao `src/shared` khi co reuse ro rang hoac no la platform UI/system asset.
@@ -143,6 +143,14 @@ Include aliases:
 | `@faculty/components/...` | Component HTML cua selected faculty |
 
 Khong dung `@components`; alias nay da duoc go bo.
+
+Shared content component pattern:
+
+- Neu component dung chung giua nhieu faculty va chi khac copy/image/date/link/order, dat UI shell trong `src/shared/components`.
+- Dat content cua tung faculty trong `src/faculties/<faculty>/data`.
+- Neu content tinh va khong can runtime personalization, build nen inject content vao HTML trong `transformDataInclude`, tuong tu header/footer.
+- `news` la mau hien tai: `src/shared/components/news/*` doc content tu `src/faculties/<faculty>/data/news.json` luc build/dev transform va render san HTML; browser khong fetch `/data/news.json`.
+- Chi dung runtime JSON fetch cho tinh nang can du lieu phia browser, vi du search hoac quiz.
 
 Component ownership hien tai:
 
@@ -219,6 +227,7 @@ src/faculties/<faculty>/pages/*.html
      -> inject component HTML
      -> replace {{placeholder}} from data-* attrs
      -> process nested includes
+     -> inject selected-faculty static content for shared data-backed components such as news
   -> Vite build
      -> bundle shared runtime and faculty runtime chunks
      -> copy selected faculty data/documents
@@ -261,6 +270,8 @@ Selected faculty data:
 | `src/faculties/health-science/data/messages-vi.json` | `/data/messages-vi.json` |
 | `src/faculties/health-science/data/messages-en.json` | `/data/messages-en.json` |
 | `src/faculties/dormitory-management/data/search-data.json` | `/data/search-data.json` when `FACULTY=dormitory-management` |
+
+`src/faculties/<faculty>/data/news.json` la source build-time cho shared news. No khong duoc copy ra `/data/news.json`; noi dung da nam san trong HTML generated.
 
 Assets:
 

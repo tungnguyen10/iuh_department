@@ -1,15 +1,11 @@
-<!-- News Carousel Component - Responsive Swiper Carousel -->
+<!-- Shared News Carousel - slides are injected at build time from selected faculty news.json -->
 <div class="w-full pb-8 md:pb-12 {{class}}">
-  <!-- Carousel Container -->
   <div class="relative news-carousel-wrapper w-full">
-    <!-- Header with Title and Navigation -->
     <div class="flex justify-between items-center">
-      <!-- Section Title -->
       <div data-include="@shared/components/common/section-title.html" data-title="{{title}}" data-title-class="text-gray-900"
         data-class="">
       </div>
       <div class="flex gap-2 md:gap-3 flex-shrink-0">
-        <!-- Navigation Buttons (Mobile & Desktop) -->
         <button
           class="news-carousel-prev group flex items-center justify-center w-9 h-9 md:w-10 md:h-10 bg-secondary-blue-light border border-secondary-blue rounded-full hover:bg-primary-dark-blue hover:border-primary-dark-blue transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-secondary-blue-light disabled:hover:border-secondary-blue shadow-sm hover:shadow-md hover:-translate-y-0.5"
           aria-label="Previous slide">
@@ -24,61 +20,12 @@
       </div>
     </div>
 
-    <!-- Swiper -->
     <div class="news-carousel-swiper py-6 md:py-8 overflow-hidden">
-      <div class="swiper-wrapper">
-        <!-- Slide 1 -->
-        <div class="swiper-slide !h-auto">
-          <div data-include="@shared/components/news/news-card.html" data-link="/about" data-image="/assets/images/default.jpg"
-            data-image-alt="Tin tức IUH"
-            data-title="Thông báo về việc nộp và báo cáo môn học Thiết kế hệ thống thông gió và ĐHKK"
-            data-excerpt="Khoa Khoa học Sức khỏe - IUH thông báo đến toàn thể sinh viên. Xem chi tiết và thực hiện đúng hướng dẫn để đảm bảo quyền lợi học tập."
-            data-date="12 tháng 5, 2025">
-          </div>
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="swiper-slide !h-auto">
-          <div data-include="@shared/components/news/news-card.html" data-link="/about" data-image="/assets/images/default.jpg"
-            data-image-alt="Tin tức IUH" data-title="Lịch đăng ký học kì mới"
-            data-excerpt="Khoa Khoa học Sức khỏe - IUH thông báo đến toàn thể sinh viên. Xem chi tiết và thực hiện đúng hướng dẫn để đảm bảo quyền lợi học tập."
-            data-date="12 tháng 5, 2025">
-          </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="swiper-slide !h-auto">
-          <div data-include="@shared/components/news/news-card.html" data-link="/about" data-image="/assets/images/default.jpg"
-            data-image-alt="Tin tức IUH" data-title="Thông báo về thời hạn nộp khóa luận tốt nghiệp HK1 (2025-2026)"
-            data-excerpt="Khoa Khoa học Sức khỏe - IUH thông báo đến toàn thể sinh viên. Xem chi tiết và thực hiện đúng hướng dẫn để đảm bảo quyền lợi học tập."
-            data-date="12 tháng 5, 2025">
-          </div>
-        </div>
-
-        <!-- Slide 4 -->
-        <div class="swiper-slide !h-auto">
-          <div data-include="@shared/components/news/news-card.html" data-link="/about" data-image="/assets/images/default.jpg"
-            data-image-alt="Tin tức IUH"
-            data-title="Thông báo về việc nộp và báo cáo môn học Thiết kế hệ thống thông gió và ĐHKK"
-            data-excerpt="Khoa Khoa học Sức khỏe - IUH thông báo đến toàn thể sinh viên. Xem chi tiết và thực hiện đúng hướng dẫn để đảm bảo quyền lợi học tập."
-            data-date="12 tháng 5, 2025">
-          </div>
-        </div>
-
-        <!-- Slide 5 -->
-        <div class="swiper-slide !h-auto">
-          <div data-include="@shared/components/news/news-card.html" data-link="/about" data-image="/assets/images/default.jpg"
-            data-image-alt="Tin tức IUH" data-title="Lịch đăng ký học kì mới"
-            data-excerpt="Khoa Khoa học Sức khỏe - IUH thông báo đến toàn thể sinh viên. Xem chi tiết và thực hiện đúng hướng dẫn để đảm bảo quyền lợi học tập."
-            data-date="12 tháng 5, 2025">
-          </div>
-        </div>
+      <div class="swiper-wrapper" data-news-carousel-items data-limit="{{limit}}">
+        <p class="font-roboto text-gray-600">Đang tải tin tức...</p>
       </div>
     </div>
 
-    <!-- Pagination (Optional - can be hidden if using navigation buttons) -->
     <div class="news-carousel-pagination swiper-pagination hidden !relative !bottom-0"></div>
-
-
   </div>
 </div>

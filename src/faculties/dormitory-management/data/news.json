@@ -1,0 +1,70 @@
+{
+  "section": {
+    "title": "Thông báo Ký túc xá",
+    "description": "Cập nhật các mốc thời gian, quy định và dịch vụ liên quan đến sinh viên đang sinh hoạt nội trú."
+  },
+  "items": [
+    {
+      "id": 1,
+      "slug": "huong-dan-dang-ky-cho-o-ky-tuc-xa",
+      "title": "Hướng dẫn đăng ký chỗ ở ký túc xá học kỳ mới",
+      "excerpt": "Phòng Quản lý Ký túc xá tiếp nhận hồ sơ đăng ký, gia hạn và điều chỉnh thông tin phòng ở cho sinh viên IUH.",
+      "category": "Nội trú",
+      "date": "12 tháng 6, 2026",
+      "image": "/assets/images/dormitory-office.svg",
+      "imageAlt": "Thông báo đăng ký nội trú",
+      "caption": "Văn phòng tiếp nhận hồ sơ nội trú",
+      "content": [
+        { "type": "paragraph", "text": "Phòng Quản lý Ký túc xá thông báo kế hoạch tiếp nhận hồ sơ đăng ký chỗ ở học kỳ mới. Sinh viên có nhu cầu ở nội trú cần chuẩn bị thông tin cá nhân, minh chứng thuộc diện ưu tiên nếu có và hoàn tất biểu mẫu theo hướng dẫn." },
+        { "type": "notice", "title": "Mốc thời gian cần lưu ý", "text": "Sinh viên nên hoàn tất đăng ký trong thời gian tiếp nhận để được xét bố trí phòng theo thứ tự ưu tiên và tình trạng chỗ ở thực tế." },
+        { "type": "heading", "level": 2, "text": "Hồ sơ đăng ký" },
+        { "type": "list", "items": ["Phiếu đăng ký chỗ ở theo mẫu của Phòng Quản lý Ký túc xá.", "Bản sao giấy tờ sinh viên hoặc thông tin xác nhận đang học tại IUH.", "Minh chứng diện ưu tiên nếu sinh viên thuộc nhóm chính sách, hoàn cảnh khó khăn hoặc ở xa."] },
+        { "type": "heading", "level": 2, "text": "Quy trình tiếp nhận" },
+        { "type": "paragraph", "text": "Sau khi nhận hồ sơ, bộ phận phụ trách kiểm tra thông tin, đối chiếu tình trạng phòng và thông báo kết quả cho sinh viên. Sinh viên được duyệt cần hoàn tất xác nhận, nhận phòng và ký cam kết thực hiện nội quy." },
+        { "type": "info", "title": "Kênh hỗ trợ", "text": "Sinh viên liên hệ văn phòng ký túc xá qua email kytucxa@iuh.edu.vn hoặc số tổng đài 0283 8940 390 khi cần được hướng dẫn thêm." }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "lich-bao-tri-he-thong-dien-nuoc",
+      "title": "Lịch bảo trì hệ thống điện nước tại khu nhà ở",
+      "excerpt": "Sinh viên theo dõi lịch bảo trì định kỳ và gửi phản ánh nếu cần hỗ trợ về phòng ở, điện, nước hoặc internet.",
+      "category": "Bảo trì",
+      "date": "10 tháng 6, 2026",
+      "image": "/assets/images/dormitory-maintenance.svg",
+      "imageAlt": "Bảo trì cơ sở vật chất",
+      "content": [
+        { "type": "paragraph", "text": "Đội bảo trì ký túc xá thực hiện kiểm tra định kỳ hệ thống điện, nước và các khu vực dùng chung nhằm bảo đảm sinh hoạt ổn định cho sinh viên." },
+        { "type": "list", "items": ["Sinh viên chủ động lưu trữ thiết bị cá nhân trước khung giờ bảo trì.", "Thông báo ngay cho khu trực nếu phát hiện rò rỉ nước, mất điện cục bộ hoặc hư hỏng tài sản chung.", "Các yêu cầu khẩn cấp được ưu tiên xử lý theo mức độ ảnh hưởng đến an toàn sinh hoạt."] }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "tang-cuong-noi-quy-sinh-hoat-an-ninh",
+      "title": "Tăng cường nội quy sinh hoạt và an ninh khu túc xá",
+      "excerpt": "Các khu nhà ở cập nhật hướng dẫn ra vào, tiếp khách, giữ gìn vệ sinh và phòng cháy chữa cháy trong ký túc xá.",
+      "category": "Nội quy",
+      "date": "08 tháng 6, 2026",
+      "image": "/assets/images/dormitory-campus.svg",
+      "imageAlt": "Sinh hoạt cộng đồng",
+      "content": [
+        { "type": "paragraph", "text": "Phòng Quản lý Ký túc xá đề nghị sinh viên thực hiện nghiêm nội quy sinh hoạt, quy định ra vào và các yêu cầu về an ninh, vệ sinh, phòng cháy chữa cháy." },
+        { "type": "list", "items": ["Xuất trình thẻ hoặc thông tin xác nhận khi ra vào khu nhà.", "Không tự ý đưa người ngoài vào lưu trú qua đêm.", "Giữ gìn vệ sinh khu vực phòng ở, hành lang và không gian sinh hoạt chung."] }
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "kenh-tiep-nhan-yeu-cau-ho-tro-sinh-vien",
+      "title": "Kênh tiếp nhận yêu cầu hỗ trợ sinh viên nội trú",
+      "excerpt": "Sinh viên có thể liên hệ văn phòng ký túc xá để được hướng dẫn về thủ tục, dịch vụ và các tình huống cần xử lý khẩn cấp.",
+      "category": "Hỗ trợ",
+      "date": "05 tháng 6, 2026",
+      "image": "/assets/images/dormitory-support.svg",
+      "imageAlt": "Hỗ trợ sinh viên",
+      "content": [
+        { "type": "paragraph", "text": "Phòng Quản lý Ký túc xá tiếp nhận phản ánh và yêu cầu hỗ trợ liên quan đến phòng ở, dịch vụ dùng chung, an ninh và các tình huống phát sinh trong quá trình sinh hoạt nội trú." },
+        { "type": "info", "title": "Thông tin liên hệ", "text": "Sinh viên liên hệ trực tiếp văn phòng, gửi email kytucxa@iuh.edu.vn hoặc gọi tổng đài 0283 8940 390 để được hướng dẫn." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "section": {
+    "title": "Tin tức - Sự kiện",
+    "description": "Cập nhật thông báo, hoạt động đào tạo, nghiên cứu và sinh hoạt sinh viên của Khoa Khoa học Sức khỏe."
+  },
+  "items": [
+    {
+      "id": 1,
+      "slug": "thong-bao-nop-bao-cao-mon-hoc",
+      "title": "Thông báo về việc nộp và báo cáo môn học Thiết kế hệ thống thông gió và ĐHKK",
+      "excerpt": "Khoa thông báo lịch nộp báo cáo, thời gian trình bày và các yêu cầu chuẩn bị cho sinh viên trong học kỳ 2 năm học 2024-2025.",
+      "category": "Thông báo",
+      "date": "12 tháng 5, 2025",
+      "image": "/assets/images/default.jpg",
+      "imageAlt": "Sinh viên thực hành tại phòng lab",
+      "caption": "Sinh viên thực hành tại phòng lab",
+      "content": [
+        { "type": "paragraph", "text": "Khoa Khoa học Sức khỏe thông báo đến toàn thể sinh viên về lịch nộp và báo cáo đồ án môn học trong học kỳ 2 năm học 2024-2025. Sinh viên cần chuẩn bị đầy đủ báo cáo, bản vẽ, slide trình bày và các tài liệu liên quan theo hướng dẫn của giảng viên phụ trách." },
+        { "type": "notice", "title": "Lưu ý quan trọng", "text": "Sinh viên cần nộp đầy đủ tài liệu theo đúng thời gian quy định. Trường hợp nộp trễ sẽ được xử lý theo quy chế học vụ hiện hành." },
+        { "type": "heading", "level": 2, "text": "Thời gian và địa điểm" },
+        { "type": "list", "items": ["Hạn nộp báo cáo viết: 23:59 ngày 20/05/2025.", "Thời gian báo cáo trực tiếp: ngày 22/05/2025 và 23/05/2025 theo danh sách phân ca.", "Địa điểm báo cáo: phòng thực hành và phòng học được công bố trên hệ thống của khoa."] },
+        { "type": "heading", "level": 2, "text": "Yêu cầu nội dung báo cáo" },
+        { "type": "paragraph", "text": "Báo cáo cần thể hiện rõ mục tiêu, cơ sở lý thuyết, phương pháp thực hiện, kết quả, nhận xét và kiến nghị. Các nhóm chuẩn bị slide thuyết trình từ 10 đến 15 phút và sẵn sàng trả lời câu hỏi của hội đồng." },
+        { "type": "info", "title": "Hỗ trợ sinh viên", "text": "Sinh viên liên hệ văn phòng khoa hoặc giảng viên phụ trách học phần nếu cần hỗ trợ về biểu mẫu, lịch báo cáo hoặc yêu cầu kỹ thuật." }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "lich-dang-ky-hoc-ky-moi",
+      "title": "Lịch đăng ký học kỳ mới",
+      "excerpt": "Sinh viên theo dõi thời gian đăng ký học phần, điều chỉnh lớp học và hoàn tất học phí theo kế hoạch đào tạo.",
+      "category": "Đào tạo",
+      "date": "10 tháng 5, 2025",
+      "image": "/assets/images/default.jpg",
+      "imageAlt": "Thông báo lịch đăng ký học kỳ",
+      "content": [
+        { "type": "paragraph", "text": "Khoa Khoa học Sức khỏe thông báo kế hoạch đăng ký học phần học kỳ mới. Sinh viên cần kiểm tra chương trình đào tạo, điều kiện tiên quyết và lịch học dự kiến trước khi đăng ký." },
+        { "type": "list", "items": ["Đăng ký học phần theo thời gian phân bổ trên hệ thống.", "Kiểm tra lịch học, lịch thực hành và lịch thi dự kiến.", "Liên hệ cố vấn học tập nếu có vướng mắc về tiến độ học tập."] }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "hoi-thao-y-te-cong-dong-dinh-duong-2025",
+      "title": "Hội thảo khoa học Y tế cộng đồng và Dinh dưỡng 2025",
+      "excerpt": "Khoa tổ chức hội thảo khoa học về y tế cộng đồng, dinh dưỡng lâm sàng và an toàn thực phẩm.",
+      "category": "Sự kiện",
+      "date": "15 tháng 9, 2025",
+      "image": "/assets/images/default.jpg",
+      "imageAlt": "Hội thảo khoa học",
+      "content": [
+        { "type": "paragraph", "text": "Hội thảo là diễn đàn để giảng viên, sinh viên và đối tác trao đổi kết quả nghiên cứu, kinh nghiệm thực tiễn và định hướng hợp tác trong lĩnh vực sức khỏe cộng đồng." },
+        { "type": "paragraph", "text": "Các chủ đề tập trung vào phòng bệnh, dinh dưỡng học đường, an toàn thực phẩm và ứng dụng công nghệ trong chăm sóc sức khỏe." }
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "chuong-trinh-thuc-tap-lam-sang",
+      "title": "Chương trình thực tập lâm sàng tại các bệnh viện đối tác",
+      "excerpt": "Sinh viên được bố trí thực tập tại các bệnh viện và cơ sở y tế đối tác theo kế hoạch của khoa.",
+      "category": "Thực tập",
+      "date": "01 tháng 9, 2025",
+      "image": "/assets/images/default.jpg",
+      "imageAlt": "Thực tập lâm sàng",
+      "content": [
+        { "type": "paragraph", "text": "Chương trình thực tập giúp sinh viên tiếp cận môi trường nghề nghiệp, rèn luyện kỹ năng chuyên môn và thái độ phục vụ người bệnh." },
+        { "type": "list", "items": ["Tuân thủ nội quy bệnh viện và hướng dẫn của giảng viên.", "Hoàn thành nhật ký thực tập và báo cáo cuối đợt.", "Chủ động phản hồi các vấn đề phát sinh để được hỗ trợ kịp thời."] }
+      ]
+    }
+  ]
+}
