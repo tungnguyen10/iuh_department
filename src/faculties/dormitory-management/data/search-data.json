@@ -1,5 +1,13 @@
 [
   {
+    "id": 6,
+    "title": "Giới thiệu Phòng Quản lý Ký túc xá",
+    "excerpt": "Thông tin về vai trò hỗ trợ sinh viên nội trú, chỗ ở, an ninh, bảo trì, nội quy sinh hoạt và cộng đồng ký túc xá IUH.",
+    "category": "Giới thiệu",
+    "date": "21/06/2026",
+    "url": "/about.html"
+  },
+  {
     "id": 1,
     "title": "Đăng ký chỗ ở ký túc xá",
     "excerpt": "Hướng dẫn sinh viên IUH đăng ký, gia hạn và cập nhật thông tin phòng ở tại Phòng Quản lý Ký túc xá.",

@@ -26,12 +26,14 @@ export const dormitoryManagementFacultyConfig = {
     email: "kytucxa@iuh.edu.vn",
     phone: "0283 8940 390",
     quickLinks: [
+      { text: "Giới thiệu KTX", href: "/about.html" },
       { text: "Đăng ký nội trú", href: "/news-detail.html" },
       { text: "Sinh viên nội trú", href: "/news.html" },
       { text: "Hỗ trợ bảo trì", href: "/news-detail.html" },
     ],
     navItems: [
       { text: "TRANG CHỦ", href: "/" },
+      { text: "GIỚI THIỆU", href: "/about.html" },
       { text: "THÔNG BÁO", href: "/news.html" },
       {
         text: "DỊCH VỤ NỘI TRÚ",
@@ -48,6 +50,7 @@ export const dormitoryManagementFacultyConfig = {
   },
   search: {
     quickLinks: [
+      { text: "Giới thiệu", href: "/about.html" },
       { text: "Đăng ký nội trú", href: "/news-detail.html" },
       { text: "Bảo trì phòng ở", href: "/news-detail.html" },
       { text: "An ninh ký túc xá", href: "/news-detail.html" },
@@ -56,6 +59,7 @@ export const dormitoryManagementFacultyConfig = {
       { text: "Liên hệ", href: "/contact.html" },
     ],
     categories: [
+      { text: "Giới thiệu", href: "/about.html", icon: "GT" },
       { text: "Thông báo", href: "/news.html", icon: "TB" },
       { text: "Dịch vụ nội trú", href: "/news-detail.html", icon: "DV" },
       { text: "Cơ sở vật chất", href: "/#infrastructure-section", icon: "CS" },
