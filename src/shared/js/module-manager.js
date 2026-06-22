@@ -7,6 +7,7 @@
 
 const STORAGE_KEY = 'sugi_module_states'
 const ORDER_KEY = 'sugi_module_order'
+const ORDER_SOURCE_KEY = 'sugi_module_order_source'
 
 const DEFAULT_ORDER = [
   'carousel',
@@ -14,8 +15,10 @@ const DEFAULT_ORDER = [
   'major',
   'admission',
   'stats',
-  'news',
   'rules-guide',
+  'activities',
+  'news',
+  'career-support',
   'infrastructure',
   'research',
   'industry-careers',
@@ -28,9 +31,11 @@ const DEFAULT_MODULES = {
   major: true,
   admission: true,
   stats: true,
-  news: true,
   'rules-guide': true,
+  activities: true,
+  news: true,
   infrastructure: true,
+  'career-support': true,
   research: true,
   'industry-careers': true,
   partners: true
@@ -44,6 +49,8 @@ const MODULE_LABELS = {
   stats: 'Thống Kê',
   news: 'Tin Tức - Sự Kiện',
   'rules-guide': 'Nội Quy & Hướng Dẫn',
+  activities: 'Hoạt Động & Phong Trào',
+  'career-support': 'Hỗ Trợ Nghề Nghiệp',
   infrastructure: 'Cơ Sở Vật Chất',
   research: 'Nghiên Cứu',
   'industry-careers': 'Hợp Tác & Nghề Nghiệp',
@@ -168,6 +175,7 @@ class ModuleManager {
 
       const checkbox = document.createElement('input')
       checkbox.type = 'checkbox'
+      checkbox.dataset.module = moduleName
       checkbox.checked = this.modules[moduleName]
       checkbox.style.cssText = `
         width: 18px;
@@ -457,13 +465,62 @@ class ModuleManager {
    * Load module order from localStorage
    */
   loadOrder() {
+    const sourceOrder = this.getSourceModuleOrder()
+    const sourceSignature = this.getOrderSignature(sourceOrder)
+
     try {
       const saved = localStorage.getItem(ORDER_KEY)
-      return this.normalizeOrder(saved ? JSON.parse(saved) : DEFAULT_ORDER)
+      const savedSource = localStorage.getItem(ORDER_SOURCE_KEY)
+
+      if (saved && savedSource === sourceSignature) {
+        return this.normalizeOrder(JSON.parse(saved))
+      }
+
+      if (saved && savedSource !== sourceSignature) {
+        localStorage.removeItem(ORDER_KEY)
+        localStorage.removeItem(ORDER_SOURCE_KEY)
+        console.info('Source module order changed; using pages/index.html order')
+      }
     } catch (error) {
       console.warn('Failed to load module order:', error)
-      return [...DEFAULT_ORDER]
     }
+
+    return sourceOrder
+  }
+
+  /**
+   * Use the HTML source order as the default so editing pages/index.html is
+   * reflected immediately unless the dev tool has a saved custom order.
+   */
+  getSourceModuleOrder() {
+    const container = document.querySelector('section.mx-auto')
+      || document.querySelector('main')
+      || document.body
+
+    if (!container) return [...DEFAULT_ORDER]
+
+    const sourceOrder = Array.from(container.children)
+      .map(element => element.dataset?.module)
+      .filter(Boolean)
+
+    if (sourceOrder.length === 0) return [...DEFAULT_ORDER]
+
+    const included = new Set(sourceOrder)
+    DEFAULT_ORDER.forEach(moduleName => {
+      if (!included.has(moduleName)) {
+        sourceOrder.push(moduleName)
+      }
+    })
+
+    return sourceOrder
+  }
+
+  /**
+   * Store saved drag order against the current source order. When the source
+   * order changes, the stale saved order is ignored automatically.
+   */
+  getOrderSignature(order = this.getSourceModuleOrder()) {
+    return JSON.stringify(order)
   }
 
   /**
@@ -504,6 +561,7 @@ class ModuleManager {
   saveOrder() {
     try {
       localStorage.setItem(ORDER_KEY, JSON.stringify(this.moduleOrder))
+      localStorage.setItem(ORDER_SOURCE_KEY, this.getOrderSignature())
     } catch (error) {
       console.error('Failed to save module order:', error)
     }
@@ -590,7 +648,7 @@ class ModuleManager {
    */
   resetDefault() {
     this.modules = { ...DEFAULT_MODULES }
-    this.moduleOrder = [...DEFAULT_ORDER]
+    this.moduleOrder = this.getSourceModuleOrder()
     this.initModules()
     this.applyModuleOrder()
     

@@ -1,0 +1,27 @@
+<section class="container mx-auto flex flex-col gap-8 px-4 py-8 md:py-12 lg:flex-row">
+  <div class="flex w-full flex-1 flex-col gap-6 md:gap-10 lg:w-9/12" data-activities-detail>
+    <article class="rounded-2xl border border-stroke bg-white p-4 shadow-sm md:p-6">
+      <p class="font-roboto text-gray-600">Đang tải hoạt động...</p>
+    </article>
+  </div>
+
+  <aside class="flex w-full shrink-0 flex-col gap-6 md:gap-8 lg:w-3/12">
+    <div class="flex flex-col gap-3 md:gap-4">
+      <div data-include="@shared/components/common/child-title.html" data-title="HOẠT ĐỘNG LIÊN QUAN"></div>
+      <div class="flex flex-col gap-2 md:gap-2.5" data-activities-sidebar-items data-limit="4">
+        <p class="font-roboto text-sm text-gray-600">Đang tải hoạt động...</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-3 md:gap-4">
+      <div data-include="@shared/components/common/child-title.html" data-title="NHÓM HOẠT ĐỘNG"></div>
+      <div class="rounded-lg border border-stroke bg-primary-white p-3 shadow-[1px_1px_10px_0_rgba(0,0,0,0.06)]" data-activities-category-items>
+        <p class="font-roboto text-sm text-gray-600">Đang tải nhóm hoạt động...</p>
+      </div>
+    </div>
+  </aside>
+</section>
+
+<div class="container mx-auto px-4">
+  <div data-include="@faculty/components/activities/activities-carousel.html" data-title="Hoạt động khác"></div>
+</div>

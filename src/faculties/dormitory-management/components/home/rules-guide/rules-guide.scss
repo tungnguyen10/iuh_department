@@ -1,24 +1,4 @@
 .rules-guide-section {
-  .rules-guide-board {
-    isolation: isolate;
-
-    &::before {
-      content: "";
-      position: absolute;
-      inset: 1rem auto auto 1rem;
-      width: calc(100% - 2rem);
-      height: 0.25rem;
-      border-radius: 999px;
-      background: repeating-linear-gradient(
-        90deg,
-        rgba(249, 178, 0, 0.95) 0 2.5rem,
-        rgba(255, 255, 255, 0.32) 2.5rem 2.875rem
-      );
-      opacity: 0.75;
-      z-index: 0;
-    }
-  }
-
   .rules-guide-board__rail {
     position: absolute;
     inset: 0;

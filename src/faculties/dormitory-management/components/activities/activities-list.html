@@ -1,0 +1,37 @@
+<section class="container mx-auto flex flex-col gap-8 px-4 py-8 md:py-12 lg:flex-row">
+  <div class="flex w-full flex-1 flex-col gap-6 md:gap-10 lg:w-9/12">
+    <div class="max-w-3xl">
+      <p class="font-roboto text-sm font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Đời sống sinh viên</p>
+      <h1 class="mt-2 font-inter text-2xl font-bold leading-tight text-title sm:text-3xl md:text-[32px]">Hoạt động &amp; Phong trào</h1>
+      <p class="mt-3 font-roboto text-sm leading-relaxed text-gray-700 sm:text-base">
+        Các hoạt động tại Ký túc xá IUH góp phần xây dựng môi trường nội trú năng động, văn minh, gắn kết và hỗ trợ sinh viên trong quá trình học tập, rèn luyện.
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-4" data-activities-list>
+      <p class="font-roboto text-gray-600">Đang tải hoạt động...</p>
+    </div>
+
+    <div data-include="@shared/components/common/pagination.html"></div>
+  </div>
+
+  <aside class="flex w-full shrink-0 flex-col gap-6 md:gap-8 lg:w-3/12">
+    <div class="flex flex-col gap-3 md:gap-4">
+      <div data-include="@shared/components/common/child-title.html" data-title="HOẠT ĐỘNG NỔI BẬT"></div>
+      <div class="flex flex-col gap-2 md:gap-2.5" data-activities-sidebar-items data-limit="4">
+        <p class="font-roboto text-sm text-gray-600">Đang tải hoạt động...</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-3 md:gap-4">
+      <div data-include="@shared/components/common/child-title.html" data-title="NHÓM HOẠT ĐỘNG"></div>
+      <div class="rounded-lg border border-stroke bg-primary-white p-3 shadow-[1px_1px_10px_0_rgba(0,0,0,0.06)]" data-activities-category-items>
+        <p class="font-roboto text-sm text-gray-600">Đang tải nhóm hoạt động...</p>
+      </div>
+    </div>
+  </aside>
+</section>
+
+<div class="container mx-auto px-4">
+  <div data-include="@faculty/components/activities/activities-carousel.html" data-title="Hoạt động liên quan"></div>
+</div>

@@ -1,0 +1,30 @@
+<div class="w-full pb-8 md:pb-12 {{class}}">
+  <div class="news-carousel-wrapper relative w-full">
+    <div class="flex items-center justify-between">
+      <div data-include="@shared/components/common/section-title.html" data-title="{{title}}" data-title-class="text-gray-900"
+        data-class="">
+      </div>
+      <div class="flex shrink-0 gap-2 md:gap-3">
+        <button
+          class="news-carousel-prev group flex h-9 w-9 items-center justify-center rounded-full border border-secondary-blue bg-secondary-blue-light shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-dark-blue hover:bg-primary-dark-blue hover:shadow-md disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0 disabled:hover:border-secondary-blue disabled:hover:bg-secondary-blue-light md:h-10 md:w-10"
+          aria-label="Previous slide">
+          <img src="/assets/svgs/icon-chevron-left.svg" alt="" class="h-5 w-5 text-primary-dark-blue transition-all duration-300 group-hover:scale-110 group-hover:text-primary-white" />
+        </button>
+
+        <button
+          class="news-carousel-next group flex h-9 w-9 items-center justify-center rounded-full border border-secondary-blue bg-secondary-blue-light shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-dark-blue hover:bg-primary-dark-blue hover:shadow-md disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0 disabled:hover:border-secondary-blue disabled:hover:bg-secondary-blue-light md:h-10 md:w-10"
+          aria-label="Next slide">
+          <img src="/assets/svgs/icon-chevron-right.svg" alt="" class="h-5 w-5 text-primary-dark-blue transition-all duration-300 group-hover:scale-110 group-hover:text-primary-white" />
+        </button>
+      </div>
+    </div>
+
+    <div class="news-carousel-swiper overflow-hidden py-6 md:py-8">
+      <div class="swiper-wrapper" data-activities-carousel-items data-limit="{{limit}}">
+        <p class="font-roboto text-gray-600">Đang tải hoạt động...</p>
+      </div>
+    </div>
+
+    <div class="news-carousel-pagination swiper-pagination hidden !relative !bottom-0"></div>
+  </div>
+</div>

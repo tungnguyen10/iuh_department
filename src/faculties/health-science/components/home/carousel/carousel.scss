@@ -14,11 +14,14 @@
     --swiper-navigation-sides-offset: 24px;
   }
 
-  .carousel-slide-content img {
-    min-height: 360px;
-    max-height: 620px;
+   .carousel-slide-content img {
+    aspect-ratio: 1920/700;
     object-fit: cover;
+     @media (max-width: 768px) {
+       aspect-ratio: 780/500;
+    }
   }
+
 
   .hero-nav-next,
   .hero-nav-prev {

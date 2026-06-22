@@ -8,101 +8,177 @@
   data-current-page="Giới thiệu Phòng Quản lý Ký túc xá" data-parent-page2="" data-parent-link2="" data-parent-page2-class="">
 </div>
 
-<div data-include="@faculty/components/about/intro/index.html"></div>
+<section class="relative overflow-hidden bg-primary-dark-blue">
+  <div class="absolute inset-0 opacity-20">
+    <img src="/assets/images/dormitory-campus.jpg" alt="" class="h-full w-full object-cover" />
+  </div>
+  <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(21,56,152,0.94)_0%,rgba(21,56,152,0.82)_48%,rgba(21,56,152,0.58)_100%)]"></div>
+  <div class="container relative z-10 mx-auto px-4 py-12 md:py-16 lg:py-20">
+    <div class="grid grid-cols-1 items-end gap-8 lg:grid-cols-12">
+      <div class="lg:col-span-7">
+        <div class="inline-flex items-center gap-2 rounded-full border border-primary-white/20 bg-primary-white/10 px-4 py-2">
+          <span class="h-2 w-2 rounded-full bg-primary-yellow"></span>
+          <span class="font-roboto text-sm font-medium text-primary-white md:text-base">Giới thiệu Phòng Quản lý Ký túc xá</span>
+        </div>
+        <h1 class="mt-6 max-w-3xl font-inter text-3xl font-bold leading-tight text-primary-white md:text-5xl">
+          Trạm điều phối đời sống nội trú của sinh viên IUH
+        </h1>
+        <p class="mt-5 max-w-2xl font-roboto text-base leading-relaxed text-primary-white md:text-lg">
+          Phòng Quản lý Ký túc xá là đầu mối tiếp nhận, phân luồng và phối hợp các nhu cầu về chỗ ở, an ninh, bảo trì, nội quy và sinh hoạt cộng đồng trong khu nội trú.
+        </p>
+      </div>
+
+      <div class="lg:col-span-5">
+        <div class="rounded-lg border border-primary-white/15 bg-primary-white p-5 shadow-[0_24px_60px_rgba(0,0,0,0.22)] md:p-6">
+          <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Hồ sơ đơn vị</p>
+          <div class="mt-4 space-y-3">
+            <div class="flex items-start gap-3 rounded-lg bg-secondary-blue-light p-4">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-white">
+                <img src="/assets/svgs/icon-building.svg" alt="" class="h-5 w-5" />
+              </span>
+              <div>
+                <p class="font-inter text-base font-bold text-title">Quản lý chỗ ở nội trú</p>
+                <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700">Hướng dẫn đăng ký, gia hạn, nhận phòng và cập nhật thông tin lưu trú.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 rounded-lg bg-secondary-yellow-light p-4">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-white">
+                <img src="/assets/svgs/icon-shield-check.svg" alt="" class="h-5 w-5" />
+              </span>
+              <div>
+                <p class="font-inter text-base font-bold text-title">Phối hợp an toàn và dịch vụ</p>
+                <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700">Kết nối khu trực, bảo trì, y tế và công tác sinh viên theo từng nhóm yêu cầu.</p>
+              </div>
+            </div>
+          </div>
+          <a href="/contact.html" class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full border border-primary-dark-blue bg-primary-dark-blue px-5 py-3 font-roboto text-sm font-medium text-primary-white transition-all duration-300 hover:border-primary-yellow hover:bg-primary-yellow hover:text-primary-dark-blue focus:outline-none focus:ring-2 focus:ring-primary-yellow focus:ring-offset-2">
+            <span>Liên hệ hỗ trợ</span>
+            <img src="/assets/svgs/icon-arrow-up-right.svg" alt="" class="h-5 w-5" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="bg-primary-white py-12 md:py-16 lg:py-20">
   <div class="container mx-auto px-4">
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
-      <div class="lg:col-span-5">
+      <div class="lg:col-span-4">
         <div data-include="@shared/components/common/section-title.html"
-          data-subtitle="Vai trò"
-          data-title="Đầu mối vận hành đời sống nội trú"
-          data-description="Phòng Quản lý Ký túc xá tổ chức các hoạt động phục vụ sinh viên nội trú từ khâu tiếp nhận chỗ ở đến hỗ trợ sinh hoạt hằng ngày."
+          data-subtitle="Bản đồ đầu mối"
+          data-title="Sinh viên hỏi đúng nơi, việc được chuyển đúng người"
+          data-description="Trang giới thiệu này tập trung vào cách Phòng Quản lý Ký túc xá vận hành từng nhóm nhu cầu nội trú, từ thủ tục chỗ ở đến phản ánh sinh hoạt."
           data-class="sticky top-24"
           data-subtitle-class="text-primary-dark-blue"
           data-title-class="text-title"
-          data-description-class="text-gray-700">
+          data-description-class="mt-4 text-gray-700">
+        </div>
+      </div>
+
+      <div class="lg:col-span-8">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <article class="group rounded-lg border border-primary-dark-blue/10 bg-secondary-blue-light p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary-dark-blue/35 hover:shadow-[0_18px_36px_rgba(21,56,152,0.12)] motion-reduce:transform-none">
+            <div class="flex items-start gap-4">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary-white">
+                <img src="/assets/svgs/icon-building.svg" alt="" class="h-6 w-6" />
+              </span>
+              <div>
+                <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Chỗ ở</p>
+                <h2 class="mt-2 font-inter text-xl font-bold leading-snug text-title">Đăng ký, gia hạn, nhận phòng</h2>
+                <p class="mt-2 font-roboto text-sm leading-relaxed text-gray-700 md:text-base">Hướng dẫn sinh viên chuẩn bị thông tin lưu trú, nắm nội quy và hoàn tất các bước liên quan đến phòng ở.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-lg border border-primary-dark-blue/10 bg-primary-dark-blue p-5 text-primary-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(21,56,152,0.18)] motion-reduce:transform-none">
+            <div class="flex items-start gap-4">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary-white/10">
+                <img src="/assets/svgs/icon-shield-check.svg" alt="" class="h-6 w-6 brightness-0 invert" />
+              </span>
+              <div>
+                <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-yellow">An toàn</p>
+                <h2 class="mt-2 font-inter text-xl font-bold leading-snug">An ninh, PCCC, tình huống khẩn cấp</h2>
+                <p class="mt-2 font-roboto text-sm leading-relaxed text-primary-white/82 md:text-base">Phối hợp trực khu, bảo vệ, y tế và công tác sinh viên để phản hồi các vấn đề có nguy cơ ảnh hưởng an toàn.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-lg border border-primary-dark-blue/10 bg-primary-white p-5 shadow-[0_14px_34px_rgba(21,56,152,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-primary-dark-blue/35 hover:shadow-[0_18px_36px_rgba(21,56,152,0.12)] motion-reduce:transform-none">
+            <div class="flex items-start gap-4">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-secondary-yellow-light">
+                <img src="/assets/svgs/icon-help-circle.svg" alt="" class="h-6 w-6" />
+              </span>
+              <div>
+                <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Dịch vụ</p>
+                <h2 class="mt-2 font-inter text-xl font-bold leading-snug text-title">Bảo trì, phản ánh, điều kiện sinh hoạt</h2>
+                <p class="mt-2 font-roboto text-sm leading-relaxed text-gray-700 md:text-base">Tiếp nhận nội dung về điện, nước, internet, tài sản chung và chuyển đến bộ phận phụ trách theo mức độ ưu tiên.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-lg border border-primary-dark-blue/10 bg-secondary-yellow-light p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary-dark-blue/35 hover:shadow-[0_18px_36px_rgba(21,56,152,0.12)] motion-reduce:transform-none">
+            <div class="flex items-start gap-4">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary-white">
+                <img src="/assets/svgs/icon-handshake.svg" alt="" class="h-6 w-6" />
+              </span>
+              <div>
+                <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Cộng đồng</p>
+                <h2 class="mt-2 font-inter text-xl font-bold leading-snug text-title">Nếp sống, thông báo, kết nối sinh viên</h2>
+                <p class="mt-2 font-roboto text-sm leading-relaxed text-gray-700 md:text-base">Truyền thông nội quy, nhắc lịch sinh hoạt và đồng hành cùng hoạt động xây dựng môi trường sống văn minh.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-[linear-gradient(180deg,#E3F6FD_0%,#FFFFFF_100%)] py-12 md:py-16 lg:py-20">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-12 lg:gap-8">
+      <div class="lg:col-span-5">
+        <div class="relative h-full min-h-80 overflow-hidden rounded-lg bg-primary-dark-blue shadow-[0_22px_52px_rgba(21,56,152,0.18)]">
+          <img src="/assets/images/dormitory-campus.jpg" alt="Văn phòng tiếp nhận ký túc xá" class="h-full w-full object-cover opacity-90" />
+          <div class="absolute inset-0 bg-gradient-to-t from-primary-dark-blue/82 via-primary-dark-blue/28 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 md:p-6">
+            <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-yellow">Văn phòng tiếp nhận</p>
+            <h2 class="mt-2 font-inter text-2xl font-bold leading-tight text-primary-white">Một yêu cầu, một đầu mối theo dõi</h2>
+            <p class="mt-3 font-roboto text-sm leading-relaxed text-primary-white md:text-base">Mọi phản ánh nên có thông tin phòng, thời gian, nội dung và kênh liên hệ để bộ phận phụ trách xử lý nhanh hơn.</p>
+          </div>
         </div>
       </div>
 
       <div class="lg:col-span-7">
-        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <article class="rounded-lg bg-secondary-blue-light p-6">
-            <span class="font-inter text-sm font-bold text-primary-dark-blue">01</span>
-            <h2 class="mt-3 font-inter text-xl font-bold text-title">Tiếp nhận và hướng dẫn</h2>
-            <p class="mt-3 font-roboto text-base leading-relaxed text-gray-700">
-              Hướng dẫn đăng ký, gia hạn, nhận phòng, điều chỉnh thông tin lưu trú và các thủ tục liên quan đến đời sống nội trú.
-            </p>
-          </article>
+        <div class="rounded-lg border border-primary-dark-blue/10 bg-primary-white p-5 shadow-[0_18px_42px_rgba(21,56,152,0.10)] md:p-6">
+          <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Nhịp xử lý yêu cầu</p>
+          <h2 class="mt-2 font-inter text-2xl font-bold leading-tight text-title md:text-3xl">Từ tiếp nhận đến phản hồi</h2>
 
-          <article class="rounded-lg bg-primary-dark-blue p-6">
-            <span class="font-inter text-sm font-bold text-primary-yellow">02</span>
-            <h2 class="mt-3 font-inter text-xl font-bold text-primary-white">Giữ gìn an toàn</h2>
-            <p class="mt-3 font-roboto text-base leading-relaxed text-primary-white/85">
-              Phối hợp bảo vệ, y tế, công tác sinh viên và các đơn vị liên quan để hỗ trợ an ninh, phòng cháy chữa cháy và xử lý tình huống khẩn cấp.
-            </p>
-          </article>
+          <div class="mt-6 grid grid-cols-1 gap-4">
+            <article class="grid grid-cols-[4.5rem_1fr] gap-4 rounded-lg bg-secondary-blue-light p-4">
+              <time class="font-inter text-sm font-extrabold text-primary-dark-blue">Bước 1</time>
+              <div>
+                <h3 class="font-inter text-lg font-bold text-title">Ghi nhận đúng nội dung</h3>
+                <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700 md:text-base">Sinh viên gửi nhu cầu qua văn phòng, khu trực hoặc kênh thông báo được hướng dẫn trên website.</p>
+              </div>
+            </article>
 
-          <article class="rounded-lg bg-white p-6 shadow-[1px_1px_10px_0_rgba(0,0,0,0.1)]">
-            <span class="font-inter text-sm font-bold text-primary-dark-blue">03</span>
-            <h2 class="mt-3 font-inter text-xl font-bold text-title">Bảo trì và phản ánh</h2>
-            <p class="mt-3 font-roboto text-base leading-relaxed text-gray-700">
-              Tiếp nhận phản ánh về phòng ở, điện, nước, internet, tài sản dùng chung và phối hợp xử lý theo mức độ ưu tiên.
-            </p>
-          </article>
+            <article class="grid grid-cols-[4.5rem_1fr] gap-4 rounded-lg bg-primary-white p-4 ring-1 ring-primary-dark-blue/10">
+              <time class="font-inter text-sm font-extrabold text-primary-dark-blue">Bước 2</time>
+              <div>
+                <h3 class="font-inter text-lg font-bold text-title">Phân luồng theo mức độ ưu tiên</h3>
+                <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700 md:text-base">Nội dung khẩn cấp về an ninh, y tế, PCCC hoặc sự cố sinh hoạt được chuyển nhanh đến đầu mối trực.</p>
+              </div>
+            </article>
 
-          <article class="rounded-lg bg-secondary-yellow-light p-6">
-            <span class="font-inter text-sm font-bold text-primary-dark-blue">04</span>
-            <h2 class="mt-3 font-inter text-xl font-bold text-title">Kết nối cộng đồng</h2>
-            <p class="mt-3 font-roboto text-base leading-relaxed text-gray-700">
-              Đồng hành cùng các hoạt động sinh hoạt chung, truyền thông nội quy và xây dựng nếp sống văn minh trong khu ký túc xá.
-            </p>
-          </article>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="bg-gradient-to-b from-secondary-blue-light to-primary-white py-12 md:py-16 lg:py-20">
-  <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10">
-      <div class="lg:col-span-6">
-        <div class="overflow-hidden rounded-lg shadow-[1px_1px_16px_0_rgba(0,0,0,0.12)]">
-          <img src="/assets/images/dormitory-office.svg" alt="Văn phòng tiếp nhận ký túc xá" class="h-72 w-full object-cover md:h-96" />
-        </div>
-      </div>
-
-      <div class="lg:col-span-6">
-        <p class="font-inter text-base font-semibold text-primary-dark-blue">Cách chúng tôi hỗ trợ</p>
-        <h2 class="mt-3 font-inter text-2xl font-bold leading-tight text-title md:text-4xl">
-          Rõ đầu mối, nhanh phản hồi, đúng nhu cầu sinh viên
-        </h2>
-        <p class="mt-4 font-roboto text-base leading-relaxed text-gray-700 md:text-lg">
-          Các yêu cầu nội trú được tiếp nhận theo nhóm nội dung để sinh viên dễ liên hệ và phòng quản lý có thể phối hợp đúng đơn vị xử lý. Những nội dung khẩn cấp về an ninh, y tế hoặc sự cố ảnh hưởng sinh hoạt được ưu tiên thông tin đến đầu mối trực.
-        </p>
-
-        <div class="mt-6 space-y-4">
-          <div class="flex gap-4 rounded-lg bg-white p-4 shadow-sm">
-            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-dark-blue font-inter font-bold text-primary-white">1</span>
-            <div>
-              <h3 class="font-inter text-lg font-bold text-title">Tiếp nhận đúng kênh</h3>
-              <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700 md:text-base">Sinh viên liên hệ văn phòng, kênh trực hoặc thông báo theo từng nhóm dịch vụ nội trú.</p>
-            </div>
-          </div>
-          <div class="flex gap-4 rounded-lg bg-white p-4 shadow-sm">
-            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-dark-blue font-inter font-bold text-primary-white">2</span>
-            <div>
-              <h3 class="font-inter text-lg font-bold text-title">Phối hợp xử lý</h3>
-              <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700 md:text-base">Phòng quản lý kết nối bảo trì, an ninh, y tế hoặc công tác sinh viên theo nội dung phản ánh.</p>
-            </div>
-          </div>
-          <div class="flex gap-4 rounded-lg bg-white p-4 shadow-sm">
-            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-dark-blue font-inter font-bold text-primary-white">3</span>
-            <div>
-              <h3 class="font-inter text-lg font-bold text-title">Cập nhật và nhắc việc</h3>
-              <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700 md:text-base">Các hướng dẫn, nội quy và thông báo được cập nhật để sinh viên chủ động theo dõi trong thời gian lưu trú.</p>
-            </div>
+            <article class="grid grid-cols-[4.5rem_1fr] gap-4 rounded-lg bg-secondary-yellow-light p-4">
+              <time class="font-inter text-sm font-extrabold text-primary-dark-blue">Bước 3</time>
+              <div>
+                <h3 class="font-inter text-lg font-bold text-title">Cập nhật kết quả hoặc hướng dẫn tiếp</h3>
+                <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700 md:text-base">Sinh viên nhận phản hồi theo kênh đã liên hệ, kèm hướng dẫn bổ sung nếu cần giấy tờ hoặc xác nhận thêm.</p>
+              </div>
+            </article>
           </div>
         </div>
       </div>
@@ -110,12 +186,72 @@
   </div>
 </section>
 
-<div data-include="@faculty/components/home/infrastructure/index.html" data-class="nttFade"></div>
-
-<section class="bg-primary-white py-12 md:py-16">
+<section class="bg-primary-white py-12 md:py-16 lg:py-20">
   <div class="container mx-auto px-4">
-    <div class="rounded-lg bg-primary-dark-blue px-6 py-8 md:px-10 md:py-12">
-      <div class="grid grid-cols-1 items-center gap-6 lg:grid-cols-12">
+    <div class="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+      <div data-include="@shared/components/common/section-title.html"
+        data-subtitle="Không gian quản lý"
+        data-title="Các điểm chạm trong đời sống ký túc xá"
+        data-description="Phòng quản lý không chỉ tiếp nhận thủ tục tại văn phòng mà còn phối hợp vận hành khu ở, điểm trực, khu sinh hoạt chung và các kênh bảo trì."
+        data-class="max-w-3xl"
+        data-subtitle-class="text-primary-dark-blue"
+        data-title-class="text-title mt-3"
+        data-description-class="mt-4 text-gray-700">
+      </div>
+      <div data-include="@shared/components/button/button.html"
+        data-variant="3"
+        data-text="Xem cơ sở vật chất"
+        data-url="/#infrastructure-section"
+        data-class="w-fit">
+      </div>
+    </div>
+
+    <div class="grid grid-cols-12 gap-3 md:gap-4">
+      <article class="group col-span-12 overflow-hidden rounded-lg bg-secondary-blue-light md:col-span-7">
+        <img src="/assets/images/dormitory-facility-4.jpg" alt="Khu nhà ở sinh viên" class="h-72 w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <div class="p-4 md:p-5">
+          <h3 class="font-inter text-lg font-bold text-title">Khu nhà ở sinh viên</h3>
+          <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700">Không gian lưu trú được quản lý theo nội quy, lịch sinh hoạt và đầu mối hỗ trợ từng khu.</p>
+        </div>
+      </article>
+
+      <article class="group col-span-12 overflow-hidden rounded-lg bg-secondary-yellow-light md:col-span-5">
+        <img src="/assets/images/dormitory-facility-7.jpg" alt="Điểm trực an ninh ký túc xá" class="h-72 w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <div class="p-4 md:p-5">
+          <h3 class="font-inter text-lg font-bold text-title">Điểm trực an ninh</h3>
+          <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700">Hỗ trợ kiểm soát ra vào, nhắc nhở an toàn và phản hồi tình huống cần xử lý nhanh.</p>
+        </div>
+      </article>
+
+      <article class="group col-span-12 overflow-hidden rounded-lg bg-primary-white shadow-[0_14px_34px_rgba(21,56,152,0.08)] md:col-span-4">
+        <img src="/assets/images/dormitory-facility-6.jpg" alt="Khu sinh hoạt chung" class="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <div class="p-4">
+          <h3 class="font-inter text-base font-bold text-title">Khu sinh hoạt chung</h3>
+        </div>
+      </article>
+
+      <article class="group col-span-12 overflow-hidden rounded-lg bg-primary-white shadow-[0_14px_34px_rgba(21,56,152,0.08)] md:col-span-4">
+        <img src="/assets/images/dormitory-facility-5.jpg" alt="Văn phòng tiếp nhận" class="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <div class="p-4">
+          <h3 class="font-inter text-base font-bold text-title">Văn phòng tiếp nhận</h3>
+        </div>
+      </article>
+
+      <article class="group col-span-12 overflow-hidden rounded-lg bg-primary-white shadow-[0_14px_34px_rgba(21,56,152,0.08)] md:col-span-4">
+        <img src="/assets/images/dormitory-facility-8.jpg" alt="Tiếp nhận bảo trì" class="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <div class="p-4">
+          <h3 class="font-inter text-base font-bold text-title">Tiếp nhận bảo trì</h3>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="bg-primary-white">
+  <div class="container mx-auto px-4">
+    <div class="relative overflow-hidden rounded-lg bg-primary-dark-blue px-6 py-8 md:px-10 md:py-12">
+      <div class="absolute inset-y-0 right-0 hidden w-1/3 bg-[linear-gradient(90deg,transparent,rgba(142,216,248,0.18))] lg:block"></div>
+      <div class="relative grid grid-cols-1 items-center gap-6 lg:grid-cols-12">
         <div class="lg:col-span-8">
           <p class="font-inter text-base font-semibold text-primary-yellow">Cần hỗ trợ nội trú?</p>
           <h2 class="mt-3 font-inter text-2xl font-bold leading-tight text-primary-white md:text-4xl">

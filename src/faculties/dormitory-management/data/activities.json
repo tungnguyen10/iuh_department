@@ -1,0 +1,85 @@
+{
+  "section": {
+    "title": "Hoạt động & Phong trào",
+    "eyebrow": "Đời sống sinh viên",
+    "description": "Các hoạt động tại Ký túc xá IUH góp phần xây dựng môi trường nội trú năng động, văn minh, gắn kết và hỗ trợ sinh viên trong quá trình học tập, rèn luyện."
+  },
+  "items": [
+    {
+      "id": 1,
+      "slug": "sinh-hoat-dau-nam-sinh-vien-noi-tru",
+      "title": "Sinh hoạt đầu năm dành cho sinh viên nội trú",
+      "excerpt": "Chương trình giúp sinh viên nắm bắt nội quy, quy trình hỗ trợ và các thông tin cần thiết khi sinh hoạt tại Ký túc xá.",
+      "category": "Sinh hoạt nội trú",
+      "date": "10 tháng 9, 2026",
+      "image": "/assets/images/dormitory-campus.jpg",
+      "imageAlt": "Khuôn viên Ký túc xá IUH",
+      "caption": "Sinh viên nội trú được hướng dẫn các kênh hỗ trợ và quy định sinh hoạt đầu năm.",
+      "content": [
+        { "type": "paragraph", "text": "Buổi sinh hoạt đầu năm là hoạt động định hướng dành cho sinh viên đang lưu trú tại Ký túc xá IUH. Chương trình giúp sinh viên nắm rõ nội quy, kênh hỗ trợ, quy trình phản ánh sự cố và các lưu ý khi sử dụng không gian chung." },
+        { "type": "heading", "level": 2, "text": "Nội dung trọng tâm" },
+        { "type": "list", "items": ["Hướng dẫn quy định ra vào, tiếp khách và sinh hoạt tại khu nhà ở.", "Giới thiệu đầu mối tiếp nhận yêu cầu hỗ trợ, bảo trì và tình huống khẩn cấp.", "Trao đổi về văn hóa ứng xử, vệ sinh chung và tinh thần cộng đồng nội trú."] },
+        { "type": "info", "title": "Kênh hỗ trợ sinh viên", "text": "Sinh viên liên hệ khu trực hoặc văn phòng Ký túc xá khi cần hướng dẫn về nội quy, dịch vụ nội trú và các vấn đề phát sinh trong quá trình lưu trú." }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "huong-dan-pccc-ky-tuc-xa",
+      "title": "Hướng dẫn an toàn phòng cháy chữa cháy tại Ký túc xá",
+      "excerpt": "Sinh viên được phổ biến các nguyên tắc an toàn, cách nhận diện rủi ro và quy trình báo sự cố trong khu nội trú.",
+      "category": "An toàn nội trú",
+      "date": "25 tháng 8, 2026",
+      "image": "/assets/images/dormitory-facility-7.jpg",
+      "imageAlt": "Điểm trực an ninh Ký túc xá IUH",
+      "content": [
+        { "type": "paragraph", "text": "Hoạt động hướng dẫn an toàn phòng cháy chữa cháy giúp sinh viên chủ động nhận diện nguy cơ mất an toàn trong phòng ở, hành lang và khu sinh hoạt chung." },
+        { "type": "notice", "title": "Lưu ý an toàn", "text": "Sinh viên không tự ý câu mắc điện, không sử dụng thiết bị có nguy cơ quá tải và cần báo ngay cho khu trực khi phát hiện mùi khét, chập điện hoặc vật cản tại lối thoát hiểm." },
+        { "type": "list", "items": ["Nắm vị trí lối thoát hiểm và thiết bị báo cháy gần phòng ở.", "Tuân thủ hướng dẫn của khu trực khi có diễn tập hoặc tình huống khẩn cấp.", "Giữ khu vực hành lang thông thoáng, không đặt vật dụng cản trở di chuyển."] }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "chao-don-tan-sinh-vien-noi-tru",
+      "title": "Chương trình chào đón tân sinh viên nội trú",
+      "excerpt": "Hoạt động hỗ trợ tân sinh viên làm quen môi trường sống, bạn cùng khu và các dịch vụ tại Ký túc xá IUH.",
+      "category": "Tân sinh viên",
+      "date": "18 tháng 8, 2026",
+      "image": "/assets/images/dormitory-facility-6.jpg",
+      "imageAlt": "Không gian sinh hoạt chung tại Ký túc xá IUH",
+      "content": [
+        { "type": "paragraph", "text": "Chương trình chào đón tân sinh viên nội trú tạo không gian kết nối ban đầu giữa sinh viên mới, ban quản lý khu nhà và các nhóm hỗ trợ sinh viên." },
+        { "type": "heading", "level": 2, "text": "Hoạt động hỗ trợ" },
+        { "type": "list", "items": ["Hướng dẫn nhận phòng, sử dụng khu sinh hoạt chung và các kênh liên hệ cần thiết.", "Giới thiệu quy định sinh hoạt, bảo quản tài sản và văn hóa ứng xử trong ký túc xá.", "Kết nối sinh viên với các nhóm hỗ trợ cộng đồng nội trú."] }
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "giao-luu-the-thao-sinh-vien-ky-tuc-xa",
+      "title": "Hoạt động giao lưu thể thao sinh viên Ký túc xá",
+      "excerpt": "Các hoạt động thể thao tạo cơ hội rèn luyện sức khỏe, kết nối sinh viên giữa các khu nhà và xây dựng lối sống tích cực.",
+      "category": "Thể thao",
+      "date": "30 tháng 7, 2026",
+      "image": "/assets/images/dormitory-facility-4.jpg",
+      "imageAlt": "Khu nhà ở sinh viên tại Ký túc xá IUH",
+      "content": [
+        { "type": "paragraph", "text": "Hoạt động giao lưu thể thao được tổ chức nhằm khuyến khích sinh viên nội trú rèn luyện sức khỏe, tăng tương tác giữa các phòng và xây dựng nếp sống lành mạnh." },
+        { "type": "list", "items": ["Tạo sân chơi phù hợp sau giờ học.", "Khuyến khích tinh thần đồng đội và giao lưu giữa sinh viên các khu.", "Gắn hoạt động phong trào với mục tiêu xây dựng môi trường nội trú văn minh."] }
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "doi-sinh-vien-ho-tro-cong-dong-noi-tru",
+      "title": "Đội sinh viên hỗ trợ cộng đồng nội trú",
+      "excerpt": "Nhóm sinh viên tình nguyện đồng hành trong các hoạt động hướng dẫn, kết nối và hỗ trợ đời sống nội trú.",
+      "category": "Cộng đồng",
+      "date": "15 tháng 7, 2026",
+      "image": "/assets/images/dormitory-facility-5.jpg",
+      "imageAlt": "Văn phòng tiếp nhận và hướng dẫn tại Ký túc xá IUH",
+      "content": [
+        { "type": "paragraph", "text": "Đội sinh viên hỗ trợ cộng đồng nội trú tham gia hướng dẫn tân sinh viên, hỗ trợ truyền thông các thông báo quan trọng và lan tỏa tinh thần sống trách nhiệm trong khu ký túc xá." },
+        { "type": "heading", "level": 2, "text": "Vai trò của đội hỗ trợ" },
+        { "type": "list", "items": ["Hỗ trợ sinh viên mới làm quen không gian và quy trình sinh hoạt.", "Phối hợp truyền thông hoạt động, nội quy và các kênh hỗ trợ chính thức.", "Tham gia các hoạt động cộng đồng, vệ sinh môi trường và kết nối sinh viên."] }
+      ]
+    }
+  ]
+}
