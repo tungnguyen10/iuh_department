@@ -15,6 +15,7 @@ const DEFAULT_ORDER = [
   'admission',
   'stats',
   'news',
+  'rules-guide',
   'infrastructure',
   'research',
   'industry-careers',
@@ -28,6 +29,7 @@ const DEFAULT_MODULES = {
   admission: true,
   stats: true,
   news: true,
+  'rules-guide': true,
   infrastructure: true,
   research: true,
   'industry-careers': true,
@@ -41,6 +43,7 @@ const MODULE_LABELS = {
   admission: 'Tuyển Sinh',
   stats: 'Thống Kê',
   news: 'Tin Tức - Sự Kiện',
+  'rules-guide': 'Nội Quy & Hướng Dẫn',
   infrastructure: 'Cơ Sở Vật Chất',
   research: 'Nghiên Cứu',
   'industry-careers': 'Hợp Tác & Nghề Nghiệp',
@@ -398,11 +401,27 @@ class ModuleManager {
       || document.querySelector('main')
       || document.body
 
-    this.moduleOrder.forEach(moduleName => {
-      const element = document.querySelector(`[data-module="${moduleName}"]`)
-      if (element && container.contains(element)) {
-        container.appendChild(element) // Move to end in correct order
-      }
+    const moduleElements = new Map(
+      Array.from(container.children)
+        .filter(element => element.dataset?.module)
+        .map(element => [element.dataset.module, element])
+    )
+    const desiredModules = this.moduleOrder.filter(moduleName => moduleElements.has(moduleName))
+    const currentModules = Array.from(container.children)
+      .filter(element => this.moduleOrder.includes(element.dataset?.module))
+      .map(element => element.dataset.module)
+
+    const alreadyOrdered =
+      desiredModules.length === currentModules.length
+      && desiredModules.every((moduleName, index) => moduleName === currentModules[index])
+
+    if (alreadyOrdered) {
+      console.log('✓ Modules already in saved order')
+      return
+    }
+
+    desiredModules.forEach(moduleName => {
+      container.appendChild(moduleElements.get(moduleName))
     })
 
     console.log('✓ Modules reordered in DOM')
@@ -440,11 +459,43 @@ class ModuleManager {
   loadOrder() {
     try {
       const saved = localStorage.getItem(ORDER_KEY)
-      return saved ? JSON.parse(saved) : [...DEFAULT_ORDER]
+      return this.normalizeOrder(saved ? JSON.parse(saved) : DEFAULT_ORDER)
     } catch (error) {
       console.warn('Failed to load module order:', error)
       return [...DEFAULT_ORDER]
     }
+  }
+
+  /**
+   * Keep saved order stable while inserting newly added modules at their
+   * default neighbor position. This prevents new modules from being stranded
+   * in the wrong place when localStorage still has an older order.
+   */
+  normalizeOrder(order) {
+    const knownModules = new Set(DEFAULT_ORDER)
+    const normalized = Array.isArray(order)
+      ? order.filter(moduleName => knownModules.has(moduleName))
+      : []
+    const included = new Set(normalized)
+
+    DEFAULT_ORDER.forEach((moduleName, defaultIndex) => {
+      if (included.has(moduleName)) return
+
+      let insertAt = normalized.length
+      for (let index = defaultIndex + 1; index < DEFAULT_ORDER.length; index += 1) {
+        const nextKnownModule = DEFAULT_ORDER[index]
+        const nextCurrentIndex = normalized.indexOf(nextKnownModule)
+        if (nextCurrentIndex !== -1) {
+          insertAt = nextCurrentIndex
+          break
+        }
+      }
+
+      normalized.splice(insertAt, 0, moduleName)
+      included.add(moduleName)
+    })
+
+    return normalized
   }
 
   /**

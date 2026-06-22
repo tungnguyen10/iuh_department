@@ -1,0 +1,108 @@
+<section data-module="rules-guide" id="rules-guide-section" class="rules-guide-section w-full bg-primary-white py-10 md:py-14 lg:py-16 {{class}}">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-12 lg:gap-8">
+      <div class="flex flex-col justify-between rounded-lg border border-primary-dark-blue/10 bg-secondary-yellow-light p-5 shadow-[0_14px_36px_rgba(21,56,152,0.08)] md:p-6 lg:col-span-4 lg:p-7">
+        <div>
+          <div data-include="@shared/components/common/section-title.html"
+            data-subtitle="Sinh viên nội trú cần biết"
+            data-title="Nội quy & Hướng dẫn"
+            data-description="Các quy định sinh hoạt, kênh hỗ trợ và thủ tục thường dùng được gom lại để sinh viên dễ theo dõi trong suốt thời gian lưu trú."
+            data-class="max-w-xl"
+            data-subtitle-class="text-primary-dark-blue"
+            data-title-class="mt-1 text-title"
+            data-description-class="mt-4 text-gray-700">
+          </div>
+
+          <div class="mt-6 grid grid-cols-2 gap-3">
+            <article class="flex min-h-28 flex-col justify-between rounded-lg border border-primary-dark-blue/10 bg-primary-white p-4">
+              <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary-blue-light text-primary-dark-blue">
+                <img src="/assets/svgs/icon-shield-check.svg" alt="" class="h-5 w-5" />
+              </span>
+              <span class="mt-4 font-inter text-sm font-bold leading-snug text-title">Nội quy sinh hoạt</span>
+            </article>
+            <article class="flex min-h-28 flex-col justify-between rounded-lg border border-primary-dark-blue/10 bg-primary-white p-4">
+              <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary-blue-light text-primary-dark-blue">
+                <img src="/assets/svgs/icon-help-circle.svg" alt="" class="h-5 w-5" />
+              </span>
+              <span class="mt-4 font-inter text-sm font-bold leading-snug text-title">Hỏi đúng đầu mối</span>
+            </article>
+          </div>
+        </div>
+
+        <div class="mt-6 flex">
+          <div data-include="@shared/components/button/button.html"
+            data-variant="4"
+            data-text="Xem hướng dẫn"
+            data-url="/news.html"
+            data-class="w-full justify-center sm:w-fit">
+          </div>
+        </div>
+      </div>
+
+      <div class="rules-guide-board relative overflow-hidden rounded-lg bg-primary-dark-blue p-4 shadow-[0_20px_50px_rgba(21,56,152,0.22)] md:p-5 lg:col-span-8">
+        <div class="rules-guide-board__rail" aria-hidden="true"></div>
+        <div class="rules-guide-board__content relative grid grid-cols-1 gap-4 lg:grid-cols-5">
+          <div class="rounded-lg border border-primary-white/15 bg-primary-white p-4 md:p-5 lg:col-span-3">
+            <div class="flex flex-col gap-3 border-b border-stroke pb-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Bảng nhắc nội trú</p>
+                <h3 class="mt-1 font-inter text-xl font-bold leading-tight text-title md:text-2xl">4 việc nên kiểm tra mỗi ngày</h3>
+              </div>
+            </div>
+
+            <div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <article class="min-h-[7.5rem] rounded-lg border border-primary-dark-blue/10 bg-[linear-gradient(180deg,rgba(227,246,253,0.52),rgba(255,255,255,0.92))] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-primary-dark-blue/50 hover:shadow-[0_1rem_1.75rem_rgba(21,56,152,0.12)] motion-reduce:transform-none motion-reduce:transition-none">
+                <span class="inline-flex rounded-full bg-primary-yellow/15 px-2.5 py-1 font-roboto text-xs font-bold text-primary-dark-blue">Ra vào</span>
+                <strong class="mt-3 block font-inter text-[15px] font-bold leading-snug text-title">Xuất trình thẻ sinh viên khi được yêu cầu</strong>
+              </article>
+              <article class="min-h-[7.5rem] rounded-lg border border-primary-dark-blue/10 bg-[linear-gradient(180deg,rgba(227,246,253,0.52),rgba(255,255,255,0.92))] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-primary-dark-blue/50 hover:shadow-[0_1rem_1.75rem_rgba(21,56,152,0.12)] motion-reduce:transform-none motion-reduce:transition-none">
+                <span class="inline-flex rounded-full bg-primary-yellow/15 px-2.5 py-1 font-roboto text-xs font-bold text-primary-dark-blue">Tiếp khách</span>
+                <strong class="mt-3 block font-inter text-[15px] font-bold leading-snug text-title">Đăng ký với khu trực trước khi lên phòng</strong>
+              </article>
+              <article class="min-h-[7.5rem] rounded-lg border border-primary-dark-blue/10 bg-[linear-gradient(180deg,rgba(227,246,253,0.52),rgba(255,255,255,0.92))] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-primary-dark-blue/50 hover:shadow-[0_1rem_1.75rem_rgba(21,56,152,0.12)] motion-reduce:transform-none motion-reduce:transition-none">
+                <span class="inline-flex rounded-full bg-primary-yellow/15 px-2.5 py-1 font-roboto text-xs font-bold text-primary-dark-blue">Không gian chung</span>
+                <strong class="mt-3 block font-inter text-[15px] font-bold leading-snug text-title">Giữ hành lang, bếp và khu sinh hoạt sạch gọn</strong>
+              </article>
+              <article class="min-h-[7.5rem] rounded-lg border border-primary-dark-blue/10 bg-[linear-gradient(180deg,rgba(227,246,253,0.52),rgba(255,255,255,0.92))] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-primary-dark-blue/50 hover:shadow-[0_1rem_1.75rem_rgba(21,56,152,0.12)] motion-reduce:transform-none motion-reduce:transition-none">
+                <span class="inline-flex rounded-full bg-primary-yellow/15 px-2.5 py-1 font-roboto text-xs font-bold text-primary-dark-blue">An toàn</span>
+                <strong class="mt-3 block font-inter text-[15px] font-bold leading-snug text-title">Báo ngay khi có sự cố điện, nước, PCCC</strong>
+              </article>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-4 lg:col-span-2">
+            <div class="rounded-lg border border-primary-white/15 bg-primary-white/10 p-4 text-primary-white md:p-5">
+              <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-secondary-yellow">Luồng xử lý</p>
+              <div class="mt-4 space-y-3">
+                <div class="grid grid-cols-[2.5rem_1fr] items-start gap-3">
+                  <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-yellow/15 font-inter text-[13px] font-extrabold text-primary-yellow">01</span>
+                  <p class="font-roboto text-sm leading-relaxed text-primary-white/80">Gửi yêu cầu qua văn phòng hoặc kênh liên hệ chính thức.</p>
+                </div>
+                <div class="grid grid-cols-[2.5rem_1fr] items-start gap-3">
+                  <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-yellow/15 font-inter text-[13px] font-extrabold text-primary-yellow">02</span>
+                  <p class="font-roboto text-sm leading-relaxed text-primary-white/80">Khu trực xác nhận thông tin, mức độ ưu tiên và phòng liên quan.</p>
+                </div>
+                <div class="grid grid-cols-[2.5rem_1fr] items-start gap-3">
+                  <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-yellow/15 font-inter text-[13px] font-extrabold text-primary-yellow">03</span>
+                  <p class="font-roboto text-sm leading-relaxed text-primary-white/80">Bộ phận phụ trách phản hồi kết quả hoặc hướng dẫn bước tiếp theo.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-lg bg-secondary-blue-light p-4 md:p-5">
+              <div class="flex items-start gap-3">
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary-white">
+                  <img src="/assets/svgs/icon-clock.svg" alt="" class="h-5 w-5" />
+                </span>
+                <div>
+                  <p class="font-inter text-lg font-bold text-title">Kênh khẩn cấp</p>
+                  <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700">Vấn đề an ninh, y tế hoặc sự cố có nguy cơ mất an toàn cần báo trực tiếp khu trực để được hỗ trợ nhanh.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
