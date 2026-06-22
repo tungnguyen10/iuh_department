@@ -1,0 +1,24 @@
+<!-- option 1: Radio group -->
+<fieldset class="iuh-form-fieldset {{class}}">
+  <legend class="iuh-form-legend {{legendClass}}">{{legend}}</legend>
+  <div class="iuh-form-choice-grid {{gridClass}}">
+    <label class="iuh-form-choice {{option1Class}}">
+      <input type="radio" name="{{name}}" value="{{option1Value}}" {{option1Attrs}} class="iuh-form-choice__control {{controlClass}}" />
+      <span>{{option1Text}}</span>
+    </label>
+    <label class="iuh-form-choice {{option2Class}}">
+      <input type="radio" name="{{name}}" value="{{option2Value}}" {{option2Attrs}} class="iuh-form-choice__control {{controlClass}}" />
+      <span>{{option2Text}}</span>
+    </label>
+    <label class="iuh-form-choice {{option3Class}}">
+      <input type="radio" name="{{name}}" value="{{option3Value}}" {{option3Attrs}} class="iuh-form-choice__control {{controlClass}}" />
+      <span>{{option3Text}}</span>
+    </label>
+  </div>
+</fieldset>
+
+<!-- option 2: Checkbox -->
+<label class="iuh-form-choice {{class}}">
+  <input type="checkbox" name="{{name}}" value="{{value}}" {{attrs}} class="iuh-form-choice__control {{controlClass}}" />
+  <span>{{text}}</span>
+</label>

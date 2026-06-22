@@ -110,102 +110,124 @@
             </div>
           </div>
 
-          <form action="mailto:kytucxa@iuh.edu.vn" method="post" enctype="text/plain" class="space-y-5">
-            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <div>
-                <label for="contact-name" class="mb-2 flex items-center gap-2 font-roboto text-sm font-medium text-gray-700">
-                  <img src="/assets/svgs/icon-user.svg" alt="" class="h-4 w-4" />
-                  Họ và tên <span class="text-danger">*</span>
-                </label>
-                <input id="contact-name" name="Họ và tên" type="text" required minlength="2" autocomplete="name" placeholder="Nguyễn Văn A" class="w-full rounded-lg border border-stroke px-4 py-3 font-roboto text-sm text-title outline-none transition-all placeholder:text-gray-400 hover:border-primary-dark-blue/40 focus:border-primary-dark-blue focus:ring-2 focus:ring-primary-dark-blue/15" />
+          <form action="mailto:kytucxa@iuh.edu.vn" method="post" enctype="text/plain" class="iuh-form">
+            <div class="iuh-form-grid">
+              <div data-include="@shared/components/form/field.html"
+                data-id="contact-name"
+                data-name="Họ và tên"
+                data-type="text"
+                data-label="Họ và tên"
+                data-required-text="*"
+                data-icon="/assets/svgs/icon-user.svg"
+                data-placeholder="Nguyễn Văn A"
+                data-attrs="required minlength=2 autocomplete=name">
               </div>
 
-              <div>
-                <label for="student-id" class="mb-2 flex items-center gap-2 font-roboto text-sm font-medium text-gray-700">
-                  <img src="/assets/svgs/icon-user-search.svg" alt="" class="h-4 w-4" />
-                  Mã số sinh viên <span class="text-danger">*</span>
-                </label>
-                <input id="student-id" name="Mã số sinh viên" type="text" required placeholder="VD: 21012345" class="w-full rounded-lg border border-stroke px-4 py-3 font-roboto text-sm text-title outline-none transition-all placeholder:text-gray-400 hover:border-primary-dark-blue/40 focus:border-primary-dark-blue focus:ring-2 focus:ring-primary-dark-blue/15" />
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <div>
-                <label for="contact-phone" class="mb-2 flex items-center gap-2 font-roboto text-sm font-medium text-gray-700">
-                  <img src="/assets/svgs/icon-phone.svg" alt="" class="h-4 w-4" />
-                  Số điện thoại <span class="text-danger">*</span>
-                </label>
-                <input id="contact-phone" name="Số điện thoại" type="tel" required autocomplete="tel" placeholder="0xxx xxx xxx" class="w-full rounded-lg border border-stroke px-4 py-3 font-roboto text-sm text-title outline-none transition-all placeholder:text-gray-400 hover:border-primary-dark-blue/40 focus:border-primary-dark-blue focus:ring-2 focus:ring-primary-dark-blue/15" />
-              </div>
-
-              <div>
-                <label for="contact-email" class="mb-2 flex items-center gap-2 font-roboto text-sm font-medium text-gray-700">
-                  <img src="/assets/svgs/icon-email.svg" alt="" class="h-4 w-4" />
-                  Email
-                </label>
-                <input id="contact-email" name="Email" type="email" autocomplete="email" placeholder="email@iuh.edu.vn" class="w-full rounded-lg border border-stroke px-4 py-3 font-roboto text-sm text-title outline-none transition-all placeholder:text-gray-400 hover:border-primary-dark-blue/40 focus:border-primary-dark-blue focus:ring-2 focus:ring-primary-dark-blue/15" />
+              <div data-include="@shared/components/form/field.html"
+                data-id="student-id"
+                data-name="Mã số sinh viên"
+                data-type="text"
+                data-label="Mã số sinh viên"
+                data-required-text="*"
+                data-icon="/assets/svgs/icon-user-search.svg"
+                data-placeholder="VD: 21012345"
+                data-attrs="required">
               </div>
             </div>
 
-            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <div>
-                <label for="room-info" class="mb-2 flex items-center gap-2 font-roboto text-sm font-medium text-gray-700">
-                  <img src="/assets/svgs/icon-building.svg" alt="" class="h-4 w-4" />
-                  Khu/phòng ở
-                </label>
-                <input id="room-info" name="Khu/phòng ở" type="text" placeholder="VD: Khu A - phòng 305" class="w-full rounded-lg border border-stroke px-4 py-3 font-roboto text-sm text-title outline-none transition-all placeholder:text-gray-400 hover:border-primary-dark-blue/40 focus:border-primary-dark-blue focus:ring-2 focus:ring-primary-dark-blue/15" />
+            <div class="iuh-form-grid">
+              <div data-include="@shared/components/form/field.html"
+                data-id="contact-phone"
+                data-name="Số điện thoại"
+                data-type="tel"
+                data-label="Số điện thoại"
+                data-required-text="*"
+                data-icon="/assets/svgs/icon-phone.svg"
+                data-placeholder="0xxx xxx xxx"
+                data-attrs="required autocomplete=tel">
               </div>
 
-              <div>
-                <label for="request-type" class="mb-2 flex items-center gap-2 font-roboto text-sm font-medium text-gray-700">
-                  <img src="/assets/svgs/icon-tag.svg" alt="" class="h-4 w-4" />
-                  Nhóm yêu cầu <span class="text-danger">*</span>
-                </label>
-                <select id="request-type" name="Nhóm yêu cầu" required class="w-full rounded-lg border border-stroke bg-white px-4 py-3 font-roboto text-sm text-title outline-none transition-all hover:border-primary-dark-blue/40 focus:border-primary-dark-blue focus:ring-2 focus:ring-primary-dark-blue/15">
-                  <option value="">Chọn nhóm cần hỗ trợ</option>
-                  <option value="Đăng ký/gia hạn chỗ ở">Đăng ký/gia hạn chỗ ở</option>
-                  <option value="Bảo trì phòng ở">Bảo trì phòng ở</option>
-                  <option value="An ninh và nội quy">An ninh và nội quy</option>
-                  <option value="Phản ánh dịch vụ">Phản ánh dịch vụ</option>
-                  <option value="Nội dung khác">Nội dung khác</option>
-                </select>
+              <div data-include="@shared/components/form/field.html"
+                data-id="contact-email"
+                data-name="Email"
+                data-type="email"
+                data-label="Email"
+                data-icon="/assets/svgs/icon-email.svg"
+                data-placeholder="email@iuh.edu.vn"
+                data-attrs="autocomplete=email">
               </div>
             </div>
 
-            <fieldset class="rounded-lg border border-primary-dark-blue/10 bg-secondary-blue-light/60 p-4">
-              <legend class="px-1 font-roboto text-sm font-medium text-gray-700">Mức độ ưu tiên</legend>
-              <div class="mt-2 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                <label class="flex cursor-pointer items-center gap-2 rounded-lg bg-white px-3 py-2 font-roboto text-sm text-gray-700">
-                  <input type="radio" name="Mức độ ưu tiên" value="Thông thường" checked class="h-4 w-4 accent-primary-dark-blue" />
-                  Thông thường
-                </label>
-                <label class="flex cursor-pointer items-center gap-2 rounded-lg bg-white px-3 py-2 font-roboto text-sm text-gray-700">
-                  <input type="radio" name="Mức độ ưu tiên" value="Cần phản hồi sớm" class="h-4 w-4 accent-primary-dark-blue" />
-                  Cần phản hồi sớm
-                </label>
-                <label class="flex cursor-pointer items-center gap-2 rounded-lg bg-white px-3 py-2 font-roboto text-sm text-gray-700">
-                  <input type="radio" name="Mức độ ưu tiên" value="Khẩn cấp" class="h-4 w-4 accent-primary-dark-blue" />
-                  Khẩn cấp
-                </label>
+            <div class="iuh-form-grid">
+              <div data-include="@shared/components/form/field.html"
+                data-id="room-info"
+                data-name="Khu/phòng ở"
+                data-type="text"
+                data-label="Khu/phòng ở"
+                data-icon="/assets/svgs/icon-building.svg"
+                data-placeholder="VD: Khu A - phòng 305">
               </div>
-            </fieldset>
 
-            <div>
-              <label for="request-message" class="mb-2 flex items-center gap-2 font-roboto text-sm font-medium text-gray-700">
-                <img src="/assets/svgs/icon-edit.svg" alt="" class="h-4 w-4" />
-                Nội dung cần hỗ trợ <span class="text-danger">*</span>
-              </label>
-              <textarea id="request-message" name="Nội dung cần hỗ trợ" rows="6" required minlength="10" placeholder="Mô tả ngắn gọn tình huống, thời điểm phát sinh và thông tin phòng/khu liên quan..." class="w-full resize-none rounded-lg border border-stroke px-4 py-3 font-roboto text-sm text-title outline-none transition-all placeholder:text-gray-400 hover:border-primary-dark-blue/40 focus:border-primary-dark-blue focus:ring-2 focus:ring-primary-dark-blue/15"></textarea>
+              <div data-include="@shared/components/form/field.html"
+                data-variant="3"
+                data-id="request-type"
+                data-name="Nhóm yêu cầu"
+                data-label="Nhóm yêu cầu"
+                data-required-text="*"
+                data-icon="/assets/svgs/icon-tag.svg"
+                data-attrs="required"
+                data-placeholder-value=""
+                data-placeholder-text="Chọn nhóm cần hỗ trợ"
+                data-option1-value="Đăng ký/gia hạn chỗ ở"
+                data-option1-text="Đăng ký/gia hạn chỗ ở"
+                data-option2-value="Bảo trì phòng ở"
+                data-option2-text="Bảo trì phòng ở"
+                data-option3-value="An ninh và nội quy"
+                data-option3-text="An ninh và nội quy"
+                data-option4-value="Phản ánh dịch vụ"
+                data-option4-text="Phản ánh dịch vụ"
+                data-option5-value="Nội dung khác"
+                data-option5-text="Nội dung khác">
+              </div>
             </div>
 
-            <div class="flex flex-col gap-4 rounded-lg border border-primary-yellow/30 bg-secondary-yellow-light p-4 sm:flex-row sm:items-center sm:justify-between">
+            <div data-include="@shared/components/form/choice.html"
+              data-legend="Mức độ ưu tiên"
+              data-name="Mức độ ưu tiên"
+              data-option1-value="Thông thường"
+              data-option1-text="Thông thường"
+              data-option1-attrs="checked"
+              data-option2-value="Cần phản hồi sớm"
+              data-option2-text="Cần phản hồi sớm"
+              data-option3-value="Khẩn cấp"
+              data-option3-text="Khẩn cấp">
+            </div>
+
+            <div data-include="@shared/components/form/field.html"
+              data-variant="2"
+              data-id="request-message"
+              data-name="Nội dung cần hỗ trợ"
+              data-label="Nội dung cần hỗ trợ"
+              data-required-text="*"
+              data-icon="/assets/svgs/icon-edit.svg"
+              data-rows="6"
+              data-placeholder="Mô tả ngắn gọn tình huống, thời điểm phát sinh và thông tin phòng/khu liên quan..."
+              data-attrs="required minlength=10"
+              data-control-class="resize-none">
+            </div>
+
+            <div class="iuh-form-actions">
               <p class="font-roboto text-sm leading-relaxed text-gray-700">
                 Với nội dung khẩn cấp, vui lòng báo trực tiếp khu trực sau khi gửi mẫu để được xử lý nhanh.
               </p>
-              <button type="submit" class="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-primary-dark-blue bg-primary-dark-blue px-6 py-3 font-roboto text-sm font-medium text-primary-white transition-all duration-300 hover:border-primary-yellow hover:bg-primary-yellow hover:text-primary-dark-blue focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:ring-offset-2">
-                <span>Gửi yêu cầu</span>
-                <img src="/assets/svgs/icon-send.svg" alt="" class="h-5 w-5" />
-              </button>
+              <div data-include="@shared/components/button/button.html"
+                data-variant="7"
+                data-type="submit"
+                data-text="Gửi yêu cầu"
+                data-icon="/assets/svgs/icon-send.svg"
+                data-class="shrink-0"
+                data-icon-class="brightness-0 invert group-hover:brightness-100 group-hover:invert-0">
+              </div>
             </div>
           </form>
         </div>
