@@ -14,8 +14,16 @@
   @apply mb-2 flex items-center gap-2 font-sans text-sm font-medium text-gray-700;
 }
 
+// Rendered as a CSS-background slot so an omitted data-icon line strips
+// entirely (no <img src="">, no broken asset request).
 .iuh-form-label__icon {
-  @apply h-4 w-4 shrink-0;
+  @apply inline-block h-4 w-4 shrink-0 overflow-hidden;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
 }
 
 .iuh-form-required {
@@ -82,11 +90,11 @@
 }
 
 .iuh-form-choice-grid {
-  @apply mt-2 grid grid-cols-1 gap-3 sm:grid-cols-3;
+  @apply mt-2 flex flex-wrap gap-3;
 }
 
 .iuh-form-choice {
-  @apply flex cursor-pointer items-center gap-2 rounded-lg bg-white px-3 py-2 font-sans text-sm text-gray-700 transition-all hover:border-primary-dark-blue/20 hover:bg-secondary-blue-light/50;
+  @apply inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-lg bg-white px-3 py-2 font-sans text-sm text-gray-700 transition-all hover:border-primary-dark-blue/20 hover:bg-secondary-blue-light/50;
 }
 
 .iuh-form-choice__control {
@@ -111,4 +119,166 @@
 
 .iuh-form-note {
   @apply rounded-lg bg-secondary-blue-light px-4 py-3 font-sans text-sm font-medium leading-relaxed text-primary-dark-blue md:text-base;
+}
+
+// ===== Display row primitive =====
+.iuh-form-display {
+  @apply divide-y divide-stroke rounded-lg border border-stroke bg-white;
+}
+
+.iuh-form-display-row {
+  @apply grid grid-cols-1 gap-1 px-4 py-3 sm:grid-cols-[12rem_1fr] sm:items-baseline sm:gap-4;
+}
+
+.iuh-form-display-row--full {
+  @apply sm:grid-cols-1;
+}
+
+.iuh-form-display-label {
+  @apply font-sans text-xs font-bold uppercase tracking-[0.08em] text-gray-500;
+}
+
+.iuh-form-display-value {
+  @apply font-sans text-sm font-medium leading-relaxed text-title sm:text-base;
+}
+
+.iuh-form-display-value--emphasis {
+  @apply rounded-md bg-secondary-yellow-light px-3 py-2 text-primary-dark-blue;
+}
+
+.iuh-form-display-value--success {
+  @apply text-secondary-green;
+}
+
+.iuh-form-display-value--danger {
+  @apply text-danger;
+}
+
+// ===== File upload primitive =====
+.iuh-form-file {
+  @apply grid grid-cols-1 gap-3 sm:grid-cols-[1fr_auto] sm:items-center;
+}
+
+.iuh-form-file-input {
+  @apply w-full cursor-pointer rounded-lg border border-stroke bg-primary-white px-4 py-3 font-sans text-sm text-title outline-none transition-all file:mr-3 file:rounded-full file:border-0 file:bg-primary-dark-blue file:px-4 file:py-1.5 file:font-sans file:text-xs file:font-medium file:text-primary-white hover:border-primary-dark-blue/40 hover:file:bg-primary-yellow hover:file:text-primary-dark-blue focus:border-primary-dark-blue focus:ring-2 focus:ring-primary-dark-blue/15 disabled:cursor-not-allowed disabled:bg-gray-light disabled:text-gray;
+}
+
+.iuh-form-file-trigger {
+  @apply shrink-0;
+}
+
+.iuh-form-file-status {
+  @apply font-sans text-xs leading-relaxed text-gray-500;
+}
+
+.iuh-form-file--dropzone {
+  @apply relative rounded-lg border-2 border-dashed border-stroke bg-white p-6 text-center transition-all hover:border-primary-dark-blue hover:bg-primary-dark-blue/5;
+}
+
+// ===== Data table primitive =====
+.iuh-form-table-wrap {
+  @apply overflow-x-auto rounded-lg border border-stroke;
+}
+
+.iuh-form-table {
+  @apply w-full min-w-[36rem] border-collapse bg-white text-left font-sans text-sm text-title;
+}
+
+.iuh-form-table-head-row {
+  @apply border-b-2 border-primary-dark-blue bg-secondary-blue-light/60;
+}
+
+.iuh-form-table-head-cell {
+  @apply px-3 py-3 font-sans text-xs font-bold uppercase tracking-[0.08em] text-primary-dark-blue sm:px-4 sm:text-sm;
+}
+
+.iuh-form-table-body-row {
+  @apply border-b border-stroke transition-colors last:border-b-0 hover:bg-secondary-blue-light/30;
+}
+
+.iuh-form-table-cell {
+  @apply px-3 py-3 align-top font-sans text-sm leading-relaxed text-gray-700 sm:px-4;
+}
+
+.iuh-form-table-cell--strong {
+  @apply font-medium text-title;
+}
+
+.iuh-form-table-cell--center {
+  @apply text-center;
+}
+
+.iuh-form-table-empty {
+  @apply px-4 py-6 text-center font-sans text-sm italic text-gray-500;
+}
+
+// ===== Inline group primitive =====
+.iuh-form-inline {
+  @apply min-w-0;
+}
+
+.iuh-form-inline__body {
+  @apply mt-2 grid grid-cols-1 gap-3 sm:grid-cols-[1fr_auto] sm:items-center;
+}
+
+.iuh-form-inline__body--widget-leading {
+  @apply sm:grid-cols-[auto_1fr];
+}
+
+.iuh-form-inline__widget {
+  @apply flex min-w-0 items-center justify-center;
+}
+
+// ===== Captcha widget (inline-group widget variant for login forms) =====
+.iuh-form-captcha {
+  @apply relative h-16 w-full overflow-hidden rounded-lg border border-primary-dark-blue/10 shadow-inner sm:w-56;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(227, 246, 253, 0.92) 100%);
+}
+
+.iuh-form-captcha__noise {
+  @apply absolute inset-0;
+  background-image:
+    repeating-linear-gradient(22deg, transparent 0, transparent 12px, rgba(21, 56, 152, 0.2) 13px, transparent 15px),
+    repeating-linear-gradient(112deg, transparent 0, transparent 18px, rgba(33, 33, 33, 0.18) 19px, transparent 21px);
+}
+
+.iuh-form-captcha__code {
+  @apply absolute left-4 top-1/2 -translate-y-1/2 font-inter text-2xl font-extrabold tracking-[0.16em] text-title;
+  transform: translateY(-50%) rotate(-4deg);
+}
+
+.iuh-form-captcha__line {
+  @apply absolute h-px bg-title/40;
+}
+
+.iuh-form-captcha__line--a {
+  @apply -left-6 top-5 w-36;
+  transform: rotate(12deg);
+}
+
+.iuh-form-captcha__line--b {
+  @apply right-0 top-9 w-28 bg-primary-dark-blue/35;
+  transform: rotate(-12deg);
+}
+
+// ===== Choice grid modifiers (extend for variadic radio groups) =====
+// Base layout is flex-wrap chips sized to content; modifiers below switch
+// to an explicit grid (display:grid overrides the base display:flex via
+// source order) when callers need fixed column counts.
+.iuh-form-choice-grid--stacked {
+  @apply flex-col;
+}
+
+.iuh-form-choice-grid--two {
+  @apply grid grid-cols-1 sm:grid-cols-2;
+}
+
+.iuh-form-choice-grid--four {
+  @apply grid grid-cols-2 sm:grid-cols-4;
+}
+
+.iuh-form-choice-grid--stacked .iuh-form-choice,
+.iuh-form-choice-grid--two .iuh-form-choice,
+.iuh-form-choice-grid--four .iuh-form-choice {
+  @apply flex w-full;
 }

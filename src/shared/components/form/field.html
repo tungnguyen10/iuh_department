@@ -1,8 +1,9 @@
 <!-- option 1: Label + input -->
 <div class="iuh-form-field {{fieldClass}}">
   <label for="{{id}}" class="iuh-form-label {{labelClass}}">
-    <img src="{{icon}}" alt="" class="iuh-form-label__icon {{iconClass}}" />
-    <span>{{label}}</span><span class="iuh-form-required">{{requiredText}}</span>
+    <span class="iuh-form-label__icon {{iconClass}}" style="background-image:url({{icon}})">{{icon}}</span>
+    <span>{{label}}</span>
+    <span class="iuh-form-required">{{requiredText}}</span>
   </label>
   <input id="{{id}}" name="{{name}}" type="{{type}}" placeholder="{{placeholder}}" {{attrs}} class="iuh-form-control {{controlClass}}" />
   <p id="{{helperId}}" class="iuh-form-helper {{helperClass}}">{{helperText}}</p>
@@ -12,19 +13,21 @@
 <!-- option 2: Label + textarea -->
 <div class="iuh-form-field {{fieldClass}}">
   <label for="{{id}}" class="iuh-form-label {{labelClass}}">
-    <img src="{{icon}}" alt="" class="iuh-form-label__icon {{iconClass}}" />
-    <span>{{label}}</span><span class="iuh-form-required">{{requiredText}}</span>
+    <span class="iuh-form-label__icon {{iconClass}}" style="background-image:url({{icon}})">{{icon}}</span>
+    <span>{{label}}</span>
+    <span class="iuh-form-required">{{requiredText}}</span>
   </label>
   <textarea id="{{id}}" name="{{name}}" rows="{{rows}}" placeholder="{{placeholder}}" {{attrs}} class="iuh-form-control iuh-form-textarea {{controlClass}}"></textarea>
   <p id="{{helperId}}" class="iuh-form-helper {{helperClass}}">{{helperText}}</p>
   <p id="{{errorId}}" class="iuh-form-error {{errorClass}}">{{errorText}}</p>
 </div>
 
-<!-- option 3: Label + select -->
+<!-- option 3: Label + select (placeholder + 5 inlined options; empty option rows strip) -->
 <div class="iuh-form-field {{fieldClass}}">
   <label for="{{id}}" class="iuh-form-label {{labelClass}}">
-    <img src="{{icon}}" alt="" class="iuh-form-label__icon {{iconClass}}" />
-    <span>{{label}}</span><span class="iuh-form-required">{{requiredText}}</span>
+    <span class="iuh-form-label__icon {{iconClass}}" style="background-image:url({{icon}})">{{icon}}</span>
+    <span>{{label}}</span>
+    <span class="iuh-form-required">{{requiredText}}</span>
   </label>
   <select id="{{id}}" name="{{name}}" {{attrs}} class="iuh-form-control iuh-form-select {{controlClass}}">
     <option value="{{placeholderValue}}">{{placeholderText}}</option>
@@ -33,6 +36,19 @@
     <option value="{{option3Value}}">{{option3Text}}</option>
     <option value="{{option4Value}}">{{option4Text}}</option>
     <option value="{{option5Value}}">{{option5Text}}</option>
+  </select>
+  <p id="{{helperId}}" class="iuh-form-helper {{helperClass}}">{{helperText}}</p>
+  <p id="{{errorId}}" class="iuh-form-error {{errorClass}}">{{errorText}}</p>
+</div>
+
+<!-- option 4: Label + select shell with zero inlined options (caller composes options via nested option.html includes) -->
+<div class="iuh-form-field {{fieldClass}}">
+  <label for="{{id}}" class="iuh-form-label {{labelClass}}">
+    <span class="iuh-form-label__icon {{iconClass}}" style="background-image:url({{icon}})">{{icon}}</span>
+    <span>{{label}}</span>
+    <span class="iuh-form-required">{{requiredText}}</span>
+  </label>
+  <select id="{{id}}" name="{{name}}" {{attrs}} class="iuh-form-control iuh-form-select {{controlClass}}">
   </select>
   <p id="{{helperId}}" class="iuh-form-helper {{helperClass}}">{{helperText}}</p>
   <p id="{{errorId}}" class="iuh-form-error {{errorClass}}">{{errorText}}</p>

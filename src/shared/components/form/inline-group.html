@@ -1,0 +1,55 @@
+<!-- option 1: Label + control + trailing widget (widget on right) -->
+<div class="iuh-form-field iuh-form-inline {{fieldClass}}">
+  <label for="{{id}}" class="iuh-form-label {{labelClass}}">
+    <span class="iuh-form-label__icon {{iconClass}}" style="background-image:url({{icon}})">{{icon}}</span>
+    <span>{{label}}</span>
+    <span class="iuh-form-required">{{requiredText}}</span>
+  </label>
+  <div class="iuh-form-inline__body {{bodyClass}}">
+    <input id="{{id}}" name="{{name}}" type="{{type}}" placeholder="{{placeholder}}" {{attrs}} class="iuh-form-control {{controlClass}}" />
+    <div class="iuh-form-inline__widget {{widgetClass}}">
+      <img src="{{widgetSrc}}" alt="{{widgetAlt}}" class="{{widgetImgClass}}" />
+    </div>
+  </div>
+  <p id="{{helperId}}" class="iuh-form-helper {{helperClass}}">{{helperText}}</p>
+  <p id="{{errorId}}" class="iuh-form-error {{errorClass}}">{{errorText}}</p>
+</div>
+
+<!-- option 2: Label + control + trailing widget (widget on left, control on right) -->
+<div class="iuh-form-field iuh-form-inline {{fieldClass}}">
+  <label for="{{id}}" class="iuh-form-label {{labelClass}}">
+    <span class="iuh-form-label__icon {{iconClass}}" style="background-image:url({{icon}})">{{icon}}</span>
+    <span>{{label}}</span>
+    <span class="iuh-form-required">{{requiredText}}</span>
+  </label>
+  <div class="iuh-form-inline__body iuh-form-inline__body--widget-leading {{bodyClass}}">
+    <div class="iuh-form-inline__widget {{widgetClass}}">
+      <img src="{{widgetSrc}}" alt="{{widgetAlt}}" class="{{widgetImgClass}}" />
+    </div>
+    <input id="{{id}}" name="{{name}}" type="{{type}}" placeholder="{{placeholder}}" {{attrs}} class="iuh-form-control {{controlClass}}" />
+  </div>
+  <p id="{{helperId}}" class="iuh-form-helper {{helperClass}}">{{helperText}}</p>
+  <p id="{{errorId}}" class="iuh-form-error {{errorClass}}">{{errorText}}</p>
+</div>
+
+<!-- option 3: Label + captcha widget (left) + control (right). Used by login captcha. -->
+<div class="iuh-form-field iuh-form-inline {{fieldClass}}">
+  <label for="{{id}}" class="iuh-form-label {{labelClass}}">
+    <span class="iuh-form-label__icon {{iconClass}}" style="background-image:url({{icon}})">{{icon}}</span>
+    <span>{{label}}</span>
+    <span class="iuh-form-required">{{requiredText}}</span>
+  </label>
+  <div class="iuh-form-inline__body iuh-form-inline__body--widget-leading {{bodyClass}}">
+    <div class="iuh-form-inline__widget {{widgetClass}}">
+      <div class="iuh-form-captcha" aria-label="{{captchaAria}}" role="img">
+        <div class="iuh-form-captcha__noise"></div>
+        <div class="iuh-form-captcha__code">{{captchaCode}}</div>
+        <div class="iuh-form-captcha__line iuh-form-captcha__line--a"></div>
+        <div class="iuh-form-captcha__line iuh-form-captcha__line--b"></div>
+      </div>
+    </div>
+    <input id="{{id}}" name="{{name}}" type="{{type}}" autocomplete="off" placeholder="{{placeholder}}" {{attrs}} class="iuh-form-control iuh-form-control--fixed iuh-form-control--lg {{controlClass}}" />
+  </div>
+  <p id="{{helperId}}" class="iuh-form-helper {{helperClass}}">{{helperText}}</p>
+  <p id="{{errorId}}" class="iuh-form-error {{errorClass}}">{{errorText}}</p>
+</div>

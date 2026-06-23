@@ -1,9 +1,7 @@
 ## Purpose
 
 Defines the shared platform and faculty module architecture for the IUH static faculty website, including selected-faculty build behavior, ownership rules, cleanup expectations, and Health Science baseline preservation.
-
 ## Requirements
-
 ### Requirement: Shared Platform And Faculty Module Source Layout
 The repository SHALL organize reusable website platform code under `src/shared` and faculty-owned website code under `src/faculties/<faculty>`.
 
@@ -250,3 +248,22 @@ The selected-faculty build SHALL copy only SVG files that are referenced by the 
 - **WHEN** Health Science and Dormitory builds complete
 - **THEN** `dist_iuh/assets/svgs` SHALL contain the SVG files referenced by that selected faculty build
 - **AND** it MUST NOT contain every file from `src/shared/assets/svgs` merely because the file exists in the shared SVG root
+
+### Requirement: Faculty form surfaces use shared form primitives
+Every faculty module SHALL build its form-like UI from the shared form primitives instead of hand-rolled markup.
+
+#### Scenario: Faculty pages do not hand-roll form controls
+- **WHEN** any faculty page under `src/faculties/<faculty>/pages` renders an input, textarea, select, radio, checkbox, file upload, data table, helper text, error text, action row, display row, or inline-grouped control
+- **THEN** the markup SHALL be produced by including a shared form primitive from `src/shared/components/form`
+- **AND** the page SHALL NOT re-implement the visual styling using ad-hoc Tailwind utility chains when a shared primitive or `iuh-form-*` class already covers the case
+
+#### Scenario: Faculty-specific widgets are encapsulated as primitives
+- **WHEN** a faculty needs a form widget that is not yet covered by a shared primitive
+- **THEN** the new widget SHALL be added to the shared form primitive surface under `src/shared/components/form` before being consumed by the faculty page
+- **AND** the new primitive SHALL be documented in `src/shared/components/form/README.md`
+
+#### Scenario: Health Science form surfaces are migrated to shared primitives
+- **WHEN** Health Science `pages/contact.html` or `pages/form.html` is built
+- **THEN** every form control in those pages SHALL be rendered through the shared form primitive surface
+- **AND** the pages SHALL produce no visible regression compared to their behavior before migration
+

@@ -1,0 +1,21 @@
+<!-- option 1: Two-column row (label left, value right) -->
+<div class="iuh-form-display-row {{rowClass}}">
+  <span class="iuh-form-display-label">{{label}}</span>
+  <span class="iuh-form-display-value {{valueClass}}">{{value}}</span>
+</div>
+
+<!-- option 2: Full-width row (label above, value below; full container width) -->
+<div class="iuh-form-display-row iuh-form-display-row--full {{rowClass}}">
+  <span class="iuh-form-display-label">{{label}}</span>
+  <span class="iuh-form-display-value {{valueClass}}">{{value}}</span>
+</div>
+
+<!-- option 3: Two-column row with emphasis value (status / highlight) -->
+<div class="iuh-form-display-row {{rowClass}}">
+  <span class="iuh-form-display-label">{{label}}</span>
+  <span class="iuh-form-display-value iuh-form-display-value--emphasis {{valueClass}}">{{value}}</span>
+</div>
+
+<!-- option 4: Group wrapper (caller composes rows inside via nested display-row.html includes) -->
+<div class="iuh-form-display {{groupClass}}">
+</div>

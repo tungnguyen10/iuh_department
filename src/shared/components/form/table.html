@@ -1,0 +1,45 @@
+<!-- option 1: Header row (up to 6 inlined columns; empty cell lines strip) -->
+<tr class="iuh-form-table-head-row {{rowClass}}">
+  <th class="iuh-form-table-head-cell {{col1Class}}">{{col1}}</th>
+  <th class="iuh-form-table-head-cell {{col2Class}}">{{col2}}</th>
+  <th class="iuh-form-table-head-cell {{col3Class}}">{{col3}}</th>
+  <th class="iuh-form-table-head-cell {{col4Class}}">{{col4}}</th>
+  <th class="iuh-form-table-head-cell {{col5Class}}">{{col5}}</th>
+  <th class="iuh-form-table-head-cell {{col6Class}}">{{col6}}</th>
+</tr>
+
+<!-- option 2: Body row (up to 6 inlined cells; empty cell lines strip) -->
+<tr class="iuh-form-table-body-row {{rowClass}}">
+  <td class="iuh-form-table-cell {{col1Class}}">{{col1}}</td>
+  <td class="iuh-form-table-cell {{col2Class}}">{{col2}}</td>
+  <td class="iuh-form-table-cell {{col3Class}}">{{col3}}</td>
+  <td class="iuh-form-table-cell {{col4Class}}">{{col4}}</td>
+  <td class="iuh-form-table-cell {{col5Class}}">{{col5}}</td>
+  <td class="iuh-form-table-cell {{col6Class}}">{{col6}}</td>
+</tr>
+
+<!-- option 3: Empty-state row (spans all columns) -->
+<tr>
+  <td class="iuh-form-table-empty {{cellClass}}" colspan="{{colspan}}">{{emptyText}}</td>
+</tr>
+
+<!-- option 4: Full table shell with header + empty state (caller passes columns + empty message) -->
+<div class="iuh-form-table-wrap {{wrapClass}}">
+  <table class="iuh-form-table">
+    <thead>
+      <tr class="iuh-form-table-head-row">
+        <th class="iuh-form-table-head-cell {{col1Class}}">{{col1}}</th>
+        <th class="iuh-form-table-head-cell {{col2Class}}">{{col2}}</th>
+        <th class="iuh-form-table-head-cell {{col3Class}}">{{col3}}</th>
+        <th class="iuh-form-table-head-cell {{col4Class}}">{{col4}}</th>
+        <th class="iuh-form-table-head-cell {{col5Class}}">{{col5}}</th>
+        <th class="iuh-form-table-head-cell {{col6Class}}">{{col6}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="iuh-form-table-empty" colspan="{{colspan}}">{{emptyText}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

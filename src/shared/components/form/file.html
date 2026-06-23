@@ -1,0 +1,43 @@
+<!-- option 1: Label + file input -->
+<div class="iuh-form-field {{fieldClass}}">
+  <label for="{{id}}" class="iuh-form-label {{labelClass}}">
+    <span class="iuh-form-label__icon {{iconClass}}" style="background-image:url({{icon}})">{{icon}}</span>
+    <span>{{label}}</span>
+    <span class="iuh-form-required">{{requiredText}}</span>
+  </label>
+  <input id="{{id}}" name="{{name}}" type="file" accept="{{accept}}" {{attrs}} class="iuh-form-file-input {{controlClass}}" />
+  <p id="{{helperId}}" class="iuh-form-helper {{helperClass}}">{{helperText}}</p>
+  <p id="{{errorId}}" class="iuh-form-error {{errorClass}}">{{errorText}}</p>
+</div>
+
+<!-- option 2: Label + file input + side action button (button include) -->
+<div class="iuh-form-field {{fieldClass}}">
+  <label for="{{id}}" class="iuh-form-label {{labelClass}}">
+    <span class="iuh-form-label__icon {{iconClass}}" style="background-image:url({{icon}})">{{icon}}</span>
+    <span>{{label}}</span>
+    <span class="iuh-form-required">{{requiredText}}</span>
+  </label>
+  <div class="iuh-form-file {{fileClass}}">
+    <input id="{{id}}" name="{{name}}" type="file" accept="{{accept}}" {{attrs}} class="iuh-form-file-input {{controlClass}}" />
+    <div data-include="@shared/components/button/button.html" data-variant="{{actionVariant}}" data-type="{{actionType}}" data-text="{{actionText}}" data-icon="{{actionIcon}}" data-class="iuh-form-file-trigger {{actionClass}}" data-icon-class="{{actionIconClass}}"></div>
+  </div>
+  <p id="{{helperId}}" class="iuh-form-helper {{helperClass}}">{{helperText}}</p>
+  <p id="{{errorId}}" class="iuh-form-error {{errorClass}}">{{errorText}}</p>
+</div>
+
+<!-- option 3: Label + dropzone file input (overlay-based, full-area click target) -->
+<div class="iuh-form-field {{fieldClass}}">
+  <label for="{{id}}" class="iuh-form-label {{labelClass}}">
+    <span class="iuh-form-label__icon {{iconClass}}" style="background-image:url({{icon}})">{{icon}}</span>
+    <span>{{label}}</span>
+    <span class="iuh-form-required">{{requiredText}}</span>
+  </label>
+  <div class="iuh-form-file iuh-form-file--dropzone {{fileClass}}">
+    <input id="{{id}}" name="{{name}}" type="file" accept="{{accept}}" {{attrs}} class="absolute inset-0 h-full w-full cursor-pointer opacity-0" />
+    <span class="iuh-form-label__icon mx-auto !h-10 !w-10 opacity-40 {{iconClass}}" style="background-image:url({{dropzoneIcon}})">{{dropzoneIcon}}</span>
+    <p class="mt-2 font-sans text-sm text-gray-700">{{dropzonePrimaryText}}</p>
+    <p class="iuh-form-file-status">{{dropzoneSecondaryText}}</p>
+  </div>
+  <p id="{{helperId}}" class="iuh-form-helper {{helperClass}}">{{helperText}}</p>
+  <p id="{{errorId}}" class="iuh-form-error {{errorClass}}">{{errorText}}</p>
+</div>

@@ -66,8 +66,8 @@
         </div>
       </div>
 
-      <form id="demoForm" class="space-y-8">
-        
+      <form id="demoForm" class="iuh-form space-y-8">
+
         <!-- ============ TEXT INPUTS ============ -->
         <div class="space-y-6">
           <h3 class="font-inter font-bold text-base sm:text-lg text-primary-dark-blue flex items-center gap-2">
@@ -76,152 +76,83 @@
           </h3>
 
           <!-- Full Name -->
-          <div class="group">
-            <label for="fullName" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-              <img src="/assets/svgs/icon-user.svg" alt="" class="w-4 h-4" />
-              Họ và tên <span class="text-danger">*</span>
-            </label>
-            <div class="relative">
-              <input 
-                type="text" 
-                id="fullName" 
-                name="fullName" 
-                required
-                minlength="2"
-                class="w-full px-3 sm:px-4 pr-10 py-2.5 sm:py-3 text-sm sm:text-base border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all group-hover:border-gray-400"
-                placeholder="Nguyễn Văn A"
-              />
-              <div class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                <img src="/assets/svgs/icon-check-circle.svg" alt="" class="w-5 h-5" />
-              </div>
-            </div>
+          <div data-include="@shared/components/form/field.html"
+            data-id="fullName"
+            data-name="fullName"
+            data-type="text"
+            data-label="Họ và tên"
+            data-required-text="*"
+            data-icon="/assets/svgs/icon-user.svg"
+            data-placeholder="Nguyễn Văn A"
+            data-attrs="required minlength=2">
           </div>
 
           <!-- Email & Phone -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-            <!-- Email -->
-            <div class="group">
-              <label for="email" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-                <img src="/assets/svgs/icon-email.svg" alt="" class="w-4 h-4" />
-                Email <span class="text-danger">*</span>
-              </label>
-              <div class="relative">
-                <input 
-                  type="email" 
-                  id="email" 
-                  name="email" 
-                  required
-                  class="w-full px-3 sm:px-4 pr-10 py-2.5 sm:py-3 text-sm sm:text-base border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all group-hover:border-gray-400"
-                  placeholder="email@example.com"
-                />
-                <div class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <img src="/assets/svgs/icon-check-circle.svg" alt="" class="w-5 h-5" />
-                </div>
-              </div>
+          <div class="iuh-form-grid">
+            <div data-include="@shared/components/form/field.html"
+              data-id="email"
+              data-name="email"
+              data-type="email"
+              data-label="Email"
+              data-required-text="*"
+              data-icon="/assets/svgs/icon-email.svg"
+              data-placeholder="email@example.com"
+              data-attrs="required">
             </div>
-
-            <!-- Phone -->
-            <div class="group">
-              <label for="phone" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-                <img src="/assets/svgs/icon-phone.svg" alt="" class="w-4 h-4" />
-                Số điện thoại <span class="text-danger">*</span>
-              </label>
-              <div class="relative">
-                <input 
-                  type="tel" 
-                  id="phone" 
-                  name="phone"
-                  required
-                  pattern="[0-9]{10}"
-                  class="w-full px-3 sm:px-4 pr-10 py-2.5 sm:py-3 text-sm sm:text-base border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all group-hover:border-gray-400"
-                  placeholder="0912345678"
-                />
-                <div class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <img src="/assets/svgs/icon-check-circle.svg" alt="" class="w-5 h-5" />
-                </div>
-              </div>
+            <div data-include="@shared/components/form/field.html"
+              data-id="phone"
+              data-name="phone"
+              data-type="tel"
+              data-label="Số điện thoại"
+              data-required-text="*"
+              data-icon="/assets/svgs/icon-phone.svg"
+              data-placeholder="0912345678"
+              data-attrs="required pattern=[0-9]{10}">
             </div>
           </div>
 
           <!-- Password & Confirm Password -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-            <!-- Password -->
-            <div class="group">
-              <label for="password" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-                <img src="/assets/svgs/icon-shield-check.svg" alt="" class="w-4 h-4" />
-                Mật khẩu <span class="text-danger">*</span>
-              </label>
-              <div class="relative">
-                <input 
-                  type="password" 
-                  id="password" 
-                  name="password"
-                  required
-                  minlength="8"
-                  class="w-full px-3 sm:px-4 pr-10 py-2.5 sm:py-3 text-sm sm:text-base border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all group-hover:border-gray-400"
-                  placeholder="••••••••"
-                />
-              </div>
-              <p class="mt-1 text-xs text-gray-500">Tối thiểu 8 ký tự</p>
+          <div class="iuh-form-grid">
+            <div data-include="@shared/components/form/field.html"
+              data-id="password"
+              data-name="password"
+              data-type="password"
+              data-label="Mật khẩu"
+              data-required-text="*"
+              data-icon="/assets/svgs/icon-shield-check.svg"
+              data-placeholder="••••••••"
+              data-attrs="required minlength=8"
+              data-helper-text="Tối thiểu 8 ký tự">
             </div>
-
-            <!-- Confirm Password -->
-            <div class="group">
-              <label for="confirmPassword" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-                <img src="/assets/svgs/icon-shield-check.svg" alt="" class="w-4 h-4" />
-                Xác nhận mật khẩu <span class="text-danger">*</span>
-              </label>
-              <div class="relative">
-                <input 
-                  type="password" 
-                  id="confirmPassword" 
-                  name="confirmPassword"
-                  required
-                  minlength="8"
-                  class="w-full px-3 sm:px-4 pr-10 py-2.5 sm:py-3 text-sm sm:text-base border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all group-hover:border-gray-400"
-                  placeholder="••••••••"
-                />
-              </div>
+            <div data-include="@shared/components/form/field.html"
+              data-id="confirmPassword"
+              data-name="confirmPassword"
+              data-type="password"
+              data-label="Xác nhận mật khẩu"
+              data-required-text="*"
+              data-icon="/assets/svgs/icon-shield-check.svg"
+              data-placeholder="••••••••"
+              data-attrs="required minlength=8">
             </div>
           </div>
 
           <!-- URL & Search -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-            <!-- Website -->
-            <div class="group">
-              <label for="website" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-                <img src="/assets/svgs/icon-globe.svg" alt="" class="w-4 h-4" />
-                Website
-              </label>
-              <div class="relative">
-                <input 
-                  type="url" 
-                  id="website" 
-                  name="website"
-                  class="w-full px-3 sm:px-4 pr-10 py-2.5 sm:py-3 text-sm sm:text-base border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all group-hover:border-gray-400"
-                  placeholder="https://example.com"
-                />
-              </div>
+          <div class="iuh-form-grid">
+            <div data-include="@shared/components/form/field.html"
+              data-id="website"
+              data-name="website"
+              data-type="url"
+              data-label="Website"
+              data-icon="/assets/svgs/icon-globe.svg"
+              data-placeholder="https://example.com">
             </div>
-
-            <!-- Search -->
-            <div class="group">
-              <label for="search" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-                <img src="/assets/svgs/icon-search.svg" alt="" class="w-4 h-4" />
-                Tìm kiếm
-              </label>
-              <div class="relative">
-                <input 
-                  type="search" 
-                  id="search" 
-                  name="search"
-                  class="w-full px-3 sm:px-4 pr-10 py-2.5 sm:py-3 text-sm sm:text-base border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all group-hover:border-gray-400"
-                  placeholder="Nhập từ khóa..."
-                />
-                <div class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
-                  <img src="/assets/svgs/icon-search.svg" alt="" class="w-5 h-5" />
-                </div>
-              </div>
+            <div data-include="@shared/components/form/field.html"
+              data-id="search"
+              data-name="search"
+              data-type="search"
+              data-label="Tìm kiếm"
+              data-icon="/assets/svgs/icon-search.svg"
+              data-placeholder="Nhập từ khóa...">
             </div>
           </div>
         </div>
@@ -234,80 +165,52 @@
           </h3>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-            <!-- Number -->
-            <div class="group">
-              <label for="age" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-                <img src="/assets/svgs/icon-user.svg" alt="" class="w-4 h-4" />
-                Tuổi
-              </label>
-              <div class="relative">
-                <input 
-                  type="number" 
-                  id="age" 
-                  name="age"
-                  min="0"
-                  max="120"
-                  class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all group-hover:border-gray-400"
-                  placeholder="18"
-                />
-              </div>
+            <div data-include="@shared/components/form/field.html"
+              data-id="age"
+              data-name="age"
+              data-type="number"
+              data-label="Tuổi"
+              data-icon="/assets/svgs/icon-user.svg"
+              data-placeholder="18"
+              data-attrs="min=0 max=120">
             </div>
-
-            <!-- Date -->
-            <div class="group">
-              <label for="birthDate" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-                <img src="/assets/svgs/icon-calendar-check.svg" alt="" class="w-4 h-4" />
-                Ngày sinh
-              </label>
-              <div class="relative">
-                <input 
-                  type="date" 
-                  id="birthDate" 
-                  name="birthDate"
-                  class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all group-hover:border-gray-400"
-                />
-              </div>
+            <div data-include="@shared/components/form/field.html"
+              data-id="birthDate"
+              data-name="birthDate"
+              data-type="date"
+              data-label="Ngày sinh"
+              data-icon="/assets/svgs/icon-calendar-check.svg">
             </div>
-
-            <!-- Time -->
-            <div class="group">
-              <label for="appointmentTime" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-                <img src="/assets/svgs/icon-clock.svg" alt="" class="w-4 h-4" />
-                Giờ hẹn
-              </label>
-              <div class="relative">
-                <input 
-                  type="time" 
-                  id="appointmentTime" 
-                  name="appointmentTime"
-                  class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all group-hover:border-gray-400"
-                />
-              </div>
+            <div data-include="@shared/components/form/field.html"
+              data-id="appointmentTime"
+              data-name="appointmentTime"
+              data-type="time"
+              data-label="Giờ hẹn"
+              data-icon="/assets/svgs/icon-clock.svg">
             </div>
           </div>
 
-          <!-- Range Slider -->
-          <div class="group">
-            <label for="experience" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-              <img src="/assets/svgs/icon-award.svg" alt="" class="w-4 h-4" />
-              Kinh nghiệm: <span id="experienceValue" class="text-primary-dark-blue font-bold">3</span> năm
+          <!-- Range Slider: kept hand-rolled (specialized control with live label
+               counter not expressible through the current shared field primitives). -->
+          <div class="iuh-form-field">
+            <label for="experience" class="iuh-form-label">
+              <span class="iuh-form-label__icon" style="background-image:url(/assets/svgs/icon-award.svg)">/assets/svgs/icon-award.svg</span>
+              <span>Kinh nghiệm: <span id="experienceValue" class="text-primary-dark-blue font-bold">3</span> năm</span>
             </label>
-            <div class="relative">
-              <input 
-                type="range" 
-                id="experience" 
-                name="experience"
-                min="0"
-                max="10"
-                value="3"
-                class="w-full h-2 bg-stroke rounded-lg appearance-none cursor-pointer accent-primary-dark-blue"
-                oninput="document.getElementById('experienceValue').textContent = this.value"
-              />
-              <div class="flex justify-between text-xs text-gray-500 mt-1">
-                <span>0</span>
-                <span>5</span>
-                <span>10+</span>
-              </div>
+            <input
+              type="range"
+              id="experience"
+              name="experience"
+              min="0"
+              max="10"
+              value="3"
+              class="w-full h-2 bg-stroke rounded-lg appearance-none cursor-pointer accent-primary-dark-blue"
+              oninput="document.getElementById('experienceValue').textContent = this.value"
+            />
+            <div class="flex justify-between text-xs text-gray-500 mt-1">
+              <span>0</span>
+              <span>5</span>
+              <span>10+</span>
             </div>
           </div>
         </div>
@@ -319,87 +222,66 @@
             Select & Dropdown
           </h3>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <!-- Single Select -->
-            <div class="group">
-              <label for="faculty" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-                <img src="/assets/svgs/icon-building.svg" alt="" class="w-4 h-4" />
-                Khoa <span class="text-danger">*</span>
-              </label>
-              <div class="relative">
-                <select 
-                  id="faculty" 
-                  name="faculty"
-                  required
-                  class="w-full px-3 sm:px-4 pr-10 py-2.5 sm:py-3 text-sm sm:text-base border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all group-hover:border-gray-400 appearance-none bg-white cursor-pointer"
-                >
-                  <option value="">Chọn khoa</option>
-                  <option value="cntt">Công nghệ Thông tin</option>
-                  <option value="co-khi">Cơ khí</option>
-                  <option value="dien-tu">Điện - Điện tử</option>
-                  <option value="kinh-te">Kinh tế</option>
-                  <option value="ngoai-ngu">Ngoại ngữ</option>
-                </select>
-                <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                  <img src="/assets/svgs/chevron-right.svg" alt="" class="w-5 h-5 rotate-90" />
-                </div>
-              </div>
+          <div class="iuh-form-grid">
+            <div data-include="@shared/components/form/field.html"
+              data-variant="3"
+              data-id="faculty"
+              data-name="faculty"
+              data-label="Khoa"
+              data-required-text="*"
+              data-icon="/assets/svgs/icon-building.svg"
+              data-placeholder-value=""
+              data-placeholder-text="Chọn khoa"
+              data-attrs="required"
+              data-option1-value="cntt" data-option1-text="Công nghệ Thông tin"
+              data-option2-value="co-khi" data-option2-text="Cơ khí"
+              data-option3-value="dien-tu" data-option3-text="Điện - Điện tử"
+              data-option4-value="kinh-te" data-option4-text="Kinh tế"
+              data-option5-value="ngoai-ngu" data-option5-text="Ngoại ngữ">
             </div>
 
-            <!-- Major -->
-            <div class="group">
-              <label for="major" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-                <img src="/assets/svgs/icon-graduation-cap.svg" alt="" class="w-4 h-4" />
-                Ngành học <span class="text-danger">*</span>
+            <!-- Major with optgroup: built from the select shell + nested option
+                 sub-includes. <optgroup> is also raw HTML — kept inline because
+                 the primitives intentionally do not model optgroup. -->
+            <div class="iuh-form-field">
+              <label for="major" class="iuh-form-label">
+                <span class="iuh-form-label__icon" style="background-image:url(/assets/svgs/icon-graduation-cap.svg)">/assets/svgs/icon-graduation-cap.svg</span>
+                <span>Ngành học</span>
+                <span class="iuh-form-required">*</span>
               </label>
-              <div class="relative">
-                <select 
-                  id="major" 
-                  name="major"
-                  required
-                  class="w-full px-3 sm:px-4 pr-10 py-2.5 sm:py-3 text-sm sm:text-base border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all group-hover:border-gray-400 appearance-none bg-white cursor-pointer"
-                >
-                  <option value="">Chọn ngành học</option>
-                  <optgroup label="Công nghệ Thông tin">
-                    <option value="ktpm">Kỹ thuật Phần mềm</option>
-                    <option value="httt">Hệ thống Thông tin</option>
-                    <option value="khmt">Khoa học Máy tính</option>
-                  </optgroup>
-                  <optgroup label="Kinh tế">
-                    <option value="qtkd">Quản trị Kinh doanh</option>
-                    <option value="kt">Kế toán</option>
-                    <option value="tc">Tài chính</option>
-                  </optgroup>
-                </select>
-                <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                  <img src="/assets/svgs/chevron-right.svg" alt="" class="w-5 h-5 rotate-90" />
-                </div>
-              </div>
+              <select id="major" name="major" required class="iuh-form-control iuh-form-select">
+                <option value="">Chọn ngành học</option>
+                <optgroup label="Công nghệ Thông tin" class="iuh-form-optgroup">
+                  <div data-include="@shared/components/form/option.html" data-value="ktpm" data-text="Kỹ thuật Phần mềm"></div>
+                  <div data-include="@shared/components/form/option.html" data-value="httt" data-text="Hệ thống Thông tin"></div>
+                  <div data-include="@shared/components/form/option.html" data-value="khmt" data-text="Khoa học Máy tính"></div>
+                </optgroup>
+                <optgroup label="Kinh tế" class="iuh-form-optgroup">
+                  <div data-include="@shared/components/form/option.html" data-value="qtkd" data-text="Quản trị Kinh doanh"></div>
+                  <div data-include="@shared/components/form/option.html" data-value="kt" data-text="Kế toán"></div>
+                  <div data-include="@shared/components/form/option.html" data-value="tc" data-text="Tài chính"></div>
+                </optgroup>
+              </select>
             </div>
           </div>
 
-          <!-- Multi-select (size) -->
-          <div class="group">
-            <label for="courses" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-              <img src="/assets/svgs/icon-education.svg" alt="" class="w-4 h-4" />
-              Môn học quan tâm <span class="text-gray-500 font-normal">(Giữ Ctrl để chọn nhiều)</span>
+          <!-- Multi-select courses (6 options, multiple selection). Built from the
+               select shell + nested option sub-includes; the `multiple` and `size`
+               attributes are passed through data-attrs. -->
+          <div class="iuh-form-field">
+            <label for="courses" class="iuh-form-label">
+              <span class="iuh-form-label__icon" style="background-image:url(/assets/svgs/icon-education.svg)">/assets/svgs/icon-education.svg</span>
+              <span>Môn học quan tâm</span>
+              <span class="text-gray-500 font-normal text-xs">(Giữ Ctrl để chọn nhiều)</span>
             </label>
-            <div class="relative">
-              <select 
-                id="courses" 
-                name="courses"
-                multiple
-                size="5"
-                class="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all group-hover:border-gray-400 bg-white"
-              >
-                <option value="programming">Lập trình cơ bản</option>
-                <option value="database">Cơ sở dữ liệu</option>
-                <option value="web">Phát triển Web</option>
-                <option value="mobile">Lập trình Mobile</option>
-                <option value="ai">Trí tuệ nhân tạo</option>
-                <option value="cloud">Cloud Computing</option>
-              </select>
-            </div>
+            <select id="courses" name="courses" multiple size="5" class="iuh-form-control iuh-form-select !pr-4" style="background-image:none">
+              <div data-include="@shared/components/form/option.html" data-value="programming" data-text="Lập trình cơ bản"></div>
+              <div data-include="@shared/components/form/option.html" data-value="database" data-text="Cơ sở dữ liệu"></div>
+              <div data-include="@shared/components/form/option.html" data-value="web" data-text="Phát triển Web"></div>
+              <div data-include="@shared/components/form/option.html" data-value="mobile" data-text="Lập trình Mobile"></div>
+              <div data-include="@shared/components/form/option.html" data-value="ai" data-text="Trí tuệ nhân tạo"></div>
+              <div data-include="@shared/components/form/option.html" data-value="cloud" data-text="Cloud Computing"></div>
+            </select>
           </div>
         </div>
 
@@ -410,81 +292,37 @@
             Radio Buttons
           </h3>
 
-          <!-- Gender -->
-          <div>
-            <label class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-3">
-              <img src="/assets/svgs/icon-user.svg" alt="" class="w-4 h-4" />
-              Giới tính <span class="text-danger">*</span>
-            </label>
-            <div class="flex flex-wrap gap-3 sm:gap-4">
-              <label class="group flex items-center gap-2 cursor-pointer">
-                <input 
-                  type="radio" 
-                  name="gender" 
-                  value="male" 
-                  required
-                  class="w-4 h-4 text-primary-dark-blue border-stroke focus:ring-0 focus:outline-none cursor-pointer"
-                />
-                <span class="font-roboto text-sm text-gray-700 group-hover:text-primary-dark-blue transition-colors">Nam</span>
-              </label>
-              <label class="group flex items-center gap-2 cursor-pointer">
-                <input 
-                  type="radio" 
-                  name="gender" 
-                  value="female" 
-                  required
-                  class="w-4 h-4 text-primary-dark-blue border-stroke focus:ring-0 focus:outline-none cursor-pointer"
-                />
-                <span class="font-roboto text-sm text-gray-700 group-hover:text-primary-dark-blue transition-colors">Nữ</span>
-              </label>
-              <label class="group flex items-center gap-2 cursor-pointer">
-                <input 
-                  type="radio" 
-                  name="gender" 
-                  value="other" 
-                  required
-                  class="w-4 h-4 text-primary-dark-blue border-stroke focus:ring-0 focus:outline-none cursor-pointer"
-                />
-                <span class="font-roboto text-sm text-gray-700 group-hover:text-primary-dark-blue transition-colors">Khác</span>
-              </label>
-            </div>
+          <!-- Gender (3 flat options) -->
+          <div data-include="@shared/components/form/choice.html"
+            data-legend="Giới tính"
+            data-name="gender"
+            data-option1-value="male" data-option1-text="Nam" data-option1-attrs="required"
+            data-option2-value="female" data-option2-text="Nữ" data-option2-attrs="required"
+            data-option3-value="other" data-option3-text="Khác" data-option3-attrs="required">
           </div>
 
-          <!-- Study Mode -->
-          <div>
-            <label class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-3">
-              <img src="/assets/svgs/icon-education.svg" alt="" class="w-4 h-4" />
-              Hình thức học <span class="text-danger">*</span>
-            </label>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-              <label class="group relative flex items-center gap-3 p-4 border-2 border-stroke rounded-lg cursor-pointer hover:border-primary-dark-blue transition-all has-[:checked]:border-primary-dark-blue has-[:checked]:bg-primary-dark-blue/5">
-                <input 
-                  type="radio" 
-                  name="studyMode" 
-                  value="fulltime" 
-                  required
-                  class="w-4 h-4 text-primary-dark-blue border-stroke focus:ring-0 focus:outline-none cursor-pointer"
-                />
-                <div class="flex-1">
-                  <div class="font-roboto font-medium text-sm text-gray-900">Chính quy</div>
-                  <div class="font-roboto text-xs text-gray-500">Thứ 2 - Thứ 6, toàn thời gian</div>
-                </div>
+          <!-- Study Mode: card-style radio with rich two-line content (heading +
+               sub-text) is not covered by the shared choice primitive. Kept
+               hand-rolled as a justified inline-group widget. -->
+          <fieldset class="iuh-form-fieldset">
+            <legend class="iuh-form-legend">Hình thức học</legend>
+            <div class="iuh-form-choice-grid iuh-form-choice-grid--two">
+              <label class="iuh-form-choice group relative !items-start !p-4 border-2 border-stroke has-[:checked]:border-primary-dark-blue has-[:checked]:bg-primary-dark-blue/5">
+                <input type="radio" name="studyMode" value="fulltime" required class="iuh-form-choice__control" />
+                <span class="flex-1">
+                  <span class="block font-roboto font-medium text-sm text-gray-900">Chính quy</span>
+                  <span class="block font-roboto text-xs text-gray-500">Thứ 2 - Thứ 6, toàn thời gian</span>
+                </span>
               </label>
-              <label class="group relative flex items-center gap-3 p-4 border-2 border-stroke rounded-lg cursor-pointer hover:border-primary-dark-blue transition-all has-[:checked]:border-primary-dark-blue has-[:checked]:bg-primary-dark-blue/5">
-                <input 
-                  type="radio" 
-                  name="studyMode" 
-                  value="parttime" 
-                  required
-                  class="w-4 h-4 text-primary-dark-blue border-stroke focus:ring-0 focus:outline-none cursor-pointer"
-                />
-                <div class="flex-1">
-                  <div class="font-roboto font-medium text-sm text-gray-900">Vừa học vừa làm</div>
-                  <div class="font-roboto text-xs text-gray-500">Tối & cuối tuần</div>
-                </div>
+              <label class="iuh-form-choice group relative !items-start !p-4 border-2 border-stroke has-[:checked]:border-primary-dark-blue has-[:checked]:bg-primary-dark-blue/5">
+                <input type="radio" name="studyMode" value="parttime" required class="iuh-form-choice__control" />
+                <span class="flex-1">
+                  <span class="block font-roboto font-medium text-sm text-gray-900">Vừa học vừa làm</span>
+                  <span class="block font-roboto text-xs text-gray-500">Tối & cuối tuần</span>
+                </span>
               </label>
             </div>
-          </div>
+          </fieldset>
         </div>
 
         <!-- ============ CHECKBOXES ============ -->
@@ -494,115 +332,48 @@
             Checkboxes
           </h3>
 
-          <!-- Interests -->
-          <div>
-            <label class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-3">
-              <img src="/assets/svgs/icon-tag.svg" alt="" class="w-4 h-4" />
-              Sở thích & Kỹ năng
-            </label>
-            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-2.5 sm:gap-3">
-              <label class="group flex items-center gap-2 cursor-pointer">
-                <input 
-                  type="checkbox" 
-                  name="interests" 
-                  value="coding"
-                  class="w-4 h-4 text-primary-dark-blue border-stroke rounded focus:ring-0 focus:outline-none cursor-pointer"
-                />
-                <span class="font-roboto text-sm text-gray-700 group-hover:text-primary-dark-blue transition-colors">Lập trình</span>
-              </label>
-              <label class="group flex items-center gap-2 cursor-pointer">
-                <input 
-                  type="checkbox" 
-                  name="interests" 
-                  value="design"
-                  class="w-4 h-4 text-primary-dark-blue border-stroke rounded focus:ring-0 focus:outline-none cursor-pointer"
-                />
-                <span class="font-roboto text-sm text-gray-700 group-hover:text-primary-dark-blue transition-colors">Thiết kế</span>
-              </label>
-              <label class="group flex items-center gap-2 cursor-pointer">
-                <input 
-                  type="checkbox" 
-                  name="interests" 
-                  value="marketing"
-                  class="w-4 h-4 text-primary-dark-blue border-stroke rounded focus:ring-0 focus:outline-none cursor-pointer"
-                />
-                <span class="font-roboto text-sm text-gray-700 group-hover:text-primary-dark-blue transition-colors">Marketing</span>
-              </label>
-              <label class="group flex items-center gap-2 cursor-pointer">
-                <input 
-                  type="checkbox" 
-                  name="interests" 
-                  value="business"
-                  class="w-4 h-4 text-primary-dark-blue border-stroke rounded focus:ring-0 focus:outline-none cursor-pointer"
-                />
-                <span class="font-roboto text-sm text-gray-700 group-hover:text-primary-dark-blue transition-colors">Kinh doanh</span>
-              </label>
-              <label class="group flex items-center gap-2 cursor-pointer">
-                <input 
-                  type="checkbox" 
-                  name="interests" 
-                  value="writing"
-                  class="w-4 h-4 text-primary-dark-blue border-stroke rounded focus:ring-0 focus:outline-none cursor-pointer"
-                />
-                <span class="font-roboto text-sm text-gray-700 group-hover:text-primary-dark-blue transition-colors">Viết lách</span>
-              </label>
-              <label class="group flex items-center gap-2 cursor-pointer">
-                <input 
-                  type="checkbox" 
-                  name="interests" 
-                  value="languages"
-                  class="w-4 h-4 text-primary-dark-blue border-stroke rounded focus:ring-0 focus:outline-none cursor-pointer"
-                />
-                <span class="font-roboto text-sm text-gray-700 group-hover:text-primary-dark-blue transition-colors">Ngoại ngữ</span>
-              </label>
+          <!-- Interests: 6-option flat checkbox grid via choice shell + per-row
+               choice-option sub-includes. -->
+          <fieldset class="iuh-form-fieldset">
+            <legend class="iuh-form-legend">Sở thích & Kỹ năng</legend>
+            <div class="iuh-form-choice-grid iuh-form-choice-grid--four">
+              <div data-include="@shared/components/form/choice-option.html" data-type="checkbox" data-name="interests" data-value="coding" data-text="Lập trình"></div>
+              <div data-include="@shared/components/form/choice-option.html" data-type="checkbox" data-name="interests" data-value="design" data-text="Thiết kế"></div>
+              <div data-include="@shared/components/form/choice-option.html" data-type="checkbox" data-name="interests" data-value="marketing" data-text="Marketing"></div>
+              <div data-include="@shared/components/form/choice-option.html" data-type="checkbox" data-name="interests" data-value="business" data-text="Kinh doanh"></div>
+              <div data-include="@shared/components/form/choice-option.html" data-type="checkbox" data-name="interests" data-value="writing" data-text="Viết lách"></div>
+              <div data-include="@shared/components/form/choice-option.html" data-type="checkbox" data-name="interests" data-value="languages" data-text="Ngoại ngữ"></div>
             </div>
-          </div>
+          </fieldset>
 
-          <!-- Services -->
-          <div>
-            <label class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-3">
-              <img src="/assets/svgs/icon-agreement.svg" alt="" class="w-4 h-4" />
-              Dịch vụ quan tâm
-            </label>
-            <div class="space-y-3">
-              <label class="group relative flex items-start gap-3 p-4 border border-stroke rounded-lg cursor-pointer hover:border-primary-dark-blue transition-all has-[:checked]:border-primary-dark-blue has-[:checked]:bg-primary-dark-blue/5">
-                <input 
-                  type="checkbox" 
-                  name="services" 
-                  value="scholarship"
-                  class="mt-0.5 w-4 h-4 text-primary-dark-blue border-stroke rounded focus:ring-0 focus:outline-none cursor-pointer"
-                />
-                <div class="flex-1">
-                  <div class="font-roboto font-medium text-sm text-gray-900">Học bổng</div>
-                  <div class="font-roboto text-xs text-gray-500">Thông tin về các chương trình học bổng</div>
-                </div>
+          <!-- Services: card-style checkbox with two-line content (heading + sub-text).
+               Kept hand-rolled, same justification as the Study Mode card group. -->
+          <fieldset class="iuh-form-fieldset">
+            <legend class="iuh-form-legend">Dịch vụ quan tâm</legend>
+            <div class="iuh-form-choice-grid iuh-form-choice-grid--stacked">
+              <label class="iuh-form-choice group !items-start !p-4 border has-[:checked]:border-primary-dark-blue has-[:checked]:bg-primary-dark-blue/5">
+                <input type="checkbox" name="services" value="scholarship" class="iuh-form-choice__control rounded" />
+                <span class="flex-1">
+                  <span class="block font-roboto font-medium text-sm text-gray-900">Học bổng</span>
+                  <span class="block font-roboto text-xs text-gray-500">Thông tin về các chương trình học bổng</span>
+                </span>
               </label>
-              <label class="group relative flex items-start gap-3 p-4 border border-stroke rounded-lg cursor-pointer hover:border-primary-dark-blue transition-all has-[:checked]:border-primary-dark-blue has-[:checked]:bg-primary-dark-blue/5">
-                <input 
-                  type="checkbox" 
-                  name="services" 
-                  value="dormitory"
-                  class="mt-0.5 w-4 h-4 text-primary-dark-blue border-stroke rounded focus:ring-0 focus:outline-none cursor-pointer"
-                />
-                <div class="flex-1">
-                  <div class="font-roboto font-medium text-sm text-gray-900">Ký túc xá</div>
-                  <div class="font-roboto text-xs text-gray-500">Đăng ký chỗ ở trong khuôn viên trường</div>
-                </div>
+              <label class="iuh-form-choice group !items-start !p-4 border has-[:checked]:border-primary-dark-blue has-[:checked]:bg-primary-dark-blue/5">
+                <input type="checkbox" name="services" value="dormitory" class="iuh-form-choice__control rounded" />
+                <span class="flex-1">
+                  <span class="block font-roboto font-medium text-sm text-gray-900">Ký túc xá</span>
+                  <span class="block font-roboto text-xs text-gray-500">Đăng ký chỗ ở trong khuôn viên trường</span>
+                </span>
               </label>
-              <label class="group relative flex items-start gap-3 p-4 border border-stroke rounded-lg cursor-pointer hover:border-primary-dark-blue transition-all has-[:checked]:border-primary-dark-blue has-[:checked]:bg-primary-dark-blue/5">
-                <input 
-                  type="checkbox" 
-                  name="services" 
-                  value="career"
-                  class="mt-0.5 w-4 h-4 text-primary-dark-blue border-stroke rounded focus:ring-0 focus:outline-none cursor-pointer"
-                />
-                <div class="flex-1">
-                  <div class="font-roboto font-medium text-sm text-gray-900">Tư vấn nghề nghiệp</div>
-                  <div class="font-roboto text-xs text-gray-500">Hỗ trợ định hướng và tìm việc làm</div>
-                </div>
+              <label class="iuh-form-choice group !items-start !p-4 border has-[:checked]:border-primary-dark-blue has-[:checked]:bg-primary-dark-blue/5">
+                <input type="checkbox" name="services" value="career" class="iuh-form-choice__control rounded" />
+                <span class="flex-1">
+                  <span class="block font-roboto font-medium text-sm text-gray-900">Tư vấn nghề nghiệp</span>
+                  <span class="block font-roboto text-xs text-gray-500">Hỗ trợ định hướng và tìm việc làm</span>
+                </span>
               </label>
             </div>
-          </div>
+          </fieldset>
         </div>
 
         <!-- ============ FILE UPLOAD ============ -->
@@ -613,62 +384,37 @@
           </h3>
 
           <!-- Single File -->
-          <div class="group">
-            <label for="resume" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-              <img src="/assets/svgs/icon-article.svg" alt="" class="w-4 h-4" />
-              CV / Resume <span class="text-gray-500 font-normal">(PDF, DOC, DOCX - Max 5MB)</span>
-            </label>
-            <div class="relative">
-              <input 
-                type="file" 
-                id="resume" 
-                name="resume"
-                accept=".pdf,.doc,.docx"
-                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all group-hover:border-gray-400 file:mr-2 sm:file:mr-4 file:py-1.5 file:px-3 sm:file:py-2 sm:file:px-4 file:rounded-full file:border-0 file:text-xs sm:file:text-sm file:font-medium file:bg-primary-dark-blue file:text-primary-white hover:file:bg-primary-yellow hover:file:text-primary-dark-blue file:cursor-pointer file:transition-all"
-              />
-            </div>
+          <div data-include="@shared/components/form/file.html"
+            data-id="resume"
+            data-name="resume"
+            data-label="CV / Resume"
+            data-icon="/assets/svgs/icon-article.svg"
+            data-accept=".pdf,.doc,.docx"
+            data-helper-text="PDF, DOC, DOCX – tối đa 5MB">
           </div>
 
           <!-- Multiple Files -->
-          <div class="group">
-            <label for="documents" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-              <img src="/assets/svgs/icon-article.svg" alt="" class="w-4 h-4" />
-              Hồ sơ kèm theo <span class="text-gray-500 font-normal">(Chọn nhiều file)</span>
-            </label>
-            <div class="relative">
-              <input 
-                type="file" 
-                id="documents" 
-                name="documents"
-                multiple
-                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all group-hover:border-gray-400 file:mr-2 sm:file:mr-4 file:py-1.5 file:px-3 sm:file:py-2 sm:file:px-4 file:rounded-full file:border-0 file:text-xs sm:file:text-sm file:font-medium file:bg-white file:text-primary-dark-blue file:border file:border-primary-dark-blue hover:file:bg-primary-dark-blue hover:file:text-primary-white file:cursor-pointer file:transition-all"
-              />
-            </div>
+          <div data-include="@shared/components/form/file.html"
+            data-id="documents"
+            data-name="documents"
+            data-label="Hồ sơ kèm theo"
+            data-icon="/assets/svgs/icon-article.svg"
+            data-attrs="multiple"
+            data-helper-text="Có thể chọn nhiều file">
           </div>
 
           <!-- Drag & Drop Zone -->
-          <div class="group">
-            <label class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-              <img src="/assets/svgs/icon-article.svg" alt="" class="w-4 h-4" />
-              Hình ảnh
-            </label>
-            <div class="relative border-2 border-dashed border-stroke rounded-lg p-6 sm:p-8 text-center hover:border-primary-dark-blue transition-all cursor-pointer group-hover:bg-primary-dark-blue/5">
-              <input 
-                type="file" 
-                id="images" 
-                name="images"
-                accept="image/*"
-                multiple
-                class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-              />
-              <div class="pointer-events-none">
-                <img src="/assets/svgs/icon-article.svg" alt="" class="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 opacity-40" />
-                <p class="font-roboto text-xs sm:text-sm text-gray-700 mb-1">
-                  <span class="text-primary-dark-blue font-medium">Nhấp để chọn</span> <span class="hidden sm:inline">hoặc kéo thả file vào đây</span>
-                </p>
-                <p class="font-roboto text-xs text-gray-500">PNG, JPG, GIF tối đa 10MB</p>
-              </div>
-            </div>
+          <div data-include="@shared/components/form/file.html"
+            data-variant="3"
+            data-id="images"
+            data-name="images"
+            data-label="Hình ảnh"
+            data-icon="/assets/svgs/icon-article.svg"
+            data-accept="image/*"
+            data-attrs="multiple"
+            data-dropzone-icon="/assets/svgs/icon-article.svg"
+            data-dropzone-primary-text="Nhấp để chọn hoặc kéo thả file vào đây"
+            data-dropzone-secondary-text="PNG, JPG, GIF tối đa 10MB">
           </div>
         </div>
 
@@ -679,57 +425,39 @@
             Textarea
           </h3>
 
-          <!-- Message -->
-          <div class="group">
-            <label for="message" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-              <img src="/assets/svgs/icon-message.svg" alt="" class="w-4 h-4" />
-              Thông điệp / Ghi chú <span class="text-danger">*</span>
-            </label>
-            <div class="relative">
-              <textarea 
-                id="message" 
-                name="message" 
-                rows="4" 
-                required
-                minlength="10"
-                maxlength="1000"
-                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 pb-7 sm:pb-8 text-sm sm:text-base border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all resize-none group-hover:border-gray-400"
-                placeholder="Nhập nội dung chi tiết..."
-              ></textarea>
-              <div class="absolute bottom-3 right-3 flex items-center gap-2">
-                <span class="text-xs text-gray-400">
-                  <span id="messageCharCount">0</span>/1000
-                </span>
-              </div>
-            </div>
+          <!-- Message (live char counter is written into the helper paragraph by
+               the script at the bottom of the page). -->
+          <div data-include="@shared/components/form/field.html"
+            data-variant="2"
+            data-id="message"
+            data-name="message"
+            data-rows="4"
+            data-label="Thông điệp / Ghi chú"
+            data-required-text="*"
+            data-icon="/assets/svgs/icon-message.svg"
+            data-placeholder="Nhập nội dung chi tiết..."
+            data-attrs="required minlength=10 maxlength=1000"
+            data-helper-id="messageCharCount"
+            data-helper-text="0/1000 ký tự">
           </div>
 
-          <!-- Description with helper -->
-          <div class="group">
-            <label for="bio" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-              <img src="/assets/svgs/icon-edit.svg" alt="" class="w-4 h-4" />
-              Giới thiệu bản thân
-            </label>
-            <div class="relative">
-              <textarea 
-                id="bio" 
-                name="bio" 
-                rows="3" 
-                maxlength="500"
-                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all resize-y group-hover:border-gray-400"
-                placeholder="Hãy chia sẻ về bản thân, sở thích, mục tiêu học tập..."
-              ></textarea>
-            </div>
-            <p class="mt-1 text-xs text-gray-500 flex items-center gap-1">
-              <img src="/assets/svgs/icon-help-circle.svg" alt="" class="w-3 h-3" />
-              Nội dung này sẽ hiển thị trên hồ sơ công khai của bạn
-            </p>
+          <!-- Bio -->
+          <div data-include="@shared/components/form/field.html"
+            data-variant="2"
+            data-id="bio"
+            data-name="bio"
+            data-rows="3"
+            data-label="Giới thiệu bản thân"
+            data-icon="/assets/svgs/icon-edit.svg"
+            data-placeholder="Hãy chia sẻ về bản thân, sở thích, mục tiêu học tập..."
+            data-attrs="maxlength=500"
+            data-helper-text="Nội dung này sẽ hiển thị trên hồ sơ công khai của bạn">
           </div>
         </div>
 
         <!-- ============ TERMS & PRIVACY ============ -->
         <div class="space-y-4 pt-6 border-t border-stroke">
-          <!-- Privacy Notice -->
+          <!-- Privacy Notice (informational block, not a form primitive) -->
           <div class="flex items-start gap-2 sm:gap-2.5 p-3 sm:p-3.5 bg-primary-yellow/5 rounded-lg border border-primary-yellow/20">
             <img src="/assets/svgs/icon-shield-check.svg" alt="" class="w-5 h-5 mt-0.5 shrink-0" />
             <p class="font-roboto text-xs text-gray-700 leading-relaxed">
@@ -738,62 +466,51 @@
           </div>
 
           <!-- Terms Checkbox -->
-          <label class="flex items-start gap-3 cursor-pointer group">
-            <input 
-              type="checkbox" 
-              name="agreeTerms" 
-              required
-              class="mt-0.5 w-4 h-4 text-primary-dark-blue border-stroke rounded focus:ring-0 focus:outline-none cursor-pointer"
-            />
-            <span class="font-roboto text-sm text-gray-700 group-hover:text-primary-dark-blue transition-colors">
-              Tôi đã đọc và đồng ý với <a href="#" class="text-primary-dark-blue font-medium underline hover:text-primary-yellow">Điều khoản sử dụng</a> và <a href="#" class="text-primary-dark-blue font-medium underline hover:text-primary-yellow">Chính sách bảo mật</a> <span class="text-danger">*</span>
-            </span>
-          </label>
+          <div data-include="@shared/components/form/choice.html"
+            data-variant="2"
+            data-name="agreeTerms"
+            data-value="1"
+            data-text="Tôi đã đọc và đồng ý với Điều khoản sử dụng và Chính sách bảo mật *"
+            data-attrs="required"
+            data-class="!items-start">
+          </div>
 
           <!-- Newsletter Checkbox -->
-          <label class="flex items-start gap-3 cursor-pointer group">
-            <input 
-              type="checkbox" 
-              name="newsletter"
-              class="mt-0.5 w-4 h-4 text-primary-dark-blue border-stroke rounded focus:ring-0 focus:outline-none cursor-pointer"
-            />
-            <span class="font-roboto text-sm text-gray-700 group-hover:text-primary-dark-blue transition-colors">
-              Tôi muốn nhận thông tin về các chương trình học bổng, sự kiện và tin tức từ IUH qua email
-            </span>
-          </label>
+          <div data-include="@shared/components/form/choice.html"
+            data-variant="2"
+            data-name="newsletter"
+            data-value="1"
+            data-text="Tôi muốn nhận thông tin về các chương trình học bổng, sự kiện và tin tức từ IUH qua email"
+            data-class="!items-start">
+          </div>
         </div>
 
         <!-- ============ SUBMIT BUTTONS ============ -->
-        <div class="flex flex-col sm:flex-row gap-2.5 sm:gap-3 pt-4 sm:pt-6 border-t border-stroke">
-          <!-- Submit - Option 7: Dark Blue to Yellow (Primary action) -->
-          <button 
-            type="submit" 
-            class="group flex-1 inline-flex items-center justify-center gap-1.5 md:gap-2.5 px-4 md:px-8 py-2.5 md:py-3 rounded-full font-roboto font-medium text-sm md:text-base transition-all duration-500 ease-in-out cursor-pointer bg-primary-dark-blue border border-primary-dark-blue text-primary-white hover:bg-primary-yellow hover:border-primary-yellow hover:text-primary-dark-blue hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <span class="shrink-0">Gửi đăng ký</span>
-            <img src="/assets/svgs/icon-send.svg" alt="" class="w-5 h-5 md:w-6 md:h-6 shrink-0 transition-all duration-500 ease-in-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </button>
-
-          <!-- Reset - Light variant -->
-          <button 
-            type="reset" 
-            class="group inline-flex items-center justify-center gap-1.5 md:gap-2.5 px-4 md:px-8 py-2 md:py-2.5 rounded-full font-roboto font-medium text-sm md:text-base transition-all duration-500 ease-in-out cursor-pointer bg-white border border-stroke text-gray-700 hover:bg-gray-50 hover:border-gray-400 hover:shadow-sm"
-          >
-            <span class="shrink-0">Đặt lại</span>
-          </button>
-
-          <!-- Save Draft - Option 8: Outline Button (Secondary action) -->
-          <button 
-            type="button" 
-            class="group inline-flex items-center justify-center gap-1.5 md:gap-2.5 px-4 md:px-8 py-2 md:py-2.5 rounded-full font-roboto font-medium text-sm md:text-base transition-all duration-500 ease-in-out cursor-pointer bg-white border border-primary-dark-blue text-primary-dark-blue hover:bg-primary-dark-blue hover:text-primary-white hover:shadow-md"
-          >
-            <img src="/assets/svgs/icon-copy.svg" alt="" class="w-5 h-5 md:w-6 md:h-6 shrink-0 transition-all duration-500 ease-in-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            <span class="shrink-0">Lưu nháp</span>
-          </button>
+        <div class="iuh-form-actions !block">
+          <div class="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
+            <div data-include="@shared/components/button/button.html"
+              data-variant="7"
+              data-type="submit"
+              data-text="Gửi đăng ký"
+              data-icon="/assets/svgs/icon-send.svg"
+              data-class="flex-1">
+            </div>
+            <!-- Reset button: not covered by the shared button include (no `reset`
+                 variant). Kept inline as a small justified exception. -->
+            <button type="reset" class="group inline-flex items-center justify-center gap-1.5 md:gap-2.5 px-4 md:px-8 py-2 md:py-2.5 rounded-full font-roboto font-medium text-sm md:text-base transition-all duration-500 ease-in-out cursor-pointer bg-white border border-stroke text-gray-700 hover:bg-gray-50 hover:border-gray-400 hover:shadow-sm">
+              <span class="shrink-0">Đặt lại</span>
+            </button>
+            <div data-include="@shared/components/button/button.html"
+              data-variant="8"
+              data-url="#"
+              data-text="Lưu nháp"
+              data-icon="/assets/svgs/icon-copy.svg">
+            </div>
+          </div>
         </div>
 
         <!-- Helper Text -->
-        <p class="text-center text-xs text-gray-500">
+        <p class="iuh-form-note text-center text-xs !text-gray-500 !bg-transparent !p-0">
           Có thắc mắc? Liên hệ <a href="mailto:support@iuh.edu.vn" class="text-primary-dark-blue font-medium hover:underline">support@iuh.edu.vn</a> hoặc hotline <strong class="text-primary-dark-blue">0283 894 0390</strong>
         </p>
       </form>
@@ -1139,13 +856,14 @@
 
 <!-- Character counter script -->
 <script>
-  // Message textarea counter
+  // Message textarea counter (writes "<n>/1000 ký tự" into the shared helper
+  // paragraph rendered by field.html via data-helper-id="messageCharCount").
   const messageTextarea = document.getElementById('message');
   const messageCharCount = document.getElementById('messageCharCount');
-  
+
   if (messageTextarea && messageCharCount) {
     messageTextarea.addEventListener('input', function() {
-      messageCharCount.textContent = this.value.length;
+      messageCharCount.textContent = this.value.length + '/1000 ký tự';
     });
   }
 

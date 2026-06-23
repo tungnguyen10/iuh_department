@@ -104,119 +104,67 @@
           </div>
         </div>
         
-        <form id="contactForm" class="space-y-4">
+        <form id="contactForm" class="iuh-form">
           <!-- Name -->
-          <div class="group">
-            <label for="name" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-              <img src="/assets/svgs/icon-user.svg" alt="" class="w-4 h-4" />
-              Họ và tên <span class="text-danger">*</span>
-            </label>
-            <div class="relative">
-              <input 
-                type="text" 
-                id="name" 
-                name="name" 
-                required
-                minlength="2"
-                class="w-full pl-4 pr-10 py-3 border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all group-hover:border-gray-400"
-                placeholder="VD: Nguyễn Văn A"
-              />
-              <div class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                <img src="/assets/svgs/icon-check-circle.svg" alt="" class="w-5 h-5" />
-              </div>
-            </div>
+          <div data-include="@shared/components/form/field.html"
+            data-id="name"
+            data-name="name"
+            data-type="text"
+            data-label="Họ và tên"
+            data-required-text="*"
+            data-icon="/assets/svgs/icon-user.svg"
+            data-placeholder="VD: Nguyễn Văn A"
+            data-attrs="required minlength=2">
           </div>
 
           <!-- Email & Phone Row -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <!-- Email -->
-            <div class="group">
-              <label for="email" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-                <img src="/assets/svgs/icon-email.svg" alt="" class="w-4 h-4" />
-                Email <span class="text-danger">*</span>
-              </label>
-              <div class="relative">
-                <input 
-                  type="email" 
-                  id="email" 
-                  name="email" 
-                  required
-                  class="w-full pl-4 pr-10 py-3 border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all group-hover:border-gray-400"
-                  placeholder="email@example.com"
-                />
-                <div class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <img src="/assets/svgs/icon-check-circle.svg" alt="" class="w-5 h-5" />
-                </div>
-              </div>
+          <div class="iuh-form-grid">
+            <div data-include="@shared/components/form/field.html"
+              data-id="email"
+              data-name="email"
+              data-type="email"
+              data-label="Email"
+              data-required-text="*"
+              data-icon="/assets/svgs/icon-email.svg"
+              data-placeholder="email@example.com"
+              data-attrs="required">
             </div>
-
-            <!-- Phone -->
-            <div class="group">
-              <label for="phone" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-                <img src="/assets/svgs/icon-phone.svg" alt="" class="w-4 h-4" />
-                Số điện thoại
-              </label>
-              <div class="relative">
-                <input 
-                  type="tel" 
-                  id="phone" 
-                  name="phone"
-                  pattern="[0-9]{10}"
-                  class="w-full pl-4 pr-10 py-3 border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all group-hover:border-gray-400"
-                  placeholder="0xxx xxx xxx"
-                />
-                <div class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <img src="/assets/svgs/icon-check-circle.svg" alt="" class="w-5 h-5" />
-                </div>
-              </div>
+            <div data-include="@shared/components/form/field.html"
+              data-id="phone"
+              data-name="phone"
+              data-type="tel"
+              data-label="Số điện thoại"
+              data-icon="/assets/svgs/icon-phone.svg"
+              data-placeholder="0xxx xxx xxx"
+              data-attrs="pattern=[0-9]{10}">
             </div>
           </div>
 
           <!-- Subject -->
-          <div class="group">
-            <label for="subject" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-              <img src="/assets/svgs/icon-tag.svg" alt="" class="w-4 h-4" />
-              Tiêu đề <span class="text-danger">*</span>
-            </label>
-            <div class="relative">
-              <input 
-                type="text" 
-                id="subject" 
-                name="subject" 
-                required
-                minlength="5"
-                class="w-full pl-4 pr-10 py-3 border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all group-hover:border-gray-400"
-                placeholder="VD: Tư vấn tuyển sinh / Hỏi về chương trình học"
-              />
-              <div class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                <img src="/assets/svgs/icon-check-circle.svg" alt="" class="w-5 h-5" />
-              </div>
-            </div>
+          <div data-include="@shared/components/form/field.html"
+            data-id="subject"
+            data-name="subject"
+            data-type="text"
+            data-label="Tiêu đề"
+            data-required-text="*"
+            data-icon="/assets/svgs/icon-tag.svg"
+            data-placeholder="VD: Tư vấn tuyển sinh / Hỏi về chương trình học"
+            data-attrs="required minlength=5">
           </div>
 
           <!-- Message -->
-          <div class="group">
-            <label for="message" class="flex items-center gap-1.5 font-roboto font-medium text-sm text-gray-700 mb-2">
-              <img src="/assets/svgs/icon-edit.svg" alt="" class="w-4 h-4" />
-              Nội dung <span class="text-danger">*</span>
-            </label>
-            <div class="relative">
-              <textarea 
-                id="message" 
-                name="message" 
-                rows="5" 
-                required
-                minlength="10"
-                maxlength="500"
-                class="w-full pl-4 pr-4 py-3 pb-8 border border-stroke rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:border-transparent transition-all resize-none group-hover:border-gray-400"
-                placeholder="Nhập nội dung chi tiết bạn muốn trao đổi..."
-              ></textarea>
-              <div class="absolute bottom-3 right-3 flex items-center gap-2">
-                <span class="text-xs text-gray-400">
-                  <span id="charCount">0</span>/500
-                </span>
-              </div>
-            </div>
+          <div data-include="@shared/components/form/field.html"
+            data-variant="2"
+            data-id="message"
+            data-name="message"
+            data-rows="5"
+            data-label="Nội dung"
+            data-required-text="*"
+            data-icon="/assets/svgs/icon-edit.svg"
+            data-placeholder="Nhập nội dung chi tiết bạn muốn trao đổi..."
+            data-attrs="required minlength=10 maxlength=500"
+            data-helper-id="charCount"
+            data-helper-text="Tối đa 500 ký tự">
           </div>
 
           <!-- Privacy Notice -->
@@ -228,13 +176,13 @@
           </div>
 
           <!-- Submit Button -->
-          <button 
-            type="submit" 
-            class="group w-full inline-flex items-center justify-center gap-1.5 md:gap-2.5 px-4 md:px-8 py-2.5 md:py-3 rounded-full font-roboto font-medium text-sm md:text-base transition-all duration-500 ease-in-out cursor-pointer bg-primary-dark-blue border border-primary-dark-blue text-primary-white hover:bg-primary-yellow hover:border-primary-yellow hover:text-primary-dark-blue hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <span class="shrink-0">Gửi tin nhắn ngay</span>
-            <img src="/assets/svgs/icon-send.svg" alt="" class="w-5 h-5 md:w-6 md:h-6 shrink-0 transition-all duration-500 ease-in-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </button>
+          <div data-include="@shared/components/button/button.html"
+            data-variant="7"
+            data-type="submit"
+            data-text="Gửi tin nhắn ngay"
+            data-icon="/assets/svgs/icon-send.svg"
+            data-class="w-full">
+          </div>
 
           <!-- Helper Text -->
           <p class="text-center text-xs text-gray-500 mt-3">

@@ -1,4 +1,4 @@
-<!-- option 1: Radio group -->
+<!-- option 1: Radio group (3 inlined options) -->
 <fieldset class="iuh-form-fieldset {{class}}">
   <legend class="iuh-form-legend {{legendClass}}">{{legend}}</legend>
   <div class="iuh-form-choice-grid {{gridClass}}">
@@ -17,8 +17,36 @@
   </div>
 </fieldset>
 
-<!-- option 2: Checkbox -->
+<!-- option 2: Single checkbox -->
 <label class="iuh-form-choice {{class}}">
   <input type="checkbox" name="{{name}}" value="{{value}}" {{attrs}} class="iuh-form-choice__control {{controlClass}}" />
+  <span>{{text}}</span>
+</label>
+
+<!-- option 3: Radio group (2 inlined options) -->
+<fieldset class="iuh-form-fieldset {{class}}">
+  <legend class="iuh-form-legend {{legendClass}}">{{legend}}</legend>
+  <div class="iuh-form-choice-grid iuh-form-choice-grid--two {{gridClass}}">
+    <label class="iuh-form-choice {{option1Class}}">
+      <input type="radio" name="{{name}}" value="{{option1Value}}" {{option1Attrs}} class="iuh-form-choice__control {{controlClass}}" />
+      <span>{{option1Text}}</span>
+    </label>
+    <label class="iuh-form-choice {{option2Class}}">
+      <input type="radio" name="{{name}}" value="{{option2Value}}" {{option2Attrs}} class="iuh-form-choice__control {{controlClass}}" />
+      <span>{{option2Text}}</span>
+    </label>
+  </div>
+</fieldset>
+
+<!-- option 4: Radio group shell with zero options (caller composes options via nested choice-option.html includes) -->
+<fieldset class="iuh-form-fieldset {{class}}">
+  <legend class="iuh-form-legend {{legendClass}}">{{legend}}</legend>
+  <div class="iuh-form-choice-grid {{gridClass}}">
+  </div>
+</fieldset>
+
+<!-- option 5: Single radio (one inlined option, used inside an existing fieldset or inline group) -->
+<label class="iuh-form-choice {{class}}">
+  <input type="radio" name="{{name}}" value="{{value}}" {{attrs}} class="iuh-form-choice__control {{controlClass}}" />
   <span>{{text}}</span>
 </label>

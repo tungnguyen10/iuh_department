@@ -124,49 +124,17 @@
               data-control-class="iuh-form-control--lg"
             ></div>
 
-            <div>
-              <label for="captcha-code" class="iuh-form-label">
-                <img
-                  src="/assets/svgs/icon-check-circle.svg"
-                  alt=""
-                  class="iuh-form-label__icon"
-                />
-                Mã xác nhận
-              </label>
-              <div
-                class="grid grid-cols-1 gap-3 sm:grid-cols-[14rem_1fr] sm:items-center"
-              >
-                <div
-                  class="relative h-16 overflow-hidden rounded-lg border border-primary-dark-blue/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.92)_0%,rgba(227,246,253,0.92)_100%)] shadow-inner"
-                  aria-label="Mã xác nhận d6a39"
-                  role="img"
-                >
-                  <div
-                    class="absolute inset-0 bg-[repeating-linear-gradient(22deg,transparent_0,transparent_12px,rgba(21,56,152,0.20)_13px,transparent_15px),repeating-linear-gradient(112deg,transparent_0,transparent_18px,rgba(33,33,33,0.18)_19px,transparent_21px)]"
-                  ></div>
-                  <div
-                    class="absolute left-4 top-1/2 -translate-y-1/2 rotate-[-4deg] font-inter text-2xl font-extrabold tracking-[0.16em] text-title"
-                  >
-                    d6a39
-                  </div>
-                  <div
-                    class="absolute -left-6 top-5 h-px w-36 rotate-12 bg-title/40"
-                  ></div>
-                  <div
-                    class="absolute right-0 top-9 h-px w-28 -rotate-12 bg-primary-dark-blue/35"
-                  ></div>
-                </div>
-
-                <input
-                  id="captcha-code"
-                  name="captcha_code"
-                  type="text"
-                  autocomplete="off"
-                  placeholder="Nhập mã xác nhận"
-                  required
-                  class="iuh-form-control iuh-form-control--fixed iuh-form-control--lg"
-                />
-              </div>
+            <div data-include="@shared/components/form/inline-group.html"
+              data-variant="3"
+              data-id="captcha-code"
+              data-name="captcha_code"
+              data-type="text"
+              data-icon="/assets/svgs/icon-check-circle.svg"
+              data-label="Mã xác nhận"
+              data-placeholder="Nhập mã xác nhận"
+              data-attrs="required"
+              data-captcha-code="d6a39"
+              data-captcha-aria="Mã xác nhận d6a39">
             </div>
 
             <div
