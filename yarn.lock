@@ -1425,6 +1425,7 @@ __metadata:
     sass: "npm:^1.97.2"
     svgo: "npm:^3.3.2"
     swiper: "npm:^12.2.0"
+    tailwind-merge: "npm:^3.6.0"
     tailwindcss: "npm:^3.4.17"
     vite: "npm:^7.2.4"
     vite-plugin-svgo: "npm:^1.0.5"
@@ -2115,6 +2116,13 @@ __metadata:
   version: 12.2.0
   resolution: "swiper@npm:12.2.0"
   checksum: 10c0/459c9621e170130c0a6874b05e24fefd0411529600a17b2d8afc4987dc2e803ab18d42983081b723423819d464568fdb541b6c3f517e558c60888c644dc4ead1
+  languageName: node
+  linkType: hard
+
+"tailwind-merge@npm:^3.6.0":
+  version: 3.6.0
+  resolution: "tailwind-merge@npm:3.6.0"
+  checksum: 10c0/a728d929f4786bcb48641db4228cc8c006a7545491783a658fb4d24d177dab960620991d17805a047309228de50ab949ca8d9e112c30183da0432367796ae186
   languageName: node
   linkType: hard
 

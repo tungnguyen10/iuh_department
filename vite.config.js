@@ -5,7 +5,16 @@ import { fileURLToPath } from 'url'
 import { copyFileSync, mkdirSync, existsSync, readFileSync, readdirSync, statSync } from 'fs'
 import { execSync } from 'child_process'
 import svgo from 'vite-plugin-svgo'
+import { twMerge } from 'tailwind-merge'
 import { copyReferencedSvgs } from './scripts/svg-assets.js'
+
+// Dedupe and resolve Tailwind class conflicts inside every class="..." attribute.
+// Runs after data-include substitution so partial defaults can be overridden by callers.
+const mergeClassAttributes = (html) =>
+  html.replace(/\bclass\s*=\s*(["'])([^"']*)\1/g, (_, quote, value) => {
+    const merged = twMerge(value.replace(/\s+/g, ' ').trim())
+    return `class=${quote}${merged}${quote}`
+  })
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -790,6 +799,7 @@ const transformDataInclude = (base, facultyId, facultyDataRoot) => ({
     let transformed = processIncludes(html)
     transformed = createNewsRenderer(base, facultyDataRoot)(transformed)
     transformed = createActivitiesRenderer(base, facultyDataRoot)(transformed)
+    transformed = mergeClassAttributes(transformed)
     
     // Transform img src="/assets/..." to include base path
     transformed = transformed.replace(
