@@ -1,0 +1,59 @@
+<!-- LAYOUT: title="Tra cứu đăng ký nội trú" -->
+<!-- LAYOUT: description="Trang sau đăng nhập dành cho sinh viên: tra cứu thông tin đăng ký nội trú, trạng thái hồ sơ và lịch sử ở ký túc xá IUH." -->
+<!-- LAYOUT: keywords="tra cứu nội trú IUH, đăng ký ký túc xá, lịch sử ở KTX" -->
+<!-- LAYOUT: url="https://iuh.edu.vn/tra-cuu" -->
+<!-- LAYOUT: ogImage="/assets/images/dormitory-campus.jpg" -->
+
+<section
+  class="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#E3F6FD_100%)] py-10 md:py-14 lg:py-16"
+>
+  <div
+    data-include="@shared/components/common/core-deco.html"
+    data-class="pointer-events-none absolute -left-20 top-20 hidden w-56 opacity-10 md:block"
+  ></div>
+  <div
+    data-include="@shared/components/common/core-deco.html"
+    data-class="pointer-events-none absolute -right-24 bottom-0 hidden w-64 opacity-10 md:block"
+  ></div>
+
+  <div class="container relative z-10 mx-auto px-4">
+    <div class="mx-auto max-w-5xl space-y-6 md:space-y-8">
+      <div
+        data-include="@shared/components/common/page-hero-title.html"
+        data-eyebrow="Ký túc xá IUH"
+        data-title="ĐĂNG KÝ NỘI TRÚ"
+        data-description="Tra cứu thông tin đăng ký nội trú và lịch sử ở ký túc xá theo tài khoản sinh viên."
+      ></div>
+
+      <div
+        data-include="@faculty/components/lookup/profile-panel/index.html"
+        data-student-full-name="NGUYỄN VĂN A"
+        data-student-id="20012345"
+        data-student-faculty="Khoa Công nghệ Thông tin"
+        data-student-class="DHKTPM16A"
+        data-student-gender="Nam"
+        data-student-enrollment-year="2020"
+        data-student-status="Đang học"
+        data-reg-no-round-message="Chưa có đợt ĐK phù hợp!"
+        data-reg-can-register-cta-text="Đăng ký nội trú"
+        data-reg-can-register-cta-href="#"
+        data-reg-pending-message="Đang chờ duyệt hồ sơ"
+        data-reg-approved-message="Đã duyệt hồ sơ - Tải phiếu"
+        data-reg-approved-download-href="#"
+        data-reg-active-message="Đang ở KTX"
+      ></div>
+
+      <div
+        data-include="@faculty/components/lookup/stay-history/index.html"
+        data-variant="1"
+      ></div>
+
+      <p class="iuh-form-note">
+        lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod,
+        nunc ut laoreet aliquam, nunc nisl aliquet nunc, eget aliquam nisl nunc
+        eu nunc.
+      </p>
+    </div>
+  </div>
+</section>
+<div data-include="@faculty/components/home/partners/index.html"></div>

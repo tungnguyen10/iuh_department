@@ -12,14 +12,13 @@ This is the natural target of the login flow and is the most-requested surface f
 
 ## What Changes
 
-- Add a Dormitory-owned post-login lookup page (`pages/tra-cuu.html`) that renders the "THÔNG TIN TRA CỨU" profile panel and the "Lịch sử ở KTX" table.
-- Add a chromeless layout mode to the shared layout plugin so the login surface and the new lookup surface can suppress the public header, footer, search modal, and scroll-to-top widgets while keeping shared loading, meta, and global runtime concerns.
-- Add a shared "auth action bar" component for the top-right links (Tra cứu / Lịch sử ở KTX / Đăng xuất) so future authenticated pages reuse it.
-- Add a Dormitory-owned registration-status section that renders each defined state (no eligible round, can register, pending approval, approved + payment-proof upload, active) so the page can demonstrate every state without backend wiring.
-- Add a Dormitory-owned stay-history section that renders both the empty state and a populated example.
-- Wire the login form's submit action so the prototype "submits" to `/tra-cuu.html` and the page's "Đăng xuất" link returns to `/login.html`.
+- Add a Dormitory-owned post-login lookup page (`pages/tra-cuu.html`) that renders the "THÔNG TIN TRA CỨU" profile panel and the "Lịch sử ở KTX" table inside the standard public chrome (same header/footer as the rest of the public site).
+- Add a chromeless layout mode to the shared layout plugin so the login surface can suppress the public header, footer, search modal, and scroll-to-top widgets while keeping shared loading, meta, and global runtime concerns; the new lookup page does NOT use this mode.
+- Add a Dormitory-owned registration-status section that renders each defined state (no eligible round, can register, pending approval, approved + payment-proof upload, active) stacked vertically as a static showcase - no state toggle, no JavaScript wiring.
+- Add a Dormitory-owned stay-history section that renders the empty state and exposes a populated variant for the future.
+- Wire the login form's submit action so the prototype "submits" to `/tra-cuu.html`.
 - Add mock student data and mock registration/history fixtures under `src/faculties/dormitory-management/data/` (no backend) so the page composition is data-driven.
-- Update Dormitory faculty configuration so the new page is reachable from the login flow and from the auth action bar; do NOT expose the lookup page in the public navigation or search modal (it is post-login only).
+- Update Dormitory faculty configuration so the new page is reachable from the login flow; do NOT expose the lookup page in the public navigation or search modal (it is post-login only).
 - Preserve all existing public Dormitory and Health Science behavior, including the current login page UI.
 
 ## Capabilities
@@ -31,27 +30,24 @@ None.
 ### Modified Capabilities
 
 - `dormitory-management-faculty`: adds the post-login lookup page, its registration-status state model, its stay-history section, and the related discoverability / data isolation rules.
-- `multi-faculty-architecture`: adds the chromeless layout mode and the shared auth action bar so other faculties can build authenticated surfaces with the same shell behavior.
+- `multi-faculty-architecture`: adds the chromeless layout mode (used by the existing `login.html`) so other faculties can build focused pre-login surfaces with the same shell behavior.
 
 ## Impact
 
 - Affected source:
   - `vite.config.js` (`layoutPlugin` chromeless flag handling)
-  - `src/shared/layouts/default.html` (chromeless conditional rendering or split-template support, per design)
-  - `src/shared/components/auth/action-bar.html` (new)
-  - `src/shared/components/auth/action-bar.scss` (new, if needed beyond Tailwind utilities)
-  - `src/faculties/dormitory-management/pages/tra-cuu.html` (new)
-  - `src/faculties/dormitory-management/pages/login.html` (form action wiring)
+  - `src/shared/layouts/default.html` (chromeless conditional rendering)
+  - `src/faculties/dormitory-management/pages/tra-cuu.html` (new, uses standard chrome)
+  - `src/faculties/dormitory-management/pages/login.html` (form action wiring + `chrome="off"`)
   - `src/faculties/dormitory-management/components/lookup/profile-panel/` (new)
   - `src/faculties/dormitory-management/components/lookup/registration-row/` (new, with per-state variants)
   - `src/faculties/dormitory-management/components/lookup/stay-history/` (new, with empty and populated variants)
   - `src/faculties/dormitory-management/data/lookup-mock.json` (new)
-  - `src/faculties/dormitory-management/faculty.config.js` (no public nav additions; only auth action bar entries if needed in config)
+  - `src/faculties/dormitory-management/faculty.config.js` (no public nav additions)
 - No backend, API, authentication, or session-management dependency changes. This is a static prototype that demonstrates the surface.
 - Verification:
   - OpenSpec validation for `add-dormitory-registration-lookup-page`.
   - Selected build for `FACULTY=dormitory-management` produces `tra-cuu.html`.
-  - Manual visual review against the two reference screenshots for the two demonstrated states (no eligible round, approved + upload).
-  - Manual switch through all five defined registration states via a state-toggle mechanism (URL query param or commented variants in the page).
+  - Manual visual review against the reference screenshots; confirm all five registration states render simultaneously on the page.
   - Audit that the public site header and footer do NOT render on `login.html` or `tra-cuu.html`, and that `tra-cuu.html` is NOT linked from the public header, quick links, or search modal.
 - Hard dependency: this change consumes the shared form primitives that the `standardize-shared-form-primitives` change adds (display row, file upload, data table, inline group). Order the two changes accordingly.

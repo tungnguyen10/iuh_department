@@ -51,13 +51,13 @@ Alternatives considered:
 - A second layout template (`auth.html`). Rejected - duplicates the meta/loading wiring and requires every consumer to remember which layout to point at. Keeping one shell is simpler.
 - Skipping the layout entirely (no marker). Rejected - loses the shared meta tags, favicons, loading overlay, and main script injection, which would diverge from every other page in the site.
 
-### Decision 2: Promote the auth action bar to a shared component
+### Decision 2: Lookup page uses the standard public chrome
 
-The top-right action bar (Tra cứu / Lịch sử ở KTX / Đăng xuất) lives in `src/shared/components/auth/action-bar.html` and is consumed by Dormitory pages via a `data-include` with `data-items` style slots.
+The lookup page renders inside the standard shared layout - public header, public footer, search modal, and scroll-to-top widget all on. The only chromeless surface is `pages/login.html`.
 
-Rationale: although this change has one consumer today (Dormitory lookup), the bar is structurally a shared concern (any future faculty authenticated page would want it). Putting it in `shared/components/auth/` documents the boundary and aligns with how header/footer/search/news live under `shared/components`.
+Rationale: removing the chrome on the lookup page would require a separate in-page navigation primitive (an "auth action bar") to replace the public header. For a static prototype with no real authentication, that adds a component, styles, and a discoverability rule for a fixture that has no real session boundary. Reusing the public chrome keeps the lookup page consistent with every other content page in the site and avoids inventing a redundant navigation surface.
 
-Alternative considered: build it inside Dormitory and promote later. Rejected - the chromeless layout flag is shared, the action bar is its visible companion, and the two should land together.
+Alternative considered: chromeless lookup page plus a shared `auth/action-bar` component. Rejected - duplicates navigation that the public header already provides, and the prototype has no session state to gate behind the auth chrome.
 
 ### Decision 3: Define the registration row as a finite state set
 
@@ -71,11 +71,11 @@ The "Đăng ký" row in the profile panel has five well-defined states. Each sta
 | `approved` | "Đã duyệt hồ sơ - Tải phiếu" (orange link to phiếu download) | "Upload hình biên lai chuyển khoản" row using the shared file primitive |
 | `active` | "Đang ở KTX" (green status) | none |
 
-The page selects which state to render via a `data-state` attribute or a URL query param (`?state=approved`) so reviewers can preview every state without a backend.
+The page renders all five state variants stacked vertically as a static showcase. There is no JavaScript toggle, URL query parameter, or runtime state selection - the page is a landing surface that demonstrates every state at once.
 
-Rationale: states are visible product behavior worth pinning in the spec. Listing them in the component variants prevents drift and gives the future backend a clear contract.
+Rationale: states are visible product behavior worth pinning in the spec. Listing them in the component variants prevents drift and gives the future backend a clear contract. Rendering them all at once keeps the page free of throwaway prototype JavaScript and lets reviewers see the whole state space without URL gymnastics.
 
-Alternative considered: render only the two states shown in the screenshots. Rejected - leaves the other three implicit and makes them likely to be hand-rolled later.
+Alternative considered: a URL query param (`?state=approved`) plus CSS toggling. Rejected - it introduced a JavaScript wiring layer for a static prototype that has no backend, and reviewers preferred seeing every state on one screen. The component still exposes each state as a discrete variant so a future authenticated page can opt into single-state rendering.
 
 ### Decision 4: Stay-history is its own component with empty and populated variants
 
@@ -99,20 +99,20 @@ Alternative considered: hardcode the profile in the HTML. Rejected - reviewers w
 
 ### Decision 6: Lookup page is post-login - not in public navigation
 
-The new page MUST NOT be added to Dormitory `faculty.config.js` header navigation, quick links, search categories, or search-data fixtures. Discoverability happens only through the login form's submit action and through the auth action bar on authenticated pages.
+The new page MUST NOT be added to Dormitory `faculty.config.js` header navigation, quick links, search categories, or search-data fixtures. Discoverability happens only through the login form's submit action.
 
-Rationale: the screenshots show a post-login workflow; surfacing the lookup in the public site would mislead unauthenticated visitors.
+Rationale: the screenshots show a post-login workflow; surfacing the lookup in the public site would mislead unauthenticated visitors. The page still renders with the public chrome, but the chrome's navigation does not link to it.
 
 ### Decision 7: Login form wiring is prototype-only
 
-The login form's `action` attribute is repointed to `/tra-cuu.html` (or wired via a tiny inline submit handler that navigates there) for prototype purposes only. No authentication or validation is added. The "Đăng xuất" link is a plain `<a href="/login.html">`.
+The login form's `action` attribute is repointed to `/tra-cuu.html` for prototype purposes only. No authentication or validation is added.
 
 Rationale: keeps the change scope honest. Real auth belongs in a follow-up change with its own backend.
 
 ## Risks / Trade-offs
 
 - Chromeless layout flag mishandled by future pages -> Default is `"on"`, only explicit `"off"` strips chrome; documented in the layout template.
-- Reviewers unsure which registration state they are seeing -> Provide a `?state=` query param toggle for the prototype, plus comment markers in the page that list every state.
+- Reviewers unsure which registration state they are seeing -> Render every state stacked with its native visual treatment (gray copy, CTA button, yellow pending badge, orange download link plus upload, green active badge) so the differences are visible on the same screen.
 - File upload appears interactive but does nothing -> Add a helper paragraph clarifying the prototype scope and disable the upload button until a file is chosen; submission is a no-op.
 - Public discoverability leakage -> Add an explicit grep check during verification that `tra-cuu` does NOT appear in `faculty.config.js`, `search-data.json`, or public page links.
 - Layout plugin change risks regressing other pages -> Default behavior is identical when `chrome="off"` is absent; verify by rebuilding both faculties and diffing output.
@@ -122,20 +122,18 @@ Rationale: keeps the change scope honest. Real auth belongs in a follow-up chang
 
 1. Land `standardize-shared-form-primitives` so the file, display-row, table, and inline-group primitives exist.
 2. Extend the shared layout plugin and `default.html` for the `chrome="off"` flag.
-3. Add `shared/components/auth/action-bar.html` plus styles.
-4. Apply `chrome="off"` to the existing `pages/login.html` and verify no visual regression on the public chrome of other pages.
-5. Add `data/lookup-mock.json` with the reference student profile, registration state, and stay-history rows.
-6. Add Dormitory `components/lookup/profile-panel`, `components/lookup/registration-row` (all five state variants), and `components/lookup/stay-history` (empty and populated variants).
-7. Add `pages/tra-cuu.html` composing those components, wired to the mock data, with the auth action bar at the top and the `chrome="off"` layout flag.
-8. Repoint `pages/login.html` form submit to `/tra-cuu.html`; verify Đăng xuất link returns to `/login.html`.
-9. Run OpenSpec validation and selected Dormitory build.
-10. Manual visual check against both reference screenshots; manual cycle through every registration state.
+3. Apply `chrome="off"` to the existing `pages/login.html` and verify no visual regression on the public chrome of other pages.
+4. Add `data/lookup-mock.json` with the reference student profile, registration state, and stay-history rows.
+5. Add Dormitory `components/lookup/profile-panel`, `components/lookup/registration-row` (all five state variants), and `components/lookup/stay-history` (empty and populated variants).
+6. Add `pages/tra-cuu.html` composing those components with the standard public chrome.
+7. Repoint `pages/login.html` form submit to `/tra-cuu.html`.
+8. Run OpenSpec validation and selected Dormitory build.
+9. Manual visual check against the reference screenshots; confirm every registration state renders simultaneously.
 
-Rollback: revert the new page, components, mock data, layout flag, and login wiring. The shared auth action bar can stay if it is harmless, or be removed.
+Rollback: revert the new page, components, mock data, layout flag, and login wiring.
 
 ## Open Questions
 
-- Should the prototype use a URL query parameter (`?state=approved`) to switch states for review, or render all states stacked in the same page for review purposes? Default: URL query parameter, with a hidden state-picker only visible on `?debug=1`.
+- ~~Should the prototype use a URL query parameter (`?state=approved`) to switch states for review, or render all states stacked in the same page for review purposes?~~ Resolved: render every state stacked. Decision 3 captures the rationale.
 - Long-term, does Tra cứu live at `/tra-cuu.html` (matches the menu label) or under a different route? Default for this change: `/tra-cuu.html`. Promote / rename when real auth ships.
-- Does the auth action bar belong above the page content, or fixed to the top of the viewport on scroll? Default: inline, above the content, matching the screenshots.
 - Should the page surface an explicit prototype banner ("Đây là bản demo, dữ liệu mô phỏng")? Default: yes, a small `iuh-form-note` at the bottom so reviewers understand the data is fixed.

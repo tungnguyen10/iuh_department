@@ -19,26 +19,11 @@
   <div class="container relative z-10 mx-auto px-4">
     <div class="mx-auto max-w-5xl">
       <div
-        class="mb-6 flex flex-col gap-3 md:mb-8 md:flex-row md:items-end md:justify-between"
-      >
-        <div>
-          <p
-            class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue"
-          >
-            Ký túc xá IUH
-          </p>
-          <h1
-            class="mt-2 font-inter text-4xl font-extrabold leading-tight text-primary-dark-blue md:text-5xl"
-          >
-            ĐĂNG NHẬP
-          </h1>
-        </div>
-        <p
-          class="max-w-xl font-roboto text-sm leading-relaxed text-gray-700 md:text-base"
-        >
-          Đăng nhập MSSV và mật khẩu như thông tin tài khoản tại cổng sinh viên.
-        </p>
-      </div>
+        data-include="@shared/components/common/page-hero-title.html"
+        data-eyebrow="Ký túc xá IUH"
+        data-title="ĐĂNG NHẬP"
+        data-description="Đăng nhập MSSV và mật khẩu như thông tin tài khoản tại cổng sinh viên."
+      ></div>
 
       <div
         class="grid overflow-hidden rounded-lg border border-primary-dark-blue/10 bg-primary-white shadow-[0_24px_70px_rgba(21,56,152,0.14)] lg:grid-cols-[0.82fr_1.18fr]"
@@ -95,8 +80,8 @@
 
         <div class="p-5 md:p-8 lg:p-10">
           <form
-            action="#"
-            method="post"
+            action="/tra-cuu.html"
+            method="get"
             class="iuh-form"
             aria-label="Đăng nhập hệ thống Ký túc xá IUH"
           >
@@ -164,3 +149,4 @@
     </div>
   </div>
 </section>
+<div data-include="@faculty/components/home/partners/index.html"></div>

@@ -19,9 +19,9 @@ The Dormitory Management module SHALL provide a Dormitory-owned post-login looku
 - **WHEN** the Dormitory Management `/tra-cuu.html` page renders any form-like UI (display rows, file upload, data table, action row, helper text)
 - **THEN** the markup SHALL be produced by shared form primitives from `src/shared/components/form`
 
-#### Scenario: Lookup page uses chromeless layout
+#### Scenario: Lookup page uses the standard public layout
 - **WHEN** the Dormitory Management `/tra-cuu.html` page is rendered
-- **THEN** the page SHALL NOT render the public site header, public site footer, search modal, or scroll-to-top widget
+- **THEN** the page SHALL render with the same shared chrome as other public pages (public header, public footer, search modal, scroll-to-top widget)
 - **AND** the page SHALL render the shared loading overlay, meta tags, favicons, theme color, main script, and any page-specific script declared via `LAYOUT: script`
 
 ### Requirement: Dormitory registration row state model
@@ -54,9 +54,10 @@ The Dormitory Management lookup page SHALL render the registration status row ac
 - **THEN** the registration row SHALL display an "Đang ở KTX" status using an active/green visual treatment
 - **AND** the page SHALL NOT render the payment-proof upload section
 
-#### Scenario: State toggle for reviewers
-- **WHEN** a reviewer opens the lookup page with a documented state-toggle mechanism (URL query parameter or commented variants)
-- **THEN** the page SHALL be able to render any of the five defined registration states without a backend
+#### Scenario: All states render simultaneously
+- **WHEN** a reviewer opens the lookup page
+- **THEN** the page SHALL render all five defined registration states stacked vertically as a static showcase
+- **AND** the page SHALL NOT use JavaScript or URL parameters to select between states
 
 ### Requirement: Dormitory lookup mock data
 The Dormitory Management module SHALL drive the lookup page from a Dormitory-owned mock data fixture so the page is data-shaped rather than hard-coded.
@@ -72,15 +73,11 @@ The Dormitory Management module SHALL drive the lookup page from a Dormitory-own
 - **AND** the registration row SHALL match the state declared in the fixture
 
 ### Requirement: Dormitory lookup discoverability is post-login only
-The Dormitory Management lookup page SHALL be reachable only through the post-login flow and the shared auth action bar.
+The Dormitory Management lookup page SHALL be reachable only through the post-login flow.
 
 #### Scenario: Login flow lands on the lookup page
 - **WHEN** the Dormitory Management login form is submitted
 - **THEN** the prototype SHALL navigate the user to `/tra-cuu.html`
-
-#### Scenario: Auth action bar contains lookup, history, and logout
-- **WHEN** the lookup page renders the shared auth action bar
-- **THEN** the bar SHALL contain a Tra cứu item linking to the lookup page, a Lịch sử ở KTX item linking to the stay-history view or section, and a Đăng xuất item linking to `/login.html`
 
 #### Scenario: Lookup page is absent from public surfaces
 - **WHEN** the Dormitory Management public header navigation, quick links, footer, search categories, or search-data fixtures are rendered or read

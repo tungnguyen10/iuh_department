@@ -1,0 +1,42 @@
+{
+  "$schema": "./lookup-mock.schema.txt",
+  "student": {
+    "fullName": "NGUYỄN VĂN A",
+    "studentId": "20012345",
+    "faculty": "Khoa Công nghệ Thông tin",
+    "className": "DHKTPM16A",
+    "gender": "Nam",
+    "enrollmentYear": "2020",
+    "status": "Đang học"
+  },
+  "registration": {
+    "state": "no_round",
+    "states": {
+      "no_round": {
+        "message": "Chưa có đợt ĐK phù hợp!"
+      },
+      "can_register": {
+        "ctaText": "Đăng ký nội trú",
+        "ctaHref": "#"
+      },
+      "pending": {
+        "message": "Đang chờ duyệt hồ sơ"
+      },
+      "approved": {
+        "message": "Đã duyệt hồ sơ - Tải phiếu",
+        "downloadHref": "#",
+        "uploadHelper": "Đây là bản demo - thao tác tải lên không gửi dữ liệu lên máy chủ."
+      },
+      "active": {
+        "message": "Đang ở KTX"
+      }
+    }
+  },
+  "stayHistory": {
+    "variant": "empty",
+    "rows": [
+      { "term": "HK1 2024-2025", "status": "Đã kết thúc" },
+      { "term": "HK2 2024-2025", "status": "Đang ở" }
+    ]
+  }
+}

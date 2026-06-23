@@ -1,0 +1,50 @@
+<!-- option 1: Profile lookup panel - header + display-row grid -->
+<section class="iuh-lookup-panel">
+  <header class="iuh-lookup-panel__header">
+    <h2 class="iuh-lookup-panel__title">THÔNG TIN TRA CỨU</h2>
+  </header>
+  <div class="iuh-form-display iuh-lookup-panel__body">
+    <div data-include="@shared/components/form/display-row.html"
+      data-label="Sinh viên"
+      data-value="{{studentFullName}}"
+      data-value-class="iuh-lookup-panel__value--strong"></div>
+    <div data-include="@shared/components/form/display-row.html"
+      data-label="MSSV"
+      data-value="{{studentId}}"></div>
+    <div data-include="@shared/components/form/display-row.html"
+      data-label="Khoa"
+      data-value="{{studentFaculty}}"></div>
+    <div data-include="@shared/components/form/display-row.html"
+      data-label="Lớp"
+      data-value="{{studentClass}}"></div>
+    <div data-include="@shared/components/form/display-row.html"
+      data-label="Giới tính"
+      data-value="{{studentGender}}"></div>
+    <div data-include="@shared/components/form/display-row.html"
+      data-label="Năm nhập học"
+      data-value="{{studentEnrollmentYear}}"></div>
+    <div data-include="@shared/components/form/display-row.html"
+      data-label="Tình trạng"
+      data-value="{{studentStatus}}"></div>
+
+    <!-- All five registration-row variants render stacked. -->
+    <div data-include="@faculty/components/lookup/registration-row/index.html"
+      data-variant="1"
+      data-message="{{regNoRoundMessage}}"></div>
+    <div data-include="@faculty/components/lookup/registration-row/index.html"
+      data-variant="2"
+      data-cta-text="{{regCanRegisterCtaText}}"
+      data-cta-href="{{regCanRegisterCtaHref}}"></div>
+    <div data-include="@faculty/components/lookup/registration-row/index.html"
+      data-variant="3"
+      data-message="{{regPendingMessage}}"></div>
+    <div data-include="@faculty/components/lookup/registration-row/index.html"
+      data-variant="4"
+      data-message="{{regApprovedMessage}}"
+      data-download-href="{{regApprovedDownloadHref}}"
+      data-upload-helper="{{regApprovedUploadHelper}}"></div>
+    <div data-include="@faculty/components/lookup/registration-row/index.html"
+      data-variant="5"
+      data-message="{{regActiveMessage}}"></div>
+  </div>
+</section>

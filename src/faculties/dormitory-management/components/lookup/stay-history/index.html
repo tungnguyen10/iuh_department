@@ -1,0 +1,59 @@
+<!-- option 1: Empty state - "Không có thông tin" -->
+<section class="iuh-lookup-stay-history" id="stay-history">
+  <header class="iuh-lookup-stay-history__header">
+    <h2 class="iuh-lookup-stay-history__title">Lịch sử ở KTX</h2>
+  </header>
+  <div data-include="@shared/components/form/table.html"
+    data-variant="4"
+    data-col1="TT"
+    data-col1-class="iuh-form-table-cell--center"
+    data-col2="Thời gian"
+    data-col3="Trạng thái"
+    data-colspan="3"
+    data-empty-text="Không có thông tin"></div>
+</section>
+
+<!-- option 2: Populated state - one body row per entry (up to 6 inlined rows) -->
+<section class="iuh-lookup-stay-history" id="stay-history">
+  <header class="iuh-lookup-stay-history__header">
+    <h2 class="iuh-lookup-stay-history__title">Lịch sử ở KTX</h2>
+  </header>
+  <div class="iuh-form-table-wrap">
+    <table class="iuh-form-table">
+      <thead>
+        <div data-include="@shared/components/form/table.html"
+          data-variant="1"
+          data-col1="TT"
+          data-col1-class="iuh-form-table-cell--center"
+          data-col2="Thời gian"
+          data-col3="Trạng thái"></div>
+      </thead>
+      <tbody>
+        <div data-include="@shared/components/form/table.html"
+          data-variant="2"
+          data-col1="1"
+          data-col1-class="iuh-form-table-cell--center"
+          data-col2="{{row1Term}}"
+          data-col3="{{row1Status}}"></div>
+        <div data-include="@shared/components/form/table.html"
+          data-variant="2"
+          data-col1="2"
+          data-col1-class="iuh-form-table-cell--center"
+          data-col2="{{row2Term}}"
+          data-col3="{{row2Status}}"></div>
+        <div data-include="@shared/components/form/table.html"
+          data-variant="2"
+          data-col1="3"
+          data-col1-class="iuh-form-table-cell--center"
+          data-col2="{{row3Term}}"
+          data-col3="{{row3Status}}"></div>
+        <div data-include="@shared/components/form/table.html"
+          data-variant="2"
+          data-col1="4"
+          data-col1-class="iuh-form-table-cell--center"
+          data-col2="{{row4Term}}"
+          data-col3="{{row4Status}}"></div>
+      </tbody>
+    </table>
+  </div>
+</section>

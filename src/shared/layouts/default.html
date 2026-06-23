@@ -56,13 +56,23 @@
   <!-- Global Loading Overlay - Render FIRST -->
   {{loadingComponent}}
 
+  <!--
+    Chrome block: rendered only when the page omits chrome="off" (default "on").
+    Pages can declare a LAYOUT: chrome="off" marker to suppress the public site
+    header, footer, search modal, scroll-to-top button, and floating social icons
+    while still receiving shared head, loading overlay, and main script.
+  -->
+  <!-- LAYOUT:chrome:start -->
   <!-- Header Component -->
   <div data-include="@faculty/components/header/header.html" data-js="@shared/components/header/header.js"></div>
+  <!-- LAYOUT:chrome:end -->
 
   <!-- Main Content -->
   <main class="flex-1">
     {{content}}
   </main>
+
+  <!-- LAYOUT:chrome:start -->
   <!-- Footer Component -->
   <div data-include="@faculty/components/footer/footer.html" data-js="@shared/components/footer/footer.js"></div>
 
@@ -159,6 +169,7 @@
       </div>
     </div>
   </div>
+  <!-- LAYOUT:chrome:end -->
 
 </body>
 

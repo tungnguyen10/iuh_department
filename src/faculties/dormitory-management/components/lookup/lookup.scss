@@ -1,0 +1,57 @@
+// ===== Dormitory lookup page =====
+// This page is a static post-login landing. All five registration-row
+// variants render simultaneously; there is no state toggle.
+
+.iuh-lookup-panel {
+  @apply overflow-hidden rounded-lg border border-primary-dark-blue/10 bg-primary-white shadow-[0_18px_42px_rgba(21,56,152,0.08)];
+}
+
+.iuh-lookup-panel__header {
+  @apply border-b border-primary-dark-blue/10 bg-secondary-blue-light/50 px-5 py-3 md:px-6 md:py-4;
+}
+
+.iuh-lookup-panel__title {
+  @apply font-inter text-base font-bold uppercase tracking-[0.08em] text-primary-dark-blue md:text-lg;
+}
+
+.iuh-lookup-panel__body {
+  // Reset the `iuh-form-display` border/radius since the panel already wraps it.
+  @apply rounded-none border-0 #{!important};
+}
+
+.iuh-lookup-panel__value--strong {
+  @apply font-bold uppercase text-primary-dark-blue #{!important};
+}
+
+.iuh-lookup-registration--muted {
+  @apply text-gray-500 sm:text-center #{!important};
+}
+
+.iuh-lookup-registration-download {
+  @apply font-bold text-primary-yellow underline decoration-primary-yellow/40 decoration-2 underline-offset-4 transition-colors hover:text-primary-dark-blue hover:decoration-primary-dark-blue;
+}
+
+.iuh-lookup-status {
+  @apply inline-flex items-center rounded-full px-3 py-1 font-sans text-sm font-medium;
+}
+
+.iuh-lookup-status--pending {
+  @apply bg-secondary-yellow-light text-primary-yellow;
+}
+
+.iuh-lookup-status--active {
+  @apply bg-secondary-green/20 text-secondary-green;
+}
+
+// ===== Stay history =====
+.iuh-lookup-stay-history {
+  @apply mt-2;
+}
+
+.iuh-lookup-stay-history__header {
+  @apply mb-4 flex items-center justify-between gap-3 md:mb-5;
+}
+
+.iuh-lookup-stay-history__title {
+  @apply font-inter text-lg font-bold text-primary-dark-blue md:text-xl;
+}

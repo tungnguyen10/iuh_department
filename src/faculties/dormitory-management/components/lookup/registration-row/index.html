@@ -1,0 +1,56 @@
+<!-- option 1: no_round - "Chưa có đợt ĐK phù hợp!" (gray, centered) -->
+<div class="iuh-form-display-row iuh-lookup-state-row" data-lookup-state="no_round">
+  <span class="iuh-form-display-label">Đăng ký</span>
+  <span class="iuh-form-display-value iuh-lookup-registration iuh-lookup-registration--muted">{{message}}</span>
+</div>
+
+<!-- option 2: can_register - "Đăng ký nội trú" CTA button -->
+<div class="iuh-form-display-row iuh-lookup-state-row" data-lookup-state="can_register">
+  <span class="iuh-form-display-label">Đăng ký</span>
+  <div class="iuh-form-display-value">
+    <div data-include="@shared/components/button/button.html"
+      data-variant="4"
+      data-url="{{ctaHref}}"
+      data-text="{{ctaText}}"></div>
+  </div>
+</div>
+
+<!-- option 3: pending - "Đang chờ duyệt hồ sơ" (yellow status) -->
+<div class="iuh-form-display-row iuh-lookup-state-row" data-lookup-state="pending">
+  <span class="iuh-form-display-label">Đăng ký</span>
+  <span class="iuh-form-display-value">
+    <span class="iuh-lookup-status iuh-lookup-status--pending">{{message}}</span>
+  </span>
+</div>
+
+<!-- option 4: approved - "Đã duyệt hồ sơ - Tải phiếu" + upload row -->
+<div class="iuh-form-display-row iuh-lookup-state-row" data-lookup-state="approved">
+  <span class="iuh-form-display-label">Đăng ký</span>
+  <span class="iuh-form-display-value">
+    <a href="{{downloadHref}}" class="iuh-lookup-registration-download">{{message}}</a>
+  </span>
+</div>
+<div class="iuh-form-display-row iuh-lookup-state-row" data-lookup-state="approved">
+  <span class="iuh-form-display-label">Upload hình biên lai chuyển khoản</span>
+  <div class="iuh-form-display-value">
+    <div data-include="@shared/components/form/file.html"
+      data-variant="2"
+      data-id="payment-proof"
+      data-name="payment_proof"
+      data-accept="image/*"
+      data-action-variant="4"
+      data-action-text="Tải lên"
+      data-action-icon="/assets/svgs/icon-send.svg"
+      data-action-icon-class=""
+      data-helper-id="payment-proof-helper"
+      data-helper-text="{{uploadHelper}}"></div>
+  </div>
+</div>
+
+<!-- option 5: active - "Đang ở KTX" (green status) -->
+<div class="iuh-form-display-row iuh-lookup-state-row" data-lookup-state="active">
+  <span class="iuh-form-display-label">Đăng ký</span>
+  <span class="iuh-form-display-value">
+    <span class="iuh-lookup-status iuh-lookup-status--active">{{message}}</span>
+  </span>
+</div>

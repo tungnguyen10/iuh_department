@@ -226,6 +226,8 @@ const layoutPlugin = (base, mainScript) => ({
       const ogImageMatch = html.match(/<!--\s*LAYOUT:\s*ogImage="([^"]+)"\s*-->/)
       const urlMatch = html.match(/<!--\s*LAYOUT:\s*url="([^"]+)"\s*-->/)
       const scriptMatch = html.match(/<!--\s*LAYOUT:\s*script="([^"]+)"\s*-->/)
+      const chromeMatch = html.match(/<!--\s*LAYOUT:\s*chrome="(on|off)"\s*-->/)
+      const chromeEnabled = !chromeMatch || chromeMatch[1] !== 'off'
       
       // Nếu không có marker LAYOUT thì skip (giữ nguyên HTML - full page)
       if (!titleMatch) {
@@ -271,6 +273,15 @@ const layoutPlugin = (base, mainScript) => ({
         .replace('{{content}}', content)
         .replace(/\{\{mainScript\}\}/g, mainScript)
         .replace(/\{\{pageScript\}\}/g, pageScript)
+
+      // Strip chrome block when chrome="off"; otherwise just remove the markers
+      if (chromeEnabled) {
+        result = result
+          .replace(/<!--\s*LAYOUT:chrome:start\s*-->/g, '')
+          .replace(/<!--\s*LAYOUT:chrome:end\s*-->/g, '')
+      } else {
+        result = result.replace(/<!--\s*LAYOUT:chrome:start\s*-->[\s\S]*?<!--\s*LAYOUT:chrome:end\s*-->/g, '')
+      }
       
       // Apply base path cho favicon và assets trong layout
       result = result
