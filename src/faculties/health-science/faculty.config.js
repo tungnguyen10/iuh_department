@@ -117,12 +117,6 @@ export const healthScienceFacultyConfig = {
       name: "Business Connection",
     },
     {
-      selector: ".avatar-teacher",
-      load: () => import("./components/leadership/leadership.js"),
-      init: "initLeadership",
-      name: "Leadership",
-    },
-    {
       selector: ".industry-partnership-swiper",
       load: () => import("./components/industry-partnerships/industry-partnerships.js"),
       init: "initIndustryPartnershipSwiper",

@@ -67,6 +67,12 @@ export const sharedRuntimeModules = [
     name: 'PDF Viewer',
   },
   {
+    selector: '.avatar-teacher',
+    load: () => import('./components/leadership/leadership.js'),
+    init: 'initLeadership',
+    name: 'Leadership',
+  },
+  {
     always: true,
     load: () => import('./components/header/header.js'),
     init: 'init',

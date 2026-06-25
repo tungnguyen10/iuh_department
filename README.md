@@ -142,6 +142,8 @@ FACULTY=dormitory-management corepack yarn build
 FACULTY=dormitory-management corepack yarn preview --host 127.0.0.1 --port 4173
 ```
 
+FACULTY=health-science corepack yarn dev --host 127.0.0.1 --port 5174
+
 ### Faculty IDs
 
 `FACULTY` defaults to `health-science`, but explicit `FACULTY=<faculty-id>` commands are preferred so the selected module is unambiguous.
