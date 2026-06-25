@@ -1,6 +1,6 @@
 # Tong quan source IUH Department
 
-Ngay cap nhat: 2026-06-20
+Ngay cap nhat: 2026-06-25
 
 Tai lieu nay mo ta source hien tai cua website `lab-iuh` sau khi chuyen sang kien truc `Shared Platform + Faculty Modules`.
 
@@ -114,6 +114,16 @@ Phong Quan ly Ky Tuc Xa (`dormitory-management`) hien co:
 | Page | Muc dich |
 | --- | --- |
 | `index.html` | Trang chu: carousel, stats, thong bao, co so vat chat, don vi phoi hop |
+| `about.html` | Gioi thieu Phong Quan ly Ky Tuc Xa |
+| `news.html` | Thong bao, tin tuc |
+| `news-detail.html` | Chi tiet thong bao |
+| `activities.html` | Hoat dong noi tru |
+| `activities-details.html` | Chi tiet hoat dong |
+| `leadership.html` | Co cau to chuc va nhan su |
+| `leadership-detail.html` | Chi tiet nhan su |
+| `document-detail.html` | Xem/tai PDF |
+| `tra-cuu.html` | Tra cuu dang ky noi tru |
+| `login.html` | Dang nhap sinh vien noi tru |
 | `contact.html` | Lien he Phong Quan ly Ky Tuc Xa va noi dung tiep nhan ho tro sinh vien noi tru |
 
 Moi page dung metadata `LAYOUT`:
@@ -156,10 +166,9 @@ Component ownership hien tai:
 
 | Nhom | Canonical source |
 | --- | --- |
-| Header/footer/loading/search/modal/tabs/buttons/common/sidebar/news/partners/stats | `src/shared/components` |
+| Header/footer/loading/search/modal/tabs/buttons/common/sidebar/news/partners/stats/leadership | `src/shared/components` |
 | Home carousel/intro/admission/infrastructure/research/industry-careers | `src/faculties/health-science/components/home` |
 | Major, major quiz | `src/faculties/health-science/components/major` |
-| Leadership | `src/faculties/health-science/components/leadership` |
 | Careers/business connection | `src/faculties/health-science/components/careers` |
 | Industry partnerships | `src/faculties/health-science/components/industry-partnerships` |
 
