@@ -1,5 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  // Build-time HTML templates (e.g. data-driven card/list/sidebar renderers) MUST live
+  // under `src/` so this list keeps scanning every class used in rendered output.
+  // Do NOT add build-config files such as `vite.config.js` here.
   content: [
     "./src/shared/**/*.{html,js}",
     "./src/faculties/**/*.{html,js}",
