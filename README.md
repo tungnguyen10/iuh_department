@@ -396,10 +396,40 @@ dist_iuh/
 
 The supported deployment is Firebase Hosting at the domain root (`/`).
 
+Use `--project` when deploying so `.firebaserc` does not need to be changed between sites.
+
+Windows PowerShell:
+
+```powershell
+$env:FACULTY='health-science'
+corepack yarn build
+firebase deploy --only hosting --project iuh-khsk
+```
+
+```powershell
+$env:FACULTY='dormitory-management'
+corepack yarn build
+firebase deploy --only hosting --project iuh-ktx
+```
+
+macOS/Linux:
+
 ```bash
 FACULTY=health-science corepack yarn build
-firebase deploy --only hosting
+firebase deploy --only hosting --project iuh-khsk
 ```
+
+```bash
+FACULTY=dormitory-management corepack yarn build
+firebase deploy --only hosting --project iuh-ktx
+```
+
+Current Firebase targets:
+
+| Faculty | Firebase project | Hosting URL |
+| --- | --- | --- |
+| `health-science` | `iuh-khsk` | `https://iuh-khsk.web.app` |
+| `dormitory-management` | `iuh-ktx` | `https://iuh-ktx.web.app` |
 
 `VITE_BASE_PATH` exists for generated HTML/data URL rewriting, but subpath navigation is not fully tested.
 
