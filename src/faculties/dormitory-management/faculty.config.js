@@ -40,8 +40,11 @@ export const dormitoryManagementFacultyConfig = {
         children: [
           { text: "Trang chủ", href: "/" },
           { text: "Giới thiệu KTX", href: "/about.html" },
+          { text: "Ban quản lý", href: "/leadership.html" },
+          { text: "Chi tiết ban quản lý", href: "/leadership-detail.html" },
           { text: "Thông báo", href: "/news.html" },
           { text: "Chi tiết thông báo", href: "/news-detail.html" },
+          { text: "Văn bản", href: "/document-detail.html" },
           { text: "Hoạt động", href: "/activities.html" },
           { text: "Chi tiết hoạt động", href: "/activities-details.html" },
           { text: "Liên hệ", href: "/contact.html" },
