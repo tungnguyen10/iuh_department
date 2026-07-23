@@ -21,41 +21,6 @@ export const dormitoryManagementFacultyConfig = {
     documents: "/assets/documents",
   },
   styles: facultyComponentStyles,
-  header: {
-    unitName: "PHÒNG QUẢN LÝ KÝ TÚC XÁ",
-    email: "kytucxa@iuh.edu.vn",
-    phone: "0283 8940 390",
-    quickLinks: [
-      { text: "Giới thiệu KTX", href: "/about.html" },
-      { text: "Đăng ký nội trú", href: "/news-detail.html" },
-      { text: "Sinh viên nội trú", href: "/news.html" },
-      { text: "Hỗ trợ bảo trì", href: "/news-detail.html" },
-    ],
-    navItems: [
-      { text: "TRANG CHỦ", href: "/" },
-      { text: "GIỚI THIỆU", href: "/about.html" },
-      { text: "THÔNG BÁO", href: "/news.html" },
-      {
-        text: "DỊCH VỤ NỘI TRÚ",
-        children: [
-          { text: "Trang chủ", href: "/" },
-          { text: "Giới thiệu KTX", href: "/about.html" },
-          { text: "Ban quản lý", href: "/leadership.html" },
-          { text: "Chi tiết ban quản lý", href: "/leadership-detail.html" },
-          { text: "Thông báo", href: "/news.html" },
-          { text: "Chi tiết thông báo", href: "/news-detail.html" },
-          { text: "Văn bản", href: "/document-detail.html" },
-          { text: "Hoạt động", href: "/activities.html" },
-          { text: "Chi tiết hoạt động", href: "/activities-details.html" },
-          { text: "Liên hệ", href: "/contact.html" },
-          { text: "Đăng nhập", href: "/login.html" },
-          { text: "Tra cứu đăng ký", href: "/tra-cuu.html" },
-        ],
-      },
-      { text: "CƠ SỞ VẬT CHẤT", href: "/#infrastructure-section" },
-      { text: "LIÊN HỆ", href: "/contact.html" },
-    ],
-  },
   search: {
     quickLinks: [
       { text: "Giới thiệu", href: "/about.html" },
