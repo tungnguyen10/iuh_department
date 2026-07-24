@@ -9,8 +9,8 @@
     <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
       <div data-include="@shared/components/common/section-title.html"
         data-subtitle="Hỗ trợ nghề nghiệp"
-        data-title="Từ đời sống nội trú đến kỹ năng đi làm"
-        data-description="Ký túc xá là điểm chạm gần sinh viên nhất sau giờ học. Sinh viên có thể tìm đầu mối góp ý hồ sơ, chọn việc bán thời gian phù hợp lịch học và tham gia hoạt động rèn kỹ năng ngay trong cộng đồng KTX."
+        data-title="Việc làm & kỹ năng cho sinh viên nội trú"
+        data-description="Ngay tại ký túc xá, sinh viên có thể nắm nhanh các tin việc bán thời gian hợp lịch học, nhờ soát hồ sơ và kết nối đúng đầu mối tuyển dụng để tự tin nhận cơ hội đầu tiên."
         data-class="max-w-3xl"
         data-subtitle-class="text-primary-dark-blue"
         data-title-class="mt-1 text-title"
@@ -23,97 +23,105 @@
         <div class="career-folder relative rounded-b-lg rounded-tr-lg border border-primary-dark-blue/10 bg-primary-white p-4 shadow-[0_22px_52px_rgba(21,56,152,0.12)] md:p-6">
           <div class="flex flex-col gap-4 border-b border-stroke pb-5 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Bản tin việc làm</p>
-              <h3 class="mt-1 font-inter text-xl font-bold leading-tight text-title md:text-2xl">Danh sách việc làm mới</h3>
+              <div class="flex items-center gap-2">
+                <span class="career-job-pulse"></span>
+                <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Bản tin việc làm</p>
+              </div>
+              <h3 class="mt-1.5 font-inter text-xl font-bold leading-tight text-title md:text-2xl">Danh sách việc làm mới</h3>
             </div>
-            <span class="inline-flex w-fit items-center gap-1.5 rounded-full bg-secondary-yellow-light px-3 py-1.5 font-roboto text-xs font-bold text-primary-dark-blue">
-              <span class="career-job-pulse"></span>
-              Cập nhật hằng tuần
+            <span class="career-job-count inline-flex w-fit shrink-0 items-center gap-1.5 rounded-full bg-secondary-yellow-light px-3 py-1.5 font-roboto text-xs font-bold text-primary-dark-blue">
+              <img src="/assets/svgs/icon-briefcase.svg" alt="" class="h-3.5 w-3.5" />
+              Nhiều vị trí đang mở
             </span>
           </div>
 
           <ul class="career-job-list divide-y divide-stroke">
             <li>
-              <a href="/contact.html" class="career-job-item grid grid-cols-[3rem_1fr] gap-4 py-4 md:grid-cols-[3.5rem_1fr]">
+              <a href="/contact.html" class="career-job-item career-job-item--dark grid grid-cols-[3rem_1fr] gap-4 py-3 md:grid-cols-[3.5rem_1fr]">
                 <span class="career-job-logo bg-primary-dark-blue">
                   <img src="/assets/svgs/icon-briefcase.svg" alt="" class="h-6 w-6 brightness-0 invert" />
                 </span>
                 <div class="min-w-0">
                   <div class="flex flex-wrap items-center gap-2">
                     <h4 class="career-job-title font-inter text-base font-bold leading-snug text-title">Trợ lý thư viện Ký túc xá</h4>
+                    <span class="career-job-badge career-job-badge--urgent">Tuyển gấp</span>
                     <span class="career-job-badge career-job-badge--part">Bán thời gian</span>
                   </div>
-                  <p class="mt-0.5 font-roboto text-sm font-semibold text-primary-dark-blue">Ban Quản lý Ký túc xá IUH</p>
+                  <p class="career-job-org mt-0.5 font-roboto text-sm font-semibold text-primary-dark-blue">Công ty CP Giáo dục EduLib</p>
                   <div class="career-job-meta">
+                    <span class="career-job-pay">30.000đ/giờ</span>
                     <span><img src="/assets/svgs/icon-location.svg" alt="" />Khu A · KTX IUH</span>
-                    <span><img src="/assets/svgs/icon-money.svg" alt="" />30.000đ/giờ</span>
                     <span><img src="/assets/svgs/icon-clock.svg" alt="" />Ca tối T2–T6</span>
                   </div>
                 </div>
-                <img src="/assets/svgs/icon-arrow-up-right.svg" alt="" class="career-job-arrow" />
+                <span class="career-job-arrow"><img src="/assets/svgs/icon-arrow-up-right.svg" alt="" /></span>
               </a>
             </li>
 
             <li>
-              <a href="/contact.html" class="career-job-item grid grid-cols-[3rem_1fr] gap-4 py-4 md:grid-cols-[3.5rem_1fr]">
+              <a href="/contact.html" class="career-job-item career-job-item--yellow grid grid-cols-[3rem_1fr] gap-4 py-3 md:grid-cols-[3.5rem_1fr]">
                 <span class="career-job-logo bg-primary-yellow">
                   <img src="/assets/svgs/icon-message.svg" alt="" class="h-6 w-6 brightness-0 invert" />
                 </span>
                 <div class="min-w-0">
                   <div class="flex flex-wrap items-center gap-2">
                     <h4 class="career-job-title font-inter text-base font-bold leading-snug text-title">Cộng tác viên truyền thông sự kiện</h4>
+                    <span class="career-job-badge career-job-badge--new">Mới</span>
+                    <span class="career-job-badge career-job-badge--remote">Từ xa</span>
                     <span class="career-job-badge career-job-badge--part">Bán thời gian</span>
                   </div>
-                  <p class="mt-0.5 font-roboto text-sm font-semibold text-primary-dark-blue">Đoàn Thanh niên IUH</p>
+                  <p class="career-job-org mt-0.5 font-roboto text-sm font-semibold text-primary-dark-blue">Công ty TNHH Truyền thông Bright Media</p>
                   <div class="career-job-meta">
+                    <span class="career-job-pay">Theo dự án</span>
                     <span><img src="/assets/svgs/icon-location.svg" alt="" />Trực tuyến &amp; tại KTX</span>
-                    <span><img src="/assets/svgs/icon-money.svg" alt="" />Theo dự án</span>
                     <span><img src="/assets/svgs/icon-clock.svg" alt="" />Giờ linh hoạt</span>
                   </div>
                 </div>
-                <img src="/assets/svgs/icon-arrow-up-right.svg" alt="" class="career-job-arrow" />
+                <span class="career-job-arrow"><img src="/assets/svgs/icon-arrow-up-right.svg" alt="" /></span>
               </a>
             </li>
 
             <li>
-              <a href="/contact.html" class="career-job-item grid grid-cols-[3rem_1fr] gap-4 py-4 md:grid-cols-[3.5rem_1fr]">
-                <span class="career-job-logo bg-secondary-green">
-                  <img src="/assets/svgs/icon-building.svg" alt="" class="h-6 w-6 brightness-0 invert" />
+              <a href="/contact.html" class="career-job-item career-job-item--green grid grid-cols-[3rem_1fr] gap-4 py-3 md:grid-cols-[3.5rem_1fr]">
+                <span class="career-job-logo career-job-logo--image">
+                  <img src="/assets/images/default.jpg" alt="Logo Công ty TNHH Ẩm thực FreshBite" />
                 </span>
                 <div class="min-w-0">
                   <div class="flex flex-wrap items-center gap-2">
                     <h4 class="career-job-title font-inter text-base font-bold leading-snug text-title">Nhân viên phục vụ căng tin</h4>
+                    <span class="career-job-badge career-job-badge--seasonal">Thời vụ</span>
                     <span class="career-job-badge career-job-badge--part">Bán thời gian</span>
                   </div>
-                  <p class="mt-0.5 font-roboto text-sm font-semibold text-primary-dark-blue">Căng tin Ký túc xá khu B</p>
+                  <p class="career-job-org mt-0.5 font-roboto text-sm font-semibold text-primary-dark-blue">Công ty TNHH Ẩm thực FreshBite</p>
                   <div class="career-job-meta">
+                    <span class="career-job-pay">Thỏa thuận</span>
                     <span><img src="/assets/svgs/icon-location.svg" alt="" />Khu B · KTX IUH</span>
-                    <span><img src="/assets/svgs/icon-money.svg" alt="" />25.000đ/giờ</span>
                     <span><img src="/assets/svgs/icon-clock.svg" alt="" />Ca sáng cuối tuần</span>
                   </div>
                 </div>
-                <img src="/assets/svgs/icon-arrow-up-right.svg" alt="" class="career-job-arrow" />
+                <span class="career-job-arrow"><img src="/assets/svgs/icon-arrow-up-right.svg" alt="" /></span>
               </a>
             </li>
 
             <li>
-              <a href="/contact.html" class="career-job-item grid grid-cols-[3rem_1fr] gap-4 py-4 md:grid-cols-[3.5rem_1fr]">
+              <a href="/contact.html" class="career-job-item career-job-item--blue grid grid-cols-[3rem_1fr] gap-4 py-3 md:grid-cols-[3.5rem_1fr]">
                 <span class="career-job-logo bg-secondary-blue">
                   <img src="/assets/svgs/icon-graduation-cap.svg" alt="" class="h-6 w-6 brightness-0 invert" />
                 </span>
                 <div class="min-w-0">
                   <div class="flex flex-wrap items-center gap-2">
                     <h4 class="career-job-title font-inter text-base font-bold leading-snug text-title">Gia sư kèm môn đại cương</h4>
+                    <span class="career-job-badge career-job-badge--intern">Thực tập</span>
                     <span class="career-job-badge career-job-badge--part">Bán thời gian</span>
                   </div>
-                  <p class="mt-0.5 font-roboto text-sm font-semibold text-primary-dark-blue">Trung tâm hỗ trợ học tập</p>
+                  <p class="career-job-org mt-0.5 font-roboto text-sm font-semibold text-primary-dark-blue">Công ty CP Giáo dục Smart Edu</p>
                   <div class="career-job-meta">
-                    <span><img src="/assets/svgs/icon-location.svg" alt="" />Phòng sinh hoạt chung</span>
-                    <span><img src="/assets/svgs/icon-money.svg" alt="" />80.000đ/buổi</span>
+                    <span class="career-job-pay">80.000đ/buổi</span>
+                    <span><img src="/assets/svgs/icon-location.svg" alt="" />Tại KTX &amp; trực tuyến</span>
                     <span><img src="/assets/svgs/icon-clock.svg" alt="" />Tối T3, T5</span>
                   </div>
                 </div>
-                <img src="/assets/svgs/icon-arrow-up-right.svg" alt="" class="career-job-arrow" />
+                <span class="career-job-arrow"><img src="/assets/svgs/icon-arrow-up-right.svg" alt="" /></span>
               </a>
             </li>
           </ul>
@@ -136,27 +144,34 @@
         <aside class="career-consult-panel rounded-lg bg-primary-dark-blue p-4 text-primary-white shadow-[0_22px_52px_rgba(21,56,152,0.20)] md:p-5">
           <div class="flex items-start justify-between gap-4">
             <div>
-              <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-secondary-yellow">Lịch tư vấn</p>
-              <h3 class="mt-1 font-inter text-xl font-bold leading-tight md:text-2xl">Hỏi đúng lúc, nhận đúng đầu mối</h3>
+              <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-secondary-yellow">Hỗ trợ ứng tuyển</p>
+              <h3 class="mt-1 font-inter text-xl font-bold leading-tight md:text-2xl">Ba bước để nhận việc phù hợp</h3>
             </div>
             <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary-white/10">
-              <img src="/assets/svgs/icon-calendar-clock.svg" alt="" class="h-5 w-5 brightness-0 invert" />
+              <img src="/assets/svgs/icon-briefcase.svg" alt="" class="h-5 w-5 brightness-0 invert" />
             </span>
           </div>
 
           <div class="mt-5 space-y-3">
             <div class="career-consult-slot">
-              <time class="font-inter text-sm font-extrabold text-secondary-yellow">Sáng</time>
-              <p class="font-roboto text-sm leading-relaxed text-primary-white/80">Gửi nhu cầu tư vấn và thông tin lịch học.</p>
+              <time class="font-inter text-sm font-extrabold text-secondary-yellow">Bước 1</time>
+              <p class="font-roboto text-sm leading-relaxed text-primary-white/80">Chọn tin việc phù hợp lịch học và khu ở trong danh sách.</p>
             </div>
             <div class="career-consult-slot">
-              <time class="font-inter text-sm font-extrabold text-secondary-yellow">Chiều</time>
-              <p class="font-roboto text-sm leading-relaxed text-primary-white/80">Nhận gợi ý đầu mối, tin việc hoặc hoạt động phù hợp.</p>
+              <time class="font-inter text-sm font-extrabold text-secondary-yellow">Bước 2</time>
+              <p class="font-roboto text-sm leading-relaxed text-primary-white/80">Nhờ KTX soát nhanh CV, email và thông tin liên hệ.</p>
             </div>
             <div class="career-consult-slot">
-              <time class="font-inter text-sm font-extrabold text-secondary-yellow">Tối</time>
-              <p class="font-roboto text-sm leading-relaxed text-primary-white/80">Cập nhật phản hồi sau buổi học, ca làm hoặc sinh hoạt KTX.</p>
+              <time class="font-inter text-sm font-extrabold text-secondary-yellow">Bước 3</time>
+              <p class="font-roboto text-sm leading-relaxed text-primary-white/80">Nhận đầu mối đơn vị tuyển dụng và hẹn lịch phỏng vấn.</p>
             </div>
+          </div>
+
+          <div class="mt-4">
+            <a href="/contact.html" class="group flex w-full items-center justify-between rounded-lg bg-primary-white/10 px-4 py-3 transition-colors duration-300 hover:bg-secondary-yellow">
+              <span class="font-roboto text-sm font-semibold text-primary-white group-hover:text-primary-dark-blue">Đăng ký tư vấn ngay</span>
+              <img src="/assets/svgs/icon-arrow-up-right.svg" alt="" class="h-4 w-4 brightness-0 invert group-hover:invert-0" />
+            </a>
           </div>
         </aside>
 
@@ -165,16 +180,16 @@
             <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-secondary-yellow-light">
               <img src="/assets/svgs/icon-shield-check.svg" alt="" class="h-5 w-5" />
             </span>
-            <h4 class="mt-4 font-inter text-base font-bold leading-snug text-title">Tin cần rõ nguồn</h4>
-            <p class="mt-2 font-roboto text-sm leading-relaxed text-gray-700">Ưu tiên cơ hội có đơn vị, ca làm và kênh liên hệ minh bạch.</p>
+            <h4 class="mt-4 font-inter text-base font-bold leading-snug text-title">Tin việc rõ nguồn</h4>
+            <p class="mt-2 font-roboto text-sm leading-relaxed text-gray-700">Ưu tiên tin có đơn vị tuyển, mô tả ca làm và kênh liên hệ minh bạch.</p>
           </article>
 
           <article class="career-mini-note rounded-lg border border-primary-dark-blue/10 bg-primary-white p-4">
             <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-secondary-blue-light">
               <img src="/assets/svgs/icon-calendar-check.svg" alt="" class="h-5 w-5" />
             </span>
-            <h4 class="mt-4 font-inter text-base font-bold leading-snug text-title">Không lệch nhịp ở</h4>
-            <p class="mt-2 font-roboto text-sm leading-relaxed text-gray-700">Giữ thời gian học, nghỉ ngơi và nội quy sinh hoạt KTX ổn định.</p>
+            <h4 class="mt-4 font-inter text-base font-bold leading-snug text-title">Cân bằng ca làm</h4>
+            <p class="mt-2 font-roboto text-sm leading-relaxed text-gray-700">Chọn ca hợp lịch học để giữ giờ nghỉ và nội quy sinh hoạt KTX.</p>
           </article>
         </div>
       </div>
