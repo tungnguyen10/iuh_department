@@ -23,53 +23,108 @@
         <div class="career-folder relative rounded-b-lg rounded-tr-lg border border-primary-dark-blue/10 bg-primary-white p-4 shadow-[0_22px_52px_rgba(21,56,152,0.12)] md:p-6">
           <div class="flex flex-col gap-4 border-b border-stroke pb-5 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Tủ hồ sơ nghề nghiệp</p>
-              <h3 class="mt-1 font-inter text-xl font-bold leading-tight text-title md:text-2xl">Chuẩn bị trước khi nhận cơ hội</h3>
+              <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Bản tin việc làm</p>
+              <h3 class="mt-1 font-inter text-xl font-bold leading-tight text-title md:text-2xl">Danh sách việc làm mới</h3>
             </div>
-            <span class="inline-flex w-fit items-center rounded-full bg-secondary-yellow-light px-3 py-1.5 font-roboto text-xs font-bold text-primary-dark-blue">
-              Ưu tiên lịch học
+            <span class="inline-flex w-fit items-center gap-1.5 rounded-full bg-secondary-yellow-light px-3 py-1.5 font-roboto text-xs font-bold text-primary-dark-blue">
+              <span class="career-job-pulse"></span>
+              Cập nhật hằng tuần
             </span>
           </div>
 
-          <div class="divide-y divide-stroke">
-            <article class="grid grid-cols-[3rem_1fr] gap-4 py-5">
-              <span class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-dark-blue">
-                <img src="/assets/svgs/icon-user-search.svg" alt="" class="h-6 w-6 brightness-0 invert" />
-              </span>
-              <div>
-                <h4 class="font-inter text-base font-bold leading-snug text-title">Soát nhanh CV và email ứng tuyển</h4>
-                <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700">Kiểm tra thông tin cá nhân, kinh nghiệm, kỹ năng và cách gửi hồ sơ để sinh viên tự tin hơn ở lần ứng tuyển đầu tiên.</p>
-              </div>
-            </article>
+          <ul class="career-job-list divide-y divide-stroke">
+            <li>
+              <a href="/contact.html" class="career-job-item grid grid-cols-[3rem_1fr] gap-4 py-4 md:grid-cols-[3.5rem_1fr]">
+                <span class="career-job-logo bg-primary-dark-blue">
+                  <img src="/assets/svgs/icon-briefcase.svg" alt="" class="h-6 w-6 brightness-0 invert" />
+                </span>
+                <div class="min-w-0">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <h4 class="career-job-title font-inter text-base font-bold leading-snug text-title">Trợ lý thư viện Ký túc xá</h4>
+                    <span class="career-job-badge career-job-badge--part">Bán thời gian</span>
+                  </div>
+                  <p class="mt-0.5 font-roboto text-sm font-semibold text-primary-dark-blue">Ban Quản lý Ký túc xá IUH</p>
+                  <div class="career-job-meta">
+                    <span><img src="/assets/svgs/icon-location.svg" alt="" />Khu A · KTX IUH</span>
+                    <span><img src="/assets/svgs/icon-money.svg" alt="" />30.000đ/giờ</span>
+                    <span><img src="/assets/svgs/icon-clock.svg" alt="" />Ca tối T2–T6</span>
+                  </div>
+                </div>
+                <img src="/assets/svgs/icon-arrow-up-right.svg" alt="" class="career-job-arrow" />
+              </a>
+            </li>
 
-            <article class="grid grid-cols-[3rem_1fr] gap-4 py-5">
-              <span class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-yellow">
-                <img src="/assets/svgs/icon-clock.svg" alt="" class="h-6 w-6 brightness-0 invert" />
-              </span>
-              <div>
-                <h4 class="font-inter text-base font-bold leading-snug text-title">Đọc ca làm theo lịch sinh hoạt</h4>
-                <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700">Ước lượng thời gian học, di chuyển, nghỉ ngơi và giờ về KTX trước khi chọn việc bán thời gian.</p>
-              </div>
-            </article>
+            <li>
+              <a href="/contact.html" class="career-job-item grid grid-cols-[3rem_1fr] gap-4 py-4 md:grid-cols-[3.5rem_1fr]">
+                <span class="career-job-logo bg-primary-yellow">
+                  <img src="/assets/svgs/icon-message.svg" alt="" class="h-6 w-6 brightness-0 invert" />
+                </span>
+                <div class="min-w-0">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <h4 class="career-job-title font-inter text-base font-bold leading-snug text-title">Cộng tác viên truyền thông sự kiện</h4>
+                    <span class="career-job-badge career-job-badge--part">Bán thời gian</span>
+                  </div>
+                  <p class="mt-0.5 font-roboto text-sm font-semibold text-primary-dark-blue">Đoàn Thanh niên IUH</p>
+                  <div class="career-job-meta">
+                    <span><img src="/assets/svgs/icon-location.svg" alt="" />Trực tuyến &amp; tại KTX</span>
+                    <span><img src="/assets/svgs/icon-money.svg" alt="" />Theo dự án</span>
+                    <span><img src="/assets/svgs/icon-clock.svg" alt="" />Giờ linh hoạt</span>
+                  </div>
+                </div>
+                <img src="/assets/svgs/icon-arrow-up-right.svg" alt="" class="career-job-arrow" />
+              </a>
+            </li>
 
-            <article class="grid grid-cols-[3rem_1fr] gap-4 py-5">
-              <span class="flex h-12 w-12 items-center justify-center rounded-lg bg-secondary-green">
-                <img src="/assets/svgs/icon-handshake.svg" alt="" class="h-6 w-6 brightness-0 invert" />
-              </span>
-              <div>
-                <h4 class="font-inter text-base font-bold leading-snug text-title">Rèn kỹ năng từ cộng đồng KTX</h4>
-                <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700">Tham gia nhóm hỗ trợ, sự kiện sinh viên và hoạt động phục vụ khu ở để có trải nghiệm giao tiếp, tổ chức và phối hợp.</p>
-              </div>
-            </article>
-          </div>
+            <li>
+              <a href="/contact.html" class="career-job-item grid grid-cols-[3rem_1fr] gap-4 py-4 md:grid-cols-[3.5rem_1fr]">
+                <span class="career-job-logo bg-secondary-green">
+                  <img src="/assets/svgs/icon-building.svg" alt="" class="h-6 w-6 brightness-0 invert" />
+                </span>
+                <div class="min-w-0">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <h4 class="career-job-title font-inter text-base font-bold leading-snug text-title">Nhân viên phục vụ căng tin</h4>
+                    <span class="career-job-badge career-job-badge--part">Bán thời gian</span>
+                  </div>
+                  <p class="mt-0.5 font-roboto text-sm font-semibold text-primary-dark-blue">Căng tin Ký túc xá khu B</p>
+                  <div class="career-job-meta">
+                    <span><img src="/assets/svgs/icon-location.svg" alt="" />Khu B · KTX IUH</span>
+                    <span><img src="/assets/svgs/icon-money.svg" alt="" />25.000đ/giờ</span>
+                    <span><img src="/assets/svgs/icon-clock.svg" alt="" />Ca sáng cuối tuần</span>
+                  </div>
+                </div>
+                <img src="/assets/svgs/icon-arrow-up-right.svg" alt="" class="career-job-arrow" />
+              </a>
+            </li>
+
+            <li>
+              <a href="/contact.html" class="career-job-item grid grid-cols-[3rem_1fr] gap-4 py-4 md:grid-cols-[3.5rem_1fr]">
+                <span class="career-job-logo bg-secondary-blue">
+                  <img src="/assets/svgs/icon-graduation-cap.svg" alt="" class="h-6 w-6 brightness-0 invert" />
+                </span>
+                <div class="min-w-0">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <h4 class="career-job-title font-inter text-base font-bold leading-snug text-title">Gia sư kèm môn đại cương</h4>
+                    <span class="career-job-badge career-job-badge--part">Bán thời gian</span>
+                  </div>
+                  <p class="mt-0.5 font-roboto text-sm font-semibold text-primary-dark-blue">Trung tâm hỗ trợ học tập</p>
+                  <div class="career-job-meta">
+                    <span><img src="/assets/svgs/icon-location.svg" alt="" />Phòng sinh hoạt chung</span>
+                    <span><img src="/assets/svgs/icon-money.svg" alt="" />80.000đ/buổi</span>
+                    <span><img src="/assets/svgs/icon-clock.svg" alt="" />Tối T3, T5</span>
+                  </div>
+                </div>
+                <img src="/assets/svgs/icon-arrow-up-right.svg" alt="" class="career-job-arrow" />
+              </a>
+            </li>
+          </ul>
 
           <div class="mt-1 flex flex-col gap-3 rounded-lg bg-secondary-blue-light p-4 sm:flex-row sm:items-center sm:justify-between">
             <p class="font-roboto text-sm leading-relaxed text-gray-700">
-              <strong class="font-inter text-title">Gợi ý:</strong> bắt đầu bằng lịch học trong tuần, sau đó mới chọn kênh hỗ trợ phù hợp.
+              <strong class="font-inter text-title">Gợi ý:</strong> xem thêm tại chuyên trang việc làm, tuyển dụng của Trường Đại học Công nghiệp TP.HCM.
             </p>
             <div data-include="@shared/components/button/button.html"
               data-variant="4"
-              data-text="Liên hệ hỗ trợ"
+              data-text="Xem tất cả"
               data-url="/contact.html"
               data-class="w-full justify-center sm:w-fit">
             </div>

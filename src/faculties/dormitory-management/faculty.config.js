@@ -52,12 +52,14 @@ export const dormitoryManagementFacultyConfig = {
       init: "initInfrastructure",
       name: "Dormitory Infrastructure",
     },
-    {
-      selector: ".recruitment-posting-swiper",
-      load: () => import("./components/home/recruitment-posting/recruitment-posting.js"),
-      init: "initRecruitmentPostingSwiper",
-      name: "Dormitory Recruitment Posting",
-    },
+    // Tạm tắt cùng section recruitment-posting (không include ở trang chủ).
+    // Bật lại khi thêm lại component vào pages/index.html.
+    // {
+    //   selector: ".recruitment-posting-swiper",
+    //   load: () => import("./components/home/recruitment-posting/recruitment-posting.js"),
+    //   init: "initRecruitmentPostingSwiper",
+    //   name: "Dormitory Recruitment Posting",
+    // },
   ],
 };
 
