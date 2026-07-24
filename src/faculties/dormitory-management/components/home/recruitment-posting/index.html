@@ -1,0 +1,126 @@
+<section data-module="recruitment-posting" id="recruitment-posting-section" class="recruitment-posting-section relative isolate w-full overflow-hidden bg-gradient-to-b from-primary-white to-secondary-blue-light py-10 md:py-14 lg:py-16 {{class}}">
+  <div class="recruitment-posting-bg" aria-hidden="true">
+    <span class="recruitment-posting-bg__sheet recruitment-posting-bg__sheet--top"></span>
+    <span class="recruitment-posting-bg__sheet recruitment-posting-bg__sheet--bottom"></span>
+  </div>
+
+  <div class="container relative z-10 mx-auto px-4">
+    <div data-include="@shared/components/common/section-title.html"
+      data-subtitle="Tuyển dụng việc làm"
+      data-title="Kênh đăng bài tuyển dụng cho cộng đồng nội trú"
+      data-description="Doanh nghiệp và đối tác có thể đăng tin tuyển dụng hoặc chương trình thực tập phù hợp lịch học, môi trường sống và nhu cầu phát triển kỹ năng của sinh viên nội trú IUH."
+      data-class="max-w-4xl"
+      data-subtitle-class="text-primary-dark-blue uppercase tracking-[0.12em] text-xs font-bold"
+      data-title-class="mt-1 text-title"
+      data-description-class="mt-4 text-gray-700">
+    </div>
+
+    <div class="recruitment-posting-board mt-6 rounded-lg border border-primary-dark-blue/10 bg-primary-white p-4 shadow-[0_18px_44px_rgba(21,56,152,0.10)] md:p-6">
+      <div class="flex flex-col gap-3 border-b border-stroke pb-4 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
+          <h3 class="font-inter text-lg font-bold text-title md:text-xl">việc làm nổi bật trong tuần</h3>
+          <span class="inline-flex w-fit items-center rounded-full bg-secondary-yellow-light px-3 py-1 font-roboto text-xs font-bold text-primary-dark-blue">
+            Cập nhật mỗi tuần
+          </span>
+        </div>
+
+        <div class="recruitment-posting-nav hidden items-center gap-2 md:inline-flex">
+          <button type="button" class="recruitment-posting-prev inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary-dark-blue/20 text-primary-dark-blue transition-colors duration-300 hover:bg-secondary-blue-light" aria-label="Tin trước">
+            <img src="/assets/svgs/icon-chevron-left.svg" alt="" class="h-4 w-4" />
+          </button>
+          <button type="button" class="recruitment-posting-next inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary-dark-blue/20 text-primary-dark-blue transition-colors duration-300 hover:bg-secondary-blue-light" aria-label="Tin tiếp theo">
+            <img src="/assets/svgs/icon-chevron-right.svg" alt="" class="h-4 w-4" />
+          </button>
+        </div>
+      </div>
+
+      <div class="recruitment-posting-slider mt-4">
+        <div class="swiper recruitment-posting-swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div data-include="@shared/components/news/news-card.html"
+                data-image="/assets/images/default.jpg"
+                data-image-alt="Nhân viên hỗ trợ vận hành ký túc xá"
+                data-title="Nhân viên hỗ trợ vận hành ký túc xá (part-time)"
+                data-excerpt="Ca chiều 17:30 - 21:30, gần IUH, thu nhập 6 - 8 triệu/tháng. Ưu tiên kỹ năng giao tiếp và phối hợp ca trực sinh viên."
+                data-date="24/07/2026"
+                data-link="/news-detail.html"
+                data-class="h-full border border-primary-dark-blue/10">
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div data-include="@shared/components/news/news-card.html"
+                data-image="/assets/images/default.jpg"
+                data-image-alt="Cộng tác viên truyền thông sự kiện sinh viên"
+                data-title="Cộng tác viên truyền thông sự kiện sinh viên"
+                data-excerpt="Lịch linh hoạt theo thời khóa biểu, thu nhập 4 - 6 triệu/tháng, phù hợp sinh viên muốn phát triển kỹ năng nội dung và điều phối hoạt động."
+                data-date="23/07/2026"
+                data-link="/news-detail.html"
+                data-class="h-full border border-primary-dark-blue/10">
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div data-include="@shared/components/news/news-card.html"
+                data-image="/assets/images/default.jpg"
+                data-image-alt="Thực tập sinh hỗ trợ chăm sóc khách hàng"
+                data-title="Thực tập sinh hỗ trợ chăm sóc khách hàng"
+                data-excerpt="Tối thiểu 3 buổi/tuần, có mentor đồng hành, phụ cấp theo năng lực. Vị trí phù hợp để rèn phản hồi và xử lý tình huống thực tế."
+                data-date="22/07/2026"
+                data-link="/news-detail.html"
+                data-class="h-full border border-primary-dark-blue/10">
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div data-include="@shared/components/news/news-card.html"
+                data-image="/assets/images/default.jpg"
+                data-image-alt="Nhân viên trực hỗ trợ dịch vụ sinh viên"
+                data-title="Nhân viên trực hỗ trợ dịch vụ sinh viên cuối tuần"
+                data-excerpt="Ca cuối tuần theo khung giờ linh hoạt, ưu tiên sinh viên có kinh nghiệm trực hotline và xử lý yêu cầu cơ bản."
+                data-date="21/07/2026"
+                data-link="/news-detail.html"
+                data-class="h-full border border-primary-dark-blue/10">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div data-include="@shared/components/news/news-card.html"
+                data-image="/assets/images/default.jpg"
+                data-image-alt="Nhân viên trực hỗ trợ dịch vụ sinh viên"
+                data-title="Nhân viên trực hỗ trợ dịch vụ sinh viên cuối tuần"
+                data-excerpt="Ca cuối tuần theo khung giờ linh hoạt, ưu tiên sinh viên có kinh nghiệm trực hotline và xử lý yêu cầu cơ bản."
+                data-date="21/07/2026"
+                data-link="/news-detail.html"
+                data-class="h-full border border-primary-dark-blue/10">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div data-include="@shared/components/news/news-card.html"
+                data-image="/assets/images/default.jpg"
+                data-image-alt="Nhân viên trực hỗ trợ dịch vụ sinh viên"
+                data-title="Nhân viên trực hỗ trợ dịch vụ sinh viên cuối tuần"
+                data-excerpt="Ca cuối tuần theo khung giờ linh hoạt, ưu tiên sinh viên có kinh nghiệm trực hotline và xử lý yêu cầu cơ bản."
+                data-date="21/07/2026"
+                data-link="/news-detail.html"
+                data-class="h-full border border-primary-dark-blue/10">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="recruitment-posting-pagination mt-4 md:hidden"></div>
+      </div>
+
+      <div class="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <div data-include="@shared/components/button/button.html"
+          data-variant="4"
+          data-text="Xem thêm tin việc làm"
+          data-url="/news.html"
+          data-class="w-full justify-center sm:w-fit">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>

@@ -52,6 +52,12 @@ export const dormitoryManagementFacultyConfig = {
       init: "initInfrastructure",
       name: "Dormitory Infrastructure",
     },
+    {
+      selector: ".recruitment-posting-swiper",
+      load: () => import("./components/home/recruitment-posting/recruitment-posting.js"),
+      init: "initRecruitmentPostingSwiper",
+      name: "Dormitory Recruitment Posting",
+    },
   ],
 };
 
