@@ -209,6 +209,264 @@
   @apply rounded-lg border border-dashed border-stroke bg-white px-4 py-10 text-center font-sans text-sm font-medium text-gray-500;
 }
 
+// ===== Attendance (Điểm danh) =====
+// Roll-call ledger. Signature element is the present/absent switch: the whole
+// row shifts to an amber "absent" state when toggled, so staff get instant
+// feedback while marking a floor's worth of students.
+.iuh-attendance {
+  @apply space-y-4 md:space-y-5;
+}
+
+.iuh-attendance__toolbar {
+  @apply flex flex-col gap-4 rounded-xl border border-primary-dark-blue/10 bg-gradient-to-br from-secondary-blue-light/70 via-primary-white to-primary-white p-4 sm:flex-row sm:items-end sm:justify-between md:p-5;
+}
+
+.iuh-attendance__toolbar-main {
+  @apply min-w-0 space-y-1;
+}
+
+.iuh-attendance__eyebrow {
+  @apply font-sans text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue/60;
+}
+
+.iuh-attendance__title {
+  @apply font-inter text-lg font-bold leading-tight tracking-[-0.01em] text-primary-dark-blue md:text-xl;
+}
+
+.iuh-attendance__filters {
+  @apply flex shrink-0 flex-col gap-1.5;
+}
+
+.iuh-attendance__filter-label {
+  @apply font-sans text-xs font-semibold uppercase tracking-[0.08em] text-gray;
+}
+
+.iuh-attendance__filter-select {
+  @apply w-full rounded-lg py-2.5 text-sm font-medium sm:w-auto sm:min-w-[15rem] md:text-base;
+}
+
+.iuh-attendance__meta {
+  @apply flex flex-wrap items-center justify-between gap-x-4 gap-y-2 px-0.5;
+}
+
+.iuh-attendance__count {
+  @apply font-sans text-sm text-gray;
+}
+
+.iuh-attendance__count strong {
+  @apply font-bold text-primary-dark-blue;
+}
+
+.iuh-attendance__legend {
+  @apply flex flex-wrap items-center gap-3 font-sans text-xs font-medium text-gray;
+}
+
+.iuh-attendance__legend-item {
+  @apply inline-flex items-center gap-1.5;
+}
+
+.iuh-attendance__legend-dot {
+  @apply h-2.5 w-2.5 rounded-full;
+}
+
+.iuh-attendance__legend-dot--present {
+  @apply bg-secondary-green;
+}
+
+.iuh-attendance__legend-dot--absent {
+  @apply bg-primary-yellow;
+}
+
+.iuh-attendance__table {
+  @apply min-w-[42rem];
+}
+
+.iuh-attendance__col-index {
+  @apply w-12;
+}
+
+.iuh-attendance__col-status {
+  @apply w-36;
+}
+
+.iuh-attendance__col-reason {
+  @apply w-60;
+}
+
+.iuh-attendance__cell-index,
+.iuh-attendance__cell-student,
+.iuh-attendance__cell-contact,
+.iuh-attendance__cell-status,
+.iuh-attendance__cell-reason {
+  @apply align-middle;
+}
+
+.iuh-attendance__index {
+  @apply inline-flex h-7 w-7 items-center justify-center rounded-full bg-secondary-blue-light font-sans text-xs font-bold text-primary-dark-blue;
+}
+
+.iuh-attendance__name {
+  @apply block font-sans text-sm font-semibold text-title md:text-[0.95rem];
+}
+
+.iuh-attendance__id {
+  @apply mt-1 inline-flex w-fit items-center rounded-md bg-secondary-blue-light px-2 py-0.5 font-mono text-xs font-medium tracking-[0.04em] text-primary-dark-blue;
+}
+
+.iuh-attendance__email {
+  @apply block break-all font-sans text-sm text-gray-700;
+}
+
+.iuh-attendance__phone {
+  @apply mt-0.5 block font-sans text-xs font-medium text-gray;
+}
+
+// Absent-row emphasis (:has is supported in all evergreen browsers).
+.iuh-attendance__table .iuh-form-table-body-row:has(.iuh-attend-toggle__input:checked) {
+  @apply bg-primary-yellow/5;
+}
+
+.iuh-attend-reason {
+  @apply min-h-10 rounded-lg px-3 py-2 text-sm;
+}
+
+.iuh-attendance__table .iuh-form-table-body-row:has(.iuh-attend-toggle__input:checked) .iuh-attend-reason {
+  @apply border-primary-yellow/50 focus:border-primary-yellow focus:ring-primary-yellow/20;
+}
+
+// ===== Present / absent switch =====
+.iuh-attend-toggle {
+  @apply inline-flex cursor-pointer select-none items-center gap-2.5;
+}
+
+.iuh-attend-toggle__input {
+  @apply sr-only;
+}
+
+.iuh-attend-toggle__track {
+  @apply relative inline-flex h-6 w-11 shrink-0 items-center rounded-full bg-secondary-green/20 ring-1 ring-inset ring-secondary-green/40 transition-colors duration-200;
+}
+
+.iuh-attend-toggle__thumb {
+  @apply ml-0.5 h-5 w-5 rounded-full bg-secondary-green shadow-sm transition-transform duration-200;
+}
+
+.iuh-attend-toggle__label {
+  @apply min-w-[3.25rem] font-sans text-sm font-semibold text-secondary-green;
+}
+
+.iuh-attend-toggle__state--absent {
+  @apply hidden;
+}
+
+.iuh-attend-toggle__input:checked ~ .iuh-attend-toggle__track {
+  @apply bg-primary-yellow/25 ring-primary-yellow/50;
+}
+
+.iuh-attend-toggle__input:checked ~ .iuh-attend-toggle__track .iuh-attend-toggle__thumb {
+  @apply translate-x-5 bg-primary-yellow;
+}
+
+.iuh-attend-toggle__input:focus-visible ~ .iuh-attend-toggle__track {
+  @apply ring-2 ring-primary-dark-blue ring-offset-1;
+}
+
+.iuh-attend-toggle__input:checked ~ .iuh-attend-toggle__label {
+  @apply text-primary-yellow;
+}
+
+.iuh-attend-toggle__input:checked ~ .iuh-attend-toggle__label .iuh-attend-toggle__state--present {
+  @apply hidden;
+}
+
+.iuh-attend-toggle__input:checked ~ .iuh-attend-toggle__label .iuh-attend-toggle__state--absent {
+  @apply inline;
+}
+
+.iuh-attendance__actions {
+  @apply flex flex-col items-stretch gap-3 rounded-xl border border-primary-dark-blue/10 bg-secondary-blue-light/40 p-4 sm:flex-row sm:items-center sm:justify-between;
+}
+
+.iuh-attendance__actions-hint {
+  @apply font-sans text-xs leading-relaxed text-gray sm:text-sm;
+}
+
+.iuh-attendance__save-btn {
+  @apply w-full shrink-0 px-6 py-2.5 text-sm font-medium sm:w-auto sm:min-w-[11rem];
+}
+
+// ===== Mobile: each row becomes a card =====
+@media (max-width: 640px) {
+  .iuh-attendance__table-wrap {
+    @apply overflow-visible rounded-none border-0;
+  }
+
+  .iuh-attendance__table {
+    @apply block min-w-0;
+  }
+
+  .iuh-attendance__table thead {
+    @apply sr-only;
+  }
+
+  .iuh-attendance__table tbody {
+    @apply block space-y-3;
+  }
+
+  .iuh-attendance__table .iuh-form-table-body-row {
+    @apply relative block overflow-hidden rounded-xl border border-stroke bg-primary-white pl-2 shadow-[0_2px_12px_rgba(21,56,152,0.05)];
+  }
+
+  .iuh-attendance__table .iuh-form-table-body-row::before {
+    content: "";
+    @apply absolute inset-y-0 left-0 w-1 bg-secondary-green;
+  }
+
+  .iuh-attendance__table .iuh-form-table-body-row:has(.iuh-attend-toggle__input:checked)::before {
+    @apply bg-primary-yellow;
+  }
+
+  .iuh-attendance__table .iuh-form-table-cell {
+    @apply flex items-center justify-between gap-3 border-0 border-b border-stroke px-3.5 py-2.5;
+  }
+
+  .iuh-attendance__table .iuh-form-table-cell:last-child {
+    @apply border-b-0;
+  }
+
+  .iuh-attendance__table .iuh-form-table-cell::before {
+    content: attr(data-label);
+    @apply shrink-0 font-sans text-[0.7rem] font-bold uppercase tracking-[0.08em] text-gray;
+  }
+
+  // Row index is redundant once each student is a self-contained card.
+  .iuh-attendance__table .iuh-attendance__cell-index {
+    @apply hidden;
+  }
+
+  // Card header: name + MSSV, tinted, no label.
+  .iuh-attendance__table .iuh-attendance__cell-student {
+    @apply flex-col items-start gap-1.5 bg-secondary-blue-light/40 px-3.5 py-3;
+  }
+
+  .iuh-attendance__table .iuh-attendance__cell-contact {
+    @apply flex-col items-start gap-1;
+  }
+
+  .iuh-attendance__table .iuh-attendance__cell-student::before,
+  .iuh-attendance__table .iuh-attendance__cell-contact::before {
+    @apply hidden;
+  }
+
+  .iuh-attendance__table .iuh-attendance__cell-reason {
+    @apply flex-col items-stretch gap-1.5;
+  }
+
+  .iuh-attend-reason {
+    @apply w-full;
+  }
+}
+
 .iuh-lookup-registration-history {
   @apply mt-6 md:mt-8;
 }

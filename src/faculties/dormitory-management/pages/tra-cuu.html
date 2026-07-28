@@ -17,7 +17,7 @@
   ></div>
 
   <div class="container relative z-10 mx-auto px-4">
-    <div class="mx-auto max-w-5xl space-y-6 md:space-y-8">
+    <div class="space-y-6 md:space-y-8">
       <div
         data-include="@shared/components/common/page-hero-title.html"
         data-eyebrow="Ký túc xá IUH"
@@ -56,7 +56,198 @@
             </section>
 
             <section class="tab-panel hidden" data-tab-panel="attendance">
-              <p class="iuh-lookup-tabs__empty">Chưa có dữ liệu</p>
+              <section class="iuh-attendance" aria-labelledby="iuh-attendance-title">
+                <div class="iuh-attendance__toolbar">
+                  <div class="iuh-attendance__toolbar-main">
+                    <p class="iuh-attendance__eyebrow">Điểm danh nội trú</p>
+                    <h2 class="iuh-attendance__title" id="iuh-attendance-title">Danh sách ngày 27-07-2026</h2>
+                  </div>
+                  <form class="iuh-attendance__filters" action="#" method="get">
+                    <label class="iuh-attendance__filter-label" for="attendance-date">Ngày điểm danh</label>
+                    <select class="iuh-form-control iuh-form-select iuh-attendance__filter-select" id="attendance-date" name="attendance-date" aria-label="Chọn ngày điểm danh">
+                      <option value="2026-07-27" selected>Ngày 27-07-2026</option>
+                      <option value="2026-07-26">Ngày 26-07-2026</option>
+                      <option value="2026-07-25">Ngày 25-07-2026</option>
+                    </select>
+                  </form>
+                </div>
+
+                <div class="iuh-attendance__meta">
+                  <p class="iuh-attendance__count"><strong>7</strong> sinh viên trong danh sách</p>
+                  <div class="iuh-attendance__legend">
+                    <span class="iuh-attendance__legend-item"><span class="iuh-attendance__legend-dot iuh-attendance__legend-dot--present"></span>Có mặt</span>
+                    <span class="iuh-attendance__legend-item"><span class="iuh-attendance__legend-dot iuh-attendance__legend-dot--absent"></span>Vắng</span>
+                  </div>
+                </div>
+
+                <div class="iuh-form-table-wrap iuh-attendance__table-wrap">
+                  <table class="iuh-form-table iuh-attendance__table" aria-label="Bảng điểm danh ký túc xá">
+                    <thead>
+                      <tr class="iuh-form-table-head-row">
+                        <th scope="col" class="iuh-form-table-head-cell iuh-form-table-cell--center iuh-attendance__col-index">#</th>
+                        <th scope="col" class="iuh-form-table-head-cell">Sinh viên</th>
+                        <th scope="col" class="iuh-form-table-head-cell">Liên hệ</th>
+                        <th scope="col" class="iuh-form-table-head-cell iuh-attendance__col-status">Điểm danh</th>
+                        <th scope="col" class="iuh-form-table-head-cell iuh-attendance__col-reason">Lý do vắng</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="iuh-form-table-body-row">
+                        <td class="iuh-form-table-cell iuh-form-table-cell--center iuh-attendance__cell-index" data-label="#"><span class="iuh-attendance__index">1</span></td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-student" data-label="Sinh viên">
+                          <span class="iuh-attendance__name">Huỳnh Thị Xuân Sang</span>
+                          <span class="iuh-attendance__id">24656991</span>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-contact" data-label="Liên hệ">
+                          <span class="iuh-attendance__email">huynhthixuansang1007@gmail.com</span>
+                          <span class="iuh-attendance__phone">0852143085</span>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-status" data-label="Điểm danh">
+                          <label class="iuh-attend-toggle">
+                            <input class="iuh-attend-toggle__input" type="checkbox" name="attendance-1" aria-label="Đánh dấu vắng: Huỳnh Thị Xuân Sang" />
+                            <span class="iuh-attend-toggle__track" aria-hidden="true"><span class="iuh-attend-toggle__thumb"></span></span>
+                            <span class="iuh-attend-toggle__label"><span class="iuh-attend-toggle__state iuh-attend-toggle__state--present">Có mặt</span><span class="iuh-attend-toggle__state iuh-attend-toggle__state--absent">Vắng</span></span>
+                          </label>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-reason" data-label="Lý do vắng">
+                          <input class="iuh-form-control iuh-attend-reason" type="text" name="reason-1" placeholder="Nhập lý do nếu vắng" aria-label="Lý do vắng: Huỳnh Thị Xuân Sang" />
+                        </td>
+                      </tr>
+                      <tr class="iuh-form-table-body-row">
+                        <td class="iuh-form-table-cell iuh-form-table-cell--center iuh-attendance__cell-index" data-label="#"><span class="iuh-attendance__index">2</span></td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-student" data-label="Sinh viên">
+                          <span class="iuh-attendance__name">Nguyễn Bích Trâm</span>
+                          <span class="iuh-attendance__id">23654671</span>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-contact" data-label="Liên hệ">
+                          <span class="iuh-attendance__email">bichtram04112005@gmail.com</span>
+                          <span class="iuh-attendance__phone">0862558949</span>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-status" data-label="Điểm danh">
+                          <label class="iuh-attend-toggle">
+                            <input class="iuh-attend-toggle__input" type="checkbox" name="attendance-2" aria-label="Đánh dấu vắng: Nguyễn Bích Trâm" />
+                            <span class="iuh-attend-toggle__track" aria-hidden="true"><span class="iuh-attend-toggle__thumb"></span></span>
+                            <span class="iuh-attend-toggle__label"><span class="iuh-attend-toggle__state iuh-attend-toggle__state--present">Có mặt</span><span class="iuh-attend-toggle__state iuh-attend-toggle__state--absent">Vắng</span></span>
+                          </label>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-reason" data-label="Lý do vắng">
+                          <input class="iuh-form-control iuh-attend-reason" type="text" name="reason-2" placeholder="Nhập lý do nếu vắng" aria-label="Lý do vắng: Nguyễn Bích Trâm" />
+                        </td>
+                      </tr>
+                      <tr class="iuh-form-table-body-row">
+                        <td class="iuh-form-table-cell iuh-form-table-cell--center iuh-attendance__cell-index" data-label="#"><span class="iuh-attendance__index">3</span></td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-student" data-label="Sinh viên">
+                          <span class="iuh-attendance__name">Nguyễn Ngọc Hân</span>
+                          <span class="iuh-attendance__id">24645041</span>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-contact" data-label="Liên hệ">
+                          <span class="iuh-attendance__email">nguyenngochan030406@gmail.com</span>
+                          <span class="iuh-attendance__phone">0786345443</span>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-status" data-label="Điểm danh">
+                          <label class="iuh-attend-toggle">
+                            <input class="iuh-attend-toggle__input" type="checkbox" name="attendance-3" aria-label="Đánh dấu vắng: Nguyễn Ngọc Hân" />
+                            <span class="iuh-attend-toggle__track" aria-hidden="true"><span class="iuh-attend-toggle__thumb"></span></span>
+                            <span class="iuh-attend-toggle__label"><span class="iuh-attend-toggle__state iuh-attend-toggle__state--present">Có mặt</span><span class="iuh-attend-toggle__state iuh-attend-toggle__state--absent">Vắng</span></span>
+                          </label>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-reason" data-label="Lý do vắng">
+                          <input class="iuh-form-control iuh-attend-reason" type="text" name="reason-3" placeholder="Nhập lý do nếu vắng" aria-label="Lý do vắng: Nguyễn Ngọc Hân" />
+                        </td>
+                      </tr>
+                      <tr class="iuh-form-table-body-row">
+                        <td class="iuh-form-table-cell iuh-form-table-cell--center iuh-attendance__cell-index" data-label="#"><span class="iuh-attendance__index">4</span></td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-student" data-label="Sinh viên">
+                          <span class="iuh-attendance__name">Phạm Nguyễn Ngọc Khuê</span>
+                          <span class="iuh-attendance__id">25653271</span>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-contact" data-label="Liên hệ">
+                          <span class="iuh-attendance__email">nk.ngockhue9699@gmail.com</span>
+                          <span class="iuh-attendance__phone">0912113765</span>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-status" data-label="Điểm danh">
+                          <label class="iuh-attend-toggle">
+                            <input class="iuh-attend-toggle__input" type="checkbox" name="attendance-4" aria-label="Đánh dấu vắng: Phạm Nguyễn Ngọc Khuê" />
+                            <span class="iuh-attend-toggle__track" aria-hidden="true"><span class="iuh-attend-toggle__thumb"></span></span>
+                            <span class="iuh-attend-toggle__label"><span class="iuh-attend-toggle__state iuh-attend-toggle__state--present">Có mặt</span><span class="iuh-attend-toggle__state iuh-attend-toggle__state--absent">Vắng</span></span>
+                          </label>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-reason" data-label="Lý do vắng">
+                          <input class="iuh-form-control iuh-attend-reason" type="text" name="reason-4" placeholder="Nhập lý do nếu vắng" aria-label="Lý do vắng: Phạm Nguyễn Ngọc Khuê" />
+                        </td>
+                      </tr>
+                      <tr class="iuh-form-table-body-row">
+                        <td class="iuh-form-table-cell iuh-form-table-cell--center iuh-attendance__cell-index" data-label="#"><span class="iuh-attendance__index">5</span></td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-student" data-label="Sinh viên">
+                          <span class="iuh-attendance__name">Phan Thị Thục Uyên</span>
+                          <span class="iuh-attendance__id">25649481</span>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-contact" data-label="Liên hệ">
+                          <span class="iuh-attendance__email">xyunhan03@gmail.com</span>
+                          <span class="iuh-attendance__phone">0977602083</span>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-status" data-label="Điểm danh">
+                          <label class="iuh-attend-toggle">
+                            <input class="iuh-attend-toggle__input" type="checkbox" name="attendance-5" aria-label="Đánh dấu vắng: Phan Thị Thục Uyên" />
+                            <span class="iuh-attend-toggle__track" aria-hidden="true"><span class="iuh-attend-toggle__thumb"></span></span>
+                            <span class="iuh-attend-toggle__label"><span class="iuh-attend-toggle__state iuh-attend-toggle__state--present">Có mặt</span><span class="iuh-attend-toggle__state iuh-attend-toggle__state--absent">Vắng</span></span>
+                          </label>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-reason" data-label="Lý do vắng">
+                          <input class="iuh-form-control iuh-attend-reason" type="text" name="reason-5" placeholder="Nhập lý do nếu vắng" aria-label="Lý do vắng: Phan Thị Thục Uyên" />
+                        </td>
+                      </tr>
+                      <tr class="iuh-form-table-body-row">
+                        <td class="iuh-form-table-cell iuh-form-table-cell--center iuh-attendance__cell-index" data-label="#"><span class="iuh-attendance__index">6</span></td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-student" data-label="Sinh viên">
+                          <span class="iuh-attendance__name">Trần Nguyễn Ngân Hà</span>
+                          <span class="iuh-attendance__id">25652261</span>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-contact" data-label="Liên hệ">
+                          <span class="iuh-attendance__email">trannguyennganha9a4@gmail.com</span>
+                          <span class="iuh-attendance__phone">0358575548</span>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-status" data-label="Điểm danh">
+                          <label class="iuh-attend-toggle">
+                            <input class="iuh-attend-toggle__input" type="checkbox" name="attendance-6" aria-label="Đánh dấu vắng: Trần Nguyễn Ngân Hà" />
+                            <span class="iuh-attend-toggle__track" aria-hidden="true"><span class="iuh-attend-toggle__thumb"></span></span>
+                            <span class="iuh-attend-toggle__label"><span class="iuh-attend-toggle__state iuh-attend-toggle__state--present">Có mặt</span><span class="iuh-attend-toggle__state iuh-attend-toggle__state--absent">Vắng</span></span>
+                          </label>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-reason" data-label="Lý do vắng">
+                          <input class="iuh-form-control iuh-attend-reason" type="text" name="reason-6" placeholder="Nhập lý do nếu vắng" aria-label="Lý do vắng: Trần Nguyễn Ngân Hà" />
+                        </td>
+                      </tr>
+                      <tr class="iuh-form-table-body-row">
+                        <td class="iuh-form-table-cell iuh-form-table-cell--center iuh-attendance__cell-index" data-label="#"><span class="iuh-attendance__index">7</span></td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-student" data-label="Sinh viên">
+                          <span class="iuh-attendance__name">Võ Ngọc Thanh Tuyền</span>
+                          <span class="iuh-attendance__id">25716421</span>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-contact" data-label="Liên hệ">
+                          <span class="iuh-attendance__email">thanhtuyen04047@gmail.com</span>
+                          <span class="iuh-attendance__phone">0908367935</span>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-status" data-label="Điểm danh">
+                          <label class="iuh-attend-toggle">
+                            <input class="iuh-attend-toggle__input" type="checkbox" name="attendance-7" aria-label="Đánh dấu vắng: Võ Ngọc Thanh Tuyền" />
+                            <span class="iuh-attend-toggle__track" aria-hidden="true"><span class="iuh-attend-toggle__thumb"></span></span>
+                            <span class="iuh-attend-toggle__label"><span class="iuh-attend-toggle__state iuh-attend-toggle__state--present">Có mặt</span><span class="iuh-attend-toggle__state iuh-attend-toggle__state--absent">Vắng</span></span>
+                          </label>
+                        </td>
+                        <td class="iuh-form-table-cell iuh-attendance__cell-reason" data-label="Lý do vắng">
+                          <input class="iuh-form-control iuh-attend-reason" type="text" name="reason-7" placeholder="Nhập lý do nếu vắng" aria-label="Lý do vắng: Võ Ngọc Thanh Tuyền" />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="iuh-attendance__actions">
+                  <p class="iuh-attendance__actions-hint">Gạt công tắc sang <strong>Vắng</strong> và ghi lý do, sau đó lưu lại.</p>
+                  <button type="button" class="btn btn-primary iuh-attendance__save-btn">Lưu điểm danh</button>
+                </div>
+              </section>
             </section>
 
             <div class="tab-panel hidden" data-tab-panel="stay-history">
