@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Restyle the dormitory lookup sidebar as the approved, responsive student dossier without changing lookup content or behaviour.
+**Goal:** Restyle the dormitory lookup sidebar as the approved, responsive dark Option B identity card without changing lookup content or behaviour.
 
 **Architecture:** Keep the static addon in `tra-cuu.html` and use its existing BEM classes. Modify the matching SCSS rules in `lookup.scss`; the surrounding tab and profile-panel components remain untouched.
 
@@ -11,7 +11,8 @@
 ## Global Constraints
 
 - Do not alter the lookup values, tabs, registration variants, or data contracts.
-- Reuse the existing `iuh-lookup-addon` elements and BEM class namespace.
+- Reuse the existing `iuh-lookup-addon` BEM namespace and add only identity-chip/residence-footer modifiers needed for Option B.
+- Use only the reference palette: `#20211F`, `#2B2C2A`, `#F7F7F5`, `#A4A39E`, `#EA3D91`, `#073D75`, and `#2E86E7`.
 - Maintain responsive content wrapping and semantic markup.
 - Validate with `yarn build`.
 
@@ -24,7 +25,7 @@
 
 **Interfaces:**
 - Consumes: Existing static values in `.iuh-lookup-addon__meta-item`.
-- Produces: The same content wrapped by the existing addon class names, with a text initials avatar and grouped personal/accommodation rows.
+- Produces: Centered identity content, an academic-only list, and a grouped accommodation footer.
 
 - [ ] **Step 1: Add a failing structural assertion**
 
@@ -38,7 +39,7 @@ Expected: The command exits non-zero because the redesign hooks do not yet exist
 
 - [ ] **Step 2: Add the minimal markup hooks**
 
-Replace the empty avatar contents with `NNH` inside `.iuh-lookup-addon__avatar-initials`, mark the name row with `iuh-lookup-addon__meta-item--student`, and keep the two existing `--highlight` accommodation rows unchanged.
+Keep the initials avatar, add a `.iuh-lookup-addon__student-id` chip below the name, remove the duplicate student row, and move room/status content into `.iuh-lookup-addon__residence`.
 
 - [ ] **Step 3: Re-run the structural assertion**
 
@@ -67,7 +68,7 @@ Expected: The command exits non-zero because the new dossier styles are not yet 
 
 - [ ] **Step 2: Implement the SCSS redesign**
 
-Update the existing addon rules to create a 320px desktop sidebar, a white inset profile card, a 112px magenta initials avatar, a blue display-scale name, individually bordered metadata rows, and pale-blue accommodation rows. At small widths, reduce padding/type size and stack metadata label/value content.
+Update the existing addon rules to create a charcoal card, 112px magenta rounded-square initials avatar, centered white identity, divider-only academic rows, and a cobalt accommodation footer with a bright-blue status pill. At small widths, reduce padding/type size and allow footer content to stack.
 
 - [ ] **Step 3: Re-run the style assertion**
 

@@ -2,7 +2,7 @@
 
 ## Goal
 
-Redesign the student-information addon on the dormitory lookup page to match the approved reference: a clean, highly legible student dossier that visually separates personal data from current dormitory placement.
+Redesign the student-information addon on the dormitory lookup page to match the approved Option B reference: a dark, centered identity card that flows from student identity to academic data and ends with a prominent accommodation footer.
 
 ## Scope
 
@@ -12,16 +12,16 @@ Redesign the student-information addon on the dormitory lookup page to match the
 
 ## Visual direction
 
-- Outer shell: a soft white-to-pale-blue surface with a fine cool-blue border and restrained shadow.
-- Inner card: white background, rounded corners, and a larger inset than the surrounding lookup UI.
-- Identity: compact uppercase eyebrow, a large two-line-capable name in IUH blue, and a vivid magenta circular initials avatar.
-- Metadata: the first identity row is unboxed; the following fields are individually bordered, aligned label/value rows. Current accommodation fields receive a pale-blue fill and blue values.
-- Typography: retain the project’s Inter/sans stack. Labels use uppercase, muted gray, letter-spaced utility text; values use a dark, medium-to-bold readable face.
+- Palette: `#20211F` canvas, `#2B2C2A` card, `#F7F7F5` primary text, `#A4A39E` muted labels, `#EA3D91` avatar, `#073D75` accommodation footer, and `#2E86E7` status badge. The addon must use this reference palette rather than existing IUH colors.
+- Identity: a 112px magenta rounded-square initials avatar sits above the centered name and a compact, dark MSSV chip. The existing eyebrow and repeated “Sinh viên” row are removed.
+- Academic metadata: Khoa, Lớp, Giới tính, and Năm nhập học render as a plain two-column list with only hairline dividers; individual field boxes are removed.
+- Accommodation: Phòng/Giường and status are moved into one cobalt footer bar. The room value is the visual anchor; the status is a blue pill with a dot indicator.
+- Typography: retain the project’s Inter/sans stack. Labels use muted gray utility text; values use white medium-to-bold text.
 
 ## Responsive and accessibility requirements
 
 - Do not truncate long faculty names or student names; allow natural wrapping.
-- Keep labels and values in separate columns at practical widths, and switch to a stacked presentation on narrow screens.
+- Keep labels and values in separate columns at practical widths; on narrow screens, allow the room footer to stack while preserving a clearly centered identity block.
 - Preserve semantic `aside`, `article`, `header`, heading, and paragraph content.
 - Use color only as an enhancement: borders, contrast, and font weight must keep highlighted rows readable.
 
