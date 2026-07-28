@@ -14,9 +14,114 @@
   @apply font-inter text-base font-bold uppercase tracking-[0.08em] text-primary-dark-blue md:text-lg;
 }
 
+.iuh-lookup-layout {
+  @apply grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1fr)_20rem] xl:items-start;
+}
+
+.iuh-lookup-addon {
+  @apply overflow-hidden rounded-[1.5rem] border border-primary-dark-blue/10 bg-primary-white shadow-[0_16px_32px_rgba(21,56,152,0.10)] xl:sticky xl:top-24;
+}
+
+.iuh-lookup-addon__profile-card {
+  @apply overflow-hidden bg-primary-white;
+}
+
+.iuh-lookup-addon__identity {
+  @apply flex flex-col items-center px-4 pb-6 pt-7 text-center md:px-6 md:pb-8 md:pt-8;
+}
+
+.iuh-lookup-addon__avatar {
+  @apply inline-flex h-20 w-20 shrink-0 items-center justify-center rounded-[1rem] bg-primary-dark-blue font-inter text-[1.45rem] font-bold tracking-[0.02em] text-primary-white shadow-[0_10px_18px_rgba(21,56,152,0.16)] md:h-24 md:w-24 md:text-[1.65rem];
+}
+
+.iuh-lookup-addon__avatar-initials {
+  @apply leading-none;
+}
+
+.iuh-lookup-addon__name {
+  @apply mt-3 font-inter text-[1.25rem] font-bold leading-[1.04] tracking-[-0.025em] text-primary-dark-blue md:text-[1.55rem];
+}
+
+.iuh-lookup-addon__student-id {
+  @apply mt-1.5 rounded-lg bg-secondary-blue-light px-3 py-1 font-mono text-sm font-medium leading-none tracking-[0.04em] text-primary-dark-blue md:text-base;
+}
+
+.iuh-lookup-addon__meta {
+  @apply border-t border-primary-dark-blue/10;
+}
+
+.iuh-lookup-addon__meta-item {
+  @apply grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)] items-center gap-3 border-b border-primary-dark-blue/10 px-4 py-3.5 md:px-6 md:py-4;
+}
+
+.iuh-lookup-addon__meta-label {
+  @apply block font-sans text-sm font-semibold leading-snug text-gray md:text-[0.95rem];
+}
+
+.iuh-lookup-addon__meta-value {
+  @apply block text-right font-sans text-sm font-semibold leading-[1.28] text-primary-dark-blue md:text-[0.95rem];
+}
+
+.iuh-lookup-addon__residence {
+  @apply flex items-end justify-between gap-2 bg-secondary-blue-light px-3 py-3.5 md:px-5 md:py-4;
+}
+
+.iuh-lookup-addon__room {
+  @apply flex min-w-0 flex-col gap-0.5;
+}
+
+.iuh-lookup-addon__room-label {
+  @apply font-sans text-sm font-semibold text-primary-dark-blue md:text-[0.95rem];
+}
+
+.iuh-lookup-addon__room-value {
+  @apply font-inter text-[1rem] font-semibold leading-tight tracking-[-0.02em] text-primary-dark-blue md:text-[1.05rem];
+}
+
+.iuh-lookup-addon__status {
+  @apply inline-flex shrink-0 items-center gap-1.5 rounded-full bg-primary-dark-blue px-2.5 py-1 font-sans text-[0.8rem] font-bold text-primary-white md:text-sm;
+}
+
+.iuh-lookup-addon__status span {
+  @apply h-2 w-2 rounded-full bg-primary-yellow;
+}
+
+@media (max-width: 380px) {
+  .iuh-lookup-addon__identity {
+    @apply px-4 pb-5 pt-6;
+  }
+
+  .iuh-lookup-addon__avatar {
+    @apply h-16 w-16 rounded-[0.9rem] text-[1.35rem];
+  }
+
+  .iuh-lookup-addon__name {
+    @apply mt-3 text-[1.2rem];
+  }
+
+  .iuh-lookup-addon__meta-item {
+    @apply grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] gap-2 px-4 py-3;
+  }
+
+  .iuh-lookup-addon__meta-label,
+  .iuh-lookup-addon__meta-value {
+    @apply text-sm;
+  }
+
+  .iuh-lookup-addon__residence {
+    @apply flex-col items-start gap-3 px-4 py-4;
+  }
+}
+
+@media (max-width: 320px) {
+  .iuh-lookup-addon {
+    @apply order-first justify-self-center;
+  }
+}
+
 .iuh-lookup-panel__body {
   // Reset the `iuh-form-display` border/radius since the panel already wraps it.
-  @apply rounded-none border-0 #{!important};
+  @apply rounded-none border-0 !important;
 }
 
 .iuh-lookup-panel__identity-grid {
@@ -24,15 +129,19 @@
 }
 
 .iuh-lookup-panel__identity-grid .iuh-form-display-row {
-  @apply min-w-0;
+  @apply min-w-0 sm:grid-cols-[max-content_1fr];
+}
+
+.iuh-lookup-panel__identity-grid .iuh-form-display-row:nth-child(-n + 4) {
+  @apply md:border-b md:border-stroke;
 }
 
 .iuh-lookup-panel__value--strong {
-  @apply font-bold uppercase text-primary-dark-blue #{!important};
+  @apply block w-full font-bold uppercase text-primary-dark-blue !important;
 }
 
 .iuh-lookup-registration--muted {
-  @apply text-gray-500 sm:text-center #{!important};
+  @apply text-gray-500 sm:text-center !important;
 }
 
 .iuh-lookup-registration-download {
@@ -62,6 +171,38 @@
 
 .iuh-lookup-stay-history__title {
   @apply font-inter text-lg font-bold text-primary-dark-blue md:text-xl;
+}
+
+.iuh-lookup-tabs {
+  @apply overflow-hidden rounded-xl border border-primary-dark-blue/10 bg-primary-white shadow-[0_12px_28px_rgba(21,56,152,0.06)];
+}
+
+.iuh-lookup-tabs .tabs-nav {
+  @apply flex gap-2 overflow-x-auto border-b border-primary-dark-blue/10 bg-secondary-blue-light/35 p-2;
+}
+
+.iuh-lookup-tabs__logout {
+  @apply ml-auto inline-flex shrink-0 items-center justify-center rounded-lg border border-danger/25 px-4 py-2.5 font-sans text-sm font-medium text-danger transition-all duration-200 md:px-5 md:text-base;
+}
+
+.iuh-lookup-tabs__logout:hover {
+  @apply border-danger/35 bg-danger/10;
+}
+
+.iuh-lookup-tabs .tab-btn {
+  @apply relative shrink-0 whitespace-nowrap rounded-lg border border-transparent px-4 py-2.5 font-sans text-sm font-medium text-gray transition-all duration-200 md:px-5 md:text-base;
+}
+
+.iuh-lookup-tabs .tab-btn:hover {
+  @apply border-primary-dark-blue/15 bg-primary-white/80 text-primary-dark-blue;
+}
+
+.iuh-lookup-tabs .tab-btn.active {
+  @apply border-primary-dark-blue/15 bg-primary-white text-primary-dark-blue shadow-[0_8px_18px_rgba(21,56,152,0.12)];
+}
+
+.iuh-lookup-tabs .tabs-content {
+  @apply p-4 md:p-6;
 }
 
 .iuh-lookup-tabs__empty {

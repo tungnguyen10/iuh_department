@@ -25,58 +25,70 @@
         data-description="Tra cứu thông tin đăng ký nội trú và lịch sử ở ký túc xá theo tài khoản sinh viên."
       ></div>
 
-      <div
-        data-include="@faculty/components/lookup/profile-panel/index.html"
-        data-student-full-name="NGUYỄN VĂN A"
-        data-student-id="20012345"
-        data-student-faculty="Khoa Công nghệ Thông tin"
-        data-student-class="DHKTPM16A"
-        data-student-gender="Nam"
-        data-student-enrollment-year="2020"
-        data-student-status="Đang học"
-        data-reg-no-round-message="Chưa có đợt ĐK phù hợp!"
-        data-reg-can-register-cta-text="Đăng ký nội trú"
-        data-reg-can-register-cta-href="#"
-        data-reg-pending-message="Đang chờ duyệt hồ sơ"
-        data-reg-approved-message="Đã duyệt hồ sơ - Tải phiếu"
-        data-reg-approved-download-href="#"
-        data-reg-active-message="Đang ở KTX"
-      ></div>
+      <div class="iuh-lookup-layout">
+        <div class="tabs-container iuh-lookup-tabs">
+          <div class="tabs-nav">
+            <button class="tab-btn active" data-tab="lookup">Tra cứu</button>
+            <button class="tab-btn" data-tab="attendance">Điểm danh</button>
+            <button class="tab-btn" data-tab="stay-history">Lịch sử ở KTX</button>
+            <a href="/login.html" class="iuh-lookup-tabs__logout">Đăng xuất</a>
+          </div>
 
-      <div class="tabs-container iuh-lookup-tabs">
-        <div class="tabs-nav flex gap-2 overflow-x-auto border-b border-stroke">
-          <button
-            class="tab-btn flex items-center gap-2 whitespace-nowrap border-b-2 border-transparent px-4 py-3 text-sm font-medium text-gray transition-colors duration-200 md:px-6 md:text-base"
-            data-tab="attendance"
-          >Điểm danh</button>
-          <button
-            class="tab-btn flex items-center gap-2 whitespace-nowrap border-b-2 border-transparent px-4 py-3 text-sm font-medium text-gray transition-colors duration-200 md:px-6 md:text-base"
-            data-tab="discipline"
-          >Thông tin kỷ luật</button>
-          <button
-            class="tab-btn flex items-center gap-2 whitespace-nowrap border-b-2 border-transparent px-4 py-3 text-sm font-medium text-gray transition-colors duration-200 md:px-6 md:text-base"
-            data-tab="commendation"
-          >Thông tin khen thưởng</button>
-          <button
-            class="tab-btn active flex items-center gap-2 whitespace-nowrap border-b-2 border-transparent px-4 py-3 text-sm font-medium text-gray transition-colors duration-200 md:px-6 md:text-base"
-            data-tab="stay-history"
-          >Lịch sử ở KTX</button>
-        </div>
+          <div class="tabs-content">
+            <section class="tab-panel" data-tab-panel="lookup">
+              <div
+                data-include="@faculty/components/lookup/profile-panel/index.html"
+                data-student-full-name="NGUYỄN VĂN A"
+                data-student-id="20012345"
+                data-student-faculty="Khoa Công nghệ Thông tin"
+                data-student-class="DHKTPM16A"
+                data-student-gender="Nam"
+                data-student-enrollment-year="2020"
+                data-student-status="Đang học"
+                data-reg-no-round-message="Chưa có đợt ĐK phù hợp!"
+                data-reg-can-register-cta-text="Đăng ký nội trú"
+                data-reg-can-register-cta-href="#"
+                data-reg-pending-message="Đang chờ duyệt hồ sơ"
+                data-reg-approved-message="Đã duyệt hồ sơ - Tải phiếu"
+                data-reg-approved-download-href="#"
+                data-reg-active-message="Đang ở KTX"
+              ></div>
+            </section>
 
-        <div class="tabs-content mt-6 md:mt-8">
-          <section class="tab-panel hidden" data-tab-panel="attendance">
-            <p class="iuh-lookup-tabs__empty">Chưa có dữ liệu</p>
-          </section>
-          <section class="tab-panel hidden" data-tab-panel="discipline">
-            <p class="iuh-lookup-tabs__empty">Chưa có dữ liệu</p>
-          </section>
-          <section class="tab-panel hidden" data-tab-panel="commendation">
-            <p class="iuh-lookup-tabs__empty">Chưa có dữ liệu</p>
-          </section>
-          <div class="tab-panel" data-tab-panel="stay-history">
-            <div data-include="@faculty/components/lookup/stay-history/index.html"></div>
+            <section class="tab-panel hidden" data-tab-panel="attendance">
+              <p class="iuh-lookup-tabs__empty">Chưa có dữ liệu</p>
+            </section>
+
+            <div class="tab-panel hidden" data-tab-panel="stay-history">
+              <div data-include="@faculty/components/lookup/stay-history/index.html"></div>
+            </div>
           </div>
         </div>
+
+        <aside class="iuh-lookup-addon order-first mx-auto w-full xl:order-none xl:mx-0 xl:max-w-none" aria-label="Thông tin sinh viên mẫu">
+          <article class="iuh-lookup-addon__profile-card" aria-label="Hồ sơ mẫu sinh viên">
+            <header class="iuh-lookup-addon__identity">
+              <div class="avatar-teacher iuh-lookup-addon__avatar" aria-hidden="true"></div>
+              <h2 data-leader-name class="iuh-lookup-addon__name">Võ Ngọc Thanh Tuyền</h2>
+              <span class="iuh-lookup-addon__student-id">24645041</span>
+            </header>
+
+            <div class="iuh-lookup-addon__meta">
+              <p class="iuh-lookup-addon__meta-item"><span class="iuh-lookup-addon__meta-label">Khoa</span><span class="iuh-lookup-addon__meta-value">CNSH &amp; Thực phẩm</span></p>
+              <p class="iuh-lookup-addon__meta-item"><span class="iuh-lookup-addon__meta-label">Lớp</span><span class="iuh-lookup-addon__meta-value">DHTP20A_TCTA</span></p>
+              <p class="iuh-lookup-addon__meta-item"><span class="iuh-lookup-addon__meta-label">Giới tính</span><span class="iuh-lookup-addon__meta-value">Nữ</span></p>
+              <p class="iuh-lookup-addon__meta-item"><span class="iuh-lookup-addon__meta-label">Năm nhập học</span><span class="iuh-lookup-addon__meta-value">2024</span></p>
+            </div>
+
+            <div class="iuh-lookup-addon__residence">
+              <div class="iuh-lookup-addon__room">
+                <span class="iuh-lookup-addon__room-label">Phòng / Giường</span>
+                <strong class="iuh-lookup-addon__room-value">I5.01 — giường 1</strong>
+              </div>
+              <span class="iuh-lookup-addon__status"><span aria-hidden="true"></span>Đang ở KTX</span>
+            </div>
+          </article>
+        </aside>
       </div>
     </div>
   </div>
