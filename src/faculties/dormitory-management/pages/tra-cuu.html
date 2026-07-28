@@ -43,16 +43,41 @@
         data-reg-active-message="Đang ở KTX"
       ></div>
 
-      <div
-        data-include="@faculty/components/lookup/stay-history/index.html"
-        data-variant="1"
-      ></div>
+      <div class="tabs-container iuh-lookup-tabs">
+        <div class="tabs-nav flex gap-2 overflow-x-auto border-b border-stroke">
+          <button
+            class="tab-btn flex items-center gap-2 whitespace-nowrap border-b-2 border-transparent px-4 py-3 text-sm font-medium text-gray transition-colors duration-200 md:px-6 md:text-base"
+            data-tab="attendance"
+          >Điểm danh</button>
+          <button
+            class="tab-btn flex items-center gap-2 whitespace-nowrap border-b-2 border-transparent px-4 py-3 text-sm font-medium text-gray transition-colors duration-200 md:px-6 md:text-base"
+            data-tab="discipline"
+          >Thông tin kỷ luật</button>
+          <button
+            class="tab-btn flex items-center gap-2 whitespace-nowrap border-b-2 border-transparent px-4 py-3 text-sm font-medium text-gray transition-colors duration-200 md:px-6 md:text-base"
+            data-tab="commendation"
+          >Thông tin khen thưởng</button>
+          <button
+            class="tab-btn active flex items-center gap-2 whitespace-nowrap border-b-2 border-transparent px-4 py-3 text-sm font-medium text-gray transition-colors duration-200 md:px-6 md:text-base"
+            data-tab="stay-history"
+          >Lịch sử ở KTX</button>
+        </div>
 
-      <p class="iuh-form-note">
-        lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod,
-        nunc ut laoreet aliquam, nunc nisl aliquet nunc, eget aliquam nisl nunc
-        eu nunc.
-      </p>
+        <div class="tabs-content mt-6 md:mt-8">
+          <section class="tab-panel hidden" data-tab-panel="attendance">
+            <p class="iuh-lookup-tabs__empty">Chưa có dữ liệu</p>
+          </section>
+          <section class="tab-panel hidden" data-tab-panel="discipline">
+            <p class="iuh-lookup-tabs__empty">Chưa có dữ liệu</p>
+          </section>
+          <section class="tab-panel hidden" data-tab-panel="commendation">
+            <p class="iuh-lookup-tabs__empty">Chưa có dữ liệu</p>
+          </section>
+          <div class="tab-panel" data-tab-panel="stay-history">
+            <div data-include="@faculty/components/lookup/stay-history/index.html"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

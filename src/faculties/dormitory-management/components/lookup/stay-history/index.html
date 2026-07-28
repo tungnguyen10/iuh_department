@@ -1,59 +1,38 @@
-<!-- option 1: Empty state - "Không có thông tin" -->
 <section class="iuh-lookup-stay-history" id="stay-history">
   <header class="iuh-lookup-stay-history__header">
     <h2 class="iuh-lookup-stay-history__title">Lịch sử ở KTX</h2>
   </header>
-  <div data-include="@shared/components/form/table.html"
-    data-variant="4"
-    data-col1="TT"
-    data-col1-class="iuh-form-table-cell--center"
-    data-col2="Thời gian"
-    data-col3="Trạng thái"
-    data-colspan="3"
-    data-empty-text="Không có thông tin"></div>
-</section>
 
-<!-- option 2: Populated state - one body row per entry (up to 6 inlined rows) -->
-<section class="iuh-lookup-stay-history" id="stay-history">
-  <header class="iuh-lookup-stay-history__header">
-    <h2 class="iuh-lookup-stay-history__title">Lịch sử ở KTX</h2>
-  </header>
   <div class="iuh-form-table-wrap">
     <table class="iuh-form-table">
       <thead>
-        <div data-include="@shared/components/form/table.html"
-          data-variant="1"
-          data-col1="TT"
-          data-col1-class="iuh-form-table-cell--center"
-          data-col2="Thời gian"
-          data-col3="Trạng thái"></div>
+        <div data-include="@shared/components/form/table.html" data-variant="1" data-col1="TT" data-col1-class="iuh-form-table-cell--center" data-col2="Thời gian" data-col3="Trạng thái"></div>
       </thead>
       <tbody>
-        <div data-include="@shared/components/form/table.html"
-          data-variant="2"
-          data-col1="1"
-          data-col1-class="iuh-form-table-cell--center"
-          data-col2="{{row1Term}}"
-          data-col3="{{row1Status}}"></div>
-        <div data-include="@shared/components/form/table.html"
-          data-variant="2"
-          data-col1="2"
-          data-col1-class="iuh-form-table-cell--center"
-          data-col2="{{row2Term}}"
-          data-col3="{{row2Status}}"></div>
-        <div data-include="@shared/components/form/table.html"
-          data-variant="2"
-          data-col1="3"
-          data-col1-class="iuh-form-table-cell--center"
-          data-col2="{{row3Term}}"
-          data-col3="{{row3Status}}"></div>
-        <div data-include="@shared/components/form/table.html"
-          data-variant="2"
-          data-col1="4"
-          data-col1-class="iuh-form-table-cell--center"
-          data-col2="{{row4Term}}"
-          data-col3="{{row4Status}}"></div>
+        <div data-include="@shared/components/form/table.html" data-variant="2" data-col1="1" data-col1-class="iuh-form-table-cell--center" data-col2="Từ 24-07-2026 đến Hiện nay" data-col3="Đang ở"></div>
+        <div data-include="@shared/components/form/table.html" data-variant="2" data-col1="2" data-col1-class="iuh-form-table-cell--center" data-col2="Từ 04-06-2026 đến 24-07-2026" data-col3="Không còn ở"></div>
+        <div data-include="@shared/components/form/table.html" data-variant="2" data-col1="3" data-col1-class="iuh-form-table-cell--center" data-col2="Từ 22-07-2025 đến 31-05-2026" data-col3="Không còn ở"></div>
+        <div data-include="@shared/components/form/table.html" data-variant="2" data-col1="4" data-col1-class="iuh-form-table-cell--center" data-col2="Từ 02-06-2025 đến 21-07-2025" data-col3="Không còn ở"></div>
+        <div data-include="@shared/components/form/table.html" data-variant="2" data-col1="5" data-col1-class="iuh-form-table-cell--center" data-col2="Từ 21-08-2024 đến 21-07-2025" data-col3="Không còn ở"></div>
       </tbody>
     </table>
+  </div>
+
+  <div class="iuh-lookup-registration-history">
+    <h3 class="iuh-lookup-stay-history__title">Lịch sử đăng ký</h3>
+    <div class="iuh-form-table-wrap mt-4 md:mt-5">
+      <table class="iuh-form-table min-w-[48rem]">
+        <thead>
+          <div data-include="@shared/components/form/table.html" data-variant="1" data-col1="TT" data-col1-class="iuh-form-table-cell--center" data-col2="Đợt đăng ký" data-col3="Ngày đăng ký" data-col4="Trạng thái" data-col5="Ghi chú"></div>
+        </thead>
+        <tbody>
+          <div data-include="@shared/components/form/table.html" data-variant="2" data-col1="1" data-col1-class="iuh-form-table-cell--center" data-col2="KTX Năm học 2026-2027 (Đợt 2)" data-col3="2026-05-26 13:56:31" data-col4="Đã xếp phòng" data-col4-class="iuh-form-table-cell--strong text-primary-dark-blue" data-col5=""></div>
+          <div data-include="@shared/components/form/table.html" data-variant="2" data-col1="2" data-col1-class="iuh-form-table-cell--center" data-col2="KTX Hè năm học 2025-2026" data-col3="2026-04-26 08:50:49" data-col4="Đã xếp phòng" data-col4-class="iuh-form-table-cell--strong text-primary-dark-blue" data-col5=""></div>
+          <div data-include="@shared/components/form/table.html" data-variant="2" data-col1="3" data-col1-class="iuh-form-table-cell--center" data-col2="KTX 2025-2026 ĐỢT 1" data-col3="2025-05-24 08:05:03" data-col4="Đã xếp phòng" data-col4-class="iuh-form-table-cell--strong text-primary-dark-blue" data-col5=""></div>
+          <div data-include="@shared/components/form/table.html" data-variant="2" data-col1="4" data-col1-class="iuh-form-table-cell--center" data-col2="KTX hè 2024-2025 Đợt 2" data-col3="2025-05-15 09:12:36" data-col4="Đã xếp phòng" data-col4-class="iuh-form-table-cell--strong text-primary-dark-blue" data-col5=""></div>
+          <div data-include="@shared/components/form/table.html" data-variant="2" data-col1="5" data-col1-class="iuh-form-table-cell--center" data-col2="KTX năm học 2024-2025 đợt 2" data-col3="2024-08-19 18:35:11" data-col4="Đã trả phòng" data-col4-class="iuh-form-table-cell--strong" data-col5=""></div>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>

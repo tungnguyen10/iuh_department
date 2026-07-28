@@ -19,6 +19,14 @@
   @apply rounded-none border-0 #{!important};
 }
 
+.iuh-lookup-panel__identity-grid {
+  @apply grid grid-cols-1 divide-y divide-stroke md:grid-cols-2 md:divide-x md:divide-y-0;
+}
+
+.iuh-lookup-panel__identity-grid .iuh-form-display-row {
+  @apply min-w-0;
+}
+
 .iuh-lookup-panel__value--strong {
   @apply font-bold uppercase text-primary-dark-blue #{!important};
 }
@@ -54,4 +62,12 @@
 
 .iuh-lookup-stay-history__title {
   @apply font-inter text-lg font-bold text-primary-dark-blue md:text-xl;
+}
+
+.iuh-lookup-tabs__empty {
+  @apply rounded-lg border border-dashed border-stroke bg-white px-4 py-10 text-center font-sans text-sm font-medium text-gray-500;
+}
+
+.iuh-lookup-registration-history {
+  @apply mt-6 md:mt-8;
 }

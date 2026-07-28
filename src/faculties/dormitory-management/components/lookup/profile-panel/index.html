@@ -4,28 +4,31 @@
     <h2 class="iuh-lookup-panel__title">THÔNG TIN TRA CỨU</h2>
   </header>
   <div class="iuh-form-display iuh-lookup-panel__body">
-    <div data-include="@shared/components/form/display-row.html"
-      data-label="Sinh viên"
-      data-value="{{studentFullName}}"
-      data-value-class="iuh-lookup-panel__value--strong"></div>
-    <div data-include="@shared/components/form/display-row.html"
-      data-label="MSSV"
-      data-value="{{studentId}}"></div>
-    <div data-include="@shared/components/form/display-row.html"
-      data-label="Khoa"
-      data-value="{{studentFaculty}}"></div>
-    <div data-include="@shared/components/form/display-row.html"
-      data-label="Lớp"
-      data-value="{{studentClass}}"></div>
-    <div data-include="@shared/components/form/display-row.html"
-      data-label="Giới tính"
-      data-value="{{studentGender}}"></div>
-    <div data-include="@shared/components/form/display-row.html"
-      data-label="Năm nhập học"
-      data-value="{{studentEnrollmentYear}}"></div>
+    <div class="iuh-lookup-panel__identity-grid">
+      <div data-include="@shared/components/form/display-row.html"
+        data-label="Sinh viên"
+        data-value="{{studentFullName}}"
+        data-value-class="iuh-lookup-panel__value--strong"></div>
+      <div data-include="@shared/components/form/display-row.html"
+        data-label="MSSV"
+        data-value="{{studentId}}"></div>
+      <div data-include="@shared/components/form/display-row.html"
+        data-label="Khoa"
+        data-value="{{studentFaculty}}"></div>
+      <div data-include="@shared/components/form/display-row.html"
+        data-label="Lớp"
+        data-value="{{studentClass}}"></div>
+      <div data-include="@shared/components/form/display-row.html"
+        data-label="Giới tính"
+        data-value="{{studentGender}}"></div>
+      <div data-include="@shared/components/form/display-row.html"
+        data-label="Năm nhập học"
+        data-value="{{studentEnrollmentYear}}"></div>
+    </div>
     <div data-include="@shared/components/form/display-row.html"
       data-label="Tình trạng"
-      data-value="{{studentStatus}}"></div>
+      data-value="{{studentStatus}}"
+      data-row-class="iuh-lookup-panel__full-row"></div>
 
     <!-- All five registration-row variants render stacked. -->
     <div data-include="@faculty/components/lookup/registration-row/index.html"
