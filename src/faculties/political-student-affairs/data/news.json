@@ -1,0 +1,66 @@
+{
+  "section": {
+    "title": "Tin tức và thông báo",
+    "description": "Thông tin minh họa về chính sách, học bổng, hoạt động và các kênh hỗ trợ sinh viên."
+  },
+  "items": [
+    {
+      "id": 1,
+      "slug": "huong-dan-tiep-nhan-ho-so-chinh-sach-sinh-vien",
+      "title": "Hướng dẫn tiếp nhận hồ sơ chính sách sinh viên",
+      "excerpt": "Các bước minh họa để sinh viên chuẩn bị và nộp hồ sơ đề nghị hỗ trợ theo chính sách hiện hành.",
+      "category": "Chính sách",
+      "date": "15 tháng 8, 2026",
+      "image": "/assets/images/default.jpg",
+      "imageAlt": "Sinh viên tìm hiểu chính sách hỗ trợ",
+      "content": [
+        { "type": "notice", "title": "Dữ liệu minh họa", "text": "Nội dung này cần được đơn vị chuyên môn xác nhận trước khi phát hành." },
+        { "type": "paragraph", "text": "Sinh viên chuẩn bị biểu mẫu, giấy tờ chứng minh đối tượng và thông tin liên hệ để được hướng dẫn kiểm tra hồ sơ." },
+        { "type": "list", "items": ["Kiểm tra điều kiện áp dụng.", "Chuẩn bị minh chứng theo hướng dẫn.", "Theo dõi kết quả qua kênh thông báo chính thức."] }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "chuong-trinh-hoc-bong-dong-hanh-cung-sinh-vien",
+      "title": "Chương trình học bổng đồng hành cùng sinh viên",
+      "excerpt": "Thông tin mẫu về chương trình học bổng dành cho sinh viên có thành tích và hoàn cảnh cần hỗ trợ.",
+      "category": "Học bổng",
+      "date": "12 tháng 8, 2026",
+      "image": "/assets/images/default.jpg",
+      "imageAlt": "Chương trình học bổng sinh viên",
+      "content": [
+        { "type": "notice", "title": "Dữ liệu minh họa", "text": "Thời hạn và điều kiện trong bài chưa phải thông báo chính thức." },
+        { "type": "paragraph", "text": "Chương trình minh họa hoạt động kết nối nguồn lực để hỗ trợ sinh viên duy trì học tập và phát triển năng lực." }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "tuan-sinh-hoat-cong-dan-sinh-vien",
+      "title": "Tuần sinh hoạt công dân – sinh viên",
+      "excerpt": "Lịch nội dung mẫu về quy chế, văn hóa học đường, trách nhiệm cộng đồng và kỹ năng dành cho sinh viên.",
+      "category": "Công tác chính trị",
+      "date": "08 tháng 8, 2026",
+      "image": "/assets/images/default.jpg",
+      "imageAlt": "Sinh hoạt công dân sinh viên",
+      "content": [
+        { "type": "notice", "title": "Dữ liệu minh họa", "text": "Lịch tổ chức thực tế sẽ được cập nhật bằng thông báo chính thức." },
+        { "type": "paragraph", "text": "Chương trình cung cấp thông tin nền tảng để sinh viên hiểu quyền, nghĩa vụ và các nguồn lực hỗ trợ trong trường." }
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "kenh-tu-van-va-ho-tro-sinh-vien",
+      "title": "Kênh tư vấn và hỗ trợ sinh viên",
+      "excerpt": "Giới thiệu mẫu các nhóm nhu cầu được tiếp nhận: chính sách, đời sống, tâm lý, học tập và hoạt động sinh viên.",
+      "category": "Hỗ trợ sinh viên",
+      "date": "05 tháng 8, 2026",
+      "image": "/assets/images/default.jpg",
+      "imageAlt": "Tư vấn hỗ trợ sinh viên",
+      "content": [
+        { "type": "notice", "title": "Dữ liệu minh họa", "text": "Thông tin liên hệ cần được cập nhật trước khi sử dụng." },
+        { "type": "paragraph", "text": "Sinh viên có thể mô tả nhu cầu để được phân luồng đến đầu mối phụ trách phù hợp." },
+        { "type": "info", "title": "Liên hệ mẫu", "text": "Email: example@iuh.edu.vn · Điện thoại: (028) 0000 0000." }
+      ]
+    }
+  ]
+}

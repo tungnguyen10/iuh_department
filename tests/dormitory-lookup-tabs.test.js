@@ -13,16 +13,17 @@ test('lookup profile groups identity fields into a responsive two-column grid', 
   assert.match(styles, /\.iuh-lookup-panel__identity-grid[\s\S]*md:grid-cols-2/)
 })
 
-test('lookup page defaults to the KTX history tab and supplies empty tab panels', async () => {
+test('lookup page defaults to the lookup tab and exposes the current lookup panels', async () => {
   const page = await readSource('src/faculties/dormitory-management/pages/tra-cuu.html')
 
-  for (const tab of ['attendance', 'discipline', 'commendation', 'stay-history']) {
+  for (const tab of ['lookup', 'attendance', 'discipline', 'reward', 'stay-history']) {
     assert.match(page, new RegExp(`data-tab="${tab}"`))
     assert.match(page, new RegExp(`data-tab-panel="${tab}"`))
   }
 
-  assert.match(page, /class="tab-btn active[^"]*"[\s\S]*data-tab="stay-history"/)
-  assert.equal((page.match(/Chưa có dữ liệu/g) ?? []).length, 3)
+  assert.match(page, /class="tab-btn active" data-tab="lookup"/)
+  assert.match(page, /data-tab-panel="discipline"[\s\S]*Chưa có thông tin kỷ luật/)
+  assert.match(page, /data-tab-panel="reward"[\s\S]*Chưa có thông tin khen thưởng/)
 })
 
 test('KTX history contains occupancy and registration history tables', async () => {

@@ -1,0 +1,13 @@
+[
+  { "id": 1, "title": "Trang chủ", "excerpt": "Trang giới thiệu tạm thời của Phòng Công tác chính trị và Hỗ trợ sinh viên.", "category": "Trang", "date": "17/08/2026", "url": "/" },
+  { "id": 2, "title": "Giới thiệu", "excerpt": "Vai trò, nhiệm vụ và nhóm hỗ trợ sinh viên của phòng.", "category": "Trang", "date": "17/08/2026", "url": "/about.html" },
+  { "id": 3, "title": "Liên hệ", "excerpt": "Thông tin và biểu mẫu liên hệ minh họa.", "category": "Trang", "date": "17/08/2026", "url": "/contact.html" },
+  { "id": 4, "title": "Tin tức và thông báo", "excerpt": "Danh sách thông tin chính sách và hoạt động sinh viên.", "category": "Trang", "date": "17/08/2026", "url": "/news.html" },
+  { "id": 5, "title": "Chi tiết tin tức", "excerpt": "Nội dung chi tiết tin tức và thông báo.", "category": "Trang", "date": "17/08/2026", "url": "/news-detail.html" },
+  { "id": 6, "title": "Ban lãnh đạo", "excerpt": "Cơ cấu và nhân sự minh họa của phòng.", "category": "Trang", "date": "17/08/2026", "url": "/leadership.html" },
+  { "id": 7, "title": "Chi tiết lãnh đạo", "excerpt": "Thông tin hồ sơ nhân sự minh họa.", "category": "Trang", "date": "17/08/2026", "url": "/leadership-detail.html" },
+  { "id": 8, "title": "Hướng dẫn tiếp nhận hồ sơ chính sách sinh viên", "excerpt": "Các bước chuẩn bị và nộp hồ sơ chính sách.", "category": "Chính sách", "date": "15/08/2026", "url": "/news-detail.html" },
+  { "id": 9, "title": "Chương trình học bổng đồng hành cùng sinh viên", "excerpt": "Thông tin mẫu về chương trình học bổng.", "category": "Học bổng", "date": "12/08/2026", "url": "/news-detail.html" },
+  { "id": 10, "title": "Tuần sinh hoạt công dân – sinh viên", "excerpt": "Quy chế, văn hóa học đường và trách nhiệm cộng đồng.", "category": "Công tác chính trị", "date": "08/08/2026", "url": "/news-detail.html" },
+  { "id": 11, "title": "Kênh tư vấn và hỗ trợ sinh viên", "excerpt": "Các nhóm nhu cầu và kênh tiếp nhận hỗ trợ.", "category": "Hỗ trợ sinh viên", "date": "05/08/2026", "url": "/news-detail.html" }
+]
