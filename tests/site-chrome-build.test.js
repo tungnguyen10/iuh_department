@@ -10,8 +10,8 @@ const repoRoot = resolve(new URL('..', import.meta.url).pathname)
 const srcRoot = join(repoRoot, 'src')
 const faculties = {
   'health-science': 13,
-  'dormitory-management': 13,
-  'political-student-affairs': 7,
+  'dormitory-management': 14,
+  'political-student-affairs': 8,
 }
 
 const collectSourceFiles = async (directory) => {

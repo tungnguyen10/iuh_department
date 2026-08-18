@@ -31,6 +31,7 @@
       { "text": "Tra cứu đăng ký", "href": "/tra-cuu.html" }
     ] },
     { "text": "CƠ SỞ VẬT CHẤT", "href": "/#infrastructure-section" },
+    { "text": "ĐỐI TÁC", "href": "/partners.html" },
     { "text": "LIÊN HỆ", "href": "/contact.html" }
   ],
   "footer": {
@@ -48,6 +49,7 @@
       { "title": "Thông tin", "links": [
         { "text": "Thông báo mới", "href": "/" },
         { "text": "Cơ sở vật chất", "href": "/#infrastructure-section" },
+        { "text": "Đối tác hợp tác", "href": "/partners.html" },
         { "text": "Liên hệ", "href": "/contact.html" }
       ] }
     ],
@@ -65,6 +67,7 @@
       { "text": "An ninh ký túc xá", "href": "/news-detail.html" },
       { "text": "Cơ sở vật chất", "href": "/#infrastructure-section" },
       { "text": "Thông báo", "href": "/news.html" },
+      { "text": "Đối tác hợp tác", "href": "/partners.html" },
       { "text": "Liên hệ", "href": "/contact.html" }
     ],
     "categories": [

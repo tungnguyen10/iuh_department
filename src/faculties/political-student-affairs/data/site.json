@@ -26,6 +26,7 @@
       { "text": "Liên hệ", "href": "/contact.html" }
     ] },
     { "text": "LÃNH ĐẠO", "href": "/leadership.html" },
+    { "text": "ĐỐI TÁC", "href": "/partners.html" },
     { "text": "LIÊN HỆ", "href": "/contact.html" }
   ],
   "footer": {
@@ -43,7 +44,8 @@
       { "title": "Thông tin", "links": [
         { "text": "Tin tức mới", "href": "/news.html" },
         { "text": "Giới thiệu", "href": "/about.html" },
-        { "text": "Ban lãnh đạo", "href": "/leadership.html" }
+        { "text": "Ban lãnh đạo", "href": "/leadership.html" },
+        { "text": "Đối tác hợp tác", "href": "/partners.html" }
       ] }
     ],
     "socialLinks": [
@@ -57,6 +59,7 @@
       { "text": "Giới thiệu", "href": "/about.html" },
       { "text": "Tin tức", "href": "/news.html" },
       { "text": "Ban lãnh đạo", "href": "/leadership.html" },
+      { "text": "Đối tác hợp tác", "href": "/partners.html" },
       { "text": "Liên hệ hỗ trợ", "href": "/contact.html" }
     ],
     "categories": [

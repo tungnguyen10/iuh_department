@@ -6,8 +6,9 @@
   { "id": 5, "title": "Chi tiết tin tức", "excerpt": "Nội dung chi tiết tin tức và thông báo.", "category": "Trang", "date": "17/08/2026", "url": "/news-detail.html" },
   { "id": 6, "title": "Ban lãnh đạo", "excerpt": "Cơ cấu và nhân sự minh họa của phòng.", "category": "Trang", "date": "17/08/2026", "url": "/leadership.html" },
   { "id": 7, "title": "Chi tiết lãnh đạo", "excerpt": "Thông tin hồ sơ nhân sự minh họa.", "category": "Trang", "date": "17/08/2026", "url": "/leadership-detail.html" },
-  { "id": 8, "title": "Hướng dẫn tiếp nhận hồ sơ chính sách sinh viên", "excerpt": "Các bước chuẩn bị và nộp hồ sơ chính sách.", "category": "Chính sách", "date": "15/08/2026", "url": "/news-detail.html" },
-  { "id": 9, "title": "Chương trình học bổng đồng hành cùng sinh viên", "excerpt": "Thông tin mẫu về chương trình học bổng.", "category": "Học bổng", "date": "12/08/2026", "url": "/news-detail.html" },
-  { "id": 10, "title": "Tuần sinh hoạt công dân – sinh viên", "excerpt": "Quy chế, văn hóa học đường và trách nhiệm cộng đồng.", "category": "Công tác chính trị", "date": "08/08/2026", "url": "/news-detail.html" },
-  { "id": 11, "title": "Kênh tư vấn và hỗ trợ sinh viên", "excerpt": "Các nhóm nhu cầu và kênh tiếp nhận hỗ trợ.", "category": "Hỗ trợ sinh viên", "date": "05/08/2026", "url": "/news-detail.html" }
+  { "id": 8, "title": "Đối tác hợp tác", "excerpt": "Danh sách đối tác chiến lược và doanh nghiệp hợp tác cùng nhà trường.", "category": "Trang", "date": "17/08/2026", "url": "/partners.html" },
+  { "id": 9, "title": "Hướng dẫn tiếp nhận hồ sơ chính sách sinh viên", "excerpt": "Các bước chuẩn bị và nộp hồ sơ chính sách.", "category": "Chính sách", "date": "15/08/2026", "url": "/news-detail.html" },
+  { "id": 10, "title": "Chương trình học bổng đồng hành cùng sinh viên", "excerpt": "Thông tin mẫu về chương trình học bổng.", "category": "Học bổng", "date": "12/08/2026", "url": "/news-detail.html" },
+  { "id": 11, "title": "Tuần sinh hoạt công dân – sinh viên", "excerpt": "Quy chế, văn hóa học đường và trách nhiệm cộng đồng.", "category": "Công tác chính trị", "date": "08/08/2026", "url": "/news-detail.html" },
+  { "id": 12, "title": "Kênh tư vấn và hỗ trợ sinh viên", "excerpt": "Các nhóm nhu cầu và kênh tiếp nhận hỗ trợ.", "category": "Hỗ trợ sinh viên", "date": "05/08/2026", "url": "/news-detail.html" }
 ]
