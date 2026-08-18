@@ -1,3 +1,5 @@
+import site from "./data/site.json";
+
 const facultyComponentStyles = import.meta.glob("./components/**/*.scss", {
   eager: true,
 });
@@ -21,20 +23,7 @@ export const politicalStudentAffairsFacultyConfig = {
     documents: "/assets/documents",
   },
   styles: facultyComponentStyles,
-  search: {
-    quickLinks: [
-      { text: "Giới thiệu", href: "/about.html" },
-      { text: "Tin tức", href: "/news.html" },
-      { text: "Ban lãnh đạo", href: "/leadership.html" },
-      { text: "Liên hệ hỗ trợ", href: "/contact.html" },
-    ],
-    categories: [
-      { text: "Giới thiệu", href: "/about.html", icon: "GT" },
-      { text: "Tin tức", href: "/news.html", icon: "TT" },
-      { text: "Ban lãnh đạo", href: "/leadership.html", icon: "LĐ" },
-      { text: "Liên hệ", href: "/contact.html", icon: "LH" },
-    ],
-  },
+  search: site.search,
   runtimeModules: [],
 };
 

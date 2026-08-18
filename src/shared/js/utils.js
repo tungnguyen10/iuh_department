@@ -10,12 +10,14 @@
  * @param {string} path - Path relative to the public root, e.g. "data/search-data.json"
  * @returns {string}
  */
-export const dataUrl = (path) => {
-  const base = import.meta.env.BASE_URL ?? '/'
+export const publicUrl = (path = '/', base = import.meta.env?.BASE_URL ?? '/') => {
+  if (/^(?:https?:|mailto:|tel:|\/\/|#)/i.test(path)) return path
   const normalizedBase = base.endsWith('/') ? base : `${base}/`
   const normalizedPath = path.startsWith('/') ? path.slice(1) : path
   return `${normalizedBase}${normalizedPath}`
 }
+
+export const dataUrl = (path) => publicUrl(path)
 
 /**
  * Delay execution for a specified time

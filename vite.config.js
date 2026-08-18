@@ -9,6 +9,8 @@ import { twMerge } from 'tailwind-merge'
 import { copyReferencedSvgs } from './scripts/svg-assets.js'
 import { createNewsRenderer as buildNewsRenderer } from './src/shared/components/news/news-renderer.js'
 import { createActivitiesRenderer as buildActivitiesRenderer } from './src/shared/components/activities/activities-renderer.js'
+import { createSiteChromeRenderer } from './src/shared/components/site-chrome/site-chrome-renderer.js'
+import { loadFacultySiteData } from './src/shared/components/site-chrome/site-data.js'
 
 // Dedupe and resolve Tailwind class conflicts inside every class="..." attribute.
 // Runs after data-include substitution so partial defaults can be overridden by callers.
@@ -88,6 +90,13 @@ const createHtmlInput = (pagesRoot) => {
 const relativeModulePath = (fromDir, toFile) => {
   const relativePath = relative(fromDir, toFile).replace(/\\/g, '/')
   return relativePath.startsWith('.') ? relativePath : `./${relativePath}`
+}
+
+export const resolveMainScript = (command, pagesRoot, mainFile) => {
+  if (command === 'serve') {
+    return `/@fs/${mainFile.replace(/\\/g, '/')}`
+  }
+  return relativeModulePath(pagesRoot, mainFile)
 }
 
 const ASSET_PREFIX_RE = /^\/(?:assets|data)\//
@@ -356,9 +365,12 @@ const createActivitiesRenderer = (base, facultyDataRoot) => {
 // HTML templates rendered by this plugin live in src/shared/components/news/news-renderer.js and
 // src/shared/components/activities/activities-renderer.js. Any new build-time template MUST live
 // under src/ so Tailwind's content globs scan its classes.
-const transformDataInclude = (base, facultyId, facultyDataRoot) => ({
-  name: 'transform-data-include',
-  transformIndexHtml(html) {
+const transformDataInclude = (base, facultyId, facultyDataRoot, site, pageRoutes) => {
+  const renderSiteChrome = createSiteChromeRenderer({ base, site, pageRoutes })
+
+  return {
+    name: 'transform-data-include',
+    transformIndexHtml(html) {
     // Recursive function to process nested data-include
     const processIncludes = (content, depth = 0) => {
       if (depth > 10) {
@@ -372,7 +384,7 @@ const transformDataInclude = (base, facultyId, facultyDataRoot) => ({
           try {
             // Extract all data-* attributes (support hyphenated names)
             const dataAttrs = {}
-            const attrRegex = /data-([\w-]+)=["']([^"']+)["']/g
+            const attrRegex = /data-([\w-]+)=["']([^"']*)["']/g
             let attrMatch
             while ((attrMatch = attrRegex.exec(attributes)) !== null) {
               // Convert hyphenated to camelCase: data-title-class → titleClass
@@ -430,19 +442,15 @@ const transformDataInclude = (base, facultyId, facultyDataRoot) => ({
                 componentHtml = componentHtml.replace(placeholder, value)
               }
             })
-            
-            // Remove entire lines containing only empty placeholders
-            // Match lines like: <tag ...>{{placeholder}}</tag>
+
+            // Missing include parameters are optional under the legacy include contract.
             componentHtml = componentHtml.replace(/^\s*<[^>]+>\s*\{\{[^}]+\}\}\s*<\/[^>]+>\s*$/gm, '')
-            
-            // Replace remaining placeholders with empty string
             componentHtml = componentHtml.replace(/\{\{[^}]+\}\}/g, '')
             
             // Recursively process nested includes
             return processIncludes(componentHtml, depth + 1)
           } catch (error) {
-            console.warn(`Failed to inject component: ${htmlPath}`, error.message)
-            return match // Giữ nguyên nếu có lỗi
+            throw new Error(`Failed to inject component ${htmlPath}: ${error.message}`)
           }
         }
       )
@@ -452,8 +460,18 @@ const transformDataInclude = (base, facultyId, facultyDataRoot) => ({
     }
     
     let transformed = processIncludes(html)
+    transformed = renderSiteChrome(transformed)
     transformed = createNewsRenderer(base, facultyDataRoot)(transformed)
     transformed = createActivitiesRenderer(base, facultyDataRoot)(transformed)
+    if (/data-site-[\w-]+/.test(transformed)) {
+      throw new Error(`Unresolved site marker remains after rendering faculty "${facultyId}"`)
+    }
+    if (/\{\{[^}]+\}\}/.test(transformed)) {
+      throw new Error(`Unresolved placeholder remains after rendering faculty "${facultyId}"`)
+    }
+    if (/data-include=["'][^"']+["']/.test(transformed)) {
+      throw new Error(`Unresolved data-include remains after rendering faculty "${facultyId}"`)
+    }
     transformed = mergeClassAttributes(transformed)
     
     // Transform img src="/assets/..." to include base path
@@ -511,8 +529,9 @@ const transformDataInclude = (base, facultyId, facultyDataRoot) => ({
     )
     
     return transformed
+    }
   }
-})
+}
 
 // Component JS đã được bundle vào main.js qua import.meta.glob
 // Không cần copy components nữa
@@ -555,7 +574,7 @@ const copyFacultyDataPlugin = (outDir, facultyDataRoot) => ({
     copyDirectoryContents(facultyDataRoot, distDataDir, (fileName) => {
       console.log(`Copied faculty data: ${fileName} to data/`)
     }, (srcPath, entry) => {
-      return !(entry.isFile() && ['news.json', 'activities.json'].includes(entry.name))
+      return !(entry.isFile() && ['site.json', 'news.json', 'activities.json'].includes(entry.name))
     })
   }
 })
@@ -617,14 +636,20 @@ const copyReferencedSvgsPlugin = (outDir, sharedSvgRoot, sourceRoots) => ({
   }
 })
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, __dirname, '')
   const faculty = resolveFacultyContext(process.env.FACULTY || env.FACULTY || defaultFacultyId)
   const base = normalizeBasePath(env.VITE_BASE_PATH || '/')
   const outDir = resolveOutDir(env.VITE_OUT_DIR || '')
   const buildSignature = mode === 'production' ? getBuildSignature() : 'dev-mode'
   const input = createHtmlInput(faculty.pagesRoot)
-  const mainScript = relativeModulePath(faculty.pagesRoot, resolve(srcRoot, 'main.js'))
+  const pageRoutes = Object.keys(input).map((name) => name === 'index' ? '/' : `/${name}.html`)
+  const site = loadFacultySiteData({
+    facultyId: faculty.selectedFacultyId,
+    facultyDataRoot: faculty.paths.selectedFacultyDataRoot,
+    pageRoutes,
+  })
+  const mainScript = resolveMainScript(command, faculty.pagesRoot, resolve(srcRoot, 'main.js'))
   
   // Read version from package.json
   const pkg = JSON.parse(readFileSync(resolve(__dirname, 'package.json'), 'utf-8'))
@@ -642,7 +667,7 @@ export default defineConfig(({ mode }) => {
     plugins: [
       mapSrcRequests(faculty.paths),
       layoutPlugin(base, mainScript), // Chạy TRƯỚC để wrap layout
-      transformDataInclude(base, faculty.selectedFacultyId, faculty.paths.selectedFacultyDataRoot), // Chạy SAU để inject components vào layout
+      transformDataInclude(base, faculty.selectedFacultyId, faculty.paths.selectedFacultyDataRoot, site, pageRoutes), // Chạy SAU để inject components vào layout
       copyFacultyDataPlugin(outDir, faculty.paths.selectedFacultyDataRoot), // Copy selected faculty data to dist/data
       copyFacultyDocumentsPlugin(outDir, resolve(faculty.paths.selectedFacultyAssetsRoot, 'documents')), // Copy selected faculty documents
       copyAssetRootsPlugin(outDir, 'images', [

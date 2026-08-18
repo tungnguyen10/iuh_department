@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "identity": {
+    "unitName": "Phòng Quản lý Ký túc xá",
+    "organizationName": "Trường Đại học Công nghiệp TP. Hồ Chí Minh",
+    "email": "kytucxa@iuh.edu.vn",
+    "phone": { "text": "0283 8940 390", "href": "02838940390" },
+    "address": "Trường Đại học Công nghiệp TP.HCM, 12 Nguyễn Văn Bảo, Phường Hạnh Thông, TP.HCM",
+    "mapAddress": "Số 12 Nguyễn Văn Bảo, Phường Hạnh Thông, TP.HCM"
+  },
+  "quickLinks": [
+    { "text": "Giới thiệu KTX", "href": "/about.html", "icon": "icon-article.svg" },
+    { "text": "Đăng ký nội trú", "href": "/contact.html", "icon": "icon-help-circle.svg" },
+    { "text": "Sinh viên nội trú", "href": "/", "icon": "icon-graduation-cap.svg" },
+    { "text": "Hỗ trợ bảo trì", "href": "/contact.html", "icon": "icon-building.svg" }
+  ],
+  "navigation": [
+    { "text": "TRANG CHỦ", "href": "/" },
+    { "text": "GIỚI THIỆU", "href": "/about.html" },
+    { "text": "THÔNG BÁO", "href": "/news.html" },
+    { "text": "DỊCH VỤ NỘI TRÚ", "children": [
+      { "text": "Ban quản lý", "href": "/leadership.html" },
+      { "text": "Chi tiết ban quản lý", "href": "/leadership-detail.html" },
+      { "text": "Thông báo", "href": "/news.html" },
+      { "text": "Chi tiết thông báo", "href": "/news-detail.html" },
+      { "text": "Văn bản", "href": "/document-detail.html" },
+      { "text": "Hoạt động", "href": "/activities.html" },
+      { "text": "Chi tiết hoạt động", "href": "/activities-details.html" },
+      { "text": "Liên hệ", "href": "/contact.html" },
+      { "text": "Đăng nhập", "href": "/login.html" },
+      { "text": "Tra cứu đăng ký", "href": "/tra-cuu.html" }
+    ] },
+    { "text": "CƠ SỞ VẬT CHẤT", "href": "/#infrastructure-section" },
+    { "text": "LIÊN HỆ", "href": "/contact.html" }
+  ],
+  "footer": {
+    "columns": [
+      { "title": "Nội trú", "links": [
+        { "text": "Đăng ký chỗ ở", "href": "/contact.html" },
+        { "text": "Gia hạn phòng ở", "href": "/contact.html" },
+        { "text": "Nội quy ký túc xá", "href": "/contact.html" }
+      ] },
+      { "title": "Hỗ trợ", "links": [
+        { "text": "Bảo trì phòng ở", "href": "/contact.html" },
+        { "text": "An ninh ký túc xá", "href": "/contact.html" },
+        { "text": "Phản ánh dịch vụ", "href": "/contact.html" }
+      ] },
+      { "title": "Thông tin", "links": [
+        { "text": "Thông báo mới", "href": "/" },
+        { "text": "Cơ sở vật chất", "href": "/#infrastructure-section" },
+        { "text": "Liên hệ", "href": "/contact.html" }
+      ] }
+    ],
+    "socialLinks": [
+      { "text": "Facebook", "href": "https://www.facebook.com/iuh.official", "icon": "icon-facebook.svg" },
+      { "text": "Instagram", "href": "#", "icon": "icon-instagram.svg" },
+      { "text": "Youtube", "href": "#", "icon": "icon-youtube.svg" }
+    ]
+  },
+  "search": {
+    "quickLinks": [
+      { "text": "Giới thiệu", "href": "/about.html" },
+      { "text": "Đăng ký nội trú", "href": "/news-detail.html" },
+      { "text": "Bảo trì phòng ở", "href": "/news-detail.html" },
+      { "text": "An ninh ký túc xá", "href": "/news-detail.html" },
+      { "text": "Cơ sở vật chất", "href": "/#infrastructure-section" },
+      { "text": "Thông báo", "href": "/news.html" },
+      { "text": "Liên hệ", "href": "/contact.html" }
+    ],
+    "categories": [
+      { "text": "Giới thiệu", "href": "/about.html", "icon": "GT" },
+      { "text": "Thông báo", "href": "/news.html", "icon": "TB" },
+      { "text": "Dịch vụ nội trú", "href": "/news-detail.html", "icon": "DV" },
+      { "text": "Cơ sở vật chất", "href": "/#infrastructure-section", "icon": "CS" },
+      { "text": "Liên hệ hỗ trợ", "href": "/contact.html", "icon": "LH" }
+    ]
+  }
+}

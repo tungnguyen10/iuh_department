@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "identity": {
+    "unitName": "Khoa Khoa học Sức khỏe",
+    "organizationName": "Trường Đại học Công nghiệp TP. Hồ Chí Minh",
+    "email": "dhcn@iuh.edu.vn",
+    "phone": { "text": "0283 8940 390", "href": "02838940390" },
+    "address": "Số 12 Nguyễn Văn Bảo, Phường Hạnh Thông, Thành phố Hồ Chí Minh",
+    "mapAddress": "Số 12 Nguyễn Văn Bảo, Phường Hạnh Thông, Thành phố Hồ Chí Minh"
+  },
+  "quickLinks": [
+    { "text": "Tuyển dụng – Việc làm", "href": "/partners.html", "icon": "icon-briefcase.svg" },
+    { "text": "Sinh viên", "href": "/students.html", "icon": "icon-graduation-cap.svg" },
+    { "text": "Kết nối doanh nghiệp", "href": "/partners.html", "icon": "icon-building.svg" },
+    { "text": "Biểu mẫu", "href": "/form.html", "icon": "icon-article.svg" }
+  ],
+  "navigation": [
+    { "text": "TRANG CHỦ", "href": "/" },
+    { "text": "GIỚI THIỆU", "href": "/about.html" },
+    { "text": "TIN TỨC – SỰ KIỆN", "href": "/news.html" },
+    { "text": "NGHIÊN CỨU KHOA HỌC", "children": [
+      { "text": "Đề tài nghiên cứu", "href": "/news.html" },
+      { "text": "Công bố khoa học", "children": [
+        { "text": "Bài báo quốc tế", "href": "/news.html" },
+        { "text": "Bài báo trong nước", "href": "/news.html" },
+        { "text": "Hội nghị khoa học", "href": "/news.html" }
+      ] },
+      { "text": "Giải thưởng", "href": "/news.html" },
+      { "text": "Hợp tác nghiên cứu", "href": "/news.html" }
+    ] },
+    { "text": "ĐÀO TẠO", "children": [
+      { "text": "Chuyên ngành đào tạo", "href": "/majors.html" },
+      { "text": "Chương trình đào tạo", "children": [
+        { "text": "Đại học", "href": "/about.html" },
+        { "text": "Cao học", "href": "/about.html" },
+        { "text": "Nghiên cứu sinh", "href": "/about.html" }
+      ] },
+      { "text": "Tuyển sinh", "href": "/contact.html" },
+      { "text": "Kế hoạch giảng dạy", "href": "/about.html" },
+      { "text": "Đánh giá chất lượng", "href": "/form.html" }
+    ] },
+    { "text": "SINH VIÊN", "children": [
+      { "text": "Thông tin sinh viên", "href": "/students.html" },
+      { "text": "Biểu mẫu", "href": "/form.html" },
+      { "text": "Tin tức", "href": "/news.html" },
+      { "text": "Liên hệ", "href": "/contact.html" },
+      { "text": "Chi tiết giảng viên", "href": "/leadership-detail.html" },
+      { "text": "Ban lãnh đạo", "href": "/leadership.html" },
+      { "text": "Chi tiết tin tức", "href": "/news-detail.html" },
+      { "text": "PDF View", "href": "/document-detail.html" }
+    ] }
+  ],
+  "footer": {
+    "columns": [
+      { "title": "Sinh viên", "links": [
+        { "text": "Lịch học - thi", "href": "/students.html" },
+        { "text": "Học bổng", "href": "/students.html" },
+        { "text": "Biểu mẫu sinh viên", "href": "/form.html" }
+      ] },
+      { "title": "Doanh nghiệp", "links": [
+        { "text": "Kết nối", "href": "/partners.html" },
+        { "text": "Tuyển dụng", "href": "/partners.html" },
+        { "text": "Chương trình hợp tác", "href": "/partners.html" }
+      ] },
+      { "title": "Thông tin khoa", "links": [
+        { "text": "Giới thiệu", "href": "/about.html" },
+        { "text": "Lịch sử & sứ mạng", "href": "/about.html" },
+        { "text": "Liên hệ", "href": "/contact.html" }
+      ] }
+    ],
+    "socialLinks": [
+      { "text": "Facebook", "href": "https://www.facebook.com/iuh.official", "icon": "icon-facebook.svg" },
+      { "text": "Instagram", "href": "#", "icon": "icon-instagram.svg" },
+      { "text": "Youtube", "href": "#", "icon": "icon-youtube.svg" }
+    ]
+  },
+  "search": {
+    "quickLinks": [
+      { "text": "Tuyển sinh", "href": "/majors.html" },
+      { "text": "Học bổng", "href": "/students.html" },
+      { "text": "Nghiên cứu khoa học", "href": "/news.html" },
+      { "text": "Đào tạo", "href": "/majors.html" },
+      { "text": "Lịch thi", "href": "/students.html" },
+      { "text": "Thông báo", "href": "/news.html" }
+    ],
+    "categories": [
+      { "text": "Tin tức - Sự kiện", "href": "/news.html", "icon": "TT" },
+      { "text": "Đào tạo", "href": "/majors.html", "icon": "DT" },
+      { "text": "Nghiên cứu khoa học", "href": "/news.html", "icon": "NC" },
+      { "text": "Sinh viên", "href": "/students.html", "icon": "SV" }
+    ]
+  }
+}

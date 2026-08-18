@@ -46,13 +46,10 @@ test('political student affairs content does not retain dormitory or health-scie
   assert.doesNotMatch(source, /Ký túc xá|Khoa Khoa học Sức khỏe|kytucxa@|\/login\.html|\/tra-cuu\.html/i)
 })
 
-test('political student affairs header and footer only link to built HTML pages', async () => {
-  const chrome = [
-    await readFacultyFile('components/header/header.html'),
-    await readFacultyFile('components/footer/footer.html'),
-  ].join('\n')
+test('political student affairs site chrome data only links to built HTML pages', async () => {
+  const chrome = JSON.stringify(JSON.parse(await readFacultyFile('data/site.json')))
   const builtRoutes = new Set(['/', ...expectedPages.filter((page) => page !== 'index.html').map((page) => `/${page}`)])
-  const linkedRoutes = [...chrome.matchAll(/href="(\/[^"#?]*)"/g)].map((match) => match[1])
+  const linkedRoutes = [...chrome.matchAll(/"href":"(\/[^"#?]*)"/g)].map((match) => match[1])
 
   assert.ok(linkedRoutes.length > 0)
   for (const route of linkedRoutes) assert.ok(builtRoutes.has(route), `Unexpected internal route: ${route}`)
@@ -73,4 +70,28 @@ test('political student affairs shared includes use transformer-compatible param
 
   assert.match(detail, /data-include="@shared\/components\/common\/divider\.html" data-class="mt-8"/)
   assert.doesNotMatch(detail, /class="mt-8" data-include=/)
+})
+
+test('department faculties delegate header and footer markup to shared components', async () => {
+  const politicalHeader = await readFacultyFile('components/header/header.html')
+  const politicalFooter = await readFacultyFile('components/footer/footer.html')
+  const dormitoryHeader = await readFile(new URL('../src/faculties/dormitory-management/components/header/header.html', import.meta.url), 'utf8')
+  const dormitoryFooter = await readFile(new URL('../src/faculties/dormitory-management/components/footer/footer.html', import.meta.url), 'utf8')
+  const sharedHeader = await readFile(new URL('../src/shared/components/header/department.html', import.meta.url), 'utf8')
+  const sharedFooter = await readFile(new URL('../src/shared/components/footer/department.html', import.meta.url), 'utf8')
+
+  for (const header of [politicalHeader, dormitoryHeader]) {
+    assert.match(header, /data-include="@shared\/components\/header\/department\.html"/)
+    assert.doesNotMatch(header, /<header\b/)
+  }
+  for (const footer of [politicalFooter, dormitoryFooter]) {
+    assert.match(footer, /data-include="@shared\/components\/footer\/department\.html"/)
+    assert.doesNotMatch(footer, /<footer\b/)
+  }
+
+  assert.match(sharedHeader, /data-site-unit-name/)
+  assert.match(sharedHeader, /data-site-primary-nav/)
+  assert.match(sharedFooter, /data-site-footer-identity/)
+  assert.match(sharedFooter, /data-site-footer-columns/)
+  assert.doesNotMatch(`${sharedHeader}\n${sharedFooter}`, /\{\{[^}]+\}\}/)
 })

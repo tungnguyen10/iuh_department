@@ -1,3 +1,5 @@
+import site from "./data/site.json";
+
 const facultyComponentStyles = import.meta.glob("./components/**/*.scss", {
   eager: true,
 });
@@ -21,22 +23,7 @@ export const healthScienceFacultyConfig = {
     documents: "/assets/documents",
   },
   styles: facultyComponentStyles,
-  search: {
-    quickLinks: [
-      { text: "Tuyển sinh", href: "/majors.html" },
-      { text: "Học bổng", href: "/students.html" },
-      { text: "Nghiên cứu khoa học", href: "/news.html" },
-      { text: "Đào tạo", href: "/majors.html" },
-      { text: "Lịch thi", href: "/students.html" },
-      { text: "Thông báo", href: "/news.html" },
-    ],
-    categories: [
-      { text: "Tin tức - Sự kiện", href: "/news.html", icon: "TT" },
-      { text: "Đào tạo", href: "/majors.html", icon: "DT" },
-      { text: "Nghiên cứu khoa học", href: "/news.html", icon: "NC" },
-      { text: "Sinh viên", href: "/students.html", icon: "SV" },
-    ],
-  },
+  search: site.search,
   runtimeModules: [
     {
       selector: ".hero-swiper",

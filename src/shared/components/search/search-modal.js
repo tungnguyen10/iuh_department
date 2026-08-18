@@ -3,7 +3,7 @@
  * Extends BaseModal for open/close behaviors
  */
 import BaseModal from '../modal/modal.js';
-import { dataUrl } from '../../js/utils.js';
+import { dataUrl, publicUrl } from '../../js/utils.js';
 import facultyConfig from '@faculty/faculty.config.js';
 
 const quickLinkClass = 'px-4 py-2 text-sm font-medium text-primary-dark-blue bg-slate-100 hover:bg-primary-yellow hover:text-primary-white rounded-lg no-underline transition-all duration-200 hover:-translate-y-0.5';
@@ -18,17 +18,13 @@ function escapeHtml(value = '') {
     .replace(/'/g, '&#39;');
 }
 
-function linkHref(value = '#') {
-  return value || '#';
-}
-
 function quickLinkMarkup(item) {
-  return `<a href="${linkHref(item.href)}" class="${quickLinkClass}">${escapeHtml(item.text)}</a>`;
+  return `<a href="${escapeHtml(publicUrl(item.href || '#'))}" class="${quickLinkClass}">${escapeHtml(item.text)}</a>`;
 }
 
 function categoryMarkup(item) {
   return `
-    <a href="${linkHref(item.href)}" class="${categoryClass}">
+    <a href="${escapeHtml(publicUrl(item.href || '#'))}" class="${categoryClass}">
       <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/80 text-xs font-semibold text-primary-dark-blue">${escapeHtml(item.icon || '')}</span>
       <span class="text-[15px] font-medium text-primary-dark-blue transition-colors duration-200">${escapeHtml(item.text)}</span>
     </a>
@@ -174,7 +170,7 @@ class SearchModal extends BaseModal {
     
     if (this.resultsContainer) {
       this.resultsContainer.innerHTML = results.map(result => `
-        <a href="${result.url}" class="search-result-item">
+        <a href="${escapeHtml(publicUrl(result.url || '#'))}" class="search-result-item">
           <h4 class="search-result-item__title">
             ${this.highlightQuery(result.title)}
           </h4>
