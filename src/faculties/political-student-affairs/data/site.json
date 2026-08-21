@@ -16,18 +16,11 @@
   ],
   "navigation": [
     { "text": "TRANG CHỦ", "href": "/" },
-    { "text": "GIỚI THIỆU", "href": "/about.html" },
-    { "text": "TIN TỨC", "href": "/news.html" },
-    { "text": "THÔNG TIN SINH VIÊN", "children": [
-      { "text": "Ban lãnh đạo", "href": "/leadership.html" },
-      { "text": "Chi tiết lãnh đạo", "href": "/leadership-detail.html" },
-      { "text": "Tin tức và thông báo", "href": "/news.html" },
-      { "text": "Chi tiết tin tức", "href": "/news-detail.html" },
-      { "text": "Liên hệ", "href": "/contact.html" }
-    ] },
-    { "text": "LÃNH ĐẠO", "href": "/leadership.html" },
-    { "text": "ĐỐI TÁC", "href": "/partners.html" },
-    { "text": "LIÊN HỆ", "href": "/contact.html" }
+    { "text": "TIN TỨC - SỰ KIỆN", "href": "/news.html" },
+    { "text": "THÔNG BÁO", "href": "/news.html" },
+    { "text": "Ý KIẾN - PHẢN HỒI", "href": "/contact.html" },
+    { "text": "TRA CỨU ĐRL", "href": "/contact.html" },
+    { "text": "VĂN BẢN", "href": "/contact.html" }
   ],
   "footer": {
     "columns": [
