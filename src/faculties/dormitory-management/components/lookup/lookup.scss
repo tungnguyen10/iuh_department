@@ -144,12 +144,56 @@
   @apply text-gray-500 sm:text-center !important;
 }
 
-.iuh-lookup-registration-download {
-  @apply font-bold text-primary-yellow underline decoration-primary-yellow/40 decoration-2 underline-offset-4 transition-colors hover:text-primary-dark-blue hover:decoration-primary-dark-blue;
+.iuh-lookup-state-row[data-lookup-state='approved'] .iuh-form-display-value {
+  @apply flex flex-wrap items-center gap-2.5;
+}
+
+.iuh-lookup-registration-cta {
+  @apply inline-flex items-center gap-1.5 rounded-full bg-primary-dark-blue px-3 py-1.5 font-sans text-sm font-semibold text-primary-white transition-all hover:bg-primary-yellow hover:text-primary-dark-blue;
+}
+
+.iuh-lookup-registration-cta--download {
+  @apply bg-primary-dark-blue text-primary-white;
+}
+
+.iuh-lookup-registration-cta--download:hover {
+  @apply bg-primary-yellow text-primary-dark-blue;
+}
+
+.iuh-lookup-registration-cta--upload {
+  @apply bg-primary-yellow text-primary-dark-blue;
+}
+
+.iuh-lookup-registration-cta--upload:hover {
+  @apply bg-[#ffd246] text-primary-dark-blue;
+}
+
+.iuh-lookup-registration-cta--cancel {
+  @apply bg-danger text-primary-white;
+}
+
+.iuh-lookup-registration-cta--cancel:hover {
+  @apply bg-danger/85 text-primary-white;
+}
+
+.iuh-lookup-registration-cta--receipt {
+  @apply bg-secondary-blue-light text-primary-dark-blue;
+}
+
+.iuh-lookup-registration-cta--receipt:hover {
+  @apply bg-[#caebf9] text-primary-dark-blue;
+}
+
+.iuh-lookup-registration-cta-icon {
+  @apply h-4 w-4;
 }
 
 .iuh-lookup-status {
   @apply inline-flex items-center rounded-full px-3 py-1 font-sans text-sm font-medium;
+}
+
+.iuh-lookup-status--approved {
+  @apply bg-secondary-green/20 text-secondary-green;
 }
 
 .iuh-lookup-status--pending {

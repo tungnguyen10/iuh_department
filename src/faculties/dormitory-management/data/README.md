@@ -28,8 +28,11 @@ Drives the post-login lookup surface. Shape:
       "no_round":     { "message": "Chưa có đợt ĐK phù hợp!" },
       "can_register": { "ctaText": "Đăng ký nội trú", "ctaHref": "#" },
       "pending":      { "message": "Đang chờ duyệt hồ sơ" },
-      "approved":     { "message": "Đã duyệt hồ sơ - Tải phiếu",
+      "approved":     { "message": "Đã duyệt hồ sơ",
                         "downloadHref": "#",
+                        "uploadHref": "#payment-proof",
+                        "cancelHref": "#",
+                        "receiptHref": "#",
                         "uploadHelper": "..." },
       "active":       { "message": "Đang ở KTX" }
     }

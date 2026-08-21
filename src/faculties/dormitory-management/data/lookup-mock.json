@@ -23,8 +23,11 @@
         "message": "Đang chờ duyệt hồ sơ"
       },
       "approved": {
-        "message": "Đã duyệt hồ sơ - Tải phiếu",
+        "message": "Đã duyệt hồ sơ",
         "downloadHref": "#",
+        "uploadHref": "#payment-proof",
+        "cancelHref": "#",
+        "receiptHref": "#",
         "uploadHelper": "Đây là bản demo - thao tác tải lên không gửi dữ liệu lên máy chủ."
       },
       "active": {

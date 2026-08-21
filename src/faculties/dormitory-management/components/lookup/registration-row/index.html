@@ -27,7 +27,23 @@
 <div class="iuh-form-display-row iuh-lookup-state-row" data-lookup-state="approved">
   <span class="iuh-form-display-label">Đăng ký</span>
   <span class="iuh-form-display-value">
-    <a href="{{downloadHref}}" class="iuh-lookup-registration-download">{{message}}</a>
+    <span class="iuh-lookup-status iuh-lookup-status--approved">{{message}}</span>
+    <a href="{{downloadHref}}" class="iuh-lookup-registration-cta iuh-lookup-registration-cta--download">
+      <span>Tải phiếu</span>
+      <img src="/assets/svgs/icon-download.svg" alt="" class="iuh-lookup-registration-cta-icon" />
+    </a>
+    <a href="{{uploadHref}}" class="iuh-lookup-registration-cta iuh-lookup-registration-cta--upload">
+      <span>Tải lên</span>
+      <img src="/assets/svgs/icon-arrow-up-right.svg" alt="" class="iuh-lookup-registration-cta-icon" />
+    </a>
+    <a href="{{cancelHref}}" class="iuh-lookup-registration-cta iuh-lookup-registration-cta--cancel">
+      <span>Hủy</span>
+      <img src="/assets/svgs/icon-close.svg" alt="" class="iuh-lookup-registration-cta-icon" />
+    </a>
+    <a href="{{receiptHref}}" class="iuh-lookup-registration-cta iuh-lookup-registration-cta--receipt">
+      <span>Xem biên lai</span>
+      <img src="/assets/svgs/icon-eye.svg" alt="" class="iuh-lookup-registration-cta-icon" />
+    </a>
   </span>
 </div>
 <div class="iuh-form-display-row iuh-lookup-state-row" data-lookup-state="approved">
