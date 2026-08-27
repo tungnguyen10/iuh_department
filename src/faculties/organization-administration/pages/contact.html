@@ -1,0 +1,35 @@
+<!-- LAYOUT: title="Liên hệ Phòng Tổ chức – Hành chính" -->
+<!-- LAYOUT: description="Thông tin và biểu mẫu liên hệ Phòng Tổ chức – Hành chính IUH." -->
+<!-- LAYOUT: keywords="liên hệ, hỗ trợ đơn vị, nhân sự cán bộ, giảng viên IUH" -->
+<!-- LAYOUT: url="https://iuh.edu.vn/contact" -->
+<!-- LAYOUT: ogImage="/assets/images/default.jpg" -->
+
+<div data-include="@shared/components/common/breadcrumb.html" data-parent-page1="Trang chủ" data-parent-link1="/" data-current-page="Liên hệ" data-parent-page2="" data-parent-link2="" data-parent-page2-class=""></div>
+
+<section class="container mx-auto px-4 py-10 md:py-16">
+  <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+    <div class="rounded-3xl bg-primary-dark-blue p-7 text-primary-white md:p-9">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-primary-yellow">Kênh hỗ trợ</p>
+      <h1 class="mt-3 font-inter text-3xl font-bold">Liên hệ với chúng tôi</h1>
+      <p class="mt-4 leading-7 text-white/80">Mô tả nhu cầu để được phân luồng đến nhóm phụ trách phù hợp. Thông tin liên hệ trên trang là dữ liệu minh họa.</p>
+      <div class="mt-8 space-y-4 text-sm md:text-base">
+        <p class="flex gap-3"><img src="/assets/svgs/icon-location.svg" alt="" class="size-5 shrink-0 brightness-0 invert" />12 Nguyễn Văn Bảo, Phường Hạnh Thông, TP.HCM</p>
+        <p class="flex gap-3"><img src="/assets/svgs/icon-phone.svg" alt="" class="size-5 shrink-0 brightness-0 invert" />(028) 0000 0000</p>
+        <p class="flex gap-3"><img src="/assets/svgs/icon-email.svg" alt="" class="size-5 shrink-0 brightness-0 invert" />example@iuh.edu.vn</p>
+        <p class="flex gap-3"><img src="/assets/svgs/icon-clock.svg" alt="" class="size-5 shrink-0 brightness-0 invert" />Thứ Hai – Thứ Sáu, 08:00–16:30</p>
+      </div>
+    </div>
+
+    <form class="rounded-3xl border border-stroke bg-white p-7 shadow-sm md:p-9" action="#" method="post">
+      <h2 class="font-inter text-2xl font-bold text-title">Gửi yêu cầu hỗ trợ</h2>
+      <p class="mt-2 text-sm text-gray-700">Biểu mẫu minh họa, chưa kết nối hệ thống tiếp nhận.</p>
+      <div class="mt-7 grid gap-5 md:grid-cols-2">
+        <div data-include="@shared/components/form/field.html" data-variant="1" data-id="contact-name" data-name="name" data-type="text" data-label="Họ và tên" data-required-text="*" data-icon="/assets/svgs/icon-user.svg" data-placeholder="Nguyễn Văn A" data-attrs="required autocomplete=name"></div>
+        <div data-include="@shared/components/form/field.html" data-variant="1" data-id="contact-email" data-name="email" data-type="email" data-label="Email" data-required-text="*" data-icon="/assets/svgs/icon-email.svg" data-placeholder="canbo@example.com" data-attrs="required autocomplete=email"></div>
+        <div data-include="@shared/components/form/field.html" data-variant="3" data-id="contact-topic" data-name="topic" data-label="Nhóm nhu cầu" data-required-text="*" data-icon="/assets/svgs/icon-help-circle.svg" data-attrs="required" data-placeholder-value="" data-placeholder-text="Chọn nhóm hỗ trợ" data-option1-value="human-resources" data-option1-text="Tổ chức – nhân sự" data-option2-value="records" data-option2-text="Văn thư – lưu trữ" data-option3-value="administration" data-option3-text="Hành chính – hậu cần" data-option4-value="guidance" data-option4-text="Hướng dẫn nghiệp vụ" data-option5-value="other" data-option5-text="Nội dung khác"></div>
+        <div data-include="@shared/components/form/field.html" data-variant="2" data-field-class="md:col-span-2" data-id="contact-message" data-name="message" data-label="Nội dung" data-required-text="*" data-icon="/assets/svgs/icon-message.svg" data-rows="6" data-placeholder="Mô tả nội dung cần hỗ trợ" data-attrs="required"></div>
+      </div>
+      <button type="submit" class="mt-6 rounded-full bg-primary-dark-blue px-6 py-3 font-medium text-primary-white transition hover:bg-primary-yellow hover:text-primary-dark-blue">Gửi thông tin minh họa</button>
+    </form>
+  </div>
+</section>

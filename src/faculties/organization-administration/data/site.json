@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "identity": {
+    "unitName": "Phòng Tổ chức – Hành chính",
+    "organizationName": "Trường Đại học Công nghiệp TP. Hồ Chí Minh",
+    "email": "example@iuh.edu.vn",
+    "phone": { "text": "(028) 0000 0000", "href": "0280000000" },
+    "address": "Trường Đại học Công nghiệp TP.HCM, 12 Nguyễn Văn Bảo, Phường Hạnh Thông, TP.HCM",
+    "mapAddress": "Số 12 Nguyễn Văn Bảo, Phường Hạnh Thông, TP.HCM"
+  },
+  "quickLinks": [
+    { "text": "Giới thiệu", "href": "/about.html", "icon": "icon-article.svg" },
+    { "text": "Nhân sự cán bộ, giảng viên", "href": "/news.html", "icon": "icon-help-circle.svg" },
+    { "text": "Ban lãnh đạo", "href": "/leadership.html", "icon": "icon-graduation-cap.svg" },
+    { "text": "Tư vấn hỗ trợ", "href": "/contact.html", "icon": "icon-building.svg" }
+  ],
+  "navigation": [
+    { "text": "TRANG CHỦ", "href": "/" },
+    { "text": "GIỚI THIỆU", "href": "/about.html" },
+    { "text": "TIN TỨC - THÔNG BÁO", "href": "/news.html" },
+    { "text": "TỔ CHỨC - NHÂN SỰ", "href": "/leadership.html" },
+    { "text": "VĂN BẢN", "href": "/news.html" },
+    { "text": "ĐỐI TÁC", "href": "/partners.html" },
+    { "text": "LIÊN HỆ", "href": "/contact.html" }
+  ],
+  "footer": {
+    "columns": [
+      { "title": "Nhân sự", "links": [
+        { "text": "Nhân sự cán bộ, giảng viên", "href": "/news.html" },
+        { "text": "Văn thư – lưu trữ", "href": "/news.html" },
+        { "text": "Hướng dẫn thủ tục", "href": "/contact.html" }
+      ] },
+      { "title": "Hỗ trợ", "links": [
+        { "text": "Tư vấn cán bộ, giảng viên", "href": "/contact.html" },
+        { "text": "Tiếp nhận phản ánh", "href": "/contact.html" },
+        { "text": "Kết nối nguồn lực", "href": "/contact.html" }
+      ] },
+      { "title": "Thông tin", "links": [
+        { "text": "Tin tức mới", "href": "/news.html" },
+        { "text": "Giới thiệu", "href": "/about.html" },
+        { "text": "Ban lãnh đạo", "href": "/leadership.html" },
+        { "text": "Đối tác hợp tác", "href": "/partners.html" }
+      ] }
+    ],
+    "socialLinks": [
+      { "text": "Facebook", "href": "https://www.facebook.com/iuh.official", "icon": "icon-facebook.svg" },
+      { "text": "Instagram", "href": "#", "icon": "icon-instagram.svg" },
+      { "text": "Youtube", "href": "#", "icon": "icon-youtube.svg" }
+    ]
+  },
+  "search": {
+    "quickLinks": [
+      { "text": "Giới thiệu", "href": "/about.html" },
+      { "text": "Tin tức", "href": "/news.html" },
+      { "text": "Ban lãnh đạo", "href": "/leadership.html" },
+      { "text": "Đối tác hợp tác", "href": "/partners.html" },
+      { "text": "Liên hệ hỗ trợ", "href": "/contact.html" }
+    ],
+    "categories": [
+      { "text": "Giới thiệu", "href": "/about.html", "icon": "GT" },
+      { "text": "Tin tức", "href": "/news.html", "icon": "TT" },
+      { "text": "Ban lãnh đạo", "href": "/leadership.html", "icon": "LĐ" },
+      { "text": "Liên hệ", "href": "/contact.html", "icon": "LH" }
+    ]
+  }
+}

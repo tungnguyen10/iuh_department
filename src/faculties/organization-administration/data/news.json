@@ -1,0 +1,66 @@
+{
+  "section": {
+    "title": "Tin tức - Sự kiện",
+    "description": "Thông tin minh họa về nhân sự, văn thư – lưu trữ, hoạt động và các kênh hỗ trợ đơn vị."
+  },
+  "items": [
+    {
+      "id": 1,
+      "slug": "huong-dan-tiep-nhan-ho-so-nhan-su",
+      "title": "Hướng dẫn tiếp nhận hồ sơ nhân sự cán bộ, giảng viên",
+      "excerpt": "Các bước minh họa để cán bộ, giảng viên chuẩn bị và nộp hồ sơ đề nghị hỗ trợ theo nhân sự hiện hành.",
+      "category": "Nhân sự",
+      "date": "15 tháng 8, 2026",
+      "image": "/assets/images/default.jpg",
+      "imageAlt": "Cán bộ, giảng viên tìm hiểu nhân sự hỗ trợ",
+      "content": [
+        { "type": "notice", "title": "Dữ liệu minh họa", "text": "Nội dung này cần được đơn vị chuyên môn xác nhận trước khi phát hành." },
+        { "type": "paragraph", "text": "Cán bộ, giảng viên chuẩn bị biểu mẫu, giấy tờ chứng minh đối tượng và thông tin liên hệ để được hướng dẫn kiểm tra hồ sơ." },
+        { "type": "list", "items": ["Kiểm tra điều kiện áp dụng.", "Chuẩn bị minh chứng theo hướng dẫn.", "Theo dõi kết quả qua kênh thông báo chính thức."] }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "huong-dan-van-thu-luu-tru",
+      "title": "Hướng dẫn nghiệp vụ văn thư – lưu trữ",
+      "excerpt": "Thông tin mẫu về quy trình tiếp nhận, phát hành và lưu trữ văn bản tại các đơn vị.",
+      "category": "Văn thư – lưu trữ",
+      "date": "12 tháng 8, 2026",
+      "image": "/assets/images/default.jpg",
+      "imageAlt": "Nghiệp vụ văn thư – lưu trữ",
+      "content": [
+        { "type": "notice", "title": "Dữ liệu minh họa", "text": "Thời hạn và điều kiện trong bài chưa phải thông báo chính thức." },
+        { "type": "paragraph", "text": "Chương trình minh họa hoạt động kết nối nguồn lực để hỗ trợ các đơn vị chuẩn hóa quy trình và phát triển năng lực quản trị." }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "lich-tiep-nhan-ho-so-hanh-chinh",
+      "title": "Lịch tiếp nhận hồ sơ hành chính",
+      "excerpt": "Thông tin mẫu về lịch tiếp nhận, kiểm tra và trả kết quả hồ sơ hành chính cho các đơn vị.",
+      "category": "Tổ chức – Hành chính",
+      "date": "08 tháng 8, 2026",
+      "image": "/assets/images/default.jpg",
+      "imageAlt": "Tiếp nhận hồ sơ hành chính",
+      "content": [
+        { "type": "notice", "title": "Dữ liệu minh họa", "text": "Lịch tổ chức thực tế sẽ được cập nhật bằng thông báo chính thức." },
+        { "type": "paragraph", "text": "Hướng dẫn cung cấp thông tin nền tảng để các đơn vị chuẩn bị hồ sơ đúng thành phần và theo dõi tiến độ xử lý." }
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "kenh-tu-van-va-ho-tro-don-vi",
+      "title": "Kênh tư vấn và hỗ trợ đơn vị",
+      "excerpt": "Giới thiệu mẫu các nhóm nhu cầu được tiếp nhận: nhân sự, văn thư – lưu trữ, hành chính, hậu cần và quản trị nội bộ.",
+      "category": "Hỗ trợ đơn vị",
+      "date": "05 tháng 8, 2026",
+      "image": "/assets/images/default.jpg",
+      "imageAlt": "Tư vấn hỗ trợ đơn vị",
+      "content": [
+        { "type": "notice", "title": "Dữ liệu minh họa", "text": "Thông tin liên hệ cần được cập nhật trước khi sử dụng." },
+        { "type": "paragraph", "text": "Cán bộ, giảng viên có thể mô tả nhu cầu để được phân luồng đến đầu mối phụ trách phù hợp." },
+        { "type": "info", "title": "Liên hệ mẫu", "text": "Email: example@iuh.edu.vn · Điện thoại: (028) 0000 0000." }
+      ]
+    }
+  ]
+}

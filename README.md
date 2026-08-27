@@ -155,6 +155,7 @@ Current runnable ids:
 | `health-science` | Khoa Khoa học Sức khỏe |
 | `dormitory-management` | Phòng Quản lý Ký túc xá |
 | `political-student-affairs` | Phòng Công tác chính trị và Hỗ trợ sinh viên |
+| `organization-administration` | Phòng Tổ chức – Hành chính |
 
 Build the Political and Student Affairs module with:
 
@@ -376,6 +377,7 @@ Current runnable faculty ids:
 | `health-science` | Khoa Khoa hoc Suc khoe | Existing full Health Science module |
 | `dormitory-management` | Phòng Quản lý Ký túc xá | Home, contact, Dormitory-owned content, assets, and search data |
 | `political-student-affairs` | Phòng Công tác chính trị và Hỗ trợ sinh viên | Minimal home plus about, contact, news, and leadership pages with illustrative content |
+| `organization-administration` | Phòng Tổ chức – Hành chính | Minimal home plus about, contact, news, and leadership pages with illustrative content |
 
 ## Build Output
 
