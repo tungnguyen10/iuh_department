@@ -13,8 +13,6 @@ const expectedPages = [
   'news.html',
   'partners.html',
 ]
-const demoNotice = '@faculty/components/common/demo-notice.html'
-
 const readFacultyFile = (path) => readFile(new URL(path, facultyRoot), 'utf8')
 
 test('political student affairs faculty config exposes the selected-faculty contract', async () => {
@@ -26,14 +24,14 @@ test('political student affairs faculty config exposes the selected-faculty cont
   assert.match(config, /runtimeModules:\s*\[\]/)
 })
 
-test('political student affairs faculty provides the planned pages and keeps notices on its seven original pages', async () => {
+test('political student affairs faculty provides the planned pages without demo notices', async () => {
   const pages = (await readdir(new URL('pages/', facultyRoot))).filter((file) => file.endsWith('.html')).sort()
 
   assert.deepEqual(pages, expectedPages)
-  for (const page of pages.filter((page) => page !== 'partners.html')) {
-    assert.match(await readFacultyFile(`pages/${page}`), new RegExp(demoNotice.replaceAll('/', '\\/')))
+  for (const page of pages) {
+    assert.doesNotMatch(await readFacultyFile(`pages/${page}`), /demo-notice|Dữ liệu minh họa/)
   }
-  assert.doesNotMatch(await readFacultyFile('pages/partners.html'), new RegExp(demoNotice.replaceAll('/', '\\/')))
+  assert.match(await readFacultyFile('pages/index.html'), /@faculty\/components\/home\/carousel\/carousel\.html/)
 })
 
 test('political student affairs content does not retain dormitory or health-science links and copy', async () => {

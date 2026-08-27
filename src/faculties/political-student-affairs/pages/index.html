@@ -4,26 +4,11 @@
 <!-- LAYOUT: url="https://iuh.edu.vn/" -->
 <!-- LAYOUT: ogImage="/assets/images/default.jpg" -->
 
-<div data-include="@faculty/components/common/demo-notice.html"></div>
-
-<section class="bg-[linear-gradient(135deg,#153898_0%,#2461C9_100%)] py-14 text-primary-white md:py-20">
-  <div class="container mx-auto px-4">
-    <p class="mb-3 font-roboto text-sm font-semibold uppercase tracking-[0.2em] text-primary-yellow">IUH</p>
-    <h1 class="max-w-4xl font-inter text-3xl font-bold leading-tight md:text-5xl">Phòng Công tác chính trị và Hỗ trợ sinh viên</h1>
-    <p class="mt-5 max-w-3xl text-base leading-7 text-white/85 md:text-lg">Trang chủ đang được xây dựng. Các component chuyên biệt sẽ được bổ sung trong giai đoạn tiếp theo.</p>
-  </div>
-</section>
-
-<section class="container mx-auto px-4 py-12 md:py-16">
-  <div data-include="@shared/components/common/section-title.html" data-subtitle="Khám phá" data-title="Thông tin hiện có" data-description="Truy cập các trang nền tảng đã được chuẩn bị cho module mới."></div>
-  <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    <a href="/about.html" class="rounded-2xl border border-stroke bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-primary-yellow"><strong>Giới thiệu</strong><p class="mt-2 text-sm text-gray-700">Vai trò, nhiệm vụ và nhóm công tác.</p></a>
-    <a href="/news.html" class="rounded-2xl border border-stroke bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-primary-yellow"><strong>Tin tức</strong><p class="mt-2 text-sm text-gray-700">Chính sách, học bổng và hoạt động.</p></a>
-    <a href="/leadership.html" class="rounded-2xl border border-stroke bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-primary-yellow"><strong>Ban lãnh đạo</strong><p class="mt-2 text-sm text-gray-700">Cơ cấu nhân sự minh họa.</p></a>
-    <a href="/leadership-detail.html" class="rounded-2xl border border-stroke bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-primary-yellow"><strong>Chi tiết lãnh đạo</strong><p class="mt-2 text-sm text-gray-700">Hồ sơ và nhiệm vụ minh họa.</p></a>
-    <a href="/news-detail.html" class="rounded-2xl border border-stroke bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-primary-yellow"><strong>Chi tiết tin tức</strong><p class="mt-2 text-sm text-gray-700">Nội dung bài viết mẫu.</p></a>
-    <a href="/contact.html" class="rounded-2xl border border-stroke bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-primary-yellow"><strong>Liên hệ</strong><p class="mt-2 text-sm text-gray-700">Kênh tiếp nhận yêu cầu hỗ trợ.</p></a>
-  </div>
-</section>
-
+<div data-include="@faculty/components/home/carousel/carousel.html" data-class=""></div>
+<div data-include="@faculty/components/home/quick-services/index.html" data-class="nttFade"></div>
+<div data-include="@faculty/components/home/tasks-board/index.html" data-class="nttFade"></div>
+<div data-include="@faculty/components/home/stage-support/index.html" data-class="nttFade"></div>
+<div data-include="@faculty/components/home/activities/index.html" data-class="nttFade"></div>
+<div data-include="@faculty/components/home/jobs-opportunities/index.html" data-class="nttFade"></div>
+<div data-include="@shared/components/news/index.html" data-limit="3" data-class="nttFade"></div>
 <div data-include="@shared/components/partners/index.html" data-class="nttFade"></div>

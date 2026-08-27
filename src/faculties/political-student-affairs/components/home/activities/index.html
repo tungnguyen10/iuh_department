@@ -1,0 +1,84 @@
+<section data-module="activities" id="activities-section" class="w-full bg-primary-white py-10 md:py-14 {{class}}">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between md:gap-8">
+      <div data-include="@shared/components/common/section-title.html"
+        data-subtitle="Đời sống sinh viên"
+        data-title="Hoạt động &amp; Phong trào"
+        data-description="Các chiến dịch, hội thi và hoạt động phong trào giúp sinh viên rèn luyện kỹ năng và gắn kết cộng đồng."
+        data-class="max-w-3xl">
+      </div>
+      <div class="hidden shrink-0 md:block">
+        <div data-include="@shared/components/button/button.html"
+          data-variant="8"
+          data-text="Xem tất cả"
+          data-url="/news.html"
+          data-icon="/assets/svgs/icon-arrow-up-right.svg">
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div data-include="@shared/components/common/event-card.html"
+        data-link="/news-detail.html"
+        data-title="Chiến dịch Mùa hè xanh 2025"
+        data-image="/assets/images/default.jpg"
+        data-image-alt="Chiến dịch Mùa hè xanh 2025"
+        data-type-icon="/assets/svgs/icon-tag.svg"
+        data-type-badge="Tình nguyện"
+        data-location-icon="/assets/svgs/icon-location-pin.svg"
+        data-location-badge="IUH"
+        data-date-icon="/assets/svgs/icon-calendar-check.svg"
+        data-date-badge="10/05/2025">
+      </div>
+
+      <div data-include="@shared/components/common/event-card.html"
+        data-link="/news-detail.html"
+        data-title="Chung kết Hội diễn văn nghệ IUH 2025"
+        data-image="/assets/images/default.jpg"
+        data-image-alt="Chung kết Hội diễn văn nghệ IUH 2025"
+        data-type-icon="/assets/svgs/icon-tag.svg"
+        data-type-badge="Văn nghệ"
+        data-location-icon="/assets/svgs/icon-location-pin.svg"
+        data-location-badge="Hội trường A"
+        data-date-icon="/assets/svgs/icon-calendar-check.svg"
+        data-date-badge="08/05/2025">
+      </div>
+
+      <div data-include="@shared/components/common/event-card.html"
+        data-link="/news-detail.html"
+        data-title="Tuần lễ hướng nghiệp sinh viên 2025"
+        data-image="/assets/images/default.jpg"
+        data-image-alt="Tuần lễ hướng nghiệp sinh viên 2025"
+        data-type-icon="/assets/svgs/icon-tag.svg"
+        data-type-badge="Hướng nghiệp"
+        data-location-icon="/assets/svgs/icon-location-pin.svg"
+        data-location-badge="IUH"
+        data-date-icon="/assets/svgs/icon-calendar-check.svg"
+        data-date-badge="02/05/2025">
+      </div>
+
+      <div data-include="@shared/components/common/event-card.html"
+        data-link="/news-detail.html"
+        data-title="Ngày hội tân sinh viên IUH 2025"
+        data-image="/assets/images/default.jpg"
+        data-image-alt="Ngày hội tân sinh viên IUH 2025"
+        data-type-icon="/assets/svgs/icon-tag.svg"
+        data-type-badge="Tân sinh viên"
+        data-location-icon="/assets/svgs/icon-location-pin.svg"
+        data-location-badge="IUH"
+        data-date-icon="/assets/svgs/icon-calendar-check.svg"
+        data-date-badge="25/04/2025">
+      </div>
+    </div>
+
+    <div class="mt-6 md:hidden">
+      <div data-include="@shared/components/button/button.html"
+        data-variant="8"
+        data-text="Xem tất cả hoạt động"
+        data-url="/news.html"
+        data-icon="/assets/svgs/icon-arrow-up-right.svg"
+        data-class="w-full justify-center">
+      </div>
+    </div>
+  </div>
+</section>

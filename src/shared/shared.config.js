@@ -19,6 +19,12 @@ import * as utils from './js/utils.js'
 
 export const sharedRuntimeModules = [
   {
+    selector: '[data-shared-carousel]',
+    load: () => import('./components/home/carousel/carousel.js'),
+    init: 'initHeroCarousel',
+    name: 'Home Carousel',
+  },
+  {
     selector: '.news-swiper',
     load: () => import('./components/news/news.js'),
     init: 'initNewsSwiper',

@@ -1,0 +1,137 @@
+<section data-module="tasks-board" class="w-full bg-secondary-blue-light py-10 md:py-14 {{class}}">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 gap-5 lg:grid-cols-3">
+      <!-- Việc cần làm -->
+      <div class="rounded-2xl border border-primary-dark-blue/10 bg-primary-white p-5 shadow-sm">
+        <div class="flex items-center justify-between gap-3">
+          <h3 class="font-inter text-lg font-bold text-title">Việc cần làm</h3>
+          <a href="/news.html" class="font-roboto text-sm font-semibold text-primary-dark-blue hover:text-primary-yellow">Xem tất cả →</a>
+        </div>
+
+        <ul class="mt-4 space-y-3">
+          <li class="flex items-start gap-3">
+            <div class="flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-lg bg-primary-dark-blue text-primary-white">
+              <span class="font-inter text-base font-extrabold leading-none">20</span>
+              <span class="mt-0.5 font-roboto text-[10px] font-semibold uppercase leading-none">Th8</span>
+            </div>
+            <div class="min-w-0 flex-1">
+              <p class="font-roboto text-sm font-semibold leading-snug text-title">Đăng ký BHYT sinh viên năm 2025-2026</p>
+              <div class="mt-1.5 flex flex-wrap items-center gap-2">
+                <span class="font-roboto text-xs text-gray-700">Hạn chót: 20/08/2025</span>
+                <span class="rounded-full bg-danger-light px-2 py-0.5 font-roboto text-xs font-bold text-danger">Còn 2 ngày</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="flex items-start gap-3">
+            <div class="flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-lg bg-primary-dark-blue text-primary-white">
+              <span class="font-inter text-base font-extrabold leading-none">25</span>
+              <span class="mt-0.5 font-roboto text-[10px] font-semibold uppercase leading-none">Th8</span>
+            </div>
+            <div class="min-w-0 flex-1">
+              <p class="font-roboto text-sm font-semibold leading-snug text-title">Nộp hồ sơ học bổng khuyến khích học tập HK1</p>
+              <div class="mt-1.5 flex flex-wrap items-center gap-2">
+                <span class="font-roboto text-xs text-gray-700">Hạn chót: 25/08/2025</span>
+                <span class="rounded-full bg-secondary-yellow-light px-2 py-0.5 font-roboto text-xs font-bold text-primary-dark-blue">Còn 8 ngày</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="flex items-start gap-3">
+            <div class="flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-lg bg-primary-dark-blue text-primary-white">
+              <span class="font-inter text-base font-extrabold leading-none">30</span>
+              <span class="mt-0.5 font-roboto text-[10px] font-semibold uppercase leading-none">Th8</span>
+            </div>
+            <div class="min-w-0 flex-1">
+              <p class="font-roboto text-sm font-semibold leading-snug text-title">Đánh giá điểm rèn luyện HK1 năm 2025</p>
+              <div class="mt-1.5 flex flex-wrap items-center gap-2">
+                <span class="font-roboto text-xs text-gray-700">Hạn chót: 30/08/2025</span>
+                <span class="rounded-full bg-secondary-blue-light px-2 py-0.5 font-roboto text-xs font-bold text-primary-dark-blue">Còn 13 ngày</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="flex items-start gap-3">
+            <div class="flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-lg bg-primary-dark-blue text-primary-white">
+              <span class="font-inter text-base font-extrabold leading-none">05</span>
+              <span class="mt-0.5 font-roboto text-[10px] font-semibold uppercase leading-none">Th9</span>
+            </div>
+            <div class="min-w-0 flex-1">
+              <p class="font-roboto text-sm font-semibold leading-snug text-title">Đăng ký vay vốn học tập HK1 năm 2025-2026</p>
+              <div class="mt-1.5 flex flex-wrap items-center gap-2">
+                <span class="font-roboto text-xs text-gray-700">Hạn chót: 05/09/2025</span>
+                <span class="rounded-full bg-secondary-blue-light px-2 py-0.5 font-roboto text-xs font-bold text-primary-dark-blue">Còn 19 ngày</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Thông báo quan trọng -->
+      <div class="rounded-2xl border border-primary-dark-blue/10 bg-primary-white p-5 shadow-sm">
+        <div class="flex items-center justify-between gap-3">
+          <h3 class="font-inter text-lg font-bold text-title">Thông báo quan trọng</h3>
+          <a href="/news.html" class="font-roboto text-sm font-semibold text-primary-dark-blue hover:text-primary-yellow">Xem tất cả →</a>
+        </div>
+
+        <div class="mt-4 grid grid-cols-1 gap-2.5">
+          <div data-include="@shared/components/common/notification-item.html"
+            data-link="/news-detail.html"
+            data-title="Hướng dẫn tiếp nhận hồ sơ chính sách sinh viên"
+            data-date="15/08/2026">
+          </div>
+          <div data-include="@shared/components/common/notification-item.html"
+            data-link="/news-detail.html"
+            data-title="Chương trình học bổng đồng hành cùng sinh viên"
+            data-date="12/08/2026">
+          </div>
+          <div data-include="@shared/components/common/notification-item.html"
+            data-link="/news-detail.html"
+            data-title="Tuần sinh hoạt công dân – sinh viên"
+            data-date="08/08/2026">
+          </div>
+          <div data-include="@shared/components/common/notification-item.html"
+            data-link="/news-detail.html"
+            data-title="Kênh tư vấn và hỗ trợ sinh viên"
+            data-date="05/08/2026">
+          </div>
+        </div>
+      </div>
+
+      <!-- Học bổng đang mở -->
+      <div class="flex flex-col rounded-2xl border border-primary-yellow/40 bg-[linear-gradient(160deg,#FFFFFF_0%,#FFF7E0_100%)] p-5 shadow-sm">
+        <span class="w-fit rounded-full bg-primary-yellow px-3 py-1 font-roboto text-xs font-bold text-primary-white">Học bổng</span>
+        <h3 class="mt-3 font-inter text-lg font-bold leading-snug text-title">Học bổng Khuyến khích học tập học kỳ 1 năm 2025-2026</h3>
+        <p class="mt-3 font-inter text-2xl font-extrabold text-primary-dark-blue">5.000.000 đ <span class="font-roboto text-sm font-normal text-gray-700">/ suất</span></p>
+
+        <ul class="mt-4 space-y-2">
+          <li class="flex items-center gap-2 font-roboto text-sm text-gray-700">
+            <img src="/assets/svgs/icon-user.svg" alt="" class="h-4 w-4" />
+            Đối tượng: Sinh viên năm 2 trở lên
+          </li>
+          <li class="flex items-center gap-2 font-roboto text-sm text-gray-700">
+            <img src="/assets/svgs/icon-calendar-clock.svg" alt="" class="h-4 w-4" />
+            Hạn nộp hồ sơ: 25/08/2025
+          </li>
+        </ul>
+
+        <div class="mt-5 flex flex-1 items-end gap-3">
+          <div data-include="@shared/components/button/button.html"
+            data-variant="8"
+            data-text="Xem chi tiết"
+            data-url="/news.html"
+            data-icon="/assets/svgs/icon-arrow-up-right.svg"
+            data-class="w-full justify-center sm:w-fit">
+          </div>
+          <div data-include="@shared/components/button/button.html"
+            data-variant="6"
+            data-text="Ứng tuyển ngay"
+            data-url="/contact.html"
+            data-icon="/assets/svgs/icon-arrow-up-right.svg"
+            data-class="w-full justify-center sm:w-fit">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
