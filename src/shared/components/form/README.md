@@ -11,7 +11,7 @@ Canonical primitives for every form surface in IUH faculty pages. **Do not hand-
 | `choice.html` | Radio group, single checkbox, single radio (5 variants). |
 | `display-row.html` | Read-only label/value rows (4 variants). |
 | `file.html` | Labeled file input — plain, with side button, or dropzone (3 variants). |
-| `table.html` | Header row, body row, empty row, or full table shell (4 variants). |
+| `table.html` | Header row, body row, empty row, full table shell, or a single header/body cell for shell composition (6 variants). |
 | `inline-group.html` | Label + control + side widget (image, captcha) (3 variants). |
 | `label-icon.html` | Sub-include: one strip-friendly label icon. |
 | `option.html` | Sub-include: one `<option>` row. |
@@ -274,6 +274,31 @@ For more than 5 options or for `<optgroup>` support, build the `<select>` shell 
 </div>
 ```
 
+### Table — shell for more than 6 columns (row shell + single-cell variants 5/6)
+
+`table.html` variants 1/2 cap out at 6 inlined columns. For wider tables, build the `<tr>` shell directly and nest variant 5 (header cell) / variant 6 (body cell) once per column — the same shell pattern used for >5 select options and >3 choice options:
+
+```html
+<table class="iuh-form-table">
+  <thead>
+    <tr class="iuh-form-table-head-row">
+      <div data-include="@shared/components/form/table.html" data-variant="5" data-text="Đợt"></div>
+      <div data-include="@shared/components/form/table.html" data-variant="5" data-text="Định mức điện"></div>
+      <div data-include="@shared/components/form/table.html" data-variant="5" data-text="Chỉ số điện cũ"></div>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="iuh-form-table-body-row">
+      <div data-include="@shared/components/form/table.html" data-variant="6" data-label="Đợt" data-class="iuh-form-table-cell--strong" data-text="08/2026"></div>
+      <div data-include="@shared/components/form/table.html" data-variant="6" data-label="Định mức điện" data-text="50 kWh"></div>
+      <div data-include="@shared/components/form/table.html" data-variant="6" data-label="Chỉ số điện cũ" data-text="128 kWh"></div>
+    </tr>
+  </tbody>
+</table>
+```
+
+If a column must render nested markup (links, buttons, widgets) instead of a single text value, author that one `<td>` inline — the include engine cannot pass tag-shaped content through a `data-*` attribute — and leave a one-line comment noting why it is the exception.
+
 ### Inline group — captcha (variant 3)
 
 ```html
@@ -306,3 +331,5 @@ For more than 5 options or for `<optgroup>` support, build the `<select>` shell 
 ```
 
 Use `@shared/components/button/button.html` for every form action — do not hand-roll `<button>` markup.
+
+Variant 7 accepts `data-attrs` (e.g. `data-attrs="disabled"`) to pass native attributes through to the `<button>`, same as the field primitives.

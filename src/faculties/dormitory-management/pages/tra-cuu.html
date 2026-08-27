@@ -31,7 +31,7 @@
             <button class="tab-btn active" data-tab="lookup">Tra cứu</button>
             <button class="tab-btn" data-tab="attendance">Điểm danh</button>
             <button class="tab-btn" data-tab="discipline">Thông tin kỷ luật</button>
-            <button class="tab-btn" data-tab="reward">Thông tin khen thưởng</button>
+            <button class="tab-btn" data-tab="utilities">Điện - Nước</button>
             <button class="tab-btn" data-tab="stay-history">Lịch sử ở KTX</button>
             <a href="/login.html" class="iuh-lookup-tabs__logout">Đăng xuất</a>
           </div>
@@ -259,8 +259,8 @@
               <div class="iuh-lookup-tabs__empty">Chưa có thông tin kỷ luật.</div>
             </section>
 
-            <section class="tab-panel hidden" data-tab-panel="reward">
-              <div class="iuh-lookup-tabs__empty">Chưa có thông tin khen thưởng.</div>
+            <section class="tab-panel hidden" data-tab-panel="utilities">
+              <div data-include="@faculty/components/lookup/electricity-water/index.html"></div>
             </section>
 
             <div class="tab-panel hidden" data-tab-panel="stay-history">

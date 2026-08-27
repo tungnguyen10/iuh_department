@@ -16,14 +16,36 @@ test('lookup profile groups identity fields into a responsive two-column grid', 
 test('lookup page defaults to the lookup tab and exposes the current lookup panels', async () => {
   const page = await readSource('src/faculties/dormitory-management/pages/tra-cuu.html')
 
-  for (const tab of ['lookup', 'attendance', 'discipline', 'reward', 'stay-history']) {
+  for (const tab of ['lookup', 'attendance', 'discipline', 'utilities', 'stay-history']) {
     assert.match(page, new RegExp(`data-tab="${tab}"`))
     assert.match(page, new RegExp(`data-tab-panel="${tab}"`))
   }
 
   assert.match(page, /class="tab-btn active" data-tab="lookup"/)
   assert.match(page, /data-tab-panel="discipline"[\s\S]*Chưa có thông tin kỷ luật/)
-  assert.match(page, /data-tab-panel="reward"[\s\S]*Chưa có thông tin khen thưởng/)
+  assert.doesNotMatch(page, /data-tab="reward"|data-tab-panel="reward"|khen thưởng/)
+  assert.match(page, /data-tab-panel="utilities"[\s\S]*electricity-water\/index\.html/)
+})
+
+test('electricity-water lookup panel merges electric and water entry into one card and covers all round states', async () => {
+  const utilities = await readSource('src/faculties/dormitory-management/components/lookup/electricity-water/index.html')
+
+  for (const state of ['no_round', 'open', 'pending', 'confirmed']) {
+    assert.match(utilities, new RegExp(`data-utilities-state="${state}"`))
+  }
+
+  // One merged entry-card per state, not two side-by-side cards.
+  assert.match(utilities, /Lưu chỉ số điện & nước/)
+  assert.doesNotMatch(utilities, /iuh-utilities__entry-grid/)
+
+  assert.match(utilities, /Danh sách chỉ số điện nước hàng tháng/)
+
+  for (const column of ['Đợt', 'Định mức điện', 'Chỉ số điện cũ', 'Chỉ số điện mới', 'Định mức nước', 'Chỉ số nước cũ', 'Chỉ số nước mới', 'Tổng tiền', 'Thao tác']) {
+    assert.match(utilities, new RegExp(column))
+  }
+
+  assert.match(utilities, /disabled/)
+  assert.match(utilities, /Xem[\s\S]*Sửa[\s\S]*Biên lai/)
 })
 
 test('KTX history contains occupancy and registration history tables', async () => {

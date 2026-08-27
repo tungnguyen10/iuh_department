@@ -253,6 +253,244 @@
   @apply rounded-lg border border-dashed border-stroke bg-white px-4 py-10 text-center font-sans text-sm font-medium text-gray-500;
 }
 
+// ===== Electricity and water =====
+.iuh-utilities {
+  @apply space-y-5 md:space-y-6;
+}
+
+.iuh-utilities__header {
+  @apply flex flex-col gap-3 rounded-xl border border-primary-dark-blue/10 bg-gradient-to-br from-secondary-blue-light/70 via-primary-white to-primary-white p-4 sm:flex-row sm:items-center sm:justify-between md:p-5;
+}
+
+.iuh-utilities__eyebrow {
+  @apply font-sans text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue/60;
+}
+
+.iuh-utilities__title,
+.iuh-utilities__section-title {
+  @apply font-inter font-bold leading-tight text-primary-dark-blue;
+}
+
+.iuh-utilities__title {
+  @apply mt-1 text-xl md:text-2xl;
+}
+
+.iuh-utilities__section-title {
+  @apply mt-1 text-lg md:text-xl;
+}
+
+.iuh-utilities__period {
+  @apply inline-flex w-fit items-center rounded-full bg-primary-dark-blue px-3 py-1.5 font-sans text-sm font-bold text-primary-white;
+}
+
+.iuh-utilities__notice {
+  @apply flex items-start gap-3 rounded-lg border border-primary-yellow/35 bg-secondary-yellow-light px-4 py-3 font-sans text-sm leading-relaxed text-title;
+}
+
+.iuh-utilities__notice-icon {
+  @apply mt-0.5 h-5 w-5 shrink-0;
+}
+
+.iuh-utilities__notice-body {
+  @apply flex flex-col gap-1 md:flex-row md:items-baseline md:gap-2;
+}
+
+.iuh-utilities__notice-body strong {
+  @apply shrink-0 text-primary-dark-blue;
+}
+
+.iuh-utilities__notice--open {
+  @apply border-secondary-blue/50 bg-secondary-blue-light/70;
+}
+
+.iuh-utilities__notice--success {
+  @apply border-secondary-green/40 bg-secondary-green/10;
+}
+
+.iuh-utilities__state + .iuh-utilities__state {
+  @apply mt-5 md:mt-6;
+}
+
+.iuh-utilities__state > .iuh-utilities__entry-card {
+  @apply mt-3;
+}
+
+.iuh-utilities__entry-fields {
+  @apply grid grid-cols-1 divide-y divide-stroke md:grid-cols-2 md:divide-x md:divide-y-0;
+}
+
+.iuh-utilities__entry-field {
+  @apply space-y-3 pt-5 first:pt-0 md:pt-0 md:pl-6 md:first:pl-0;
+}
+
+.iuh-utilities__entry-card {
+  @apply space-y-5 rounded-xl border border-primary-dark-blue/10 bg-primary-white p-4 shadow-[0_8px_20px_rgba(21,56,152,0.05)] md:p-6;
+}
+
+.iuh-utilities__entry-card--readonly {
+  @apply bg-secondary-blue-light/15;
+}
+
+.iuh-utilities__entry-heading {
+  @apply flex items-center gap-3 border-b border-stroke pb-3;
+}
+
+.iuh-utilities__entry-heading h3 {
+  @apply font-inter text-base font-bold text-primary-dark-blue md:text-lg;
+}
+
+.iuh-utilities__entry-icon {
+  @apply inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-dark-blue font-inter text-lg font-bold text-primary-white;
+}
+
+.iuh-utilities__entry-icon--water {
+  @apply bg-secondary-green text-primary-white;
+}
+
+// Signature element: old → new reading rendered as odometer-style tiles, like the
+// physical dial a student is copying digits from. Tile color itself carries state.
+.iuh-meter {
+  @apply flex flex-wrap items-end gap-3;
+}
+
+.iuh-meter__block {
+  @apply flex flex-col gap-1.5;
+}
+
+.iuh-meter__caption {
+  @apply font-sans text-[0.7rem] font-bold uppercase tracking-[0.1em] text-gray;
+}
+
+.iuh-meter__digits,
+.iuh-meter__digits-row {
+  @apply flex items-center gap-1.5;
+}
+
+.iuh-meter__digit {
+  @apply flex h-9 w-7 items-center justify-center rounded-md bg-primary-dark-blue bg-gradient-to-b from-white/10 via-transparent to-black/20 font-mono text-base font-bold tabular-nums text-secondary-blue-light md:h-10 md:w-8 md:text-lg;
+}
+
+.iuh-meter__arrow {
+  @apply mb-2 h-4 w-4 shrink-0 opacity-40 md:h-5 md:w-5;
+}
+
+.iuh-meter__input-shell {
+  @apply flex h-9 items-center gap-2 rounded-md bg-primary-dark-blue bg-gradient-to-b from-white/10 via-transparent to-black/20 px-2.5 md:h-10;
+}
+
+.iuh-meter__input {
+  @apply w-16 min-w-0 flex-1 bg-transparent font-mono text-base font-bold tabular-nums text-secondary-blue-light placeholder:text-secondary-blue-light/40 focus:outline-none md:text-lg;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+// Hide the native number spinner so the field reads as a meter tile, not a stepper.
+.iuh-meter__input::-webkit-outer-spin-button,
+.iuh-meter__input::-webkit-inner-spin-button {
+  @apply m-0;
+  -webkit-appearance: none;
+}
+
+.iuh-meter__unit {
+  @apply shrink-0 font-mono text-xs font-semibold uppercase tracking-wide text-secondary-blue-light/70;
+}
+
+.iuh-meter--locked .iuh-meter__digit,
+.iuh-meter--locked .iuh-meter__input-shell {
+  @apply bg-none bg-gray-300/70;
+}
+
+.iuh-meter--locked .iuh-meter__digit,
+.iuh-meter--locked .iuh-meter__input,
+.iuh-meter--locked .iuh-meter__unit {
+  @apply text-gray-500 placeholder:text-gray-400;
+}
+
+.iuh-meter--open .iuh-meter__input-shell:focus-within {
+  @apply ring-2 ring-primary-yellow ring-offset-2 ring-offset-primary-white;
+}
+
+.iuh-meter--pending .iuh-meter__digit--filled {
+  @apply bg-primary-yellow bg-gradient-to-b from-white/25 via-transparent to-black/10 text-primary-dark-blue;
+}
+
+.iuh-meter--confirmed .iuh-meter__digit--filled {
+  @apply bg-secondary-green bg-gradient-to-b from-white/20 via-transparent to-black/15 text-primary-white;
+}
+
+.iuh-utilities__submit {
+  @apply w-full sm:w-auto;
+}
+
+.iuh-utilities__entry-card :disabled {
+  @apply cursor-not-allowed opacity-60;
+}
+
+.iuh-utilities__receipt {
+  @apply flex flex-col gap-4 border-t border-stroke pt-4 sm:flex-row sm:items-end sm:justify-between;
+}
+
+.iuh-utilities__receipt-lines {
+  @apply space-y-1.5;
+}
+
+// Reuse the shared display-row primitive, scoped narrower for this inline summary
+// instead of its default 12rem label column (built for full-width display panels).
+.iuh-utilities__receipt-lines .iuh-form-display-row {
+  @apply grid-cols-[1fr_auto] items-baseline gap-2 px-0 py-0 sm:grid-cols-[1fr_auto] sm:gap-2;
+}
+
+.iuh-utilities__receipt-lines .iuh-form-display-label {
+  @apply text-[0.7rem] normal-case tracking-normal text-gray;
+}
+
+.iuh-utilities__receipt-lines .iuh-form-display-value {
+  @apply font-mono text-sm tabular-nums text-title sm:text-sm;
+}
+
+.iuh-utilities__receipt-row--total .iuh-form-display-label,
+.iuh-utilities__receipt-row--total .iuh-form-display-value {
+  @apply text-base font-bold text-primary-dark-blue;
+}
+
+
+.iuh-utilities__history {
+  @apply space-y-3 md:space-y-4;
+}
+
+.iuh-utilities__section-heading {
+  @apply flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between;
+}
+
+.iuh-utilities__table-wrap {
+  @apply max-w-full;
+}
+
+.iuh-utilities__table {
+  @apply min-w-[76rem];
+}
+
+.iuh-utilities__table .iuh-form-table-head-cell,
+.iuh-utilities__table .iuh-form-table-cell {
+  @apply whitespace-nowrap;
+}
+
+.iuh-utilities__actions {
+  @apply flex flex-nowrap items-center gap-1.5;
+}
+
+.iuh-utilities__action {
+  @apply inline-flex shrink-0 items-center gap-1 rounded-full border border-primary-dark-blue/15 px-2.5 py-1 font-sans text-xs font-semibold text-primary-dark-blue transition-colors hover:border-primary-dark-blue hover:bg-primary-dark-blue hover:text-primary-white;
+}
+
+.iuh-utilities__action-icon {
+  @apply h-3.5 w-3.5 shrink-0;
+}
+
+.iuh-utilities__action--receipt {
+  @apply border-primary-yellow/50 text-primary-dark-blue hover:border-primary-yellow hover:bg-primary-yellow hover:text-primary-dark-blue;
+}
+
 // ===== Attendance (Điểm danh) =====
 // Roll-call ledger. Signature element is the present/absent switch: the whole
 // row shifts to an amber "absent" state when toggled, so staff get instant

@@ -1,0 +1,379 @@
+<section class="iuh-utilities" aria-labelledby="iuh-utilities-title">
+  <header class="iuh-utilities__header">
+    <div>
+      <p class="iuh-utilities__eyebrow">Theo dõi chi phí nội trú</p>
+      <h2 class="iuh-utilities__title" id="iuh-utilities-title">Điện - Nước</h2>
+    </div>
+    <span class="iuh-utilities__period">Đợt 08/2026</span>
+  </header>
+
+  <!-- Electricity + water now share one entry card, read as a physical meter dial:
+       old reading → arrow → new reading. All four round states render stacked
+       for design reference; there is no state toggle. -->
+  <div class="iuh-utilities__state" data-utilities-state="no_round">
+    <div class="iuh-utilities__notice" role="status">
+      <img src="/assets/svgs/icon-warning.svg" alt="" class="iuh-utilities__notice-icon" />
+      <div class="iuh-utilities__notice-body">
+        <strong>Chưa có đợt nhập điện nước.</strong>
+        <span>Admin chưa mở đợt nhập chỉ số cho tháng này. Bạn có thể xem lại lịch sử bên dưới.</span>
+      </div>
+    </div>
+    <form class="iuh-utilities__entry-card" action="#" method="post">
+      <div class="iuh-utilities__entry-fields">
+        <div class="iuh-utilities__entry-field">
+          <div class="iuh-utilities__entry-heading">
+            <span class="iuh-utilities__entry-icon" aria-hidden="true">Đ</span>
+            <h3>Điện</h3>
+          </div>
+          <div class="iuh-meter iuh-meter--locked">
+            <div class="iuh-meter__block">
+              <span class="iuh-meter__caption">Kỳ trước</span>
+              <div class="iuh-meter__digits" role="img" aria-label="Chỉ số cũ 128 kWh">
+                <span class="iuh-meter__digit" aria-hidden="true">1</span>
+                <span class="iuh-meter__digit" aria-hidden="true">2</span>
+                <span class="iuh-meter__digit" aria-hidden="true">8</span>
+              </div>
+            </div>
+            <img src="/assets/svgs/icon-arrow-right.svg" alt="" class="iuh-meter__arrow" />
+            <div class="iuh-meter__block">
+              <label class="iuh-meter__caption" for="electricity-reading-no-round">Chỉ số mới</label>
+              <div class="iuh-meter__input-shell">
+                <input class="iuh-meter__input" id="electricity-reading-no-round" name="electricity-reading" type="number" min="128" placeholder="—" disabled>
+                <span class="iuh-meter__unit">kWh</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="iuh-utilities__entry-field">
+          <div class="iuh-utilities__entry-heading">
+            <span class="iuh-utilities__entry-icon iuh-utilities__entry-icon--water" aria-hidden="true">N</span>
+            <h3>Nước</h3>
+          </div>
+          <div class="iuh-meter iuh-meter--locked">
+            <div class="iuh-meter__block">
+              <span class="iuh-meter__caption">Kỳ trước</span>
+              <div class="iuh-meter__digits" role="img" aria-label="Chỉ số cũ 42 m3">
+                <span class="iuh-meter__digit" aria-hidden="true">4</span>
+                <span class="iuh-meter__digit" aria-hidden="true">2</span>
+              </div>
+            </div>
+            <img src="/assets/svgs/icon-arrow-right.svg" alt="" class="iuh-meter__arrow" />
+            <div class="iuh-meter__block">
+              <label class="iuh-meter__caption" for="water-reading-no-round">Chỉ số mới</label>
+              <div class="iuh-meter__input-shell">
+                <input class="iuh-meter__input" id="water-reading-no-round" name="water-reading" type="number" min="42" placeholder="—" disabled>
+                <span class="iuh-meter__unit">m³</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-include="@shared/components/button/button.html"
+        data-variant="7"
+        data-type="submit"
+        data-text="Lưu chỉ số điện & nước"
+        data-icon="/assets/svgs/icon-send.svg"
+        data-class="iuh-utilities__submit"
+        data-attrs="disabled">
+      </div>
+    </form>
+  </div>
+
+  <div class="iuh-utilities__state" data-utilities-state="open">
+    <div class="iuh-utilities__notice iuh-utilities__notice--open" role="status">
+      <img src="/assets/svgs/icon-calendar-clock.svg" alt="" class="iuh-utilities__notice-icon" />
+      <div class="iuh-utilities__notice-body">
+        <strong>Đợt 09/2026 đang mở.</strong>
+        <span>Hạn nhập chỉ số đến 05/09/2026.</span>
+      </div>
+    </div>
+    <form class="iuh-utilities__entry-card" action="#" method="post">
+      <div class="iuh-utilities__entry-fields">
+        <div class="iuh-utilities__entry-field">
+          <div class="iuh-utilities__entry-heading">
+            <span class="iuh-utilities__entry-icon" aria-hidden="true">Đ</span>
+            <h3>Điện</h3>
+          </div>
+          <div class="iuh-meter iuh-meter--open">
+            <div class="iuh-meter__block">
+              <span class="iuh-meter__caption">Kỳ trước</span>
+              <div class="iuh-meter__digits" role="img" aria-label="Chỉ số cũ 156 kWh">
+                <span class="iuh-meter__digit" aria-hidden="true">1</span>
+                <span class="iuh-meter__digit" aria-hidden="true">5</span>
+                <span class="iuh-meter__digit" aria-hidden="true">6</span>
+              </div>
+            </div>
+            <img src="/assets/svgs/icon-arrow-right.svg" alt="" class="iuh-meter__arrow" />
+            <div class="iuh-meter__block">
+              <label class="iuh-meter__caption" for="electricity-reading-open">Chỉ số mới</label>
+              <div class="iuh-meter__input-shell">
+                <input class="iuh-meter__input" id="electricity-reading-open" name="electricity-reading" type="number" min="156" placeholder="—">
+                <span class="iuh-meter__unit">kWh</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="iuh-utilities__entry-field">
+          <div class="iuh-utilities__entry-heading">
+            <span class="iuh-utilities__entry-icon iuh-utilities__entry-icon--water" aria-hidden="true">N</span>
+            <h3>Nước</h3>
+          </div>
+          <div class="iuh-meter iuh-meter--open">
+            <div class="iuh-meter__block">
+              <span class="iuh-meter__caption">Kỳ trước</span>
+              <div class="iuh-meter__digits" role="img" aria-label="Chỉ số cũ 45 m3">
+                <span class="iuh-meter__digit" aria-hidden="true">4</span>
+                <span class="iuh-meter__digit" aria-hidden="true">5</span>
+              </div>
+            </div>
+            <img src="/assets/svgs/icon-arrow-right.svg" alt="" class="iuh-meter__arrow" />
+            <div class="iuh-meter__block">
+              <label class="iuh-meter__caption" for="water-reading-open">Chỉ số mới</label>
+              <div class="iuh-meter__input-shell">
+                <input class="iuh-meter__input" id="water-reading-open" name="water-reading" type="number" min="45" placeholder="—">
+                <span class="iuh-meter__unit">m³</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-include="@shared/components/button/button.html"
+        data-variant="7"
+        data-type="submit"
+        data-text="Lưu chỉ số điện & nước"
+        data-icon="/assets/svgs/icon-send.svg"
+        data-class="iuh-utilities__submit">
+      </div>
+    </form>
+  </div>
+
+  <div class="iuh-utilities__state" data-utilities-state="pending">
+    <div class="iuh-utilities__notice" role="status">
+      <img src="/assets/svgs/icon-clock.svg" alt="" class="iuh-utilities__notice-icon" />
+      <div class="iuh-utilities__notice-body">
+        <strong>Đã gửi chỉ số đợt 08/2026.</strong>
+        <span>Đang chờ quản lý xác nhận và tính tiền.</span>
+      </div>
+    </div>
+    <div class="iuh-utilities__entry-card iuh-utilities__entry-card--readonly">
+      <div class="iuh-utilities__entry-fields">
+        <div class="iuh-utilities__entry-field">
+          <div class="iuh-utilities__entry-heading">
+            <span class="iuh-utilities__entry-icon" aria-hidden="true">Đ</span>
+            <h3>Điện</h3>
+          </div>
+          <div class="iuh-meter iuh-meter--pending">
+            <div class="iuh-meter__block">
+              <span class="iuh-meter__caption">Kỳ trước</span>
+              <div class="iuh-meter__digits" role="img" aria-label="Chỉ số cũ 128 kWh">
+                <span class="iuh-meter__digit" aria-hidden="true">1</span>
+                <span class="iuh-meter__digit" aria-hidden="true">2</span>
+                <span class="iuh-meter__digit" aria-hidden="true">8</span>
+              </div>
+            </div>
+            <img src="/assets/svgs/icon-arrow-right.svg" alt="" class="iuh-meter__arrow" />
+            <div class="iuh-meter__block">
+              <span class="iuh-meter__caption">Đã gửi</span>
+              <div class="iuh-meter__digits-row">
+                <div class="iuh-meter__digits" role="img" aria-label="Chỉ số mới 156 kWh">
+                  <span class="iuh-meter__digit iuh-meter__digit--filled" aria-hidden="true">1</span>
+                  <span class="iuh-meter__digit iuh-meter__digit--filled" aria-hidden="true">5</span>
+                  <span class="iuh-meter__digit iuh-meter__digit--filled" aria-hidden="true">6</span>
+                </div>
+                <span class="iuh-meter__unit">kWh</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="iuh-utilities__entry-field">
+          <div class="iuh-utilities__entry-heading">
+            <span class="iuh-utilities__entry-icon iuh-utilities__entry-icon--water" aria-hidden="true">N</span>
+            <h3>Nước</h3>
+          </div>
+          <div class="iuh-meter iuh-meter--pending">
+            <div class="iuh-meter__block">
+              <span class="iuh-meter__caption">Kỳ trước</span>
+              <div class="iuh-meter__digits" role="img" aria-label="Chỉ số cũ 42 m3">
+                <span class="iuh-meter__digit" aria-hidden="true">4</span>
+                <span class="iuh-meter__digit" aria-hidden="true">2</span>
+              </div>
+            </div>
+            <img src="/assets/svgs/icon-arrow-right.svg" alt="" class="iuh-meter__arrow" />
+            <div class="iuh-meter__block">
+              <span class="iuh-meter__caption">Đã gửi</span>
+              <div class="iuh-meter__digits-row">
+                <div class="iuh-meter__digits" role="img" aria-label="Chỉ số mới 45 m3">
+                  <span class="iuh-meter__digit iuh-meter__digit--filled" aria-hidden="true">4</span>
+                  <span class="iuh-meter__digit iuh-meter__digit--filled" aria-hidden="true">5</span>
+                </div>
+                <span class="iuh-meter__unit">m³</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="iuh-utilities__state" data-utilities-state="confirmed">
+    <div class="iuh-utilities__notice iuh-utilities__notice--success" role="status">
+      <img src="/assets/svgs/icon-check-circle.svg" alt="" class="iuh-utilities__notice-icon" />
+      <div class="iuh-utilities__notice-body">
+        <strong>Đã xác nhận chỉ số đợt 07/2026.</strong>
+        <span>Tổng tiền: 278.000đ.</span>
+      </div>
+    </div>
+    <div class="iuh-utilities__entry-card iuh-utilities__entry-card--readonly">
+      <div class="iuh-utilities__entry-fields">
+        <div class="iuh-utilities__entry-field">
+          <div class="iuh-utilities__entry-heading">
+            <span class="iuh-utilities__entry-icon" aria-hidden="true">Đ</span>
+            <h3>Điện</h3>
+          </div>
+          <div class="iuh-meter iuh-meter--confirmed">
+            <div class="iuh-meter__block">
+              <span class="iuh-meter__caption">Kỳ trước</span>
+              <div class="iuh-meter__digits" role="img" aria-label="Chỉ số cũ 96 kWh">
+                <span class="iuh-meter__digit" aria-hidden="true">9</span>
+                <span class="iuh-meter__digit" aria-hidden="true">6</span>
+              </div>
+            </div>
+            <img src="/assets/svgs/icon-arrow-right.svg" alt="" class="iuh-meter__arrow" />
+            <div class="iuh-meter__block">
+              <span class="iuh-meter__caption">Chỉ số mới</span>
+              <div class="iuh-meter__digits-row">
+                <div class="iuh-meter__digits" role="img" aria-label="Chỉ số mới 128 kWh">
+                  <span class="iuh-meter__digit iuh-meter__digit--filled" aria-hidden="true">1</span>
+                  <span class="iuh-meter__digit iuh-meter__digit--filled" aria-hidden="true">2</span>
+                  <span class="iuh-meter__digit iuh-meter__digit--filled" aria-hidden="true">8</span>
+                </div>
+                <span class="iuh-meter__unit">kWh</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="iuh-utilities__entry-field">
+          <div class="iuh-utilities__entry-heading">
+            <span class="iuh-utilities__entry-icon iuh-utilities__entry-icon--water" aria-hidden="true">N</span>
+            <h3>Nước</h3>
+          </div>
+          <div class="iuh-meter iuh-meter--confirmed">
+            <div class="iuh-meter__block">
+              <span class="iuh-meter__caption">Kỳ trước</span>
+              <div class="iuh-meter__digits" role="img" aria-label="Chỉ số cũ 38 m3">
+                <span class="iuh-meter__digit" aria-hidden="true">3</span>
+                <span class="iuh-meter__digit" aria-hidden="true">8</span>
+              </div>
+            </div>
+            <img src="/assets/svgs/icon-arrow-right.svg" alt="" class="iuh-meter__arrow" />
+            <div class="iuh-meter__block">
+              <span class="iuh-meter__caption">Chỉ số mới</span>
+              <div class="iuh-meter__digits-row">
+                <div class="iuh-meter__digits" role="img" aria-label="Chỉ số mới 42 m3">
+                  <span class="iuh-meter__digit iuh-meter__digit--filled" aria-hidden="true">4</span>
+                  <span class="iuh-meter__digit iuh-meter__digit--filled" aria-hidden="true">2</span>
+                </div>
+                <span class="iuh-meter__unit">m³</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="iuh-utilities__receipt">
+        <div class="iuh-utilities__receipt-lines">
+          <p class="iuh-utilities__eyebrow">Biên lai đợt 07/2026</p>
+          <div data-include="@shared/components/form/display-row.html" data-label="Tiền điện" data-value="230.000đ"></div>
+          <div data-include="@shared/components/form/display-row.html" data-label="Tiền nước" data-value="48.000đ"></div>
+          <div data-include="@shared/components/form/display-row.html" data-row-class="iuh-utilities__receipt-row--total" data-label="Tổng tiền" data-value="278.000đ"></div>
+        </div>
+        <a href="#" class="iuh-utilities__action iuh-utilities__action--receipt iuh-utilities__receipt-link">
+          <img src="/assets/svgs/icon-money.svg" alt="" class="iuh-utilities__action-icon" />
+          <span>Xem biên lai</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <section class="iuh-utilities__history" aria-labelledby="iuh-utilities-history-title">
+    <div class="iuh-utilities__section-heading">
+      <div>
+        <p class="iuh-utilities__eyebrow">Lịch sử sử dụng</p>
+        <h3 class="iuh-utilities__section-title" id="iuh-utilities-history-title">Danh sách chỉ số điện nước hàng tháng</h3>
+      </div>
+    </div>
+
+    <div class="iuh-form-table-wrap iuh-utilities__table-wrap">
+      <table class="iuh-form-table iuh-utilities__table" aria-label="Danh sách chỉ số điện nước hàng tháng">
+        <thead>
+          <tr class="iuh-form-table-head-row">
+            <div data-include="@shared/components/form/table.html" data-variant="5" data-text="Đợt"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="5" data-text="Định mức điện"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="5" data-text="Chỉ số điện cũ"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="5" data-text="Chỉ số điện mới"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="5" data-text="Định mức nước"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="5" data-text="Chỉ số nước cũ"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="5" data-text="Chỉ số nước mới"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="5" data-text="Tổng tiền"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="5" data-text="Thao tác"></div>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="iuh-form-table-body-row">
+            <div data-include="@shared/components/form/table.html" data-variant="6" data-label="Đợt" data-class="iuh-form-table-cell--strong" data-text="08/2026"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="6" data-label="Định mức điện" data-text="50 kWh"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="6" data-label="Chỉ số điện cũ" data-text="128 kWh"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="6" data-label="Chỉ số điện mới" data-text="156 kWh"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="6" data-label="Định mức nước" data-text="4 m³"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="6" data-label="Chỉ số nước cũ" data-text="42 m³"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="6" data-label="Chỉ số nước mới" data-text="45 m³"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="6" data-label="Tổng tiền" data-class="iuh-form-table-cell--strong" data-text="245.000đ"></div>
+            <!-- Actions cell renders linked chips; the engine can't pass tag markup through a data attribute. -->
+            <td class="iuh-form-table-cell" data-label="Thao tác">
+              <div class="iuh-utilities__actions">
+                <a class="iuh-utilities__action" href="#">
+                  <img src="/assets/svgs/icon-eye.svg" alt="" class="iuh-utilities__action-icon" />
+                  <span>Xem</span>
+                </a>
+                <a class="iuh-utilities__action" href="#">
+                  <img src="/assets/svgs/icon-edit.svg" alt="" class="iuh-utilities__action-icon" />
+                  <span>Sửa</span>
+                </a>
+                <a class="iuh-utilities__action iuh-utilities__action--receipt" href="#">
+                  <img src="/assets/svgs/icon-money.svg" alt="" class="iuh-utilities__action-icon" />
+                  <span>Biên lai</span>
+                </a>
+              </div>
+            </td>
+          </tr>
+          <tr class="iuh-form-table-body-row">
+            <div data-include="@shared/components/form/table.html" data-variant="6" data-label="Đợt" data-class="iuh-form-table-cell--strong" data-text="07/2026"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="6" data-label="Định mức điện" data-text="50 kWh"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="6" data-label="Chỉ số điện cũ" data-text="96 kWh"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="6" data-label="Chỉ số điện mới" data-text="128 kWh"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="6" data-label="Định mức nước" data-text="4 m³"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="6" data-label="Chỉ số nước cũ" data-text="38 m³"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="6" data-label="Chỉ số nước mới" data-text="42 m³"></div>
+            <div data-include="@shared/components/form/table.html" data-variant="6" data-label="Tổng tiền" data-class="iuh-form-table-cell--strong" data-text="278.000đ"></div>
+            <!-- Actions cell renders linked chips; the engine can't pass tag markup through a data attribute. -->
+            <td class="iuh-form-table-cell" data-label="Thao tác">
+              <div class="iuh-utilities__actions">
+                <a class="iuh-utilities__action" href="#">
+                  <img src="/assets/svgs/icon-eye.svg" alt="" class="iuh-utilities__action-icon" />
+                  <span>Xem</span>
+                </a>
+                <a class="iuh-utilities__action" href="#">
+                  <img src="/assets/svgs/icon-edit.svg" alt="" class="iuh-utilities__action-icon" />
+                  <span>Sửa</span>
+                </a>
+                <a class="iuh-utilities__action iuh-utilities__action--receipt" href="#">
+                  <img src="/assets/svgs/icon-money.svg" alt="" class="iuh-utilities__action-icon" />
+                  <span>Biên lai</span>
+                </a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</section>
