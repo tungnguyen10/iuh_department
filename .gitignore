@@ -12,6 +12,7 @@ node_modules
 dist
 dist-ssr
 dist_iuh
+.worktrees
 *.local
 .firebaserc
 firebase.json
