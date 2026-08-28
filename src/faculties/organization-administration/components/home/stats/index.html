@@ -1,0 +1,31 @@
+<!-- Stats Cards Section -->
+<div data-module="stats"
+    class="self-stretch py-8 md:py-14 relative bg-secondary-blue-light shadow-[inset_0px_0px_20px_0px_rgba(142,216,248,0.80)] inline-flex flex-col justify-start items-center overflow-hidden w-full {{class}}">
+    <div class="container px-4 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 justify-items-center">
+        <!-- Wave effect -->
+        <div data-include="@shared/components/common/core-deco.html" data-class="wave absolute opacity-20 w-[180px] sm:w-[300px] lg:w-[320px] left-[calc(50%-200px)] sm:left-[calc(50%-300px)] lg:left-[calc(50%-830px)] xl:left-[calc(50%-930px)]  -bottom-[10%] sm:-bottom-[12%] lg:-bottom-[15%]"></div>
+        <!-- Stats Card 1 -->
+        <div data-include="@shared/components/stats/stats-card.html" data-count="300" data-suffix="+"
+            data-bgImage="/assets/images/default.jpg" data-icon="/assets/svgs/icon-user.svg"
+            data-iconAlt="Cán bộ, viên chức" data-description="Cán bộ, viên chức đang công tác">
+        </div>
+
+        <!-- Stats Card 2 -->
+        <div data-include="@shared/components/stats/stats-card.html" data-count="5000" data-suffix="+"
+            data-bgImage="/assets/images/banner.jpg" data-icon="/assets/svgs/icon-agreement.svg"
+            data-iconAlt="Hồ sơ" data-description="Hồ sơ, biểu mẫu xử lý mỗi năm">
+        </div>
+
+        <!-- Stats Card 3 -->
+        <div data-include="@shared/components/stats/stats-card.html" data-count="25" data-suffix="+"
+            data-bgImage="/assets/images/default.jpg" data-icon="/assets/svgs/icon-building.svg"
+            data-iconAlt="Đơn vị" data-description="Đơn vị, phòng ban phối hợp">
+        </div>
+
+        <!-- Stats Card 4 -->
+        <div data-include="@shared/components/stats/stats-card.html" data-count="98" data-suffix="%"
+            data-bgImage="/assets/images/default.jpg" data-icon="/assets/svgs/icon-shield-check.svg"
+            data-iconAlt="Đúng hạn" data-description="Hồ sơ xử lý đúng hạn">
+        </div>
+    </div>
+</div>
