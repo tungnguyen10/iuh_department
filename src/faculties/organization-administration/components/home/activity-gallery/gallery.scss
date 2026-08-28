@@ -1,0 +1,7 @@
+.activity-gallery-card {
+  opacity: 0.96;
+
+  &.activity-gallery-card--visible {
+    opacity: 1;
+  }
+}

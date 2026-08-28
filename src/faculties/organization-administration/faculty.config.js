@@ -24,7 +24,20 @@ export const organizationAdministrationFacultyConfig = {
   },
   styles: facultyComponentStyles,
   search: site.search,
-  runtimeModules: [],
+  runtimeModules: [
+    {
+      selector: ".hero-swiper",
+      load: () => import("./components/home/carousel/carousel.js"),
+      init: "initHeroCarousel",
+      name: "Hero Carousel",
+    },
+    {
+      selector: ".activity-gallery-card",
+      load: () => import("./components/home/activity-gallery/gallery.js"),
+      init: "initActivityGallery",
+      name: "Activity Gallery",
+    },
+  ],
 };
 
 export default organizationAdministrationFacultyConfig;

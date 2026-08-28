@@ -61,6 +61,34 @@
         { "type": "paragraph", "text": "Cán bộ, giảng viên có thể mô tả nhu cầu để được phân luồng đến đầu mối phụ trách phù hợp." },
         { "type": "info", "title": "Liên hệ mẫu", "text": "Email: example@iuh.edu.vn · Điện thoại: (028) 0000 0000." }
       ]
+    },
+    {
+      "id": 5,
+      "slug": "cap-nhat-quy-trinh-tiep-nhan-xu-ly-van-ban",
+      "title": "Thông báo cập nhật quy trình tiếp nhận và xử lý văn bản",
+      "excerpt": "Thông tin mẫu về điều chỉnh các bước tiếp nhận, luân chuyển và xử lý văn bản đến – đi tại các đơn vị.",
+      "category": "Văn thư – lưu trữ",
+      "date": "02 tháng 8, 2026",
+      "image": "/assets/images/default.jpg",
+      "imageAlt": "Cập nhật quy trình xử lý văn bản",
+      "content": [
+        { "type": "notice", "title": "Dữ liệu minh họa", "text": "Quy trình chính thức sẽ được ban hành kèm văn bản hướng dẫn riêng." },
+        { "type": "paragraph", "text": "Các đơn vị theo dõi kênh thông báo chính thức để cập nhật biểu mẫu và đầu mối tiếp nhận tương ứng." }
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "huong-dan-che-do-chinh-sach-nguoi-lao-dong",
+      "title": "Hướng dẫn thực hiện chế độ, chính sách đối với người lao động",
+      "excerpt": "Thông tin mẫu về hồ sơ, thủ tục thực hiện chế độ, chính sách dành cho cán bộ, giảng viên.",
+      "category": "Chế độ – Chính sách",
+      "date": "28 tháng 7, 2026",
+      "image": "/assets/images/default.jpg",
+      "imageAlt": "Chế độ, chính sách người lao động",
+      "content": [
+        { "type": "notice", "title": "Dữ liệu minh họa", "text": "Nội dung cần đối chiếu quy định hiện hành trước khi áp dụng." },
+        { "type": "paragraph", "text": "Cán bộ, giảng viên chuẩn bị hồ sơ theo hướng dẫn và liên hệ đầu mối phụ trách để được kiểm tra trước khi nộp." }
+      ]
     }
   ]
 }
