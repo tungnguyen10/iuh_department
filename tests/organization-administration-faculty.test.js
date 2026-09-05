@@ -19,6 +19,60 @@ const expectedPages = [
 
 const readFacultyFile = (path) => readFile(new URL(path, facultyRoot), 'utf8')
 
+test('organization administration retained pages use the approved vocabulary', async () => {
+  const [about, leadership, detail, contact, news, newsDetail] = await Promise.all([
+    readFacultyFile('pages/about.html'),
+    readFacultyFile('pages/leadership.html'),
+    readFacultyFile('pages/leadership-detail.html'),
+    readFacultyFile('pages/contact.html'),
+    readFacultyFile('pages/news.html'),
+    readFacultyFile('pages/news-detail.html'),
+  ])
+
+  assert.match(about, /href=["']\/functions-duties\.html["']/)
+  assert.match(about, />Xem chức năng – nhiệm vụ<\/a>/)
+  assert.match(about, /href=["']\/contact\.html["']/)
+  assert.equal((about.match(/<section\b/g) ?? []).length, 2)
+  for (const label of ['Tổ chức – Cán bộ', 'Hành chính – Tổng hợp', 'Văn thư – Lưu trữ', 'Chính sách – Thi đua', 'Lễ tân – Khánh tiết']) {
+    for (const page of [about, leadership, detail, contact]) assert.ok(page.includes(label), `missing ${label}`)
+  }
+  assert.equal((leadership.match(/@shared\/components\/leadership\/leader-board\.html/g) ?? []).length, 3)
+  assert.match(detail, /data-leader-detail/)
+  assert.match(detail, /data-leader-name/)
+  assert.match(detail, /href=["']\/functions-duties\.html["']/)
+  assert.match(news, /Tin tức – Thông báo/)
+  assert.match(newsDetail, /Tin tức – Thông báo/)
+  assert.doesNotMatch(`${about}\n${leadership}\n${detail}\n${contact}`, /tư tưởng|truyền thông|kết nối nguồn lực|nguồn lực hỗ trợ/i)
+})
+
+test('organization administration contact routes to exactly the five approved areas', async () => {
+  const contact = await readFacultyFile('pages/contact.html')
+  const options = [...contact.matchAll(/data-option\d+-value="([^"]+)" data-option\d+-text="([^"]+)"/g)]
+
+  assert.deepEqual(options.map(([, value, label]) => [value, label]), [
+    ['organization-personnel', 'Tổ chức – Cán bộ'],
+    ['administration-general', 'Hành chính – Tổng hợp'],
+    ['records-archives', 'Văn thư – Lưu trữ'],
+    ['policy-emulation', 'Chính sách – Thi đua'],
+    ['reception-protocol', 'Lễ tân – Khánh tiết'],
+  ])
+  assert.match(contact, /Biểu mẫu minh họa, chưa kết nối hệ thống tiếp nhận\./)
+  assert.match(contact, /<form[^>]+action="#" method="post"/)
+})
+
+test('organization administration news metadata and navigation use the en-dash label', async () => {
+  const [news, detail] = await Promise.all([
+    readFacultyFile('pages/news.html'),
+    readFacultyFile('pages/news-detail.html'),
+  ])
+
+  assert.match(news, /LAYOUT: title="Tin tức – Thông báo"/)
+  assert.match(news, /data-current-page="Tin tức – Thông báo"/)
+  assert.match(news, /data-title="Tin tức – Thông báo"/)
+  assert.match(detail, /data-parent-page1="Tin tức – Thông báo" data-parent-link1="\/news\.html"/)
+  assert.doesNotMatch(`${news}\n${detail}`, /tin tức và thông báo/i)
+})
+
 test('organization administration faculty exposes the selected-faculty contract', async () => {
   const config = await readFacultyFile('faculty.config.js')
 
