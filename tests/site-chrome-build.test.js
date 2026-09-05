@@ -12,7 +12,7 @@ const faculties = {
   'health-science': 13,
   'dormitory-management': 14,
   'political-student-affairs': 8,
-  'organization-administration': 8,
+  'organization-administration': 11,
 }
 
 const collectSourceFiles = async (directory) => {
