@@ -113,3 +113,22 @@ test('organization administration chrome follows the index information architect
   assert.ok(site.search.quickLinks.some(({ href }) => href === '/documents-forms.html'))
   assert.ok(site.search.quickLinks.some(({ href }) => href === '/recruitment.html'))
 })
+
+test('organization administration index modules link to focused destinations', async () => {
+  const [responsibilities, noticeHub] = await Promise.all([
+    readFacultyFile('components/home/responsibility-areas/index.html'),
+    readFacultyFile('components/home/notice-hub/index.html'),
+  ])
+
+  for (const id of [
+    'organization-personnel',
+    'administration-general',
+    'records-archives',
+    'policy-emulation',
+    'reception-protocol',
+  ]) assert.match(responsibilities, new RegExp(`href=["']/functions-duties\\.html#${id}["']`))
+
+  assert.match(noticeHub, /href=["']\/documents-forms\.html["']/)
+  assert.match(noticeHub, /href=["']\/recruitment\.html["']/)
+  assert.doesNotMatch(noticeHub, /<a[^>]*href=["']\/contact\.html["'][^>]*aria-label=["']Tải xuống/)
+})
