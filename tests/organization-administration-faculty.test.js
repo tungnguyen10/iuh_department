@@ -84,3 +84,32 @@ test('organization administration adds focused pages for index destinations', as
   assert.doesNotMatch(documentsPage, /href=[\"']#[\"']/)
   assert.match(recruitmentPage, /Tuyển dụng IUH/)
 })
+
+test('organization administration chrome follows the index information architecture', async () => {
+  const site = JSON.parse(await readFacultyFile('data/site.json'))
+
+  assert.deepEqual(site.navigation.map(({ text }) => text), [
+    'TRANG CHỦ',
+    'GIỚI THIỆU',
+    'LĨNH VỰC PHỤ TRÁCH',
+    'TIN TỨC – THÔNG BÁO',
+    'VĂN BẢN – BIỂU MẪU',
+    'TUYỂN DỤNG',
+    'LIÊN HỆ',
+  ])
+  assert.deepEqual(site.navigation[1].children.map(({ href }) => href), [
+    '/about.html',
+    '/functions-duties.html',
+    '/leadership.html',
+  ])
+  assert.deepEqual(site.navigation[2].children.map(({ href }) => href), [
+    '/functions-duties.html#organization-personnel',
+    '/functions-duties.html#administration-general',
+    '/functions-duties.html#records-archives',
+    '/functions-duties.html#policy-emulation',
+    '/functions-duties.html#reception-protocol',
+  ])
+  assert.ok(site.footer.columns.flatMap(({ links }) => links).some(({ href }) => href === '/partners.html'))
+  assert.ok(site.search.quickLinks.some(({ href }) => href === '/documents-forms.html'))
+  assert.ok(site.search.quickLinks.some(({ href }) => href === '/recruitment.html'))
+})

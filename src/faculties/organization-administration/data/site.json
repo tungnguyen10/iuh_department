@@ -9,37 +9,46 @@
     "mapAddress": "Số 12 Nguyễn Văn Bảo, Phường Hạnh Thông, TP.HCM"
   },
   "quickLinks": [
-    { "text": "Giới thiệu", "href": "/about.html", "icon": "icon-article.svg" },
-    { "text": "Nhân sự cán bộ, giảng viên", "href": "/news.html", "icon": "icon-help-circle.svg" },
-    { "text": "Ban lãnh đạo", "href": "/leadership.html", "icon": "icon-graduation-cap.svg" },
-    { "text": "Tư vấn hỗ trợ", "href": "/contact.html", "icon": "icon-building.svg" }
+    { "text": "Chức năng – Nhiệm vụ", "href": "/functions-duties.html", "icon": "icon-article.svg" },
+    { "text": "Văn bản – Biểu mẫu", "href": "/documents-forms.html", "icon": "icon-file-word.svg" },
+    { "text": "Tuyển dụng IUH", "href": "/recruitment.html", "icon": "icon-briefcase.svg" },
+    { "text": "Liên hệ hỗ trợ", "href": "/contact.html", "icon": "icon-building.svg" }
   ],
   "navigation": [
     { "text": "TRANG CHỦ", "href": "/" },
-    { "text": "GIỚI THIỆU", "href": "/about.html" },
-    { "text": "TIN TỨC - THÔNG BÁO", "href": "/news.html" },
-    { "text": "TỔ CHỨC - NHÂN SỰ", "href": "/leadership.html" },
-    { "text": "VĂN BẢN", "href": "/news.html" },
-    { "text": "ĐỐI TÁC", "href": "/partners.html" },
+    { "text": "GIỚI THIỆU", "children": [
+      { "text": "Tổng quan", "href": "/about.html" },
+      { "text": "Chức năng – Nhiệm vụ", "href": "/functions-duties.html" },
+      { "text": "Ban lãnh đạo", "href": "/leadership.html" }
+    ] },
+    { "text": "LĨNH VỰC PHỤ TRÁCH", "children": [
+      { "text": "Tổ chức – Cán bộ", "href": "/functions-duties.html#organization-personnel" },
+      { "text": "Hành chính – Tổng hợp", "href": "/functions-duties.html#administration-general" },
+      { "text": "Văn thư – Lưu trữ", "href": "/functions-duties.html#records-archives" },
+      { "text": "Chính sách – Thi đua", "href": "/functions-duties.html#policy-emulation" },
+      { "text": "Lễ tân – Khánh tiết", "href": "/functions-duties.html#reception-protocol" }
+    ] },
+    { "text": "TIN TỨC – THÔNG BÁO", "href": "/news.html" },
+    { "text": "VĂN BẢN – BIỂU MẪU", "href": "/documents-forms.html" },
+    { "text": "TUYỂN DỤNG", "href": "/recruitment.html" },
     { "text": "LIÊN HỆ", "href": "/contact.html" }
   ],
   "footer": {
     "columns": [
-      { "title": "Nhân sự", "links": [
-        { "text": "Nhân sự cán bộ, giảng viên", "href": "/news.html" },
-        { "text": "Văn thư – lưu trữ", "href": "/news.html" },
-        { "text": "Hướng dẫn thủ tục", "href": "/contact.html" }
+      { "title": "Nghiệp vụ", "links": [
+        { "text": "Chức năng – Nhiệm vụ", "href": "/functions-duties.html" },
+        { "text": "Văn bản – Biểu mẫu", "href": "/documents-forms.html" },
+        { "text": "Tuyển dụng IUH", "href": "/recruitment.html" }
       ] },
-      { "title": "Hỗ trợ", "links": [
-        { "text": "Tư vấn cán bộ, giảng viên", "href": "/contact.html" },
-        { "text": "Tiếp nhận phản ánh", "href": "/contact.html" },
-        { "text": "Kết nối nguồn lực", "href": "/contact.html" }
+      { "title": "Tra cứu – Hỗ trợ", "links": [
+        { "text": "Tin tức – Thông báo", "href": "/news.html" },
+        { "text": "Liên hệ đúng đầu mối", "href": "/contact.html" },
+        { "text": "Đối tác hợp tác", "href": "/partners.html" }
       ] },
       { "title": "Thông tin", "links": [
-        { "text": "Tin tức mới", "href": "/news.html" },
-        { "text": "Giới thiệu", "href": "/about.html" },
+        { "text": "Tổng quan", "href": "/about.html" },
         { "text": "Ban lãnh đạo", "href": "/leadership.html" },
-        { "text": "Đối tác hợp tác", "href": "/partners.html" }
+        { "text": "Trang chủ", "href": "/" }
       ] }
     ],
     "socialLinks": [
@@ -50,15 +59,18 @@
   },
   "search": {
     "quickLinks": [
-      { "text": "Giới thiệu", "href": "/about.html" },
-      { "text": "Tin tức", "href": "/news.html" },
-      { "text": "Ban lãnh đạo", "href": "/leadership.html" },
-      { "text": "Đối tác hợp tác", "href": "/partners.html" },
-      { "text": "Liên hệ hỗ trợ", "href": "/contact.html" }
+      { "text": "Chức năng – Nhiệm vụ", "href": "/functions-duties.html" },
+      { "text": "Văn bản – Biểu mẫu", "href": "/documents-forms.html" },
+      { "text": "Tuyển dụng IUH", "href": "/recruitment.html" },
+      { "text": "Tin tức – Thông báo", "href": "/news.html" },
+      { "text": "Liên hệ", "href": "/contact.html" },
+      { "text": "Đối tác hợp tác", "href": "/partners.html" }
     ],
     "categories": [
       { "text": "Giới thiệu", "href": "/about.html", "icon": "GT" },
-      { "text": "Tin tức", "href": "/news.html", "icon": "TT" },
+      { "text": "Lĩnh vực phụ trách", "href": "/functions-duties.html", "icon": "LV" },
+      { "text": "Văn bản – Biểu mẫu", "href": "/documents-forms.html", "icon": "VB" },
+      { "text": "Tuyển dụng", "href": "/recruitment.html", "icon": "TD" },
       { "text": "Ban lãnh đạo", "href": "/leadership.html", "icon": "LĐ" },
       { "text": "Liên hệ", "href": "/contact.html", "icon": "LH" }
     ]

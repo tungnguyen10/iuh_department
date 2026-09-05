@@ -7,8 +7,11 @@
   { "id": 6, "title": "Ban lãnh đạo", "excerpt": "Cơ cấu và nhân sự minh họa của phòng.", "category": "Trang", "date": "17/08/2026", "url": "/leadership.html" },
   { "id": 7, "title": "Chi tiết lãnh đạo", "excerpt": "Thông tin hồ sơ nhân sự minh họa.", "category": "Trang", "date": "17/08/2026", "url": "/leadership-detail.html" },
   { "id": 8, "title": "Đối tác hợp tác", "excerpt": "Danh sách đối tác chiến lược và doanh nghiệp hợp tác cùng nhà trường.", "category": "Trang", "date": "17/08/2026", "url": "/partners.html" },
-  { "id": 9, "title": "Hướng dẫn tiếp nhận hồ sơ nhân sự cán bộ, giảng viên", "excerpt": "Các bước chuẩn bị và nộp hồ sơ nhân sự.", "category": "Nhân sự", "date": "15/08/2026", "url": "/news-detail.html" },
-  { "id": 10, "title": "Hướng dẫn nghiệp vụ văn thư – lưu trữ", "excerpt": "Quy trình tiếp nhận, phát hành và lưu trữ văn bản.", "category": "Văn thư – lưu trữ", "date": "12/08/2026", "url": "/news-detail.html" },
-  { "id": 11, "title": "Lịch tiếp nhận hồ sơ hành chính", "excerpt": "Lịch tiếp nhận, kiểm tra và trả kết quả hồ sơ.", "category": "Tổ chức – Hành chính", "date": "08/08/2026", "url": "/news-detail.html" },
-  { "id": 12, "title": "Kênh tư vấn và hỗ trợ đơn vị", "excerpt": "Các nhóm nhu cầu và kênh tiếp nhận hỗ trợ.", "category": "Hỗ trợ đơn vị", "date": "05/08/2026", "url": "/news-detail.html" }
+  { "id": 9, "title": "Chức năng – Nhiệm vụ", "excerpt": "Tổ chức – Cán bộ; Hành chính – Tổng hợp; Văn thư – Lưu trữ; Chính sách – Thi đua; Lễ tân – Khánh tiết.", "category": "Trang", "date": "05/09/2026", "url": "/functions-duties.html" },
+  { "id": 10, "title": "Văn bản – Biểu mẫu", "excerpt": "Tra cứu quy trình, văn bản hướng dẫn và biểu mẫu của Phòng Tổ chức – Hành chính.", "category": "Trang", "date": "05/09/2026", "url": "/documents-forms.html" },
+  { "id": 11, "title": "Tuyển dụng IUH", "excerpt": "Thông tin và thông báo tuyển dụng của Trường Đại học Công nghiệp TP.HCM.", "category": "Trang", "date": "05/09/2026", "url": "/recruitment.html" },
+  { "id": 12, "title": "Hướng dẫn tiếp nhận hồ sơ nhân sự cán bộ, giảng viên", "excerpt": "Các bước chuẩn bị và nộp hồ sơ nhân sự.", "category": "Nhân sự", "date": "15/08/2026", "url": "/news-detail.html" },
+  { "id": 13, "title": "Hướng dẫn nghiệp vụ văn thư – lưu trữ", "excerpt": "Quy trình tiếp nhận, phát hành và lưu trữ văn bản.", "category": "Văn thư – lưu trữ", "date": "12/08/2026", "url": "/news-detail.html" },
+  { "id": 14, "title": "Lịch tiếp nhận hồ sơ hành chính", "excerpt": "Lịch tiếp nhận, kiểm tra và trả kết quả hồ sơ.", "category": "Tổ chức – Hành chính", "date": "08/08/2026", "url": "/news-detail.html" },
+  { "id": 15, "title": "Kênh tư vấn và hỗ trợ đơn vị", "excerpt": "Các nhóm nhu cầu và kênh tiếp nhận hỗ trợ.", "category": "Hỗ trợ đơn vị", "date": "05/08/2026", "url": "/news-detail.html" }
 ]
