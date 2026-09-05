@@ -1,93 +1,97 @@
 {
   "section": {
     "title": "Tin tức - Sự kiện",
-    "description": "Thông tin minh họa về nhân sự, văn thư – lưu trữ, hoạt động và các kênh hỗ trợ đơn vị."
+    "description": "Tin tức chính thức về đội ngũ, thi đua, công đoàn và hoạt động của viên chức, người lao động IUH."
   },
   "items": [
     {
       "id": 1,
-      "slug": "huong-dan-tiep-nhan-ho-so-nhan-su",
-      "title": "Hướng dẫn tiếp nhận hồ sơ nhân sự cán bộ, giảng viên",
-      "excerpt": "Các bước minh họa để cán bộ, giảng viên chuẩn bị và nộp hồ sơ đề nghị hỗ trợ theo nhân sự hiện hành.",
-      "category": "Nhân sự",
-      "date": "15 tháng 8, 2026",
+      "slug": "tong-ket-hoi-thao-iuh-2026",
+      "title": "Tổng kết Hội thao IUH 2026, phát động phong trào thi đua chào mừng 70 năm thành lập trường",
+      "excerpt": "Công đoàn IUH trao giải Hội thao khối viên chức, người lao động và phát động các hoạt động chào mừng 70 năm thành lập trường.",
+      "category": "Thi đua – Công đoàn",
+      "date": "30 tháng 7, 2026",
       "image": "/assets/images/default.jpg",
-      "imageAlt": "Cán bộ, giảng viên tìm hiểu nhân sự hỗ trợ",
+      "imageAlt": "Tổng kết Hội thao IUH năm 2026",
       "content": [
-        { "type": "notice", "title": "Dữ liệu minh họa", "text": "Nội dung này cần được đơn vị chuyên môn xác nhận trước khi phát hành." },
-        { "type": "paragraph", "text": "Cán bộ, giảng viên chuẩn bị biểu mẫu, giấy tờ chứng minh đối tượng và thông tin liên hệ để được hướng dẫn kiểm tra hồ sơ." },
-        { "type": "list", "items": ["Kiểm tra điều kiện áp dụng.", "Chuẩn bị minh chứng theo hướng dẫn.", "Theo dõi kết quả qua kênh thông báo chính thức."] }
+        { "type": "notice", "title": "Sự kiện IUH", "text": "Lễ trao giải được Công đoàn Trường Đại học Công nghiệp TP.HCM tổ chức ngày 29/7/2026." },
+        { "type": "paragraph", "text": "Hội thao khối viên chức, người lao động năm 2026 tạo sân chơi rèn luyện sức khỏe, tăng cường gắn kết giữa các đơn vị và lan tỏa phong trào thi đua trong toàn trường." },
+        { "type": "paragraph", "text": "Tại chương trình, Công đoàn Trường đồng thời phát động các hoạt động hướng đến kỷ niệm 70 năm thành lập IUH (1956–2026)." }
       ]
     },
     {
       "id": 2,
-      "slug": "huong-dan-van-thu-luu-tru",
-      "title": "Hướng dẫn nghiệp vụ văn thư – lưu trữ",
-      "excerpt": "Thông tin mẫu về quy trình tiếp nhận, phát hành và lưu trữ văn bản tại các đơn vị.",
-      "category": "Văn thư – lưu trữ",
-      "date": "12 tháng 8, 2026",
+      "slug": "hoi-nghi-vien-chuc-nguoi-lao-dong-iuh-2026",
+      "title": "Hội nghị đại biểu viên chức, người lao động IUH năm 2026: Bước vào năm thứ 70 với áp lực đổi mới",
+      "excerpt": "Hội nghị thống nhất nhiệm vụ năm 2026, tập trung cải tiến quản trị, chuyển đổi số và quốc tế hóa hoạt động đại học.",
+      "category": "Viên chức – Người lao động",
+      "date": "02 tháng 3, 2026",
       "image": "/assets/images/default.jpg",
-      "imageAlt": "Nghiệp vụ văn thư – lưu trữ",
+      "imageAlt": "Hội nghị đại biểu viên chức, người lao động IUH năm 2026",
       "content": [
-        { "type": "notice", "title": "Dữ liệu minh họa", "text": "Thời hạn và điều kiện trong bài chưa phải thông báo chính thức." },
-        { "type": "paragraph", "text": "Chương trình minh họa hoạt động kết nối nguồn lực để hỗ trợ các đơn vị chuẩn hóa quy trình và phát triển năng lực quản trị." }
+        { "type": "notice", "title": "Hội nghị thường niên", "text": "Hội nghị diễn ra sáng 28/2/2026 với sự tham dự của lãnh đạo Nhà trường và đại biểu viên chức, người lao động IUH." },
+        { "type": "paragraph", "text": "Các tham luận tập trung vào hợp tác doanh nghiệp gắn với đổi mới sáng tạo, phát triển nguồn nhân lực chất lượng cao và chuyển đổi số hướng đến mô hình đại học số." },
+        { "type": "paragraph", "text": "Kết thúc hội nghị, các đại biểu thống nhất thông qua nghị quyết năm 2026, hướng đến quản trị hiệu quả và nâng cao vị thế của IUH trong cộng đồng học thuật quốc tế." }
       ]
     },
     {
       "id": 3,
-      "slug": "lich-tiep-nhan-ho-so-hanh-chinh",
-      "title": "Lịch tiếp nhận hồ sơ hành chính",
-      "excerpt": "Thông tin mẫu về lịch tiếp nhận, kiểm tra và trả kết quả hồ sơ hành chính cho các đơn vị.",
-      "category": "Tổ chức – Hành chính",
-      "date": "08 tháng 8, 2026",
+      "slug": "dai-hoi-cong-doan-truong-lan-thu-xvii",
+      "title": "IUH đón nhận Cờ thi đua của Công đoàn Công Thương Việt Nam tại Đại hội Công đoàn Trường lần thứ XVII",
+      "excerpt": "Đại hội Công đoàn IUH nhiệm kỳ 2025–2030 tổng kết hoạt động, đề ra phương hướng mới và đón nhận Cờ thi đua của Công đoàn Công Thương Việt Nam.",
+      "category": "Thi đua – Công đoàn",
+      "date": "12 tháng 11, 2025",
       "image": "/assets/images/default.jpg",
-      "imageAlt": "Tiếp nhận hồ sơ hành chính",
+      "imageAlt": "Đại hội Công đoàn Trường Đại học Công nghiệp TP.HCM lần thứ XVII",
       "content": [
-        { "type": "notice", "title": "Dữ liệu minh họa", "text": "Lịch tổ chức thực tế sẽ được cập nhật bằng thông báo chính thức." },
-        { "type": "paragraph", "text": "Hướng dẫn cung cấp thông tin nền tảng để các đơn vị chuẩn bị hồ sơ đúng thành phần và theo dõi tiến độ xử lý." }
+        { "type": "notice", "title": "Nhiệm kỳ 2025–2030", "text": "Đại hội Công đoàn Trường Đại học Công nghiệp TP.HCM lần thứ XVII diễn ra ngày 12/11/2025." },
+        { "type": "paragraph", "text": "Cờ thi đua của Công đoàn Công Thương Việt Nam ghi nhận nỗ lực, sáng tạo và tinh thần đoàn kết của đoàn viên, người lao động Nhà trường." },
+        { "type": "paragraph", "text": "Đại hội tổng kết hoạt động nhiệm kỳ 2023–2025 và đề ra phương hướng chăm lo đời sống, xây dựng môi trường làm việc văn minh, an toàn cho nhiệm kỳ mới." }
       ]
     },
     {
       "id": 4,
-      "slug": "kenh-tu-van-va-ho-tro-don-vi",
-      "title": "Kênh tư vấn và hỗ trợ đơn vị",
-      "excerpt": "Giới thiệu mẫu các nhóm nhu cầu được tiếp nhận: nhân sự, văn thư – lưu trữ, hành chính, hậu cần và quản trị nội bộ.",
-      "category": "Hỗ trợ đơn vị",
-      "date": "05 tháng 8, 2026",
+      "slug": "dan-van-kheo-iuh-2025",
+      "title": "IUH đạt nhiều thành tích xuất sắc trong phong trào thi đua “Dân vận khéo” năm 2025",
+      "excerpt": "Phòng Tổ chức – Hành chính cùng nhiều tập thể, cá nhân IUH được tuyên dương trong phong trào thi đua “Dân vận khéo” năm 2025.",
+      "category": "Thi đua – Khen thưởng",
+      "date": "23 tháng 10, 2025",
       "image": "/assets/images/default.jpg",
-      "imageAlt": "Tư vấn hỗ trợ đơn vị",
+      "imageAlt": "IUH được tuyên dương trong phong trào Dân vận khéo năm 2025",
       "content": [
-        { "type": "notice", "title": "Dữ liệu minh họa", "text": "Thông tin liên hệ cần được cập nhật trước khi sử dụng." },
-        { "type": "paragraph", "text": "Cán bộ, giảng viên có thể mô tả nhu cầu để được phân luồng đến đầu mối phụ trách phù hợp." },
-        { "type": "info", "title": "Liên hệ mẫu", "text": "Email: example@iuh.edu.vn · Điện thoại: (028) 0000 0000." }
+        { "type": "notice", "title": "Thành tích tập thể", "text": "Phòng Tổ chức – Hành chính là một trong các tập thể IUH được tuyên dương cấp cơ sở trong phong trào thi đua “Dân vận khéo” năm 2025." },
+        { "type": "paragraph", "text": "TS. Phan Hồng Hải, Bí thư Đảng ủy, Hiệu trưởng IUH, được tuyên dương là cá nhân tiêu biểu vì những đóng góp trong lãnh đạo, đổi mới, cải cách hành chính và chuyển đổi số giáo dục đại học." },
+        { "type": "paragraph", "text": "Kết quả ghi nhận nỗ lực của Nhà trường trong gắn kết công tác dân vận với phục vụ cộng đồng và nâng cao hiệu quả quản trị." }
       ]
     },
     {
       "id": 5,
-      "slug": "cap-nhat-quy-trinh-tiep-nhan-xu-ly-van-ban",
-      "title": "Thông báo cập nhật quy trình tiếp nhận và xử lý văn bản",
-      "excerpt": "Thông tin mẫu về điều chỉnh các bước tiếp nhận, luân chuyển và xử lý văn bản đến – đi tại các đơn vị.",
-      "category": "Văn thư – lưu trữ",
-      "date": "02 tháng 8, 2026",
+      "slug": "iuh-don-nhan-co-thi-dua-thu-tuong-chinh-phu",
+      "title": "Đại học Công nghiệp TP.HCM đón nhận Cờ thi đua của Thủ tướng Chính phủ",
+      "excerpt": "IUH được trao Cờ thi đua của Thủ tướng Chính phủ tại Đại hội Thi đua yêu nước ngành Công Thương lần thứ IV.",
+      "category": "Thi đua – Khen thưởng",
+      "date": "30 tháng 9, 2025",
       "image": "/assets/images/default.jpg",
-      "imageAlt": "Cập nhật quy trình xử lý văn bản",
+      "imageAlt": "IUH đón nhận Cờ thi đua của Thủ tướng Chính phủ",
       "content": [
-        { "type": "notice", "title": "Dữ liệu minh họa", "text": "Quy trình chính thức sẽ được ban hành kèm văn bản hướng dẫn riêng." },
-        { "type": "paragraph", "text": "Các đơn vị theo dõi kênh thông báo chính thức để cập nhật biểu mẫu và đầu mối tiếp nhận tương ứng." }
+        { "type": "notice", "title": "Ghi nhận thành tích", "text": "Cờ thi đua ghi nhận những nỗ lực của tập thể IUH trong đổi mới, sáng tạo và thực hiện nhiệm vụ giáo dục đại học." },
+        { "type": "paragraph", "text": "Sự kiện diễn ra sáng 30/9/2025 tại Đại hội Thi đua yêu nước ngành Công Thương lần thứ IV, giai đoạn 2025–2030." },
+        { "type": "paragraph", "text": "Dịp này, ông Phạm Trung Kiên, Trưởng phòng Tổ chức – Hành chính, được trao Huân chương Lao động hạng Ba." }
       ]
     },
     {
       "id": 6,
-      "slug": "huong-dan-che-do-chinh-sach-nguoi-lao-dong",
-      "title": "Hướng dẫn thực hiện chế độ, chính sách đối với người lao động",
-      "excerpt": "Thông tin mẫu về hồ sơ, thủ tục thực hiện chế độ, chính sách dành cho cán bộ, giảng viên.",
-      "category": "Chế độ – Chính sách",
-      "date": "28 tháng 7, 2026",
+      "slug": "tap-huan-an-toan-ve-sinh-lao-dong-2025",
+      "title": "IUH đạt 100% cán bộ, viên chức và người lao động tham gia tập huấn An toàn vệ sinh lao động",
+      "excerpt": "Chương trình huấn luyện An toàn, vệ sinh lao động năm 2025 được triển khai cho toàn thể viên chức, người lao động và cán bộ quản lý IUH.",
+      "category": "An toàn lao động",
+      "date": "25 tháng 8, 2025",
       "image": "/assets/images/default.jpg",
-      "imageAlt": "Chế độ, chính sách người lao động",
+      "imageAlt": "Tập huấn An toàn vệ sinh lao động tại IUH",
       "content": [
-        { "type": "notice", "title": "Dữ liệu minh họa", "text": "Nội dung cần đối chiếu quy định hiện hành trước khi áp dụng." },
-        { "type": "paragraph", "text": "Cán bộ, giảng viên chuẩn bị hồ sơ theo hướng dẫn và liên hệ đầu mối phụ trách để được kiểm tra trước khi nộp." }
+        { "type": "notice", "title": "Kết quả triển khai", "text": "Chương trình đạt 100% cán bộ, viên chức và người lao động tham gia trong tháng 7 và tháng 8/2025." },
+        { "type": "paragraph", "text": "Nội dung huấn luyện được tổ chức cho nhóm 4 gồm giảng viên, viên chức, người lao động và nhóm 6 gồm trưởng, phó đơn vị, tổ trưởng an toàn vệ sinh lao động." },
+        { "type": "paragraph", "text": "Hoạt động góp phần nâng cao nhận thức, kỹ năng phòng ngừa rủi ro và xây dựng môi trường làm việc an toàn trong Nhà trường." }
       ]
     }
   ]

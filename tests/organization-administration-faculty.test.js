@@ -56,8 +56,10 @@ test('organization administration contact routes to exactly the five approved ar
     ['policy-emulation', 'Chính sách – Thi đua'],
     ['reception-protocol', 'Lễ tân – Khánh tiết'],
   ])
-  assert.match(contact, /Biểu mẫu minh họa, chưa kết nối hệ thống tiếp nhận\./)
-  assert.match(contact, /<form[^>]+action="#" method="post"/)
+  assert.match(contact, /ptchc@iuh\.edu\.vn/)
+  assert.match(contact, /0283 8940 390 - 100/)
+  assert.match(contact, /Nhà E - 12 Nguyễn Văn Bảo/)
+  assert.match(contact, /<form[^>]+action="mailto:ptchc@iuh\.edu\.vn" method="post" enctype="text\/plain"/)
 })
 
 test('organization administration news metadata and navigation use the en-dash label', async () => {
@@ -102,6 +104,7 @@ test('organization administration source does not retain the sample faculty iden
 
   assert.doesNotMatch(source, /political-student-affairs|Công tác chính trị|Hỗ trợ sinh viên|dormitory-management/i)
   assert.doesNotMatch(source, /sinh-vien|học bổng|BHYT|ĐRL|điểm rèn luyện|thực tập/i)
+  assert.doesNotMatch(source, /minh họa|example@iuh\.edu\.vn|0000 0000/i)
 })
 
 test('organization administration data is valid and routes only to built pages', async () => {
@@ -112,6 +115,9 @@ test('organization administration data is valid and routes only to built pages',
   const linkedRoutes = JSON.stringify(site).match(/"href":"(\/[^"#?]*)"/g) ?? []
 
   assert.equal(site.identity.unitName, 'Phòng Tổ chức – Hành chính')
+  assert.equal(site.identity.email, 'ptchc@iuh.edu.vn')
+  assert.deepEqual(site.identity.phone, { text: '0283 8940 390 - 100', href: '02838940390' })
+  assert.match(site.identity.address, /Nhà E/)
   assert.equal(news.items.length, 6)
   assert.ok(news.items.every((item) => item.slug && item.title && item.excerpt && item.content.length > 0))
   assert.ok(search.length >= 12)
@@ -134,9 +140,10 @@ test('organization administration adds focused pages for index destinations', as
   ]) assert.match(functionsPage, new RegExp(`id=[\"']${id}[\"']`))
 
   assert.match(documentsPage, /Văn bản – Biểu mẫu/)
-  assert.match(documentsPage, /Đang cập nhật/)
+  assert.match(documentsPage, /Cổng E-Office IUH/)
   assert.doesNotMatch(documentsPage, /href=[\"']#[\"']/)
   assert.match(recruitmentPage, /Tuyển dụng IUH/)
+  assert.doesNotMatch(`${functionsPage}\n${documentsPage}\n${recruitmentPage}`, /minh họa|đang cập nhật/i)
 })
 
 test('organization administration chrome follows the index information architecture', async () => {
@@ -185,12 +192,23 @@ test('organization administration index modules link to focused destinations', a
   assert.match(noticeHub, /href=["']\/documents-forms\.html["']/)
   const recruitmentLinks = noticeHub.match(/href=["']\/recruitment\.html["']/g) ?? []
   assert.equal(recruitmentLinks.length, 4, 'all three recruitment rows and the footer link to recruitment')
-  assert.match(noticeHub, /Dữ liệu tuyển dụng minh họa/)
+  assert.match(noticeHub, /Thông tin tuyển dụng/)
 
   const formRows = noticeHub.split('<div class="grid grid-cols-[1fr_auto]').slice(1)
   assert.equal(formRows.length, 12, 'every visible and filtered form row is represented')
-  for (const row of formRows) {
-    assert.match(row, />Đang cập nhật<\/span>/)
-    assert.doesNotMatch(row, /<a[^>]*aria-label=["']Tải xuống/i)
+  assert.equal((noticeHub.match(/href=["']\/documents-forms\.html["']/g) ?? []).length, 13)
+  assert.equal((noticeHub.match(/>Xem<\/span>/g) ?? []).length, 12)
+})
+
+test('organization administration leadership uses published IUH personnel', async () => {
+  const [leadership, detail] = await Promise.all([
+    readFacultyFile('pages/leadership.html'),
+    readFacultyFile('pages/leadership-detail.html'),
+  ])
+
+  for (const name of ['Phạm Trung Kiên', 'Nguyễn Thị Thu Hà', 'Đỗ Khoa Thúy Kha']) {
+    assert.match(leadership, new RegExp(name))
   }
+  assert.match(detail, /Phạm Trung Kiên/)
+  assert.match(`${leadership}\n${detail}`, /ptchc@iuh\.edu\.vn/)
 })

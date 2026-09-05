@@ -4,6 +4,10 @@
 
 Align the Phòng Tổ chức – Hành chính navigation, existing pages, and internal links with the information architecture already established by the approved home page. Keep the current eight pages, improve their content and relationships, and add only the pages needed to give home-page calls to action accurate destinations.
 
+## Approved Content Amendment
+
+The final implementation must use current, operational content instead of placeholder or illustrative data. Published IUH contact details, personnel references, and function descriptions are authoritative. Where no document or recruitment notice is available in the repository, provide a real service pathway (E-Office, news, or the department contact channel) rather than a fabricated record or an `Đang cập nhật` card. This amendment supersedes earlier sample-data language below.
+
 ## Scope
 
 ### Existing pages retained and updated

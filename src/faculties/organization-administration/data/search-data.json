@@ -1,17 +1,17 @@
 [
-  { "id": 1, "title": "Trang chủ", "excerpt": "Trang giới thiệu tạm thời của Phòng Tổ chức – Hành chính.", "category": "Trang", "date": "17/08/2026", "url": "/" },
+  { "id": 1, "title": "Trang chủ", "excerpt": "Cổng thông tin Phòng Tổ chức – Hành chính IUH.", "category": "Trang", "date": "17/08/2026", "url": "/" },
   { "id": 2, "title": "Giới thiệu", "excerpt": "Vai trò, nhiệm vụ và nhóm hỗ trợ đơn vị của phòng.", "category": "Trang", "date": "17/08/2026", "url": "/about.html" },
-  { "id": 3, "title": "Liên hệ", "excerpt": "Thông tin và biểu mẫu liên hệ minh họa.", "category": "Trang", "date": "17/08/2026", "url": "/contact.html" },
+  { "id": 3, "title": "Liên hệ", "excerpt": "Thông tin liên hệ và biểu mẫu gửi yêu cầu đến Phòng Tổ chức – Hành chính.", "category": "Trang", "date": "17/08/2026", "url": "/contact.html" },
   { "id": 4, "title": "Tin tức và thông báo", "excerpt": "Danh sách thông tin nhân sự và hoạt động cán bộ, giảng viên.", "category": "Trang", "date": "17/08/2026", "url": "/news.html" },
   { "id": 5, "title": "Chi tiết tin tức", "excerpt": "Nội dung chi tiết tin tức và thông báo.", "category": "Trang", "date": "17/08/2026", "url": "/news-detail.html" },
-  { "id": 6, "title": "Ban lãnh đạo", "excerpt": "Cơ cấu và nhân sự minh họa của phòng.", "category": "Trang", "date": "17/08/2026", "url": "/leadership.html" },
-  { "id": 7, "title": "Chi tiết lãnh đạo", "excerpt": "Thông tin hồ sơ nhân sự minh họa.", "category": "Trang", "date": "17/08/2026", "url": "/leadership-detail.html" },
+  { "id": 6, "title": "Ban lãnh đạo", "excerpt": "Cơ cấu lãnh đạo và phân công lĩnh vực của Phòng Tổ chức – Hành chính.", "category": "Trang", "date": "17/08/2026", "url": "/leadership.html" },
+  { "id": 7, "title": "Chi tiết lãnh đạo", "excerpt": "Thông tin Trưởng phòng Tổ chức – Hành chính.", "category": "Trang", "date": "17/08/2026", "url": "/leadership-detail.html" },
   { "id": 8, "title": "Đối tác hợp tác", "excerpt": "Danh sách đối tác chiến lược và doanh nghiệp hợp tác cùng nhà trường.", "category": "Trang", "date": "17/08/2026", "url": "/partners.html" },
   { "id": 9, "title": "Chức năng – Nhiệm vụ", "excerpt": "Tổ chức – Cán bộ; Hành chính – Tổng hợp; Văn thư – Lưu trữ; Chính sách – Thi đua; Lễ tân – Khánh tiết.", "category": "Trang", "date": "05/09/2026", "url": "/functions-duties.html" },
   { "id": 10, "title": "Văn bản – Biểu mẫu", "excerpt": "Tra cứu quy trình, văn bản hướng dẫn và biểu mẫu của Phòng Tổ chức – Hành chính.", "category": "Trang", "date": "05/09/2026", "url": "/documents-forms.html" },
   { "id": 11, "title": "Tuyển dụng IUH", "excerpt": "Thông tin và thông báo tuyển dụng của Trường Đại học Công nghiệp TP.HCM.", "category": "Trang", "date": "05/09/2026", "url": "/recruitment.html" },
-  { "id": 12, "title": "Hướng dẫn tiếp nhận hồ sơ nhân sự cán bộ, giảng viên", "excerpt": "Các bước chuẩn bị và nộp hồ sơ nhân sự.", "category": "Nhân sự", "date": "15/08/2026", "url": "/news-detail.html" },
-  { "id": 13, "title": "Hướng dẫn nghiệp vụ văn thư – lưu trữ", "excerpt": "Quy trình tiếp nhận, phát hành và lưu trữ văn bản.", "category": "Văn thư – lưu trữ", "date": "12/08/2026", "url": "/news-detail.html" },
-  { "id": 14, "title": "Lịch tiếp nhận hồ sơ hành chính", "excerpt": "Lịch tiếp nhận, kiểm tra và trả kết quả hồ sơ.", "category": "Tổ chức – Hành chính", "date": "08/08/2026", "url": "/news-detail.html" },
-  { "id": 15, "title": "Kênh tư vấn và hỗ trợ đơn vị", "excerpt": "Các nhóm nhu cầu và kênh tiếp nhận hỗ trợ.", "category": "Hỗ trợ đơn vị", "date": "05/08/2026", "url": "/news-detail.html" }
+  { "id": 12, "title": "Tổng kết Hội thao IUH 2026", "excerpt": "Trao giải Hội thao khối viên chức, người lao động và phát động phong trào thi đua chào mừng 70 năm IUH.", "category": "Thi đua – Công đoàn", "date": "30/07/2026", "url": "/news-detail.html" },
+  { "id": 13, "title": "Hội nghị đại biểu viên chức, người lao động IUH năm 2026", "excerpt": "Hội nghị thống nhất nhiệm vụ năm 2026, tập trung cải tiến quản trị và chuyển đổi số.", "category": "Viên chức – Người lao động", "date": "02/03/2026", "url": "/news-detail.html" },
+  { "id": 14, "title": "IUH đạt thành tích trong phong trào Dân vận khéo năm 2025", "excerpt": "Phòng Tổ chức – Hành chính cùng nhiều tập thể, cá nhân IUH được tuyên dương.", "category": "Thi đua – Khen thưởng", "date": "23/10/2025", "url": "/news-detail.html" },
+  { "id": 15, "title": "IUH đạt 100% cán bộ, viên chức và người lao động tham gia tập huấn An toàn vệ sinh lao động", "excerpt": "Chương trình huấn luyện được triển khai cho viên chức, người lao động và cán bộ quản lý IUH.", "category": "An toàn lao động", "date": "25/08/2025", "url": "/news-detail.html" }
 ]
