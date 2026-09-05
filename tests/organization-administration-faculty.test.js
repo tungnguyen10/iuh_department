@@ -129,6 +129,14 @@ test('organization administration index modules link to focused destinations', a
   ]) assert.match(responsibilities, new RegExp(`href=["']/functions-duties\\.html#${id}["']`))
 
   assert.match(noticeHub, /href=["']\/documents-forms\.html["']/)
-  assert.match(noticeHub, /href=["']\/recruitment\.html["']/)
-  assert.doesNotMatch(noticeHub, /<a[^>]*href=["']\/contact\.html["'][^>]*aria-label=["']Tải xuống/)
+  const recruitmentLinks = noticeHub.match(/href=["']\/recruitment\.html["']/g) ?? []
+  assert.equal(recruitmentLinks.length, 4, 'all three recruitment rows and the footer link to recruitment')
+  assert.match(noticeHub, /Dữ liệu tuyển dụng minh họa/)
+
+  const formRows = noticeHub.split('<div class="grid grid-cols-[1fr_auto]').slice(1)
+  assert.equal(formRows.length, 12, 'every visible and filtered form row is represented')
+  for (const row of formRows) {
+    assert.match(row, />Đang cập nhật<\/span>/)
+    assert.doesNotMatch(row, /<a[^>]*aria-label=["']Tải xuống/i)
+  }
 })
