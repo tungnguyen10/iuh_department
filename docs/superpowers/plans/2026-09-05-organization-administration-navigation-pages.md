@@ -12,6 +12,8 @@
 
 > **Execution amendment (approved 2026-09-05):** Use current operational content and published IUH identity/contact/personnel data. Remove all placeholder and `minh họa` copy. When no local file or active recruitment record exists, link users to the real E-Office, news, or department contact pathway instead of displaying fabricated records or `Đang cập nhật`. This amendment supersedes conflicting sample-data steps later in this plan.
 
+> **Partners placement amendment (approved 2026-09-06):** Add `@shared/components/partners/index.html` as the final include in every Organization Administration page except `partners.html`. Keep `partners.html` on `@shared/components/partners/page.html`, which already ends with the compact partners section. Verify source placement and built output ordering before the footer; do not modify the shared layout or other faculties.
+
 - Preserve the approved `index.html` section order and visual direction.
 - Keep all eight existing HTML pages and add exactly `functions-duties.html`, `documents-forms.html`, and `recruitment.html`.
 - Use Inter for headings, Roboto for body and utility text, and existing IUH design tokens only.

@@ -8,6 +8,10 @@ Align the Phòng Tổ chức – Hành chính navigation, existing pages, and in
 
 The final implementation must use current, operational content instead of placeholder or illustrative data. Published IUH contact details, personnel references, and function descriptions are authoritative. Where no document or recruitment notice is available in the repository, provide a real service pathway (E-Office, news, or the department contact channel) rather than a fabricated record or an `Đang cập nhật` card. This amendment supersedes earlier sample-data language below.
 
+## Approved Partners Placement Amendment
+
+Every Organization Administration page must render the shared compact partners section immediately before the shared footer. The ten pages other than `partners.html` include `@shared/components/partners/index.html` as their final page include. The dedicated `partners.html` page keeps `@shared/components/partners/page.html`; that shared page already ends with the compact partners section, so the section must not be added a second time. This amendment is limited to Organization Administration and does not change the global layout or other faculties.
+
 ## Scope
 
 ### Existing pages retained and updated
