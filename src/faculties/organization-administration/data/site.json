@@ -11,11 +11,9 @@
   "quickLinks": [
     { "text": "Chức năng – Nhiệm vụ", "href": "/functions-duties.html", "icon": "icon-article.svg" },
     { "text": "Văn bản – Biểu mẫu", "href": "/documents-forms.html", "icon": "icon-file-word.svg" },
-    { "text": "Tuyển dụng IUH", "href": "/recruitment.html", "icon": "icon-briefcase.svg" },
     { "text": "Liên hệ hỗ trợ", "href": "/contact.html", "icon": "icon-building.svg" }
   ],
   "navigation": [
-    { "text": "TRANG CHỦ", "href": "/" },
     { "text": "GIỚI THIỆU", "children": [
       { "text": "Tổng quan", "href": "/about.html" },
       { "text": "Chức năng – Nhiệm vụ", "href": "/functions-duties.html" },
@@ -29,16 +27,13 @@
       { "text": "Lễ tân – Khánh tiết", "href": "/functions-duties.html#reception-protocol" }
     ] },
     { "text": "TIN TỨC – THÔNG BÁO", "href": "/news.html" },
-    { "text": "VĂN BẢN – BIỂU MẪU", "href": "/documents-forms.html" },
-    { "text": "TUYỂN DỤNG", "href": "/recruitment.html" },
-    { "text": "LIÊN HỆ", "href": "/contact.html" }
+    { "text": "VĂN BẢN – BIỂU MẪU", "href": "/documents-forms.html" }
   ],
   "footer": {
     "columns": [
       { "title": "Nghiệp vụ", "links": [
         { "text": "Chức năng – Nhiệm vụ", "href": "/functions-duties.html" },
-        { "text": "Văn bản – Biểu mẫu", "href": "/documents-forms.html" },
-        { "text": "Tuyển dụng IUH", "href": "/recruitment.html" }
+        { "text": "Văn bản – Biểu mẫu", "href": "/documents-forms.html" }
       ] },
       { "title": "Tra cứu – Hỗ trợ", "links": [
         { "text": "Tin tức – Thông báo", "href": "/news.html" },
@@ -61,7 +56,6 @@
     "quickLinks": [
       { "text": "Chức năng – Nhiệm vụ", "href": "/functions-duties.html" },
       { "text": "Văn bản – Biểu mẫu", "href": "/documents-forms.html" },
-      { "text": "Tuyển dụng IUH", "href": "/recruitment.html" },
       { "text": "Tin tức – Thông báo", "href": "/news.html" },
       { "text": "Liên hệ", "href": "/contact.html" },
       { "text": "Đối tác hợp tác", "href": "/partners.html" }
@@ -70,7 +64,6 @@
       { "text": "Giới thiệu", "href": "/about.html", "icon": "GT" },
       { "text": "Lĩnh vực phụ trách", "href": "/functions-duties.html", "icon": "LV" },
       { "text": "Văn bản – Biểu mẫu", "href": "/documents-forms.html", "icon": "VB" },
-      { "text": "Tuyển dụng", "href": "/recruitment.html", "icon": "TD" },
       { "text": "Ban lãnh đạo", "href": "/leadership.html", "icon": "LĐ" },
       { "text": "Liên hệ", "href": "/contact.html", "icon": "LH" }
     ]

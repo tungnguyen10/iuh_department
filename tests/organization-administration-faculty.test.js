@@ -14,7 +14,6 @@ const expectedPages = [
   'news-detail.html',
   'news.html',
   'partners.html',
-  'recruitment.html',
 ]
 
 const readFacultyFile = (path) => readFile(new URL(path, facultyRoot), 'utf8')
@@ -85,7 +84,7 @@ test('organization administration faculty exposes the selected-faculty contract'
   assert.match(config, /components\/home\/activity-gallery\/gallery\.js/)
 })
 
-test('organization administration faculty provides eleven clean pages', async () => {
+test('organization administration faculty provides ten clean pages', async () => {
   const pages = (await readdir(new URL('pages/', facultyRoot))).filter((file) => file.endsWith('.html')).sort()
 
   assert.deepEqual(pages, expectedPages)
@@ -161,10 +160,9 @@ test('organization administration data is valid and routes only to built pages',
 })
 
 test('organization administration adds focused pages for index destinations', async () => {
-  const [functionsPage, documentsPage, recruitmentPage] = await Promise.all([
+  const [functionsPage, documentsPage] = await Promise.all([
     readFacultyFile('pages/functions-duties.html'),
     readFacultyFile('pages/documents-forms.html'),
-    readFacultyFile('pages/recruitment.html'),
   ])
 
   for (const id of [
@@ -178,28 +176,24 @@ test('organization administration adds focused pages for index destinations', as
   assert.match(documentsPage, /Văn bản – Biểu mẫu/)
   assert.match(documentsPage, /Cổng E-Office IUH/)
   assert.doesNotMatch(documentsPage, /href=[\"']#[\"']/)
-  assert.match(recruitmentPage, /Tuyển dụng IUH/)
-  assert.doesNotMatch(`${functionsPage}\n${documentsPage}\n${recruitmentPage}`, /minh họa|đang cập nhật/i)
+  assert.doesNotMatch(`${functionsPage}\n${documentsPage}`, /minh họa|đang cập nhật/i)
 })
 
 test('organization administration chrome follows the index information architecture', async () => {
   const site = JSON.parse(await readFacultyFile('data/site.json'))
 
   assert.deepEqual(site.navigation.map(({ text }) => text), [
-    'TRANG CHỦ',
     'GIỚI THIỆU',
     'LĨNH VỰC PHỤ TRÁCH',
     'TIN TỨC – THÔNG BÁO',
     'VĂN BẢN – BIỂU MẪU',
-    'TUYỂN DỤNG',
-    'LIÊN HỆ',
   ])
-  assert.deepEqual(site.navigation[1].children.map(({ href }) => href), [
+  assert.deepEqual(site.navigation[0].children.map(({ href }) => href), [
     '/about.html',
     '/functions-duties.html',
     '/leadership.html',
   ])
-  assert.deepEqual(site.navigation[2].children.map(({ href }) => href), [
+  assert.deepEqual(site.navigation[1].children.map(({ href }) => href), [
     '/functions-duties.html#organization-personnel',
     '/functions-duties.html#administration-general',
     '/functions-duties.html#records-archives',
@@ -208,7 +202,6 @@ test('organization administration chrome follows the index information architect
   ])
   assert.ok(site.footer.columns.flatMap(({ links }) => links).some(({ href }) => href === '/partners.html'))
   assert.ok(site.search.quickLinks.some(({ href }) => href === '/documents-forms.html'))
-  assert.ok(site.search.quickLinks.some(({ href }) => href === '/recruitment.html'))
 })
 
 test('organization administration index modules link to focused destinations', async () => {
@@ -226,9 +219,7 @@ test('organization administration index modules link to focused destinations', a
   ]) assert.match(responsibilities, new RegExp(`href=["']/functions-duties\\.html#${id}["']`))
 
   assert.match(noticeHub, /href=["']\/documents-forms\.html["']/)
-  const recruitmentLinks = noticeHub.match(/href=["']\/recruitment\.html["']/g) ?? []
-  assert.equal(recruitmentLinks.length, 4, 'all three recruitment rows and the footer link to recruitment')
-  assert.match(noticeHub, /Thông tin tuyển dụng/)
+  assert.doesNotMatch(noticeHub, /recruitment\.html/)
 
   const formRows = noticeHub.split('<div class="grid grid-cols-[1fr_auto]').slice(1)
   assert.equal(formRows.length, 12, 'every visible and filtered form row is represented')

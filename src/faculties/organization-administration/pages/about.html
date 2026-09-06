@@ -4,35 +4,311 @@
 <!-- LAYOUT: url="https://iuh.edu.vn/about" -->
 <!-- LAYOUT: ogImage="/assets/images/default.jpg" -->
 
-<div data-include="@shared/components/common/breadcrumb.html" data-parent-page1="Trang chủ" data-parent-link1="/" data-current-page="Giới thiệu" data-parent-page2="" data-parent-link2="" data-parent-page2-class=""></div>
+<div data-include="@shared/components/common/breadcrumb.html" data-parent-page1="Trang chủ" data-parent-link1="/" data-current-page="Giới thiệu Phòng Tổ chức – Hành chính" data-parent-page2="" data-parent-link2="" data-parent-page2-class=""></div>
 
-<section class="container mx-auto grid gap-10 px-4 py-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center md:py-16">
-  <div>
-    <p class="font-roboto text-sm font-semibold uppercase tracking-[0.18em] text-primary-dark-blue">Về chúng tôi</p>
-    <h1 class="mt-3 font-inter text-3xl font-bold leading-tight text-title md:text-5xl">Đồng hành cùng các đơn vị trong công tác tổ chức và hành chính</h1>
-    <p class="mt-5 text-base leading-7 text-gray-700">Phòng Tổ chức – Hành chính được thành lập ngày 11/01/2005 theo Quyết định số 06/QĐ-TCHC, gắn liền với quá trình xây dựng và phát triển của Trường Đại học Công nghiệp TP.HCM.</p>
-    <p class="mt-4 text-base leading-7 text-gray-700">Phòng tham mưu Hiệu trưởng về tổ chức bộ máy, công tác cán bộ, chế độ chính sách; đồng thời điều phối công tác hành chính, văn thư – lưu trữ và lễ tân của Nhà trường.</p>
-    <div class="mt-7 flex flex-wrap gap-3">
-      <a href="/functions-duties.html" class="inline-flex rounded-full bg-primary-dark-blue px-6 py-3 font-medium text-primary-white transition hover:bg-primary-yellow hover:text-primary-dark-blue">Xem chức năng – nhiệm vụ</a>
-      <a href="/contact.html" class="inline-flex rounded-full border border-primary-dark-blue px-6 py-3 font-medium text-primary-dark-blue transition hover:bg-secondary-blue-light">Liên hệ hỗ trợ</a>
-    </div>
+<section class="relative overflow-hidden bg-primary-dark-blue">
+  <div class="absolute inset-0 opacity-20">
+    <img src="/assets/images/banner.jpg" alt="" class="h-full w-full object-cover" />
   </div>
-  <div class="overflow-hidden rounded-3xl bg-secondary-blue-light p-4 shadow-lg">
-    <img src="/assets/images/default.jpg" alt="Hoạt động của Phòng Tổ chức – Hành chính" class="aspect-[4/3] w-full rounded-2xl object-cover" />
+  <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(21,56,152,0.94)_0%,rgba(21,56,152,0.82)_48%,rgba(21,56,152,0.58)_100%)]"></div>
+  <div class="container relative z-10 mx-auto px-4 py-12 md:py-16 lg:py-20">
+    <div class="grid grid-cols-1 items-end gap-8 lg:grid-cols-12">
+      <div class="lg:col-span-7">
+        <div class="inline-flex items-center gap-2 rounded-full border border-primary-white/20 bg-primary-white/10 px-4 py-2">
+          <span class="h-2 w-2 rounded-full bg-primary-yellow"></span>
+          <span class="font-roboto text-sm font-medium text-primary-white md:text-base">Giới thiệu Phòng Tổ chức – Hành chính</span>
+        </div>
+        <h1 class="mt-6 max-w-3xl font-inter text-3xl font-bold leading-tight text-primary-white md:text-5xl">
+          Đầu mối tham mưu tổ chức bộ máy, cán bộ và điều phối hành chính của Nhà trường
+        </h1>
+        <p class="mt-5 max-w-2xl font-roboto text-base leading-relaxed text-primary-white md:text-lg">
+          Được thành lập ngày 11/01/2005 theo Quyết định số 06/QĐ-TCHC, Phòng Tổ chức – Hành chính tham mưu Hiệu trưởng về tổ chức bộ máy, công tác cán bộ, chế độ chính sách; đồng thời điều phối hành chính, văn thư – lưu trữ và lễ tân của Nhà trường.
+        </p>
+      </div>
+
+      <div class="lg:col-span-5">
+        <div class="rounded-lg border border-primary-white/15 bg-primary-white p-5 shadow-[0_24px_60px_rgba(0,0,0,0.22)] md:p-6">
+          <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Hồ sơ đơn vị</p>
+          <div class="mt-4 space-y-3">
+            <div class="flex items-start gap-3 rounded-lg bg-secondary-blue-light p-4">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-white">
+                <img src="/assets/svgs/icon-building.svg" alt="" class="h-5 w-5" />
+              </span>
+              <div>
+                <p class="font-inter text-base font-bold text-title">Thành lập 11/01/2005</p>
+                <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700">Theo Quyết định số 06/QĐ-TCHC, gắn liền với quá trình xây dựng và phát triển của Trường.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 rounded-lg bg-secondary-yellow-light p-4">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-white">
+                <img src="/assets/svgs/icon-shield-check.svg" alt="" class="h-5 w-5" />
+              </span>
+              <div>
+                <p class="font-inter text-base font-bold text-title">Tham mưu tổ chức và chính sách</p>
+                <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700">Kết nối các đơn vị theo chỉ đạo của Ban Giám hiệu về công tác tổ chức, cán bộ.</p>
+              </div>
+            </div>
+          </div>
+          <a href="/contact.html" class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full border border-primary-dark-blue bg-primary-dark-blue px-5 py-3 font-roboto text-sm font-medium text-primary-white transition-all duration-300 hover:border-primary-yellow hover:bg-primary-yellow hover:text-primary-dark-blue focus:outline-none focus:ring-2 focus:ring-primary-yellow focus:ring-offset-2">
+            <span>Liên hệ hỗ trợ</span>
+            <img src="/assets/svgs/icon-arrow-up-right.svg" alt="" class="h-5 w-5" />
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="bg-secondary-blue-light/40 py-12 md:py-16">
+<section class="bg-primary-white py-12 md:py-16 lg:py-20">
   <div class="container mx-auto px-4">
-    <div data-include="@shared/components/common/section-title.html" data-subtitle="Nhiệm vụ" data-title="Năm lĩnh vực phụ trách" data-description="Các nhóm công tác trọng tâm do Phòng Tổ chức – Hành chính tham mưu và tổ chức thực hiện."></div>
-    <div class="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-      <article class="rounded-2xl bg-white p-6 shadow-sm"><img src="/assets/svgs/icon-education.svg" alt="" class="size-8" /><h2 class="mt-4 font-inter text-lg font-bold">Tổ chức – Cán bộ</h2><p class="mt-2 text-sm leading-6 text-gray-700">Tham mưu tổ chức bộ máy và công tác cán bộ, quản lý hồ sơ nhân sự.</p></article>
-      <article class="rounded-2xl bg-white p-6 shadow-sm"><img src="/assets/svgs/icon-help-circle.svg" alt="" class="size-8" /><h2 class="mt-4 font-inter text-lg font-bold">Hành chính – Tổng hợp</h2><p class="mt-2 text-sm leading-6 text-gray-700">Tổng hợp báo cáo, điều phối lịch công tác và phối hợp hành chính giữa các đơn vị.</p></article>
-      <article class="rounded-2xl bg-white p-6 shadow-sm"><img src="/assets/svgs/icon-shield-check.svg" alt="" class="size-8" /><h2 class="mt-4 font-inter text-lg font-bold">Văn thư – Lưu trữ</h2><p class="mt-2 text-sm leading-6 text-gray-700">Tiếp nhận, phát hành văn bản và hướng dẫn lập, lưu trữ hồ sơ.</p></article>
-      <article class="rounded-2xl bg-white p-6 shadow-sm"><img src="/assets/svgs/icon-shield-check.svg" alt="" class="size-8" /><h2 class="mt-4 font-inter text-lg font-bold">Chính sách – Thi đua</h2><p class="mt-2 text-sm leading-6 text-gray-700">Hướng dẫn chế độ, chính sách và tổng hợp hồ sơ thi đua, khen thưởng.</p></article>
-      <article class="rounded-2xl bg-white p-6 shadow-sm"><img src="/assets/svgs/icon-handshake.svg" alt="" class="size-8" /><h2 class="mt-4 font-inter text-lg font-bold">Lễ tân – Khánh tiết</h2><p class="mt-2 text-sm leading-6 text-gray-700">Phối hợp đón tiếp, tổ chức nghi thức và chuẩn bị các sự kiện của nhà trường.</p></article>
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
+      <div class="lg:col-span-4">
+        <div data-include="@shared/components/common/section-title.html"
+          data-subtitle="Bản đồ đầu mối"
+          data-title="Năm lĩnh vực phụ trách, một đầu mối theo dõi"
+          data-description="Trang giới thiệu tập trung vào cách Phòng Tổ chức – Hành chính vận hành từng nhóm công tác, từ tổ chức cán bộ đến lễ tân, khánh tiết."
+          data-class="sticky top-24"
+          data-subtitle-class="text-primary-dark-blue"
+          data-title-class="text-title"
+          data-description-class="mt-4 text-gray-700">
+        </div>
+      </div>
+
+      <div class="lg:col-span-8">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <article class="group rounded-lg border border-primary-dark-blue/10 bg-secondary-blue-light p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary-dark-blue/35 hover:shadow-[0_18px_36px_rgba(21,56,152,0.12)] motion-reduce:transform-none">
+            <div class="flex items-start gap-4">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary-white">
+                <img src="/assets/svgs/responsibility-organization.svg" alt="" class="h-7 w-7" />
+              </span>
+              <div>
+                <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Tổ chức</p>
+                <h2 class="mt-2 font-inter text-xl font-bold leading-snug text-title">Tổ chức – Cán bộ</h2>
+                <p class="mt-2 font-roboto text-sm leading-relaxed text-gray-700 md:text-base">Tham mưu tổ chức bộ máy, tuyển dụng, sử dụng, đào tạo và quản lý hồ sơ viên chức, người lao động.</p>
+                <a href="/functions-duties.html#organization-personnel" class="mt-4 inline-flex items-center gap-2 font-roboto text-sm font-semibold text-primary-dark-blue transition-colors duration-300 hover:text-primary-yellow">
+                  <span>Xem chi tiết</span>
+                  <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-lg border border-primary-dark-blue/10 bg-primary-dark-blue p-5 text-primary-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(21,56,152,0.18)] motion-reduce:transform-none">
+            <div class="flex items-start gap-4">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary-white/10">
+                <img src="/assets/svgs/responsibility-administration.svg" alt="" class="h-7 w-7 brightness-0 invert" />
+              </span>
+              <div>
+                <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-yellow">Hành chính</p>
+                <h2 class="mt-2 font-inter text-xl font-bold leading-snug">Hành chính – Tổng hợp</h2>
+                <p class="mt-2 font-roboto text-sm leading-relaxed text-primary-white/82 md:text-base">Tổng hợp báo cáo, lịch công tác, tiếp nhận – phát hành công văn và điều phối phương tiện chung.</p>
+                <a href="/functions-duties.html#administration-general" class="mt-4 inline-flex items-center gap-2 font-roboto text-sm font-semibold text-primary-white transition-colors duration-300 hover:text-primary-yellow">
+                  <span>Xem chi tiết</span>
+                  <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-lg border border-primary-dark-blue/10 bg-primary-white p-5 shadow-[0_14px_34px_rgba(21,56,152,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-primary-dark-blue/35 hover:shadow-[0_18px_36px_rgba(21,56,152,0.12)] motion-reduce:transform-none">
+            <div class="flex items-start gap-4">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-secondary-yellow-light">
+                <img src="/assets/svgs/responsibility-records.svg" alt="" class="h-7 w-7" />
+              </span>
+              <div>
+                <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Văn thư</p>
+                <h2 class="mt-2 font-inter text-xl font-bold leading-snug text-title">Văn thư – Lưu trữ</h2>
+                <p class="mt-2 font-roboto text-sm leading-relaxed text-gray-700 md:text-base">Quản lý con dấu, văn bản đến – đi và lưu trữ hồ sơ tổ chức cán bộ theo quy định.</p>
+                <a href="/functions-duties.html#records-archives" class="mt-4 inline-flex items-center gap-2 font-roboto text-sm font-semibold text-primary-dark-blue transition-colors duration-300 hover:text-primary-yellow">
+                  <span>Xem chi tiết</span>
+                  <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-lg border border-primary-dark-blue/10 bg-secondary-yellow-light p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary-dark-blue/35 hover:shadow-[0_18px_36px_rgba(21,56,152,0.12)] motion-reduce:transform-none">
+            <div class="flex items-start gap-4">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary-white">
+                <img src="/assets/svgs/responsibility-policy.svg" alt="" class="h-7 w-7" />
+              </span>
+              <div>
+                <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Chính sách</p>
+                <h2 class="mt-2 font-inter text-xl font-bold leading-snug text-title">Chính sách – Thi đua</h2>
+                <p class="mt-2 font-roboto text-sm leading-relaxed text-gray-700 md:text-base">Hướng dẫn chế độ, chính sách và tổng hợp hồ sơ thi đua, khen thưởng, kỷ luật.</p>
+                <a href="/functions-duties.html#policy-emulation" class="mt-4 inline-flex items-center gap-2 font-roboto text-sm font-semibold text-primary-dark-blue transition-colors duration-300 hover:text-primary-yellow">
+                  <span>Xem chi tiết</span>
+                  <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-lg border border-primary-dark-blue/10 bg-primary-white p-5 shadow-[0_14px_34px_rgba(21,56,152,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-primary-dark-blue/35 hover:shadow-[0_18px_36px_rgba(21,56,152,0.12)] motion-reduce:transform-none md:col-span-2 md:p-6">
+            <div class="flex flex-col items-start gap-4 md:flex-row">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-secondary-blue-light">
+                <img src="/assets/svgs/responsibility-reception.svg" alt="" class="h-7 w-7" />
+              </span>
+              <div>
+                <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Lễ tân</p>
+                <h2 class="mt-2 font-inter text-xl font-bold leading-snug text-title">Lễ tân – Khánh tiết</h2>
+                <p class="mt-2 font-roboto text-sm leading-relaxed text-gray-700 md:text-base">Đón tiếp đoàn công tác, khách mời; chuẩn bị khánh tiết cho hội nghị, hội thảo và các cuộc họp của Ban Giám hiệu.</p>
+                <a href="/functions-duties.html#reception-protocol" class="mt-4 inline-flex items-center gap-2 font-roboto text-sm font-semibold text-primary-dark-blue transition-colors duration-300 hover:text-primary-yellow">
+                  <span>Xem chi tiết</span>
+                  <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
     </div>
-    <a href="/functions-duties.html" class="mt-7 inline-flex font-medium text-primary-dark-blue underline underline-offset-4">Xem chi tiết năm lĩnh vực phụ trách</a>
+  </div>
+</section>
+
+<section class="bg-[linear-gradient(180deg,#E3F6FD_0%,#FFFFFF_100%)] py-12 md:py-16 lg:py-20">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-12 lg:gap-8">
+      <div class="lg:col-span-5">
+        <div class="relative h-full min-h-80 overflow-hidden rounded-lg bg-primary-dark-blue shadow-[0_22px_52px_rgba(21,56,152,0.18)]">
+          <img src="/assets/images/default.jpg" alt="Bộ phận tiếp nhận hồ sơ hành chính" class="h-full w-full object-cover opacity-90" />
+          <div class="absolute inset-0 bg-gradient-to-t from-primary-dark-blue/82 via-primary-dark-blue/28 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 md:p-6">
+            <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-yellow">Bộ phận tiếp nhận</p>
+            <h2 class="mt-2 font-inter text-2xl font-bold leading-tight text-primary-white">Một hồ sơ, một đầu mối theo dõi</h2>
+            <p class="mt-3 font-roboto text-sm leading-relaxed text-primary-white md:text-base">Mọi hồ sơ, văn bản nên có đầy đủ thông tin đơn vị, nội dung và kênh liên hệ để được xử lý nhanh hơn.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="rounded-lg border border-primary-dark-blue/10 bg-primary-white p-5 shadow-[0_18px_42px_rgba(21,56,152,0.10)] md:p-6">
+          <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Nhịp xử lý hồ sơ</p>
+          <h2 class="mt-2 font-inter text-2xl font-bold leading-tight text-title md:text-3xl">Từ tiếp nhận đến ban hành kết quả</h2>
+
+          <div class="mt-6 grid grid-cols-1 gap-4">
+            <article class="grid grid-cols-[4.5rem_1fr] gap-4 rounded-lg bg-secondary-blue-light p-4">
+              <time class="font-inter text-sm font-extrabold text-primary-dark-blue">Bước 1</time>
+              <div>
+                <h3 class="font-inter text-lg font-bold text-title">Tiếp nhận và phân loại hồ sơ</h3>
+                <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700 md:text-base">Đơn vị, viên chức gửi hồ sơ qua văn thư hoặc kênh hướng dẫn, được phân loại theo lĩnh vực phụ trách.</p>
+              </div>
+            </article>
+
+            <article class="grid grid-cols-[4.5rem_1fr] gap-4 rounded-lg bg-primary-white p-4 ring-1 ring-primary-dark-blue/10">
+              <time class="font-inter text-sm font-extrabold text-primary-dark-blue">Bước 2</time>
+              <div>
+                <h3 class="font-inter text-lg font-bold text-title">Thẩm định và xử lý theo quy trình</h3>
+                <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700 md:text-base">Chuyên viên phụ trách đối chiếu quy định, tham mưu Ban Giám hiệu hoặc phối hợp đơn vị liên quan.</p>
+              </div>
+            </article>
+
+            <article class="grid grid-cols-[4.5rem_1fr] gap-4 rounded-lg bg-secondary-yellow-light p-4">
+              <time class="font-inter text-sm font-extrabold text-primary-dark-blue">Bước 3</time>
+              <div>
+                <h3 class="font-inter text-lg font-bold text-title">Ban hành kết quả và lưu trữ hồ sơ</h3>
+                <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700 md:text-base">Kết quả được phát hành đến đơn vị đề nghị, đồng thời lưu trữ hồ sơ theo quy định về văn thư – lưu trữ.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-primary-white py-12 md:py-16 lg:py-20">
+  <div class="container mx-auto px-4">
+    <div class="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+      <div data-include="@shared/components/common/section-title.html"
+        data-subtitle="Không gian làm việc"
+        data-title="Các điểm chạm trong công tác tổ chức – hành chính"
+        data-description="Phòng không chỉ tiếp nhận thủ tục tại văn phòng mà còn phối hợp tổ chức hội nghị, lưu trữ hồ sơ và hướng dẫn nghiệp vụ cho các đơn vị."
+        data-class="max-w-3xl"
+        data-subtitle-class="text-primary-dark-blue"
+        data-title-class="text-title mt-3"
+        data-description-class="mt-4 text-gray-700">
+      </div>
+      <div data-include="@shared/components/button/button.html"
+        data-variant="3"
+        data-text="Xem chức năng – nhiệm vụ"
+        data-url="/functions-duties.html"
+        data-class="w-fit">
+      </div>
+    </div>
+
+    <div class="grid grid-cols-12 gap-3 md:gap-4">
+      <article class="group col-span-12 overflow-hidden rounded-lg bg-secondary-blue-light md:col-span-7">
+        <img src="/assets/images/default.jpg" alt="Văn phòng tiếp nhận hồ sơ" class="h-72 w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <div class="p-4 md:p-5">
+          <h3 class="font-inter text-lg font-bold text-title">Văn phòng tiếp nhận hồ sơ</h3>
+          <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700">Nơi tiếp nhận văn bản, hồ sơ và hướng dẫn thủ tục cho viên chức, người lao động.</p>
+        </div>
+      </article>
+
+      <article class="group col-span-12 overflow-hidden rounded-lg bg-secondary-yellow-light md:col-span-5">
+        <img src="/assets/images/default-1.jpg" alt="Kho lưu trữ hồ sơ" class="h-72 w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <div class="p-4 md:p-5">
+          <h3 class="font-inter text-lg font-bold text-title">Kho lưu trữ hồ sơ</h3>
+          <p class="mt-1 font-roboto text-sm leading-relaxed text-gray-700">Bảo quản hồ sơ viên chức và tài liệu tổ chức cán bộ theo quy định lưu trữ.</p>
+        </div>
+      </article>
+
+      <article class="group col-span-12 overflow-hidden rounded-lg bg-primary-white shadow-[0_14px_34px_rgba(21,56,152,0.08)] md:col-span-4">
+        <img src="/assets/images/banner.jpg" alt="Phòng họp giao ban" class="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <div class="p-4">
+          <h3 class="font-inter text-base font-bold text-title">Phòng họp giao ban</h3>
+        </div>
+      </article>
+
+      <article class="group col-span-12 overflow-hidden rounded-lg bg-primary-white shadow-[0_14px_34px_rgba(21,56,152,0.08)] md:col-span-4">
+        <img src="/assets/images/default.jpg" alt="Quầy hướng dẫn thủ tục" class="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <div class="p-4">
+          <h3 class="font-inter text-base font-bold text-title">Quầy hướng dẫn thủ tục</h3>
+        </div>
+      </article>
+
+      <article class="group col-span-12 overflow-hidden rounded-lg bg-primary-white shadow-[0_14px_34px_rgba(21,56,152,0.08)] md:col-span-4">
+        <img src="/assets/images/default-1.jpg" alt="Khu vực lễ tân, khánh tiết" class="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <div class="p-4">
+          <h3 class="font-inter text-base font-bold text-title">Khu vực lễ tân, khánh tiết</h3>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="bg-primary-white">
+  <div class="container mx-auto px-4">
+    <div class="relative overflow-hidden rounded-lg bg-primary-dark-blue px-6 py-8 md:px-10 md:py-12">
+      <div class="absolute inset-y-0 right-0 hidden w-1/3 bg-[linear-gradient(90deg,transparent,rgba(142,216,248,0.18))] lg:block"></div>
+      <div class="relative grid grid-cols-1 items-center gap-6 lg:grid-cols-12">
+        <div class="lg:col-span-8">
+          <p class="font-inter text-base font-semibold text-primary-yellow">Cần hỗ trợ về tổ chức – hành chính?</p>
+          <h2 class="mt-3 font-inter text-2xl font-bold leading-tight text-primary-white md:text-4xl">
+            Liên hệ Phòng Tổ chức – Hành chính để được hướng dẫn đúng đầu mối
+          </h2>
+          <p class="mt-4 max-w-3xl font-roboto text-base leading-relaxed text-primary-white/85 md:text-lg">
+            Viên chức, người lao động và các đơn vị có thể liên hệ về công tác tổ chức, cán bộ, chế độ chính sách, văn thư – lưu trữ hoặc lễ tân, khánh tiết.
+          </p>
+        </div>
+        <div class="flex flex-col items-stretch gap-3 sm:items-end lg:col-span-4">
+          <div data-include="@shared/components/button/button.html"
+            data-variant="6"
+            data-text="Liên hệ ngay"
+            data-url="/contact.html"
+            data-class="w-full sm:w-fit">
+          </div>
+          <div data-include="@shared/components/button/button.html"
+            data-variant="8"
+            data-text="Xem chức năng – nhiệm vụ"
+            data-url="/functions-duties.html"
+            data-icon="/assets/svgs/icon-arrow-up-right.svg"
+            data-class="w-full sm:w-fit">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
