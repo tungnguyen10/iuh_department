@@ -94,6 +94,42 @@ test('organization administration faculty provides eleven clean pages', async ()
   }
 })
 
+test('organization administration pages end with the shared partners section before the footer', async () => {
+  const contentPages = expectedPages.filter((page) => page !== 'partners.html')
+
+  for (const page of contentPages) {
+    const source = await readFacultyFile(`pages/${page}`)
+    const includes = [...source.matchAll(/data-include="([^"]+)"/g)].map((match) => match[1])
+    const partnersInclude = '<div data-include="@shared/components/partners/index.html" data-class="nttFade"></div>'
+
+    assert.equal(
+      includes.at(-1),
+      '@shared/components/partners/index.html',
+      `${page} must end with the compact partners include`,
+    )
+    assert.equal(
+      includes.filter((include) => include === '@shared/components/partners/index.html').length,
+      1,
+      `${page} must include the compact partners section exactly once`,
+    )
+    assert.ok(source.trimEnd().endsWith(partnersInclude), `${page} must place partners after all page content`)
+  }
+
+  const partnersPage = await readFacultyFile('pages/partners.html')
+  assert.match(partnersPage, /data-include="@shared\/components\/partners\/page\.html"/)
+
+  const sharedPartnersPage = await readFile(
+    new URL('../src/shared/components/partners/page.html', import.meta.url),
+    'utf8',
+  )
+  const sharedIncludes = [...sharedPartnersPage.matchAll(/data-include="([^"]+)"/g)].map((match) => match[1])
+  assert.equal(sharedIncludes.at(-1), '@shared/components/partners/index.html')
+  assert.ok(
+    sharedPartnersPage.trimEnd().endsWith('<div data-include="@shared/components/partners/index.html"></div>'),
+    'the dedicated partners page must also end with the compact partners section',
+  )
+})
+
 test('organization administration source does not retain the sample faculty identity', async () => {
   const sourceFiles = await readdir(facultyRoot, { recursive: true })
   const source = (await Promise.all(

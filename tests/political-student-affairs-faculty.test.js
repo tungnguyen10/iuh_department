@@ -91,7 +91,7 @@ test('department faculties delegate header and footer markup to shared component
 
   assert.match(sharedHeader, /data-site-unit-name/)
   assert.match(sharedHeader, /data-site-primary-nav/)
-  assert.match(sharedFooter, /data-site-footer-identity/)
-  assert.match(sharedFooter, /data-site-footer-columns/)
+  assert.match(sharedFooter, /<footer\b/)
+  assert.match(sharedFooter, /id="footer-year"/)
   assert.doesNotMatch(`${sharedHeader}\n${sharedFooter}`, /\{\{[^}]+\}\}/)
 })
