@@ -62,12 +62,17 @@ export const createSiteChromeRenderer = ({ base, site }) => {
 
   const footerColumns = () => site.footer.columns.map((column) => `<div class="flex flex-col gap-3 md:gap-5">
     <div class="flex items-center gap-1.5"><img src="${asset('icon-iuh-small.svg')}" alt="" class="w-4 h-4 md:w-5 md:h-5"><h3 class="text-base md:text-lg font-medium text-primary-dark-blue font-roboto">${escapeHtml(column.title)}</h3></div>
-    <ul class="flex flex-col gap-2 md:gap-2.5">${column.links.map((item) => `<li><a href="${href(item.href)}"${linkAttrs(item.href)} class="group flex items-center gap-1.5 text-sm md:text-base text-gray-900 font-roboto hover:text-primary-dark-blue transition-colors duration-200">${escapeHtml(item.text)}</a></li>`).join('')}</ul>
+    <ul class="flex flex-col gap-2 md:gap-2.5">${column.links.map((item) => `<li><a href="${href(item.href)}"${linkAttrs(item.href)} class="group flex items-center gap-1.5 text-sm md:text-base text-gray-900 font-roboto hover:text-primary-dark-blue transition-colors duration-200"><img src="${asset('icon-arrow-right.svg')}" alt="" class="w-0 group-hover:w-6 h-6 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"><span>${escapeHtml(item.text)}</span></a></li>`).join('')}</ul>
   </div>`).join('')
 
+  const socialHoverClasses = {
+    'icon-facebook.svg': 'hover:text-[#1877F2]',
+    'icon-instagram.svg': 'hover:text-[#E4405F]',
+    'icon-youtube.svg': 'hover:text-[#FF0000]',
+  }
   const socialLinks = () => `<div class="flex flex-col gap-3 md:gap-5">
     <div class="flex items-center gap-1.5"><img src="${asset('icon-iuh-small.svg')}" alt="" class="w-4 h-4 md:w-5 md:h-5"><h3 class="text-base md:text-lg font-medium text-primary-dark-blue font-roboto">Mạng xã hội</h3></div>
-    <ul class="flex flex-col gap-2 md:gap-2.5">${site.footer.socialLinks.map((item) => `<li><a href="${href(item.href)}"${linkAttrs(item.href)} class="group flex items-center gap-2 md:gap-2.5 text-sm md:text-base text-gray-700 font-roboto transition-colors duration-200"><img src="${asset(item.icon)}" alt="" class="w-5 h-5 md:w-6 md:h-6"><span>${escapeHtml(item.text)}</span></a></li>`).join('')}</ul>
+    <ul class="flex flex-col gap-2 md:gap-2.5">${site.footer.socialLinks.map((item) => `<li><a href="${href(item.href)}"${linkAttrs(item.href)} class="group flex items-center gap-2 md:gap-2.5 text-sm md:text-base text-gray-700 ${socialHoverClasses[item.icon] || 'hover:text-primary-dark-blue'} font-roboto transition-colors duration-200"><img src="${asset(item.icon)}" alt="" class="w-5 h-5 md:w-6 md:h-6"><span>${escapeHtml(item.text)}</span></a></li>`).join('')}</ul>
   </div>`
 
   const replacements = {

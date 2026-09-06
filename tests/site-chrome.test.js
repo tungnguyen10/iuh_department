@@ -7,6 +7,7 @@ import test from 'node:test'
 
 const rendererUrl = new URL('../src/shared/components/site-chrome/site-chrome-renderer.js', import.meta.url)
 const loaderUrl = new URL('../src/shared/components/site-chrome/site-data.js', import.meta.url)
+const sharedFooterUrl = new URL('../src/shared/components/footer/department.html', import.meta.url)
 
 const fixture = {
   version: 1,
@@ -54,6 +55,97 @@ const routes = ['/', '/about.html', '/contact.html', '/news.html', '/news-detail
 test('site chrome modules exist', () => {
   assert.equal(existsSync(rendererUrl), true)
   assert.equal(existsSync(loaderUrl), true)
+})
+
+test('shared footer template maps all faculty content through site data markers', async () => {
+  const footer = await readFile(sharedFooterUrl, 'utf8')
+
+  assert.match(footer, /<!-- Footer Component -->/)
+  for (const marker of [
+    'data-site-home-link',
+    'data-site-footer-identity',
+    'data-site-map-address',
+    'data-site-footer-columns',
+    'data-site-social-links',
+    'data-site-copyright',
+  ]) {
+    assert.match(footer, new RegExp(`\\b${marker}\\b`), `missing ${marker}`)
+  }
+
+  for (const hardCodedContent of [
+    'TRƯỜNG ĐẠI HỌC CÔNG NGHIỆP TP. HCM',
+    'dhcn@iuh.edu.vn',
+    'Sinh viên',
+    '/students.html',
+  ]) {
+    assert.doesNotMatch(footer, new RegExp(hardCodedContent), `footer still hard-codes ${hardCodedContent}`)
+  }
+})
+
+test('shared footer renders every configured field for every faculty', async () => {
+  const [{ createSiteChromeRenderer }, { escapeHtml }, footer] = await Promise.all([
+    import(rendererUrl),
+    import(new URL('../src/shared/js/escape-html.js', import.meta.url)),
+    readFile(sharedFooterUrl, 'utf8'),
+  ])
+
+  for (const facultyId of [
+    'health-science',
+    'dormitory-management',
+    'political-student-affairs',
+    'organization-administration',
+  ]) {
+    const site = JSON.parse(await readFile(new URL(`../src/faculties/${facultyId}/data/site.json`, import.meta.url), 'utf8'))
+    const base = `/faculties/${facultyId}/`
+    const rendered = createSiteChromeRenderer({ base, site })(footer)
+    const renderedAnchors = rendered.match(/<a\b[^>]*>[\s\S]*?<\/a>/g) || []
+    const expectedHref = (href) => href.startsWith('/') && !href.startsWith('//')
+      ? `${base}${href.slice(1)}`
+      : href
+    const findRenderedLink = (href, text) => renderedAnchors.find((anchor) => (
+      anchor.includes(`href="${escapeHtml(expectedHref(href))}"`)
+      && anchor.includes(escapeHtml(text))
+    ))
+
+    for (const value of [
+      site.identity.unitName,
+      site.identity.organizationName,
+      site.identity.email,
+      site.identity.phone.text,
+      site.identity.address,
+      site.identity.mapAddress,
+    ]) {
+      assert.ok(rendered.includes(escapeHtml(value)), `${facultyId} footer is missing identity value: ${value}`)
+    }
+
+    assert.match(rendered, new RegExp(`href="${base.replaceAll('/', '\\/')}"[^>]*>`), `${facultyId} footer logo has the wrong home URL`)
+    assert.ok(findRenderedLink(`tel:${site.identity.phone.href}`, site.identity.phone.text), `${facultyId} footer has the wrong phone link`)
+    assert.ok(findRenderedLink(`mailto:${site.identity.email}`, site.identity.email), `${facultyId} footer has the wrong email link`)
+
+    for (const column of site.footer.columns) {
+      assert.ok(rendered.includes(escapeHtml(column.title)), `${facultyId} footer is missing column: ${column.title}`)
+      for (const link of column.links) {
+        const renderedLink = findRenderedLink(link.href, link.text)
+        assert.ok(renderedLink, `${facultyId} footer is missing link pair: ${link.text} -> ${link.href}`)
+        assert.ok(renderedLink.includes(`${base}assets/svgs/icon-arrow-right.svg`), `${facultyId} footer link is missing its arrow affordance: ${link.text}`)
+      }
+    }
+
+    const socialHoverClass = {
+      'icon-facebook.svg': 'hover:text-[#1877F2]',
+      'icon-instagram.svg': 'hover:text-[#E4405F]',
+      'icon-youtube.svg': 'hover:text-[#FF0000]',
+    }
+    for (const link of site.footer.socialLinks) {
+      const renderedLink = findRenderedLink(link.href, link.text)
+      assert.ok(renderedLink, `${facultyId} footer is missing social pair: ${link.text} -> ${link.href}`)
+      assert.ok(renderedLink.includes(`${base}assets/svgs/${escapeHtml(link.icon)}`), `${facultyId} footer is missing social icon: ${link.icon}`)
+      assert.ok(renderedLink.includes(socialHoverClass[link.icon]), `${facultyId} footer social link has the wrong hover color: ${link.text}`)
+    }
+
+    assert.ok(rendered.includes(`${escapeHtml(site.identity.unitName)} - ${escapeHtml(site.identity.organizationName)}`), `${facultyId} footer has the wrong copyright`)
+    assert.doesNotMatch(rendered, /data-site-/, `${facultyId} footer has unresolved site markers`)
+  }
 })
 
 test('site renderer renders escaped identity, recursive navigation, links and footer', async () => {
@@ -128,7 +220,7 @@ test('site data loader fails clearly for missing and malformed JSON', async () =
 })
 
 test('all faculty site configs use one schema and shared chrome wrappers', async () => {
-  for (const facultyId of ['health-science', 'dormitory-management', 'political-student-affairs']) {
+  for (const facultyId of ['health-science', 'dormitory-management', 'political-student-affairs', 'organization-administration']) {
     const root = new URL(`../src/faculties/${facultyId}/`, import.meta.url)
     const [siteSource, config, header, footer] = await Promise.all([
       readFile(new URL('data/site.json', root), 'utf8'),
