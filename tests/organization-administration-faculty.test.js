@@ -6,6 +6,7 @@ const facultyRoot = new URL('../src/faculties/organization-administration/', imp
 const expectedPages = [
   'about.html',
   'contact.html',
+  'document-detail.html',
   'documents-forms.html',
   'functions-duties.html',
   'index.html',
@@ -82,9 +83,10 @@ test('organization administration faculty exposes the selected-faculty contract'
   assert.match(config, /root:\s*["']src\/faculties\/organization-administration["']/)
   assert.match(config, /components\/home\/carousel\/carousel\.js/)
   assert.match(config, /components\/home\/activity-gallery\/gallery\.js/)
+  assert.match(config, /components\/documents\/document-library\.js/)
 })
 
-test('organization administration faculty provides ten clean pages', async () => {
+test('organization administration faculty provides eleven clean pages', async () => {
   const pages = (await readdir(new URL('pages/', facultyRoot))).filter((file) => file.endsWith('.html')).sort()
 
   assert.deepEqual(pages, expectedPages)
@@ -156,6 +158,7 @@ test('organization administration data is valid and routes only to built pages',
   assert.equal(news.items.length, 6)
   assert.ok(news.items.every((item) => item.slug && item.title && item.excerpt && item.content.length > 0))
   assert.ok(search.length >= 12)
+  assert.ok(search.some(({ url }) => url === '/document-detail.html'))
   for (const link of linkedRoutes) assert.ok(builtRoutes.has(link.match(/"(\/[^"#?]*)"/)[1]))
 })
 
