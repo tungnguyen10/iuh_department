@@ -62,3 +62,35 @@
     <img src="{{icon}}" alt=""
         class="w-5 h-5 md:w-6 md:h-6 shrink-0 transition-all duration-500 ease-in-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 {{iconClass}}">
 </a>
+
+<!-- option 9: Outline Button (Button tag) - White to Dark Blue (For secondary actions in forms) -->
+<button type="{{type}}" {{attrs}}
+    class="group inline-flex items-center justify-center gap-1.5 md:gap-2.5 px-4 md:px-8 py-2 md:py-2.5 rounded-full font-roboto font-medium text-sm md:text-base transition-all duration-500 ease-in-out cursor-pointer bg-white border border-primary-dark-blue text-primary-dark-blue hover:bg-primary-dark-blue hover:text-primary-white hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed {{class}}">
+    <span class="shrink-0">{{text}}</span>
+    <img src="{{icon}}" alt=""
+        class="w-5 h-5 md:w-6 md:h-6 shrink-0 transition-all duration-500 ease-in-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 {{iconClass}}">
+</button>
+
+<!-- option 10: Ghost Button (Button tag) - Underlined text link (For reset/clear actions) -->
+<button type="{{type}}" {{attrs}}
+    class="group inline-flex items-center gap-1.5 font-roboto text-sm font-semibold text-primary-dark-blue underline decoration-primary-yellow decoration-2 underline-offset-4 transition-colors duration-300 cursor-pointer hover:text-title focus:outline-none focus:ring-2 focus:ring-primary-yellow disabled:opacity-50 disabled:cursor-not-allowed {{class}}">
+    <span class="shrink-0">{{text}}</span>
+    <img src="{{icon}}" alt=""
+        class="w-5 h-5 shrink-0 transition-all duration-500 ease-in-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 {{iconClass}}">
+</button>
+
+<!-- option 11: Ghost Link - Underlined text link (For "view all" style navigation) -->
+<a href="{{url}}" {{download}} {{attrs}}
+    class="group inline-flex items-center gap-1.5 font-roboto text-sm font-semibold text-primary-dark-blue underline decoration-primary-yellow decoration-2 underline-offset-4 transition-colors duration-300 cursor-pointer hover:text-title focus:outline-none focus:ring-2 focus:ring-primary-yellow {{class}}">
+    <span class="shrink-0">{{text}}</span>
+    <img src="{{icon}}" alt=""
+        class="w-5 h-5 shrink-0 transition-all duration-500 ease-in-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 {{iconClass}}">
+</a>
+
+<!-- option 12: Compact Outline (Link) - Full-width table/list action (White to Dark Blue) -->
+<a href="{{url}}" {{download}} {{attrs}}
+    class="group inline-flex h-10 w-full items-center justify-center gap-2 rounded-full px-3 font-roboto text-sm font-semibold transition-all duration-200 ease-in-out cursor-pointer bg-white border border-primary-dark-blue text-primary-dark-blue hover:bg-primary-dark-blue hover:text-primary-white hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary-yellow focus:ring-offset-2 {{class}}">
+    <span class="shrink-0">{{text}}</span>
+    <img src="{{icon}}" alt=""
+        class="h-4 w-4 shrink-0 transition-all duration-200 ease-in-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 {{iconClass}}">
+</a>

@@ -22,8 +22,8 @@
           <div class="flex flex-col gap-4 border-b border-stroke pb-4 sm:flex-row sm:items-center sm:justify-between">
             <div data-include="@shared/components/common/section-title.html" data-subtitle="Bản toàn văn" data-title="Nội dung tài liệu PDF" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.14em] !text-gray" data-title-class="!mt-1 !text-lg !text-title"></div>
             <div class="flex flex-wrap gap-2">
-              <div data-include="@shared/components/button/button-download.html" data-url="/assets/documents/thong-bao-1856-2025.pdf" data-text="Tải xuống" data-class="!h-10 !justify-center !rounded-none !px-4 !py-0 focus:outline-none focus:ring-2 focus:ring-primary-yellow focus:ring-offset-2"></div>
-              <div data-include="@shared/components/button/button.html" data-variant="8" data-url="/assets/documents/thong-bao-1856-2025.pdf" data-attrs="target=_blank rel=noopener" data-text="Mở toàn màn hình" data-icon="/assets/svgs/icon-arrow-up-right.svg" data-class="!h-10 !rounded-none !px-4 !py-0 !text-sm !font-semibold !duration-200 focus:outline-none focus:ring-2 focus:ring-primary-yellow focus:ring-offset-2" data-icon-class="!h-4 !w-4"></div>
+              <div data-include="@shared/components/button/button-download.html" data-url="/assets/documents/thong-bao-1856-2025.pdf" data-text="Tải xuống" data-class="!h-10 !justify-center !px-4 !py-0 focus:outline-none focus:ring-2 focus:ring-primary-yellow focus:ring-offset-2"></div>
+              <div data-include="@shared/components/button/button.html" data-variant="8" data-url="/assets/documents/thong-bao-1856-2025.pdf" data-attrs="target=_blank rel=noopener" data-text="Mở toàn màn hình" data-icon="/assets/svgs/icon-arrow-up-right.svg" data-class="!h-10 !px-4 !py-0 !text-sm !font-semibold !duration-200 focus:outline-none focus:ring-2 focus:ring-primary-yellow focus:ring-offset-2" data-icon-class="!h-4 !w-4"></div>
             </div>
           </div>
 
@@ -36,7 +36,7 @@
                 <span class="flex h-16 w-16 items-center justify-center bg-danger-light"><img src="/assets/svgs/icon-warning.svg" alt="" class="h-8 w-8" /></span>
                 <h3 class="mt-4 font-inter text-lg font-bold text-title">Thiết bị chưa hỗ trợ xem PDF trực tiếp</h3>
                 <p class="mt-2 font-roboto text-sm leading-6 text-gray">Tải tài liệu về thiết bị hoặc mở trong một cửa sổ mới để tiếp tục.</p>
-                <div data-include="@shared/components/button/button-download.html" data-url="/assets/documents/thong-bao-1856-2025.pdf" data-text="Tải tài liệu PDF" data-class="!mt-5 !h-11 !justify-center !rounded-none !px-5 !py-0 focus:outline-none focus:ring-2 focus:ring-primary-yellow"></div>
+                <div data-include="@shared/components/button/button-download.html" data-url="/assets/documents/thong-bao-1856-2025.pdf" data-text="Tải tài liệu PDF" data-class="!mt-5 !h-11 !justify-center !px-5 !py-0 focus:outline-none focus:ring-2 focus:ring-primary-yellow"></div>
               </div>
             </div>
             <div id="pdf-loading" class="absolute inset-0 flex items-center justify-center bg-primary-white">
@@ -65,7 +65,7 @@
       <aside class="order-first lg:order-none lg:sticky lg:top-24" aria-label="Thông tin văn bản">
         <section class="border-t-4 border-primary-dark-blue bg-primary-white p-5 shadow-[0_14px_34px_rgba(21,56,152,0.08)] md:p-6">
           <div class="flex items-center gap-3 border-b border-stroke pb-4"><span class="flex h-11 w-11 items-center justify-center bg-secondary-blue-light"><img src="/assets/svgs/icon-article.svg" alt="" class="h-6 w-6" /></span><div data-include="@shared/components/common/section-title.html" data-subtitle="Hồ sơ văn bản" data-title="Thông tin phát hành" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.12em] !text-gray" data-title-class="!mt-1 !text-lg !text-title"></div></div>
-          <div class="iuh-form-display !divide-stroke !rounded-none !border-0">
+          <div class="iuh-form-display">
             <div data-include="@shared/components/form/display-row.html" data-label="Số hiệu" data-value="1856/2025" data-row-class="!grid-cols-[6.5rem_1fr] !gap-3 !px-0 !py-3" data-value-class="!font-semibold !text-title"></div>
             <div data-include="@shared/components/form/display-row.html" data-label="Loại" data-value="Thông báo" data-row-class="!grid-cols-[6.5rem_1fr] !gap-3 !px-0 !py-3" data-value-class="!font-semibold !text-title"></div>
             <div data-include="@shared/components/form/display-row.html" data-label="Ban hành" data-value="10/01/2025" data-row-class="!grid-cols-[6.5rem_1fr] !gap-3 !px-0 !py-3" data-value-class="!font-semibold !text-title"></div>
@@ -73,14 +73,14 @@
             <div data-include="@shared/components/form/display-row.html" data-label="Hiệu lực" data-value="Còn hiệu lực" data-row-class="!grid-cols-[6.5rem_1fr] !gap-3 !px-0 !py-3" data-value-class="iuh-form-display-value--success !font-semibold"></div>
             <div data-include="@shared/components/form/display-row.html" data-label="Định dạng" data-value="PDF · 1 trang" data-row-class="!grid-cols-[6.5rem_1fr] !gap-3 !px-0 !py-3" data-value-class="!font-semibold !text-title"></div>
           </div>
-          <div data-include="@shared/components/button/button-download.html" data-url="/assets/documents/thong-bao-1856-2025.pdf" data-text="Tải văn bản" data-class="!mt-4 !h-12 !w-full !justify-center !rounded-none !px-5 !py-0 focus:outline-none focus:ring-2 focus:ring-primary-yellow focus:ring-offset-2"></div>
-          <div data-include="@shared/components/button/button.html" data-variant="8" data-url="/contact.html" data-text="Yêu cầu hướng dẫn" data-icon="/assets/svgs/icon-arrow-up-right.svg" data-class="!mt-3 !h-11 !w-full !rounded-none !px-5 !py-0 !text-sm !font-semibold !duration-200 focus:outline-none focus:ring-2 focus:ring-primary-yellow" data-icon-class="hidden"></div>
+          <div data-include="@shared/components/button/button-download.html" data-url="/assets/documents/thong-bao-1856-2025.pdf" data-text="Tải văn bản" data-class="!mt-4 !h-12 !w-full !justify-center !px-5 !py-0 focus:outline-none focus:ring-2 focus:ring-primary-yellow focus:ring-offset-2"></div>
+          <div data-include="@shared/components/button/button.html" data-variant="8" data-url="/contact.html" data-text="Yêu cầu hướng dẫn" data-icon="/assets/svgs/icon-arrow-up-right.svg" data-class="!mt-3 !h-11 !w-full !px-5 !py-0 !text-sm !font-semibold !duration-200 focus:outline-none focus:ring-2 focus:ring-primary-yellow" data-icon-class="hidden"></div>
         </section>
       </aside>
     </div>
 
     <section aria-label="Văn bản liên quan" class="mt-10 md:mt-12">
-      <div class="flex items-end justify-between gap-4 border-b border-primary-dark-blue pb-4"><div data-include="@shared/components/common/section-title.html" data-subtitle="Cùng lĩnh vực" data-title="Văn bản liên quan" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.14em] !text-primary-dark-blue" data-title-class="!mt-1 !text-2xl !text-title"></div><div data-include="@shared/components/button/button.html" data-variant="8" data-url="/documents-forms.html" data-text="Xem tất cả" data-icon="/assets/svgs/icon-arrow-up-right.svg" data-class="!hidden sm:!inline-flex !rounded-none !border-0 !bg-transparent !px-0 !py-1 !text-sm !font-semibold !text-primary-dark-blue !shadow-none underline decoration-primary-yellow decoration-2 underline-offset-4 hover:!bg-transparent" data-icon-class="hidden"></div></div>
+      <div class="flex items-end justify-between gap-4 border-b border-primary-dark-blue pb-4"><div data-include="@shared/components/common/section-title.html" data-subtitle="Cùng lĩnh vực" data-title="Văn bản liên quan" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.14em] !text-primary-dark-blue" data-title-class="!mt-1 !text-2xl !text-title"></div><div data-include="@shared/components/button/button.html" data-variant="11" data-url="/documents-forms.html" data-text="Xem tất cả" data-icon="/assets/svgs/icon-arrow-up-right.svg" data-class="hidden sm:inline-flex" data-icon-class="hidden"></div></div>
       <div class="grid gap-px bg-stroke md:grid-cols-3">
         <div data-include="@faculty/components/documents/related-document-card.html" data-url="/document-detail.html" data-code="QT-08/2025/TCHC" data-title="Quy trình quản lý và sử dụng con dấu"></div>
         <div data-include="@faculty/components/documents/related-document-card.html" data-url="/document-detail.html" data-code="HD-14/2024/TCHC" data-title="Hướng dẫn lập hồ sơ và giao nộp lưu trữ"></div>
