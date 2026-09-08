@@ -1,23 +1,47 @@
 <!-- option 1: Document row with detail action -->
-<article id="{{id}}" data-document-item data-document-type="document" data-document-area="{{area}}" data-document-year="{{year}}" data-document-search="{{search}}" class="group relative grid gap-4 border-l-4 {{spineClass}} px-4 py-5 transition {{hoverClass}} motion-reduce:transition-none md:px-5 lg:grid-cols-[minmax(0,1fr)_12rem_8rem_9rem] lg:items-center lg:gap-5">
+<article id="{{id}}" data-document-item data-document-type="document" data-document-area="{{area}}" data-document-year="{{year}}" data-document-search="{{search}}" class="group relative grid gap-4 border-l-4 border-l-secondary-blue px-4 py-5 transition hover:bg-secondary-blue-light/35 motion-reduce:transition-none md:px-5 lg:grid-cols-[minmax(0,1fr)_12rem_8rem_9rem] lg:items-center lg:gap-5">
   <div class="min-w-0">
-    <div class="flex items-center gap-2"><span class="bg-secondary-blue-light px-2 py-1 font-roboto text-[10px] font-bold uppercase tracking-wider text-primary-dark-blue">Văn bản</span><span class="font-roboto text-xs text-gray">{{areaLabel}}</span></div>
+    <div class="flex items-center gap-2"><span class="rounded bg-secondary-blue-light px-2 py-1 font-roboto text-[10px] font-bold uppercase tracking-wider text-primary-dark-blue">Văn bản</span><span class="font-roboto text-xs text-gray">{{areaLabel}}</span></div>
     <h3 class="mt-2 font-inter text-base font-bold leading-6 text-title group-hover:text-primary-dark-blue md:text-lg">{{title}}</h3>
     <p class="mt-1 font-roboto text-sm leading-6 text-gray lg:hidden">{{code}} · {{agencyLong}}</p>
   </div>
   <div class="hidden font-roboto text-sm leading-6 text-gray lg:block"><strong class="block text-title">{{code}}</strong>{{agencyShort}}</div>
   <time datetime="{{datetime}}" class="font-roboto text-sm font-medium text-gray">{{date}}</time>
-  <div data-include="@shared/components/button/button.html" data-variant="8" data-url="{{url}}" data-text="Xem chi tiết" data-icon="/assets/svgs/icon-arrow-up-right.svg" data-class="!h-10 !w-full !rounded-none !px-3 !py-0 !text-sm !font-semibold !duration-200 focus:outline-none focus:ring-2 focus:ring-primary-yellow focus:ring-offset-2" data-icon-class="!h-4 !w-4"></div>
+  <div data-include="@shared/components/button/button.html" data-variant="12" data-url="{{url}}" data-text="Xem chi tiết" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div>
 </article>
 
 <!-- option 2: Form row with download action -->
-<article id="{{id}}" data-document-item data-document-type="form" data-document-area="{{area}}" data-document-year="{{year}}" data-document-search="{{search}}" class="group relative grid gap-4 border-l-4 {{spineClass}} px-4 py-5 transition {{hoverClass}} motion-reduce:transition-none md:px-5 lg:grid-cols-[minmax(0,1fr)_12rem_8rem_9rem] lg:items-center lg:gap-5">
+<article id="{{id}}" data-document-item data-document-type="form" data-document-area="{{area}}" data-document-year="{{year}}" data-document-search="{{search}}" class="group relative grid gap-4 border-l-4 border-l-primary-yellow px-4 py-5 transition hover:bg-secondary-yellow-light/50 motion-reduce:transition-none md:px-5 lg:grid-cols-[minmax(0,1fr)_12rem_8rem_9rem] lg:items-center lg:gap-5">
   <div class="min-w-0">
-    <div class="flex items-center gap-2"><span class="bg-secondary-yellow-light px-2 py-1 font-roboto text-[10px] font-bold uppercase tracking-wider text-primary-dark-blue">Biểu mẫu</span><span class="font-roboto text-xs text-gray">{{areaLabel}}</span></div>
+    <div class="flex items-center gap-2"><span class="rounded bg-secondary-yellow-light px-2 py-1 font-roboto text-[10px] font-bold uppercase tracking-wider text-primary-dark-blue">Biểu mẫu</span><span class="font-roboto text-xs text-gray">{{areaLabel}}</span></div>
     <h3 class="mt-2 font-inter text-base font-bold leading-6 text-title group-hover:text-primary-dark-blue md:text-lg">{{title}}</h3>
     <p class="mt-1 font-roboto text-sm leading-6 text-gray lg:hidden">{{code}} · {{agencyLong}}</p>
   </div>
   <div class="hidden font-roboto text-sm leading-6 text-gray lg:block"><strong class="block text-title">{{code}}</strong>{{agencyShort}}</div>
   <time datetime="{{datetime}}" class="font-roboto text-sm font-medium text-gray">{{date}}</time>
-  <div data-include="@shared/components/button/button-download.html" data-url="{{url}}" data-text="Tải mẫu" data-class="!h-10 !w-full !justify-center !rounded-none !px-3 !py-0 focus:outline-none focus:ring-2 focus:ring-primary-yellow focus:ring-offset-2"></div>
+  <div data-include="@shared/components/button/button-download.html" data-variant="2" data-url="{{url}}" data-text="Tải mẫu"></div>
+</article>
+
+<!-- option 3: Notice row with detail action -->
+<article id="{{id}}" data-document-item data-document-type="notice" data-document-area="{{area}}" data-document-year="{{year}}" data-document-search="{{search}}" class="group relative grid gap-4 border-l-4 border-l-danger px-4 py-5 transition hover:bg-danger-light/40 motion-reduce:transition-none md:px-5 lg:grid-cols-[minmax(0,1fr)_12rem_8rem_9rem] lg:items-center lg:gap-5">
+  <div class="min-w-0">
+    <div class="flex items-center gap-2"><span class="rounded bg-danger-light px-2 py-1 font-roboto text-[10px] font-bold uppercase tracking-wider text-danger">Thông báo</span><span class="font-roboto text-xs text-gray">{{areaLabel}}</span></div>
+    <h3 class="mt-2 font-inter text-base font-bold leading-6 text-title group-hover:text-primary-dark-blue md:text-lg">{{title}}</h3>
+    <p class="mt-1 font-roboto text-sm leading-6 text-gray lg:hidden">{{code}} · {{agencyLong}}</p>
+  </div>
+  <div class="hidden font-roboto text-sm leading-6 text-gray lg:block"><strong class="block text-title">{{code}}</strong>{{agencyShort}}</div>
+  <time datetime="{{datetime}}" class="font-roboto text-sm font-medium text-gray">{{date}}</time>
+  <div data-include="@shared/components/button/button.html" data-variant="12" data-url="{{url}}" data-text="Xem chi tiết" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div>
+</article>
+
+<!-- option 4: Decision row with detail action -->
+<article id="{{id}}" data-document-item data-document-type="decision" data-document-area="{{area}}" data-document-year="{{year}}" data-document-search="{{search}}" class="group relative grid gap-4 border-l-4 border-l-secondary-green px-4 py-5 transition hover:bg-secondary-green/10 motion-reduce:transition-none md:px-5 lg:grid-cols-[minmax(0,1fr)_12rem_8rem_9rem] lg:items-center lg:gap-5">
+  <div class="min-w-0">
+    <div class="flex items-center gap-2"><span class="rounded bg-secondary-green/20 px-2 py-1 font-roboto text-[10px] font-bold uppercase tracking-wider text-secondary-green">Quyết định</span><span class="font-roboto text-xs text-gray">{{areaLabel}}</span></div>
+    <h3 class="mt-2 font-inter text-base font-bold leading-6 text-title group-hover:text-primary-dark-blue md:text-lg">{{title}}</h3>
+    <p class="mt-1 font-roboto text-sm leading-6 text-gray lg:hidden">{{code}} · {{agencyLong}}</p>
+  </div>
+  <div class="hidden font-roboto text-sm leading-6 text-gray lg:block"><strong class="block text-title">{{code}}</strong>{{agencyShort}}</div>
+  <time datetime="{{datetime}}" class="font-roboto text-sm font-medium text-gray">{{date}}</time>
+  <div data-include="@shared/components/button/button.html" data-variant="12" data-url="{{url}}" data-text="Xem chi tiết" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div>
 </article>
