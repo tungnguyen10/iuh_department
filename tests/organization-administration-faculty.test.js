@@ -86,6 +86,50 @@ test('organization administration faculty exposes the selected-faculty contract'
   assert.match(config, /components\/documents\/document-library\.js/)
 })
 
+test('organization administration activity gallery uses the five newest PTCHC posts', async () => {
+  const gallery = await readFacultyFile('components/home/activity-gallery/index.html')
+  const expectedCards = [
+    {
+      image: '/assets/images/activity-khai-giang-2020-2021.jpg',
+      title: 'IUH long trọng tổ chức Lễ Khai giảng năm học 2020-2021',
+      link: 'https://ptchc.iuh.edu.vn/hinh-anh-hoat-dong/iuh-long-trong-to-chuc-le-khai-giang-nam-hoc-2020-2021/',
+    },
+    {
+      image: '/assets/images/activity-dai-hoi-dang-bo-2020-2025.jpg',
+      title: 'Đại hội Đại biểu Đảng bộ Trường Đại học Công nghiệp Thành phố Hồ Chí Minh lần thứ XIII, nhiệm kỳ 2020 – 2025: Dân chủ – Sáng tạo – Đoàn kết – Hội nhập',
+      link: 'https://ptchc.iuh.edu.vn/hinh-anh-hoat-dong/dai-hoi-dai-bieu-dang-bo-truong-dai-hoc-cong-nghiep-thanh-pho-ho-chi-minh-lan-thu-xiii-nhiem-ky-2020-2025-dan-chu-sang-tao-doan-ket-hoi-nhap-2/',
+    },
+    {
+      image: '/assets/images/activity-bo-nhiem-hieu-truong.jpg',
+      title: 'Lễ công bố quyết định bổ nhiệm và bàn giao chức vụ Hiệu trưởng IUH',
+      link: 'https://ptchc.iuh.edu.vn/hinh-anh-hoat-dong/le-cong-bo-quyet-dinh-bo-nhiem-va-ban-giao-chuc-vu-hieu-truong-iuh-2/',
+    },
+    {
+      image: '/assets/images/activity-hoi-nghi-can-bo-vien-chuc-2020.jpg',
+      title: 'Hội nghị cán bộ – viên chức IUH năm 2020',
+      link: 'https://ptchc.iuh.edu.vn/hinh-anh-hoat-dong/hoi-nghi-can-bo-vien-chuc-iuh-nam-2020-2/',
+    },
+    {
+      image: '/assets/images/activity-bo-nhiem-giao-su-khen-thuong-2019.jpg',
+      title: 'Lễ công bố quyết định bổ nhiệm chức danh giáo sư, phó giáo sư và trao Huân chương Lao động, Bằng khen của Thủ tướng Chính phủ năm 2019',
+      link: 'https://ptchc.iuh.edu.vn/hinh-anh-hoat-dong/le-cong-bo-quyet-dinh-bo-nhiem-chuc-danh-giao-su-pho-giao-su-va-trao-huan-chuong-lao-dong-bang-khen-cua-thu-tuong-chinh-phu-nam-2019-2/',
+    },
+  ]
+  const cards = [...gallery.matchAll(/data-image="([^"]+)"\s+data-alt="([^"]+)"\s+data-title="([^"]+)"\s+data-link="([^"]+)"/g)]
+
+  assert.equal(cards.length, 5)
+  assert.deepEqual(
+    cards.map(([, image, alt, title, link]) => ({ image, alt, title, link })),
+    expectedCards.map(({ image, title, link }) => ({ image, alt: title, title, link })),
+  )
+  assert.doesNotMatch(gallery, /default\.jpg/)
+
+  for (const { image } of expectedCards) {
+    const asset = await readFile(new URL(`assets/images/${image.split('/').at(-1)}`, facultyRoot))
+    assert.ok(asset.length > 0, `${image} must be a non-empty local image`)
+  }
+})
+
 test('organization administration faculty provides eleven clean pages', async () => {
   const pages = (await readdir(new URL('pages/', facultyRoot))).filter((file) => file.endsWith('.html')).sort()
 
