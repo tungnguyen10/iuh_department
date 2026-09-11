@@ -40,13 +40,73 @@ export const filterScheduleRecords = (records, start, filter = 'all') => {
 
 const instances = new WeakMap()
 
+// data-schedule-date / data-initial-week are authored as dd/mm/yyyy; convert to the yyyy-mm-dd used internally.
+const parseAttrDate = (value) => {
+  const match = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(value)
+  if (!match) throw new RangeError(`Invalid schedule date: ${value}`)
+  const [, day, month, year] = match
+  return `${year}-${month}-${day}`
+}
+
+const TYPE_META = {
+  meeting: { label: 'Họp', dot: 'bg-primary-dark-blue' },
+  deadline: { label: 'Hạn xử lý', dot: 'bg-danger' },
+  conference: { label: 'Hội nghị', dot: 'bg-secondary-green' },
+  training: { label: 'Đào tạo', dot: 'bg-primary-yellow' },
+}
+
+// Builds the full <li> body from data-schedule-* attributes; markup lives only in JS so the source HTML stays data-only.
+const renderEventElement = (li, record) => {
+  const meta = TYPE_META[record.type] ?? { label: record.type, dot: 'bg-primary-dark-blue' }
+  li.innerHTML = `
+    <time class="flex flex-col text-center text-primary-dark-blue">
+      <span class="font-inter text-[28px] font-bold leading-none tabular-nums"></span>
+      <span data-schedule-weekday class="mt-1.5 text-xs font-semibold"></span>
+    </time>
+    <span aria-hidden="true" class="relative flex justify-center">
+      <span data-schedule-line class="absolute -bottom-11 top-3 w-px bg-primary-dark-blue/15"></span>
+      <span data-schedule-dot class="relative mt-1.5 h-3 w-3 shrink-0 rounded-full"></span>
+    </span>
+    <div class="min-w-0">
+      <h3 class="font-inter text-sm font-semibold leading-6 text-title sm:text-base"></h3>
+      <span class="sr-only"></span>
+      <p class="mt-1 flex flex-wrap items-baseline gap-x-2 text-sm leading-6 text-black">
+        <span data-schedule-time></span><span aria-hidden="true">·</span><span data-schedule-location></span>
+      </p>
+    </div>
+  `
+  const dayTime = li.querySelector('time')
+  dayTime.dateTime = record.date
+  dayTime.querySelector('span').textContent = record.date.slice(8, 10)
+  dayTime.querySelector('[data-schedule-weekday]').textContent = scheduleWeekday(record.date)
+  li.querySelector('[data-schedule-dot]').classList.add(...meta.dot.split(' '))
+  li.querySelector('h3').textContent = record.title
+  li.querySelector('.sr-only').textContent = `Loại: ${meta.label}.`
+  const timeSlot = li.querySelector('[data-schedule-time]')
+  const startTime = document.createElement('time')
+  startTime.dateTime = `${record.date}T${record.start}:00+07:00`
+  startTime.textContent = record.start
+  timeSlot.append(startTime)
+  if (record.end) {
+    timeSlot.append(' – ')
+    const endTime = document.createElement('time')
+    endTime.dateTime = `${record.date}T${record.end}:00+07:00`
+    endTime.textContent = record.end
+    timeSlot.append(endTime)
+  }
+  li.querySelector('[data-schedule-location]').textContent = record.location
+}
+
 export const initWeeklyCalendar = (root = document) => Array.from(root.querySelectorAll('[data-weekly-calendar]')).map(calendar => {
   if (instances.has(calendar)) return instances.get(calendar)
   const records = Array.from(calendar.querySelectorAll('[data-schedule-event]')).map(element => ({
-    date: element.dataset.scheduleDate,
+    date: parseAttrDate(element.dataset.scheduleDate),
     start: element.dataset.scheduleStart,
+    end: element.dataset.scheduleEnd || '',
     type: element.dataset.scheduleType,
     room: element.dataset.scheduleRoom === 'true',
+    title: element.dataset.scheduleTitle,
+    location: element.dataset.scheduleLocation,
     element,
   }))
   const list = calendar.querySelector('[data-schedule-list]')
@@ -54,13 +114,11 @@ export const initWeeklyCalendar = (root = document) => Array.from(root.querySele
   const empty = calendar.querySelector('[data-schedule-empty]')
   const status = calendar.querySelector('[data-schedule-status]')
   const filters = Array.from(calendar.querySelectorAll('[data-schedule-filter]'))
-  let start = calendar.dataset.initialWeek
+  let start = parseAttrDate(calendar.dataset.initialWeek)
   let filter = 'all'
   const listeners = []
 
-  records.forEach(record => {
-    record.element.querySelector('[data-schedule-weekday]').textContent = scheduleWeekday(record.date)
-  })
+  records.forEach(record => renderEventElement(record.element, record))
 
   const render = () => {
     const visible = filterScheduleRecords(records, start, filter)
