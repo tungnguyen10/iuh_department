@@ -267,19 +267,20 @@ test('organization administration index modules link to focused destinations', a
     'administration-general',
     'records-archives',
     'policy-emulation',
-  ]) assert.match(staffServices, new RegExp(`href=["']/functions-duties\\.html#${id}["']`))
+  ]) assert.match(staffServices, new RegExp(`data-url=["']/functions-duties\\.html#${id}["']`))
 
-  assert.match(staffServices, /href=["']\/documents-forms\.html["']/)
+  assert.match(staffServices, /data-url=["']\/documents-forms\.html["']/)
 
-  assert.match(noticeHub, /href=["']\/documents-forms\.html["']/)
+  assert.match(noticeHub, /data-url=["']\/documents-forms\.html["']/)
   assert.doesNotMatch(noticeHub, /recruitment\.html/)
 
-  const formLinks = [...noticeHub.matchAll(/<a\s+href="\/documents-forms\.html"[^>]*>([\s\S]*?)<\/a>/g)]
+  // Form categories are rendered via form-link-item.html includes, one data-title per category.
+  const formLinks = [...noticeHub.matchAll(/data-include="@faculty\/components\/home\/notice-hub\/form-link-item\.html"[^>]*data-title="([^"]+)"/g)]
   for (const category of [
     'Quản lý cấp phòng', 'Đi nước ngoài', 'Bảo hiểm xã hội',
     'Chế độ - Chính sách', 'Đào tạo - Bồi dưỡng', 'Nâng bậc lương',
   ]) {
-    assert.equal(formLinks.filter(([, content]) => content.includes(category)).length, 1,
+    assert.equal(formLinks.filter(([, title]) => title === category).length, 1,
       `${category} must be directly accessible without switching tabs`)
   }
   assert.doesNotMatch(noticeHub, /tab-panel|data-tab=/)

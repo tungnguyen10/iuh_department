@@ -1,0 +1,12 @@
+<li>
+  <a href="{{url}}" class="group flex items-start gap-4 rounded-lg transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-dark-blue focus-visible:ring-offset-2 motion-reduce:transition-none {{class}}">
+    <time datetime="{{datetime}}" class="flex w-12 shrink-0 flex-col border-r border-primary-dark-blue/15 pr-3 text-center text-primary-dark-blue">
+      <span class="font-inter text-xl font-bold leading-none tabular-nums sm:text-2xl">{{day}}</span>
+      <span class="mt-2 text-xs leading-none">{{monthYear}}</span>
+    </time>
+    <div class="min-w-0 flex-1">
+      <span class="mb-2 inline-flex rounded bg-primary-white px-2 py-1 text-xs font-bold text-danger">{{badge}}</span>
+      <h4 class="text-sm font-semibold leading-6 text-title transition-colors duration-300 group-hover:text-primary-dark-blue md:text-base">{{title}}</h4>
+    </div>
+  </a>
+</li>
