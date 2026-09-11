@@ -94,3 +94,11 @@
     <img src="{{icon}}" alt=""
         class="h-4 w-4 shrink-0 transition-all duration-200 ease-in-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 {{iconClass}}">
 </a>
+
+<!-- option 13: Plain Link - No underline, Yellow hover (For quiet "view all" style navigation next to titles) -->
+<a href="{{url}}" {{download}} {{attrs}}
+    class="group inline-flex items-center gap-1.5 font-roboto text-base font-semibold text-primary-dark-blue transition-colors duration-300 cursor-pointer hover:text-primary-yellow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow focus-visible:ring-offset-2 focus-visible:rounded-sm {{class}}">
+    <span class="shrink-0">{{text}}</span>
+    <img src="{{icon}}" alt=""
+        class="w-4 h-4 shrink-0 transition-transform duration-300 ease-in-out group-hover:translate-x-1 {{iconClass}}">
+</a>

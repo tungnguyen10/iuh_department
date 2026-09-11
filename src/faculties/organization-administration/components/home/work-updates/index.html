@@ -1,0 +1,30 @@
+<section data-module="work-updates" aria-label="Văn bản và lịch công tác" class="!transform-none w-full bg-primary-white py-10 md:py-14 motion-reduce:!transform-none motion-reduce:!opacity-100 motion-reduce:!transition-none {{class}}">
+  <div class="container mx-auto px-4">
+    <div class="grid min-w-0 grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-8 xl:gap-10">
+      <div data-include="@faculty/components/calendar/weekly-calendar.html" data-title="Tuần này tại IUH" data-class="lg:order-2"></div>
+
+      <section aria-label="Văn bản mới" class="flex min-w-0 flex-col lg:order-1">
+        <div data-include="@shared/components/common/section-title.html"
+          data-title="Văn bản mới"
+          data-description="Các văn bản, quy định được ban hành gần đây."
+          data-class="mb-5"
+          data-title-class="!leading-tight text-primary-dark-blue"
+          data-description-class="!mt-2 !text-sm md:!text-base !leading-6 !text-black">
+        </div>
+
+        <div class="flex flex-1 flex-col rounded-xl border border-primary-dark-blue/10 bg-primary-white px-2 sm:px-3">
+          <!-- Match the latest non-form records in pages/documents-forms.html. -->
+          <ul class="flex-1 divide-y divide-stroke">
+            <div data-include="@faculty/components/documents/document-item.html" data-variant="5" data-url="/documents-forms.html#document-01" data-title="Quy trình tiếp nhận, phát hành và quản lý văn bản điện tử" data-code="QT-01/2026/TCHC" data-datetime="2026-08-18" data-date="18/08/2026"></div>
+            <div data-include="@faculty/components/documents/document-item.html" data-variant="5" data-url="/documents-forms.html#document-02" data-title="Quy định quản lý hồ sơ viên chức và người lao động" data-code="118/QĐ-IUH" data-datetime="2026-06-12" data-date="12/06/2026"></div>
+            <div data-include="@faculty/components/documents/document-item.html" data-variant="5" data-url="/documents-forms.html#document-13" data-title="Thông báo lịch nghỉ lễ và phân công trực cơ quan" data-code="1856/TB-IUH" data-datetime="2026-04-20" data-date="20/04/2026"></div>
+            <div data-include="@faculty/components/documents/document-item.html" data-variant="5" data-url="/documents-forms.html#document-03" data-title="Hướng dẫn thực hiện chế độ, chính sách đối với người lao động" data-code="HD-27/2025/TCHC" data-datetime="2025-11-05" data-date="05/11/2025"></div>
+          </ul>
+          <div class="mx-3 border-t border-stroke py-4 sm:mx-4">
+            <div data-include="@shared/components/button/button.html" data-variant="12" data-url="/documents-forms.html" data-text="Xem tất cả văn bản" data-icon="/assets/svgs/icon-arrow-up-right.svg" data-class="min-h-11 motion-reduce:transition-none" data-icon-class="motion-reduce:transform-none motion-reduce:transition-none"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>

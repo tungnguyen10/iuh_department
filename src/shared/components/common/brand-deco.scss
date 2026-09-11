@@ -1,0 +1,52 @@
+// Brand Decoration Animation Styles
+// Shared primitive for animating the IUH pinwheel / brand / chevron-wave marks (brand-deco.html).
+// Motion is intentionally slow and low-amplitude so the marks read as ambient decoration, not UI.
+
+@keyframes brand-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes brand-spin-reverse {
+  to { transform: rotate(-360deg); }
+}
+
+// Spin plus a gentle breathing scale for organic motion.
+@keyframes brand-spin-soft {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.06); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes brand-float {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-10px) rotate(4deg); }
+}
+
+@keyframes brand-drift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(8px, -8px); }
+}
+
+@keyframes brand-wave {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.brand-deco {
+  will-change: transform;
+  transform-origin: center;
+  animation-fill-mode: both;
+}
+
+.brand-deco--spin { animation: brand-spin 26s linear infinite; }
+.brand-deco--spin-reverse { animation: brand-spin-reverse 30s linear infinite; }
+.brand-deco--spin-soft { animation: brand-spin-soft 20s ease-in-out infinite; }
+.brand-deco--float { animation: brand-float 7s ease-in-out infinite; }
+.brand-deco--drift { animation: brand-drift 9s ease-in-out infinite; }
+.brand-deco--wave { animation: brand-wave 4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-deco {
+    animation: none !important;
+  }
+}

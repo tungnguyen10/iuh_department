@@ -5,6 +5,7 @@ import test from 'node:test'
 const facultyRoot = new URL('../src/faculties/organization-administration/', import.meta.url)
 const expectedPages = [
   'about.html',
+  'calendar.html',
   'contact.html',
   'document-detail.html',
   'documents-forms.html',
@@ -130,7 +131,7 @@ test('organization administration activity gallery uses the five newest PTCHC po
   }
 })
 
-test('organization administration faculty provides eleven clean pages', async () => {
+test('organization administration faculty provides the expected clean pages', async () => {
   const pages = (await readdir(new URL('pages/', facultyRoot))).filter((file) => file.endsWith('.html')).sort()
 
   assert.deepEqual(pages, expectedPages)
@@ -252,26 +253,41 @@ test('organization administration chrome follows the index information architect
 })
 
 test('organization administration index modules link to focused destinations', async () => {
-  const [responsibilities, noticeHub] = await Promise.all([
-    readFacultyFile('components/home/responsibility-areas/index.html'),
+  const [staffServices, noticeHub] = await Promise.all([
+    readFacultyFile('components/home/staff-services/index.html'),
     readFacultyFile('components/home/notice-hub/index.html'),
   ])
+
+  for (const title of ['Tôi cần...', 'Hệ thống dành cho cán bộ, viên chức']) {
+    assert.ok(staffServices.includes(title), `missing section title: ${title}`)
+  }
 
   for (const id of [
     'organization-personnel',
     'administration-general',
     'records-archives',
     'policy-emulation',
-    'reception-protocol',
-  ]) assert.match(responsibilities, new RegExp(`href=["']/functions-duties\\.html#${id}["']`))
+  ]) assert.match(staffServices, new RegExp(`href=["']/functions-duties\\.html#${id}["']`))
+
+  assert.match(staffServices, /href=["']\/documents-forms\.html["']/)
 
   assert.match(noticeHub, /href=["']\/documents-forms\.html["']/)
   assert.doesNotMatch(noticeHub, /recruitment\.html/)
 
-  const formRows = noticeHub.split('<div class="grid grid-cols-[1fr_auto]').slice(1)
-  assert.equal(formRows.length, 12, 'every visible and filtered form row is represented')
-  assert.equal((noticeHub.match(/href=["']\/documents-forms\.html["']/g) ?? []).length, 13)
-  assert.equal((noticeHub.match(/>Xem<\/span>/g) ?? []).length, 12)
+  const formLinks = [...noticeHub.matchAll(/<a\s+href="\/documents-forms\.html"[^>]*>([\s\S]*?)<\/a>/g)]
+  for (const category of [
+    'Quản lý cấp phòng', 'Đi nước ngoài', 'Bảo hiểm xã hội',
+    'Chế độ - Chính sách', 'Đào tạo - Bồi dưỡng', 'Nâng bậc lương',
+  ]) {
+    assert.equal(formLinks.filter(([, content]) => content.includes(category)).length, 1,
+      `${category} must be directly accessible without switching tabs`)
+  }
+  assert.doesNotMatch(noticeHub, /tab-panel|data-tab=/)
+  for (const title of [
+    'Thông báo tuyển dụng viên chức',
+    'Hướng dẫn chuẩn bị hồ sơ dự tuyển',
+    'Tiếp nhận và theo dõi hồ sơ',
+  ]) assert.ok(noticeHub.includes(title), `preserve recruitment content: ${title}`)
 })
 
 test('organization administration leadership uses published IUH personnel', async () => {

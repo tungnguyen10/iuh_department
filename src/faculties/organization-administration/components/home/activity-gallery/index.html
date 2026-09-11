@@ -1,13 +1,14 @@
 <section data-module="activity-gallery" id="activity-gallery-section" class="w-full bg-gradient-to-b from-secondary-blue-light to-primary-white py-12 sm:py-16 md:py-20 lg:py-24 {{class}}">
   <div class="container mx-auto px-4">
     <div class="grid grid-cols-12 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5">
-      <div class="col-span-12 sm:col-span-2 lg:col-span-1 flex flex-col gap-3 sm:gap-4 pr-0 lg:pr-4 py-4 sm:py-5 md:py-6 lg:py-8 lg:col-start-1 lg:row-start-1">
-        <h2 class="font-inter text-2xl font-bold leading-tight text-primary-dark-blue md:text-[32px]">
-          Hình ảnh hoạt động
-        </h2>
-        <p class="font-roboto font-normal text-sm sm:text-base md:text-base lg:text-lg leading-relaxed text-black text-justify">
-          Ghi nhận các hoạt động, chương trình và sự kiện nội bộ do Phòng Tổ chức – Hành chính tổ chức và phối hợp cùng các đơn vị.
-        </p>
+      <div class="relative col-span-12 overflow-hidden sm:col-span-2 lg:col-span-1 flex flex-col pr-0 lg:pr-4 py-4 sm:py-5 md:py-6 lg:py-8 lg:col-start-1 lg:row-start-1">
+        <div data-include="@shared/components/common/brand-deco.html" data-variant="3" data-class="pointer-events-none absolute -bottom-8 right-0 w-24 opacity-[0.15] sm:w-28 lg:-bottom-6 lg:right-2"></div>
+        <div data-include="@shared/components/common/section-title.html"
+          data-title="Hình ảnh hoạt động"
+          data-description="Ghi nhận các hoạt động, chương trình và sự kiện nội bộ do Phòng Tổ chức – Hành chính tổ chức và phối hợp cùng các đơn vị."
+          data-title-class="leading-tight text-primary-dark-blue"
+          data-description-class="mt-3 !text-sm sm:!text-base md:!text-base lg:!text-lg !leading-relaxed !text-black text-justify">
+        </div>
       </div>
 
       <div data-include="@faculty/components/home/activity-gallery/gallery-card.html"

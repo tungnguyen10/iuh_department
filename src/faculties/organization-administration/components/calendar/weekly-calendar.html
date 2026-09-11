@@ -1,0 +1,94 @@
+<section id="weekly-schedule" data-weekly-calendar data-initial-week="2026-09-08" aria-label="{{title}}" class="flex min-w-0 scroll-mt-32 flex-col {{class}}">
+  <div class="mb-5">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <div data-include="@shared/components/common/section-title.html"
+        data-title="{{title}}"
+        data-title-class="!leading-tight text-primary-dark-blue">
+      </div>
+      <div data-include="@shared/components/button/button.html" data-variant="13" data-url="/calendar.html" data-text="Xem lịch đầy đủ" data-icon="/assets/svgs/icon-arrow-up-right.svg" data-class="shrink-0 motion-reduce:transition-none {{fullLinkClass}}" data-icon-class="motion-reduce:transform-none motion-reduce:transition-none"></div>
+    </div>
+    <p class="mt-2 text-sm leading-6 text-black md:text-base">Lịch công tác, sự kiện và phòng họp</p>
+  </div>
+
+  <div class="rounded-2xl border border-primary-dark-blue/10 bg-primary-white p-4 sm:p-5">
+    <div role="group" aria-label="Loại lịch" class="grid grid-cols-3 gap-1 rounded-xl bg-secondary-blue-light/50 p-1">
+        <div data-include="@shared/components/button/button.html" data-variant="9" data-type="button" data-attrs="data-schedule-filter=all aria-pressed=true" data-text="Lịch công tác" data-icon="/assets/svgs/icon-calendar-check.svg" data-class="min-h-11 w-full rounded-lg border-transparent bg-transparent px-1.5 py-2 text-xs text-black hover:border-transparent hover:bg-primary-white hover:text-primary-dark-blue hover:shadow-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow md:px-2 md:text-sm motion-reduce:transition-none [&[aria-pressed=true]]:border-primary-dark-blue/10 [&[aria-pressed=true]]:bg-primary-white [&[aria-pressed=true]]:text-primary-dark-blue [&[aria-pressed=true]]:shadow-sm" data-icon-class="hidden"></div>
+        <div data-include="@shared/components/button/button.html" data-variant="9" data-type="button" data-attrs="data-schedule-filter=deadline aria-pressed=false" data-text="Hạn xử lý" data-icon="/assets/svgs/icon-calendar-check.svg" data-class="min-h-11 w-full rounded-lg border-transparent bg-transparent px-1.5 py-2 text-xs text-black hover:border-transparent hover:bg-primary-white hover:text-primary-dark-blue hover:shadow-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow md:px-2 md:text-sm motion-reduce:transition-none [&[aria-pressed=true]]:border-primary-dark-blue/10 [&[aria-pressed=true]]:bg-primary-white [&[aria-pressed=true]]:text-primary-dark-blue [&[aria-pressed=true]]:shadow-sm" data-icon-class="hidden"></div>
+        <div data-include="@shared/components/button/button.html" data-variant="9" data-type="button" data-attrs="data-schedule-filter=room aria-pressed=false" data-text="Phòng họp" data-icon="/assets/svgs/icon-calendar-check.svg" data-class="min-h-11 w-full rounded-lg border-transparent bg-transparent px-1.5 py-2 text-xs text-black hover:border-transparent hover:bg-primary-white hover:text-primary-dark-blue hover:shadow-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow md:px-2 md:text-sm motion-reduce:transition-none [&[aria-pressed=true]]:border-primary-dark-blue/10 [&[aria-pressed=true]]:bg-primary-white [&[aria-pressed=true]]:text-primary-dark-blue [&[aria-pressed=true]]:shadow-sm" data-icon-class="hidden"></div>
+    </div>
+    <div class="mt-4 flex flex-wrap items-center justify-between gap-3 border-b border-stroke pb-4">
+      <time data-schedule-week datetime="2026-09-08" class="font-inter text-sm font-bold leading-6 text-primary-dark-blue sm:text-base">08 – 14 Tháng 9, 2026</time>
+      <div class="flex items-center gap-2" role="group" aria-label="Chọn tuần">
+        <div data-include="@shared/components/button/button.html" data-variant="9" data-type="button" data-attrs="data-schedule-shift=-1" data-text="Tuần trước" data-icon="/assets/svgs/icon-chevron-left.svg" data-class="h-11 w-11 shrink-0 rounded-xl p-0 md:p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow motion-reduce:transition-none [&_span]:sr-only" data-icon-class="h-5 w-5 md:h-5 md:w-5 group-hover:translate-x-0 group-hover:translate-y-0 motion-reduce:transition-none"></div>
+        <div data-include="@shared/components/button/button.html" data-variant="9" data-type="button" data-attrs="data-schedule-shift=1" data-text="Tuần sau" data-icon="/assets/svgs/icon-chevron-right.svg" data-class="h-11 w-11 shrink-0 rounded-xl p-0 md:p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow motion-reduce:transition-none [&_span]:sr-only" data-icon-class="h-5 w-5 md:h-5 md:w-5 group-hover:translate-x-0 group-hover:translate-y-0 motion-reduce:transition-none"></div>
+      </div>
+    </div>
+    <p data-schedule-status role="status" class="sr-only">Lịch công tác: 4 mục. 08 – 14 Tháng 9, 2026.</p>
+    <ul data-schedule-list aria-label="Sự kiện trong tuần" class="pt-1">
+      <li data-schedule-event data-schedule-date="2026-09-09" data-schedule-start="08:00" data-schedule-type="meeting" data-schedule-room="true" class="relative grid grid-cols-[2.75rem_0.75rem_minmax(0,1fr)] gap-x-3 py-4 sm:grid-cols-[3.25rem_0.75rem_minmax(0,1fr)] sm:gap-x-4">
+        <time datetime="2026-09-09" class="flex flex-col text-center text-primary-dark-blue">
+          <span class="font-inter text-[28px] font-bold leading-none tabular-nums">09</span>
+          <span data-schedule-weekday class="mt-1.5 text-xs font-semibold">Th4</span>
+        </time>
+        <span aria-hidden="true" class="relative flex justify-center">
+          <span data-schedule-line class="absolute -bottom-11 top-3 w-px bg-primary-dark-blue/15"></span>
+          <span class="relative mt-1.5 h-3 w-3 shrink-0 rounded-full bg-primary-dark-blue"></span>
+        </span>
+        <div class="min-w-0">
+          <h3 class="font-inter text-sm font-semibold leading-6 text-title sm:text-base">Họp giao ban Ban Giám hiệu</h3>
+          <span class="sr-only">Loại: Họp.</span>
+          <p class="mt-1 flex flex-wrap items-baseline gap-x-2 text-sm leading-6 text-black"><span><time datetime="2026-09-09T08:00:00+07:00">08:00</time> – <time datetime="2026-09-09T10:00:00+07:00">10:00</time></span><span aria-hidden="true">·</span><span>Phòng E3.2</span></p>
+        </div>
+      </li>
+      <li data-schedule-event data-schedule-date="2026-09-10" data-schedule-start="17:00" data-schedule-type="deadline" data-schedule-room="false" class="relative grid grid-cols-[2.75rem_0.75rem_minmax(0,1fr)] gap-x-3 py-4 sm:grid-cols-[3.25rem_0.75rem_minmax(0,1fr)] sm:gap-x-4">
+        <time datetime="2026-09-10" class="flex flex-col text-center text-primary-dark-blue">
+          <span class="font-inter text-[28px] font-bold leading-none tabular-nums">10</span>
+          <span data-schedule-weekday class="mt-1.5 text-xs font-semibold">Th5</span>
+        </time>
+        <span aria-hidden="true" class="relative flex justify-center">
+          <span data-schedule-line class="absolute -bottom-11 top-3 w-px bg-primary-dark-blue/15"></span>
+          <span class="relative mt-1.5 h-3 w-3 shrink-0 rounded-full bg-danger"></span>
+        </span>
+        <div class="min-w-0">
+          <h3 class="font-inter text-sm font-semibold leading-6 text-title sm:text-base">Hạn nộp hồ sơ thi đua</h3>
+          <span class="sr-only">Loại: Hạn xử lý.</span>
+          <p class="mt-1 flex flex-wrap items-baseline gap-x-2 text-sm leading-6 text-black"><span><time datetime="2026-09-10T17:00:00+07:00">17:00</time></span><span aria-hidden="true">·</span><span>Trực tuyến</span></p>
+        </div>
+      </li>
+      <li data-schedule-event data-schedule-date="2026-09-11" data-schedule-start="13:30" data-schedule-type="conference" data-schedule-room="true" class="relative grid grid-cols-[2.75rem_0.75rem_minmax(0,1fr)] gap-x-3 py-4 sm:grid-cols-[3.25rem_0.75rem_minmax(0,1fr)] sm:gap-x-4">
+        <time datetime="2026-09-11" class="flex flex-col text-center text-primary-dark-blue">
+          <span class="font-inter text-[28px] font-bold leading-none tabular-nums">11</span>
+          <span data-schedule-weekday class="mt-1.5 text-xs font-semibold">Th6</span>
+        </time>
+        <span aria-hidden="true" class="relative flex justify-center">
+          <span data-schedule-line class="absolute -bottom-11 top-3 w-px bg-primary-dark-blue/15"></span>
+          <span class="relative mt-1.5 h-3 w-3 shrink-0 rounded-full bg-secondary-green"></span>
+        </span>
+        <div class="min-w-0">
+          <h3 class="font-inter text-sm font-semibold leading-6 text-title sm:text-base">Hội nghị viên chức năm 2026</h3>
+          <span class="sr-only">Loại: Hội nghị.</span>
+          <p class="mt-1 flex flex-wrap items-baseline gap-x-2 text-sm leading-6 text-black"><span><time datetime="2026-09-11T13:30:00+07:00">13:30</time> – <time datetime="2026-09-11T16:30:00+07:00">16:30</time></span><span aria-hidden="true">·</span><span>Hội trường A</span></p>
+        </div>
+      </li>
+      <li data-schedule-event data-schedule-date="2026-09-12" data-schedule-start="09:00" data-schedule-type="training" data-schedule-room="true" class="relative grid grid-cols-[2.75rem_0.75rem_minmax(0,1fr)] gap-x-3 py-4 sm:grid-cols-[3.25rem_0.75rem_minmax(0,1fr)] sm:gap-x-4">
+        <time datetime="2026-09-12" class="flex flex-col text-center text-primary-dark-blue">
+          <span class="font-inter text-[28px] font-bold leading-none tabular-nums">12</span>
+          <span data-schedule-weekday class="mt-1.5 text-xs font-semibold">Th7</span>
+        </time>
+        <span aria-hidden="true" class="relative flex justify-center">
+          <span data-schedule-line class="absolute -bottom-11 top-3 w-px bg-primary-dark-blue/15 hidden"></span>
+          <span class="relative mt-1.5 h-3 w-3 shrink-0 rounded-full bg-primary-yellow"></span>
+        </span>
+        <div class="min-w-0">
+          <h3 class="font-inter text-sm font-semibold leading-6 text-title sm:text-base">Đào tạo kỹ năng hành chính</h3>
+          <span class="sr-only">Loại: Đào tạo.</span>
+          <p class="mt-1 flex flex-wrap items-baseline gap-x-2 text-sm leading-6 text-black"><span><time datetime="2026-09-12T09:00:00+07:00">09:00</time> – <time datetime="2026-09-12T11:30:00+07:00">11:30</time></span><span aria-hidden="true">·</span><span>Phòng B4.1</span></p>
+        </div>
+      </li>
+    </ul>
+    <div data-schedule-empty hidden class="hidden py-12 text-center">
+      <p class="font-inter text-base font-semibold text-title">Chưa có lịch phù hợp trong tuần này</p>
+      <p class="mt-2 text-sm leading-6 text-black">Chọn tuần khác hoặc xem mục Lịch công tác.</p>
+    </div>
+  </div>
+</section>
