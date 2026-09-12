@@ -26,12 +26,6 @@ export const organizationAdministrationFacultyConfig = {
   search: site.search,
   runtimeModules: [
     {
-      selector: "[data-services-grid]",
-      load: () => import("./components/home/staff-services/staff-services.js"),
-      init: "initStaffServices",
-      name: "Staff Services Show More",
-    },
-    {
       selector: ".hero-swiper",
       load: () => import("./components/home/carousel/carousel.js"),
       init: "initHeroCarousel",

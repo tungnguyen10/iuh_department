@@ -1,5 +1,11 @@
-<section data-module="work-updates" aria-label="Văn bản mới và hoạt động bổ nhiệm" class="!transform-none w-full bg-primary-white py-10 md:py-14 motion-reduce:!transform-none motion-reduce:!opacity-100 motion-reduce:!transition-none {{class}}">
-  <div class="container mx-auto px-4">
+<section data-module="work-updates" aria-label="Văn bản mới và hoạt động bổ nhiệm" class="!transform-none relative w-full overflow-hidden bg-gradient-to-b from-[#F4F7FD] via-primary-white to-secondary-blue-light/40 py-12 md:py-16 motion-reduce:!transform-none motion-reduce:!opacity-100 motion-reduce:!transition-none {{class}}">
+  <!-- Ambient brand atmosphere: cool blue haze up top, warm accent glow anchoring the base. -->
+  <div class="pointer-events-none absolute -right-28 -top-28 h-[26rem] w-[26rem] rounded-full bg-primary-dark-blue/10 blur-3xl"></div>
+  <div class="pointer-events-none absolute -left-24 bottom-[-6rem] h-80 w-80 rounded-full bg-primary-yellow/10 blur-3xl"></div>
+  <div class="pointer-events-none absolute left-1/2 top-1/3 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-secondary-blue-light/25 blur-3xl"></div>
+  <div data-include="@shared/components/common/brand-deco.html" data-variant="1" data-class="pointer-events-none absolute -right-12 -top-10 w-56 opacity-[0.08] sm:w-72"></div>
+  <div data-include="@shared/components/common/brand-deco.html" data-variant="5" data-class="pointer-events-none absolute -left-6 top-1/4 hidden w-20 opacity-[0.12] lg:block"></div>
+  <div class="container relative mx-auto px-4">
     <div class="grid min-w-0 grid-cols-1 gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-8 xl:gap-10">
       <section aria-label="Văn bản mới" class="flex min-w-0 flex-col">
         <div data-include="@shared/components/common/section-title.html"
@@ -10,7 +16,7 @@
           data-description-class="!mt-2 !text-sm md:!text-base !leading-6 !text-black">
         </div>
 
-        <div class="flex flex-1 flex-col rounded-xl border border-primary-dark-blue/10 bg-primary-white px-2 sm:px-3">
+        <div class="flex flex-1 flex-col rounded-2xl border border-white/70 bg-gradient-to-b from-primary-white to-[#F5F8FD] px-2 shadow-[0_20px_48px_-22px_rgba(21,56,152,0.32)] ring-1 ring-primary-dark-blue/[0.04] sm:px-3">
           <!-- Match the latest non-form records in pages/documents-forms.html. -->
           <ul class="flex-1 divide-y divide-stroke">
             <div data-include="@faculty/components/documents/document-item.html" data-variant="5" data-url="/documents-forms.html#document-01" data-title="Quy trình tiếp nhận, phát hành và quản lý văn bản điện tử" data-code="QT-01/2026/TCHC" data-datetime="2026-08-18" data-date="18/08/2026"></div>
@@ -35,7 +41,7 @@
           <div data-include="@shared/components/button/button.html" data-variant="13" data-url="/news.html" data-text="Xem tất cả" data-icon="/assets/svgs/icon-arrow-up-right.svg" data-class="shrink-0 motion-reduce:transition-none" data-icon-class="motion-reduce:transform-none motion-reduce:transition-none"></div>
         </div>
 
-        <div data-news-appointment-section data-limit="4" class="flex flex-1 rounded-2xl border border-primary-dark-blue/10 bg-[#F8FAFE] p-3 sm:p-4">
+        <div data-news-appointment-section data-limit="10" class="flex flex-1 rounded-2xl border border-white/70 bg-gradient-to-br from-[#F8FAFE] to-[#EEF3FC] p-3 shadow-[0_20px_48px_-22px_rgba(21,56,152,0.32)] ring-1 ring-primary-dark-blue/[0.04] sm:p-4">
           <p class="m-auto py-12 font-roboto text-sm text-gray-600">Đang tải hoạt động bổ nhiệm...</p>
         </div>
       </section>

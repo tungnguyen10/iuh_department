@@ -13,6 +13,21 @@ export const createNewsRenderer = ({ base, items, sectionMeta }) => {
   const icon = (name) => withBase(`/assets/svgs/${name}`)
   const image = (item) => withBase(item.image || '/assets/images/default.jpg')
 
+  const timelineDateChip = (raw) => {
+    const value = raw || ''
+    const match = value.match(/^\s*(\d{1,2})\s+tháng\s+(\d{1,2}),?\s*(\d{4})/i)
+    if (!match) {
+      return `<time class="pt-0.5 font-roboto text-xs font-semibold leading-5 text-primary-dark-blue">${escapeHtml(value)}</time>`
+    }
+    const [, day, month, year] = match
+    return `
+      <time datetime="${escapeHtml(year)}-${escapeHtml(month.padStart(2, '0'))}-${escapeHtml(day.padStart(2, '0'))}" class="flex w-14 flex-col self-start overflow-hidden rounded-lg bg-primary-white text-center shadow-[0_6px_16px_-6px_rgba(21,56,152,0.35)] ring-1 ring-inset ring-primary-dark-blue/10 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:shadow-[0_10px_22px_-8px_rgba(21,56,152,0.45)] motion-reduce:transform-none motion-reduce:transition-none">
+        <span class="bg-primary-dark-blue py-1 font-roboto text-[10px] font-bold uppercase leading-none tracking-[0.08em] text-primary-white">Thg ${escapeHtml(month)}</span>
+        <span class="pt-1.5 font-inter text-2xl font-extrabold leading-none text-primary-dark-blue">${escapeHtml(day.padStart(2, '0'))}</span>
+        <span class="pb-1.5 pt-1 font-roboto text-[10px] font-medium leading-none text-gray-500">${escapeHtml(year)}</span>
+      </time>`
+  }
+
   const card = (item) => `
     <article class="group relative bg-primary-white hover:rounded-[10px] overflow-hidden w-full h-full flex flex-col p-2 md:p-2.5 pb-3 md:pb-4 hover:shadow-[2px_2px_15px_0_rgba(21,56,152,0.2)] transition-all duration-300 cursor-pointer">
       <a href="${newsLink(item)}" class="absolute inset-0 z-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow focus-visible:ring-inset" aria-label="${escapeHtml(item.title)}"><span class="sr-only">${escapeHtml(item.title)}</span></a>
@@ -159,8 +174,8 @@ export const createNewsRenderer = ({ base, items, sectionMeta }) => {
       const type = item.appointmentType || item.category || 'Bổ nhiệm'
       const isLast = index === recent.length - 1
       return `
-        <li class="group relative grid grid-cols-[4.5rem_0.75rem_minmax(0,1fr)] gap-x-3 py-4 first:pt-2 last:pb-1">
-          <time class="pt-0.5 font-roboto text-xs font-semibold leading-5 text-primary-dark-blue">${escapeHtml(item.date || '')}</time>
+        <li class="group relative grid grid-cols-[3.5rem_0.75rem_minmax(0,1fr)] gap-x-3 py-4 first:pt-2 last:pb-1">
+          ${timelineDateChip(item.date)}
           <span class="relative flex justify-center" aria-hidden="true">
             <span class="relative z-10 mt-1.5 h-2.5 w-2.5 rounded-full bg-primary-dark-blue ring-4 ring-[#F8FAFE]"></span>
             ${isLast ? '' : '<span class="absolute bottom-[-1rem] top-3 w-px bg-primary-dark-blue/15"></span>'}
@@ -196,9 +211,11 @@ export const createNewsRenderer = ({ base, items, sectionMeta }) => {
           </div>
         </article>
 
-        <div class="min-w-0 rounded-xl bg-primary-white px-4 py-3 shadow-[0_8px_24px_rgba(21,56,152,0.08)] sm:px-5">
-          <p class="border-b border-stroke pb-3 font-inter text-xs font-bold uppercase tracking-[0.12em] text-primary-dark-blue">Quyết định gần đây</p>
-          <ol>${recentItems}</ol>
+        <div class="flex min-w-0 flex-col rounded-xl bg-primary-white px-4 py-3 shadow-[0_8px_24px_rgba(21,56,152,0.08)] sm:px-5">
+          <p class="shrink-0 border-b border-stroke pb-3 font-inter text-xs font-bold uppercase tracking-[0.12em] text-primary-dark-blue">Quyết định gần đây</p>
+          <div class=\"min-h-0 flex-1 overflow-y-auto [scrollbar-color:rgba(21,56,152,0.25)_transparent] [scrollbar-width:thin] max-h-[370px] md:max-h-[404px] md:pr-1\">
+            <ol>${recentItems}</ol>
+          </div>
         </div>
       </div>`
   }

@@ -277,29 +277,29 @@ test('organization administration chrome follows the index information architect
 })
 
 test('organization administration index modules link to focused destinations', async () => {
-  const [staffServices, noticeHub, workUpdates] = await Promise.all([
+  const [facultyIndex, stats, staffServices, noticeHub, workUpdates] = await Promise.all([
+    readFacultyFile('pages/index.html'),
+    readFacultyFile('components/home/stats/index.html'),
     readFacultyFile('components/home/staff-services/index.html'),
     readFacultyFile('components/home/notice-hub/index.html'),
     readFacultyFile('components/home/work-updates/index.html'),
   ])
 
-  for (const title of ['Tôi cần...', 'Hệ thống dành cho cán bộ, viên chức']) {
-    assert.ok(staffServices.includes(title), `missing section title: ${title}`)
-  }
-
-  for (const id of [
-    'organization-personnel',
-    'administration-general',
-    'records-archives',
-    'policy-emulation',
-  ]) assert.match(staffServices, new RegExp(`data-url=["']/functions-duties\\.html#${id}["']`))
-
+  assert.doesNotMatch(`${facultyIndex}\n${stats}\n${staffServices}`, /Tôi cần\.\.\./)
+  assert.match(facultyIndex, /components\/home\/stats\/index\.html/)
+  assert.doesNotMatch(facultyIndex, /components\/home\/staff-services\/index\.html/)
+  assert.match(stats, /components\/home\/staff-services\/index\.html/)
+  assert.ok(
+    stats.indexOf('components/home/staff-services/index.html') < stats.indexOf('grid grid-cols-2'),
+    'staff services should render above the stats grid',
+  )
+  assert.match(staffServices, /Hệ thống dành cho cán bộ, viên chức/)
   assert.match(staffServices, /data-url=["']\/documents-forms\.html["']/)
   assert.doesNotMatch(staffServices, /weekly-schedule|Lịch công tác/)
   assert.match(staffServices, /lg:grid-cols-3/)
 
-  assert.match(workUpdates, /Hoạt động bổ nhiệm/)
-  assert.match(workUpdates, /data-news-appointment-section data-limit="4"/)
+  assert.match(workUpdates, /Công tác cán bộ/)
+  assert.match(workUpdates, /data-news-appointment-section data-limit="10"/)
   assert.match(workUpdates, /lg:grid-cols-\[minmax\(0,5fr\)_minmax\(0,7fr\)\]/)
   assert.doesNotMatch(workUpdates, /weekly-calendar|Tuần này tại IUH/)
 
