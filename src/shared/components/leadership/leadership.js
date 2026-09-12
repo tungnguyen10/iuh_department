@@ -22,6 +22,7 @@ const BG_CLASS_REGEX = /bg-\[?[^\s\]]+\]?/g
 
 // WeakMap to track initialized cards (prevents double init)
 const initializedCards = new WeakMap()
+const initializedPanels = new WeakSet()
 
 // Simple string hash function (cached for performance)
 function hashString(str) {
@@ -207,8 +208,143 @@ export const initLeadership = (container = document) => {
       instances.push(new LeaderCard(avatar))
     }
   })
+
+  initLeaderWorkPanel(container)
   
   console.info(`[Leadership] Initialized ${instances.length} avatar elements`)
   
   return instances
+}
+
+function initLeaderWorkPanel(container) {
+  const panel = container.querySelector?.('[data-leader-work-panel]')
+    || document.querySelector('[data-leader-work-panel]')
+
+  if (!panel || initializedPanels.has(panel)) return
+
+  const panelName = panel.querySelector('[data-leader-work-name]')
+  const panelPosition = panel.querySelector('[data-leader-work-position]')
+  const panelContent = panel.querySelector('[data-leader-work-content]')
+  const panelScroll = panel.querySelector('[data-leader-work-scroll]')
+  const closeButton = panel.querySelector('[data-leader-work-close]')
+  const triggers = document.querySelectorAll('[data-leader-work-trigger]')
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+  const compactViewport = window.matchMedia('(max-width: 767px)')
+  let activeTrigger = null
+
+  const setCardActive = (trigger, isActive) => {
+    const card = trigger?.closest('[data-leader-work-area]')
+    if (!card) return
+
+    card.classList.toggle('ring-2', isActive)
+    card.classList.toggle('ring-primary-yellow', isActive)
+    card.classList.toggle('ring-offset-2', isActive)
+  }
+
+  const placePanel = trigger => {
+    const card = trigger?.closest('[data-leader-work-area]')
+    if (!card) return
+
+    const level = card.closest('[data-leader-level]')
+    const node = card.closest('[data-leader-node]')
+    const levelColumns = level && getComputedStyle(level).display === 'grid'
+      ? getComputedStyle(level).gridTemplateColumns.split(' ').length
+      : 0
+    const levelIsStacked = levelColumns === 1
+    const insertionTarget = compactViewport.matches || levelIsStacked
+      ? (node || level || card)
+      : (level || node || card)
+
+    insertionTarget.insertAdjacentElement('afterend', panel)
+  }
+
+  const alignPanelAnchor = () => {
+    if (panel.hidden || !activeTrigger) return
+
+    const card = activeTrigger.closest('[data-leader-work-area]')
+    const cardRect = card?.getBoundingClientRect()
+    const panelRect = panel.getBoundingClientRect()
+    if (!cardRect || panelRect.width === 0) return
+
+    const desiredX = cardRect.left + (cardRect.width / 2) - panelRect.left
+    const anchorX = Math.max(28, Math.min(panelRect.width - 28, desiredX))
+    panel.style.setProperty('--leader-panel-anchor-x', `${anchorX}px`)
+  }
+
+  const closePanel = ({ restoreFocus = true } = {}) => {
+    if (panel.hidden) return
+
+    panel.hidden = true
+    activeTrigger?.setAttribute('aria-expanded', 'false')
+    setCardActive(activeTrigger, false)
+    if (restoreFocus) activeTrigger?.focus()
+    activeTrigger = null
+  }
+
+  triggers.forEach(trigger => {
+    const card = trigger.closest('[data-leader-work-area]')
+    const workArea = card?.dataset.leaderWorkArea?.trim()
+    if (!workArea) return
+
+    trigger.setAttribute('aria-controls', panel.id)
+    trigger.setAttribute('aria-expanded', 'false')
+
+    const name = card.querySelector('[data-leader-name]')?.textContent.trim() || ''
+    trigger.setAttribute('aria-label', `Xem mảng công việc phụ trách của ${name}`)
+
+    trigger.addEventListener('click', event => {
+      event.preventDefault()
+
+      if (!panel.hidden && activeTrigger === trigger) {
+        closePanel()
+        return
+      }
+
+      activeTrigger?.setAttribute('aria-expanded', 'false')
+      setCardActive(activeTrigger, false)
+      activeTrigger = trigger
+      trigger.setAttribute('aria-expanded', 'true')
+      setCardActive(trigger, true)
+
+      panelName.textContent = name
+      panelPosition.textContent = card.querySelector('[data-leader-position]')?.textContent.trim() || ''
+      const workItems = workArea.split('|').map(item => item.trim()).filter(Boolean)
+      panelContent.replaceChildren(...workItems.map(item => {
+        const listItem = document.createElement('li')
+        listItem.textContent = item
+        return listItem
+      }))
+
+      placePanel(trigger)
+      panel.hidden = false
+      if (panelScroll) panelScroll.scrollTop = 0
+      requestAnimationFrame(() => {
+        alignPanelAnchor()
+        panel.scrollIntoView({
+          block: 'nearest',
+          behavior: prefersReducedMotion.matches ? 'auto' : 'smooth',
+        })
+      })
+    })
+  })
+
+  closeButton?.addEventListener('click', closePanel)
+  document.addEventListener('click', event => {
+    if (panel.hidden) return
+    if (panel.contains(event.target)) return
+    if (event.target.closest?.('[data-leader-work-trigger]')) return
+
+    closePanel({ restoreFocus: false })
+  })
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !panel.hidden) closePanel()
+  })
+  window.addEventListener('resize', () => {
+    if (panel.hidden || !activeTrigger) return
+
+    placePanel(activeTrigger)
+    requestAnimationFrame(alignPanelAnchor)
+  })
+
+  initializedPanels.add(panel)
 }

@@ -36,7 +36,6 @@ test('organization administration retained pages use the approved vocabulary', a
   for (const label of ['Tổ chức – Cán bộ', 'Hành chính – Tổng hợp', 'Văn thư – Lưu trữ', 'Chính sách – Thi đua', 'Lễ tân – Khánh tiết']) {
     for (const page of [about, leadership, detail, contact]) assert.ok(page.includes(label), `missing ${label}`)
   }
-  assert.equal((leadership.match(/@shared\/components\/leadership\/leader-board\.html/g) ?? []).length, 3)
   assert.match(detail, /data-leader-detail/)
   assert.match(detail, /data-leader-name/)
   assert.match(detail, /href=["']\/functions-duties\.html["']/)
@@ -334,6 +333,16 @@ test('organization administration leadership uses published IUH personnel', asyn
   for (const name of ['Phạm Trung Kiên', 'Nguyễn Thị Thu Hà', 'Đỗ Khoa Thúy Kha']) {
     assert.match(leadership, new RegExp(name))
   }
+  assert.equal((leadership.match(/@shared\/components\/leadership\/leader-board\.html/g) ?? []).length, 0)
+  assert.equal((leadership.match(/data-work-area=/g) ?? []).length, 3)
+  assert.equal((leadership.match(/data-leader-level/g) ?? []).length, 2)
+  assert.equal((leadership.match(/data-leader-node/g) ?? []).length, 3)
+  assert.match(leadership, /xl:grid-cols-2/)
+  assert.match(leadership, /@shared\/components\/leadership\/leader-work-panel\.html/)
+  for (const email of ['phamtrungkien@iuh.edu.vn', 'hanguyen@iuh.edu.vn', 'dokhoathuykha@iuh.edu.vn']) {
+    assert.match(leadership, new RegExp(email.replace('.', '\\.')))
+  }
+  assert.doesNotMatch(leadership, /Trần Văn Nam|Lê Thị Hồng|Phạm Quốc Bảo|Nguyễn Hoàng An/)
   assert.match(detail, /Phạm Trung Kiên/)
   assert.match(`${leadership}\n${detail}`, /ptchc@iuh\.edu\.vn/)
 })
