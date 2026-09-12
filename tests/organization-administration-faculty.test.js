@@ -290,9 +290,11 @@ test('organization administration index modules link to focused destinations', a
   assert.doesNotMatch(facultyIndex, /components\/home\/staff-services\/index\.html/)
   assert.match(stats, /components\/home\/staff-services\/index\.html/)
   assert.ok(
-    stats.indexOf('components/home/staff-services/index.html') < stats.indexOf('grid grid-cols-2'),
+    stats.indexOf('components/home/staff-services/index.html') < stats.indexOf('components/home/stats/stat-item.html'),
     'staff services should render above the stats grid',
   )
+  assert.match(stats, /components\/home\/stats\/stat-item\.html/)
+  assert.doesNotMatch(stats, /@shared\/components\/stats\/stats-card\.html|default\.jpg|banner\.jpg/)
   assert.match(staffServices, /Hệ thống dành cho cán bộ, viên chức/)
   assert.match(staffServices, /data-url=["']\/documents-forms\.html["']/)
   assert.doesNotMatch(staffServices, /weekly-schedule|Lịch công tác/)

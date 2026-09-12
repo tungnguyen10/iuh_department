@@ -1,37 +1,38 @@
 <!-- Stats and Staff Systems Section -->
 <section data-module="stats"
-    class="relative w-full self-stretch overflow-hidden bg-secondary-blue-light py-8 shadow-[inset_0px_0px_20px_0px_rgba(142,216,248,0.80)] md:py-14 {{class}}">
-    <!-- Wave effect -->
-    <div data-include="@shared/components/common/core-deco.html" data-class="wave pointer-events-none absolute opacity-20 w-[180px] sm:w-[300px] lg:w-[320px] left-[calc(50%-200px)] sm:left-[calc(50%-300px)] lg:left-[calc(50%-830px)] xl:left-[calc(50%-930px)] -bottom-[10%] sm:-bottom-[12%] lg:-bottom-[15%]"></div>
-
+    class="relative w-full bg-[#F4F8FD] py-8 md:py-14 {{class}}">
     <div class="container relative mx-auto px-4">
       <div data-include="@faculty/components/home/staff-services/index.html" data-class=""></div>
 
-      <div class="grid grid-cols-2 gap-4 justify-items-center sm:gap-6 lg:grid-cols-4">
-        <!-- Stats Card 1 -->
-        <div data-include="@shared/components/stats/stats-card.html" data-count="300" data-suffix="+"
-            data-bgImage="/assets/images/default.jpg" data-icon="/assets/svgs/icon-user.svg"
-            data-iconAlt="Cán bộ, viên chức" data-description="Cán bộ, viên chức đang công tác">
+      <div class="relative overflow-hidden rounded-3xl bg-primary-dark-blue shadow-[0_20px_48px_-24px_rgba(21,56,152,0.35)]">
+        <div aria-hidden="true" class="pointer-events-none absolute inset-y-0 left-0 z-10 w-1.5 bg-primary-yellow"></div>
+        <div data-include="@shared/components/common/brand-deco.html" data-variant="2" data-class="absolute -right-12 -top-16 w-52 opacity-[0.06] sm:w-64" data-icon-class="brightness-0 invert"></div>
+
+        <div class="relative flex flex-col gap-3 border-b border-primary-white/15 px-6 py-6 sm:px-8 lg:flex-row lg:items-end lg:justify-between lg:gap-8">
+          <div>
+            <p class="font-roboto text-xs font-bold uppercase tracking-[0.18em] text-primary-yellow">Thống kê tổng quan</p>
+            <h2 class="mt-2 font-inter text-2xl font-bold leading-tight text-primary-white sm:text-3xl">Quy mô và hiệu quả vận hành</h2>
+          </div>
+          <p class="max-w-xl font-roboto text-sm leading-relaxed text-primary-white/80 sm:text-base lg:text-right">Các chỉ số chính về nhân sự, hồ sơ và phối hợp hành chính.</p>
         </div>
 
-        <!-- Stats Card 2 -->
-        <div data-include="@shared/components/stats/stats-card.html" data-count="5000" data-suffix="+"
-            data-bgImage="/assets/images/banner.jpg" data-icon="/assets/svgs/icon-agreement.svg"
-            data-iconAlt="Hồ sơ" data-description="Hồ sơ, biểu mẫu xử lý mỗi năm">
-        </div>
+        <div class="relative grid grid-cols-2 gap-px bg-primary-white/15 lg:grid-cols-4">
+          <div data-include="@faculty/components/home/stats/stat-item.html" data-count="300" data-suffix="+"
+            data-category="Nhân sự" data-icon="/assets/svgs/icon-user.svg"
+            data-description="Cán bộ, viên chức đang công tác"></div>
 
-        <!-- Stats Card 3 -->
-        <div data-include="@shared/components/stats/stats-card.html" data-count="25" data-suffix="+"
-            data-bgImage="/assets/images/default.jpg" data-icon="/assets/svgs/icon-building.svg"
-            data-iconAlt="Đơn vị" data-description="Đơn vị, phòng ban phối hợp">
-        </div>
+          <div data-include="@faculty/components/home/stats/stat-item.html" data-count="5000" data-suffix="+"
+            data-category="Hồ sơ" data-icon="/assets/svgs/icon-agreement.svg"
+            data-description="Hồ sơ, biểu mẫu xử lý mỗi năm"></div>
 
-        <!-- Stats Card 4 -->
-        <div data-include="@shared/components/stats/stats-card.html" data-count="98" data-suffix="%"
-            data-bgImage="/assets/images/default.jpg" data-icon="/assets/svgs/icon-shield-check.svg"
-            data-iconAlt="Đúng hạn" data-description="Hồ sơ xử lý đúng hạn">
+          <div data-include="@faculty/components/home/stats/stat-item.html" data-count="25" data-suffix="+"
+            data-category="Phối hợp" data-icon="/assets/svgs/icon-building.svg"
+            data-description="Đơn vị, phòng ban phối hợp"></div>
+
+          <div data-include="@faculty/components/home/stats/stat-item.html" data-count="98" data-suffix="%"
+            data-category="Tiến độ" data-icon="/assets/svgs/icon-shield-check.svg"
+            data-description="Hồ sơ xử lý đúng hạn"></div>
         </div>
       </div>
-
     </div>
 </section>

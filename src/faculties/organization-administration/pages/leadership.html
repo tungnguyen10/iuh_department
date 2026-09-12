@@ -8,10 +8,116 @@
 
 <section class="container mx-auto px-4 py-10 md:py-16">
   <div data-include="@shared/components/common/section-title.html" data-subtitle="Cơ cấu tổ chức" data-title="Ban lãnh đạo" data-description="Lãnh đạo Phòng Tổ chức – Hành chính và các lĩnh vực công tác phụ trách."></div>
-  <div class="mt-8 grid gap-6 lg:grid-cols-3">
-    <div data-include="@shared/components/leadership/leader-board.html" data-link="/leadership-detail.html" data-name="Phạm Trung Kiên" data-position="Trưởng phòng" data-email="ptchc@iuh.edu.vn" data-image="/assets/images/default.jpg" data-responsibility1="Phụ trách chung và trực tiếp chỉ đạo Tổ chức – Cán bộ." data-responsibility2="Chỉ đạo công tác Chính sách – Thi đua." data-responsibility3="Phân công và phối hợp thực hiện nhiệm vụ giữa các lĩnh vực." data-responsibility4="Theo dõi, đánh giá kết quả công tác của phòng."></div>
-    <div data-include="@shared/components/leadership/leader-board.html" data-link="/leadership-detail.html" data-name="Nguyễn Thị Thu Hà" data-position="Phó Trưởng phòng" data-email="ptchc@iuh.edu.vn" data-image="/assets/images/default.jpg" data-responsibility1="Phụ trách Hành chính – Tổng hợp." data-responsibility2="Điều phối công tác Văn thư – Lưu trữ." data-responsibility3="Tổng hợp báo cáo và hướng dẫn lập, quản lý hồ sơ hành chính." data-responsibility4="Thực hiện nhiệm vụ theo phân công của Trưởng phòng."></div>
-    <div data-include="@shared/components/leadership/leader-board.html" data-link="/leadership-detail.html" data-name="Đỗ Khoa Thúy Kha" data-position="Phó Trưởng phòng" data-email="ptchc@iuh.edu.vn" data-image="/assets/images/default.jpg" data-responsibility1="Phụ trách Lễ tân – Khánh tiết." data-responsibility2="Phối hợp chuẩn bị đón tiếp và nghi thức tại các sự kiện." data-responsibility3="Điều phối lịch và điều kiện tổ chức các buổi lễ của Nhà trường." data-responsibility4="Thực hiện nhiệm vụ theo phân công của Trưởng phòng."></div>
+
+  <!-- Organization Tree - 3 Levels Responsive -->
+  <div class="mt-8 flex flex-col gap-6 md:gap-8">
+    <!-- Level 1: Trưởng phòng (Top) -->
+    <div class="flex justify-center">
+      <div class="w-full max-w-md">
+        <div data-include="@shared/components/leadership/leader-shape.html" data-link="/leadership-detail.html"
+          data-name="Phạm Trung Kiên" data-position="Trưởng phòng" data-email="ptchc@iuh.edu.vn"
+          data-image="/assets/images/default.jpg">
+        </div>
+      </div>
+    </div>
+
+    <!-- Connector Level 1 to 2 -->
+    <div class="flex justify-center -my-3 md:-my-4">
+      <div class="w-px h-6 md:h-8 bg-primary-dark-blue/60"></div>
+    </div>
+
+    <!-- Level 2: Phó Trưởng phòng -->
+    <div class="flex flex-wrap justify-center gap-4 md:gap-6 relative">
+      <!-- Horizontal Connector (Desktop) -->
+      <div class="hidden md:block absolute -top-6 md:-top-8 left-1/2 -translate-x-1/2 w-3/4 h-6 md:h-8 border-t-2 border-l-2 border-r-2 border-primary-dark-blue/40 rounded-t-xl"></div>
+
+      <!-- Phó Trưởng phòng 1 -->
+      <div class="relative w-full md:w-[calc(50%-0.75rem)] md:max-w-md">
+        <div data-include="@shared/components/leadership/leader-shape.html" data-link="/leadership-detail.html"
+          data-name="Nguyễn Thị Thu Hà" data-position="Phó Trưởng phòng" data-email="ptchc@iuh.edu.vn"
+          data-image="/assets/images/default.jpg">
+        </div>
+      </div>
+
+      <!-- Phó Trưởng phòng 2 -->
+      <div class="relative w-full md:w-[calc(50%-0.75rem)] md:max-w-md">
+        <div data-include="@shared/components/leadership/leader-shape.html" data-link="/leadership-detail.html"
+          data-name="Đỗ Khoa Thúy Kha" data-position="Phó Trưởng phòng" data-email="ptchc@iuh.edu.vn"
+          data-image="/assets/images/default.jpg">
+        </div>
+      </div>
+    </div>
+
+    <!-- Connector Level 2 to 3 -->
+    <div class="flex justify-center -my-3 md:-my-4">
+      <div class="w-px h-6 md:h-8 bg-primary-dark-blue/40"></div>
+    </div>
+
+    <!-- Level 3: Tổ trưởng các lĩnh vực -->
+    <div class="flex flex-wrap justify-center gap-4 md:gap-5 relative">
+      <!-- Horizontal Connector (Desktop) -->
+      <div class="hidden lg:block absolute -top-6 md:-top-8 left-1/2 -translate-x-1/2 w-5/6 h-6 md:h-8 border-t-2 border-l-2 border-r-2 border-primary-dark-blue/30 rounded-t-xl"></div>
+
+      <div class="relative w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-0.834rem)]">
+        <div data-include="@shared/components/leadership/leader-shape.html" data-link="/leadership-detail.html"
+          data-name="Trần Văn Nam" data-position="Tổ trưởng Tổ chức – Cán bộ" data-email="ptchc@iuh.edu.vn"
+          data-image="/assets/images/default.jpg">
+        </div>
+      </div>
+
+      <div class="relative w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-0.834rem)]">
+        <div data-include="@shared/components/leadership/leader-shape.html" data-link="/leadership-detail.html"
+          data-name="Lê Thị Hồng" data-position="Tổ trưởng Hành chính – Tổng hợp" data-email="ptchc@iuh.edu.vn"
+          data-image="/assets/images/default.jpg">
+        </div>
+      </div>
+
+      <div class="relative w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-0.834rem)]">
+        <div data-include="@shared/components/leadership/leader-shape.html" data-link="/leadership-detail.html"
+          data-name="Phạm Quốc Bảo" data-position="Tổ trưởng Văn thư – Lưu trữ" data-email="ptchc@iuh.edu.vn"
+          data-image="/assets/images/default.jpg">
+        </div>
+      </div>
+    </div>
+
+    <!-- Connector Level 3 to 4 -->
+    <div class="flex justify-center -my-3 md:-my-4">
+      <div class="w-px h-6 md:h-8 bg-primary-dark-blue/30"></div>
+    </div>
+
+    <!-- Level 4: Chuyên viên -->
+    <div class="flex flex-wrap justify-center gap-4 md:gap-5 relative">
+      <!-- Horizontal Connector (Desktop) -->
+      <div class="hidden lg:block absolute -top-6 md:-top-8 left-1/2 -translate-x-1/2 w-11/12 h-6 md:h-8 border-t-2 border-l-2 border-r-2 border-primary-dark-blue/20 rounded-t-xl"></div>
+
+      <div class="relative w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(25%-0.9375rem)]">
+        <div data-include="@shared/components/leadership/leader-shape.html" data-link="/leadership-detail.html"
+          data-name="Nguyễn Hoàng An" data-position="Chuyên viên Tổ chức" data-email="ptchc@iuh.edu.vn"
+          data-image="/assets/images/default.jpg">
+        </div>
+      </div>
+
+      <div class="relative w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(25%-0.9375rem)]">
+        <div data-include="@shared/components/leadership/leader-shape.html" data-link="/leadership-detail.html"
+          data-name="Vũ Thị Ngọc" data-position="Chuyên viên Hành chính" data-email="ptchc@iuh.edu.vn"
+          data-image="/assets/images/default.jpg">
+        </div>
+      </div>
+
+      <div class="relative w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(25%-0.9375rem)]">
+        <div data-include="@shared/components/leadership/leader-shape.html" data-link="/leadership-detail.html"
+          data-name="Đặng Minh Khôi" data-position="Chuyên viên Văn thư" data-email="ptchc@iuh.edu.vn"
+          data-image="/assets/images/default.jpg">
+        </div>
+      </div>
+
+      <div class="relative w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(25%-0.9375rem)]">
+        <div data-include="@shared/components/leadership/leader-shape.html" data-link="/leadership-detail.html"
+          data-name="Bùi Thảo Vy" data-position="Chuyên viên Chính sách – Thi đua" data-email="ptchc@iuh.edu.vn"
+          data-image="/assets/images/default.jpg">
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
