@@ -1,97 +1,191 @@
 {
   "section": {
     "title": "Tin tức - Sự kiện",
-    "description": "Tin tức chính thức về đội ngũ, thi đua, công đoàn và hoạt động của viên chức, người lao động IUH."
+    "description": "Cập nhật thông tin mới nhất về hoạt động đào tạo, hợp tác, người học và công tác cán bộ tại IUH."
   },
   "items": [
     {
       "id": 1,
-      "slug": "tong-ket-hoi-thao-iuh-2026",
-      "title": "Tổng kết Hội thao IUH 2026, phát động phong trào thi đua chào mừng 70 năm thành lập trường",
-      "excerpt": "Công đoàn IUH trao giải Hội thao khối viên chức, người lao động và phát động các hoạt động chào mừng 70 năm thành lập trường.",
-      "category": "Thi đua – Công đoàn",
-      "date": "30 tháng 7, 2026",
-      "image": "/assets/images/default.jpg",
-      "imageAlt": "Tổng kết Hội thao IUH năm 2026",
+      "kind": "news",
+      "slug": "9-thu-khoa-dau-vao-iuh-2026",
+      "title": "9 thủ khoa đầu vào IUH: Những gương mặt mới bắt đầu hành trình từ vị trí dẫn đầu",
+      "excerpt": "Trong hơn 12.000 tân sinh viên khóa 22, chín gương mặt có kết quả tuyển sinh nổi bật đã được IUH tuyên dương và trao học bổng.",
+      "category": "Tin tức",
+      "date": "05 tháng 9, 2026",
+      "image": "/assets/images/news-thu-khoa-2026.jpg",
+      "imageAlt": "Các thủ khoa đầu vào IUH năm 2026 được tuyên dương",
+      "sourceName": "Website IUH",
+      "sourceUrl": "https://iuh.edu.vn/vi/tin-tuc/9-thu-khoa-dau-vao-iuh-nhung-guong-mat-moi-bat-dau-hanh-trinh-tu-vi-tri-dan-dau-2249.html",
       "content": [
-        { "type": "notice", "title": "Sự kiện IUH", "text": "Lễ trao giải được Công đoàn Trường Đại học Công nghiệp TP.HCM tổ chức ngày 29/7/2026." },
-        { "type": "paragraph", "text": "Hội thao khối viên chức, người lao động năm 2026 tạo sân chơi rèn luyện sức khỏe, tăng cường gắn kết giữa các đơn vị và lan tỏa phong trào thi đua trong toàn trường." },
-        { "type": "paragraph", "text": "Tại chương trình, Công đoàn Trường đồng thời phát động các hoạt động hướng đến kỷ niệm 70 năm thành lập IUH (1956–2026)." }
+        { "type": "info", "title": "Dấu ấn đầu khóa", "text": "Chín tân sinh viên có thành tích tuyển sinh nổi bật được IUH ghi nhận trong dịp khai giảng năm học 2026–2027." },
+        { "type": "paragraph", "text": "Các thủ khoa đến từ nhiều ngành đào tạo, đại diện cho tinh thần chủ động và khát vọng học tập của hơn 12.000 tân sinh viên khóa 22." },
+        { "type": "paragraph", "text": "Hoạt động tuyên dương và trao học bổng là sự khích lệ để người học tiếp tục phát huy năng lực trong chặng đường đại học tại IUH." }
       ]
     },
     {
       "id": 2,
-      "slug": "hoi-nghi-vien-chuc-nguoi-lao-dong-iuh-2026",
-      "title": "Hội nghị đại biểu viên chức, người lao động IUH năm 2026: Bước vào năm thứ 70 với áp lực đổi mới",
-      "excerpt": "Hội nghị thống nhất nhiệm vụ năm 2026, tập trung cải tiến quản trị, chuyển đổi số và quốc tế hóa hoạt động đại học.",
-      "category": "Viên chức – Người lao động",
-      "date": "02 tháng 3, 2026",
-      "image": "/assets/images/default.jpg",
-      "imageAlt": "Hội nghị đại biểu viên chức, người lao động IUH năm 2026",
+      "kind": "news",
+      "slug": "iuh-danh-80-ti-dong-hoc-bong-2026-2027",
+      "title": "IUH dành 80 tỉ đồng học bổng cho người học năm học 2026-2027",
+      "excerpt": "Nguồn học bổng quy mô 80 tỉ đồng tiếp tục hỗ trợ, ghi nhận thành tích và tạo điều kiện để người học yên tâm theo đuổi chương trình đào tạo.",
+      "category": "Người học",
+      "date": "05 tháng 9, 2026",
+      "image": "/assets/images/news-hoc-bong-2026.jpg",
+      "imageAlt": "Sinh viên IUH nhận thông tin học bổng năm học 2026-2027",
+      "sourceName": "Website IUH",
+      "sourceUrl": "https://iuh.edu.vn/vi/tin-tuc/iuh-danh-80-ti-dong-hoc-bong-cho-nguoi-hoc-nam-hoc-2026-2027-2248.html",
       "content": [
-        { "type": "notice", "title": "Hội nghị thường niên", "text": "Hội nghị diễn ra sáng 28/2/2026 với sự tham dự của lãnh đạo Nhà trường và đại biểu viên chức, người lao động IUH." },
-        { "type": "paragraph", "text": "Các tham luận tập trung vào hợp tác doanh nghiệp gắn với đổi mới sáng tạo, phát triển nguồn nhân lực chất lượng cao và chuyển đổi số hướng đến mô hình đại học số." },
-        { "type": "paragraph", "text": "Kết thúc hội nghị, các đại biểu thống nhất thông qua nghị quyết năm 2026, hướng đến quản trị hiệu quả và nâng cao vị thế của IUH trong cộng đồng học thuật quốc tế." }
+        { "type": "info", "title": "Hỗ trợ người học", "text": "IUH dành 80 tỉ đồng cho các chương trình học bổng trong năm học 2026–2027." },
+        { "type": "paragraph", "text": "Các chính sách được xây dựng để khuyến khích thành tích học tập, đồng thời đồng hành với sinh viên có hoàn cảnh khó khăn." },
+        { "type": "paragraph", "text": "Thông tin từng chương trình, điều kiện và thời gian xét học bổng được công bố qua các kênh chính thức của Nhà trường." }
       ]
     },
     {
       "id": 3,
-      "slug": "dai-hoi-cong-doan-truong-lan-thu-xvii",
-      "title": "IUH đón nhận Cờ thi đua của Công đoàn Công Thương Việt Nam tại Đại hội Công đoàn Trường lần thứ XVII",
-      "excerpt": "Đại hội Công đoàn IUH nhiệm kỳ 2025–2030 tổng kết hoạt động, đề ra phương hướng mới và đón nhận Cờ thi đua của Công đoàn Công Thương Việt Nam.",
-      "category": "Thi đua – Công đoàn",
-      "date": "12 tháng 11, 2025",
-      "image": "/assets/images/default.jpg",
-      "imageAlt": "Đại hội Công đoàn Trường Đại học Công nghiệp TP.HCM lần thứ XVII",
+      "kind": "news",
+      "slug": "khai-giang-nam-hoc-2026-2027",
+      "title": "Cùng cả nước khai giảng năm học mới, hơn 12.000 tân sinh viên IUH bước vào hành trình mới",
+      "excerpt": "Hơn 12.000 tân sinh viên khóa 22 chính thức bắt đầu năm học 2026–2027 trong không khí chào mừng 70 năm xây dựng và phát triển IUH.",
+      "category": "Sự kiện",
+      "date": "05 tháng 9, 2026",
+      "image": "/assets/images/news-khai-giang-2026.jpg",
+      "imageAlt": "Lễ khai giảng năm học 2026-2027 tại IUH",
+      "sourceName": "Website IUH",
+      "sourceUrl": "https://iuh.edu.vn/vi/tin-tuc/cung-ca-nuoc-khai-giang-nam-hoc-moi-hon-12000-tan-sinh-vien-iuh-buoc-vao-hanh-trinh-moi-2247.html",
       "content": [
-        { "type": "notice", "title": "Nhiệm kỳ 2025–2030", "text": "Đại hội Công đoàn Trường Đại học Công nghiệp TP.HCM lần thứ XVII diễn ra ngày 12/11/2025." },
-        { "type": "paragraph", "text": "Cờ thi đua của Công đoàn Công Thương Việt Nam ghi nhận nỗ lực, sáng tạo và tinh thần đoàn kết của đoàn viên, người lao động Nhà trường." },
-        { "type": "paragraph", "text": "Đại hội tổng kết hoạt động nhiệm kỳ 2023–2025 và đề ra phương hướng chăm lo đời sống, xây dựng môi trường làm việc văn minh, an toàn cho nhiệm kỳ mới." }
+        { "type": "notice", "title": "Năm học mới", "text": "Hơn 12.000 tân sinh viên khóa 22 đã cùng IUH bước vào năm học 2026–2027." },
+        { "type": "paragraph", "text": "Lễ khai giảng đánh dấu khởi đầu hành trình học tập mới và kết nối sinh viên với môi trường đào tạo, nghiên cứu và đổi mới sáng tạo của Nhà trường." },
+        { "type": "paragraph", "text": "Năm học diễn ra trong dịp IUH hướng đến kỷ niệm 70 năm thành lập, tạo thêm động lực cho cộng đồng giảng viên và người học." }
       ]
     },
     {
       "id": 4,
-      "slug": "dan-van-kheo-iuh-2025",
-      "title": "IUH đạt nhiều thành tích xuất sắc trong phong trào thi đua “Dân vận khéo” năm 2025",
-      "excerpt": "Phòng Tổ chức – Hành chính cùng nhiều tập thể, cá nhân IUH được tuyên dương trong phong trào thi đua “Dân vận khéo” năm 2025.",
-      "category": "Thi đua – Khen thưởng",
-      "date": "23 tháng 10, 2025",
-      "image": "/assets/images/default.jpg",
-      "imageAlt": "IUH được tuyên dương trong phong trào Dân vận khéo năm 2025",
+      "kind": "news",
+      "slug": "iuh-hop-tac-tong-cong-ty-cong-nghiep-sai-gon-2026",
+      "title": "IUH ký kết với Tổng Công ty Công nghiệp Sài Gòn, mở rộng hợp tác đào tạo và chuyển giao công nghệ",
+      "excerpt": "Thỏa thuận hợp tác mở rộng kết nối giữa giảng đường và doanh nghiệp trong đào tạo nhân lực, nghiên cứu ứng dụng và chuyển giao công nghệ.",
+      "category": "Hợp tác",
+      "date": "04 tháng 9, 2026",
+      "image": "/assets/images/news-hop-tac-cis-2026.jpg",
+      "imageAlt": "Đại diện IUH và Tổng Công ty Công nghiệp Sài Gòn tại lễ ký kết",
+      "sourceName": "Website IUH",
+      "sourceUrl": "https://iuh.edu.vn/vi/tin-tuc/iuh-ky-ket-voi-tong-cong-ty-cong-nghiep-sai-gon-mo-rong-hop-tac-dao-tao-va-chuyen-giao-cong-nghe-2246.html",
       "content": [
-        { "type": "notice", "title": "Thành tích tập thể", "text": "Phòng Tổ chức – Hành chính là một trong các tập thể IUH được tuyên dương cấp cơ sở trong phong trào thi đua “Dân vận khéo” năm 2025." },
-        { "type": "paragraph", "text": "TS. Phan Hồng Hải, Bí thư Đảng ủy, Hiệu trưởng IUH, được tuyên dương là cá nhân tiêu biểu vì những đóng góp trong lãnh đạo, đổi mới, cải cách hành chính và chuyển đổi số giáo dục đại học." },
-        { "type": "paragraph", "text": "Kết quả ghi nhận nỗ lực của Nhà trường trong gắn kết công tác dân vận với phục vụ cộng đồng và nâng cao hiệu quả quản trị." }
+        { "type": "info", "title": "Kết nối doanh nghiệp", "text": "IUH và Tổng Công ty Công nghiệp Sài Gòn thống nhất mở rộng hợp tác đào tạo và chuyển giao công nghệ." },
+        { "type": "paragraph", "text": "Hai bên hướng đến đưa nhu cầu thực tế của doanh nghiệp vào hoạt động đào tạo, đồng thời tạo điều kiện để kết quả nghiên cứu được ứng dụng hiệu quả." },
+        { "type": "paragraph", "text": "Sự hợp tác cũng mở thêm cơ hội trải nghiệm, thực hành và phát triển nghề nghiệp cho sinh viên IUH." }
       ]
     },
     {
       "id": 5,
-      "slug": "iuh-don-nhan-co-thi-dua-thu-tuong-chinh-phu",
-      "title": "Đại học Công nghiệp TP.HCM đón nhận Cờ thi đua của Thủ tướng Chính phủ",
-      "excerpt": "IUH được trao Cờ thi đua của Thủ tướng Chính phủ tại Đại hội Thi đua yêu nước ngành Công Thương lần thứ IV.",
-      "category": "Thi đua – Khen thưởng",
-      "date": "30 tháng 9, 2025",
-      "image": "/assets/images/default.jpg",
-      "imageAlt": "IUH đón nhận Cờ thi đua của Thủ tướng Chính phủ",
+      "kind": "news",
+      "slug": "tan-sinh-vien-iuh-dong-phuc-moi-2026",
+      "title": "Tân sinh viên IUH hào hứng “diện” đồng phục mới trong tuần đầu nhập học",
+      "excerpt": "Tuần đầu nhập học trở nên sôi động khi tân sinh viên làm quen bạn mới, check-in khuôn viên và nhận bộ đồng phục mang nhận diện IUH.",
+      "category": "Đời sống sinh viên",
+      "date": "21 tháng 8, 2026",
+      "image": "/assets/images/news-dong-phuc-tan-sinh-vien-2026.jpg",
+      "imageAlt": "Tân sinh viên IUH trong bộ đồng phục mới",
+      "sourceName": "Website IUH",
+      "sourceUrl": "https://iuh.edu.vn/vi/tin-tuc/tan-sinh-vien-iuh-hao-hung-dien-dong-phuc-moi-trong-tuan-dau-nhap-hoc-2242.html",
       "content": [
-        { "type": "notice", "title": "Ghi nhận thành tích", "text": "Cờ thi đua ghi nhận những nỗ lực của tập thể IUH trong đổi mới, sáng tạo và thực hiện nhiệm vụ giáo dục đại học." },
-        { "type": "paragraph", "text": "Sự kiện diễn ra sáng 30/9/2025 tại Đại hội Thi đua yêu nước ngành Công Thương lần thứ IV, giai đoạn 2025–2030." },
-        { "type": "paragraph", "text": "Dịp này, ông Phạm Trung Kiên, Trưởng phòng Tổ chức – Hành chính, được trao Huân chương Lao động hạng Ba." }
+        { "type": "info", "title": "Tuần đầu tại IUH", "text": "Tân sinh viên khóa 22 làm quen với môi trường học tập và nhận bộ đồng phục mới của Nhà trường." },
+        { "type": "paragraph", "text": "Các hoạt động nhập học, gặp gỡ bạn bè và khám phá khuôn viên giúp sinh viên nhanh chóng hòa nhập trước khi bước vào chương trình chính khóa." },
+        { "type": "paragraph", "text": "Bộ đồng phục mới góp phần tạo sự đồng bộ trong nhận diện và tăng cảm giác gắn kết của sinh viên với cộng đồng IUH." }
       ]
     },
     {
       "id": 6,
-      "slug": "tap-huan-an-toan-ve-sinh-lao-dong-2025",
-      "title": "IUH đạt 100% cán bộ, viên chức và người lao động tham gia tập huấn An toàn vệ sinh lao động",
-      "excerpt": "Chương trình huấn luyện An toàn, vệ sinh lao động năm 2025 được triển khai cho toàn thể viên chức, người lao động và cán bộ quản lý IUH.",
-      "category": "An toàn lao động",
-      "date": "25 tháng 8, 2025",
-      "image": "/assets/images/default.jpg",
-      "imageAlt": "Tập huấn An toàn vệ sinh lao động tại IUH",
+      "kind": "news",
+      "slug": "iuh-trao-bang-tien-si-thac-si-2026",
+      "title": "IUH trao bằng cho 4 tân tiến sĩ, 51 tân thạc sĩ, tiếp sức hành trình học tập đợt tháng 4 2026",
+      "excerpt": "Bốn tân tiến sĩ và 51 tân thạc sĩ được trao bằng, cùng các suất học bổng tiếp tục học tập dành cho người học có thành tích xuất sắc.",
+      "category": "Đào tạo",
+      "date": "17 tháng 8, 2026",
+      "image": "/assets/images/news-trao-bang-sau-dai-hoc-2026.jpg",
+      "imageAlt": "Lễ trao bằng tiến sĩ và thạc sĩ tại IUH năm 2026",
+      "sourceName": "Website IUH",
+      "sourceUrl": "https://iuh.edu.vn/vi/tin-tuc/iuh-trao-bang-cho-4-tan-tien-si-157-tan-thac-si-tiep-suc-hanh-trinh-hoc-tap-dot-thang-4-2026-2240.html",
       "content": [
-        { "type": "notice", "title": "Kết quả triển khai", "text": "Chương trình đạt 100% cán bộ, viên chức và người lao động tham gia trong tháng 7 và tháng 8/2025." },
-        { "type": "paragraph", "text": "Nội dung huấn luyện được tổ chức cho nhóm 4 gồm giảng viên, viên chức, người lao động và nhóm 6 gồm trưởng, phó đơn vị, tổ trưởng an toàn vệ sinh lao động." },
-        { "type": "paragraph", "text": "Hoạt động góp phần nâng cao nhận thức, kỹ năng phòng ngừa rủi ro và xây dựng môi trường làm việc an toàn trong Nhà trường." }
+        { "type": "notice", "title": "Dấu mốc sau đại học", "text": "IUH trao bằng cho bốn tân tiến sĩ và 51 tân thạc sĩ trong đợt tốt nghiệp tháng 4/2026." },
+        { "type": "paragraph", "text": "Buổi lễ ghi nhận nỗ lực học tập, nghiên cứu của học viên và nghiên cứu sinh trong suốt quá trình đào tạo tại IUH." },
+        { "type": "paragraph", "text": "Nhà trường đồng thời dành nguồn học bổng tiếp sức cho những người học tốt nghiệp xuất sắc có nguyện vọng tiếp tục nâng cao trình độ." }
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "appointment",
+      "appointmentType": "Bổ nhiệm và bổ nhiệm lại",
+      "slug": "bo-nhiem-va-bo-nhiem-lai-pho-hieu-truong-iuh-2021",
+      "title": "Lễ công bố quyết định bổ nhiệm và bổ nhiệm lại chức vụ Phó Hiệu trưởng IUH",
+      "excerpt": "Ba nhân sự quản lý được trao quyết định bổ nhiệm và bổ nhiệm lại chức vụ Phó Hiệu trưởng Trường Đại học Công nghiệp TP.HCM.",
+      "category": "Quyết định bổ nhiệm",
+      "date": "19 tháng 4, 2021",
+      "image": "/assets/images/appointment-pho-hieu-truong-2021.jpg",
+      "imageAlt": "Lễ trao quyết định bổ nhiệm và bổ nhiệm lại Phó Hiệu trưởng IUH",
+      "sourceName": "Phòng Tổ chức – Hành chính IUH",
+      "sourceUrl": "https://ptchc.iuh.edu.vn/tin-tuc-su-kien/cong-bo-quyet-dinh-bo-nhiem-va-bo-nhiem-lai-chuc-vu-pho-hieu-truong-truong-dai-hoc-cong-nghiep-tp-ho-chi-minh/",
+      "content": [
+        { "type": "info", "title": "Công tác cán bộ", "text": "Buổi lễ công bố các quyết định bổ nhiệm và bổ nhiệm lại chức vụ Phó Hiệu trưởng IUH được tổ chức trong tháng 4/2021." },
+        { "type": "paragraph", "text": "Đại diện Bộ Công Thương đã trao quyết định cho ba nhân sự quản lý, ghi nhận quá trình công tác và trách nhiệm trong giai đoạn tiếp theo." },
+        { "type": "paragraph", "text": "Việc kiện toàn Ban Giám hiệu góp phần bảo đảm hoạt động quản trị và thực hiện chiến lược phát triển của Nhà trường." }
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "appointment",
+      "appointmentType": "Điều động và bổ nhiệm",
+      "slug": "bo-nhiem-truong-phong-quan-ly-khoa-hoc-hop-tac-quoc-te-2020",
+      "title": "Điều động và bổ nhiệm Trưởng phòng Quản lý khoa học và Hợp tác quốc tế",
+      "excerpt": "Ông Trịnh Ngọc Nam được trao quyết định điều động và bổ nhiệm giữ chức vụ Trưởng phòng Quản lý khoa học và Hợp tác quốc tế.",
+      "category": "Quyết định bổ nhiệm",
+      "date": "08 tháng 12, 2020",
+      "image": "/assets/images/appointment-truong-phong-qlkh-2020.jpg",
+      "imageAlt": "Trao quyết định bổ nhiệm Trưởng phòng Quản lý khoa học và Hợp tác quốc tế",
+      "sourceName": "Phòng Tổ chức – Hành chính IUH",
+      "sourceUrl": "https://ptchc.iuh.edu.vn/quyet-dinh-bo-nhiem/cong-bo-quyet-dinh-dieu-dong-va-bo-nhiem-giu-chuc-vu-truong-phong-quan-ly-khoa-hoc-va-hop-tac-quoc-te/",
+      "content": [
+        { "type": "info", "title": "Điều động và bổ nhiệm", "text": "IUH công bố quyết định kiện toàn vị trí Trưởng phòng Quản lý khoa học và Hợp tác quốc tế." },
+        { "type": "paragraph", "text": "Ông Trịnh Ngọc Nam được điều động và bổ nhiệm giữ chức vụ Trưởng phòng, tiếp nhận nhiệm vụ trước đại diện Đảng ủy, Ban Giám hiệu và lãnh đạo Phòng Tổ chức – Hành chính." },
+        { "type": "paragraph", "text": "Quyết định góp phần củng cố đầu mối quản lý hoạt động nghiên cứu khoa học và mở rộng hợp tác quốc tế của Nhà trường." }
+      ]
+    },
+    {
+      "id": 9,
+      "kind": "appointment",
+      "appointmentType": "Điều động và bổ nhiệm",
+      "slug": "bo-nhiem-truong-phong-to-chuc-hanh-chinh-2020",
+      "title": "Điều động và bổ nhiệm Trưởng phòng Tổ chức – Hành chính",
+      "excerpt": "Ông Phạm Trung Kiên được trao quyết định điều động và bổ nhiệm giữ chức vụ Trưởng phòng Tổ chức – Hành chính IUH.",
+      "category": "Quyết định bổ nhiệm",
+      "date": "08 tháng 12, 2020",
+      "image": "/assets/images/appointment-truong-phong-tchc-2020.jpg",
+      "imageAlt": "Trao quyết định bổ nhiệm Trưởng phòng Tổ chức – Hành chính IUH",
+      "sourceName": "Phòng Tổ chức – Hành chính IUH",
+      "sourceUrl": "https://ptchc.iuh.edu.vn/quyet-dinh-bo-nhiem/cong-bo-quyet-dinh-dieu-dong-va-bo-nhiem-giu-chuc-vu-truong-phong-to-chuc-hanh-chinh/",
+      "content": [
+        { "type": "info", "title": "Kiện toàn đơn vị", "text": "IUH công bố quyết định điều động và bổ nhiệm lãnh đạo Phòng Tổ chức – Hành chính." },
+        { "type": "paragraph", "text": "Ông Phạm Trung Kiên được giao giữ chức vụ Trưởng phòng Tổ chức – Hành chính và tiếp nhận nhiệm vụ tại buổi công bố quyết định ngày 08/12/2020." },
+        { "type": "paragraph", "text": "Việc kiện toàn lãnh đạo giúp đơn vị tiếp tục triển khai đồng bộ công tác tổ chức, nhân sự và hành chính của Nhà trường." }
+      ]
+    },
+    {
+      "id": 10,
+      "kind": "appointment",
+      "appointmentType": "Bổ nhiệm",
+      "slug": "bo-nhiem-truong-khoa-tai-chinh-ngan-hang-2020",
+      "title": "Bổ nhiệm Trưởng khoa Tài chính – Ngân hàng",
+      "excerpt": "Bà Nguyễn Thị Mỹ Phượng được công bố và trao quyết định bổ nhiệm giữ chức vụ Trưởng khoa Tài chính – Ngân hàng.",
+      "category": "Quyết định bổ nhiệm",
+      "date": "02 tháng 12, 2020",
+      "image": "/assets/images/appointment-truong-khoa-tai-chinh-ngan-hang-2020.jpg",
+      "imageAlt": "Trao quyết định bổ nhiệm Trưởng khoa Tài chính – Ngân hàng",
+      "sourceName": "Phòng Tổ chức – Hành chính IUH",
+      "sourceUrl": "https://ptchc.iuh.edu.vn/quyet-dinh-bo-nhiem/cong-bo-quyet-dinh-bo-nhiem-giu-chuc-vu-truong-khoa-tai-chinh-ngan-hang/",
+      "content": [
+        { "type": "info", "title": "Quyết định bổ nhiệm", "text": "IUH công bố quyết định bổ nhiệm lãnh đạo Khoa Tài chính – Ngân hàng." },
+        { "type": "paragraph", "text": "Bà Nguyễn Thị Mỹ Phượng được bổ nhiệm giữ chức vụ Trưởng khoa tại buổi công bố có sự tham dự của đại diện Đảng ủy, Ban Giám hiệu và các đơn vị liên quan." },
+        { "type": "paragraph", "text": "Quyết định xác lập đầu mối quản lý, điều hành hoạt động đào tạo và phát triển chuyên môn của Khoa trong giai đoạn tiếp theo." }
       ]
     }
   ]

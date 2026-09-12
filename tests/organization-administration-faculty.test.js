@@ -5,7 +5,6 @@ import test from 'node:test'
 const facultyRoot = new URL('../src/faculties/organization-administration/', import.meta.url)
 const expectedPages = [
   'about.html',
-  'calendar.html',
   'contact.html',
   'document-detail.html',
   'documents-forms.html',
@@ -85,6 +84,22 @@ test('organization administration faculty exposes the selected-faculty contract'
   assert.match(config, /components\/home\/carousel\/carousel\.js/)
   assert.match(config, /components\/home\/activity-gallery\/gallery\.js/)
   assert.match(config, /components\/documents\/document-library\.js/)
+  assert.doesNotMatch(config, /weekly-calendar|Weekly Calendar/)
+})
+
+test('weekly calendar is shared and no longer used by organization administration', async () => {
+  const [sharedConfig, sharedCalendar, sharedCalendarRuntime, facultyIndex, staffServices] = await Promise.all([
+    readFile(new URL('../src/shared/shared.config.js', import.meta.url), 'utf8'),
+    readFile(new URL('../src/shared/components/calendar/weekly-calendar.html', import.meta.url), 'utf8'),
+    readFile(new URL('../src/shared/components/calendar/weekly-calendar.js', import.meta.url), 'utf8'),
+    readFacultyFile('pages/index.html'),
+    readFacultyFile('components/home/staff-services/index.html'),
+  ])
+
+  assert.match(sharedConfig, /selector:\s*['"]\[data-weekly-calendar\]['"]/)
+  assert.match(sharedCalendar, /data-weekly-calendar/)
+  assert.match(sharedCalendarRuntime, /export const initWeeklyCalendar/)
+  assert.doesNotMatch(`${facultyIndex}\n${staffServices}`, /data-weekly-calendar|weekly-schedule|Lịch công tác/)
 })
 
 test('organization administration activity gallery uses the five newest PTCHC posts', async () => {
@@ -185,7 +200,6 @@ test('organization administration source does not retain the sample faculty iden
   )).join('\n')
 
   assert.doesNotMatch(source, /political-student-affairs|Công tác chính trị|Hỗ trợ sinh viên|dormitory-management/i)
-  assert.doesNotMatch(source, /sinh-vien|học bổng|BHYT|ĐRL|điểm rèn luyện|thực tập/i)
   assert.doesNotMatch(source, /minh họa|example@iuh\.edu\.vn|0000 0000/i)
 })
 
@@ -200,9 +214,19 @@ test('organization administration data is valid and routes only to built pages',
   assert.equal(site.identity.email, 'ptchc@iuh.edu.vn')
   assert.deepEqual(site.identity.phone, { text: '0283 8940 390 - 100', href: '02838940390' })
   assert.match(site.identity.address, /Nhà E/)
-  assert.equal(news.items.length, 6)
+  assert.equal(news.items.length, 10)
   assert.ok(news.items.every((item) => item.slug && item.title && item.excerpt && item.content.length > 0))
-  assert.ok(search.length >= 12)
+  assert.equal(news.items.filter(({ kind }) => kind === 'news').length, 6)
+  assert.equal(news.items.filter(({ kind }) => kind === 'appointment').length, 4)
+  assert.equal(new Set(news.items.map(({ slug }) => slug)).size, news.items.length)
+  assert.ok(news.items.every((item) => item.sourceName && /^https:\/\//.test(item.sourceUrl)))
+  assert.ok(news.items.filter(({ kind }) => kind === 'appointment').every((item) => item.appointmentType))
+  for (const { image } of news.items) {
+    assert.match(image, /^\/assets\/images\/(?:news|appointment)-/)
+    const asset = await readFile(new URL(`assets/images/${image.split('/').at(-1)}`, facultyRoot))
+    assert.ok(asset.length > 0, `${image} must be a non-empty local image`)
+  }
+  assert.ok(search.length >= expectedPages.length + news.items.length)
   assert.ok(search.some(({ url }) => url === '/document-detail.html'))
   for (const link of linkedRoutes) assert.ok(builtRoutes.has(link.match(/"(\/[^"#?]*)"/)[1]))
 })
@@ -253,9 +277,10 @@ test('organization administration chrome follows the index information architect
 })
 
 test('organization administration index modules link to focused destinations', async () => {
-  const [staffServices, noticeHub] = await Promise.all([
+  const [staffServices, noticeHub, workUpdates] = await Promise.all([
     readFacultyFile('components/home/staff-services/index.html'),
     readFacultyFile('components/home/notice-hub/index.html'),
+    readFacultyFile('components/home/work-updates/index.html'),
   ])
 
   for (const title of ['Tôi cần...', 'Hệ thống dành cho cán bộ, viên chức']) {
@@ -270,6 +295,13 @@ test('organization administration index modules link to focused destinations', a
   ]) assert.match(staffServices, new RegExp(`data-url=["']/functions-duties\\.html#${id}["']`))
 
   assert.match(staffServices, /data-url=["']\/documents-forms\.html["']/)
+  assert.doesNotMatch(staffServices, /weekly-schedule|Lịch công tác/)
+  assert.match(staffServices, /lg:grid-cols-3/)
+
+  assert.match(workUpdates, /Hoạt động bổ nhiệm/)
+  assert.match(workUpdates, /data-news-appointment-section data-limit="4"/)
+  assert.match(workUpdates, /lg:grid-cols-\[minmax\(0,5fr\)_minmax\(0,7fr\)\]/)
+  assert.doesNotMatch(workUpdates, /weekly-calendar|Tuần này tại IUH/)
 
   assert.match(noticeHub, /data-url=["']\/documents-forms\.html["']/)
   assert.doesNotMatch(noticeHub, /recruitment\.html/)

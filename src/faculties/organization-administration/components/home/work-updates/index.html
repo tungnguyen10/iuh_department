@@ -1,9 +1,7 @@
-<section data-module="work-updates" aria-label="Văn bản và lịch công tác" class="!transform-none w-full bg-primary-white py-10 md:py-14 motion-reduce:!transform-none motion-reduce:!opacity-100 motion-reduce:!transition-none {{class}}">
+<section data-module="work-updates" aria-label="Văn bản mới và hoạt động bổ nhiệm" class="!transform-none w-full bg-primary-white py-10 md:py-14 motion-reduce:!transform-none motion-reduce:!opacity-100 motion-reduce:!transition-none {{class}}">
   <div class="container mx-auto px-4">
-    <div class="grid min-w-0 grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-8 xl:gap-10">
-      <div data-include="@faculty/components/calendar/weekly-calendar.html" data-title="Tuần này tại IUH" data-class="lg:order-2"></div>
-
-      <section aria-label="Văn bản mới" class="flex min-w-0 flex-col lg:order-1">
+    <div class="grid min-w-0 grid-cols-1 gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-8 xl:gap-10">
+      <section aria-label="Văn bản mới" class="flex min-w-0 flex-col">
         <div data-include="@shared/components/common/section-title.html"
           data-title="Văn bản mới"
           data-description="Các văn bản, quy định được ban hành gần đây."
@@ -23,6 +21,22 @@
           <div class="mx-3 border-t border-stroke py-4 sm:mx-4">
             <div data-include="@shared/components/button/button.html" data-variant="12" data-url="/documents-forms.html" data-text="Xem tất cả văn bản" data-icon="/assets/svgs/icon-arrow-up-right.svg" data-class="min-h-11 motion-reduce:transition-none" data-icon-class="motion-reduce:transform-none motion-reduce:transition-none"></div>
           </div>
+        </div>
+      </section>
+
+      <section aria-label="Công tác cán bộ" class="flex min-w-0 flex-col">
+        <div class="mb-5 flex flex-wrap items-end justify-between gap-3">
+          <div data-include="@shared/components/common/section-title.html"
+            data-title="Công tác cán bộ"
+            data-description="Cập nhật các quyết định bổ nhiệm, điều động và kiện toàn nhân sự quản lý tại IUH."
+            data-title-class="!leading-tight text-primary-dark-blue"
+            data-description-class="!mt-2 !text-sm md:!text-base !leading-6 !text-black">
+          </div>
+          <div data-include="@shared/components/button/button.html" data-variant="13" data-url="/news.html" data-text="Xem tất cả" data-icon="/assets/svgs/icon-arrow-up-right.svg" data-class="shrink-0 motion-reduce:transition-none" data-icon-class="motion-reduce:transform-none motion-reduce:transition-none"></div>
+        </div>
+
+        <div data-news-appointment-section data-limit="4" class="flex flex-1 rounded-2xl border border-primary-dark-blue/10 bg-[#F8FAFE] p-3 sm:p-4">
+          <p class="m-auto py-12 font-roboto text-sm text-gray-600">Đang tải hoạt động bổ nhiệm...</p>
         </div>
       </section>
     </div>

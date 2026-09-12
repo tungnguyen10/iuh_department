@@ -31,6 +31,18 @@ export const sharedRuntimeModules = [
     name: 'News Swiper',
   },
   {
+    selector: '[data-news-detail-view]',
+    load: () => import('./components/news/news-detail.js'),
+    init: 'initNewsDetail',
+    name: 'News Detail',
+  },
+  {
+    selector: '[data-weekly-calendar]',
+    load: () => import('./components/calendar/weekly-calendar.js'),
+    init: 'initWeeklyCalendar',
+    name: 'Weekly Calendar',
+  },
+  {
     selector: '.stats-card',
     load: () => import('./components/stats/stats-card.js'),
     init: 'initStatsCards',

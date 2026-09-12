@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { addScheduleDays, formatScheduleWeek, scheduleWeekday, filterScheduleRecords } from '../src/faculties/organization-administration/components/calendar/weekly-calendar.js'
+import { addScheduleDays, formatScheduleWeek, scheduleWeekday, filterScheduleRecords } from '../src/shared/components/calendar/weekly-calendar.js'
 
 const records = [
   { date: '2026-09-12', start: '09:00', type: 'training', room: true },

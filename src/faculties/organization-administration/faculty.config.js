@@ -32,12 +32,6 @@ export const organizationAdministrationFacultyConfig = {
       name: "Staff Services Show More",
     },
     {
-      selector: "[data-weekly-calendar]",
-      load: () => import("./components/calendar/weekly-calendar.js"),
-      init: "initWeeklyCalendar",
-      name: "Weekly Calendar",
-    },
-    {
       selector: ".hero-swiper",
       load: () => import("./components/home/carousel/carousel.js"),
       init: "initHeroCarousel",
