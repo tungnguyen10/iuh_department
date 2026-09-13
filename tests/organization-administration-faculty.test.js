@@ -325,9 +325,11 @@ test('organization administration index modules link to focused destinations', a
 })
 
 test('organization administration leadership uses published IUH personnel', async () => {
-  const [leadership, detail] = await Promise.all([
+  const [leadership, detail, staffList, leaderCard] = await Promise.all([
     readFacultyFile('pages/leadership.html'),
     readFacultyFile('pages/leadership-detail.html'),
+    readFacultyFile('components/leadership/staff-list.html'),
+    readFile(new URL('../src/shared/components/leadership/leader-card.html', import.meta.url), 'utf8'),
   ])
 
   for (const name of ['Phạm Trung Kiên', 'Nguyễn Thị Thu Hà', 'Đỗ Khoa Thúy Kha']) {
@@ -339,10 +341,34 @@ test('organization administration leadership uses published IUH personnel', asyn
   assert.equal((leadership.match(/data-leader-node/g) ?? []).length, 3)
   assert.match(leadership, /xl:grid-cols-2/)
   assert.match(leadership, /@shared\/components\/leadership\/leader-work-panel\.html/)
+  assert.match(leadership, /@faculty\/components\/leadership\/staff-list\.html/)
   for (const email of ['phamtrungkien@iuh.edu.vn', 'hanguyen@iuh.edu.vn', 'dokhoathuykha@iuh.edu.vn']) {
     assert.match(leadership, new RegExp(email.replace('.', '\\.')))
   }
   assert.doesNotMatch(leadership, /Trần Văn Nam|Lê Thị Hồng|Phạm Quốc Bảo|Nguyễn Hoàng An/)
   assert.match(detail, /Phạm Trung Kiên/)
   assert.match(`${leadership}\n${detail}`, /ptchc@iuh\.edu\.vn/)
+
+  assert.equal((staffList.match(/@shared\/components\/leadership\/leader-card\.html/g) ?? []).length, 16)
+  assert.equal((staffList.match(/data-social-class="hidden"/g) ?? []).length, 16)
+  assert.equal((staffList.match(/data-link-class="hidden"/g) ?? []).length, 16)
+  assert.equal((staffList.match(/data-image="\/assets\/images\/staff-/g) ?? []).length, 14)
+  for (const group of [
+    'Tổ Hành chính – Tổng hợp',
+    'Tổng Chế độ – Chính sách',
+    'Tổ Lưu trữ hồ sơ CB-VC',
+    'Tổ Thanh tra – Pháp chế',
+    'Tổ Lái xe',
+    'Tổ Vệ sinh – Dịch vụ',
+  ]) assert.match(staffList, new RegExp(group))
+  for (const name of [
+    'Nguyễn Thị Duy Anh', 'Nguyễn Thị Cúc', 'Nguyễn Thị Tuyền', 'Lê Thị Thanh Hoa', 'Nguyễn Thị Hạnh Uyên',
+    'Đặng Tiểu Mỹ', 'Ông Mỹ Linh', 'Nguyễn Thị Thúy Hiền', 'Nguyễn Thị Thu Hằng',
+    'Đào Thị Hồng Hạnh', 'Trần Thắng Lợi', 'Lê Nguyễn Thanh Trúc', 'Lê Thanh Bình',
+    'Phan Hoài Hận', 'Nguyễn Thị Bích Liễu', 'Nguyễn Thị Thu',
+  ]) assert.match(staffList, new RegExp(name))
+  assert.match(staffList, /nguyenthituyen@iuh\.edu\.vn/)
+  assert.match(leaderCard, /\{\{socialClass\}\}/)
+  assert.match(leaderCard, /\{\{linkClass\}\}/)
+  assert.match(leaderCard, /\{\{emailClass\}\}/)
 })
