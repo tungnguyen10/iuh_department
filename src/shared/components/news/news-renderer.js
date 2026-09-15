@@ -195,19 +195,13 @@ export const createNewsRenderer = ({ base, items, sectionMeta }) => {
         <article class="group relative min-h-[390px] overflow-hidden rounded-xl bg-primary-dark-blue shadow-[0_14px_32px_rgba(21,56,152,0.16)] md:min-h-[430px]">
           <a href="${newsLink(featured)}" class="absolute inset-0 z-20 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow focus-visible:ring-inset" aria-label="${escapeHtml(featured.title)}"><span class="sr-only">${escapeHtml(featured.title)}</span></a>
           <img src="${image(featured)}" alt="${escapeHtml(featured.imageAlt || featured.title)}" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none" />
-          <div class="absolute inset-0 bg-gradient-to-t from-[#0B1F59] via-primary-dark-blue/55 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#03102E] from-10% via-[#03102E]/85 via-35% to-transparent to-85%"></div>
+          <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#03102E]/45 to-transparent"></div>
+          <span class="absolute left-5 top-5 z-10 inline-flex rounded-full bg-primary-white/95 px-3 py-1 font-roboto text-xs font-bold uppercase tracking-wide text-primary-dark-blue shadow-sm sm:left-6 sm:top-6">Mới nhất</span>
           <div class="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-6">
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="inline-flex rounded-md bg-primary-white px-2.5 py-1 font-roboto text-[11px] font-bold uppercase tracking-wide text-primary-dark-blue">Mới nhất</span>
-              <span class="inline-flex rounded-md px-2.5 py-1 font-roboto text-[11px] font-bold uppercase tracking-wide ${appointmentBadgeClass(featuredType)}">${escapeHtml(featuredType)}</span>
-            </div>
-            <time class="mt-4 block font-roboto text-sm font-medium text-primary-white/85">${escapeHtml(featured.date || '')}</time>
-            <h3 class="mt-2 font-inter text-xl font-bold leading-tight text-primary-white sm:text-2xl">${escapeHtml(featured.title)}</h3>
-            <p class="mt-3 font-roboto text-sm leading-6 text-primary-white/85 line-clamp-3">${escapeHtml(featured.excerpt || '')}</p>
-            <span class="mt-5 inline-flex items-center gap-2 font-roboto text-sm font-semibold text-primary-white">
-              Xem chi tiết
-              <img src="${icon('icon-arrow-up-right.svg')}" alt="" class="h-4 w-4 brightness-0 invert transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transform-none motion-reduce:transition-none" />
-            </span>
+            <span class="inline-flex whitespace-nowrap rounded-md px-2 py-0.5 font-roboto text-xs font-bold uppercase tracking-wide ${appointmentBadgeClass(featuredType)}">${escapeHtml(featuredType)}</span>
+            <time class="mt-2 block font-roboto text-xs font-medium text-primary-white/80">${escapeHtml(featured.date || '')}</time>
+            <h3 class="mt-2 font-roboto text-base md:text-lg font-medium leading-normal text-primary-white line-clamp-3">${escapeHtml(featured.title)}</h3>
           </div>
         </article>
 
