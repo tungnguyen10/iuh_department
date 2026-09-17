@@ -32,10 +32,10 @@ class GlobalWidgets {
       const scrolled = window.scrollY;
       if (scrolled > 200) {
         scrollToTopBtn.classList.remove('opacity-0', 'invisible');
-        scrollToTopBtn.classList.add('opacity-100', 'visible');
+        scrollToTopBtn.classList.add('opacity-100', 'is-visible');
       } else {
         scrollToTopBtn.classList.add('opacity-0', 'invisible');
-        scrollToTopBtn.classList.remove('opacity-100', 'visible');
+        scrollToTopBtn.classList.remove('opacity-100', 'is-visible');
       }
     };
 

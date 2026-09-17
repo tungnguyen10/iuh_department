@@ -74,6 +74,8 @@ export default {
         shake: "shake 0.5s ease-in-out",
         "success-pulse": "success-pulse 0.5s ease-in-out",
         "flash-badge": "flash 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        float: "float 6s ease-in-out infinite",
+        "move-around": "moveAround 20s linear infinite",
       },
       keyframes: {
         jelly: {
@@ -81,6 +83,14 @@ export default {
           "25%": { transform: "scale(0.9, 1.1)" },
           "50%": { transform: "scale(1.1, 0.9)" },
           "75%": { transform: "scale(0.95, 1.05)" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        moveAround: {
+          "0%": { transform: "rotate(0deg) translateX(50px) rotate(0deg)" },
+          "100%": { transform: "rotate(360deg) translateX(50px) rotate(-360deg)" },
         },
         pop: {
           "0%": { transform: "scale(1)" },
