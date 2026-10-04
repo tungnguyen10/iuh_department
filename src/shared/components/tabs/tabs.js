@@ -127,6 +127,7 @@ export class Tabs {
         btn.classList.remove('active', 'border-primary-dark-blue', 'text-primary-dark-blue')
         btn.classList.add('text-gray', 'border-transparent')
       }
+      if (btn.getAttribute('role') === 'tab') btn.setAttribute('aria-selected', String(i === index))
     })
     
     // Update panels

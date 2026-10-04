@@ -5,12 +5,13 @@ import { readFile, readdir } from 'node:fs/promises'
 import test from 'node:test'
 
 const repoRoot = new URL('../', import.meta.url)
-const facultyIds = ['health-science', 'dormitory-management', 'political-student-affairs', 'organization-administration']
+const facultyIds = ['health-science', 'dormitory-management', 'political-student-affairs', 'organization-administration', 'idcs']
 const facultyNames = {
   'health-science': 'Khoa Khoa học Sức khỏe',
   'dormitory-management': 'Phòng Quản lý Ký túc xá',
   'political-student-affairs': 'Phòng Công tác chính trị và Hỗ trợ sinh viên',
   'organization-administration': 'Phòng Tổ chức – Hành chính',
+  idcs: 'Trung tâm IDCS',
 }
 const canonicalBodyHash = 'c9a79d6b3d0d4a429b4c8dc81ef49bb0f94fe16d88623c00f936c5f22997d9d9'
 const imageHashes = [

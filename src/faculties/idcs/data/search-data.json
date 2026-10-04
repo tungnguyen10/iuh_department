@@ -1,0 +1,18 @@
+[
+  { "id": 1, "title": "Trang chủ", "excerpt": "Giới thiệu năng lực đào tạo, đo kiểm, tư vấn cải tiến và chuyển giao công nghệ của Trung tâm IDCS.", "category": "Trang", "date": "04/10/2026", "url": "/" },
+  { "id": 2, "title": "Giới thiệu Trung tâm IDCS", "excerpt": "Vai trò, chức năng - nhiệm vụ và cơ sở vật chất của Trung tâm.", "category": "Trang", "date": "04/10/2026", "url": "/about.html" },
+  { "id": 3, "title": "Chức năng – Nhiệm vụ", "excerpt": "Bốn nhóm nhiệm vụ trọng tâm: đào tạo, đo kiểm, tư vấn cải tiến và chuyển giao công nghệ.", "category": "Trang", "date": "04/10/2026", "url": "/about.html#functions" },
+  { "id": 4, "title": "Cơ sở vật chất", "excerpt": "Phòng thí nghiệm, thiết bị đo kiểm và không gian đào tạo phục vụ doanh nghiệp.", "category": "Trang", "date": "04/10/2026", "url": "/about.html#facilities" },
+  { "id": 5, "title": "Cơ cấu tổ chức và nhân sự", "excerpt": "Ban lãnh đạo và các bộ phận chuyên môn của Trung tâm.", "category": "Trang", "date": "04/10/2026", "url": "/leadership.html" },
+  { "id": 6, "title": "Chi tiết nhân sự", "excerpt": "Hồ sơ nhân sự lãnh đạo Trung tâm.", "category": "Trang", "date": "04/10/2026", "url": "/leadership-detail.html" },
+  { "id": 7, "title": "Tin tức và hoạt động", "excerpt": "Tin tức về đào tạo, dịch vụ kỹ thuật và chuyển giao công nghệ.", "category": "Trang", "date": "04/10/2026", "url": "/news.html" },
+  { "id": 8, "title": "Chi tiết tin tức", "excerpt": "Nội dung chi tiết tin tức và hoạt động của Trung tâm.", "category": "Trang", "date": "04/10/2026", "url": "/news-detail.html" },
+  { "id": 9, "title": "Văn bản pháp luật", "excerpt": "Tra cứu thông tư, nghị định, quyết định và hướng dẫn chuyên ngành.", "category": "Trang", "date": "04/10/2026", "url": "/legal-documents.html" },
+  { "id": 10, "title": "Chi tiết văn bản", "excerpt": "Xem nội dung và tải xuống văn bản dạng PDF.", "category": "Trang", "date": "04/10/2026", "url": "/document-detail.html" },
+  { "id": 11, "title": "Đối tác hợp tác", "excerpt": "Danh sách đối tác doanh nghiệp hợp tác cùng nhà trường.", "category": "Trang", "date": "04/10/2026", "url": "/partners.html" },
+  { "id": 12, "title": "Liên hệ – Yêu cầu dịch vụ", "excerpt": "Đầu mối tiếp nhận nhu cầu đào tạo, đo kiểm, tư vấn và chuyển giao công nghệ.", "category": "Trang", "date": "04/10/2026", "url": "/contact.html" },
+  { "id": 13, "title": "Khai giảng chương trình cải tiến năng suất cho doanh nghiệp", "excerpt": "Chương trình đào tạo ngắn hạn về nhận diện lãng phí và đo lường hiệu quả cải tiến.", "category": "Đào tạo", "date": "22/09/2026", "url": "/news-detail.html" },
+  { "id": 14, "title": "Mở rộng danh mục dịch vụ đo kiểm kỹ thuật", "excerpt": "Bổ sung hạng mục đo lường và phân tích phục vụ kiểm soát chất lượng.", "category": "Dịch vụ kỹ thuật", "date": "15/09/2026", "url": "/news-detail.html" },
+  { "id": 15, "title": "Chuyển giao giải pháp kỹ thuật cho doanh nghiệp sản xuất", "excerpt": "Nghiên cứu được thử nghiệm, hoàn thiện và chuyển giao vào vận hành thực tế.", "category": "Chuyển giao công nghệ", "date": "02/09/2026", "url": "/news-detail.html" },
+  { "id": 16, "title": "Kết nối nguồn lực hỗ trợ phát triển công nghiệp", "excerpt": "Trung tâm làm đầu mối kết nối chuyên gia, phòng thí nghiệm và mạng lưới đối tác.", "category": "Hợp tác doanh nghiệp", "date": "18/08/2026", "url": "/news-detail.html" }
+]

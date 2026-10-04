@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "identity": {
+    "unitName": "Trung tâm IDCS",
+    "organizationName": "Đại học Công nghiệp TP. Hồ Chí Minh",
+    "email": "idcs@iuh.edu.vn",
+    "phone": { "text": "(028) 3894 0390", "href": "02838940390" },
+    "address": "Trường Đại học Công nghiệp TP.HCM, 12 Nguyễn Văn Bảo, Phường Hạnh Thông, TP.HCM",
+    "mapAddress": "Số 12 Nguyễn Văn Bảo, Phường Hạnh Thông, TP.HCM"
+  },
+  "quickLinks": [
+    { "text": "Đào tạo ngắn hạn", "href": "/#training", "icon": "icon-graduation-cap.svg" },
+    { "text": "Dịch vụ đo kiểm", "href": "/#services", "icon": "icon-shield-check.svg" },
+    { "text": "Tư vấn cải tiến", "href": "/#consulting", "icon": "icon-handshake.svg" },
+    { "text": "Yêu cầu dịch vụ", "href": "/contact.html", "icon": "icon-message.svg" }
+  ],
+  "navigation": [
+    { "text": "TRANG CHỦ", "href": "/" },
+    {
+      "text": "GIỚI THIỆU",
+      "children": [
+        { "text": "Giới thiệu chung", "href": "/about.html" },
+        { "text": "Chức năng – Nhiệm vụ", "href": "/about.html#functions" },
+        { "text": "Cơ cấu tổ chức – Nhân sự", "href": "/leadership.html" },
+        { "text": "Cơ sở vật chất", "href": "/about.html#facilities" }
+      ]
+    },
+    {
+      "text": "DỊCH VỤ",
+      "children": [
+        { "text": "Đào tạo ngắn hạn", "href": "/#training" },
+        { "text": "Dịch vụ đo kiểm", "href": "/#services" },
+        { "text": "Tư vấn cải tiến", "href": "/#consulting" },
+        { "text": "Chuyển giao công nghệ", "href": "/#technology-transfer" },
+        { "text": "Hỗ trợ phát triển công nghiệp", "href": "/#industrial-support" }
+      ]
+    },
+    { "text": "TIN TỨC", "href": "/news.html" },
+    { "text": "VĂN BẢN PHÁP LUẬT", "href": "/legal-documents.html" },
+    { "text": "ĐỐI TÁC", "href": "/partners.html" },
+    { "text": "LIÊN HỆ", "href": "/contact.html" }
+  ],
+  "footer": {
+    "columns": [
+      {
+        "title": "Năng lực",
+        "links": [
+          { "text": "Đào tạo ngắn hạn", "href": "/#training" },
+          { "text": "Dịch vụ đo kiểm", "href": "/#services" },
+          { "text": "Tư vấn cải tiến", "href": "/#consulting" },
+          { "text": "Chuyển giao công nghệ", "href": "/#technology-transfer" }
+        ]
+      },
+      {
+        "title": "Doanh nghiệp",
+        "links": [
+          { "text": "Hỗ trợ phát triển công nghiệp", "href": "/#industrial-support" },
+          { "text": "Đối tác hợp tác", "href": "/partners.html" },
+          { "text": "Yêu cầu dịch vụ", "href": "/contact.html" }
+        ]
+      },
+      {
+        "title": "Thông tin",
+        "links": [
+          { "text": "Giới thiệu Trung tâm", "href": "/about.html" },
+          { "text": "Cơ cấu tổ chức", "href": "/leadership.html" },
+          { "text": "Tin tức", "href": "/news.html" },
+          { "text": "Văn bản pháp luật", "href": "/legal-documents.html" }
+        ]
+      }
+    ],
+    "socialLinks": [
+      { "text": "Facebook", "href": "https://www.facebook.com/iuh.official", "icon": "icon-facebook.svg" },
+      { "text": "Youtube", "href": "https://www.youtube.com/@iuh_official", "icon": "icon-youtube.svg" },
+      { "text": "Instagram", "href": "https://www.instagram.com/iuh.official", "icon": "icon-instagram.svg" }
+    ]
+  },
+  "search": {
+    "quickLinks": [
+      { "text": "Giới thiệu Trung tâm", "href": "/about.html" },
+      { "text": "Tin tức", "href": "/news.html" },
+      { "text": "Văn bản pháp luật", "href": "/legal-documents.html" },
+      { "text": "Cơ cấu tổ chức", "href": "/leadership.html" },
+      { "text": "Yêu cầu dịch vụ", "href": "/contact.html" }
+    ],
+    "categories": [
+      { "text": "Giới thiệu", "href": "/about.html", "icon": "GT" },
+      { "text": "Tin tức", "href": "/news.html", "icon": "TT" },
+      { "text": "Văn bản", "href": "/legal-documents.html", "icon": "VB" },
+      { "text": "Liên hệ", "href": "/contact.html", "icon": "LH" }
+    ]
+  }
+}

@@ -83,7 +83,7 @@ test('organization administration faculty exposes the selected-faculty contract'
   assert.match(config, /root:\s*["']src\/faculties\/organization-administration["']/)
   assert.match(config, /components\/home\/carousel\/carousel\.js/)
   assert.match(config, /components\/home\/activity-gallery\/gallery\.js/)
-  assert.match(config, /components\/documents\/document-library\.js/)
+  assert.doesNotMatch(config, /document-library/)
   assert.doesNotMatch(config, /weekly-calendar|Weekly Calendar/)
 })
 

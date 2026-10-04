@@ -1,0 +1,77 @@
+<!-- LAYOUT: title="Văn bản pháp luật" -->
+<!-- LAYOUT: description="Tra cứu thông tư, nghị định, quyết định và hướng dẫn chuyên ngành liên quan đến hoạt động của Trung tâm IDCS - IUH." -->
+<!-- LAYOUT: keywords="văn bản pháp luật, thông tư, nghị định, tiêu chuẩn kỹ thuật, IDCS IUH" -->
+<!-- LAYOUT: url="https://iuh.edu.vn/legal-documents" -->
+<!-- LAYOUT: ogImage="/assets/images/default.jpg" -->
+
+<div data-include="@shared/components/common/breadcrumb.html" data-parent-page1="Trang chủ" data-parent-link1="/" data-current-page="Văn bản pháp luật" data-parent-page2="" data-parent-link2="" data-parent-page2-class="hidden"></div>
+
+<section class="relative overflow-hidden bg-primary-dark-blue">
+  <div data-include="@shared/components/common/core-deco.html" data-class="wave pointer-events-none absolute -left-10 -top-6 w-36 opacity-20 sm:-left-16 sm:-top-10 sm:w-44 md:w-52"></div>
+  <div data-include="@shared/components/common/core-deco.html" data-class="pointer-events-none absolute -right-12 bottom-0 w-40 opacity-20 sm:-right-20 sm:w-52 md:w-64"></div>
+  <div class="container relative mx-auto px-4 py-12 md:py-16">
+    <div class="grid items-end gap-8 lg:grid-cols-[minmax(0,1fr)_18rem]">
+      <div class="nttFade max-w-3xl">
+        <div data-include="@shared/components/common/page-hero-title.html" data-eyebrow="Thông tin chuyên ngành" data-title="Văn bản pháp luật" data-description="Tra cứu theo số hiệu, lĩnh vực hoặc năm ban hành các văn bản điều chỉnh hoạt động đo lường, chất lượng, đào tạo và chuyển giao công nghệ." data-class="!mb-0 !block" data-eyebrow-class="!border-l-2 !border-primary-yellow !pl-3 !text-sm !font-semibold !tracking-[0.16em] !text-primary-yellow" data-title-class="!mt-5 !text-primary-white md:!text-5xl" data-description-class="!mt-5 !max-w-2xl !text-base !leading-7 !text-primary-white/80 md:!text-lg"></div>
+      </div>
+      <div class="nttFade group flex items-center gap-4 rounded-lg border border-primary-white/15 bg-primary-white/5 px-5 py-4 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary-yellow/40 hover:bg-primary-white/10 lg:justify-self-end [transition-delay:150ms]">
+        <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary-yellow/15 transition-colors group-hover:bg-primary-yellow/25"><img src="/assets/svgs/icon-article.svg" alt="" class="h-5 w-5" /></span>
+        <div>
+          <p class="font-inter text-4xl font-extrabold leading-none text-primary-yellow">8</p>
+          <p class="mt-1 font-roboto text-sm leading-6 text-primary-white/75">văn bản chuyên ngành<br />đang được theo dõi</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-gray-light py-10 md:py-14" data-document-library>
+  <div class="container mx-auto px-4">
+    <div class="relative z-20 rounded-lg border border-primary-dark-blue/10 bg-primary-white p-4 shadow-[0_14px_36px_rgba(21,56,152,0.09)] md:p-5 lg:sticky lg:top-20">
+      <div class="grid gap-4 lg:grid-cols-[minmax(18rem,1fr)_auto] lg:items-end">
+        <div data-include="@shared/components/form/field.html" data-id="document-query" data-name="document-query" data-type="search" data-label="Tìm tên hoặc số hiệu" data-icon="/assets/svgs/icon-search.svg" data-placeholder="Ví dụ: đo lường, chuyển giao công nghệ..." data-attrs="data-document-query" data-label-class="!font-semibold !text-title" data-control-class="!h-12 !bg-gray-light"></div>
+        <div class="iuh-form-field">
+          <span class="mb-2 block font-roboto text-xs font-semibold uppercase tracking-[0.12em] text-gray">Loại văn bản</span>
+          <div class="flex flex-wrap items-center gap-2" role="group" aria-label="Lọc theo loại văn bản">
+            <button type="button" data-document-type-filter="all" aria-pressed="true" class="inline-flex h-12 items-center rounded-lg border border-stroke bg-gray-light px-4 font-roboto text-sm font-semibold text-gray transition hover:border-primary-dark-blue/40 hover:text-primary-dark-blue focus:outline-none focus:ring-2 focus:ring-primary-yellow [&[aria-pressed=true]]:border-primary-dark-blue [&[aria-pressed=true]]:bg-primary-dark-blue [&[aria-pressed=true]]:text-primary-white">Tất cả</button>
+            <button type="button" data-document-type-filter="document" aria-pressed="false" class="inline-flex h-12 items-center rounded-lg border border-stroke bg-gray-light px-4 font-roboto text-sm font-semibold text-gray transition hover:border-primary-dark-blue/40 hover:text-primary-dark-blue focus:outline-none focus:ring-2 focus:ring-primary-yellow [&[aria-pressed=true]]:border-primary-dark-blue [&[aria-pressed=true]]:bg-primary-dark-blue [&[aria-pressed=true]]:text-primary-white">Thông tư</button>
+            <button type="button" data-document-type-filter="decision" aria-pressed="false" class="inline-flex h-12 items-center rounded-lg border border-stroke bg-gray-light px-4 font-roboto text-sm font-semibold text-gray transition hover:border-primary-dark-blue/40 hover:text-primary-dark-blue focus:outline-none focus:ring-2 focus:ring-primary-yellow [&[aria-pressed=true]]:border-primary-dark-blue [&[aria-pressed=true]]:bg-primary-dark-blue [&[aria-pressed=true]]:text-primary-white">Quyết định</button>
+            <button type="button" data-document-type-filter="notice" aria-pressed="false" class="inline-flex h-12 items-center rounded-lg border border-stroke bg-gray-light px-4 font-roboto text-sm font-semibold text-gray transition hover:border-primary-dark-blue/40 hover:text-primary-dark-blue focus:outline-none focus:ring-2 focus:ring-primary-yellow [&[aria-pressed=true]]:border-primary-dark-blue [&[aria-pressed=true]]:bg-primary-dark-blue [&[aria-pressed=true]]:text-primary-white">Nghị định</button>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_12rem_auto] lg:items-end">
+        <div data-include="@shared/components/form/field.html" data-variant="3" data-id="document-area" data-name="document-area" data-label="Lĩnh vực" data-attrs="data-document-area-filter" data-placeholder-value="" data-placeholder-text="Tất cả lĩnh vực" data-option1-value="measurement-quality" data-option1-text="Đo lường – Chất lượng" data-option2-value="technology-transfer" data-option2-text="Chuyển giao công nghệ" data-option3-value="vocational-training" data-option3-text="Đào tạo – Bồi dưỡng" data-option4-value="industrial-support" data-option4-text="Hỗ trợ công nghiệp" data-label-class="!font-roboto !text-xs !font-semibold !uppercase !tracking-[0.12em] !text-gray" data-control-class="!h-12 !py-0"></div>
+        <div data-include="@shared/components/form/field.html" data-variant="3" data-id="document-year" data-name="document-year" data-label="Năm ban hành" data-attrs="data-document-year-filter" data-placeholder-value="" data-placeholder-text="Tất cả các năm" data-option1-value="2026" data-option1-text="2026" data-option2-value="2025" data-option2-text="2025" data-option3-value="2024" data-option3-text="2024" data-label-class="!font-roboto !text-xs !font-semibold !uppercase !tracking-[0.12em] !text-gray" data-control-class="!h-12 !py-0"></div>
+        <div data-include="@shared/components/button/button.html" data-variant="10" data-type="button" data-attrs="data-document-reset" data-text="Đặt lại bộ lọc" data-icon="/assets/svgs/icon-close.svg" data-class="h-12 sm:col-span-2 lg:col-span-1" data-icon-class="hidden"></div>
+      </div>
+    </div>
+
+    <div class="mt-7 flex items-end justify-between gap-4 border-b border-stroke pb-4">
+      <div data-include="@shared/components/common/section-title.html" data-subtitle="Kết quả tra cứu" data-title="Danh mục văn bản" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.14em] !text-primary-dark-blue" data-title-class="!mt-1 !text-2xl !text-title" data-description-class="hidden"></div>
+      <p data-document-count aria-live="polite" class="shrink-0 font-roboto text-sm font-semibold text-gray">8 tài liệu</p>
+    </div>
+
+    <div class="hidden grid-cols-[minmax(0,1fr)_12rem_8rem_9rem] gap-5 border-b border-stroke px-5 py-3 font-roboto text-xs font-bold uppercase tracking-[0.12em] text-gray lg:grid" aria-hidden="true"><span>Văn bản</span><span>Số hiệu · Cơ quan</span><span>Ban hành</span><span class="text-right">Thao tác</span></div>
+
+    <div class="divide-y divide-stroke border-b border-stroke bg-primary-white">
+      <div data-include="@shared/components/documents/document-item.html" data-id="document-01" data-area="measurement-quality" data-year="2026" data-search="Thông tư quy định về hoạt động kiểm định hiệu chuẩn thử nghiệm phương tiện đo 2026 BKHCN" data-area-label="Đo lường – Chất lượng" data-title="Thông tư quy định hoạt động kiểm định, hiệu chuẩn, thử nghiệm phương tiện đo" data-code="12/2026/TT-BKHCN" data-agency-long="Bộ Khoa học và Công nghệ" data-agency-short="Bộ KH&amp;CN" data-datetime="2026-09-12" data-date="12/09/2026" data-url="/document-detail.html"></div>
+
+      <div data-include="@shared/components/documents/document-item.html" data-variant="4" data-id="document-02" data-area="technology-transfer" data-year="2026" data-search="Quyết định phê duyệt chương trình hỗ trợ chuyển giao công nghệ cho doanh nghiệp 2026" data-area-label="Chuyển giao công nghệ" data-title="Quyết định phê duyệt chương trình hỗ trợ chuyển giao công nghệ cho doanh nghiệp" data-code="486/QĐ-BKHCN" data-agency-long="Bộ Khoa học và Công nghệ" data-agency-short="Bộ KH&amp;CN" data-datetime="2026-07-24" data-date="24/07/2026" data-url="/document-detail.html"></div>
+
+      <div data-include="@shared/components/documents/document-item.html" data-variant="3" data-id="document-03" data-area="industrial-support" data-year="2026" data-search="Nghị định về chính sách phát triển công nghiệp hỗ trợ 2026 Chính phủ" data-area-label="Hỗ trợ công nghiệp" data-title="Nghị định về chính sách phát triển công nghiệp hỗ trợ" data-code="47/2026/NĐ-CP" data-agency-long="Chính phủ" data-agency-short="Chính phủ" data-datetime="2026-05-08" data-date="08/05/2026" data-url="/document-detail.html"></div>
+
+      <div data-include="@shared/components/documents/document-item.html" data-id="document-04" data-area="vocational-training" data-year="2025" data-search="Thông tư quy định về đào tạo bồi dưỡng thường xuyên cho người lao động kỹ thuật 2025" data-area-label="Đào tạo – Bồi dưỡng" data-title="Thông tư quy định đào tạo, bồi dưỡng thường xuyên cho người lao động kỹ thuật" data-code="08/2025/TT-BLĐTBXH" data-agency-long="Bộ Lao động – Thương binh và Xã hội" data-agency-short="Bộ LĐTB&amp;XH" data-datetime="2025-11-19" data-date="19/11/2025" data-url="/document-detail.html"></div>
+
+      <div data-include="@shared/components/documents/document-item.html" data-id="document-05" data-area="measurement-quality" data-year="2025" data-search="Thông tư hướng dẫn quản lý chất lượng sản phẩm hàng hóa trong sản xuất 2025" data-area-label="Đo lường – Chất lượng" data-title="Thông tư hướng dẫn quản lý chất lượng sản phẩm, hàng hóa trong sản xuất" data-code="19/2025/TT-BKHCN" data-agency-long="Bộ Khoa học và Công nghệ" data-agency-short="Bộ KH&amp;CN" data-datetime="2025-08-27" data-date="27/08/2025" data-url="/document-detail.html"></div>
+
+      <div data-include="@shared/components/documents/document-item.html" data-variant="4" data-id="document-06" data-area="technology-transfer" data-year="2025" data-search="Quyết định ban hành danh mục công nghệ khuyến khích chuyển giao 2025" data-area-label="Chuyển giao công nghệ" data-title="Quyết định ban hành danh mục công nghệ khuyến khích chuyển giao" data-code="1125/QĐ-TTg" data-agency-long="Thủ tướng Chính phủ" data-agency-short="Thủ tướng CP" data-datetime="2025-06-03" data-date="03/06/2025" data-url="/document-detail.html"></div>
+
+      <div data-include="@shared/components/documents/document-item.html" data-variant="3" data-id="document-07" data-area="industrial-support" data-year="2024" data-search="Nghị định quy định chi tiết một số điều của Luật Chuyển giao công nghệ 2024" data-area-label="Hỗ trợ công nghiệp" data-title="Nghị định quy định chi tiết một số điều của Luật Chuyển giao công nghệ" data-code="76/2024/NĐ-CP" data-agency-long="Chính phủ" data-agency-short="Chính phủ" data-datetime="2024-12-10" data-date="10/12/2024" data-url="/document-detail.html"></div>
+
+      <div data-include="@shared/components/documents/document-item.html" data-id="document-08" data-area="vocational-training" data-year="2024" data-search="Thông tư quy định tiêu chuẩn cơ sở vật chất phục vụ đào tạo nghề nghiệp 2024" data-area-label="Đào tạo – Bồi dưỡng" data-title="Thông tư quy định tiêu chuẩn cơ sở vật chất phục vụ đào tạo nghề nghiệp" data-code="21/2024/TT-BLĐTBXH" data-agency-long="Bộ Lao động – Thương binh và Xã hội" data-agency-short="Bộ LĐTB&amp;XH" data-datetime="2024-09-05" data-date="05/09/2024" data-url="/document-detail.html"></div>
+    </div>
+
+    <p data-document-empty hidden class="mt-6 rounded-lg border border-dashed border-stroke bg-primary-white px-5 py-8 text-center font-roboto text-sm text-gray">Không tìm thấy văn bản phù hợp với bộ lọc hiện tại.</p>
+  </div>
+</section>

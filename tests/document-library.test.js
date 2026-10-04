@@ -4,10 +4,10 @@ import test from 'node:test'
 import {
   filterDocumentRecords,
   normalizeDocumentSearch,
-} from '../src/faculties/organization-administration/components/documents/document-library.js'
+} from '../src/shared/components/documents/document-library.js'
 
 const moduleUrl = new URL(
-  '../src/faculties/organization-administration/components/documents/document-library.js',
+  '../src/shared/components/documents/document-library.js',
   import.meta.url,
 )
 const facultyRoot = new URL('../src/faculties/organization-administration/', import.meta.url)
@@ -20,6 +20,14 @@ test('document library exposes filtering and DOM initialization entry points', a
 
   assert.match(source, /export const filterDocumentRecords/)
   assert.match(source, /export const initDocumentLibrary/)
+})
+
+test('document library initializes from the shared runtime so every faculty can reuse it', async () => {
+  const sharedConfig = await readSharedFile('shared.config.js')
+
+  assert.match(sharedConfig, /selector: '\[data-document-library\]'/)
+  assert.match(sharedConfig, /components\/documents\/document-library\.js/)
+  assert.match(sharedConfig, /init: 'initDocumentLibrary'/)
 })
 
 const records = [

@@ -1,0 +1,33 @@
+<section id="updates" class="scroll-mt-20 bg-primary-white py-14 md:py-20 {{class}}">
+  <div class="container mx-auto px-4">
+    <div data-include="@shared/components/common/section-title.html" data-subtitle="Cập nhật" data-title="Tin tức, hoạt động &amp; thông tin chuyên ngành" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !max-w-2xl !text-title" data-description-class="hidden"></div>
+
+    <div class="tabs-container mt-8">
+      <div class="tabs-nav flex gap-2 overflow-x-auto border-b border-stroke" role="tablist" aria-label="Cập nhật từ IDCS">
+        <button type="button" role="tab" aria-selected="true" aria-controls="updates-panel-news" id="updates-tab-news" class="tab-btn active shrink-0 whitespace-nowrap border-b-2 border-primary-dark-blue px-4 py-3 font-roboto text-sm font-semibold text-primary-dark-blue transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-yellow md:px-6 md:text-base" data-tab="news">Tin tức</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="updates-panel-documents" id="updates-tab-documents" class="tab-btn shrink-0 whitespace-nowrap border-b-2 border-transparent px-4 py-3 font-roboto text-sm font-semibold text-gray transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-yellow md:px-6 md:text-base" data-tab="documents">Văn bản pháp luật</button>
+      </div>
+
+      <div class="tabs-content mt-8">
+        <div class="tab-panel" role="tabpanel" id="updates-panel-news" aria-labelledby="updates-tab-news" data-tab-panel="news">
+          <div data-news-list class="grid gap-5 lg:grid-cols-2"></div>
+          <div class="mt-7">
+            <div data-include="@shared/components/button/button.html" data-variant="13" data-url="/news.html" data-text="Xem tất cả tin tức" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div>
+          </div>
+        </div>
+
+        <div class="tab-panel hidden" role="tabpanel" id="updates-panel-documents" aria-labelledby="updates-tab-documents" data-tab-panel="documents">
+          <ul class="divide-y divide-stroke border-y border-stroke">
+            <div data-include="@shared/components/documents/document-item.html" data-variant="5" data-url="/legal-documents.html#document-01" data-title="Thông tư quy định hoạt động kiểm định, hiệu chuẩn, thử nghiệm phương tiện đo" data-code="12/2026/TT-BKHCN" data-datetime="2026-09-12" data-date="12/09/2026"></div>
+            <div data-include="@shared/components/documents/document-item.html" data-variant="5" data-url="/legal-documents.html#document-02" data-title="Quyết định phê duyệt chương trình hỗ trợ chuyển giao công nghệ cho doanh nghiệp" data-code="486/QĐ-BKHCN" data-datetime="2026-07-24" data-date="24/07/2026"></div>
+            <div data-include="@shared/components/documents/document-item.html" data-variant="5" data-url="/legal-documents.html#document-03" data-title="Nghị định về chính sách phát triển công nghiệp hỗ trợ" data-code="47/2026/NĐ-CP" data-datetime="2026-05-08" data-date="08/05/2026"></div>
+            <div data-include="@shared/components/documents/document-item.html" data-variant="5" data-url="/legal-documents.html#document-04" data-title="Thông tư quy định đào tạo, bồi dưỡng thường xuyên cho người lao động kỹ thuật" data-code="08/2025/TT-BLĐTBXH" data-datetime="2025-11-19" data-date="19/11/2025"></div>
+          </ul>
+          <div class="mt-7">
+            <div data-include="@shared/components/button/button.html" data-variant="13" data-url="/legal-documents.html" data-text="Xem tất cả văn bản" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

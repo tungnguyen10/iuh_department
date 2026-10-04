@@ -1,0 +1,68 @@
+{
+  "section": {
+    "title": "Tin tức & hoạt động",
+    "description": "Thông tin về chương trình đào tạo, dịch vụ kỹ thuật và hoạt động chuyển giao công nghệ của Trung tâm IDCS."
+  },
+  "items": [
+    {
+      "id": 1,
+      "slug": "khai-giang-chuong-trinh-cai-tien-nang-suat-cho-doanh-nghiep",
+      "title": "Khai giảng chương trình cải tiến năng suất cho doanh nghiệp",
+      "excerpt": "Chương trình đào tạo ngắn hạn tập trung vào nhận diện lãng phí, chuẩn hóa thao tác và đo lường hiệu quả cải tiến tại hiện trường sản xuất.",
+      "category": "Đào tạo",
+      "date": "22 tháng 9, 2026",
+      "image": "/assets/images/idcs-training.jpg",
+      "imageAlt": "Học viên doanh nghiệp tham gia chương trình cải tiến năng suất",
+      "content": [
+        { "type": "paragraph", "text": "Chương trình được thiết kế theo nhu cầu thực tế của doanh nghiệp sản xuất, kết hợp giữa kiến thức chuyên môn của IUH và bài tập triển khai trực tiếp trên dây chuyền." },
+        { "type": "heading", "text": "Nội dung chính" },
+        { "type": "list", "items": ["Nhận diện và phân loại lãng phí trong quy trình.", "Chuẩn hóa thao tác và tài liệu hướng dẫn công việc.", "Thiết lập chỉ số đo lường hiệu quả sau cải tiến."] },
+        { "type": "info", "title": "Đối tượng tham gia", "text": "Quản lý sản xuất, kỹ sư quy trình và nhân sự phụ trách chất lượng tại doanh nghiệp." }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "mo-rong-danh-muc-dich-vu-do-kiem-ky-thuat",
+      "title": "Mở rộng danh mục dịch vụ đo kiểm kỹ thuật",
+      "excerpt": "Trung tâm bổ sung các hạng mục đo lường và phân tích phục vụ kiểm soát chất lượng đầu vào, đầu ra của doanh nghiệp sản xuất.",
+      "category": "Dịch vụ kỹ thuật",
+      "date": "15 tháng 9, 2026",
+      "image": "/assets/images/idcs-facility.jpg",
+      "imageAlt": "Kỹ thuật viên thực hiện đo kiểm trong phòng thí nghiệm",
+      "content": [
+        { "type": "paragraph", "text": "Danh mục dịch vụ được cập nhật dựa trên nhu cầu kiểm soát chất lượng mà doanh nghiệp gửi đến Trung tâm trong thời gian gần đây." },
+        { "type": "list", "items": ["Đo lường thông số kỹ thuật của vật liệu và sản phẩm.", "Kiểm tra, đánh giá tình trạng thiết bị sản xuất.", "Phân tích mẫu và lập báo cáo kết quả thử nghiệm."] },
+        { "type": "paragraph", "text": "Doanh nghiệp có nhu cầu gửi yêu cầu qua đầu mối tiếp nhận của Trung tâm để được tư vấn phạm vi và phương án thực hiện." }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "chuyen-giao-giai-phap-ky-thuat-cho-doanh-nghiep-san-xuat",
+      "title": "Chuyển giao giải pháp kỹ thuật cho doanh nghiệp sản xuất",
+      "excerpt": "Kết quả nghiên cứu của nhà trường được thử nghiệm, hoàn thiện và chuyển giao vào vận hành thực tế tại doanh nghiệp.",
+      "category": "Chuyển giao công nghệ",
+      "date": "02 tháng 9, 2026",
+      "image": "/assets/images/idcs-technology-transfer.jpg",
+      "imageAlt": "Trao đổi kỹ thuật giữa chuyên gia và doanh nghiệp",
+      "content": [
+        { "type": "paragraph", "text": "Hoạt động chuyển giao đi qua các bước nghiên cứu, xây dựng giải pháp, thử nghiệm quy mô nhỏ trước khi áp dụng chính thức tại doanh nghiệp." },
+        { "type": "heading", "text": "Các giai đoạn triển khai" },
+        { "type": "list", "items": ["Khảo sát nhu cầu và điều kiện triển khai.", "Xây dựng và thử nghiệm giải pháp.", "Chuyển giao kỹ thuật và hướng dẫn vận hành.", "Theo dõi hiệu quả sau chuyển giao."] }
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "ket-noi-nguon-luc-ho-tro-phat-trien-cong-nghiep",
+      "title": "Kết nối nguồn lực hỗ trợ phát triển công nghiệp",
+      "excerpt": "Trung tâm đóng vai trò đầu mối kết nối chuyên gia, phòng thí nghiệm và mạng lưới đối tác để hỗ trợ doanh nghiệp giải quyết bài toán cụ thể.",
+      "category": "Hợp tác doanh nghiệp",
+      "date": "18 tháng 8, 2026",
+      "image": "/assets/images/idcs-equipment.jpg",
+      "imageAlt": "Buổi làm việc kết nối giữa nhà trường và doanh nghiệp",
+      "content": [
+        { "type": "paragraph", "text": "Thay vì cung cấp từng dịch vụ đơn lẻ, Trung tâm tiếp nhận bài toán tổng thể của doanh nghiệp rồi huy động nguồn lực phù hợp từ hệ sinh thái của nhà trường." },
+        { "type": "list", "items": ["Nâng cao năng lực nhân sự kỹ thuật.", "Cải tiến quy trình sản xuất.", "Kiểm tra, đánh giá kỹ thuật.", "Tìm kiếm giải pháp công nghệ phù hợp."] }
+      ]
+    }
+  ]
+}

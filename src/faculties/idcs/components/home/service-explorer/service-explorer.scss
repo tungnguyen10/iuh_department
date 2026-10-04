@@ -1,0 +1,40 @@
+// Vertical service nav reusing the shared tabs runtime; scoped selectors outrank
+// the single-class utilities that tabs.js toggles on the active button.
+.iuh-service-explorer {
+  .tabs-nav {
+    gap: 1px;
+    background-color: theme('colors.stroke');
+  }
+
+  .tab-btn {
+    @apply flex shrink-0 items-center gap-3 whitespace-nowrap bg-primary-white px-5 py-4 text-left text-sm font-semibold text-gray transition-colors duration-200 md:text-base;
+
+    &:focus-visible {
+      @apply outline-none ring-2 ring-inset ring-primary-yellow;
+    }
+
+    @screen lg {
+      @apply w-full border-l-4 border-transparent;
+    }
+  }
+
+  .tab-btn:hover {
+    @apply bg-secondary-blue-light/40 text-primary-dark-blue;
+  }
+
+  .tab-btn.active {
+    @apply border-b-0 bg-primary-dark-blue text-primary-white;
+
+    @screen lg {
+      @apply border-l-4 border-primary-yellow;
+    }
+  }
+
+  .iuh-service-explorer__index {
+    @apply font-inter text-xs font-bold tracking-[0.18em] text-primary-yellow;
+  }
+
+  .tab-btn:not(.active) .iuh-service-explorer__index {
+    @apply text-gray/60;
+  }
+}

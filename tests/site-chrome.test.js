@@ -94,6 +94,7 @@ test('shared footer renders every configured field for every faculty', async () 
     'dormitory-management',
     'political-student-affairs',
     'organization-administration',
+    'idcs',
   ]) {
     const site = JSON.parse(await readFile(new URL(`../src/faculties/${facultyId}/data/site.json`, import.meta.url), 'utf8'))
     const base = `/faculties/${facultyId}/`

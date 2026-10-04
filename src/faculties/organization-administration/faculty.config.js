@@ -37,12 +37,6 @@ export const organizationAdministrationFacultyConfig = {
       init: "initActivityGallery",
       name: "Activity Gallery",
     },
-    {
-      selector: "[data-document-library]",
-      load: () => import("./components/documents/document-library.js"),
-      init: "initDocumentLibrary",
-      name: "Document Library",
-    },
   ],
 };
 

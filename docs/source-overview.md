@@ -19,7 +19,7 @@ Stack hien tai:
 | Carousel | Swiper 11 |
 | Output | `dist_iuh/`, cau hinh boi `VITE_OUT_DIR` |
 | Faculty mac dinh | `health-science` |
-| Faculty runnable | `health-science`, `dormitory-management` |
+| Faculty runnable | `health-science`, `dormitory-management`, `political-student-affairs`, `organization-administration`, `idcs` |
 
 ## 2. Source tree
 
@@ -35,6 +35,9 @@ src/
 |   |   |-- data/
 |   |   |-- faculty.config.js
 |   |   `-- pages/
+|   |-- political-student-affairs/
+|   |-- organization-administration/
+|   |-- idcs/
 |   `-- _template/
 |       |-- assets/
 |       |   |-- documents/
@@ -77,7 +80,7 @@ public
 
 | Source | So huu |
 | --- | --- |
-| `src/shared/components` | Component dung chung giua cac faculty: header, footer, loading, search, tabs, button, common, sidebar, news, partners, stats |
+| `src/shared/components` | Component dung chung giua cac faculty: header, footer, loading, search, tabs, button, common, sidebar, news, partners, stats, documents |
 | `src/shared/js` | Runtime/helper dung chung: loading, svg-loader, utils, widgets, i18n, module manager |
 | `src/shared/layouts` | Layout HTML dung chung |
 | `src/shared/styles` | Tailwind entry, global SCSS, font declarations |
@@ -126,6 +129,24 @@ Phong Quan ly Ky Tuc Xa (`dormitory-management`) hien co:
 | `login.html` | Dang nhap sinh vien noi tru |
 | `contact.html` | Lien he Phong Quan ly Ky Tuc Xa va noi dung tiep nhan ho tro sinh vien noi tru |
 
+Trung tam IDCS (`idcs`) hien co 10 page:
+
+| Page | Muc dich |
+| --- | --- |
+| `index.html` | Trang chu: hero, linh vuc hoat dong, service explorer, dao tao ngan han, nang luc, quy trinh tu van, chuyen giao cong nghe, ho tro phat trien cong nghiep, tin tuc & van ban, doi tac |
+| `about.html` | Gioi thieu chung, chuc nang - nhiem vu (`#functions`), co so vat chat (`#facilities`) |
+| `leadership.html` | Co cau to chuc va nhan su |
+| `leadership-detail.html` | Chi tiet nhan su |
+| `news.html` | Tin tuc va hoat dong |
+| `news-detail.html` | Chi tiet tin tuc |
+| `legal-documents.html` | Van ban phap luat, dung shared document library |
+| `document-detail.html` | Xem/tai PDF |
+| `partners.html` | Doi tac |
+| `contact.html` | Lien he va yeu cau dich vu |
+
+Cac nhom dich vu trong sitemap khach hang hien la section tren trang chu voi anchor
+`/#training`, `/#services`, `/#consulting`, `/#technology-transfer`, `/#industrial-support`.
+
 Moi page dung metadata `LAYOUT`:
 
 ```html
@@ -166,7 +187,7 @@ Component ownership hien tai:
 
 | Nhom | Canonical source |
 | --- | --- |
-| Header/footer/loading/search/modal/tabs/buttons/common/sidebar/news/partners/stats/leadership | `src/shared/components` |
+| Header/footer/loading/search/modal/tabs/buttons/common/sidebar/news/partners/stats/leadership/documents | `src/shared/components` |
 | Home carousel/intro/admission/infrastructure/research/industry-careers | `src/faculties/health-science/components/home` |
 | Major, major quiz | `src/faculties/health-science/components/major` |
 | Careers/business connection | `src/faculties/health-science/components/careers` |
@@ -279,6 +300,7 @@ Selected faculty data:
 | `src/faculties/health-science/data/messages-vi.json` | `/data/messages-vi.json` |
 | `src/faculties/health-science/data/messages-en.json` | `/data/messages-en.json` |
 | `src/faculties/dormitory-management/data/search-data.json` | `/data/search-data.json` when `FACULTY=dormitory-management` |
+| `src/faculties/idcs/data/search-data.json` | `/data/search-data.json` when `FACULTY=idcs` |
 
 `src/faculties/<faculty>/data/news.json` la source build-time cho shared news. No khong duoc copy ra `/data/news.json`; noi dung da nam san trong HTML generated.
 
@@ -293,6 +315,7 @@ Assets:
 | `src/shared/assets/fonts` | `/assets/fonts` |
 | `src/faculties/health-science/assets/documents` | `/assets/documents` |
 | `src/faculties/dormitory-management/assets/documents` | `/assets/documents` |
+| `src/faculties/idcs/assets/documents` | `/assets/documents` |
 
 Data fetch trong JS nen dung:
 

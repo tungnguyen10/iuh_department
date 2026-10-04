@@ -37,6 +37,12 @@ export const sharedRuntimeModules = [
     name: 'News Detail',
   },
   {
+    selector: '[data-document-library]',
+    load: () => import('./components/documents/document-library.js'),
+    init: 'initDocumentLibrary',
+    name: 'Document Library',
+  },
+  {
     selector: '[data-weekly-calendar]',
     load: () => import('./components/calendar/weekly-calendar.js'),
     init: 'initWeeklyCalendar',
