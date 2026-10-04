@@ -38,6 +38,7 @@ test('appointment marker renders one featured item and three recent items', () =
   assert.doesNotMatch(html, /Bổ nhiệm 5/)
   assert.match(html, /Quyết định gần đây/)
   assert.match(html, /news-detail\.html\?slug=appointment-1/)
+  assert.match(html, /<time datetime="2021-01-02"[^>]*>[\s\S]*?<span[^>]*>02<\/span>[\s\S]*?<span[^>]*>01\/2021<\/span>[\s\S]*?<\/time>/)
 })
 
 test('news list includes both general news and appointments with slug-aware links', () => {

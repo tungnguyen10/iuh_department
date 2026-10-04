@@ -1,0 +1,64 @@
+<!-- LAYOUT: title="Đăng ký phòng họp" -->
+<!-- LAYOUT: description="Đăng ký sử dụng phòng họp dành cho các đơn vị tại IUH." -->
+<!-- LAYOUT: keywords="đăng ký phòng họp, lịch phòng họp, tổ chức – hành chính IUH" -->
+<!-- LAYOUT: url="https://iuh.edu.vn/room-booking" -->
+<!-- LAYOUT: ogImage="/assets/images/room-booking-iuh.jpg" -->
+
+<div data-include="@shared/components/common/breadcrumb.html" data-parent-page1="" data-parent-link1="" data-parent-page1-class="hidden" data-current-page="Đăng ký phòng họp" data-parent-page2="" data-parent-link2="" data-parent-page2-class="hidden"></div>
+
+<section aria-labelledby="booking-page-title" class="bg-primary-dark-blue py-12 md:py-16">
+  <div class="container mx-auto px-4">
+    <div class="mx-auto max-w-4xl">
+      <div class="flex flex-col items-start gap-5 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
+        <div class="min-w-0 flex-1">
+          <p class="mb-3 font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-yellow sm:text-sm">Phòng Tổ chức – Hành chính</p>
+          <h1 id="booking-page-title" class="font-inter text-3xl font-bold leading-tight text-primary-white md:text-4xl">Đăng ký phòng họp</h1>
+          <p class="mt-3 font-roboto text-sm leading-6 text-primary-white/90 md:text-base">Chọn phòng và thời gian phù hợp cho cuộc họp của đơn vị.</p>
+        </div>
+        <div data-include="@shared/components/button/button.html" data-variant="13" data-url="/#weekly-schedule" data-text="Xem lịch phòng họp" data-icon="/assets/svgs/icon-calendar-check.svg" data-class="min-h-11 shrink-0 !text-primary-white hover:!text-primary-yellow motion-reduce:transition-none" data-icon-class="brightness-0 invert motion-reduce:transform-none motion-reduce:transition-none"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="booking-form-title" class="bg-gray-light py-12 md:py-16">
+  <div class="container mx-auto px-4">
+    <div class="mx-auto max-w-4xl">
+      <div class="rounded-2xl border border-primary-dark-blue/10 bg-primary-white p-5 shadow-[0_20px_48px_-24px_rgba(21,56,152,0.22)] sm:p-8">
+        <div id="booking-form-title" class="mb-6 flex items-start gap-3 border-b border-stroke pb-5">
+          <span aria-hidden="true" class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-secondary-yellow-light">
+            <img src="/assets/svgs/icon-calendar-check.svg" alt="" class="h-5 w-5" />
+          </span>
+          <div data-include="@shared/components/common/section-title.html" data-title="Thông tin đăng ký" data-description="Điền thông tin cuộc họp để chuẩn bị nội dung đăng ký." data-title-class="!text-xl !leading-tight text-primary-dark-blue md:!text-2xl" data-description-class="!mt-1 !text-sm !leading-6 !text-gray-700"></div>
+        </div>
+        <div class="iuh-form" role="form" aria-label="Đăng ký phòng họp">
+          <div class="iuh-form-grid">
+            <div data-include="@shared/components/form/field.html" data-id="booking-name" data-name="full_name" data-type="text" data-label="Người đăng ký" data-required-text="*" data-icon="/assets/svgs/icon-user.svg" data-placeholder="Họ và tên" data-attrs="required autocomplete=name"></div>
+            <div data-include="@shared/components/form/field.html" data-id="booking-phone" data-name="phone" data-type="tel" data-label="Số điện thoại" data-required-text="*" data-icon="/assets/svgs/icon-phone.svg" data-placeholder="Số liên hệ" data-attrs="required autocomplete=tel"></div>
+          </div>
+          <div data-include="@shared/components/form/field.html" data-id="booking-unit" data-name="unit" data-type="text" data-label="Đơn vị đề nghị" data-required-text="*" data-icon="/assets/svgs/icon-building.svg" data-placeholder="Khoa, viện hoặc phòng ban" data-attrs="required"></div>
+          <div class="iuh-form-grid">
+            <div data-include="@shared/components/form/field.html" data-variant="3" data-id="booking-room" data-name="room" data-label="Phòng họp" data-required-text="*" data-icon="/assets/svgs/icon-location.svg" data-attrs="required" data-placeholder-value="" data-placeholder-text="Chọn phòng họp" data-option1-value="room-1" data-option1-text="Phòng họp 1" data-option2-value="room-2" data-option2-text="Phòng họp 2" data-option3-value="room-3" data-option3-text="Phòng họp 3"></div>
+            <div data-include="@shared/components/form/field.html" data-id="booking-date" data-name="date" data-type="date" data-label="Ngày tổ chức" data-required-text="*" data-icon="/assets/svgs/icon-calendar-check.svg" data-attrs="required"></div>
+          </div>
+          <div class="iuh-form-grid">
+            <div data-include="@shared/components/form/field.html" data-id="booking-start" data-name="start_time" data-type="time" data-label="Giờ bắt đầu" data-required-text="*" data-icon="/assets/svgs/icon-clock.svg" data-attrs="required"></div>
+            <div data-include="@shared/components/form/field.html" data-id="booking-end" data-name="end_time" data-type="time" data-label="Giờ kết thúc" data-required-text="*" data-icon="/assets/svgs/icon-clock.svg" data-attrs="required"></div>
+          </div>
+          <div data-include="@shared/components/form/field.html" data-variant="2" data-id="booking-purpose" data-name="purpose" data-rows="3" data-label="Nội dung cuộc họp" data-required-text="*" data-icon="/assets/svgs/icon-edit.svg" data-placeholder="Nội dung hoặc tên chương trình" data-attrs="required" data-control-class="!min-h-[7rem]"></div>
+          <div class="iuh-form-grid">
+            <div data-include="@shared/components/form/field.html" data-id="booking-chair" data-name="chair" data-type="text" data-label="Người chủ trì" data-required-text="*" data-icon="/assets/svgs/icon-user.svg" data-placeholder="Họ và tên" data-attrs="required"></div>
+            <div data-include="@shared/components/form/field.html" data-id="booking-attendees" data-name="attendees" data-type="number" data-label="Số người tham dự" data-required-text="*" data-icon="/assets/svgs/icon-users.svg" data-placeholder="Số người" data-attrs="required min=1"></div>
+          </div>
+          <div class="rounded-lg border border-primary-dark-blue/10 bg-secondary-blue-light/40 p-3">
+            <p class="mb-2 font-roboto text-sm font-medium text-gray-700">Trang thiết bị</p>
+            <div data-include="@shared/components/form/choice.html" data-variant="2" data-name="projector" data-value="yes" data-text="Cần sử dụng máy chiếu" data-class="border border-primary-dark-blue/10"></div>
+          </div>
+          <div data-include="@shared/components/button/button.html" data-variant="7" data-type="button" data-text="Gửi đăng ký" data-icon="/assets/svgs/icon-send.svg" data-class="w-full"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div data-include="@shared/components/partners/index.html" data-class="nttFade"></div>

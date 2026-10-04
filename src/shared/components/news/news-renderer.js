@@ -21,10 +21,9 @@ export const createNewsRenderer = ({ base, items, sectionMeta }) => {
     }
     const [, day, month, year] = match
     return `
-      <time datetime="${escapeHtml(year)}-${escapeHtml(month.padStart(2, '0'))}-${escapeHtml(day.padStart(2, '0'))}" class="flex w-14 flex-col self-start overflow-hidden rounded-lg bg-primary-white text-center shadow-[0_6px_16px_-6px_rgba(21,56,152,0.35)] ring-1 ring-inset ring-primary-dark-blue/10 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:shadow-[0_10px_22px_-8px_rgba(21,56,152,0.45)] motion-reduce:transform-none motion-reduce:transition-none">
-        <span class="bg-primary-dark-blue py-1 font-roboto text-[10px] font-bold uppercase leading-none tracking-[0.08em] text-primary-white">Thg ${escapeHtml(month)}</span>
-        <span class="pt-1.5 font-inter text-2xl font-extrabold leading-none text-primary-dark-blue">${escapeHtml(day.padStart(2, '0'))}</span>
-        <span class="pb-1.5 pt-1 font-roboto text-[10px] font-medium leading-none text-gray-500">${escapeHtml(year)}</span>
+      <time datetime="${escapeHtml(year)}-${escapeHtml(month.padStart(2, '0'))}-${escapeHtml(day.padStart(2, '0'))}" aria-label="Ngày ${escapeHtml(day)} tháng ${escapeHtml(month)} năm ${escapeHtml(year)}" class="flex min-h-[64px] w-14 flex-col items-center justify-center self-start rounded-lg border border-primary-dark-blue/10 border-b-2 border-b-primary-yellow bg-secondary-blue-light/60 px-1 text-center">
+        <span class="font-inter text-2xl font-bold leading-none tabular-nums text-primary-dark-blue">${escapeHtml(day.padStart(2, '0'))}</span>
+        <span class="mt-1 font-roboto text-[11px] font-medium leading-none text-gray-700">${escapeHtml(month.padStart(2, '0'))}/${escapeHtml(year)}</span>
       </time>`
   }
 

@@ -18,6 +18,19 @@ test('deadline and room filters represent distinct user views', () => {
   assert.equal(filterScheduleRecords(records, '2026-09-08', 'room').length, 3)
   assert.equal(filterScheduleRecords(records, '2026-09-15', 'all').length, 0)
 })
+test('room-specific filters keep only bookings for the selected room in time order', () => {
+  const bookings = [
+    { date: '2026-10-05', start: '13:30', roomId: 'room-1', type: 'meeting', room: true },
+    { date: '2026-10-03', start: '15:30', roomId: 'room-3', type: 'meeting', room: true },
+    { date: '2026-10-03', start: '08:00', roomId: 'room-2', type: 'meeting', room: true },
+    { date: '2026-10-03', start: '13:30', roomId: 'room-1', type: 'meeting', room: true },
+  ]
+  assert.deepEqual(filterScheduleRecords(bookings, '2026-09-28', 'room-1').map(r => r.start), ['13:30'])
+  assert.deepEqual(filterScheduleRecords(bookings, '2026-09-28', 'room-2').map(r => r.start), ['08:00'])
+  assert.deepEqual(filterScheduleRecords(bookings, '2026-09-28', 'room-3').map(r => r.start), ['15:30'])
+  assert.deepEqual(filterScheduleRecords(bookings, '2026-09-28', 'all').map(r => r.start), ['08:00', '13:30', '15:30'])
+  assert.deepEqual(filterScheduleRecords(bookings, '2026-10-12', 'all'), [])
+})
 test('week interval includes both boundary days and excludes the following day', () => {
   const edgeRecords = ['2026-09-07', '2026-09-08', '2026-09-14', '2026-09-15'].map(date => ({ date, start: '08:00', type: 'meeting', room: true }))
   assert.deepEqual(filterScheduleRecords(edgeRecords, '2026-09-08').map(r => r.date), ['2026-09-08', '2026-09-14'])

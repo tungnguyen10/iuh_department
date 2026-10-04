@@ -35,7 +35,8 @@ export const formatScheduleWeek = (start) => {
 export const filterScheduleRecords = (records, start, filter = 'all') => {
   const end = addScheduleDays(start, 7)
   return records.filter(record => record.date >= start && record.date < end
-    && (filter === 'all' || (filter === 'deadline' && record.type === 'deadline') || (filter === 'room' && record.room)))
+    && (filter === 'all' || (filter === 'deadline' && record.type === 'deadline')
+      || (filter === 'room' && record.room) || record.roomId === filter))
     .sort((a, b) => `${a.date}T${a.start}`.localeCompare(`${b.date}T${b.start}`))
 }
 
@@ -74,6 +75,7 @@ const renderEventElement = (li, record) => {
       <p class="mt-1 flex flex-wrap items-baseline gap-x-2 text-sm leading-6 text-black">
         <span data-schedule-time></span><span aria-hidden="true">·</span><span data-schedule-location></span>
       </p>
+      <p data-schedule-unit class="mt-1 text-xs leading-5 text-gray-600 sm:text-sm"></p>
     </div>
   `
   const dayTime = li.querySelector('time')
@@ -96,6 +98,7 @@ const renderEventElement = (li, record) => {
     timeSlot.append(endTime)
   }
   li.querySelector('[data-schedule-location]').textContent = record.location
+  li.querySelector('[data-schedule-unit]').textContent = record.unit || ''
 }
 
 export const initWeeklyCalendar = (root = document) => Array.from(root.querySelectorAll('[data-weekly-calendar]')).map(calendar => {
@@ -106,8 +109,10 @@ export const initWeeklyCalendar = (root = document) => Array.from(root.querySele
     end: element.dataset.scheduleEnd || '',
     type: element.dataset.scheduleType,
     room: element.dataset.scheduleRoom === 'true',
+    roomId: element.dataset.scheduleRoomId,
     title: element.dataset.scheduleTitle,
     location: element.dataset.scheduleLocation,
+    unit: element.dataset.scheduleUnit,
     element,
   }))
   const list = calendar.querySelector('[data-schedule-list]')

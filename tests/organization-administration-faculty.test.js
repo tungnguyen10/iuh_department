@@ -15,6 +15,7 @@ const expectedPages = [
   'news-detail.html',
   'news.html',
   'partners.html',
+  'room-booking.html',
 ]
 
 const readFacultyFile = (path) => readFile(new URL(path, facultyRoot), 'utf8')
@@ -86,19 +87,52 @@ test('organization administration faculty exposes the selected-faculty contract'
   assert.doesNotMatch(config, /weekly-calendar|Weekly Calendar/)
 })
 
-test('weekly calendar is shared and no longer used by organization administration', async () => {
-  const [sharedConfig, sharedCalendar, sharedCalendarRuntime, facultyIndex, staffServices] = await Promise.all([
+test('room booking section precedes news and links its banner to the separate registration page', async () => {
+  const [sharedConfig, sharedCalendar, sharedCalendarRuntime, facultyIndex, bookingSection] = await Promise.all([
     readFile(new URL('../src/shared/shared.config.js', import.meta.url), 'utf8'),
     readFile(new URL('../src/shared/components/calendar/weekly-calendar.html', import.meta.url), 'utf8'),
     readFile(new URL('../src/shared/components/calendar/weekly-calendar.js', import.meta.url), 'utf8'),
     readFacultyFile('pages/index.html'),
-    readFacultyFile('components/home/staff-services/index.html'),
+    readFacultyFile('components/home/room-booking/index.html'),
   ])
 
   assert.match(sharedConfig, /selector:\s*['"]\[data-weekly-calendar\]['"]/)
   assert.match(sharedCalendar, /data-weekly-calendar/)
   assert.match(sharedCalendarRuntime, /export const initWeeklyCalendar/)
-  assert.doesNotMatch(`${facultyIndex}\n${staffServices}`, /data-weekly-calendar|weekly-schedule|Lịch công tác/)
+  const bookingInclude = '@faculty/components/home/room-booking/index.html'
+  const statsInclude = '@faculty/components/home/stats/index.html'
+  const updatesInclude = '@faculty/components/home/work-updates/index.html'
+  const newsInclude = '@shared/components/news/index.html'
+  assert.ok(facultyIndex.indexOf(statsInclude) < facultyIndex.indexOf(bookingInclude))
+  assert.ok(facultyIndex.indexOf(bookingInclude) < facultyIndex.indexOf(updatesInclude))
+  assert.ok(facultyIndex.indexOf(bookingInclude) < facultyIndex.indexOf(newsInclude))
+  assert.match(bookingSection, /@shared\/components\/calendar\/weekly-calendar\.html/)
+  assert.match(bookingSection, /data-url="\/room-booking\.html" data-text="Đăng ký phòng họp"/)
+  assert.doesNotMatch(bookingSection, /@shared\/components\/form\/|<input\b|<form\b|role="form"/)
+  const image = /<img[^>]+src="(\/assets\/images\/[^\"]+)"/.exec(bookingSection)
+  assert.ok(image, 'banner must use a local image')
+  assert.ok((await readFacultyFile(`assets/images/${image[1].split('/').at(-1)}`)).length > 0)
+  assert.match(sharedCalendar, /data-attrs="data-schedule-filter=room-1\b/)
+  assert.match(sharedCalendar, /data-attrs="data-schedule-filter=room-2\b/)
+  assert.match(sharedCalendar, /data-attrs="data-schedule-filter=room-3\b/)
+  assert.doesNotMatch(sharedCalendar, /\/calendar\.html/)
+})
+
+test('room booking page contains the complete static form and a return link to the calendar', async () => {
+  const page = await readFacultyFile('pages/room-booking.html')
+  assert.match(page, /LAYOUT: title="Đăng ký phòng họp"/)
+  assert.match(page, /data-current-page="Đăng ký phòng họp"/)
+  assert.match(page, /<h1[^>]*>Đăng ký phòng họp<\/h1>/)
+  assert.match(page, /data-url="\/#weekly-schedule" data-text="Xem lịch phòng họp"/)
+  assert.match(page, /@shared\/components\/common\/section-title\.html" data-title="Thông tin đăng ký"/)
+  for (const name of ['full_name', 'phone', 'unit', 'room', 'date', 'start_time', 'end_time', 'purpose', 'chair', 'attendees', 'projector']) {
+    assert.match(page, new RegExp(`data-name="${name}"`))
+  }
+  assert.match(page, /@shared\/components\/form\/field\.html/)
+  assert.match(page, /@shared\/components\/form\/choice\.html/)
+  assert.match(page, /data-variant="7" data-type="button" data-text="Gửi đăng ký"/)
+  assert.doesNotMatch(page, /<form\b|<script\b|weekly-calendar\.html/)
+  assert.ok(page.trimEnd().endsWith('<div data-include="@shared/components/partners/index.html" data-class="nttFade"></div>'))
 })
 
 test('organization administration activity gallery uses the five newest PTCHC posts', async () => {

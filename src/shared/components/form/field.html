@@ -1,7 +1,7 @@
 <!-- option 1: Label + input -->
 <div class="iuh-form-field {{fieldClass}}">
   <label for="{{id}}" class="iuh-form-label {{labelClass}}">
-    <span class="iuh-form-label__icon {{iconClass}}" style="background-image:url({{icon}})">{{icon}}</span>
+    <span class="iuh-form-label__icon {{iconClass}}" aria-hidden="true" style="background-image:url({{icon}})">{{icon}}</span>
     <span>{{label}}</span>
     <span class="iuh-form-required">{{requiredText}}</span>
   </label>
@@ -13,7 +13,7 @@
 <!-- option 2: Label + textarea -->
 <div class="iuh-form-field {{fieldClass}}">
   <label for="{{id}}" class="iuh-form-label {{labelClass}}">
-    <span class="iuh-form-label__icon {{iconClass}}" style="background-image:url({{icon}})">{{icon}}</span>
+    <span class="iuh-form-label__icon {{iconClass}}" aria-hidden="true" style="background-image:url({{icon}})">{{icon}}</span>
     <span>{{label}}</span>
     <span class="iuh-form-required">{{requiredText}}</span>
   </label>
@@ -25,7 +25,7 @@
 <!-- option 3: Label + select (placeholder + 5 inlined options; empty option rows strip) -->
 <div class="iuh-form-field {{fieldClass}}">
   <label for="{{id}}" class="iuh-form-label {{labelClass}}">
-    <span class="iuh-form-label__icon {{iconClass}}" style="background-image:url({{icon}})">{{icon}}</span>
+    <span class="iuh-form-label__icon {{iconClass}}" aria-hidden="true" style="background-image:url({{icon}})">{{icon}}</span>
     <span>{{label}}</span>
     <span class="iuh-form-required">{{requiredText}}</span>
   </label>
@@ -44,7 +44,7 @@
 <!-- option 4: Label + select shell with zero inlined options (caller composes options via nested option.html includes) -->
 <div class="iuh-form-field {{fieldClass}}">
   <label for="{{id}}" class="iuh-form-label {{labelClass}}">
-    <span class="iuh-form-label__icon {{iconClass}}" style="background-image:url({{icon}})">{{icon}}</span>
+    <span class="iuh-form-label__icon {{iconClass}}" aria-hidden="true" style="background-image:url({{icon}})">{{icon}}</span>
     <span>{{label}}</span>
     <span class="iuh-form-required">{{requiredText}}</span>
   </label>
