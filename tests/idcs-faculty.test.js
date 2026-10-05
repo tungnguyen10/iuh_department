@@ -5,15 +5,20 @@ import test from 'node:test'
 const facultyRoot = new URL('../src/faculties/idcs/', import.meta.url)
 const expectedPages = [
   'about.html',
+  'consulting.html',
   'contact.html',
   'document-detail.html',
   'index.html',
+  'industrial-support.html',
   'leadership-detail.html',
   'leadership.html',
   'legal-documents.html',
   'news-detail.html',
   'news.html',
   'partners.html',
+  'services.html',
+  'technology-transfer.html',
+  'training.html',
 ]
 const homeBlocks = [
   'hero',
@@ -57,25 +62,32 @@ test('idcs homepage composes every brief block in order', async () => {
   ])
 })
 
-test('idcs hero carousel ships its own slides instead of the dormitory-bound shared carousel', async () => {
+test('idcs hero carousel owns its markup and labels the correct centre', async () => {
   const carousel = await readFacultyFile('components/home/carousel/carousel.html')
-  const slides = [...carousel.matchAll(/<img src="(\/assets\/images\/[\w.-]+)"/g)].map((match) => match[1])
+  const slides = [...carousel.matchAll(/<div class="swiper-slide">/g)]
+  const alts = [...carousel.matchAll(/alt="([^"]+)"/g)].map((match) => match[1])
 
   assert.equal(slides.length, 3)
-  assert.equal(new Set(slides).size, 3)
-  assert.ok(slides.every((src) => src.startsWith('/assets/images/idcs-')))
+  assert.equal(alts.length, 3)
+  assert.ok(alts.every((alt) => alt.includes('IDCS')))
+  // Brief §1.3: IDCS must never be labelled as IDC or as the product-design centre.
+  assert.ok(alts.every((alt) => !/Thiết kế và Phát triển sản phẩm/.test(alt)))
   assert.doesNotMatch(carousel, /data-shared-carousel|data-carousel-image/)
   assert.match(carousel, /class="swiper hero-swiper"/)
 })
 
-test('idcs homepage anchors match the navigation and quick links in site data', async () => {
+test('idcs site data links resolve to real pages and homepage sections', async () => {
   const home = await Promise.all(homeBlocks.map((block) => readFacultyFile(`components/home/${block}/index.html`)))
   const sectionIds = new Set(home.flatMap((source) => [...source.matchAll(/<section id="([\w-]+)"/g)].map((match) => match[1])))
   const site = JSON.parse(await readFacultyFile('data/site.json'))
-  const homeAnchors = [...JSON.stringify(site).matchAll(/"href":"\/#([\w-]+)"/g)].map((match) => match[1])
+  const serialized = JSON.stringify(site)
 
-  assert.ok(homeAnchors.length > 0)
+  const homeAnchors = [...serialized.matchAll(/"href":"\/#([\w-]+)"/g)].map((match) => match[1])
   for (const anchor of homeAnchors) assert.ok(sectionIds.has(anchor), `homepage is missing section #${anchor}`)
+
+  const pageLinks = [...serialized.matchAll(/"href":"\/([\w-]+\.html)/g)].map((match) => match[1])
+  assert.ok(pageLinks.length > 0)
+  for (const page of new Set(pageLinks)) assert.ok(expectedPages.includes(page), `site data links to missing page ${page}`)
 })
 
 test('idcs site chrome data only links to built HTML pages', async () => {

@@ -95,7 +95,7 @@ test('filterDocumentRecords returns an empty list when no record matches', () =>
   assert.deepEqual(filterDocumentRecords(records, { query: 'không tồn tại' }), [])
 })
 
-test('document listing exposes twelve searchable records and accessible filters', async () => {
+test('document listing exposes fourteen searchable records and accessible filters', async () => {
   const page = await readFacultyFile('pages/documents-forms.html')
 
   assert.match(page, /data-document-library/)
@@ -104,9 +104,11 @@ test('document listing exposes twelve searchable records and accessible filters'
   assert.match(page, /data-document-year-filter/)
   assert.match(page, /data-document-count[^>]*aria-live="polite"/)
   assert.match(page, /data-document-empty[^>]*hidden/)
-  assert.equal((page.match(/components\/documents\/document-item\.html/g) ?? []).length, 12)
-  assert.equal((page.match(/data-url="\/document-detail\.html"/g) ?? []).length, 6)
+  assert.equal((page.match(/components\/documents\/document-item\.html/g) ?? []).length, 14)
+  assert.equal((page.match(/data-url="\/document-detail\.html"/g) ?? []).length, 8)
   assert.equal((page.match(/document-item\.html" data-variant="2"/g) ?? []).length, 6)
+  assert.equal((page.match(/document-item\.html" data-variant="3"/g) ?? []).length, 1)
+  assert.equal((page.match(/document-item\.html" data-variant="4"/g) ?? []).length, 1)
   assert.doesNotMatch(page, /href=["']#["']/)
 })
 
@@ -145,7 +147,7 @@ test('document pages compose every compatible shared UI primitive', async () => 
   const detail = await readFacultyFile('pages/document-detail.html')
 
   assert.equal((listing.match(/@shared\/components\/form\/field\.html/g) ?? []).length, 3)
-  assert.equal((listing.match(/components\/documents\/document-item\.html/g) ?? []).length, 12)
+  assert.equal((listing.match(/components\/documents\/document-item\.html/g) ?? []).length, 14)
   assert.match(listing, /@shared\/components\/button\/button\.html/)
   assert.doesNotMatch(listing, /<(?:input|select)\b/)
 
@@ -161,6 +163,6 @@ test('document pages compose every compatible shared UI primitive', async () => 
 test('shared link buttons forward native attributes for new-tab document actions', async () => {
   const button = await readSharedFile('components/button/button.html')
 
-  assert.equal((button.match(/<a href="\{\{url\}\}" \{\{download\}\} \{\{attrs\}\}/g) ?? []).length, 7)
+  assert.equal((button.match(/<a href="\{\{url\}\}" \{\{download\}\} \{\{attrs\}\}/g) ?? []).length, 10)
   assert.doesNotMatch(button, /alt="(?:arrow|icon)"/)
 })

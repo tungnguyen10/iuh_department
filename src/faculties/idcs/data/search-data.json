@@ -14,5 +14,10 @@
   { "id": 13, "title": "Khai giảng chương trình cải tiến năng suất cho doanh nghiệp", "excerpt": "Chương trình đào tạo ngắn hạn về nhận diện lãng phí và đo lường hiệu quả cải tiến.", "category": "Đào tạo", "date": "22/09/2026", "url": "/news-detail.html" },
   { "id": 14, "title": "Mở rộng danh mục dịch vụ đo kiểm kỹ thuật", "excerpt": "Bổ sung hạng mục đo lường và phân tích phục vụ kiểm soát chất lượng.", "category": "Dịch vụ kỹ thuật", "date": "15/09/2026", "url": "/news-detail.html" },
   { "id": 15, "title": "Chuyển giao giải pháp kỹ thuật cho doanh nghiệp sản xuất", "excerpt": "Nghiên cứu được thử nghiệm, hoàn thiện và chuyển giao vào vận hành thực tế.", "category": "Chuyển giao công nghệ", "date": "02/09/2026", "url": "/news-detail.html" },
-  { "id": 16, "title": "Kết nối nguồn lực hỗ trợ phát triển công nghiệp", "excerpt": "Trung tâm làm đầu mối kết nối chuyên gia, phòng thí nghiệm và mạng lưới đối tác.", "category": "Hợp tác doanh nghiệp", "date": "18/08/2026", "url": "/news-detail.html" }
+  { "id": 16, "title": "Kết nối nguồn lực hỗ trợ phát triển công nghiệp", "excerpt": "Trung tâm làm đầu mối kết nối chuyên gia, phòng thí nghiệm và mạng lưới đối tác.", "category": "Hợp tác doanh nghiệp", "date": "18/08/2026", "url": "/news-detail.html" },
+  { "id": 17, "title": "Đào tạo ngắn hạn", "excerpt": "Chương trình đào tạo ngắn hạn thiết kế theo nhu cầu doanh nghiệp, lịch khai giảng và cách đăng ký.", "category": "Trang", "date": "05/10/2026", "url": "/training.html" },
+  { "id": 18, "title": "Dịch vụ đo kiểm", "excerpt": "Danh mục dịch vụ đo lường, kiểm tra, phân tích, đánh giá và năng lực thiết bị.", "category": "Trang", "date": "05/10/2026", "url": "/services.html" },
+  { "id": 19, "title": "Tư vấn cải tiến", "excerpt": "Quy trình tư vấn năm bước và các nhóm chủ đề cải tiến chất lượng, năng suất.", "category": "Trang", "date": "05/10/2026", "url": "/consulting.html" },
+  { "id": 20, "title": "Chuyển giao công nghệ", "excerpt": "Lộ trình sáu giai đoạn từ nghiên cứu đến sản xuất và các lĩnh vực kỹ thuật quan tâm.", "category": "Trang", "date": "05/10/2026", "url": "/technology-transfer.html" },
+  { "id": 21, "title": "Hỗ trợ phát triển công nghiệp", "excerpt": "Phát triển nhà cung ứng, kết nối buyer, tiêu chuẩn xuất khẩu và hợp tác quốc tế.", "category": "Trang", "date": "05/10/2026", "url": "/industrial-support.html" }
 ]

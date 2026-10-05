@@ -2,6 +2,7 @@
   "version": 1,
   "identity": {
     "unitName": "Trung tâm IDCS",
+    "unitFullName": "Trung tâm Kỹ thuật hỗ trợ phát triển công nghiệp khu vực phía Nam",
     "organizationName": "Đại học Công nghiệp TP. Hồ Chí Minh",
     "email": "idcs@iuh.edu.vn",
     "phone": { "text": "(028) 3894 0390", "href": "02838940390" },
@@ -9,9 +10,9 @@
     "mapAddress": "Số 12 Nguyễn Văn Bảo, Phường Hạnh Thông, TP.HCM"
   },
   "quickLinks": [
-    { "text": "Đào tạo ngắn hạn", "href": "/#training", "icon": "icon-graduation-cap.svg" },
-    { "text": "Dịch vụ đo kiểm", "href": "/#services", "icon": "icon-shield-check.svg" },
-    { "text": "Tư vấn cải tiến", "href": "/#consulting", "icon": "icon-handshake.svg" },
+    { "text": "Đào tạo ngắn hạn", "href": "/training.html", "icon": "icon-graduation-cap.svg" },
+    { "text": "Dịch vụ đo kiểm", "href": "/services.html", "icon": "icon-shield-check.svg" },
+    { "text": "Tư vấn cải tiến", "href": "/consulting.html", "icon": "icon-handshake.svg" },
     { "text": "Yêu cầu dịch vụ", "href": "/contact.html", "icon": "icon-message.svg" }
   ],
   "navigation": [
@@ -28,11 +29,11 @@
     {
       "text": "DỊCH VỤ",
       "children": [
-        { "text": "Đào tạo ngắn hạn", "href": "/#training" },
-        { "text": "Dịch vụ đo kiểm", "href": "/#services" },
-        { "text": "Tư vấn cải tiến", "href": "/#consulting" },
-        { "text": "Chuyển giao công nghệ", "href": "/#technology-transfer" },
-        { "text": "Hỗ trợ phát triển công nghiệp", "href": "/#industrial-support" }
+        { "text": "Đào tạo ngắn hạn", "href": "/training.html" },
+        { "text": "Dịch vụ đo kiểm", "href": "/services.html" },
+        { "text": "Tư vấn cải tiến", "href": "/consulting.html" },
+        { "text": "Chuyển giao công nghệ", "href": "/technology-transfer.html" },
+        { "text": "Hỗ trợ phát triển công nghiệp", "href": "/industrial-support.html" }
       ]
     },
     { "text": "TIN TỨC", "href": "/news.html" },
@@ -45,16 +46,16 @@
       {
         "title": "Năng lực",
         "links": [
-          { "text": "Đào tạo ngắn hạn", "href": "/#training" },
-          { "text": "Dịch vụ đo kiểm", "href": "/#services" },
-          { "text": "Tư vấn cải tiến", "href": "/#consulting" },
-          { "text": "Chuyển giao công nghệ", "href": "/#technology-transfer" }
+          { "text": "Đào tạo ngắn hạn", "href": "/training.html" },
+          { "text": "Dịch vụ đo kiểm", "href": "/services.html" },
+          { "text": "Tư vấn cải tiến", "href": "/consulting.html" },
+          { "text": "Chuyển giao công nghệ", "href": "/technology-transfer.html" }
         ]
       },
       {
         "title": "Doanh nghiệp",
         "links": [
-          { "text": "Hỗ trợ phát triển công nghiệp", "href": "/#industrial-support" },
+          { "text": "Hỗ trợ phát triển công nghiệp", "href": "/industrial-support.html" },
           { "text": "Đối tác hợp tác", "href": "/partners.html" },
           { "text": "Yêu cầu dịch vụ", "href": "/contact.html" }
         ]

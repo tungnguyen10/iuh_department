@@ -30,13 +30,15 @@ test('organization administration retained pages use the approved vocabulary', a
     readFacultyFile('pages/news-detail.html'),
   ])
 
-  assert.match(about, /href=["']\/functions-duties\.html["']/)
-  assert.match(about, />Xem chức năng – nhiệm vụ<\/a>/)
+  assert.match(about, /data-text="Xem chức năng – nhiệm vụ"\s+data-url="\/functions-duties\.html"/)
   assert.match(about, /href=["']\/contact\.html["']/)
-  assert.equal((about.match(/<section\b/g) ?? []).length, 2)
-  for (const label of ['Tổ chức – Cán bộ', 'Hành chính – Tổng hợp', 'Văn thư – Lưu trữ', 'Chính sách – Thi đua', 'Lễ tân – Khánh tiết']) {
-    for (const page of [about, leadership, detail, contact]) assert.ok(page.includes(label), `missing ${label}`)
+  assert.equal((about.match(/<section\b/g) ?? []).length, 5)
+  const areaLabels = ['Tổ chức – Cán bộ', 'Hành chính – Tổng hợp', 'Văn thư – Lưu trữ', 'Chính sách – Thi đua', 'Lễ tân – Khánh tiết']
+  for (const label of areaLabels) {
+    for (const page of [about, leadership, contact]) assert.ok(page.includes(label), `missing ${label}`)
   }
+  // The director's detail page only lists the four areas they directly oversee, not reception.
+  for (const label of areaLabels.slice(0, 4)) assert.ok(detail.includes(label), `leadership-detail missing ${label}`)
   assert.match(detail, /data-leader-detail/)
   assert.match(detail, /data-leader-name/)
   assert.match(detail, /href=["']\/functions-duties\.html["']/)
@@ -58,7 +60,7 @@ test('organization administration contact routes to exactly the five approved ar
   ])
   assert.match(contact, /ptchc@iuh\.edu\.vn/)
   assert.match(contact, /0283 8940 390 - 100/)
-  assert.match(contact, /Nhà E - 12 Nguyễn Văn Bảo/)
+  assert.match(contact, /Tầng trệt Nhà E, 12 Nguyễn Văn Bảo/)
   assert.match(contact, /<form[^>]+action="mailto:ptchc@iuh\.edu\.vn" method="post" enctype="text\/plain"/)
 })
 
