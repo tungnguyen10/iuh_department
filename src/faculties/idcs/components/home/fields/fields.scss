@@ -1,0 +1,50 @@
+.iuh-fields-index {
+  &__row {
+    @apply grid items-start gap-x-5 rounded-lg transition-colors duration-300;
+    grid-template-columns: auto minmax(0, 1fr);
+
+    &:focus-visible {
+      @apply outline-none ring-2 ring-offset-4;
+      --tw-ring-color: theme('colors.primary.yellow');
+    }
+  }
+
+  &__mark {
+    @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border transition-colors duration-300;
+    border-color: theme('colors.stroke');
+    color: theme('colors.primary.dark-blue');
+  }
+
+  &__row:hover &__mark,
+  &__row:focus-visible &__mark {
+    background-color: theme('colors.primary.dark-blue');
+    border-color: theme('colors.primary.dark-blue');
+    color: theme('colors.primary.white');
+  }
+
+  // Armed by JS only, so the list stays fully visible when JS is unavailable.
+  &.is-armed &__item {
+    @apply translate-y-3 opacity-0 transition-all duration-500 ease-out;
+  }
+
+  &.is-armed.is-visible &__item {
+    @apply translate-y-0 opacity-100;
+  }
+
+  &.is-armed &__item:nth-child(2) {
+    transition-delay: 90ms;
+  }
+  &.is-armed &__item:nth-child(3) {
+    transition-delay: 180ms;
+  }
+  &.is-armed &__item:nth-child(4) {
+    transition-delay: 270ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iuh-fields-index__item,
+  .iuh-fields-index__mark {
+    transition: none !important;
+  }
+}

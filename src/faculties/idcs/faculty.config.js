@@ -31,6 +31,12 @@ export const idcsFacultyConfig = {
       init: "initHeroCarousel",
       name: "Hero Carousel",
     },
+    {
+      selector: "[data-fields-index]",
+      load: () => import("./components/home/fields/fields.js"),
+      init: "initFieldsIndex",
+      name: "Fields Index",
+    },
   ],
 };
 

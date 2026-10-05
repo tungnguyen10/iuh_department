@@ -1,36 +1,35 @@
 # IUH — Trung tâm IDCS Website Working Brief
 
-> **Mục đích:** Tài liệu làm việc cho team/AI/dev khi triển khai website Trung tâm IDCS trên nền tảng website IUH hiện có.  
-> **Nguyên tắc chính:** **Đọc codebase trước, tái sử dụng facilities hiện có trước, chỉ tạo mới khi thật sự cần.**
+> **Mục đích:** Tài liệu làm việc cho team/AI/dev khi triển khai website **Trung tâm Kỹ thuật hỗ trợ phát triển công nghiệp khu vực phía Nam (IDCS)** trên nền tảng website IUH hiện có.  
+> **Cập nhật:** 2026-10-05  
+> **Nguyên tắc chính:** **Đọc codebase trước → xác minh source/content hiện tại → reuse facility có sẵn → chỉ tạo mới khi thật sự cần → không biến thông tin dự án/quy hoạch thành năng lực đang vận hành.**
 
 ---
 
-## 0. BẮT BUỘC ĐỌC TRƯỚC KHI CODE
+# 0. BẮT BUỘC ĐỌC TRƯỚC KHI CODE
 
-Trước khi chỉnh sửa hoặc tạo component mới, phải thực hiện đủ các bước sau:
+## 0.1. Đọc tài liệu/codebase context
 
-### 0.1. Đọc tài liệu/codebase context
-
-Kiểm tra và đọc các tài liệu hiện có trong repository, ưu tiên:
+Trước khi chỉnh sửa hoặc tạo component mới, phải kiểm tra:
 
 - `README.md`
-- các file trong `docs/`
-- tài liệu architecture / coding convention
-- tài liệu faculty/department module
+- `docs/`
+- architecture / coding convention
+- faculty/department module convention
 - build/deploy instructions
 - data/content conventions
 - component conventions
 - asset conventions
 - routing/page structure
-- CSS/design token conventions
+- CSS/design tokens
 - accessibility rules
 - lint/build/test commands
 
 **Không được giả định cấu trúc codebase chỉ dựa trên brief này.**
 
-### 0.2. Xác minh baseline hiện tại
+## 0.2. Xác minh baseline hiện tại
 
-Trước khi implement, ghi lại:
+Ghi lại trước khi implement:
 
 ```text
 Branch:
@@ -48,82 +47,153 @@ Shared data utilities:
 
 Nếu repository đã thay đổi so với tài liệu cũ, **ưu tiên code thực tế hiện tại**.
 
-### 0.3. Audit facilities có sẵn trong codebase
+## 0.3. Audit facility/component có sẵn
 
-Phải kiểm tra các phần có thể tái sử dụng trước khi tạo mới:
+Phải kiểm tra trước khi tạo mới:
 
 - Header / navigation
 - Footer
 - Breadcrumb
-- Section wrapper/container
-- Grid system
-- Typography system
-- Buttons / CTA
-- Cards
+- Section wrapper / container
+- Grid
+- Typography
+- Button / CTA
+- Card
 - Tabs
 - Accordion
 - Slider / carousel
-- News listing
-- News detail
-- Document / legal document listing
+- News list/detail
+- Document/legal-document list
 - Search
 - Pagination
-- Modal / dialog
+- Modal/dialog
 - Image helpers
 - Icon system
-- Data loading/rendering helpers
-- JSON schema/content pattern
+- Data renderer/helpers
+- JSON/content schema
 - Build-time includes
-- Shared partials
 - Shared JS interaction utilities
-- Responsive utilities
+- Responsive helpers
 - Accessibility helpers
 - Animation utilities
 - Existing faculty blocks có layout tương tự
 
-### 0.4. Quy tắc reuse
+## 0.4. Reuse rule
 
-Ưu tiên theo thứ tự:
+Ưu tiên:
 
 ```text
 1. Reuse nguyên component/facility hiện có
 2. Extend component hiện có bằng modifier/class/config
-3. Tạo variant mới trong shared component nếu có khả năng dùng lại
+3. Tạo variant trong shared component nếu có khả năng dùng lại
 4. Chỉ tạo component riêng cho IDCS nếu thật sự đặc thù
 ```
 
-**Không duplicate logic hoặc CSS nếu codebase đã có facility tương đương.**
+**Không duplicate logic/CSS nếu platform đã có facility tương đương.**
 
-### 0.5. Theo dõi facilities trong quá trình làm
+## 0.5. Facility/component audit tracker
 
-Tạo và duy trì bảng audit:
-
-| Facility / Component | Có sẵn? | File / Path | Reuse | Extend | Tạo mới | Ghi chú |
+| Facility / Component | Có sẵn? | File / Path | Reuse | Extend | New | Ghi chú |
 |---|---:|---|---:|---:|---:|---|
-| Section wrapper | Có | `@shared/components/common/section-title.html` | x | | | |
-| Button / CTA | Có | `@shared/components/button/button.html` | x | | | 13 variant |
-| Tabs | Có | `@shared/components/tabs/` | x | | | Layout dọc qua SCSS scoped |
-| News list | Có | `@shared/components/news/` | x | | | Render build-time từ `data/news.json` |
-| Document list | Có (faculty) | `organization-administration/components/documents/` | | x | | Promote lên `@shared/components/documents/` |
-| Card | Có | `@shared/components/common/event-card.html` | | | x | Schema event ≠ schema course → `home/training/course-card.html` |
-| Icon | Có | `src/shared/assets/svgs/` | x | | | |
-| Slider | Có | `@shared/components/home/carousel/` | | | x | Shared `carousel.js` import cứng ảnh dormitory → IDCS tự sở hữu `home/carousel`, reuse `.hero-carousel` SCSS |
-| Animation | Có | `.nttFade`, `brand-deco.scss` | x | | | |
-| Data renderer | Có | `news-renderer.js` (`data-news-list`) | x | | | |
+| Section wrapper |  |  |  |  |  |  |
+| Button / CTA |  |  |  |  |  |  |
+| Tabs |  |  |  |  |  |  |
+| Accordion |  |  |  |  |  |  |
+| News list |  |  |  |  |  |  |
+| Document list |  |  |  |  |  |  |
+| Card |  |  |  |  |  |  |
+| Icon |  |  |  |  |  |  |
+| Slider |  |  |  |  |  |  |
+| Animation |  |  |  |  |  |  |
+| Data renderer |  |  |  |  |  |  |
 
 ---
 
-# 1. WEBSITE POSITIONING
+# 1. IDCS CONTEXT — PHẢI DÙNG ĐÚNG BỐI CẢNH HIỆN TẠI
 
-## Trung tâm IDCS
+## 1.1. Tên đơn vị
 
-Website không nên được xử lý như website của một khoa đào tạo thông thường.
+**Tên đầy đủ:** Trung tâm Kỹ thuật hỗ trợ phát triển công nghiệp khu vực phía Nam  
+**Tên viết tắt:** IDCS
 
-Định vị đề xuất:
+> Tên tiếng Anh chỉ publish khi được xác nhận từ source chính thức/client content.
 
-> **Trung tâm cung cấp năng lực, dịch vụ kỹ thuật, đào tạo, tư vấn cải tiến và chuyển giao công nghệ cho doanh nghiệp.**
+## 1.2. Cơ cấu hiện tại
 
-Tone tổng thể:
+Theo website IUH hiện tại, **IDCS đang được liệt kê là một Trung tâm trực thuộc Đại học Công nghiệp Thành phố Hồ Chí Minh (IUH)**.
+
+Khi viết content mới:
+
+```text
+Ưu tiên:
+IDCS — đơn vị trực thuộc Đại học Công nghiệp Thành phố Hồ Chí Minh (IUH), Bộ Công Thương.
+```
+
+Không sử dụng mô tả cũ:
+
+```text
+IDCS — đơn vị trực thuộc Cục Công nghiệp, Bộ Công Thương.
+```
+
+trừ khi đang nói **bối cảnh lịch sử** và có ghi rõ thời điểm.
+
+## 1.3. Không nhầm IDCS với IDC Hà Nội
+
+Phân biệt:
+
+```text
+IDCS
+Trung tâm Kỹ thuật hỗ trợ phát triển công nghiệp khu vực phía Nam
+
+≠
+
+IDC
+Trung tâm Hỗ trợ phát triển công nghiệp
+```
+
+Nhiều search result cũ có thể trộn hai đơn vị. Không copy content giữa IDC và IDCS nếu chưa xác minh.
+
+## 1.4. Historical/current-source rule
+
+Thông tin giai đoạn 2020–2025 về IDCS thường ghi đơn vị thuộc **Cục Công nghiệp**. Đây có thể dùng để mô tả:
+
+- lịch sử hình thành
+- chương trình đã thực hiện
+- track record
+- dự án/chương trình cũ
+
+Nhưng không được dùng làm organizational description hiện tại nếu source IUH mới hơn đã thay đổi.
+
+---
+
+# 2. WEBSITE POSITIONING
+
+Website không nên được xử lý như website khoa đào tạo hoặc landing page khóa học.
+
+## 2.1. Positioning đề xuất
+
+> **IDCS là trung tâm hỗ trợ kỹ thuật, đổi mới công nghệ và phát triển năng lực cho doanh nghiệp công nghiệp khu vực phía Nam.**
+
+Phiên bản ngắn cho hero/communication:
+
+> **Nâng cao năng lực công nghiệp Việt Nam**  
+> Từ cải tiến sản xuất, phát triển công nghệ đến kết nối chuỗi cung ứng.
+
+## 2.2. Core identity
+
+```text
+Technical Support
++
+Industrial Consulting
++
+Technology & R&D
++
+Industry-ready Training
++
+Supplier / Supply-chain Development
+```
+
+## 2.3. Tone
 
 ```text
 IUH Institutional
@@ -133,20 +203,24 @@ Industrial / Engineering
 Technology
 +
 Professional B2B
++
+Applied / Outcome-oriented
 ```
 
 ### Tránh
 
 - Quá giống website tuyển sinh.
+- Định vị IDCS chủ yếu là “trung tâm đào tạo”.
 - Quá nhiều block tin tức.
 - Card lặp lại liên tục.
-- SaaS-style quá mạnh, mất nhận diện IUH.
+- SaaS-style quá mạnh.
 - Animation nặng.
-- Visual quá marketing, thiếu cảm giác kỹ thuật/chuyên môn.
+- Copy marketing chung chung nhưng thiếu capability/evidence.
+- Gọi capability dự kiến là capability đang vận hành.
 
 ---
 
-# 2. SITEMAP KHÁCH HÀNG YÊU CẦU
+# 3. SITEMAP KHÁCH HÀNG YÊU CẦU
 
 ```text
 TRUNG TÂM IDCS
@@ -186,9 +260,9 @@ TRUNG TÂM IDCS
 
 ---
 
-# 3. HOMEPAGE — BLOCKS ĐÃ CHỐT
+# 4. HOMEPAGE — INFORMATION FLOW ĐÃ CHỐT
 
-Phần này tập trung vào các block:
+Tập trung:
 
 ```text
 02  IDCS LÀM GÌ?
@@ -201,33 +275,35 @@ Phần này tập trung vào các block:
 09  TIN TỨC & VĂN BẢN
 ```
 
-Mục tiêu UX:
+UX narrative:
 
 ```text
-IDCS là ai
+IDCS là ai / vai trò gì
 ↓
-IDCS cung cấp gì
+IDCS giải quyết nhóm bài toán nào
 ↓
-Doanh nghiệp có thể sử dụng dịch vụ gì
+Doanh nghiệp có thể dùng dịch vụ gì
 ↓
-IDCS có năng lực gì
+Đào tạo cho năng lực công nghiệp
 ↓
-IDCS giải quyết vấn đề như thế nào
+IDCS có capability/evidence gì
 ↓
-Công nghệ được chuyển giao ra sao
+IDCS cải tiến doanh nghiệp như thế nào
 ↓
-IDCS hỗ trợ hệ sinh thái doanh nghiệp thế nào
+Công nghệ đi từ nghiên cứu đến sản xuất ra sao
 ↓
-Tin tức / văn bản chuyên ngành
+IDCS phát triển supplier / supply chain thế nào
+↓
+Tin tức / chương trình / chính sách / văn bản
 ```
 
 ---
 
-# 4. BLOCK 02 — IDCS LÀM GÌ?
+# 5. BLOCK 02 — IDCS LÀM GÌ?
 
 ## Mục tiêu
 
-User vào website phải hiểu nhanh IDCS hoạt động trong những nhóm nào.
+User phải hiểu trong vài giây **IDCS phát triển năng lực công nghiệp bằng 4 trụ cột nào**.
 
 ### Eyebrow
 
@@ -235,503 +311,562 @@ User vào website phải hiểu nhanh IDCS hoạt động trong những nhóm n�
 
 ### Headline
 
-**Kết nối tri thức, công nghệ và nhu cầu thực tế của doanh nghiệp**
+**Kết nối kỹ thuật, công nghệ và năng lực doanh nghiệp**
 
 ### Description
 
-IDCS cung cấp các chương trình đào tạo, dịch vụ kỹ thuật, tư vấn cải tiến và chuyển giao công nghệ nhằm nâng cao năng lực sản xuất và hỗ trợ doanh nghiệp phát triển bền vững.
+IDCS hỗ trợ doanh nghiệp nâng cao năng lực sản xuất thông qua cải tiến năng suất, giải pháp kỹ thuật và công nghệ, đào tạo nguồn nhân lực và phát triển chuỗi cung ứng.
 
-### 4 lĩnh vực
+## 4 core capabilities
 
-#### 01. Đào tạo & phát triển năng lực
+### 01. Cải tiến sản xuất & năng suất
 
-Các chương trình đào tạo ngắn hạn, bồi dưỡng chuyên môn và nâng cao kỹ năng cho đội ngũ kỹ thuật, quản lý và người lao động.
+- Factory assessment
+- Production improvement
+- Quality management
+- Waste elimination
+- Process optimization
+- 5S / workplace management
+- Productivity improvement
 
-#### 02. Đo kiểm & dịch vụ kỹ thuật
+### 02. Kỹ thuật, R&D & chuyển giao công nghệ
 
-Hỗ trợ đo lường, kiểm tra, đánh giá và phân tích các thông số kỹ thuật phục vụ sản xuất và kiểm soát chất lượng.
+- R&D / nghiên cứu ứng dụng
+- Reverse engineering
+- Engineering
+- Prototype / pilot
+- CAD / CAM / CAE
+- CNC / khuôn mẫu
+- Automation
+- Technology transfer
 
-#### 03. Tư vấn cải tiến
+### 03. Đào tạo nguồn nhân lực kỹ thuật
 
-Đồng hành cùng doanh nghiệp cải tiến quy trình, chất lượng, năng suất và hiệu quả vận hành.
+- Technical workforce
+- Production consultants
+- Engineering skills
+- Quality / manufacturing training
+- Short-term professional training
 
-#### 04. Chuyển giao công nghệ
+### 04. Phát triển doanh nghiệp & chuỗi cung ứng
 
-Kết nối nghiên cứu, giải pháp kỹ thuật và công nghệ từ nhà trường đến ứng dụng thực tế tại doanh nghiệp.
+- Supplier development
+- Buyer–supplier connection
+- FDI supply-chain readiness
+- Standards / export readiness
+- International cooperation
+- SME capability development
 
 ## Layout
 
-Desktop:
+Ưu tiên structured grid/divider thay vì 4 floating cards giống nhau.
 
 ```text
-┌─────────────────────────────────────────────────────┐
-│ LĨNH VỰC HOẠT ĐỘNG                                 │
-│                                                     │
-│ Kết nối tri thức, công nghệ                         │
-│ và nhu cầu thực tế của doanh nghiệp                 │
-│                                                     │
-│ ┌─────────────────────┬───────────────────────────┐ │
-│ │ 01                  │ 02                        │ │
-│ │ ĐÀO TẠO             │ ĐO KIỂM                   │ │
-│ │ description         │ description               │ │
-│ │              ↗      │                    ↗      │ │
-│ ├─────────────────────┼───────────────────────────┤ │
-│ │ 03                  │ 04                        │ │
-│ │ TƯ VẤN CẢI TIẾN    │ CHUYỂN GIAO CÔNG NGHỆ    │ │
-│ └─────────────────────┴───────────────────────────┘ │
-└─────────────────────────────────────────────────────┘
+┌─────────────────────┬───────────────────────────┐
+│ 01                  │ 02                        │
+│ CẢI TIẾN SẢN XUẤT  │ KỸ THUẬT & CÔNG NGHỆ    │
+├─────────────────────┼───────────────────────────┤
+│ 03                  │ 04                        │
+│ ĐÀO TẠO KỸ THUẬT   │ PHÁT TRIỂN CHUỖI CUNG ỨNG│
+└─────────────────────┴───────────────────────────┘
 ```
-
-### UI note
-
-- Không dùng 4 card floating giống nhau nếu codebase không bắt buộc.
-- Ưu tiên grid có border/divider.
-- Hover có thể đổi background/image nhẹ.
-- Mỗi item link tới landing page tương ứng.
 
 ---
 
-# 5. BLOCK 03 — DỊCH VỤ NỔI BẬT
+# 6. BLOCK 03 — DỊCH VỤ NỔI BẬT
 
 ## Mục tiêu
 
 Trả lời:
 
-> **Doanh nghiệp có thể nhờ IDCS làm cụ thể việc gì?**
-
-### Eyebrow
-
-**DỊCH VỤ IDCS**
+> **Doanh nghiệp có thể nhờ IDCS hỗ trợ cụ thể việc gì?**
 
 ### Headline
 
 **Giải pháp chuyên môn cho nhu cầu thực tế**
 
-### Description
+## Working service list
 
-Khám phá các nhóm dịch vụ chuyên môn được IDCS triển khai nhằm hỗ trợ doanh nghiệp trong kiểm soát chất lượng, cải tiến sản xuất và phát triển công nghệ.
+Danh sách này là **content direction**, phải đối chiếu client/codebase trước khi publish:
 
-## Layout đề xuất
+1. Tư vấn cải tiến sản xuất
+2. Tư vấn nâng cao năng suất & chất lượng
+3. Dịch vụ đo kiểm / đánh giá kỹ thuật
+4. Phát triển nhà cung ứng
+5. R&D & chuyển giao công nghệ
+6. Thiết kế / chế tạo khuôn mẫu
+7. CAD / CAM / CAE / CNC
+8. Đào tạo kỹ thuật
+9. Hỗ trợ tiêu chuẩn / export readiness
+10. Kết nối chuỗi cung ứng
 
-**Service Explorer**
+> **Không tự thêm một dịch vụ production nếu client/source hiện tại chưa xác nhận IDCS đang cung cấp dịch vụ đó.**
+
+## Layout đề xuất — Service Explorer
 
 ```text
 ┌────────────────────┬─────────────────────────────────┐
-│ 01 Đo lường     →  │ DỊCH VỤ ĐO LƯỜNG              │
-│ 02 Kiểm tra     →  │                                 │
-│ 03 Phân tích    →  │ Mô tả dịch vụ                  │
-│ 04 Đánh giá     →  │                                 │
-│ 05 Tư vấn       →  │ • Capability                   │
-│                    │ • Capability                   │
-│                    │ • Capability                   │
-│                    │                                 │
-│                    │ [Yêu cầu dịch vụ →]            │
-│                    │                   [IMAGE]       │
+│ Service category   │ SERVICE DETAIL                  │
+│ Service category   │ Mô tả                           │
+│ Service category   │ Capabilities                    │
+│ Service category   │ Evidence / equipment nếu có     │
+│                    │ CTA                             │
 └────────────────────┴─────────────────────────────────┘
 ```
 
-## Interaction
+Interaction:
 
-- Desktop: left nav + right detail.
-- Tablet: tabs / horizontal scroll.
-- Mobile: accordion hoặc stacked tabs nếu facility có sẵn.
-- Không tạo custom JS nếu codebase đã có tabs/accordion utility.
+- Desktop: nav trái + detail phải
+- Tablet: tab/horizontal nav
+- Mobile: accordion/stack
+- Reuse existing tabs/accordion JS nếu có
 
-## CTA
+CTA:
 
 **Yêu cầu dịch vụ**
 
 ---
 
-# 6. BLOCK 04 — ĐÀO TẠO NGẮN HẠN
+# 7. BLOCK 04 — ĐÀO TẠO NGẮN HẠN
 
-## Mục tiêu
+## Positioning
 
-Thể hiện IDCS như một đơn vị **professional / corporate training**, không giống danh sách môn học.
-
-### Eyebrow
-
-**ĐÀO TẠO & PHÁT TRIỂN NĂNG LỰC**
+**Industry-ready / professional training**, không giống danh sách môn học của khoa.
 
 ### Headline
 
-**Kiến thức ứng dụng cho đội ngũ trong kỷ nguyên công nghiệp mới**
+**Nâng cao năng lực kỹ thuật cho đội ngũ doanh nghiệp**
 
-### Description
+### Content directions
 
-Các chương trình đào tạo ngắn hạn được xây dựng theo nhu cầu thực tế, kết hợp kiến thức chuyên môn của IUH và kinh nghiệm triển khai trong môi trường doanh nghiệp.
+- Production improvement
+- Quality management
+- Mold / tooling
+- CAD/CAM/CAE/CNC
+- Engineering skills
+- Automation / smart manufacturing
+- Consultant development
+- Technical standards
 
-## Filter gợi ý
+### Homepage
 
-```text
-Tất cả
-Quản lý chất lượng
-Kỹ thuật
-Sản xuất
-Công nghệ
-```
+- 1 featured program
+- 2–3 secondary programs
+- CTA xem tất cả
 
-## Homepage content
-
-- 01 featured course/program
-- 02–03 course cards
-- CTA xem toàn bộ chương trình
-
-### Card information
+### Card fields
 
 ```text
 Category
-Course title
+Program title
 Duration
 Format
 Audience
 CTA
 ```
 
-## Layout
-
-```text
-┌───────────────────────────────────────────┐
-│ FEATURED PROGRAM                          │
-│ Nâng cao năng suất & cải tiến quy trình  │
-│ [Chi tiết chương trình]          [IMAGE] │
-└───────────────────────────────────────────┘
-
-┌────────────┐ ┌────────────┐ ┌────────────┐
-│ Course 01  │ │ Course 02  │ │ Course 03  │
-└────────────┘ └────────────┘ └────────────┘
-```
-
-### CTA
-
-**Xem tất cả chương trình đào tạo**
+> Chỉ hiển thị khóa học/lịch khai giảng thật nếu có source dữ liệu hiện hành.
 
 ---
 
-# 7. BLOCK 05 — NĂNG LỰC IDCS
+# 8. BLOCK 05 — NĂNG LỰC IDCS
 
 ## Mục tiêu
 
-Tăng credibility và trả lời:
+Trả lời:
 
-> **Tại sao doanh nghiệp nên làm việc với IDCS?**
+> **IDCS có nguồn lực nào để giải quyết bài toán doanh nghiệp?**
 
-### Eyebrow
+## Capability dimensions
 
-**NĂNG LỰC IDCS**
+Ưu tiên:
 
-### Headline
-
-**Nền tảng chuyên môn cho những giải pháp thực tiễn**
-
-### Description
-
-IDCS khai thác nguồn lực chuyên gia, phòng thí nghiệm, trang thiết bị và hệ sinh thái nghiên cứu của Trường Đại học Công nghiệp TP.HCM để phục vụ đào tạo, tư vấn và hỗ trợ doanh nghiệp.
+- Đội ngũ chuyên gia / tư vấn viên
+- Kinh nghiệm triển khai doanh nghiệp
+- Năng lực kỹ thuật
+- Công nghệ
+- **Facilities đã được xác nhận**
+- **Equipment đã được xác nhận**
+- Hệ sinh thái nghiên cứu – đào tạo – chuyển giao IUH
+- Quan hệ hợp tác / network đã được xác nhận
+- Track record / chương trình đã triển khai
 
 ## Layout
 
 ```text
-┌───────────────────────┬──────────────────────────────┐
-│                       │ NĂNG LỰC IDCS                │
-│   LAB / EQUIPMENT     │                              │
-│       IMAGE           │ 20+          XX+             │
-│                       │ Chuyên gia   Thiết bị        │
-│                       │                              │
-│                       │ XX+          XX+             │
-│                       │ Lĩnh vực     Đối tác         │
-│                       │                              │
-│                       │ [Khám phá năng lực →]        │
-└───────────────────────┴──────────────────────────────┘
+IMAGE / VERIFIED FACILITY
++
+Capability narrative
++
+Verified metrics
++
+Capability strip
 ```
 
-## Bottom capability strip
+### Metrics
+
+Không fake:
 
 ```text
-Chuyên gia
-Phòng thí nghiệm
-Thiết bị
-Nghiên cứu
-Mạng lưới đối tác
+XX doanh nghiệp đã hỗ trợ
+XX chương trình
+XX chuyên gia
+XX thiết bị / lab
 ```
 
-### Data rule
+Chỉ publish khi số liệu có source hiện hành.
 
-- Không fake số liệu.
-- Dùng placeholder trong dev nếu chưa có data thật.
-- Data thật phải đến từ source/content convention đang dùng trong codebase.
+## 8.1. FACILITIES RULE — HARD RULE
+
+Chỉ hiển thị facility/lab/equipment khi được xác nhận bởi ít nhất một nguồn phù hợp:
+
+1. Existing codebase/content data
+2. Client-provided documents/assets
+3. Current official IDCS/IUH source
+4. Current official procurement/equipment record nếu wording phù hợp
+
+### Trạng thái bắt buộc
+
+Mỗi facility/equipment item cần xác định:
+
+```text
+Operational / Existing
+Under development
+Planned / Proposed
+Unknown / Needs verification
+```
+
+### Không được
+
+- Biến quy hoạch dự án thành facility hiện có.
+- Dùng facility toàn IUH rồi ghi “IDCS sở hữu”.
+- Ghi số lượng lab/equipment không có source.
+- Dùng ảnh stock equipment rồi gọi là thiết bị của IDCS.
 
 ---
 
-# 8. BLOCK 06 — CẢI TIẾN CHẤT LƯỢNG & NĂNG SUẤT
+# 9. PLANNED DEVELOPMENT — RESEARCH REFERENCE ONLY
 
-## Mục tiêu
+Các tài liệu dự án cũ mô tả định hướng xây dựng Trung tâm tại **Khu Công nghệ cao TP.HCM**, với các không gian/chức năng dự kiến như:
 
-Biến nội dung tư vấn thành **consulting process**, không chỉ là mô tả dịch vụ.
+- administration
+- R&D workshop
+- mechanical engineering
+- mold/tooling
+- mechatronics
+- automation
+- new materials
+- incubation / enterprise support
 
-### Eyebrow
-
-**TƯ VẤN DOANH NGHIỆP**
-
-### Headline
-
-**Từ nhận diện vấn đề đến cải tiến có thể đo lường**
-
-### Description
-
-IDCS đồng hành cùng doanh nghiệp trong việc đánh giá hiện trạng, xác định điểm nghẽn và xây dựng giải pháp nâng cao chất lượng, năng suất và hiệu quả vận hành.
-
-## Process
+Các thông tin này chỉ được dùng dưới nhãn:
 
 ```text
-01
-KHẢO SÁT HIỆN TRẠNG
-        ↓
-02
-PHÂN TÍCH VẤN ĐỀ
-        ↓
-03
-ĐỀ XUẤT GIẢI PHÁP
-        ↓
-04
-TRIỂN KHAI CẢI TIẾN
-        ↓
-05
-ĐÁNH GIÁ HIỆU QUẢ
+Planned
+Under development
+Project proposal / investment project
 ```
 
-Desktop có thể chuyển thành horizontal flow:
-
-```text
-01            02            03            04            05
-Khảo sát  →   Phân tích →   Giải pháp →   Triển khai →  Đánh giá
-```
-
-## Outcome
-
-```text
-Nâng cao chất lượng
-Tối ưu năng suất
-Cải thiện vận hành
-```
-
-## Visual
-
-- Dark navy / deep IUH blue.
-- Typography lớn.
-- Line/progress graphic.
-- Animation nhẹ khi section vào viewport nếu codebase có sẵn utility.
-
-### CTA
-
-**Trao đổi với chuyên gia**
+**Không dùng để viết “IDCS hiện có…” nếu chưa được xác nhận vận hành.**
 
 ---
 
-# 9. BLOCK 07 — CHUYỂN GIAO CÔNG NGHỆ
+# 10. IUH ECOSYSTEM
 
-## Mục tiêu
+Sau khi IDCS nằm trong hệ sinh thái IUH, website có thể thể hiện lợi thế kết nối với năng lực rộng hơn của nhà trường.
 
-Cho thấy vai trò kết nối:
+Các hướng liên kết có thể nghiên cứu:
 
-```text
-Research → Application → Industry
-```
+- Mechanical Engineering
+- Electrical Engineering
+- Electronics
+- Automotive Engineering
+- Automation
+- Chemical Engineering
+- Textile / Garment
+- Applied research
+- Technology transfer
+- Technical workforce development
 
-### Eyebrow
+Wording an toàn:
 
-**NGHIÊN CỨU → ỨNG DỤNG**
+> **Kết nối hệ sinh thái đào tạo, nghiên cứu ứng dụng và chuyển giao công nghệ của Đại học Công nghiệp TP.HCM.**
 
-### Headline
+Không viết:
 
-**Đưa công nghệ từ phòng nghiên cứu vào thực tiễn**
-
-### Description
-
-IDCS đóng vai trò kết nối giữa năng lực nghiên cứu của IUH và nhu cầu đổi mới của doanh nghiệp, thúc đẩy việc thử nghiệm, hoàn thiện và ứng dụng các giải pháp công nghệ trong thực tế.
-
-## Pipeline
-
-```text
-01
-NGHIÊN CỨU
-    ↓
-02
-GIẢI PHÁP
-    ↓
-03
-THỬ NGHIỆM
-    ↓
-04
-CHUYỂN GIAO
-    ↓
-05
-ỨNG DỤNG
-```
-
-## Supporting content
-
-```text
-Nghiên cứu ứng dụng
-Thử nghiệm giải pháp
-Chuyển giao kỹ thuật
-Hợp tác doanh nghiệp
-```
-
-## Layout
-
-```text
-┌────────────────────────┬───────────────────────────┐
-│ Content                │ Visual pipeline           │
-│ Headline               │                           │
-│ Description            │ RESEARCH                  │
-│ CTA                    │    ↓                      │
-│                        │ PROTOTYPE                 │
-│                        │    ↓                      │
-│                        │ PILOT                     │
-│                        │    ↓                      │
-│                        │ INDUSTRY                  │
-└────────────────────────┴───────────────────────────┘
-```
-
-### CTA
-
-**Khám phá hoạt động chuyển giao**
+> **IDCS sở hữu toàn bộ lab/equipment của IUH.**
 
 ---
 
-# 10. BLOCK 08 — HỖ TRỢ PHÁT TRIỂN CÔNG NGHIỆP
+# 11. BLOCK 06 — CẢI TIẾN CHẤT LƯỢNG & NĂNG SUẤT
 
 ## Mục tiêu
 
-Thể hiện IDCS như một **điểm kết nối nguồn lực**, không phải chỉ là nơi bán từng dịch vụ đơn lẻ.
+Biến consulting service thành **process/outcome**, không chỉ liệt kê dịch vụ.
 
 ### Headline
 
-**Đồng hành cùng doanh nghiệp trong hành trình phát triển**
+**Từ hiện trạng sản xuất đến cải tiến có thể đo lường**
 
-### Description
-
-Kết nối nguồn lực từ trường đại học, chuyên gia và hệ sinh thái công nghiệp để hỗ trợ doanh nghiệp giải quyết các nhu cầu về công nghệ, nhân lực, năng suất và đổi mới.
-
-## Ecosystem visual
+## Suggested process
 
 ```text
-                 CÔNG NGHỆ
-                     │
-                     │
-        NHÂN LỰC ── IDCS ── CHẤT LƯỢNG
-                     │
-                     │
-            NĂNG SUẤT / ĐỔI MỚI
+01 ASSESS
+Khảo sát hiện trạng
+        ↓
+02 DIAGNOSE
+Phân tích vấn đề / bottleneck
+        ↓
+03 IMPROVE
+Đề xuất & triển khai cải tiến
+        ↓
+04 STANDARDIZE
+Chuẩn hóa quy trình
+        ↓
+05 SCALE
+Đánh giá, duy trì và nhân rộng
 ```
 
-## Business needs
+### Topics/evidence direction
 
-### Bạn đang gặp bài toán nào?
+- Factory assessment
+- Production management
+- Waste elimination
+- Industrial Engineering
+- Productivity
+- Flow improvement
+- Quality management
+- 5S / workplace management
+
+### Historical research reference
+
+Các chương trình đào tạo/tư vấn trước đây từng sử dụng methodology dạng:
+
+```text
+4 Step – 13 Process – 22 Activity
+```
+
+**Không gọi đây là “quy trình độc quyền/chuẩn hiện tại của IDCS” nếu client chưa xác nhận.**
+
+---
+
+# 12. BLOCK 07 — CHUYỂN GIAO CÔNG NGHỆ
+
+## Mục tiêu
+
+Thể hiện bridge:
+
+```text
+Research → Engineering → Prototype → Pilot → Transfer → Production
+```
+
+### Headline
+
+**Đưa giải pháp kỹ thuật từ nghiên cứu vào sản xuất**
+
+## Content directions
+
+- Applied R&D
+- Reverse engineering
+- Engineering
+- Prototype
+- Pilot
+- Technical transfer
+- Production application
+
+## Focus areas — working research categories
+
+Chỉ publish category nếu client/content hiện tại xác nhận:
+
+- Mechanical engineering
+- Mold & tooling
+- Mechatronics
+- Automation
+- Electrical/electronics
+- New materials
+
+---
+
+# 13. BLOCK 08 — HỖ TRỢ PHÁT TRIỂN CÔNG NGHIỆP
+
+## Mục tiêu
+
+Định vị IDCS như **industrial capability connector**, không phải nơi bán từng service đơn lẻ.
+
+## Sub-pillars
+
+### Supplier Development
+
+Nâng năng lực doanh nghiệp Việt Nam đáp ứng yêu cầu buyer/chuỗi cung ứng.
+
+### Buyer–Supplier Connection
+
+Kết nối doanh nghiệp sản xuất với buyer, FDI và đối tác công nghiệp.
+
+### Standards & Export Readiness
+
+Hỗ trợ doanh nghiệp tiếp cận tiêu chuẩn/chứng nhận/yêu cầu thị trường.
+
+### International Cooperation
+
+Đào tạo, tư vấn, chuyên gia và kết nối quốc tế.
+
+### Enterprise Development
+
+Hỗ trợ SME và capability development.
+
+## “Bạn đang gặp bài toán nào?”
 
 ```text
 → Cần nâng cao năng lực nhân sự
 → Cần cải tiến quy trình sản xuất
-→ Cần kiểm tra / đánh giá kỹ thuật
-→ Cần tìm giải pháp công nghệ
+→ Cần đo kiểm / đánh giá kỹ thuật
+→ Cần giải pháp/công nghệ
+→ Cần phát triển thành nhà cung ứng
 → Cần chuyên gia tư vấn
 ```
 
-### CTA
+CTA:
 
 **Gửi nhu cầu cho IDCS**
 
 ---
 
-# 11. BLOCK 09 — TIN TỨC & VĂN BẢN
+# 14. BLOCK 09 — TIN TỨC & VĂN BẢN
 
-## Mục tiêu
+Gộp trên homepage nhưng vẫn giữ content type/sitemap riêng:
 
-Gộp 2 content type nhưng vẫn giữ đúng sitemap riêng:
+- Tin tức / hoạt động / chương trình
+- Văn bản pháp luật / chính sách
 
-- Tin tức
-- Văn bản pháp luật
+## Recommended tabs
 
-### Eyebrow
+```text
+[ Tin tức & Hoạt động ]
+[ Chương trình / Thông báo ]
+[ Văn bản pháp luật ]
+```
 
-**CẬP NHẬT**
-
-### Headline
-
-**Tin tức, hoạt động & thông tin chuyên ngành**
-
-## Tabs
+Nếu platform hiện tại chỉ hỗ trợ 2 tabs, giữ:
 
 ```text
 [ Tin tức ] [ Văn bản pháp luật ]
 ```
 
-### Tab: Tin tức
+và đưa chương trình/thông báo vào taxonomy Tin tức.
 
-Layout:
-
-```text
-┌────────────────────────────────┬─────────────────────┐
-│ FEATURE IMAGE                  │ Tin nhỏ 01          │
-│                                ├─────────────────────┤
-│ Featured title                 │ Tin nhỏ 02          │
-│ Date / Category                ├─────────────────────┤
-│ Description                    │ Tin nhỏ 03          │
-└────────────────────────────────┴─────────────────────┘
-```
-
-### Tab: Văn bản pháp luật
+## Legal documents
 
 Không dùng image card.
 
 ```text
 LOẠI          VĂN BẢN                         NGÀY
-
-Thông tư      Thông tư số XX/2026/...        12.09.26    ↓
-Quyết định    Quyết định số XX/...           02.09.26    ↓
-Nghị định     Nghị định số XX/...            21.08.26    ↓
+Thông tư      ...                             ...
+Quyết định    ...                             ...
+Nghị định     ...                             ...
 ```
 
-### Reuse rule
+Reuse:
 
-Ưu tiên dùng:
-
-- news renderer có sẵn
-- document list có sẵn
-- tabs có sẵn
-- date formatting helper có sẵn
-- content JSON conventions có sẵn
-
-Không viết lại hệ thống news/document nếu platform đã hỗ trợ.
+- news renderer
+- document renderer
+- tabs
+- date helper
+- pagination/search nếu có
 
 ---
 
-# 12. HOMEPAGE VISUAL RHYTHM
+# 15. PROVEN TRACK RECORD — RESEARCH DATA
 
-Không được để 8 section cùng một kiểu card.
+Các dữ liệu dưới đây dùng làm **research/evidence pool**, phải kiểm tra source/date trước khi đưa lên homepage:
 
-Nhịp đề xuất:
+## 15.1. Hỗ trợ doanh nghiệp
+
+Năm 2021, chương trình do IDCS chủ trì lựa chọn **51 doanh nghiệp công nghiệp hỗ trợ khu vực phía Nam** để hỗ trợ kỹ thuật và tư vấn cải tiến sản xuất.
+
+## 15.2. Consultant development / Samsung cooperation
+
+Các chương trình Bộ Công Thương – Samsung giai đoạn trước từng đào tạo hơn 300 tư vấn viên và tư vấn nhiều doanh nghiệp; IDCS tham gia tổ chức/triển khai các khóa ở khu vực phía Nam.
+
+> Không gán toàn bộ số liệu chương trình quốc gia là thành tích riêng IDCS nếu source không nói rõ.
+
+## 15.3. Supplier-development / industry programs
+
+Historical activity areas đã xuất hiện trong các chương trình:
+
+- production improvement
+- textile/garment & footwear supporting industry
+- supplier development
+- export readiness
+- mold engineering
+- technical consultant development
+- international trade/investment connection
+
+## 15.4. VITASK / international cooperation
+
+Historical cooperation có nội dung liên quan:
+
+- automotive
+- mold/tooling
+- components
+- electrical/electronics
+- technical support
+- workforce development
+- Vietnam–Korea enterprise connection
+
+**Logo/partner name usage phải theo rule ở section Partner.**
+
+---
+
+# 16. PARTNERS / LOGOS RULE
+
+Historical cooperation references có thể bao gồm:
+
+- Samsung
+- VITASK
+- Korean technical experts/programs
+- Industrial enterprises / associations
+
+Nhưng:
+
+```text
+Do not automatically display partner logos.
+```
+
+Logo chỉ dùng khi có:
+
+- client-approved asset
+- existing codebase asset
+- current official cooperation source phù hợp
+- quyền/brand guideline phù hợp
+
+Không dùng logo để tạo cảm giác “current strategic partner” nếu chỉ có historical activity.
+
+---
+
+# 17. HOMEPAGE VISUAL RHYTHM
+
+Không để 8 section cùng một kiểu card.
 
 | Block | Background | Layout type |
 |---|---|---|
-| 02 IDCS làm gì | White | 2×2 structured grid |
-| 03 Dịch vụ nổi bật | Light gray | Interactive explorer |
-| 04 Đào tạo ngắn hạn | White | Featured + cards |
-| 05 Năng lực IDCS | Soft gray | Image + stats |
-| 06 Cải tiến chất lượng | Dark navy | Process timeline |
-| 07 Chuyển giao công nghệ | White | Content + pipeline |
-| 08 Hỗ trợ phát triển CN | Light blue | Ecosystem + needs |
+| 02 IDCS làm gì | White | 2×2 structured capability grid |
+| 03 Dịch vụ nổi bật | Light neutral | Interactive service explorer |
+| 04 Đào tạo ngắn hạn | White | Featured + programs |
+| 05 Năng lực IDCS | Soft gray | Evidence + verified facility/capability |
+| 06 Cải tiến CL & NS | Dark navy | Process timeline |
+| 07 Chuyển giao CN | White | Content + pipeline |
+| 08 Hỗ trợ phát triển CN | Light blue | Supplier/supply-chain ecosystem |
 | 09 Tin tức & văn bản | White | Editorial + tabs |
 
 ---
 
-# 13. VISUAL SYSTEM
+# 18. VISUAL SYSTEM
 
 ## Color
 
-Ưu tiên sử dụng design tokens/colors đã tồn tại trong IUH codebase.
+Ưu tiên design token IUH hiện có.
 
-Nếu chưa có token phù hợp:
+Nếu cần:
 
 - IUH primary blue
 - Deep navy
@@ -744,15 +879,13 @@ Nếu chưa có token phù hợp:
 
 ## Typography
 
-Reuse typography system hiện có.
-
-Hierarchy:
+Reuse typography system hiện có:
 
 ```text
 Eyebrow
 Section heading
 Section description
-Card/service title
+Service title
 Body
 Meta
 CTA
@@ -762,36 +895,39 @@ CTA
 
 Ưu tiên:
 
-- Laboratory
-- Industrial equipment
-- Engineers
-- Measurement/testing
-- Manufacturing
-- Research
-- Technology transfer
-- Corporate training
+- real IDCS/IUH industrial activity
+- engineers
+- manufacturing
+- technical consulting
+- measurement/testing
+- machining / tooling
+- automation
+- research / prototype
+- corporate training
+- supplier-development workshops
 
 Tránh:
 
-- Generic office stock images
-- Student lifestyle ảnh không liên quan
-- Illustration quá SaaS
+- generic office stock
+- student-lifestyle image không liên quan
+- SaaS illustration
+- ảnh thiết bị không phải IDCS nhưng caption như asset thực
 
 ---
 
-# 14. RESPONSIVE PRINCIPLES
+# 19. RESPONSIVE PRINCIPLES
 
 ## Desktop
 
-- Tận dụng wide layout.
-- Section có breathing space.
-- Explorer/process/pipeline có thể hiển thị đầy đủ.
+- Wide layout.
+- Breathing space.
+- Explorer/process/pipeline hiển thị đầy đủ.
 
 ## Tablet
 
-- 2-column → cân nhắc 1-column.
-- Service explorer chuyển tab/horizontal nav nếu cần.
-- Process không được overflow.
+- 2-column → 1-column khi cần.
+- Explorer → tabs/horizontal nav.
+- Process không overflow.
 
 ## Mobile
 
@@ -807,43 +943,36 @@ Touch interaction
 Minimal horizontal scroll
 ```
 
-Mobile transformation:
-
 | Desktop | Mobile |
 |---|---|
-| 2×2 grid | 1 column |
+| 2×2 capability | 1 column |
 | Service explorer | Tabs / Accordion |
 | Horizontal process | Vertical process |
-| Image + stats | Image → stats |
-| Ecosystem diagram | Simplified stacked layout |
-| News feature + side list | Featured → stacked list |
-
-Không custom mobile interaction nếu existing facility đã xử lý.
+| Evidence + media | Media → evidence |
+| Supply-chain diagram | Simplified stack |
+| News feature + list | Featured → stacked list |
 
 ---
 
-# 15. ACCESSIBILITY
-
-Phải tuân thủ facility/rule hiện có trong codebase.
+# 20. ACCESSIBILITY
 
 Tối thiểu:
 
 - semantic heading order
 - keyboard usable
-- focus visible
-- CTA là link/button đúng semantics
-- tabs có ARIA phù hợp
-- accordion có state
-- alt text cho image
-- không dựa chỉ vào màu sắc
-- motion hỗ trợ `prefers-reduced-motion`
-- contrast đạt chuẩn
+- visible focus
+- semantic link/button
+- accessible tabs/accordion
+- meaningful alt text
+- không phụ thuộc chỉ màu
+- `prefers-reduced-motion`
+- adequate contrast
 
 ---
 
-# 16. CONTENT MODEL GỢI Ý
+# 21. CONTENT MODEL GỢI Ý
 
-Không bắt buộc dùng schema này nếu codebase đã có convention khác.
+Ưu tiên schema hiện có của platform nếu đã có.
 
 ## Service
 
@@ -855,7 +984,8 @@ Không bắt buộc dùng schema này nếu codebase đã có convention khác.
   "description": "",
   "image": "",
   "href": "",
-  "capabilities": []
+  "capabilities": [],
+  "status": "verified"
 }
 ```
 
@@ -874,32 +1004,55 @@ Không bắt buộc dùng schema này nếu codebase đã có convention khác.
 }
 ```
 
-## Capability Metric
+## Capability
 
 ```json
 {
-  "value": "",
-  "label": ""
+  "title": "",
+  "description": "",
+  "evidence": "",
+  "status": "verified"
 }
+```
+
+## Facility / Equipment
+
+```json
+{
+  "name": "",
+  "type": "facility",
+  "status": "operational",
+  "source": "",
+  "image": "",
+  "description": ""
+}
+```
+
+Allowed `status`:
+
+```text
+operational
+under-development
+planned
+needs-verification
 ```
 
 ## News
 
-**Reuse schema đang có trong platform.**
+Reuse platform schema.
 
 ## Legal Document
 
-**Reuse schema/document convention đang có trong platform.**
+Reuse platform/document schema.
 
 ---
 
-# 17. COMPONENT / BLOCK MAPPING
+# 22. COMPONENT / BLOCK MAPPING
 
-Tên chỉ mang tính working name.  
-Phải map lại theo naming convention hiện có trong repo.
+Working names only:
 
 ```text
-idcs-fields
+idcs-capability-grid
 idcs-service-explorer
 idcs-training
 idcs-capabilities
@@ -909,14 +1062,13 @@ idcs-industrial-support
 idcs-updates
 ```
 
-### Trước khi tạo các component trên
-
-Search codebase xem có component tương đương:
+Trước khi tạo mới, search:
 
 ```text
-service
 feature-grid
+service
 tabs
+accordion
 cards
 stats
 timeline
@@ -927,163 +1079,190 @@ media
 cta
 ```
 
-Nếu có, ưu tiên compose/extend.
+Decision rule:
+
+```text
+Reuse → Extend → Shared Variant → IDCS-only New
+```
 
 ---
 
-# 18. IMPLEMENTATION TRACKER
+# 23. IMPLEMENTATION TRACKER
 
-Trong quá trình làm, update bảng sau:
-
-| Block | Existing facility | Decision | Files changed | Status |
-|---|---|---|---|---|
-| 02 IDCS làm gì | section-title, button | New section | `components/home/fields/index.html` | DONE |
-| 03 Dịch vụ nổi bật | shared tabs | Extend (SCSS scoped) | `components/home/service-explorer/{index.html,service-explorer.scss}` | DONE |
-| 04 Đào tạo ngắn hạn | button | New | `components/home/training/{index.html,course-card.html}` | DONE |
-| 05 Năng lực IDCS | section-title, stats-card (JS counter), button | Reuse + New | `components/home/capabilities/index.html` | DONE |
-| 06 Cải tiến CL & NS | brand-deco, button | New | `components/home/consulting-process/index.html`, `components/home/process-step.html` | DONE |
-| 07 Chuyển giao CN | process-step | Reuse + New | `components/home/technology-transfer/index.html` | DONE |
-| 08 Hỗ trợ phát triển CN | button | New | `components/home/industrial-support/index.html` | DONE |
-| 09 Tin tức & văn bản | shared tabs, news renderer, document-item | Reuse | `components/home/updates/index.html` | DONE |
-
-Chi tiết triển khai: `docs/superpowers/plans/2026-10-04-idcs-faculty.md`
+| Block | Existing facility | Decision | Files changed | Data/source verified | Status |
+|---|---|---|---|---|---|
+| 02 IDCS làm gì |  | Reuse / Extend / New |  |  | TODO |
+| 03 Dịch vụ nổi bật |  | Reuse / Extend / New |  |  | TODO |
+| 04 Đào tạo ngắn hạn |  | Reuse / Extend / New |  |  | TODO |
+| 05 Năng lực IDCS |  | Reuse / Extend / New |  |  | TODO |
+| 06 Cải tiến CL & NS |  | Reuse / Extend / New |  |  | TODO |
+| 07 Chuyển giao CN |  | Reuse / Extend / New |  |  | TODO |
+| 08 Hỗ trợ phát triển CN |  | Reuse / Extend / New |  |  | TODO |
+| 09 Tin tức & văn bản |  | Reuse / Extend / New |  |  | TODO |
 
 ---
 
-# 19. DEFINITION OF DONE
+# 24. CONTENT GUARDRAILS — HARD RULES
 
-Một block chỉ được xem là hoàn tất khi:
+1. **Current organization:** ưu tiên source IUH hiện tại; không mô tả IDCS hiện đang trực thuộc Cục Công nghiệp nếu không có historical context.
+2. **IDCS ≠ IDC:** không trộn nội dung của Trung tâm Hỗ trợ phát triển công nghiệp tại Hà Nội.
+3. **Không invent lab/machine/equipment/certification.**
+4. **Planned facility ≠ operational facility.**
+5. Trước khi tạo `Facilities / Equipment / Numbers`, phải đọc:
+   - codebase
+   - data/content files
+   - client docs
+   - current official source
+6. **IUH-wide capability ≠ IDCS-owned asset.**
+7. Historical program phải ghi đúng date/context.
+8. Historical partner ≠ current official partner nếu chưa xác nhận.
+9. Không fake metric để lấp UI production.
+10. Không dùng stock image như bằng chứng facility thực tế.
+11. Ưu tiên industrial capability/outcome hơn institutional marketing copy.
+12. Dịch vụ production phải map được về sitemap/client/source hiện tại.
+13. Số liệu cũ có thể dùng làm track record nhưng phải kiểm tra scope: chương trình quốc gia, Cục Công nghiệp hay riêng IDCS.
+14. Content chưa xác minh phải có trạng thái `needs-verification`, không silently publish.
+15. Nếu source hiện tại mâu thuẫn source cũ, ghi chú và ưu tiên source mới hơn.
+
+---
+
+# 25. DEFINITION OF DONE
+
+Một block chỉ hoàn tất khi:
 
 - [ ] Bám đúng sitemap/customer requirement.
-- [ ] Đã audit facility trong codebase.
+- [ ] Đã audit facility/component trong codebase.
 - [ ] Không duplicate component/helper có sẵn.
 - [ ] Content hierarchy rõ.
+- [ ] Content/source đã phân loại verified / needs verification.
+- [ ] Không biến planned facility thành operational facility.
+- [ ] Không gán IUH-wide asset cho IDCS.
 - [ ] Desktop đúng layout.
 - [ ] Tablet ổn.
 - [ ] Mobile ổn.
 - [ ] Keyboard usable.
-- [ ] Không gây regression global styles.
-- [ ] Không phá các faculty/module khác.
+- [ ] Không regression global style.
+- [ ] Không phá module/faculty khác.
 - [ ] Build pass.
 - [ ] Lint/test pass nếu project có.
 - [ ] Asset path hợp lệ.
-- [ ] Link nội bộ hợp lệ.
-- [ ] Không hard-code data nếu platform có content/data layer.
-- [ ] Không fake metrics/content production.
+- [ ] Internal links hợp lệ.
+- [ ] Không hard-code production data nếu platform có data layer.
+- [ ] Không fake metrics/content.
 - [ ] Visual vẫn thuộc hệ sinh thái IUH.
 
 ---
 
-# 20. WORKFLOW CHO AI / DEV
-
-Mỗi lần bắt đầu implementation:
+# 26. WORKFLOW CHO AI / DEV
 
 ```text
 STEP 1
 Read repository docs
 
 STEP 2
-Understand current faculty/module architecture
+Confirm current IUH module architecture
 
 STEP 3
-Inspect current page + related faculty examples
+Inspect current page + nearest reusable faculty examples
 
 STEP 4
-Audit reusable facilities
+Audit shared facilities/components/helpers
 
 STEP 5
-Record reuse/extend/new decisions
+Audit IDCS content/assets/data already in codebase
 
 STEP 6
-Implement one block at a time
+Classify content:
+verified / historical / planned / needs-verification
 
 STEP 7
-Test responsive + interaction
+Record Reuse / Extend / New decisions
 
 STEP 8
-Run build/lint/test
+Implement one block at a time
 
 STEP 9
-Compare visual rhythm across whole homepage
+Test desktop / tablet / mobile / keyboard
 
 STEP 10
-Update implementation tracker
+Build + regression check
+
+STEP 11
+Update implementation tracker and facility tracker
 ```
 
 ---
 
-# 21. IMPORTANT NOTES
+# 27. RESEARCH REFERENCES — WORKING SOURCES
 
-1. **Không code ngay sau khi đọc brief.**
-2. **Phải đọc docs/codebase trước.**
-3. **Phải search facilities/components hiện có.**
-4. **Không tạo component mới nếu component cũ có thể extend.**
-5. **Không thay đổi global facility chỉ để phục vụ IDCS nếu có nguy cơ ảnh hưởng faculty khác.**
-6. Nếu cần thay đổi shared facility:
-   - giữ backward compatibility;
-   - dùng modifier/config;
-   - test các consumer hiện tại.
-7. Homepage không phải bản sao sitemap.
-8. Mỗi block phải có mục tiêu UX riêng.
-9. Không biến toàn bộ homepage thành card grid.
-10. Content production phải lấy từ nguồn dữ liệu thật hoặc convention của platform.
-11. Các con số năng lực chỉ được đưa lên production khi có số liệu chính thức.
-12. Giữ nhận diện IUH xuyên suốt, nhưng IDCS phải có cảm giác **industrial / technology / B2B** rõ ràng.
+> Đây là source list để team kiểm tra content. Trước khi publish số liệu/claim quan trọng, mở lại source và xác minh wording/date.
 
----
+## Current IUH
 
-# 22. FINAL HOMEPAGE FLOW
+- IDCS unit page:  
+  https://iuh.edu.vn/vi/trung-tam-ky-thuat-ho-tro-phat-trien-cong-nghiep-khu-vuc-phia-nam.html
+
+- IUH direct units:  
+  https://iuh.edu.vn/vi/cac-don-vi-truc-thuoc.html
+
+## Historical / Ministry of Industry and Trade
+
+- MOIT IDCS page / historical organizational context:  
+  https://moit.gov.vn/don-vi-quan-ly-nha-nuoc/khoi-tong-cuc-cuc/cuc-cong-nghiep/trung-tam-ky-thuat-ho-tro-phat-trien-cong-nghiep-khu-vuc-phia-nam
+
+- 51 supporting-industry enterprises technical support / production improvement:  
+  https://moit.gov.vn/khoa-hoc-va-cong-nghe/51-doanh-nghiep-cong-nghiep-ho-tro-phia-nam-duoc-ho-tro-ho-tro-ky-thuat-tu-van-cai-tien-san-xuat.html
+
+- 2024 program/equipment procurement reference:  
+  https://moit.gov.vn/upload/2005517/20240517/QD_1009_0001_61fa4.pdf
+
+- 2025 supporting-industry program reference:  
+  https://moit.gov.vn/upload/2005517/fck/files/QD_1080_0001_34dc7.pdf
+
+## Source usage rule
 
 ```text
-02
-IDCS LÀM GÌ?
-Overview 4 lĩnh vực
-
-↓
-
-03
-DỊCH VỤ NỔI BẬT
-Interactive Service Explorer
-
-↓
-
-04
-ĐÀO TẠO NGẮN HẠN
-Professional Training
-
-↓
-
-05
-NĂNG LỰC IDCS
-Lab + Equipment + Experts + Metrics
-
-↓
-
-06
-CẢI TIẾN CHẤT LƯỢNG & NĂNG SUẤT
-Consulting Process
-
-↓
-
-07
-CHUYỂN GIAO CÔNG NGHỆ
-Research → Pilot → Industry
-
-↓
-
-08
-HỖ TRỢ PHÁT TRIỂN CÔNG NGHIỆP
-Ecosystem + Business Needs
-
-↓
-
-09
-TIN TỨC & VĂN BẢN
-News + Legal Documents
+Current organizational claim → current IUH source first
+Historical program → source at time of program
+Facility/equipment → current confirmed source/client/codebase
+Planned project → explicitly label planned/under development
 ```
 
 ---
 
-## Working principle
+# 28. FINAL HOMEPAGE DIRECTION
 
-> **Understand the platform first. Reuse existing facilities. Extend carefully. Build only what IDCS truly needs.**
+```text
+01 HERO
+   Positioning + primary CTA
+
+02 IDCS LÀM GÌ?
+   4 core industrial capabilities
+
+03 DỊCH VỤ NỔI BẬT
+   Service Explorer
+
+04 ĐÀO TẠO NGẮN HẠN
+   Industry-ready Training
+
+05 NĂNG LỰC IDCS
+   Experts + Evidence + Verified Technology/Facilities + IUH Ecosystem
+
+06 CẢI TIẾN CHẤT LƯỢNG & NĂNG SUẤT
+   Assess → Diagnose → Improve → Standardize → Scale
+
+07 CHUYỂN GIAO CÔNG NGHỆ
+   Research → Engineering → Prototype → Pilot → Transfer → Production
+
+08 HỖ TRỢ PHÁT TRIỂN CÔNG NGHIỆP
+   Supplier → Buyer → Standards → Global Supply Chain
+
+09 TIN TỨC & VĂN BẢN
+   News + Programs + Policies + Legal Documents
+```
+
+## Core message
+
+Website phải khiến doanh nghiệp hiểu:
+
+> **IDCS không chỉ cung cấp khóa học hay một dịch vụ kỹ thuật đơn lẻ; IDCS là đầu mối hỗ trợ doanh nghiệp nâng cao năng lực sản xuất, phát triển công nghệ và tham gia sâu hơn vào chuỗi cung ứng công nghiệp.**
