@@ -1,11 +1,14 @@
 <!-- Shared weekly calendar; runtime wiring lives in shared.config.js. -->
-<section id="weekly-schedule" data-weekly-calendar data-initial-week="28/09/2026" aria-label="{{title}}" class="flex min-w-0 scroll-mt-32 flex-col {{class}}">
-  <div class="mb-5">
-    <div data-include="@shared/components/common/section-title.html" data-title="{{title}}" data-title-class="!leading-tight text-primary-dark-blue"></div>
-    <p class="mt-2 text-sm leading-6 text-black md:text-base">Theo dõi các phòng họp đã được đăng ký sử dụng.</p>
+<section id="weekly-schedule" data-weekly-calendar data-initial-week="28/09/2026" aria-labelledby="weekly-schedule-title" class="flex min-w-0 scroll-mt-32 flex-col rounded-xl border border-primary-dark-blue/10 bg-primary-white p-5 lg:p-6 {{class}}">
+  <div class="mb-5 flex items-center gap-3">
+    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary-blue-light">
+      <img src="/assets/svgs/icon-calendar-check.svg" alt="" class="h-5 w-5 text-primary-dark-blue" />
+    </span>
+    <h3 id="weekly-schedule-title" class="font-inter text-lg font-bold text-primary-dark-blue md:text-xl">{{title}}</h3>
   </div>
+  <p class="mb-4 text-sm leading-6 text-black md:text-base">Theo dõi các phòng họp đã được đăng ký sử dụng.</p>
 
-  <div class="rounded-2xl border border-primary-dark-blue/10 bg-primary-white p-4 sm:p-5">
+  <div class="flex flex-1 flex-col">
     <div role="group" aria-label="Lọc theo phòng họp" class="overflow-x-auto rounded-xl bg-secondary-blue-light/50 p-1">
       <div class="grid min-w-[33rem] grid-cols-4 gap-1">
         <div data-include="@shared/components/button/button.html" data-variant="9" data-type="button" data-attrs="data-schedule-filter=all aria-pressed=true" data-text="Tất cả phòng" data-icon="/assets/svgs/icon-calendar-check.svg" data-class="min-h-11 w-full rounded-lg border-transparent bg-transparent px-1.5 py-2 text-xs text-black hover:border-transparent hover:bg-primary-white hover:text-primary-dark-blue hover:shadow-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow md:px-2 md:text-sm motion-reduce:transition-none [&[aria-pressed=true]]:border-primary-dark-blue/10 [&[aria-pressed=true]]:bg-primary-white [&[aria-pressed=true]]:text-primary-dark-blue [&[aria-pressed=true]]:shadow-sm" data-icon-class="hidden"></div>
@@ -22,7 +25,7 @@
       </div>
     </div>
     <p data-schedule-status role="status" class="sr-only">Tất cả phòng: 3 mục. 28/09 – 04/10/2026.</p>
-    <ul data-schedule-list aria-label="Lịch đặt phòng trong tuần" class="pt-1">
+    <ul data-schedule-list aria-label="Lịch đặt phòng trong tuần" class="flex-1 pt-1">
       <li data-schedule-event data-schedule-date="03/10/2026" data-schedule-start="08:00" data-schedule-end="11:30" data-schedule-type="meeting" data-schedule-room="true" data-schedule-room-id="room-2" data-schedule-title="Hội đồng nghiệm thu giáo trình" data-schedule-location="Phòng họp 2" data-schedule-unit="Khoa Thương mại – Du lịch" class="relative grid grid-cols-[2.75rem_0.75rem_minmax(0,1fr)] gap-x-3 py-4 sm:grid-cols-[3.25rem_0.75rem_minmax(0,1fr)] sm:gap-x-4"></li>
       <li data-schedule-event data-schedule-date="03/10/2026" data-schedule-start="13:30" data-schedule-end="17:00" data-schedule-type="meeting" data-schedule-room="true" data-schedule-room-id="room-1" data-schedule-title="Hội đồng đánh giá luận án tiến sĩ cấp đơn vị chuyên môn" data-schedule-location="Phòng họp 1" data-schedule-unit="Khoa Công nghệ Cơ khí" class="relative grid grid-cols-[2.75rem_0.75rem_minmax(0,1fr)] gap-x-3 py-4 sm:grid-cols-[3.25rem_0.75rem_minmax(0,1fr)] sm:gap-x-4"></li>
       <li data-schedule-event data-schedule-date="03/10/2026" data-schedule-start="15:30" data-schedule-end="17:30" data-schedule-type="conference" data-schedule-room="true" data-schedule-room-id="room-3" data-schedule-title="Hội nghị kiện toàn Ban Chấp hành Đoàn khoa Khoa học Sức khỏe" data-schedule-location="Phòng họp 3" data-schedule-unit="Khoa Khoa học Sức khỏe" class="relative grid grid-cols-[2.75rem_0.75rem_minmax(0,1fr)] gap-x-3 py-4 sm:grid-cols-[3.25rem_0.75rem_minmax(0,1fr)] sm:gap-x-4"></li>

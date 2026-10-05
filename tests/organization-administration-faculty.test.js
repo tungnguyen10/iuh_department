@@ -87,31 +87,21 @@ test('organization administration faculty exposes the selected-faculty contract'
   assert.doesNotMatch(config, /weekly-calendar|Weekly Calendar/)
 })
 
-test('room booking section precedes news and links its banner to the separate registration page', async () => {
-  const [sharedConfig, sharedCalendar, sharedCalendarRuntime, facultyIndex, bookingSection] = await Promise.all([
+test('weekly room-booking calendar replaces the forms/recruitment panels inside notice-hub', async () => {
+  const [sharedConfig, sharedCalendar, sharedCalendarRuntime, facultyIndex, noticeHub] = await Promise.all([
     readFile(new URL('../src/shared/shared.config.js', import.meta.url), 'utf8'),
     readFile(new URL('../src/shared/components/calendar/weekly-calendar.html', import.meta.url), 'utf8'),
     readFile(new URL('../src/shared/components/calendar/weekly-calendar.js', import.meta.url), 'utf8'),
     readFacultyFile('pages/index.html'),
-    readFacultyFile('components/home/room-booking/index.html'),
+    readFacultyFile('components/home/notice-hub/index.html'),
   ])
 
   assert.match(sharedConfig, /selector:\s*['"]\[data-weekly-calendar\]['"]/)
   assert.match(sharedCalendar, /data-weekly-calendar/)
   assert.match(sharedCalendarRuntime, /export const initWeeklyCalendar/)
-  const bookingInclude = '@faculty/components/home/room-booking/index.html'
-  const statsInclude = '@faculty/components/home/stats/index.html'
-  const updatesInclude = '@faculty/components/home/work-updates/index.html'
-  const newsInclude = '@shared/components/news/index.html'
-  assert.ok(facultyIndex.indexOf(statsInclude) < facultyIndex.indexOf(bookingInclude))
-  assert.ok(facultyIndex.indexOf(bookingInclude) < facultyIndex.indexOf(updatesInclude))
-  assert.ok(facultyIndex.indexOf(bookingInclude) < facultyIndex.indexOf(newsInclude))
-  assert.match(bookingSection, /@shared\/components\/calendar\/weekly-calendar\.html/)
-  assert.match(bookingSection, /data-url="\/room-booking\.html" data-text="Đăng ký phòng họp"/)
-  assert.doesNotMatch(bookingSection, /@shared\/components\/form\/|<input\b|<form\b|role="form"/)
-  const image = /<img[^>]+src="(\/assets\/images\/[^\"]+)"/.exec(bookingSection)
-  assert.ok(image, 'banner must use a local image')
-  assert.ok((await readFacultyFile(`assets/images/${image[1].split('/').at(-1)}`)).length > 0)
+  assert.doesNotMatch(facultyIndex, /components\/home\/room-booking\//)
+  assert.match(noticeHub, /data-include="@shared\/components\/calendar\/weekly-calendar\.html" data-title="Lịch đặt phòng họp"/)
+  assert.doesNotMatch(noticeHub, /notice-hub\/form-link-item\.html|notice-hub\/recruitment-item\.html|Biểu mẫu|Tuyển dụng IUH/)
   assert.match(sharedCalendar, /data-attrs="data-schedule-filter=room-1\b/)
   assert.match(sharedCalendar, /data-attrs="data-schedule-filter=room-2\b/)
   assert.match(sharedCalendar, /data-attrs="data-schedule-filter=room-3\b/)
@@ -338,24 +328,9 @@ test('organization administration index modules link to focused destinations', a
   assert.match(workUpdates, /lg:grid-cols-\[minmax\(0,5fr\)_minmax\(0,7fr\)\]/)
   assert.doesNotMatch(workUpdates, /weekly-calendar|Tuần này tại IUH/)
 
-  assert.match(noticeHub, /data-url=["']\/documents-forms\.html["']/)
-  assert.doesNotMatch(noticeHub, /recruitment\.html/)
-
-  // Form categories are rendered via form-link-item.html includes, one data-title per category.
-  const formLinks = [...noticeHub.matchAll(/data-include="@faculty\/components\/home\/notice-hub\/form-link-item\.html"[^>]*data-title="([^"]+)"/g)]
-  for (const category of [
-    'Quản lý cấp phòng', 'Đi nước ngoài', 'Bảo hiểm xã hội',
-    'Chế độ - Chính sách', 'Đào tạo - Bồi dưỡng', 'Nâng bậc lương',
-  ]) {
-    assert.equal(formLinks.filter(([, title]) => title === category).length, 1,
-      `${category} must be directly accessible without switching tabs`)
-  }
+  assert.match(noticeHub, /data-include="@shared\/components\/calendar\/weekly-calendar\.html"/)
+  assert.doesNotMatch(noticeHub, /recruitment\.html|notice-hub\/form-link-item\.html|notice-hub\/recruitment-item\.html/)
   assert.doesNotMatch(noticeHub, /tab-panel|data-tab=/)
-  for (const title of [
-    'Thông báo tuyển dụng viên chức',
-    'Hướng dẫn chuẩn bị hồ sơ dự tuyển',
-    'Tiếp nhận và theo dõi hồ sơ',
-  ]) assert.ok(noticeHub.includes(title), `preserve recruitment content: ${title}`)
 })
 
 test('organization administration leadership uses published IUH personnel', async () => {

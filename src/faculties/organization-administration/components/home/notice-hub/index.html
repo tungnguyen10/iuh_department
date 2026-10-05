@@ -6,10 +6,10 @@
         data-class="max-w-2xl"
         data-title-class="leading-tight text-primary-dark-blue">
       </div>
-      <p class="max-w-md text-sm leading-6 text-black md:text-base md:text-right">Tra cứu thông báo, biểu mẫu và thông tin tuyển dụng của Phòng Tổ chức – Hành chính.</p>
+      <p class="max-w-md text-sm leading-6 text-black md:text-base md:text-right">Tra cứu thông báo và lịch đặt phòng họp của Phòng Tổ chức – Hành chính.</p>
     </div>
 
-    <div class="grid min-w-0 grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,0.9fr)]">
+    <div class="grid min-w-0 grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-[minmax(0,9fr)_minmax(0,11fr)] lg:items-stretch lg:gap-7 xl:gap-9">
       <!-- Notices: keep the existing content and dates, with the important notice first. -->
       <section aria-labelledby="notice-list-title" class="flex min-w-0 flex-col rounded-xl border border-primary-dark-blue/10 bg-primary-white p-5 lg:p-6">
         <div class="mb-5 flex items-center gap-3">
@@ -30,47 +30,7 @@
         </div>
       </section>
 
-      <!-- Each category previously repeated in a tab; keep all six directly accessible. -->
-      <section aria-labelledby="notice-forms-title" class="flex min-w-0 flex-col rounded-xl border border-primary-dark-blue/10 bg-primary-white p-5 lg:p-6">
-        <div class="mb-2 flex items-center gap-3">
-          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary-blue-light">
-            <img src="/assets/svgs/icon-copy.svg" alt="" class="h-5 w-5 text-primary-dark-blue" />
-          </span>
-          <h3 id="notice-forms-title" class="font-inter text-lg font-bold text-primary-dark-blue md:text-xl">Biểu mẫu</h3>
-        </div>
-        <p class="mb-4 text-sm leading-6 text-black md:text-base">Chọn nhóm hồ sơ cần tra cứu.</p>
-        <ul class="-mx-1 mb-5 divide-y divide-stroke">
-          <div data-include="@faculty/components/home/notice-hub/form-link-item.html" data-url="/documents-forms.html" data-icon="/assets/svgs/icon-user.svg" data-title="Quản lý cấp phòng"></div>
-          <div data-include="@faculty/components/home/notice-hub/form-link-item.html" data-url="/documents-forms.html" data-icon="/assets/svgs/icon-globe.svg" data-title="Đi nước ngoài"></div>
-          <div data-include="@faculty/components/home/notice-hub/form-link-item.html" data-url="/documents-forms.html" data-icon="/assets/svgs/icon-shield-check.svg" data-title="Bảo hiểm xã hội"></div>
-          <div data-include="@faculty/components/home/notice-hub/form-link-item.html" data-url="/documents-forms.html" data-icon="/assets/svgs/icon-agreement.svg" data-title="Chế độ - Chính sách"></div>
-          <div data-include="@faculty/components/home/notice-hub/form-link-item.html" data-url="/documents-forms.html" data-icon="/assets/svgs/icon-graduation-cap.svg" data-title="Đào tạo - Bồi dưỡng"></div>
-          <div data-include="@faculty/components/home/notice-hub/form-link-item.html" data-url="/documents-forms.html" data-icon="/assets/svgs/icon-money.svg" data-title="Nâng bậc lương"></div>
-        </ul>
-        <div class="mt-auto border-t border-stroke pt-4">
-          <div data-include="@shared/components/button/button.html" data-variant="12" data-url="/documents-forms.html" data-text="Tất cả quy trình &amp; biểu mẫu" data-icon="/assets/svgs/icon-arrow-up-right.svg" data-class="min-h-11 motion-reduce:transition-none" data-icon-class="motion-reduce:transform-none motion-reduce:transition-none"></div>
-        </div>
-      </section>
-
-      <!-- Preserve the recruitment guidance added in the working tree. -->
-      <section aria-labelledby="notice-recruitment-title" class="relative flex min-w-0 flex-col overflow-hidden rounded-xl bg-primary-dark-blue p-5 text-primary-white md:col-span-2 lg:p-6 xl:col-span-1">
-        <div data-include="@shared/components/common/brand-deco.html" data-variant="1" data-class="absolute -bottom-6 -right-6 w-28 opacity-10 sm:w-32" data-icon-class="[filter:brightness(0)_invert(1)]"></div>
-        <div class="mb-2 flex items-center gap-3">
-          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-primary-white/25 bg-primary-white/10">
-            <img src="/assets/svgs/icon-briefcase.svg" alt="" class="h-5 w-5 text-white" />
-          </span>
-          <h3 id="notice-recruitment-title" class="font-inter text-lg font-bold text-primary-white md:text-xl">Tuyển dụng IUH</h3>
-        </div>
-        <p class="mb-4 text-sm leading-6 text-primary-white/80 md:text-base">Thông tin tuyển dụng viên chức và người lao động tại IUH.</p>
-        <ul class="my-2 divide-y divide-primary-white/20 md:grid md:grid-cols-3 md:gap-6 md:divide-y-0 xl:block xl:divide-y">
-          <div data-include="@faculty/components/home/notice-hub/recruitment-item.html" data-icon="/assets/svgs/icon-notification.svg" data-title="Thông báo tuyển dụng viên chức" data-description="Chỉ tiêu và thời hạn theo từng đợt tuyển dụng"></div>
-          <div data-include="@faculty/components/home/notice-hub/recruitment-item.html" data-icon="/assets/svgs/icon-article.svg" data-title="Hướng dẫn chuẩn bị hồ sơ dự tuyển" data-description="Thành phần hồ sơ theo thông báo tuyển dụng"></div>
-          <div data-include="@faculty/components/home/notice-hub/recruitment-item.html" data-icon="/assets/svgs/icon-calendar-check.svg" data-title="Tiếp nhận và theo dõi hồ sơ" data-description="Địa điểm và phương thức theo từng thông báo"></div>
-        </ul>
-        <div class="mt-auto border-t border-primary-white/20 pt-4">
-          <div data-include="@shared/components/button/button.html" data-variant="12" data-url="/contact.html" data-text="Liên hệ hướng dẫn" data-icon="/assets/svgs/icon-arrow-up-right.svg" data-class="min-h-11 motion-reduce:transition-none" data-icon-class="motion-reduce:transform-none motion-reduce:transition-none"></div>
-        </div>
-      </section>
+      <div data-include="@shared/components/calendar/weekly-calendar.html" data-title="Lịch đặt phòng họp" data-class="min-w-0"></div>
     </div>
   </div>
 </section>
