@@ -16,7 +16,7 @@ const expectedPages = [
   'news-detail.html',
   'news.html',
   'partners.html',
-  'room-booking.html',
+  'service-booking.html',
 ]
 
 const readFacultyFile = (path) => readFile(new URL(path, facultyRoot), 'utf8')
@@ -91,13 +91,14 @@ test('organization administration faculty exposes the selected-faculty contract'
 })
 
 test('room booking section precedes news and carries a rooms carousel beside the weekly calendar', async () => {
-  const [sharedConfig, sharedCalendar, sharedCalendarRuntime, facultyIndex, bookingSection, carousel, facultyConfig] = await Promise.all([
+  const [sharedConfig, sharedCalendar, sharedCalendarRuntime, facultyIndex, bookingSection, carousel, slide, facultyConfig] = await Promise.all([
     readFile(new URL('../src/shared/shared.config.js', import.meta.url), 'utf8'),
     readFile(new URL('../src/shared/components/calendar/weekly-calendar.html', import.meta.url), 'utf8'),
     readFile(new URL('../src/shared/components/calendar/weekly-calendar.js', import.meta.url), 'utf8'),
     readFacultyFile('pages/index.html'),
     readFacultyFile('components/home/room-booking/index.html'),
     readFacultyFile('components/home/room-booking/rooms-carousel.html'),
+    readFacultyFile('components/home/room-booking/room-slide.html'),
     readFacultyFile('faculty.config.js'),
   ])
 
@@ -115,15 +116,22 @@ test('room booking section precedes news and carries a rooms carousel beside the
   assert.match(bookingSection, /@faculty\/components\/home\/room-booking\/rooms-carousel\.html/)
   assert.doesNotMatch(bookingSection, /@shared\/components\/form\/|<input\b|<form\b|role="form"/)
 
-  // The registration CTA lives once, outside the slides, so it never repeats per room.
-  assert.equal(carousel.match(/data-url="\/room-booking\.html" data-text="Đăng ký phòng họp"/g).length, 1)
+  // Every slide carries its own CTA so each resource routes to the booking page it belongs to.
+  assert.equal(carousel.match(/data-cta-text="[^"]+"/g).length, 7)
+  assert.deepEqual([...carousel.matchAll(/data-cta-text="([^"]+)"/g)].map(([, text]) => text), [
+    'Đăng ký phòng họp', 'Đăng ký phòng họp', 'Đăng ký phòng họp',
+    'Đăng ký hội trường', 'Đăng ký hội trường',
+    'Đăng ký phòng khách', 'Đăng ký xe công vụ',
+  ])
+  assert.doesNotMatch(carousel, /data-url=/)
+  assert.match(slide, /data-url="\/service-booking\.html" data-text="\{\{ctaText\}\}"/)
   assert.match(facultyConfig, /selector:\s*["']\.rooms-swiper["']/)
   assert.match(facultyConfig, /init:\s*["']initRoomsCarousel["']/)
 
   const slides = [...carousel.matchAll(/room-booking\/room-slide\.html"[^>]*data-image="(\/assets\/images\/[^"]+)"[^>]*data-title="([^"]+)"/g)]
-  assert.equal(slides.length, 5, 'carousel must present every bookable room and hall')
+  assert.equal(slides.length, 7, 'carousel must present every bookable resource')
   assert.deepEqual(slides.map(([, , title]) => title),
-    ['Phòng họp 1', 'Phòng họp 2', 'Phòng họp 3', 'Hội trường A', 'Hội trường B'])
+    ['Phòng họp 1', 'Phòng họp 2', 'Phòng họp 3', 'Hội trường A', 'Hội trường B', 'Nhà khách IUH', 'Đội xe công vụ'])
   for (const [, image] of slides) {
     assert.ok((await readFacultyFile(`assets/images/${image.split('/').at(-1)}`)).length > 0, `missing slide image ${image}`)
   }
@@ -131,30 +139,59 @@ test('room booking section precedes news and carries a rooms carousel beside the
   assert.match(sharedCalendar, /data-attrs="data-schedule-filter=all\b/)
   assert.match(sharedCalendar, /data-attrs="data-schedule-filter=meeting-room\b/)
   assert.match(sharedCalendar, /data-attrs="data-schedule-filter=hall\b/)
+  assert.match(sharedCalendar, /data-attrs="data-schedule-filter=guest-room\b/)
+  assert.match(sharedCalendar, /data-attrs="data-schedule-filter=vehicle\b/)
   assert.doesNotMatch(sharedCalendar, /data-schedule-filter=room-\d/)
   assert.match(sharedCalendar, /data-schedule-category="hall"/)
+  // Each filter needs events to show, otherwise the tab lands on an empty week.
+  for (const category of ['guest-room', 'vehicle']) {
+    assert.ok((sharedCalendar.match(new RegExp(`data-schedule-category="${category}"`, 'g')) ?? []).length >= 3, `${category} needs sample events`)
+  }
+  assert.match(sharedCalendarRuntime, /stay: \{ label: 'Lưu trú'/)
+  assert.match(sharedCalendarRuntime, /trip: \{ label: 'Điều xe'/)
   assert.doesNotMatch(sharedCalendar, /\/calendar\.html/)
 })
 
-test('room booking page contains the complete static form and a return link to the calendar', async () => {
-  const page = await readFacultyFile('pages/room-booking.html')
-  assert.match(page, /LAYOUT: title="Đăng ký phòng họp"/)
-  assert.match(page, /data-current-page="Đăng ký phòng họp"/)
-  assert.match(page, /<h1[^>]*>Đăng ký phòng họp<\/h1>/)
-  assert.match(page, /data-url="\/#weekly-schedule" data-text="Xem lịch phòng họp"/)
-  assert.match(page, /@shared\/components\/common\/section-title\.html" data-title="Thông tin đăng ký"/)
-  for (const name of ['room', 'date', 'start_time', 'end_time', 'purpose', 'chair', 'attendees', 'projector']) {
+test('service booking page stacks the three static registration forms behind shared tabs', async () => {
+  const page = await readFacultyFile('pages/service-booking.html')
+  assert.match(page, /LAYOUT: title="Đăng ký dịch vụ"/)
+  assert.match(page, /data-current-page="Đăng ký dịch vụ"/)
+  assert.match(page, /<h1[^>]*>Đăng ký dịch vụ<\/h1>/)
+  assert.match(page, /data-url="\/#weekly-schedule" data-text="Xem lịch sử dụng phòng"/)
+
+  // Shared tabs auto-initialize from `.tabs-container`, so no faculty runtime entry is needed.
+  assert.match(page, /class="tabs-container /)
+  assert.deepEqual([...page.matchAll(/class="tab-btn[^"]*"\s+data-tab="([^"]+)"/g)].map(([, id]) => id),
+    ['meeting-room', 'guest-room', 'vehicle'])
+  assert.deepEqual([...page.matchAll(/<span>(Phòng họp|Phòng khách|Xe công vụ)<\/span>/g)].map(([, label]) => label),
+    ['Phòng họp', 'Phòng khách', 'Xe công vụ'])
+  assert.deepEqual([...page.matchAll(/class="tab-panel[^"]*"\s+data-tab-panel="([^"]+)"/g)].map(([, id]) => id),
+    ['meeting-room', 'guest-room', 'vehicle'])
+  assert.equal((page.match(/class="tab-panel hidden/g) ?? []).length, 2)
+
+  for (const title of ['Thông tin đăng ký', 'Thông tin lưu trú', 'Thông tin chuyến đi']) {
+    assert.match(page, new RegExp(`@shared/components/common/section-title\\.html" data-title="${title}"`))
+  }
+  const meetingFields = ['room', 'date', 'start_time', 'end_time', 'purpose', 'chair', 'attendees', 'projector']
+  const guestFields = ['guest_room_type', 'guest_count', 'check_in', 'check_out', 'guest_name', 'guest_document', 'guest_organization', 'host_unit', 'stay_purpose', 'breakfast']
+  const vehicleFields = ['vehicle_type', 'passengers', 'depart_date', 'depart_time', 'return_date', 'return_time', 'pickup_point', 'destination', 'trip_leader', 'trip_purpose', 'overnight']
+  for (const name of [...meetingFields, ...guestFields, ...vehicleFields]) {
     assert.match(page, new RegExp(`data-name="${name}"`))
   }
   for (const name of ['full_name', 'phone', 'unit']) {
     assert.doesNotMatch(page, new RegExp(`data-name="${name}"`), `${name} now lives in the account sidebar`)
   }
+
+  // Every form field id is unique because all three panels share one document.
+  const ids = [...page.matchAll(/data-id="([^"]+)"/g)].map(([, id]) => id)
+  assert.equal(new Set(ids).size, ids.length)
+
   assert.match(page, /<aside aria-label="Thông tin người đăng ký"/)
   assert.equal(page.match(/@shared\/components\/form\/display-row\.html/g).length, 4)
   assert.match(page, /data-url="\/login\.html" data-text="Đăng xuất"/)
   assert.match(page, /@shared\/components\/form\/field\.html/)
-  assert.match(page, /@shared\/components\/form\/choice\.html/)
-  assert.match(page, /data-variant="7" data-type="button" data-text="Gửi đăng ký"/)
+  assert.equal(page.match(/@shared\/components\/form\/choice\.html/g).length, 3)
+  assert.equal(page.match(/data-variant="7" data-type="button" data-text="Gửi đăng ký"/g).length, 3)
   assert.doesNotMatch(page, /<form\b|<script\b|weekly-calendar\.html/)
   assert.ok(page.trimEnd().endsWith('<div data-include="@shared/components/partners/index.html" data-class="nttFade"></div>'))
 })

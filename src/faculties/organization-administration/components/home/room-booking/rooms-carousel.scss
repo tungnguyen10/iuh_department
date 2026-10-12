@@ -4,22 +4,38 @@
   }
 
   .rooms-pagination {
-    position: static !important;
+    // Swiper injects its own absolute positioning, so every override needs !important.
+    position: absolute !important;
+    z-index: 2;
+    left: auto !important;
+    right: 16px !important;
     width: auto !important;
+    // On phones the caption CTA already fills the bottom row, so the dots ride the photo instead.
+    top: 16px !important;
+    bottom: auto !important;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 6px 8px;
-    background-color: rgba(255, 255, 255, 0.12);
+    gap: 5px;
+    padding: 4px 6px;
+    background-color: rgba(21, 56, 152, 0.65);
     border: 1px solid rgba(255, 255, 255, 0.24);
     border-radius: 999px;
+    backdrop-filter: blur(4px);
     caret-color: transparent;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
 
+    @media (min-width: 640px) {
+      right: 20px !important;
+      top: auto !important;
+      bottom: 20px !important;
+      gap: 8px;
+      padding: 6px 8px;
+    }
+
     .swiper-pagination-bullet {
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
       margin: 0 !important;
       background-color: rgba(255, 255, 255, 0.92);
       opacity: 0.75;
@@ -36,13 +52,22 @@
         outline: 2px solid #ffffff;
         outline-offset: 3px;
       }
+
+      @media (min-width: 640px) {
+        width: 7px;
+        height: 7px;
+      }
     }
 
     .swiper-pagination-bullet-active {
-      width: 26px;
+      width: 18px;
       border-radius: 999px;
       background-color: #f9b200;
       opacity: 1;
+
+      @media (min-width: 640px) {
+        width: 26px;
+      }
     }
   }
 

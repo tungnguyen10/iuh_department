@@ -64,6 +64,8 @@ const TYPE_META = {
   deadline: { label: 'Hạn xử lý', dot: 'bg-danger' },
   conference: { label: 'Hội nghị', dot: 'bg-secondary-green' },
   training: { label: 'Đào tạo', dot: 'bg-primary-yellow' },
+  stay: { label: 'Lưu trú', dot: 'bg-avatar-purple' },
+  trip: { label: 'Điều xe', dot: 'bg-secondary-blue' },
 }
 
 // Builds the full <li> body from data-schedule-* attributes; markup lives only in JS so the source HTML stays data-only.
