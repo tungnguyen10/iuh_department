@@ -31,6 +31,17 @@ test('room-specific filters keep only bookings for the selected room in time ord
   assert.deepEqual(filterScheduleRecords(bookings, '2026-09-28', 'all').map(r => r.start), ['08:00', '13:30', '15:30'])
   assert.deepEqual(filterScheduleRecords(bookings, '2026-10-12', 'all'), [])
 })
+test('category filters split meeting rooms from halls', () => {
+  const bookings = [
+    { date: '2026-10-13', start: '08:30', roomId: 'room-2', category: 'meeting-room', type: 'meeting', room: true },
+    { date: '2026-10-14', start: '09:00', roomId: 'hall-a', category: 'hall', type: 'conference', room: true },
+    { date: '2026-10-12', start: '08:00', roomId: 'room-1', category: 'meeting-room', type: 'meeting', room: true },
+    { date: '2026-10-17', start: '08:00', roomId: 'hall-b', category: 'hall', type: 'training', room: true },
+  ]
+  assert.deepEqual(filterScheduleRecords(bookings, '2026-10-12', 'meeting-room').map(r => r.roomId), ['room-1', 'room-2'])
+  assert.deepEqual(filterScheduleRecords(bookings, '2026-10-12', 'hall').map(r => r.roomId), ['hall-a', 'hall-b'])
+  assert.equal(filterScheduleRecords(bookings, '2026-10-12', 'all').length, 4)
+})
 test('week interval includes both boundary days and excludes the following day', () => {
   const edgeRecords = ['2026-09-07', '2026-09-08', '2026-09-14', '2026-09-15'].map(date => ({ date, start: '08:00', type: 'meeting', room: true }))
   assert.deepEqual(filterScheduleRecords(edgeRecords, '2026-09-08').map(r => r.date), ['2026-09-08', '2026-09-14'])

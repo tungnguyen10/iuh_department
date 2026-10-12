@@ -1,0 +1,54 @@
+.rooms-carousel {
+  .swiper-slide {
+    height: auto;
+  }
+
+  .rooms-pagination {
+    position: static !important;
+    width: auto !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    background-color: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 999px;
+    caret-color: transparent;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+
+    .swiper-pagination-bullet {
+      width: 7px;
+      height: 7px;
+      margin: 0 !important;
+      background-color: rgba(255, 255, 255, 0.92);
+      opacity: 0.75;
+      transition:
+        width 0.25s ease,
+        background-color 0.25s ease,
+        opacity 0.25s ease;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:focus-visible {
+        outline: 2px solid #ffffff;
+        outline-offset: 3px;
+      }
+    }
+
+    .swiper-pagination-bullet-active {
+      width: 26px;
+      border-radius: 999px;
+      background-color: #f9b200;
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .swiper-pagination-bullet {
+      transition: none;
+    }
+  }
+}

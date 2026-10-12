@@ -32,6 +32,12 @@ export const organizationAdministrationFacultyConfig = {
       name: "Hero Carousel",
     },
     {
+      selector: ".rooms-swiper",
+      load: () => import("./components/home/room-booking/rooms-carousel.js"),
+      init: "initRoomsCarousel",
+      name: "Rooms Carousel",
+    },
+    {
       selector: ".activity-gallery-card",
       load: () => import("./components/home/activity-gallery/gallery.js"),
       init: "initActivityGallery",

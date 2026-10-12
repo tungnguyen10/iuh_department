@@ -1,0 +1,16 @@
+<div class="rooms-carousel relative flex min-h-[360px] min-w-0 flex-col overflow-hidden rounded-2xl bg-primary-dark-blue sm:min-h-[420px] {{class}}">
+  <div class="swiper rooms-swiper w-full flex-1" role="group" aria-label="Phòng họp và hội trường có thể đăng ký">
+    <div class="swiper-wrapper">
+      <div data-include="@faculty/components/home/room-booking/room-slide.html" data-image="/assets/images/room-phong-hop-1.jpg" data-alt="Phòng họp 1 của Trường Đại học Công nghiệp TP.HCM" data-type="Phòng họp" data-title="Phòng họp 1" data-meta="40 chỗ · Máy chiếu · Âm thanh hội nghị"></div>
+      <div data-include="@faculty/components/home/room-booking/room-slide.html" data-image="/assets/images/room-phong-hop-2.jpg" data-alt="Phòng họp 2 của Trường Đại học Công nghiệp TP.HCM" data-type="Phòng họp" data-title="Phòng họp 2" data-meta="30 chỗ · Bàn chữ U · Màn hình trình chiếu"></div>
+      <div data-include="@faculty/components/home/room-booking/room-slide.html" data-image="/assets/images/room-phong-hop-3.jpg" data-alt="Phòng họp 3 của Trường Đại học Công nghiệp TP.HCM" data-type="Phòng họp" data-title="Phòng họp 3" data-meta="20 chỗ · Máy chiếu · Bàn họp nhóm"></div>
+      <div data-include="@faculty/components/home/room-booking/room-slide.html" data-image="/assets/images/room-hoi-truong-a.jpg" data-alt="Hội trường A của Trường Đại học Công nghiệp TP.HCM" data-type="Hội trường" data-title="Hội trường A" data-meta="300 chỗ · Sân khấu · Âm thanh – ánh sáng"></div>
+      <div data-include="@faculty/components/home/room-booking/room-slide.html" data-image="/assets/images/room-hoi-truong-b.jpg" data-alt="Hội trường B của Trường Đại học Công nghiệp TP.HCM" data-type="Hội trường" data-title="Hội trường B" data-meta="150 chỗ · Sân khấu · Máy chiếu"></div>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap items-center justify-between gap-3 border-t border-primary-white/10 px-4 py-3 sm:px-5">
+    <div data-include="@shared/components/button/button.html" data-variant="6" data-url="/room-booking.html" data-text="Đăng ký phòng họp" data-class="min-h-11 md:px-6 md:text-sm !text-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary-dark-blue motion-reduce:transition-none" data-icon-class="md:h-5 md:w-5 motion-reduce:transform-none motion-reduce:transition-none"></div>
+    <div class="rooms-pagination"></div>
+  </div>
+</div>

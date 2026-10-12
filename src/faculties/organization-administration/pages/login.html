@@ -1,0 +1,150 @@
+<!-- LAYOUT: title="Đăng nhập đặt phòng | Phòng Tổ chức – Hành chính IUH" -->
+<!-- LAYOUT: description="Trang đăng nhập dành cho viên chức, người lao động IUH để đăng ký sử dụng hội trường, phòng họp do Phòng Tổ chức – Hành chính quản lý." -->
+<!-- LAYOUT: keywords="đăng nhập đặt phòng IUH, phòng tổ chức hành chính, đăng ký hội trường phòng họp" -->
+<!-- LAYOUT: url="https://iuh.edu.vn/login" -->
+<!-- LAYOUT: ogImage="/assets/images/room-booking-iuh.jpg" -->
+
+<section
+  class="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#E3F6FD_100%)] py-10 md:py-14 lg:py-16"
+>
+  <div
+    data-include="@shared/components/common/core-deco.html"
+    data-class="pointer-events-none absolute -left-20 top-20 hidden w-56 opacity-10 md:block"
+  ></div>
+  <div
+    data-include="@shared/components/common/core-deco.html"
+    data-class="pointer-events-none absolute -right-24 bottom-0 hidden w-64 opacity-10 md:block"
+  ></div>
+
+  <div class="container relative z-10 mx-auto px-4">
+    <div class="mx-auto max-w-5xl">
+      <div
+        data-include="@shared/components/common/page-hero-title.html"
+        data-eyebrow="Phòng Tổ chức – Hành chính"
+        data-title="ĐĂNG NHẬP ĐẶT PHÒNG"
+        data-description="Đăng nhập bằng tài khoản IUH để đăng ký sử dụng hội trường, phòng họp."
+      ></div>
+
+      <div
+        class="grid overflow-hidden rounded-lg border border-primary-dark-blue/10 bg-primary-white shadow-[0_24px_70px_rgba(21,56,152,0.14)] lg:grid-cols-[0.82fr_1.18fr]"
+      >
+        <aside
+          class="relative hidden min-h-full overflow-hidden bg-primary-dark-blue p-8 text-primary-white lg:block"
+        >
+          <img
+            src="/assets/images/room-booking-iuh.jpg"
+            alt=""
+            class="absolute inset-0 h-full w-full object-cover opacity-[0.22]"
+          />
+          <div
+            class="absolute inset-0 bg-[linear-gradient(145deg,rgba(21,56,152,0.96)_0%,rgba(21,56,152,0.82)_58%,rgba(249,178,0,0.28)_100%)]"
+          ></div>
+          <div class="relative z-10 flex h-full flex-col justify-between">
+            <div>
+              <span
+                class="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary-white/10 ring-1 ring-primary-white/20"
+              >
+                <img
+                  src="/assets/svgs/icon-building.svg"
+                  alt=""
+                  class="h-6 w-6 brightness-0 invert"
+                />
+              </span>
+              <h2 class="mt-6 font-inter text-2xl font-bold leading-tight">
+                Cổng đăng ký hội trường, phòng họp
+              </h2>
+              <p
+                class="mt-4 font-roboto text-sm leading-relaxed text-primary-white/80"
+              >
+                Dành cho viên chức, người lao động các đơn vị thuộc Trường Đại
+                học Công nghiệp TP.HCM có nhu cầu sử dụng phòng họp, hội trường.
+              </p>
+            </div>
+
+            <div
+              class="rounded-lg border border-primary-white/15 bg-primary-white/10 p-4 backdrop-blur-sm"
+            >
+              <p
+                class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-yellow"
+              >
+                Tài khoản
+              </p>
+              <p
+                class="mt-2 font-roboto text-sm leading-relaxed text-primary-white/80"
+              >
+                Thông tin đăng nhập đồng bộ với tài khoản email nội bộ IUH.
+              </p>
+            </div>
+          </div>
+        </aside>
+
+        <div class="p-5 md:p-8 lg:p-10">
+          <form
+            action="/room-booking.html"
+            method="get"
+            class="iuh-form"
+            aria-label="Đăng nhập hệ thống đặt phòng Phòng Tổ chức – Hành chính"
+          >
+            <div
+              data-include="@shared/components/form/field.html"
+              data-id="staff-account"
+              data-name="staff_account"
+              data-type="text"
+              data-label="Tài khoản"
+              data-icon="/assets/svgs/icon-user-search.svg"
+              data-placeholder="Nhập mã viên chức hoặc email IUH..."
+              data-attrs="required autocomplete=username"
+              data-control-class="iuh-form-control--lg"
+            ></div>
+
+            <div
+              data-include="@shared/components/form/field.html"
+              data-id="staff-password"
+              data-name="password"
+              data-type="password"
+              data-label="Mật khẩu"
+              data-icon="/assets/svgs/icon-eye.svg"
+              data-placeholder="Nhập mật khẩu..."
+              data-attrs="required autocomplete=current-password"
+              data-control-class="iuh-form-control--lg"
+            ></div>
+
+            <div data-include="@shared/components/form/inline-group.html"
+              data-variant="3"
+              data-id="captcha-code"
+              data-name="captcha_code"
+              data-type="text"
+              data-icon="/assets/svgs/icon-check-circle.svg"
+              data-label="Mã xác nhận"
+              data-placeholder="Nhập mã xác nhận"
+              data-attrs="required"
+              data-captcha-code="d6a39"
+              data-captcha-aria="Mã xác nhận d6a39">
+            </div>
+
+            <div
+              data-include="@shared/components/button/button.html"
+              data-variant="7"
+              data-type="submit"
+              data-text="Đăng nhập"
+              data-icon="/assets/svgs/icon-send.svg"
+              data-class="w-full !rounded-lg !py-3.5 !text-base !font-bold"
+              data-icon-class="brightness-0 invert group-hover:brightness-100 group-hover:invert-0"
+            ></div>
+            <p class="iuh-form-note text-center">
+              Trường hợp quên mật khẩu hoặc chưa có tài khoản, vui lòng liên hệ
+              Phòng Tổ chức – Hành chính qua
+              <a
+                href="/contact.html"
+                class="font-bold underline decoration-primary-yellow decoration-2 underline-offset-4 transition-colors hover:text-title focus:outline-none focus:ring-2 focus:ring-primary-dark-blue focus:ring-offset-2"
+              >
+                trang liên hệ
+              </a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div data-include="@shared/components/partners/index.html" data-class="nttFade"></div>

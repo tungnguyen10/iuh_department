@@ -12,7 +12,7 @@ const faculties = {
   'health-science': 13,
   'dormitory-management': 14,
   'political-student-affairs': 8,
-  'organization-administration': 12,
+  'organization-administration': 13,
   idcs: 15,
 }
 

@@ -45,7 +45,7 @@ export const filterScheduleRecords = (records, start, filter = 'all') => {
   const end = addScheduleDays(start, 7)
   return records.filter(record => record.date >= start && record.date < end
     && (filter === 'all' || (filter === 'deadline' && record.type === 'deadline')
-      || (filter === 'room' && record.room) || record.roomId === filter))
+      || (filter === 'room' && record.room) || record.category === filter || record.roomId === filter))
     .sort((a, b) => `${a.date}T${a.start}`.localeCompare(`${b.date}T${b.start}`))
 }
 
@@ -119,6 +119,7 @@ export const initWeeklyCalendar = (root = document) => Array.from(root.querySele
     type: element.dataset.scheduleType,
     room: element.dataset.scheduleRoom === 'true',
     roomId: element.dataset.scheduleRoomId,
+    category: element.dataset.scheduleCategory,
     title: element.dataset.scheduleTitle,
     location: element.dataset.scheduleLocation,
     unit: element.dataset.scheduleUnit,
