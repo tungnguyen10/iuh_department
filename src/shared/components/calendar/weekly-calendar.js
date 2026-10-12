@@ -32,6 +32,15 @@ export const formatScheduleWeek = (start) => {
   return `${pad(first.getUTCDate())} – ${pad(last.getUTCDate())} Tháng ${first.getUTCMonth() + 1}, ${first.getUTCFullYear()}`
 }
 
+// Vietnam has a fixed UTC+7 offset (no DST), so shifting the instant is enough to read the local calendar date.
+const VIETNAM_UTC_OFFSET_MS = 7 * 60 * 60 * 1000
+
+export const currentScheduleWeekStart = (now = new Date()) => {
+  const vietnamNow = new Date(now.getTime() + VIETNAM_UTC_OFFSET_MS)
+  const today = `${vietnamNow.getUTCFullYear()}-${pad(vietnamNow.getUTCMonth() + 1)}-${pad(vietnamNow.getUTCDate())}`
+  return addScheduleDays(today, -((vietnamNow.getUTCDay() + 6) % 7))
+}
+
 export const filterScheduleRecords = (records, start, filter = 'all') => {
   const end = addScheduleDays(start, 7)
   return records.filter(record => record.date >= start && record.date < end
@@ -120,7 +129,7 @@ export const initWeeklyCalendar = (root = document) => Array.from(root.querySele
   const empty = calendar.querySelector('[data-schedule-empty]')
   const status = calendar.querySelector('[data-schedule-status]')
   const filters = Array.from(calendar.querySelectorAll('[data-schedule-filter]'))
-  let start = parseAttrDate(calendar.dataset.initialWeek)
+  let start = calendar.dataset.initialWeek ? parseAttrDate(calendar.dataset.initialWeek) : currentScheduleWeekStart()
   let filter = 'all'
   const listeners = []
 

@@ -149,12 +149,7 @@ export const createNewsRenderer = ({ base, items, sectionMeta }) => {
       </div>
     </div>`
 
-  const appointmentBadgeClass = (type = '') => {
-    const normalized = type.toLowerCase()
-    if (normalized.includes('bổ nhiệm lại')) return 'bg-[#EDE9FE] text-[#6D28D9]'
-    if (normalized.includes('điều động')) return 'bg-[#DDF6EA] text-[#087A55]'
-    return 'bg-secondary-blue-light text-primary-dark-blue'
-  }
+  const APPOINTMENT_BADGE_CLASS = 'bg-secondary-blue-light text-primary-dark-blue'
 
   const appointmentSection = (limit = 4) => {
     const appointments = items.filter((item) => item.kind === 'appointment').slice(0, limit)
@@ -180,7 +175,7 @@ export const createNewsRenderer = ({ base, items, sectionMeta }) => {
             ${isLast ? '' : '<span class="absolute bottom-[-1rem] top-3 w-px bg-primary-dark-blue/15"></span>'}
           </span>
           <div class="min-w-0 pb-3">
-            <span class="inline-flex rounded-md px-2 py-1 font-roboto text-[11px] font-bold uppercase tracking-wide ${appointmentBadgeClass(type)}">${escapeHtml(type)}</span>
+            <span class="inline-flex rounded-md px-2 py-1 font-roboto text-[11px] font-bold uppercase tracking-wide ${APPOINTMENT_BADGE_CLASS}">${escapeHtml(type)}</span>
             <h3 class="mt-2 font-inter text-sm font-bold leading-5 text-title transition-colors duration-200 group-hover:text-primary-dark-blue sm:text-[15px]">
               <a href="${newsLink(item)}" class="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow">${escapeHtml(item.title)}</a>
             </h3>
@@ -191,16 +186,17 @@ export const createNewsRenderer = ({ base, items, sectionMeta }) => {
 
     return `
       <div class="grid w-full min-w-0 grid-cols-1 gap-3 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-        <article class="group relative min-h-[390px] overflow-hidden rounded-xl bg-primary-dark-blue shadow-[0_14px_32px_rgba(21,56,152,0.16)] md:min-h-[430px]">
+        <article class="group relative flex min-h-[390px] flex-col overflow-hidden rounded-xl bg-primary-white shadow-[0_8px_24px_rgba(21,56,152,0.08)] md:min-h-[430px]">
           <a href="${newsLink(featured)}" class="absolute inset-0 z-20 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow focus-visible:ring-inset" aria-label="${escapeHtml(featured.title)}"><span class="sr-only">${escapeHtml(featured.title)}</span></a>
-          <img src="${image(featured)}" alt="${escapeHtml(featured.imageAlt || featured.title)}" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none" />
-          <div class="absolute inset-0 bg-gradient-to-t from-[#03102E] from-10% via-[#03102E]/85 via-35% to-transparent to-85%"></div>
-          <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#03102E]/45 to-transparent"></div>
-          <span class="absolute left-5 top-5 z-10 inline-flex rounded-full bg-primary-white/95 px-3 py-1 font-roboto text-xs font-bold uppercase tracking-wide text-primary-dark-blue shadow-sm sm:left-6 sm:top-6">Mới nhất</span>
-          <div class="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-6">
-            <span class="inline-flex whitespace-nowrap rounded-md px-2 py-0.5 font-roboto text-xs font-bold uppercase tracking-wide ${appointmentBadgeClass(featuredType)}">${escapeHtml(featuredType)}</span>
-            <time class="mt-2 block font-roboto text-xs font-medium text-primary-white/80">${escapeHtml(featured.date || '')}</time>
-            <h3 class="mt-2 font-roboto text-base md:text-lg font-medium leading-normal text-primary-white line-clamp-3">${escapeHtml(featured.title)}</h3>
+          <div class="relative min-h-[180px] flex-1 overflow-hidden">
+            <img src="${image(featured)}" alt="${escapeHtml(featured.imageAlt || featured.title)}" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none" />
+            <span class="absolute left-4 top-4 z-10 inline-flex rounded-full bg-primary-white/95 px-3 py-1 font-roboto text-xs font-bold uppercase tracking-wide text-primary-dark-blue shadow-sm">Mới nhất</span>
+          </div>
+          <div class="shrink-0 border-t border-stroke px-5 py-4 sm:px-6 sm:py-5">
+            <span class="inline-flex whitespace-nowrap rounded-md px-2 py-1 font-roboto text-[11px] font-bold uppercase tracking-wide ${APPOINTMENT_BADGE_CLASS}">${escapeHtml(featuredType)}</span>
+            <time class="mt-2 block font-roboto text-xs font-medium text-gray-700">${escapeHtml(featured.date || '')}</time>
+            <h3 class="mt-1.5 font-inter text-base font-bold leading-6 text-title transition-colors duration-200 group-hover:text-primary-dark-blue md:text-lg md:leading-7 line-clamp-3">${escapeHtml(featured.title)}</h3>
+            <p class="mt-2 font-roboto text-xs leading-5 text-gray-700 line-clamp-2 sm:text-sm sm:leading-6">${escapeHtml(featured.excerpt || '')}</p>
           </div>
         </article>
 
@@ -216,7 +212,7 @@ export const createNewsRenderer = ({ base, items, sectionMeta }) => {
   const detailArticle = (item, index) => `
       <article data-news-detail-article data-news-slug="${escapeHtml(item.slug || '')}" ${index === 0 ? '' : 'hidden'} class="${index === 0 ? '' : 'hidden '}bg-white rounded-2xl border border-stroke shadow-sm p-4 md:p-6">
         <div class="flex flex-col gap-3 md:gap-4 mb-6 md:mb-8">
-          ${item.kind === 'appointment' ? `<span class="self-start rounded-md px-2.5 py-1 font-roboto text-xs font-bold uppercase tracking-wide ${appointmentBadgeClass(item.appointmentType || item.category)}">${escapeHtml(item.appointmentType || item.category || 'Bổ nhiệm')}</span>` : ''}
+          ${item.kind === 'appointment' ? `<span class="self-start rounded-md px-2.5 py-1 font-roboto text-xs font-bold uppercase tracking-wide ${APPOINTMENT_BADGE_CLASS}">${escapeHtml(item.appointmentType || item.category || 'Bổ nhiệm')}</span>` : ''}
           <h1 class="font-inter font-bold text-lg md:text-2xl leading-normal text-primary-dark-blue">${escapeHtml(item.title)}</h1>
           <div class="w-full h-px bg-stroke"></div>
           <div class="inline-flex items-center gap-1.5 bg-danger-light rounded-[5px] px-1.5 py-[3px] self-start">

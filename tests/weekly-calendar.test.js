@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { addScheduleDays, formatScheduleWeek, scheduleWeekday, filterScheduleRecords } from '../src/shared/components/calendar/weekly-calendar.js'
+import { addScheduleDays, currentScheduleWeekStart, formatScheduleWeek, scheduleWeekday, filterScheduleRecords } from '../src/shared/components/calendar/weekly-calendar.js'
 
 const records = [
   { date: '2026-09-12', start: '09:00', type: 'training', room: true },
@@ -52,4 +52,11 @@ test('weekday labels reflect actual dates, not the incorrect screenshot labels',
 })
 test('invalid calendar dates are rejected instead of silently rolling over', () => {
   assert.throws(() => addScheduleDays('2026-02-30', 7), RangeError)
+})
+test('default week is the Monday–Sunday week containing today in Vietnam time', () => {
+  assert.equal(currentScheduleWeekStart(new Date('2026-10-12T00:30:00Z')), '2026-10-12')
+  assert.equal(currentScheduleWeekStart(new Date('2026-10-18T16:59:00Z')), '2026-10-12')
+  // 17:00Z Sunday is already Monday 00:00 in Vietnam, so the week rolls over.
+  assert.equal(currentScheduleWeekStart(new Date('2026-10-18T17:00:00Z')), '2026-10-19')
+  assert.equal(currentScheduleWeekStart(new Date('2026-12-31T23:00:00Z')), '2026-12-28')
 })
