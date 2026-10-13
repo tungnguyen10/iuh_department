@@ -1,13 +1,49 @@
-// Shared carousel.scss already styles .hero-carousel; only the active bullet needs the IDCS pill treatment.
+// Keep IDCS controls aligned with the editorial text panel.
 .hero-carousel {
+  @media (max-width: 1279px) {
+    .hero-nav-next,
+    .hero-nav-prev {
+      display: none;
+    }
+  }
+
+  .hero-nav-next,
+  .hero-nav-prev {
+    &:focus-visible {
+      outline-color: theme('colors.primary.dark-blue');
+    }
+  }
+
+  .hero-pagination {
+    left: clamp(2.5rem, 6.66vw, 6rem) !important;
+    bottom: 32px !important;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    backdrop-filter: none;
+    transform: none;
+
+    @media (max-width: 767px) {
+      left: 36px !important;
+      bottom: 40px !important;
+    }
+
+    @media (min-width: 640px) and (max-width: 767px) {
+      left: 56px !important;
+      bottom: 48px !important;
+    }
+  }
+
   .swiper-pagination-bullet {
+    background-color: theme('colors.primary.dark-blue');
+    opacity: 0.35;
     transition:
       width 0.25s ease,
       background-color 0.25s ease,
       opacity 0.25s ease;
 
     &:focus-visible {
-      outline: 2px solid #ffffff;
+      outline: 2px solid theme('colors.primary.dark-blue');
       outline-offset: 3px;
     }
   }
