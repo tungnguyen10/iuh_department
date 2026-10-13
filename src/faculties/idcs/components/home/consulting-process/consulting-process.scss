@@ -1,0 +1,301 @@
+// Consulting steps as interlocking chevrons, echoing the chevrons of the IUH brand mark.
+// Steps brighten toward the final, yellow "Đánh giá" step: the flow ends in a measured result.
+.iuh-chevron-flow {
+  --tip: 1.25rem;
+  --overlap: calc(var(--tip) * -1 + 0.375rem);
+  @apply flex flex-col;
+
+  &__step {
+    @apply relative min-w-0 bg-primary-white/[0.06] px-5;
+    padding-block: calc(var(--tip) + 0.75rem);
+    clip-path: polygon(0 0, 50% var(--tip), 100% 0, 100% calc(100% - var(--tip)), 50% 100%, 0 calc(100% - var(--tip)));
+
+    & + & {
+      margin-top: var(--overlap);
+    }
+
+    &:first-child {
+      @apply pt-5;
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--tip)), 50% 100%, 0 calc(100% - var(--tip)));
+    }
+
+    &:last-child {
+      @apply bg-primary-yellow pb-5;
+      clip-path: polygon(0 0, 50% var(--tip), 100% 0, 100% 100%, 0 100%);
+    }
+
+    &:nth-child(2) {
+      @apply bg-primary-white/[0.09];
+    }
+    &:nth-child(3) {
+      @apply bg-primary-white/[0.12];
+    }
+    &:nth-child(4) {
+      @apply bg-primary-white/[0.16];
+    }
+  }
+
+  &__index {
+    @apply font-inter text-xs font-bold tracking-[0.2em] text-primary-yellow;
+  }
+
+  &__title {
+    @apply mt-1 font-inter text-lg font-bold leading-snug text-primary-white;
+  }
+
+  &__text {
+    @apply mt-2 text-sm leading-6 text-primary-white/75;
+  }
+
+  &__step:last-child &__index,
+  &__step:last-child &__title {
+    @apply text-primary-dark-blue;
+  }
+
+  &__step:last-child &__text {
+    @apply text-primary-dark-blue/80;
+  }
+
+  // Tablet: label left, description right keeps each stacked chevron short.
+  @screen md {
+    &__step {
+      @apply grid items-center gap-6 px-8;
+      grid-template-columns: 11rem minmax(0, 1fr);
+    }
+
+    &__text {
+      @apply mt-0;
+    }
+  }
+
+  // Desktop: the chevrons turn sideways and run left to right as one line.
+  @screen lg {
+    --tip: 1.5rem;
+    @apply flex-row;
+
+    &__step {
+      @apply flex flex-1 flex-col items-stretch gap-0 py-6;
+      padding-left: calc(var(--tip) + 1.25rem);
+      padding-right: calc(var(--tip) + 0.5rem);
+      clip-path: polygon(0 0, calc(100% - var(--tip)) 0, 100% 50%, calc(100% - var(--tip)) 100%, 0 100%, var(--tip) 50%);
+
+      & + & {
+        margin-top: 0;
+        margin-left: var(--overlap);
+      }
+
+      &:first-child {
+        @apply pl-6 pt-6;
+        clip-path: polygon(0 0, calc(100% - var(--tip)) 0, 100% 50%, calc(100% - var(--tip)) 100%, 0 100%);
+      }
+
+      &:last-child {
+        @apply pb-6 pr-6;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, var(--tip) 50%);
+      }
+    }
+
+    &__text {
+      @apply mt-3;
+    }
+  }
+}
+
+// Reveal (armed by consulting-process.js only, so content stays visible without JS):
+// steps arrive one after another along the flow, then "Đánh giá" fills yellow like a gauge reaching target.
+.iuh-chevron-flow.is-armed {
+  .iuh-chevron-flow__step {
+    @apply opacity-0;
+    transform: translateY(-0.75rem);
+    transition:
+      opacity 0.5s ease-out,
+      transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+
+    @for $i from 1 through 5 {
+      &:nth-child(#{$i}) {
+        transition-delay: #{150 + ($i - 1) * 120}ms;
+      }
+    }
+
+    > * {
+      @apply relative;
+    }
+
+    &:last-child {
+      @apply bg-primary-white/20;
+
+      &::before {
+        @apply absolute inset-0 origin-left scale-x-0 bg-primary-yellow;
+        content: '';
+        transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1) 1.1s;
+      }
+    }
+  }
+
+  .iuh-chevron-flow__step:last-child .iuh-chevron-flow__index,
+  .iuh-chevron-flow__step:last-child .iuh-chevron-flow__title,
+  .iuh-chevron-flow__step:last-child .iuh-chevron-flow__text {
+    @apply text-primary-white;
+    transition: color 0.4s ease 1.35s;
+  }
+
+  @screen lg {
+    .iuh-chevron-flow__step {
+      transform: translateX(-1.5rem);
+    }
+  }
+}
+
+.iuh-chevron-flow.is-armed.is-visible {
+  .iuh-chevron-flow__step {
+    @apply opacity-100;
+    transform: none;
+
+    &:last-child::before {
+      @apply scale-x-100;
+    }
+  }
+
+  .iuh-chevron-flow__step:last-child .iuh-chevron-flow__index,
+  .iuh-chevron-flow__step:last-child .iuh-chevron-flow__title {
+    @apply text-primary-dark-blue;
+  }
+
+  .iuh-chevron-flow__step:last-child .iuh-chevron-flow__text {
+    @apply text-primary-dark-blue/80;
+  }
+}
+
+// Field → metric table; header row only shows once the two columns sit side by side.
+.iuh-consulting-metrics {
+  > div {
+    @apply grid gap-0.5 border-b border-primary-white/15 py-3 sm:items-baseline sm:gap-6;
+
+    @screen sm {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+  }
+
+  > .iuh-consulting-metrics__head {
+    @apply hidden pb-2.5 pt-0 text-xs font-bold uppercase tracking-[0.14em] text-primary-white/50;
+
+    @screen sm {
+      @apply grid;
+    }
+  }
+
+  dt {
+    @apply font-inter text-base font-bold text-primary-white;
+  }
+
+  dd {
+    @apply text-sm leading-6 text-secondary-yellow md:text-[15px];
+  }
+}
+
+// Metric rows rise in one by one; each row's rule draws in yellow, then settles back.
+.iuh-consulting-metrics.is-armed > div {
+  @apply relative opacity-0;
+  transform: translateY(0.5rem);
+  transition:
+    opacity 0.45s ease-out,
+    transform 0.45s ease-out;
+
+  &::after {
+    @apply pointer-events-none absolute bottom-[-1px] left-0 h-px w-full origin-left scale-x-0 bg-primary-yellow;
+    content: '';
+  }
+
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) {
+      transition-delay: #{($i - 1) * 90}ms;
+    }
+    &:nth-child(#{$i})::after {
+      animation-delay: #{($i - 1) * 90 + 150}ms;
+    }
+  }
+}
+
+.iuh-consulting-metrics.is-armed.is-visible > div {
+  @apply opacity-100;
+  transform: none;
+
+  &::after {
+    animation: iuh-rule-sweep 1.1s ease-out both;
+  }
+}
+
+// Hover reuses the "Đánh giá" yellow fill: it sweeps along the flow direction (down when stacked, right on desktop).
+.iuh-chevron-flow__step {
+  > * {
+    @apply relative z-[1];
+    transition: color 0.3s ease;
+  }
+
+  &:not(:last-child)::before {
+    @apply pointer-events-none absolute inset-0 origin-top bg-primary-yellow;
+    content: '';
+    transform: scaleY(0);
+    transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+
+    @screen lg {
+      @apply origin-left;
+      transform: scaleX(0);
+    }
+  }
+}
+
+.iuh-chevron-flow__index,
+.iuh-chevron-flow__title {
+  transition: color 0.3s ease;
+}
+
+@media (hover: hover) {
+  .iuh-chevron-flow__step:not(:last-child):hover {
+    &::before {
+      transform: none;
+    }
+
+    .iuh-chevron-flow__index,
+    .iuh-chevron-flow__title {
+      @apply text-primary-dark-blue;
+    }
+
+    .iuh-chevron-flow__text {
+      @apply text-primary-dark-blue/80;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iuh-chevron-flow__step::before {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes iuh-rule-sweep {
+  0% {
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  55% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iuh-chevron-flow__step,
+  .iuh-chevron-flow__step::before,
+  .iuh-consulting-metrics > div {
+    transition: none !important;
+  }
+
+  .iuh-consulting-metrics > div::after {
+    animation: none !important;
+  }
+}

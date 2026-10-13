@@ -1,0 +1,37 @@
+<div class="iuh-service-explorer__panel">
+  <div class="flex flex-col gap-5 border-b border-stroke pb-6 md:flex-row md:items-end md:justify-between md:gap-8">
+    <div class="max-w-2xl">
+      <p class="font-roboto text-xs font-bold uppercase tracking-[0.16em] text-primary-dark-blue">{{eyebrow}}</p>
+      <h3 class="mt-2 font-inter text-xl font-bold leading-snug text-title md:text-2xl">{{title}}</h3>
+      <p class="mt-3 font-roboto text-sm leading-6 text-gray-700 md:text-base md:leading-7">{{description}}</p>
+    </div>
+    <div class="shrink-0">
+      <div data-include="@shared/components/button/button.html" data-variant="4" data-url="/services.html#request" data-text="Yêu cầu dịch vụ" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div>
+    </div>
+  </div>
+
+  <div class="mt-6 grid gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-8">
+    <div>
+      <p class="font-roboto text-xs font-bold uppercase tracking-[0.16em] text-gray">Năng lực</p>
+      <ul class="mt-2 divide-y divide-stroke font-roboto text-sm leading-6 text-title md:text-base">
+        <li class="flex gap-3 py-2.5"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-5 shrink-0 text-primary-dark-blue" />{{cap1}}</li>
+        <li class="flex gap-3 py-2.5"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-5 shrink-0 text-primary-dark-blue" />{{cap2}}</li>
+        <li class="flex gap-3 py-2.5"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-5 shrink-0 text-primary-dark-blue" />{{cap3}}</li>
+        <li class="flex gap-3 py-2.5"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-5 shrink-0 text-primary-dark-blue" />{{cap4}}</li>
+      </ul>
+
+      <div class="iuh-datasheet mt-5">
+        <p class="iuh-datasheet__head">{{equipmentHeading}}</p>
+        <dl class="iuh-datasheet__rows">
+          <div class="iuh-datasheet__row"><dt>{{eq1Name}}</dt><dd>{{eq1Spec}}</dd></div>
+          <div class="iuh-datasheet__row"><dt>{{eq2Name}}</dt><dd>{{eq2Spec}}</dd></div>
+          <div class="iuh-datasheet__row"><dt>{{eq3Name}}</dt><dd>{{eq3Spec}}</dd></div>
+        </dl>
+      </div>
+    </div>
+    <figure class="relative order-first overflow-hidden rounded-lg bg-gray-light md:order-none">
+      <img src="{{image}}" alt="{{imageAlt}}" width="1200" height="{{imageHeight}}" class="aspect-[16/10] w-full object-cover md:absolute md:inset-0 md:aspect-auto md:h-full" loading="lazy" decoding="async" />
+      <figcaption class="absolute bottom-0 right-0 rounded-tl bg-primary-dark-blue/80 px-2 py-1 font-roboto text-xs text-primary-white/85">Ảnh: <a href="{{creditUrl}}" target="_blank" rel="noopener noreferrer" class="underline-offset-2 hover:underline">{{credit}}</a></figcaption>
+    </figure>
+  </div>
+</div>

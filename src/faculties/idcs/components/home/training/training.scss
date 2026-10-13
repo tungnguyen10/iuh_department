@@ -1,0 +1,40 @@
+// One tick per training session. Past 10 sessions the ticks wrap into rows of 10
+// (like a session calendar), so the meter stays narrow and still shows every session.
+.iuh-sessions {
+  --n: var(--sessions, 1);
+  --tick: 6px;
+  --gap: 3px;
+  --row-gap: 2px;
+  --row-h: 14px;
+  @apply inline-block shrink-0;
+  width: calc(min(var(--n), 10) * (var(--tick) + var(--gap)) - var(--gap));
+  height: var(--row-h);
+  background: repeating-linear-gradient(
+    90deg,
+    theme('colors.primary.yellow') 0 var(--tick),
+    transparent var(--tick) calc(var(--tick) + var(--gap))
+  );
+}
+
+@supports (width: calc(round(up, 1.5, 1) * 1px)) {
+  .iuh-sessions {
+    --rows: round(up, var(--n) / 10, 1);
+    --last: calc(var(--n) - (var(--rows) - 1) * 10);
+    // Single row keeps the tall ticks; multi-row switches to short ticks.
+    --h: calc(var(--row-h) - clamp(0, var(--rows) - 1, 1) * 9px);
+    --pitch: calc(var(--h) + var(--row-gap));
+    --full: calc((var(--rows) - 1) * var(--pitch));
+    height: calc(var(--rows) * var(--pitch) - var(--row-gap));
+    background-size:
+      100% var(--full),
+      calc(var(--last) * (var(--tick) + var(--gap))) var(--h);
+    background-position:
+      0 0,
+      0 var(--full);
+    background-repeat: no-repeat;
+    background-image:
+      repeating-linear-gradient(90deg, theme('colors.primary.yellow') 0 var(--tick), transparent var(--tick) calc(var(--tick) + var(--gap))),
+      repeating-linear-gradient(90deg, theme('colors.primary.yellow') 0 var(--tick), transparent var(--tick) calc(var(--tick) + var(--gap)));
+    mask-image: repeating-linear-gradient(180deg, #000 0 var(--h), transparent var(--h) var(--pitch));
+  }
+}

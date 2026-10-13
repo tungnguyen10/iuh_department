@@ -33,9 +33,15 @@ export const idcsFacultyConfig = {
     },
     {
       selector: "[data-fields-index]",
-      load: () => import("./components/home/fields/fields.js"),
+      load: () => import("./components/home/hero/fields.js"),
       init: "initFieldsIndex",
       name: "Fields Index",
+    },
+    {
+      selector: "#consulting [data-reveal]",
+      load: () => import("./components/home/consulting-process/consulting-process.js"),
+      init: "initConsultingReveal",
+      name: "Consulting Reveal",
     },
   ],
 };

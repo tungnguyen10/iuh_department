@@ -22,13 +22,12 @@ const expectedPages = [
 ]
 const homeBlocks = [
   'hero',
-  'fields',
-  'service-explorer',
   'training',
-  'capabilities',
+  'service-explorer',
   'consulting-process',
   'technology-transfer',
   'industrial-support',
+  'capabilities',
   'updates',
 ]
 const readFacultyFile = (path) => readFile(new URL(path, facultyRoot), 'utf8')

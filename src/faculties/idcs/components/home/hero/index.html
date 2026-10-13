@@ -1,4 +1,4 @@
-<section class="relative overflow-hidden bg-primary-dark-blue {{class}}">
+<section id="fields" class="relative scroll-mt-20 overflow-hidden bg-primary-dark-blue {{class}}">
   <!-- Photo: https://iuh.edu.vn/upload/images/baiviet/2026/04/ISDEA2.JPG -->
   <img
     src="/assets/images/idcs-consulting.jpg"
@@ -18,29 +18,21 @@
     data-icon-class="[filter:brightness(0)_invert(1)]"
   ></div>
 
-  <div class="container relative mx-auto px-4 py-16 md:py-24">
-    <div class="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-      <div class="max-w-3xl">
-        <p
-          class="border-l-2 border-primary-yellow pl-3 font-roboto text-sm font-semibold uppercase tracking-[0.16em] text-primary-yellow"
-        >
-          Trung tâm IDCS &middot; Trường Đại học Công nghiệp TP.HCM
+  <div class="container relative mx-auto px-4 py-14 md:py-20 lg:py-24">
+    <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-12">
+      <div>
+        <p class="border-l-2 border-primary-yellow pl-3 font-roboto text-xs font-bold uppercase tracking-[0.16em] text-primary-yellow sm:text-sm">
+          Lĩnh vực hoạt động
         </p>
-        <h2
-          class="mt-6 font-inter text-2xl font-bold text-primary-white md:text-[32px] leading-tight"
-        >
-          Năng lực kỹ thuật
-          <span class="text-primary-yellow">cho sản xuất</span> và đổi mới công
-          nghệ
+        <h2 class="mt-5 font-inter text-2xl font-bold leading-tight text-primary-white sm:text-3xl md:text-[32px]">
+          Năng lực kỹ thuật <span class="text-primary-yellow">cho sản xuất</span>
         </h2>
-        <p
-          class="mt-6 max-w-2xl font-roboto text-base leading-7 text-primary-white/80 md:text-lg"
-        >
-          Đào tạo ngắn hạn, đo kiểm, tư vấn cải tiến, chuyển giao công nghệ và
-          kết nối chuỗi cung ứng — triển khai theo bài toán thực tế của từng
-          doanh nghiệp.
+      </div>
+      <div>
+        <p class="max-w-xl font-roboto text-base leading-7 text-primary-white/80">
+          Năm nhóm dịch vụ triển khai theo bài toán thực tế của từng doanh nghiệp, mỗi nhóm trả về một kết quả cụ thể.
         </p>
-        <div class="mt-9 flex flex-wrap gap-3">
+        <div class="mt-6 flex flex-wrap gap-3">
           <div
             data-include="@shared/components/button/button.html"
             data-variant="6"
@@ -58,67 +50,59 @@
           ></div>
         </div>
       </div>
-
-      <ul
-        class="grid gap-px overflow-hidden rounded-lg border border-primary-white/15 bg-primary-white/10 sm:grid-cols-2 lg:grid-cols-1"
-      >
-        <li class="bg-primary-dark-blue/80 px-6 py-5 backdrop-blur">
-          <a href="/services.html" class="group block"
-            ><p
-              class="font-roboto text-xs uppercase tracking-[0.14em] text-primary-white/55"
-            >
-              Dịch vụ kỹ thuật
-            </p>
-            <p
-              class="mt-1 font-inter text-lg font-bold text-primary-white transition-colors group-hover:text-primary-yellow"
-            >
-              Đo lường &middot; Kiểm tra &middot; Phân tích
-            </p></a
-          >
-        </li>
-        <li class="bg-primary-dark-blue/80 px-6 py-5 backdrop-blur">
-          <a href="/training.html" class="group block"
-            ><p
-              class="font-roboto text-xs uppercase tracking-[0.14em] text-primary-white/55"
-            >
-              Đào tạo doanh nghiệp
-            </p>
-            <p
-              class="mt-1 font-inter text-lg font-bold text-primary-white transition-colors group-hover:text-primary-yellow"
-            >
-              Chương trình ngắn hạn theo yêu cầu
-            </p></a
-          >
-        </li>
-        <li class="bg-primary-dark-blue/80 px-6 py-5 backdrop-blur">
-          <a href="/technology-transfer.html" class="group block"
-            ><p
-              class="font-roboto text-xs uppercase tracking-[0.14em] text-primary-white/55"
-            >
-              Chuyển giao công nghệ
-            </p>
-            <p
-              class="mt-1 font-inter text-lg font-bold text-primary-white transition-colors group-hover:text-primary-yellow"
-            >
-              Nghiên cứu &rarr; Thử nghiệm &rarr; Ứng dụng
-            </p></a
-          >
-        </li>
-        <li class="bg-primary-dark-blue/80 px-6 py-5 backdrop-blur">
-          <a href="/industrial-support.html" class="group block"
-            ><p
-              class="font-roboto text-xs uppercase tracking-[0.14em] text-primary-white/55"
-            >
-              Chuỗi cung ứng công nghiệp
-            </p>
-            <p
-              class="mt-1 font-inter text-lg font-bold text-primary-white transition-colors group-hover:text-primary-yellow"
-            >
-              Phát triển nhà cung ứng &middot; Kết nối buyer
-            </p></a
-          >
-        </li>
-      </ul>
     </div>
+
+    <ul data-fields-index class="iuh-fields-index mt-12 grid gap-y-8 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10 md:mt-16 lg:grid-cols-5 lg:gap-x-0">
+      <li class="iuh-fields-index__item">
+        <a href="/training.html" class="iuh-fields-index__row group">
+          <span class="iuh-fields-index__mark"><img src="/assets/svgs/icon-graduation-cap.svg" alt="" class="h-6 w-6" /></span>
+          <span class="iuh-fields-index__body">
+            <h3 class="iuh-fields-index__title">Đào tạo ngắn hạn</h3>
+            <p class="iuh-fields-index__text">Khóa học kỹ thuật, quản lý sản xuất và kỹ năng chuyên môn, thiết kế theo nhu cầu của từng doanh nghiệp.</p>
+            <span class="iuh-fields-index__output"><span class="iuh-fields-index__output-label">Đầu ra</span>Chứng nhận hoàn thành khóa học</span>
+          </span>
+        </a>
+      </li>
+      <li class="iuh-fields-index__item">
+        <a href="/services.html" class="iuh-fields-index__row group">
+          <span class="iuh-fields-index__mark"><img src="/assets/svgs/icon-shield-check.svg" alt="" class="h-6 w-6" /></span>
+          <span class="iuh-fields-index__body">
+            <h3 class="iuh-fields-index__title">Dịch vụ đo kiểm</h3>
+            <p class="iuh-fields-index__text">Đo lường, kiểm tra, phân tích mẫu và đánh giá thông số kỹ thuật trên hệ thống thiết bị của Nhà trường.</p>
+            <span class="iuh-fields-index__output"><span class="iuh-fields-index__output-label">Đầu ra</span>Báo cáo kết quả đo kiểm</span>
+          </span>
+        </a>
+      </li>
+      <li class="iuh-fields-index__item">
+        <a href="/consulting.html" class="iuh-fields-index__row group">
+          <span class="iuh-fields-index__mark"><img src="/assets/svgs/icon-briefcase.svg" alt="" class="h-6 w-6" /></span>
+          <span class="iuh-fields-index__body">
+            <h3 class="iuh-fields-index__title">Tư vấn cải tiến</h3>
+            <p class="iuh-fields-index__text">Khảo sát hiện trạng nhà máy, tối ưu quy trình, quản lý chất lượng và loại bỏ lãng phí trong vận hành.</p>
+            <span class="iuh-fields-index__output"><span class="iuh-fields-index__output-label">Đầu ra</span>Lộ trình cải tiến năng suất</span>
+          </span>
+        </a>
+      </li>
+      <li class="iuh-fields-index__item">
+        <a href="/technology-transfer.html" class="iuh-fields-index__row group">
+          <span class="iuh-fields-index__mark"><img src="/assets/svgs/icon-share.svg" alt="" class="h-6 w-6" /></span>
+          <span class="iuh-fields-index__body">
+            <h3 class="iuh-fields-index__title">Chuyển giao công nghệ</h3>
+            <p class="iuh-fields-index__text">Nghiên cứu ứng dụng, thiết kế, chế thử và đưa giải pháp kỹ thuật vào dây chuyền sản xuất thực tế.</p>
+            <span class="iuh-fields-index__output"><span class="iuh-fields-index__output-label">Đầu ra</span>Giải pháp vận hành tại nhà máy</span>
+          </span>
+        </a>
+      </li>
+      <li class="iuh-fields-index__item sm:col-span-2 lg:col-span-1">
+        <a href="/industrial-support.html" class="iuh-fields-index__row group">
+          <span class="iuh-fields-index__mark"><img src="/assets/svgs/icon-handshake.svg" alt="" class="h-6 w-6" /></span>
+          <span class="iuh-fields-index__body">
+            <h3 class="iuh-fields-index__title">Hỗ trợ phát triển công nghiệp</h3>
+            <p class="iuh-fields-index__text">Phát triển nhà cung ứng, đáp ứng tiêu chuẩn và kết nối doanh nghiệp với chuỗi cung ứng công nghiệp.</p>
+            <span class="iuh-fields-index__output"><span class="iuh-fields-index__output-label">Đầu ra</span>Kết nối với người mua lớn</span>
+          </span>
+        </a>
+      </li>
+    </ul>
   </div>
 </section>

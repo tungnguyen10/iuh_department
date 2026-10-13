@@ -1,98 +1,42 @@
 <section id="services" class="scroll-mt-20 bg-gray-light py-14 md:py-20 {{class}}">
   <div class="container mx-auto px-4">
     <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-end">
-      <div data-include="@shared/components/common/section-title.html" data-subtitle="Dịch vụ đo kiểm &amp; kỹ thuật" data-title="Giải pháp chuyên môn cho nhu cầu thực tế" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !max-w-xl !text-title" data-description-class="hidden"></div>
-      <p class="max-w-xl font-roboto text-base leading-7 text-gray-700 lg:justify-self-end">Nhóm dịch vụ đo lường, kiểm tra, phân tích và đánh giá kỹ thuật phục vụ kiểm soát chất lượng trong sản xuất. Các nhu cầu khác được tiếp nhận và phân luồng qua đầu mối của Trung tâm.</p>
+      <div data-include="@shared/components/common/section-title.html" data-subtitle="Dịch vụ kỹ thuật &amp; đo kiểm" data-title="Năng lực đo kiểm phục vụ kiểm soát chất lượng sản xuất" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !max-w-xl !text-title" data-description-class="hidden"></div>
+      <p class="max-w-xl font-roboto text-base leading-7 text-gray-700 lg:justify-self-end">Đo lường, kiểm tra, thử nghiệm, phân tích và đánh giá chất lượng trên hệ thống phòng thí nghiệm của Nhà trường, với báo cáo kết quả phục vụ hồ sơ chất lượng của doanh nghiệp.</p>
     </div>
 
-    <div class="iuh-service-explorer tabs-container mt-10 grid gap-px overflow-hidden rounded-lg border border-stroke bg-stroke lg:grid-cols-[18rem_minmax(0,1fr)]">
-      <div class="tabs-nav flex overflow-x-auto bg-primary-white lg:flex-col lg:overflow-visible" role="tablist" aria-label="Nhóm dịch vụ IDCS">
-        <button type="button" role="tab" aria-selected="true" aria-controls="service-panel-measurement" id="service-tab-measurement" class="tab-btn active" data-tab="measurement"><span class="iuh-service-explorer__index">01</span><span class="iuh-service-explorer__label">Đo lường</span></button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="service-panel-inspection" id="service-tab-inspection" class="tab-btn" data-tab="inspection"><span class="iuh-service-explorer__index">02</span><span class="iuh-service-explorer__label">Kiểm tra</span></button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="service-panel-analysis" id="service-tab-analysis" class="tab-btn" data-tab="analysis"><span class="iuh-service-explorer__index">03</span><span class="iuh-service-explorer__label">Phân tích</span></button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="service-panel-assessment" id="service-tab-assessment" class="tab-btn" data-tab="assessment"><span class="iuh-service-explorer__index">04</span><span class="iuh-service-explorer__label">Đánh giá</span></button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="service-panel-consulting" id="service-tab-consulting" class="tab-btn" data-tab="consulting"><span class="iuh-service-explorer__index">05</span><span class="iuh-service-explorer__label">Tư vấn kỹ thuật</span></button>
+    <div class="iuh-service-explorer tabs-container mt-10 md:mt-12">
+      <div class="iuh-service-explorer__aside">
+        <p class="iuh-service-explorer__aside-label">5 nhóm dịch vụ</p>
+        <div class="tabs-nav" role="tablist" aria-label="Nhóm dịch vụ kỹ thuật &amp; đo kiểm">
+          <button type="button" role="tab" aria-selected="true" aria-controls="service-panel-measurement" id="service-tab-measurement" class="tab-btn active" data-tab="measurement"><span class="iuh-service-explorer__icon"><img src="/assets/svgs/icon-grid.svg" alt="" class="size-5" /></span><span class="iuh-service-explorer__label">Đo lường<span class="iuh-service-explorer__meta">Kích thước · biên dạng</span></span></button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="service-panel-inspection" id="service-tab-inspection" class="tab-btn" data-tab="inspection" tabindex="-1"><span class="iuh-service-explorer__icon"><img src="/assets/svgs/icon-search.svg" alt="" class="size-5" /></span><span class="iuh-service-explorer__label">Kiểm tra<span class="iuh-service-explorer__meta">Không phá hủy · lớp phủ</span></span></button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="service-panel-testing" id="service-tab-testing" class="tab-btn" data-tab="testing" tabindex="-1"><span class="iuh-service-explorer__icon"><img src="/assets/svgs/icon-shield-check.svg" alt="" class="size-5" /></span><span class="iuh-service-explorer__label">Thử nghiệm<span class="iuh-service-explorer__meta">Cơ tính vật liệu</span></span></button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="service-panel-analysis" id="service-tab-analysis" class="tab-btn" data-tab="analysis" tabindex="-1"><span class="iuh-service-explorer__icon"><img src="/assets/svgs/icon-eye.svg" alt="" class="size-5" /></span><span class="iuh-service-explorer__label">Phân tích<span class="iuh-service-explorer__meta">Thành phần · tổ chức</span></span></button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="service-panel-quality" id="service-tab-quality" class="tab-btn" data-tab="quality" tabindex="-1"><span class="iuh-service-explorer__icon"><img src="/assets/svgs/icon-award.svg" alt="" class="size-5" /></span><span class="iuh-service-explorer__label">Đánh giá chất lượng<span class="iuh-service-explorer__meta">Quy trình · hệ thống đo</span></span></button>
+        </div>
+        <a href="/contact.html" class="iuh-service-explorer__other">Cần dịch vụ khác? <span class="font-semibold text-primary-yellow">Liên hệ đầu mối</span></a>
       </div>
 
-      <div class="tabs-content bg-primary-white">
-        <div class="tab-panel" role="tabpanel" id="service-panel-measurement" aria-labelledby="service-tab-measurement" data-tab-panel="measurement">
-          <div class="grid gap-8 p-7 md:p-10 lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-start">
-            <div>
-              <h3 class="font-inter text-2xl font-bold text-title">Dịch vụ đo lường</h3>
-              <p class="mt-3 font-roboto leading-7 text-gray-700">Đo lường các thông số kỹ thuật của vật liệu, chi tiết và sản phẩm phục vụ kiểm soát chất lượng trong sản xuất.</p>
-              <ul class="mt-6 space-y-3 font-roboto text-sm leading-6 text-gray-700 md:text-base">
-                <li class="flex gap-3"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-5 shrink-0" />Đo kích thước, dung sai và đặc tính hình học</li>
-                <li class="flex gap-3"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-5 shrink-0" />Đo thông số cơ, lý, nhiệt của vật liệu</li>
-                <li class="flex gap-3"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-5 shrink-0" />Lập báo cáo kết quả đo phục vụ hồ sơ chất lượng</li>
-              </ul>
-              <div class="mt-8"><div data-include="@shared/components/button/button.html" data-variant="4" data-url="/contact.html" data-text="Yêu cầu dịch vụ" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div></div>
-            </div>
-            <img src="/assets/images/idcs-equipment.jpg" alt="Thiết bị kỹ thuật phục vụ đo lường tại IUH" width="1600" height="1066" class="aspect-[4/3] w-full rounded-lg object-cover lg:aspect-[3/4]" loading="lazy" decoding="async" />
-          </div>
+      <div class="tabs-content">
+        <div class="tab-panel" role="tabpanel" id="service-panel-measurement" aria-labelledby="service-tab-measurement" data-tab-panel="measurement" tabindex="0">
+          <div data-include="@faculty/components/home/service-explorer/service-panel.html" data-eyebrow="Đo lường" data-title="Đo kích thước, biên dạng và dung sai hình học" data-description="Đo chính xác chi tiết, khuôn và sản phẩm theo bản vẽ kỹ thuật, phục vụ kiểm soát chất lượng đầu vào, trong quá trình và thành phẩm." data-cap1="Đo kích thước và dung sai hình học (GD&amp;T)" data-cap2="Đo biên dạng và độ nhám bề mặt" data-cap3="Kiểm tra mẫu đầu (FAI) theo bản vẽ" data-cap4="Báo cáo kết quả đo kèm số liệu chi tiết" data-image="/assets/images/idcs-service-measurement.jpg" data-image-alt="Máy đo tọa độ 3 chiều CMM trong phòng đo lường" data-image-height="900" data-credit="AB Technology (Newark) Ltd. · CC BY-SA 4.0" data-credit-url="https://commons.wikimedia.org/wiki/File:5_Axis_Scanning_Coordinate_Measurement_Machine_(CMM).png" data-equipment-heading="Thiết bị chính" data-eq1-name="Máy đo tọa độ 3 chiều (CMM)" data-eq1-spec="700 × 1000 × 600 mm · ±2,5 µm" data-eq2-name="Máy đo biên dạng &amp; độ nhám" data-eq2-spec="Ra 0,01–40 µm" data-eq3-name="Thước cặp, panme điện tử" data-eq3-spec="Độ phân giải 0,001 mm"></div>
         </div>
 
-        <div class="tab-panel hidden" role="tabpanel" id="service-panel-inspection" aria-labelledby="service-tab-inspection" data-tab-panel="inspection">
-          <div class="grid gap-8 p-7 md:p-10 lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-start">
-            <div>
-              <h3 class="font-inter text-2xl font-bold text-title">Dịch vụ kiểm tra</h3>
-              <p class="mt-3 font-roboto leading-7 text-gray-700">Kiểm tra tình trạng thiết bị, dây chuyền và điều kiện vận hành nhằm phát hiện sớm rủi ro kỹ thuật.</p>
-              <ul class="mt-6 space-y-3 font-roboto text-sm leading-6 text-gray-700 md:text-base">
-                <li class="flex gap-3"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-5 shrink-0" />Kiểm tra tình trạng kỹ thuật thiết bị sản xuất</li>
-                <li class="flex gap-3"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-5 shrink-0" />Kiểm tra điều kiện an toàn và môi trường làm việc</li>
-                <li class="flex gap-3"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-5 shrink-0" />Đề xuất phương án khắc phục và theo dõi sau kiểm tra</li>
-              </ul>
-              <div class="mt-8"><div data-include="@shared/components/button/button.html" data-variant="4" data-url="/contact.html" data-text="Yêu cầu dịch vụ" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div></div>
-            </div>
-            <img src="/assets/images/idcs-facility.jpg" alt="Phòng thí nghiệm và xưởng thực hành của IUH" width="1600" height="1067" class="aspect-[4/3] w-full rounded-lg object-cover lg:aspect-[3/4]" loading="lazy" decoding="async" />
-          </div>
+        <div class="tab-panel hidden" role="tabpanel" id="service-panel-inspection" aria-labelledby="service-tab-inspection" data-tab-panel="inspection" tabindex="0">
+          <div data-include="@faculty/components/home/service-explorer/service-panel.html" data-eyebrow="Kiểm tra" data-title="Kiểm tra không phá hủy và tình trạng kỹ thuật" data-description="Phát hiện sớm khuyết tật trong vật liệu, mối hàn và lớp phủ mà không làm hỏng chi tiết, giúp doanh nghiệp chủ động xử lý trước khi xuất xưởng." data-cap1="Kiểm tra siêu âm khuyết tật mối hàn, vật đúc" data-cap2="Kiểm tra thẩm thấu và từ tính bề mặt" data-cap3="Đo chiều dày lớp phủ, lớp mạ" data-cap4="Kiểm tra nhiệt độ vận hành thiết bị" data-image="/assets/images/idcs-service-inspection.jpg" data-image-alt="Kỹ thuật viên đặt đầu dò siêu âm lên mẫu chuẩn khi kiểm tra không phá hủy" data-image-height="800" data-credit="U.S. Air Force · Public domain" data-credit-url="https://commons.wikimedia.org/wiki/File:Integrity_and_Precision-_non-destructive_inspection_technicians_ensure_aircraft_safety_(9076928).jpg" data-equipment-heading="Thiết bị chính" data-eq1-name="Máy siêu âm khuyết tật" data-eq1-spec="Chiều dày thép 1–500 mm" data-eq2-name="Máy đo chiều dày lớp phủ" data-eq2-spec="0–1.500 µm · ±1 %" data-eq3-name="Camera ảnh nhiệt" data-eq3-spec="−20 đến 650 °C"></div>
         </div>
 
-        <div class="tab-panel hidden" role="tabpanel" id="service-panel-analysis" aria-labelledby="service-tab-analysis" data-tab-panel="analysis">
-          <div class="grid gap-8 p-7 md:p-10 lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-start">
-            <div>
-              <h3 class="font-inter text-2xl font-bold text-title">Dịch vụ phân tích</h3>
-              <p class="mt-3 font-roboto leading-7 text-gray-700">Phân tích thành phần, cấu trúc và đặc tính của mẫu phục vụ nghiên cứu phát triển và kiểm soát nguyên liệu.</p>
-              <ul class="mt-6 space-y-3 font-roboto text-sm leading-6 text-gray-700 md:text-base">
-                <li class="flex gap-3"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-5 shrink-0" />Phân tích thành phần và tính chất vật liệu</li>
-                <li class="flex gap-3"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-5 shrink-0" />Phân tích mẫu phục vụ kiểm soát nguyên liệu đầu vào</li>
-                <li class="flex gap-3"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-5 shrink-0" />Diễn giải kết quả và khuyến nghị kỹ thuật</li>
-              </ul>
-              <div class="mt-8"><div data-include="@shared/components/button/button.html" data-variant="4" data-url="/contact.html" data-text="Yêu cầu dịch vụ" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div></div>
-            </div>
-            <img src="/assets/images/idcs-consulting.jpg" alt="Chuyên gia trao đổi kết quả phân tích kỹ thuật" width="1600" height="1066" class="aspect-[4/3] w-full rounded-lg object-cover lg:aspect-[3/4]" loading="lazy" decoding="async" />
-          </div>
+        <div class="tab-panel hidden" role="tabpanel" id="service-panel-testing" aria-labelledby="service-tab-testing" data-tab-panel="testing" tabindex="0">
+          <div data-include="@faculty/components/home/service-explorer/service-panel.html" data-eyebrow="Thử nghiệm" data-title="Thử nghiệm cơ tính vật liệu và sản phẩm" data-description="Xác định độ bền, độ cứng và khả năng chịu va đập của vật liệu theo tiêu chuẩn TCVN, ISO và ASTM mà doanh nghiệp yêu cầu." data-cap1="Thử kéo, nén, uốn kim loại và polymer" data-cap2="Đo độ cứng Rockwell, Vickers, Brinell" data-cap3="Thử va đập Charpy" data-cap4="Thử nghiệm theo tiêu chuẩn khách hàng chỉ định" data-image="/assets/images/idcs-service-testing.jpg" data-image-alt="Máy thử kéo nén vạn năng trong phòng thí nghiệm vật liệu" data-image-height="900" data-credit="Vis M · CC BY-SA 4.0" data-credit-url="https://commons.wikimedia.org/wiki/File:UTM_Autograph.jpg" data-equipment-heading="Thiết bị chính" data-eq1-name="Máy thử kéo – nén vạn năng" data-eq1-spec="Tải 100 kN · cấp 0,5" data-eq2-name="Máy đo độ cứng đa năng" data-eq2-spec="HRC 20–70 · HV 10–1000" data-eq3-name="Máy thử va đập Charpy" data-eq3-spec="Năng lượng 300 J"></div>
         </div>
 
-        <div class="tab-panel hidden" role="tabpanel" id="service-panel-assessment" aria-labelledby="service-tab-assessment" data-tab-panel="assessment">
-          <div class="grid gap-8 p-7 md:p-10 lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-start">
-            <div>
-              <h3 class="font-inter text-2xl font-bold text-title">Dịch vụ đánh giá</h3>
-              <p class="mt-3 font-roboto leading-7 text-gray-700">Đánh giá hiện trạng quy trình, năng lực sản xuất và mức độ đáp ứng yêu cầu kỹ thuật của doanh nghiệp.</p>
-              <ul class="mt-6 space-y-3 font-roboto text-sm leading-6 text-gray-700 md:text-base">
-                <li class="flex gap-3"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-5 shrink-0" />Đánh giá hiện trạng quy trình sản xuất</li>
-                <li class="flex gap-3"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-5 shrink-0" />Đánh giá năng lực thiết bị và nhân sự kỹ thuật</li>
-                <li class="flex gap-3"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-5 shrink-0" />Báo cáo khoảng cách và lộ trình cải thiện</li>
-              </ul>
-              <div class="mt-8"><div data-include="@shared/components/button/button.html" data-variant="4" data-url="/contact.html" data-text="Yêu cầu dịch vụ" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div></div>
-            </div>
-            <img src="/assets/images/idcs-training.jpg" alt="Buổi đánh giá và trao đổi chuyên môn với doanh nghiệp" width="1600" height="1066" class="aspect-[4/3] w-full rounded-lg object-cover lg:aspect-[3/4]" loading="lazy" decoding="async" />
-          </div>
+        <div class="tab-panel hidden" role="tabpanel" id="service-panel-analysis" aria-labelledby="service-tab-analysis" data-tab-panel="analysis" tabindex="0">
+          <div data-include="@faculty/components/home/service-explorer/service-panel.html" data-eyebrow="Phân tích" data-title="Phân tích thành phần và tổ chức tế vi" data-description="Làm rõ vật liệu được tạo nên từ đâu và vì sao hư hỏng, làm cơ sở cho kiểm soát nguyên liệu đầu vào và cải tiến công nghệ." data-cap1="Phân tích thành phần hóa học hợp kim" data-cap2="Phân tích tổ chức tế vi kim loại" data-cap3="Phân tích nguyên nhân hư hỏng chi tiết" data-cap4="Diễn giải kết quả và khuyến nghị kỹ thuật" data-image="/assets/images/idcs-service-analysis.jpg" data-image-alt="Kính hiển vi điện tử quét và màn hình hiển thị ảnh bề mặt mẫu" data-image-height="862" data-credit="Tadeáš Bednarz · CC BY-SA 4.0" data-credit-url="https://commons.wikimedia.org/wiki/File:Scanning_electron_microscope_-_UFCH_JH_(2020)_01.jpg" data-equipment-heading="Thiết bị chính" data-eq1-name="Kính hiển vi điện tử quét (SEM)" data-eq1-spec="Độ phóng đại đến 300.000×" data-eq2-name="Máy quang phổ phát xạ (OES)" data-eq2-spec="Trên 20 nguyên tố trong hợp kim" data-eq3-name="Kính hiển vi kim tương" data-eq3-spec="50–1000×"></div>
         </div>
 
-        <div class="tab-panel hidden" role="tabpanel" id="service-panel-consulting" aria-labelledby="service-tab-consulting" data-tab-panel="consulting">
-          <div class="grid gap-8 p-7 md:p-10 lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-start">
-            <div>
-              <h3 class="font-inter text-2xl font-bold text-title">Tư vấn kỹ thuật</h3>
-              <p class="mt-3 font-roboto leading-7 text-gray-700">Tư vấn lựa chọn giải pháp kỹ thuật, thiết bị và phương án triển khai phù hợp với điều kiện thực tế của doanh nghiệp.</p>
-              <ul class="mt-6 space-y-3 font-roboto text-sm leading-6 text-gray-700 md:text-base">
-                <li class="flex gap-3"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-5 shrink-0" />Tư vấn lựa chọn thiết bị và công nghệ</li>
-                <li class="flex gap-3"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-5 shrink-0" />Tư vấn xây dựng quy trình kiểm soát chất lượng</li>
-                <li class="flex gap-3"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-5 shrink-0" />Đồng hành trong quá trình triển khai tại hiện trường</li>
-              </ul>
-              <div class="mt-8"><div data-include="@shared/components/button/button.html" data-variant="4" data-url="/contact.html" data-text="Yêu cầu dịch vụ" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div></div>
-            </div>
-            <img src="/assets/images/idcs-technology-transfer.jpg" alt="Chuyên gia IUH làm việc cùng doanh nghiệp" width="1600" height="1066" class="aspect-[4/3] w-full rounded-lg object-cover lg:aspect-[3/4]" loading="lazy" decoding="async" />
-          </div>
+        <div class="tab-panel hidden" role="tabpanel" id="service-panel-quality" aria-labelledby="service-tab-quality" data-tab-panel="quality" tabindex="0">
+          <div data-include="@faculty/components/home/service-explorer/service-panel.html" data-eyebrow="Đánh giá chất lượng" data-title="Đánh giá quy trình, năng lực và hệ thống đo" data-description="Đánh giá mức độ đáp ứng yêu cầu chất lượng của dây chuyền và nhà cung ứng, chỉ ra khoảng cách và lộ trình khắc phục cụ thể." data-cap1="Đánh giá hiện trạng quy trình sản xuất" data-cap2="Đánh giá năng lực quá trình và hệ thống đo" data-cap3="Đánh giá nhà cung ứng theo yêu cầu khách hàng" data-cap4="Báo cáo khoảng cách và lộ trình cải thiện" data-image="/assets/images/idcs-service-quality.jpg" data-image-alt="Trạm kiểm tra chất lượng khung gầm trên dây chuyền lắp ráp ô tô" data-image-height="865" data-credit="Brian Snelson · CC BY 2.0" data-credit-url="https://commons.wikimedia.org/wiki/File:Rolling_chassis_inspection_point.jpg" data-equipment-heading="Công cụ &amp; tiêu chuẩn" data-eq1-name="Đánh giá hệ thống quản lý" data-eq1-spec="ISO 9001 · IATF 16949" data-eq2-name="Năng lực quá trình" data-eq2-spec="SPC · Cp, Cpk" data-eq3-name="Phân tích hệ thống đo" data-eq3-spec="MSA · Gage R&amp;R"></div>
         </div>
       </div>
     </div>

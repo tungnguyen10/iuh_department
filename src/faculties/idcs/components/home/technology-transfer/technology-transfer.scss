@@ -1,0 +1,103 @@
+// Six transfer steps grouped by who leads them; one rail runs blue (IUH) → yellow (enterprise).
+.iuh-handoff {
+  @apply grid gap-8 md:grid-cols-3 md:gap-6 lg:gap-0;
+
+  &__phase {
+    --from: theme('colors.primary.dark-blue');
+    --to: theme('colors.secondary.blue');
+    @apply min-w-0;
+
+    &:nth-child(2) {
+      --from: theme('colors.secondary.blue');
+      --to: theme('colors.primary.yellow');
+    }
+
+    &:nth-child(3) {
+      --from: theme('colors.primary.yellow');
+      --to: theme('colors.primary.yellow');
+    }
+  }
+
+  &__owner {
+    @apply flex flex-col gap-0.5 font-inter text-base font-bold text-title lg:pr-6;
+  }
+
+  &__owner-key {
+    @apply text-xs uppercase tracking-[0.16em] text-primary-dark-blue/60;
+  }
+
+  // Stacked (mobile/tablet): the rail runs down the left edge of each phase.
+  &__steps {
+    @apply relative mt-5 grid gap-6 pl-8;
+
+    &::before {
+      @apply pointer-events-none absolute bottom-2 left-[7px] top-2 w-0.5;
+      content: '';
+      background: linear-gradient(var(--from), var(--to));
+    }
+  }
+
+  &__step {
+    @apply relative;
+  }
+
+  &__node {
+    @apply absolute -left-8 top-0.5 size-4 rounded-full border-[3px] bg-primary-white transition-colors duration-300;
+    border-color: var(--from);
+  }
+
+  &__step:nth-child(2) &__node {
+    border-color: var(--to);
+  }
+
+  &__index {
+    @apply font-inter text-xs font-bold tracking-[0.2em] text-gray;
+  }
+
+  &__title {
+    @apply mt-1 font-inter text-lg font-bold leading-snug text-title transition-colors duration-300;
+  }
+
+  &__text {
+    @apply mt-1.5 text-sm leading-6 text-gray-700;
+  }
+
+  // Desktop: the rail turns horizontal and runs unbroken across all three phases.
+  @screen lg {
+    &__steps {
+      @apply grid-cols-2 pl-0 pr-6 pt-10;
+
+      &::before {
+        @apply bottom-auto left-0 right-0 top-[7px] h-0.5 w-auto;
+        background: linear-gradient(90deg, var(--from), var(--to));
+      }
+    }
+
+    &__phase:last-child &__steps {
+      @apply pr-0;
+    }
+
+    &__node {
+      @apply left-0 top-[-2.5rem];
+    }
+  }
+}
+
+@media (hover: hover) {
+  .iuh-handoff__step:hover {
+    .iuh-handoff__node {
+      @apply border-primary-yellow bg-primary-yellow;
+    }
+
+    .iuh-handoff__title {
+      @apply text-primary-dark-blue;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iuh-handoff__node,
+  .iuh-handoff__title {
+    transition: none;
+  }
+}

@@ -1,40 +1,137 @@
-// Vertical service nav reusing the shared tabs runtime; scoped selectors outrank
+// Service explorer on the shared tabs runtime; scoped selectors outrank
 // the single-class utilities that tabs.js toggles on the active button.
 .iuh-service-explorer {
+  // No overflow-hidden here: it would stop the mobile chip rail from sticking.
+  @apply grid rounded-xl border border-primary-dark-blue/10 bg-primary-white;
+  box-shadow: 0 30px 60px -36px rgb(21 56 152 / 0.45);
+
+  @screen lg {
+    grid-template-columns: 19rem minmax(0, 1fr);
+  }
+
+  // Below lg the chip rail sticks under the 80px site header while the panel scrolls.
+  &__aside {
+    @apply sticky top-20 z-10 flex min-w-0 flex-col rounded-t-xl bg-primary-dark-blue shadow-[0_8px_16px_-12px_rgb(0_0_0/0.4)];
+
+    @screen lg {
+      @apply static rounded-l-xl rounded-tr-none shadow-none;
+    }
+  }
+
+  &__aside-label {
+    @apply hidden px-6 pb-3 pt-7 text-xs font-bold uppercase tracking-[0.16em] text-primary-white/50 lg:block;
+  }
+
+  // Mobile/tablet: a horizontally scrolling chip rail; desktop: a vertical list.
   .tabs-nav {
-    gap: 1px;
-    background-color: theme('colors.stroke');
+    @apply flex gap-2 overflow-x-auto scroll-px-4 px-4 py-3 sm:scroll-px-6 sm:px-6 sm:py-4;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @screen lg {
+      @apply flex-col gap-0 overflow-visible p-0;
+    }
   }
 
   .tab-btn {
-    @apply flex shrink-0 items-center gap-3 whitespace-nowrap bg-primary-white px-5 py-4 text-left text-sm font-semibold text-gray transition-colors duration-200 md:text-base;
+    @apply relative flex shrink-0 items-center gap-3 rounded-full border border-primary-white/20 px-4 py-2 text-left text-sm font-semibold text-primary-white/75 transition-colors duration-200;
 
     &:focus-visible {
       @apply outline-none ring-2 ring-inset ring-primary-yellow;
     }
 
     @screen lg {
-      @apply w-full border-l-4 border-transparent;
+      @apply w-full rounded-none border-0 border-t border-primary-white/10 px-6 py-4 text-base;
+
+      &::before {
+        @apply absolute inset-y-0 left-0 w-1 origin-top scale-y-0 bg-primary-yellow transition-transform duration-300;
+        content: '';
+      }
     }
   }
 
   .tab-btn:hover {
-    @apply bg-secondary-blue-light/40 text-primary-dark-blue;
+    @apply border-primary-white/40 bg-primary-white/5 text-primary-white;
   }
 
   .tab-btn.active {
-    @apply border-b-0 bg-primary-dark-blue text-primary-white;
+    @apply border-primary-yellow bg-primary-yellow text-primary-dark-blue;
 
     @screen lg {
-      @apply border-l-4 border-primary-yellow;
+      @apply border-primary-white/10 bg-primary-white/10 text-primary-white;
+
+      &::before {
+        @apply scale-y-100;
+      }
     }
   }
 
-  .iuh-service-explorer__index {
-    @apply font-inter text-xs font-bold tracking-[0.18em] text-primary-yellow;
+  &__icon {
+    @apply hidden size-9 shrink-0 items-center justify-center rounded-md bg-primary-white/10 text-primary-white transition-colors duration-200 lg:flex;
   }
 
-  .tab-btn:not(.active) .iuh-service-explorer__index {
-    @apply text-gray/60;
+  .tab-btn.active &__icon {
+    @apply bg-primary-yellow text-primary-dark-blue;
+  }
+
+  &__label {
+    @apply flex flex-col whitespace-nowrap;
+  }
+
+  &__meta {
+    @apply mt-0.5 hidden text-xs font-normal text-primary-white/55 lg:block;
+  }
+
+  &__other {
+    @apply mt-auto hidden border-t border-primary-white/10 px-6 py-5 text-sm text-primary-white/75 transition-colors hover:text-primary-white lg:block;
+
+    &:focus-visible {
+      @apply outline-none ring-2 ring-inset ring-primary-yellow;
+    }
+  }
+
+  .tabs-content {
+    @apply min-w-0;
+  }
+
+  .tab-panel:focus-visible {
+    @apply outline-none ring-2 ring-inset ring-primary-yellow;
+  }
+
+  &__panel {
+    @apply p-5 sm:p-7 lg:p-10;
+  }
+}
+
+// Equipment register styled like an instrument calibration tag.
+.iuh-datasheet {
+  @apply overflow-hidden rounded-lg border border-primary-dark-blue/20;
+
+  &__head {
+    @apply flex items-center gap-2 bg-primary-dark-blue px-4 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-primary-white;
+
+    &::before {
+      @apply size-1.5 shrink-0 rounded-full bg-primary-yellow;
+      content: '';
+    }
+  }
+
+  &__rows {
+    @apply divide-y divide-dashed divide-primary-dark-blue/15;
+  }
+
+  &__row {
+    @apply grid gap-0.5 px-4 py-2.5 text-sm;
+
+    dt {
+      @apply font-medium text-title;
+    }
+
+    dd {
+      @apply font-semibold tabular-nums text-primary-dark-blue;
+    }
   }
 }

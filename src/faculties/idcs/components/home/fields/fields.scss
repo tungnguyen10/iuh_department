@@ -1,18 +1,56 @@
 .iuh-fields-index {
   &__row {
-    @apply grid items-start gap-x-5 rounded-lg transition-colors duration-300;
+    @apply relative grid h-full items-start gap-x-5 rounded-lg transition-colors duration-300;
     grid-template-columns: auto minmax(0, 1fr);
 
     &:focus-visible {
       @apply outline-none ring-2 ring-offset-4;
       --tw-ring-color: theme('colors.primary.yellow');
     }
+
+    // Desktop: one continuous rail threads the five service nodes like a production line.
+    @screen lg {
+      @apply flex flex-col pr-8;
+
+      &::before,
+      &::after {
+        @apply pointer-events-none absolute left-0 right-0;
+        content: '';
+      }
+
+      &::before {
+        @apply top-6 h-px bg-primary-dark-blue/15;
+      }
+
+      &::after {
+        @apply h-[3px] origin-left scale-x-0 bg-primary-yellow transition-transform duration-500 ease-out;
+        top: calc(1.5rem - 1px);
+      }
+
+      &:hover::after,
+      &:focus-visible::after {
+        @apply scale-x-100;
+      }
+    }
   }
 
   &__mark {
-    @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border transition-colors duration-300;
+    @apply relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border bg-primary-white transition-colors duration-300;
     border-color: theme('colors.stroke');
     color: theme('colors.primary.dark-blue');
+  }
+
+  &__body {
+    @apply flex h-full flex-col lg:mt-6;
+  }
+
+  &__output {
+    @apply mt-auto block pt-4 text-sm font-medium leading-6 text-title;
+  }
+
+  &__output-label {
+    @apply mb-1 block border-t border-dashed pt-3 text-[11px] font-bold uppercase tracking-[0.14em] text-primary-dark-blue;
+    border-color: theme('colors.primary.dark-blue / 20%');
   }
 
   &__row:hover &__mark,
@@ -40,11 +78,15 @@
   &.is-armed &__item:nth-child(4) {
     transition-delay: 270ms;
   }
+  &.is-armed &__item:nth-child(5) {
+    transition-delay: 360ms;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .iuh-fields-index__item,
-  .iuh-fields-index__mark {
+  .iuh-fields-index__mark,
+  .iuh-fields-index__row::after {
     transition: none !important;
   }
 }

@@ -48,7 +48,26 @@ export class Tabs {
     // Attach click handlers
     this.buttons.forEach((button, index) => {
       button.addEventListener('click', () => this.showTab(index))
+      if (button.getAttribute('role') === 'tab') {
+        button.addEventListener('keydown', (event) => this.handleKeydown(event, index))
+      }
     })
+  }
+
+  handleKeydown(event, index) {
+    const last = this.buttons.length - 1
+    const keys = {
+      ArrowRight: index === last ? 0 : index + 1,
+      ArrowDown: index === last ? 0 : index + 1,
+      ArrowLeft: index === 0 ? last : index - 1,
+      ArrowUp: index === 0 ? last : index - 1,
+      Home: 0,
+      End: last,
+    }
+    if (!(event.key in keys)) return
+    event.preventDefault()
+    this.showTab(keys[event.key])
+    this.buttons[keys[event.key]].focus()
   }
 
   initFromJSON() {
@@ -127,8 +146,19 @@ export class Tabs {
         btn.classList.remove('active', 'border-primary-dark-blue', 'text-primary-dark-blue')
         btn.classList.add('text-gray', 'border-transparent')
       }
-      if (btn.getAttribute('role') === 'tab') btn.setAttribute('aria-selected', String(i === index))
+      if (btn.getAttribute('role') === 'tab') {
+        btn.setAttribute('aria-selected', String(i === index))
+        btn.setAttribute('tabindex', i === index ? '0' : '-1')
+      }
     })
+
+    // Keep the active tab visible in horizontally scrolling tab rails.
+    const nav = button.parentElement
+    if (nav && nav.scrollWidth > nav.clientWidth) {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      const offset = button.getBoundingClientRect().left - nav.getBoundingClientRect().left + nav.scrollLeft
+      nav.scrollTo({ left: offset - (nav.clientWidth - button.offsetWidth) / 2, behavior: reduce ? 'auto' : 'smooth' })
+    }
     
     // Update panels
     this.panels.forEach((panel) => {

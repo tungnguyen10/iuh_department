@@ -1,0 +1,114 @@
+// Five service groups on the dark hero, threaded by one rail like a production line.
+.iuh-fields-index {
+  &__item {
+    @apply relative;
+  }
+
+  // Mobile: the rail runs vertically from each node down to the next one.
+  @media (max-width: 639.98px) {
+    &__item:not(:last-child)::before {
+      @apply pointer-events-none absolute left-6 top-12 w-px bg-primary-white/20;
+      content: '';
+      bottom: -2rem;
+    }
+  }
+
+  &__row {
+    @apply relative grid h-full items-start gap-x-5 rounded-lg;
+    grid-template-columns: auto minmax(0, 1fr);
+
+    &:focus-visible {
+      @apply outline-none ring-2 ring-offset-4;
+      --tw-ring-color: theme('colors.primary.yellow');
+      --tw-ring-offset-color: theme('colors.primary.dark-blue');
+    }
+
+    @screen lg {
+      @apply flex flex-col pr-8;
+
+      &::before,
+      &::after {
+        @apply pointer-events-none absolute left-0 right-0;
+        content: '';
+      }
+
+      &::before {
+        @apply top-6 h-px bg-primary-white/20;
+      }
+
+      &::after {
+        @apply h-[3px] origin-left scale-x-0 bg-primary-yellow transition-transform duration-500 ease-out;
+        top: calc(1.5rem - 1px);
+      }
+
+      &:hover::after,
+      &:focus-visible::after {
+        @apply scale-x-100;
+      }
+    }
+  }
+
+  &__mark {
+    @apply relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-primary-white/25 bg-primary-dark-blue text-primary-white transition-colors duration-300;
+  }
+
+  &__row:hover &__mark,
+  &__row:focus-visible &__mark {
+    @apply border-primary-yellow bg-primary-yellow text-primary-dark-blue;
+  }
+
+  &__body {
+    @apply flex h-full flex-col lg:mt-6;
+  }
+
+  &__title {
+    @apply font-inter text-lg font-bold leading-snug text-primary-white transition-colors duration-300;
+  }
+
+  &__row:hover &__title,
+  &__row:focus-visible &__title {
+    @apply text-primary-yellow;
+  }
+
+  &__text {
+    @apply mt-2 text-sm leading-6 text-primary-white/70;
+  }
+
+  &__output {
+    @apply mt-auto block pt-4 text-sm font-medium leading-6 text-primary-white;
+  }
+
+  &__output-label {
+    @apply mb-1 block border-t border-dashed border-primary-white/20 pt-3 text-xs font-bold uppercase leading-4 tracking-[0.14em] text-primary-yellow;
+  }
+
+  // Armed by JS only, so the list stays fully visible when JS is unavailable.
+  &.is-armed &__item {
+    @apply translate-y-3 opacity-0 transition-all duration-500 ease-out;
+  }
+
+  &.is-armed.is-visible &__item {
+    @apply translate-y-0 opacity-100;
+  }
+
+  &.is-armed &__item:nth-child(2) {
+    transition-delay: 90ms;
+  }
+  &.is-armed &__item:nth-child(3) {
+    transition-delay: 180ms;
+  }
+  &.is-armed &__item:nth-child(4) {
+    transition-delay: 270ms;
+  }
+  &.is-armed &__item:nth-child(5) {
+    transition-delay: 360ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iuh-fields-index__item,
+  .iuh-fields-index__mark,
+  .iuh-fields-index__row::after {
+    transition: none !important;
+  }
+}
