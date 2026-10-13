@@ -1,9 +1,17 @@
 import Swiper from "swiper";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Navigation, Pagination, Autoplay, EffectCoverflow } from "swiper/modules";
 
 export function initHeroCarousel() {
   const heroSwiper = new Swiper(".hero-swiper", {
-    modules: [Navigation, Pagination, Autoplay],
+    modules: [Navigation, Pagination, Autoplay, EffectCoverflow],
+    effect: "coverflow",
+    coverflowEffect: {
+      rotate: 24,
+      stretch: 0,
+      depth: 90,
+      modifier: 1,
+      slideShadows: true,
+    },
     speed: 800,
     loop: true,
     autoplay: {
