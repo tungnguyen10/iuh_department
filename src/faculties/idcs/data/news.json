@@ -1,68 +1,140 @@
 {
   "section": {
     "title": "Tin tức & hoạt động",
-    "description": "Thông tin về chương trình đào tạo, dịch vụ kỹ thuật và hoạt động chuyển giao công nghệ của Trung tâm IDCS."
+    "description": "Thông tin công nghiệp, công nghệ và hoạt động hỗ trợ doanh nghiệp, tổng hợp từ IDC."
   },
   "items": [
     {
       "id": 1,
-      "slug": "khai-giang-chuong-trinh-cai-tien-nang-suat-cho-doanh-nghiep",
-      "title": "Khai giảng chương trình cải tiến năng suất cho doanh nghiệp",
-      "excerpt": "Chương trình đào tạo ngắn hạn tập trung vào nhận diện lãng phí, chuẩn hóa thao tác và đo lường hiệu quả cải tiến tại hiện trường sản xuất.",
-      "category": "Đào tạo",
-      "date": "22 tháng 9, 2026",
-      "image": "/assets/images/idcs-training.jpg",
-      "imageAlt": "Học viên doanh nghiệp tham gia chương trình cải tiến năng suất",
+      "slug": "samsung-mo-rong-dau-an-dau-tu-trong-he-sinh-thai-cong-nghe-viet-nam",
+      "title": "Samsung mở rộng dấu ấn đầu tư trong hệ sinh thái công nghệ Việt Nam",
+      "excerpt": "Từ sản xuất đến nghiên cứu và đào tạo, Samsung mở rộng hợp tác với doanh nghiệp Việt, góp phần nâng năng lực công nghiệp hỗ trợ.",
+      "category": "Công nghiệp hỗ trợ",
+      "date": "02 tháng 10, 2026",
+      "dateISO": "2026-10-02",
+      "imageAlt": "Dây chuyền sản xuất điện thoại Samsung tại Việt Nam",
+      "caption": "Nhà máy sản xuất điện thoại Samsung tại Việt Nam. Ảnh: SS, theo IDC.",
       "content": [
-        { "type": "paragraph", "text": "Chương trình được thiết kế theo nhu cầu thực tế của doanh nghiệp sản xuất, kết hợp giữa kiến thức chuyên môn của IUH và bài tập triển khai trực tiếp trên dây chuyền." },
-        { "type": "heading", "text": "Nội dung chính" },
-        { "type": "list", "items": ["Nhận diện và phân loại lãng phí trong quy trình.", "Chuẩn hóa thao tác và tài liệu hướng dẫn công việc.", "Thiết lập chỉ số đo lường hiệu quả sau cải tiến."] },
-        { "type": "info", "title": "Đối tượng tham gia", "text": "Quản lý sản xuất, kỹ sư quy trình và nhân sự phụ trách chất lượng tại doanh nghiệp." }
-      ]
+        {
+          "type": "heading",
+          "text": "Thông tin chính"
+        },
+        {
+          "type": "paragraph",
+          "text": "Theo bài đăng của IDC ngày 02/10/2026, hoạt động của Samsung tại Việt Nam đang mở rộng từ sản xuất, xuất khẩu sang nghiên cứu, phát triển nhân lực và hỗ trợ doanh nghiệp trong nước."
+        },
+        {
+          "type": "paragraph",
+          "text": "Các chương trình phối hợp với Bộ Công Thương tập trung kết nối nhà cung ứng, tư vấn cải tiến và xây dựng nhà máy thông minh. Doanh nghiệp tham gia được tiếp cận cách quản lý chất lượng và tổ chức sản xuất theo yêu cầu của chuỗi cung ứng quốc tế."
+        },
+        {
+          "type": "paragraph",
+          "text": "Song song với sản xuất, Samsung triển khai hoạt động giáo dục STEM, đào tạo công nghệ và hợp tác với trường đại học để phát triển đội ngũ kỹ thuật."
+        }
+      ],
+      "image": "/assets/images/idc-news-samsung.jpg",
+      "sourceName": "IDC",
+      "sourceUrl": "https://idccenter.gov.vn/samsung-mo-rong-dau-an-dau-tu-trong-he-sinh-thai-cong-nghe-viet-nam/",
+      "imageSourceUrl": "https://cdn2.tuoitre.vn/thumb_w/730/471584752817336320/2026/9/17/nha-may-san-xuat-dien-thoai-cua-samsung-tai-viet-nam-1789642421177681983888.jpg"
     },
     {
       "id": 2,
-      "slug": "mo-rong-danh-muc-dich-vu-do-kiem-ky-thuat",
-      "title": "Mở rộng danh mục dịch vụ đo kiểm kỹ thuật",
-      "excerpt": "Trung tâm bổ sung các hạng mục đo lường và phân tích phục vụ kiểm soát chất lượng đầu vào, đầu ra của doanh nghiệp sản xuất.",
-      "category": "Dịch vụ kỹ thuật",
-      "date": "15 tháng 9, 2026",
-      "image": "/assets/images/idcs-facility.jpg",
-      "imageAlt": "Kỹ thuật viên thực hiện đo kiểm trong phòng thí nghiệm",
+      "slug": "khuyen-cong-gan-voi-phat-trien-cong-nghiep-dia-phuong",
+      "title": "Khuyến công gắn với năng suất và phát triển công nghiệp địa phương",
+      "excerpt": "Hội nghị khuyến công phía Bắc đặt trọng tâm vào hiệu quả sản xuất, đổi mới công nghệ và khả năng mở rộng thị trường của doanh nghiệp.",
+      "category": "Chính sách công nghiệp",
+      "date": "02 tháng 10, 2026",
+      "dateISO": "2026-10-02",
+      "imageAlt": "Cục trưởng Trần Việt Hòa phát biểu tại hội nghị khuyến công phía Bắc năm 2026",
+      "caption": "Ông Trần Việt Hòa phát biểu tại hội nghị. Nguồn ảnh: Cục Công nghiệp, qua IDC.",
       "content": [
-        { "type": "paragraph", "text": "Danh mục dịch vụ được cập nhật dựa trên nhu cầu kiểm soát chất lượng mà doanh nghiệp gửi đến Trung tâm trong thời gian gần đây." },
-        { "type": "list", "items": ["Đo lường thông số kỹ thuật của vật liệu và sản phẩm.", "Kiểm tra, đánh giá tình trạng thiết bị sản xuất.", "Phân tích mẫu và lập báo cáo kết quả thử nghiệm."] },
-        { "type": "paragraph", "text": "Doanh nghiệp có nhu cầu gửi yêu cầu qua đầu mối tiếp nhận của Trung tâm để được tư vấn phạm vi và phương án thực hiện." }
-      ]
+        {
+          "type": "heading",
+          "text": "Thông tin chính"
+        },
+        {
+          "type": "paragraph",
+          "text": "Tại hội nghị khuyến công khu vực phía Bắc tổ chức ngày 01/10/2026 ở Hải Phòng, Cục trưởng Trần Việt Hòa đề nghị đánh giá chương trình hỗ trợ bằng những thay đổi thực tế tại doanh nghiệp."
+        },
+        {
+          "type": "paragraph",
+          "text": "Các tiêu chí được nhấn mạnh gồm năng suất, công suất, giá trị gia tăng, thị trường và hiệu quả sử dụng nguyên liệu. Nguồn lực ngân sách cần khuyến khích doanh nghiệp đầu tư thêm cho công nghệ và nâng chất lượng sản phẩm."
+        },
+        {
+          "type": "paragraph",
+          "text": "Định hướng triển khai chú trọng liên kết trong chuỗi sản xuất, phù hợp điều kiện từng địa phương và hỗ trợ sản phẩm đáp ứng nhu cầu thị trường."
+        }
+      ],
+      "image": "/assets/images/idc-news-khuyen-cong.jpg",
+      "sourceName": "IDC",
+      "sourceUrl": "https://idccenter.gov.vn/cuc-truong-tran-viet-hoa-khuyen-cong-can-gan-lien-voi-chinh-sach-phat-trien-cong-nghiep-tao-dong-luc-phat-trien-cong-nghiep-dia-phuong/",
+      "imageSourceUrl": "https://media.via.gov.vn/Images/User/thinhlq/2026/10/a_hoa_pb.jpg"
     },
     {
       "id": 3,
-      "slug": "chuyen-giao-giai-phap-ky-thuat-cho-doanh-nghiep-san-xuat",
-      "title": "Chuyển giao giải pháp kỹ thuật cho doanh nghiệp sản xuất",
-      "excerpt": "Kết quả nghiên cứu của nhà trường được thử nghiệm, hoàn thiện và chuyển giao vào vận hành thực tế tại doanh nghiệp.",
-      "category": "Chuyển giao công nghệ",
-      "date": "02 tháng 9, 2026",
-      "image": "/assets/images/idcs-technology-transfer.jpg",
-      "imageAlt": "Trao đổi kỹ thuật giữa chuyên gia và doanh nghiệp",
+      "slug": "vitw-2026-va-hanoi-mip-fair-ket-noi-cong-nghiep-cong-nghe",
+      "title": "VITW 2026 và Hanoi MIP Fair: Kết nối công nghiệp, công nghệ tại Hà Nội",
+      "excerpt": "Sự kiện tại Trung tâm Triển lãm Việt Nam quy tụ giải pháp sản xuất, tự động hóa và các hoạt động kết nối doanh nghiệp trong nước, quốc tế.",
+      "category": "Sự kiện công nghiệp",
+      "date": "11 tháng 9, 2026",
+      "dateISO": "2026-09-11",
+      "imageAlt": "Các đại biểu thực hiện nghi thức khai mạc VITW 2026 và Hanoi MIP Fair tại Hà Nội",
+      "caption": "Khai mạc sự kiện tại Trung tâm Triển lãm Việt Nam. Nguồn ảnh: Cục Công nghiệp, qua IDC.",
       "content": [
-        { "type": "paragraph", "text": "Hoạt động chuyển giao đi qua các bước nghiên cứu, xây dựng giải pháp, thử nghiệm quy mô nhỏ trước khi áp dụng chính thức tại doanh nghiệp." },
-        { "type": "heading", "text": "Các giai đoạn triển khai" },
-        { "type": "list", "items": ["Khảo sát nhu cầu và điều kiện triển khai.", "Xây dựng và thử nghiệm giải pháp.", "Chuyển giao kỹ thuật và hướng dẫn vận hành.", "Theo dõi hiệu quả sau chuyển giao."] }
-      ]
+        {
+          "type": "heading",
+          "text": "Thông tin chính"
+        },
+        {
+          "type": "paragraph",
+          "text": "Tuần lễ Công nghiệp và Công nghệ Việt Nam cùng Hội chợ Sản phẩm Công nghiệp Hà Nội năm 2026 khai mạc ngày 09/9 tại Trung tâm Triển lãm Việt Nam, Đông Anh, Hà Nội."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sự kiện kết hợp trưng bày thiết bị, trình diễn giải pháp và giao thương. Các nhóm sản phẩm trải từ cơ khí, robot và phần mềm sản xuất đến phương tiện điện, linh kiện và năng lượng."
+        },
+        {
+          "type": "paragraph",
+          "text": "Không gian triển lãm tạo điều kiện để doanh nghiệp tìm nhà cung ứng, trao đổi với đối tác công nghệ và khảo sát giải pháp phục vụ đổi mới hoạt động sản xuất."
+        }
+      ],
+      "image": "/assets/images/idc-news-vitw.jpg",
+      "sourceName": "IDC",
+      "sourceUrl": "https://idccenter.gov.vn/vitw-2026-va-hanoi-mip-fair-2026-hoi-tu-cong-nghiep-va-cong-nghe-tai-ha-noi/",
+      "imageSourceUrl": "https://media.via.gov.vn/Images/User/thinhlq/2026/9/1788931025370_1583592039257462834_8762153132014753617_2f545c0262c8276d519e3dba42b47a92.jpg"
     },
     {
       "id": 4,
-      "slug": "ket-noi-nguon-luc-ho-tro-phat-trien-cong-nghiep",
-      "title": "Kết nối nguồn lực hỗ trợ phát triển công nghiệp",
-      "excerpt": "Trung tâm đóng vai trò đầu mối kết nối chuyên gia, phòng thí nghiệm và mạng lưới đối tác để hỗ trợ doanh nghiệp giải quyết bài toán cụ thể.",
-      "category": "Hợp tác doanh nghiệp",
-      "date": "18 tháng 8, 2026",
-      "image": "/assets/images/idcs-equipment.jpg",
-      "imageAlt": "Buổi làm việc kết nối giữa nhà trường và doanh nghiệp",
+      "slug": "du-an-task-chuyen-gia-han-quoc-tu-van-cai-tien-doanh-nghiep",
+      "title": "Dự án TASK: Chuyên gia Hàn Quốc tư vấn cải tiến tại doanh nghiệp Việt Nam",
+      "excerpt": "IDC phối hợp chuyên gia Hàn Quốc khảo sát dây chuyền và tư vấn kỹ thuật trực tiếp cho doanh nghiệp điện, điện tử và công nghiệp hỗ trợ.",
+      "category": "Tư vấn cải tiến",
+      "date": "27 tháng 7, 2026",
+      "dateISO": "2026-07-27",
+      "imageAlt": "Đại diện IDC, chuyên gia Hàn Quốc và doanh nghiệp tại lễ khai mạc chương trình tư vấn TASK",
+      "caption": "Các đơn vị tham gia chương trình tư vấn kỹ thuật TASK. Nguồn ảnh: IDC.",
       "content": [
-        { "type": "paragraph", "text": "Thay vì cung cấp từng dịch vụ đơn lẻ, Trung tâm tiếp nhận bài toán tổng thể của doanh nghiệp rồi huy động nguồn lực phù hợp từ hệ sinh thái của nhà trường." },
-        { "type": "list", "items": ["Nâng cao năng lực nhân sự kỹ thuật.", "Cải tiến quy trình sản xuất.", "Kiểm tra, đánh giá kỹ thuật.", "Tìm kiếm giải pháp công nghệ phù hợp."] }
-      ]
+        {
+          "type": "heading",
+          "text": "Thông tin chính"
+        },
+        {
+          "type": "paragraph",
+          "text": "Tháng 7/2026, IDC cùng đối tác Hàn Quốc triển khai đợt tư vấn kỹ thuật đầu tiên thuộc dự án TASK giai đoạn 2025–2029. Chuyên gia làm việc tại năm doanh nghiệp Việt Nam sau khi khảo sát nhu cầu."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hoạt động tập trung vào gia công chính xác, ép nhựa, cao su, sản xuất điện tử và chuyển đổi số. Từng đơn vị được trao đổi giải pháp dựa trên vấn đề kỹ thuật và điều kiện thực tế tại dây chuyền."
+        },
+        {
+          "type": "paragraph",
+          "text": "Chương trình hướng tới giảm lỗi sản phẩm, cải thiện năng suất và tăng khả năng tham gia chuỗi cung ứng của doanh nghiệp công nghiệp hỗ trợ."
+        }
+      ],
+      "image": "/assets/images/idc-news-task.jpg",
+      "sourceName": "IDC",
+      "sourceUrl": "https://idccenter.gov.vn/chuyen-gia-han-quoc-ho-tro-doanh-nghiep-viet-nam-cai-tien-cong-nghe-trong-khuon-kho-du-an-task/",
+      "imageSourceUrl": "https://idccenter.gov.vn/wp-content/uploads/2026/07/1785123114337_2290215216575338808_8125362074675166515_2e5c1194d2f6d05e55a2fcdaaf262ed4.jpg"
     }
   ]
 }

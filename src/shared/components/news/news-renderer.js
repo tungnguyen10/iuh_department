@@ -116,6 +116,23 @@ export const createNewsRenderer = ({ base, items, sectionMeta }) => {
       </div>
     </article>`
 
+  // A spacious homepage presentation of the same featured/compact news selection.
+  const editorialCard = (item, featured = false) => `
+    <article class="group relative min-w-0 ${featured ? 'col-span-full' : 'flex items-start gap-4 border-t border-stroke pt-5'}">
+      <a href="${newsLink(item)}" class="absolute inset-0 z-10 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow focus-visible:ring-offset-4" aria-label="${escapeHtml(item.title)}"><span class="sr-only">${escapeHtml(item.title)}</span></a>
+      <div class="relative overflow-hidden rounded-lg bg-gray-light ${featured ? 'aspect-video w-full sm:aspect-[5/2]' : 'h-20 w-24 shrink-0'}">
+        <img src="${image(item)}" alt="${escapeHtml(item.imageAlt || item.title)}" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none" />
+      </div>
+      <div class="min-w-0 ${featured ? 'mt-5' : 'flex-1'}">
+        ${featured ? `<div class="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1 font-roboto text-xs leading-5">
+          ${item.category ? `<span class="font-bold uppercase tracking-wider text-primary-dark-blue">${escapeHtml(item.category)}</span><span aria-hidden="true" class="h-1 w-1 rounded-full bg-gray-400"></span>` : ''}
+          <time class="text-gray-700">${escapeHtml(item.date || '')}</time>
+        </div>` : ''}
+        <h4 class="font-inter font-bold text-title transition-colors group-hover:text-primary-dark-blue motion-reduce:transition-none ${featured ? 'text-xl leading-7 sm:text-2xl sm:leading-8' : 'text-sm leading-6 sm:text-base line-clamp-3'}">${escapeHtml(item.title)}</h4>
+        ${featured ? `<p class="mt-2 font-roboto text-sm leading-6 text-gray-700 line-clamp-2 sm:text-base sm:leading-7">${escapeHtml(item.excerpt || '')}</p>` : `<time class="mt-2 block font-roboto text-xs leading-5 text-gray-700">${escapeHtml(item.date || '')}</time>`}
+      </div>
+    </article>`
+
   const articleBlock = (block) => {
     if (!block) return ''
     if (block.type === 'heading') {
@@ -261,7 +278,10 @@ export const createNewsRenderer = ({ base, items, sectionMeta }) => {
       const limit = Number(match.match(/data-limit=["']([^"']+)["']/)?.[1] || 4)
       return `${stripNewsAttrs(open)}${appointmentSection(limit)}${close}`
     })
-    result = replaceInner(result, 'data-news-list', () => items.map(eventCard).join(''))
+    result = replaceInner(result, 'data-news-list', (match) => {
+      const limit = Number(match.match(/data-limit=["']([^"']+)["']/)?.[1] || items.length)
+      return items.slice(0, limit).map(eventCard).join('')
+    })
     result = replaceInner(result, 'data-news-detail', detail)
     result = replaceInner(result, 'data-news-carousel-items', (match) => {
       const limit = Number(match.match(/data-limit=["']([^"']+)["']/)?.[1] || 5)
@@ -269,7 +289,8 @@ export const createNewsRenderer = ({ base, items, sectionMeta }) => {
     })
     result = replaceInner(result, 'data-news-sidebar-items', (match) => {
       const limit = Number(match.match(/data-limit=["']([^"']+)["']/)?.[1] || 4)
-      return items.slice(0, limit).map((item, index) => sidebarCard(item, index === 0)).join('')
+      const renderCard = /data-news-layout=["']editorial["']/.test(match) ? editorialCard : sidebarCard
+      return items.slice(0, limit).map((item, index) => renderCard(item, index === 0)).join('')
     })
     result = replaceInner(result, 'data-news-announcement-items', (match) => {
       const limit = Number(match.match(/data-limit=["']([^"']+)["']/)?.[1] || 3)

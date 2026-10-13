@@ -50,6 +50,28 @@ test('news list includes both general news and appointments with slug-aware link
   assert.match(html, /news-detail\.html\?slug=appointment-1/)
 })
 
+test('news list can show a limited homepage selection without truncating the full news page', () => {
+  const homepage = render('<div data-news-list data-limit="3">Đang tải</div>')
+  const fullPage = render('<div data-news-list>Đang tải</div>')
+
+  assert.match(homepage, /Tin chung/)
+  assert.match(homepage, /Bổ nhiệm 2/)
+  assert.doesNotMatch(homepage, /Bổ nhiệm 3/)
+  assert.match(fullPage, /Bổ nhiệm 5/)
+})
+
+test('editorial news preview renders a lead story and limited supporting stories without changing the default sidebar', () => {
+  const preview = render('<div data-news-sidebar-items data-news-layout="editorial" data-limit="3">Đang tải</div>')
+  const sidebar = render('<div data-news-sidebar-items data-limit="3">Đang tải</div>')
+
+  assert.equal((preview.match(/<article\b/g) ?? []).length, 3)
+  assert.match(preview, /Nội dung tin chung/)
+  assert.match(preview, /news-detail\.html\?slug=general-news/)
+  assert.match(preview, /Bổ nhiệm 2/)
+  assert.doesNotMatch(preview, /Bổ nhiệm 3|animate-flash-badge|data-news-layout/)
+  assert.match(sidebar, /animate-flash-badge/)
+})
+
 test('news detail embeds every article and an invalid-slug fallback without fetching JSON', () => {
   const html = render('<div data-news-detail>Đang tải</div>')
 

@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { readdir, readFile } from 'node:fs/promises'
+import { access, readdir, readFile } from 'node:fs/promises'
 import test from 'node:test'
 
 const facultyRoot = new URL('../src/faculties/idcs/', import.meta.url)
@@ -107,9 +107,15 @@ test('idcs news and search data are valid and populated', async () => {
   assert.ok(news.items.every((item) => item.slug && item.title && item.excerpt && item.content.length > 0))
   assert.ok(Array.isArray(search))
   assert.ok(search.length >= expectedPages.length + news.items.length)
+  for (const item of news.items) {
+    assert.equal(new URL(item.sourceUrl).hostname, 'idccenter.gov.vn')
+    assert.match(item.dateISO, /^\d{4}-\d{2}-\d{2}$/)
+    assert.ok(search.some((entry) => entry.url === `/news-detail.html?slug=${item.slug}` && entry.title === item.title))
+    await access(new URL(item.image.replace(/^\//, ''), facultyRoot))
+  }
 })
 
-test('idcs delegates header, footer, documents and tabs to shared components', async () => {
+test('idcs delegates header, footer, documents and news to shared components', async () => {
   const [header, footer, legalDocuments, updates] = await Promise.all([
     readFacultyFile('components/header/header.html'),
     readFacultyFile('components/footer/footer.html'),
@@ -122,8 +128,8 @@ test('idcs delegates header, footer, documents and tabs to shared components', a
   assert.match(legalDocuments, /data-document-library/)
   assert.match(legalDocuments, /@shared\/components\/documents\/document-item\.html/)
   assert.doesNotMatch(legalDocuments, /@faculty\/components\/documents\//)
-  assert.match(updates, /class="tabs-container/)
-  assert.match(updates, /data-news-list/)
+  assert.match(updates, /data-news-sidebar-items data-limit="3"/)
+  assert.equal((updates.match(/@shared\/components\/documents\/document-item\.html/g) ?? []).length, 4)
 })
 
 test('idcs includes are transformer-compatible and free of other faculty content', async () => {
@@ -135,19 +141,20 @@ test('idcs includes are transformer-compatible and free of other faculty content
   assert.doesNotMatch(source, /Ký túc xá|Khoa Khoa học Sức khỏe|Phòng Tổ chức|Hỗ trợ sinh viên|\/documents-forms\.html/i)
 })
 
-test('idcs service explorer and updates tabs expose tab semantics', async () => {
+test('idcs keeps service explorer tabs and shows both updates blocks without tabs', async () => {
   const [explorer, updates] = await Promise.all([
     readFacultyFile('components/home/service-explorer/index.html'),
     readFacultyFile('components/home/updates/index.html'),
   ])
 
-  for (const source of [explorer, updates]) {
-    const tabs = [...source.matchAll(/role="tab"/g)].length
-    const panels = [...source.matchAll(/role="tabpanel"/g)].length
+  const tabs = [...explorer.matchAll(/role="tab"/g)].length
+  const panels = [...explorer.matchAll(/role="tabpanel"/g)].length
 
-    assert.match(source, /role="tablist"/)
-    assert.ok(tabs > 1)
-    assert.equal(tabs, panels)
-    assert.equal([...source.matchAll(/class="tab-btn active/g)].length, 1)
-  }
+  assert.match(explorer, /role="tablist"/)
+  assert.ok(tabs > 1)
+  assert.equal(tabs, panels)
+  assert.equal([...explorer.matchAll(/class="tab-btn active/g)].length, 1)
+  assert.match(updates, /<section[^>]+aria-labelledby="updates-news-title"/)
+  assert.match(updates, /<section[^>]+aria-labelledby="updates-documents-title"/)
+  assert.doesNotMatch(updates, /role="tab(?:list|panel)?"|data-tab(?:-panel)?=|\btab-panel\b|\shidden(?:\s|>)/)
 })
