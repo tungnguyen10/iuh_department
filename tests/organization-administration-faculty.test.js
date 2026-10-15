@@ -192,6 +192,17 @@ test('service booking page stacks the three static registration forms behind sha
   assert.match(page, /@shared\/components\/form\/field\.html/)
   assert.equal(page.match(/@shared\/components\/form\/choice\.html/g).length, 3)
   assert.equal(page.match(/data-variant="7" data-type="button" data-text="Gửi đăng ký"/g).length, 3)
+  assert.match(page, /<li class="rounded-lg border border-stroke p-3">(?:(?!<li\b)[\s\S])*<span class="shrink-0 rounded-full bg-red-100 px-2\.5 py-0\.5 font-roboto text-xs font-bold text-red-700">Không được duyệt<\/span>(?:(?!<li\b)[\s\S])*<p class="mt-2 rounded-md bg-red-50 px-2\.5 py-2 font-roboto text-xs leading-5 text-red-700"><strong>Lý do từ chối:<\/strong>[\s\S]*?<\/p>(?:(?!<\/li>)[\s\S])*<\/li>/)
+  const bookingHistory = page.match(/<article aria-labelledby="booking-history-title"[\s\S]*?<\/article>/)?.[0]
+  assert.ok(bookingHistory, 'booking history article should exist')
+  const bookingItems = [...bookingHistory.matchAll(/<li class="rounded-lg border border-stroke p-3">([\s\S]*?)<\/li>/g)].map(([, item]) => item)
+  assert.equal(bookingItems.length, 4)
+  for (const item of bookingItems) {
+    assert.match(item, /<div class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">/)
+    for (const [label, icon] of [['Xem đăng ký', 'icon-eye'], ['Chỉnh sửa đăng ký', 'icon-edit'], ['Xóa đăng ký', 'icon-trash']]) {
+      assert.match(item, new RegExp(`<button type="button"[^>]*aria-label="${label}"[^>]*>[\\s\\S]*?<img src="/assets/svgs/${icon}\\.svg" alt=""`))
+    }
+  }
   assert.doesNotMatch(page, /<form\b|<script\b|weekly-calendar\.html/)
   assert.ok(page.trimEnd().endsWith('<div data-include="@shared/components/partners/index.html" data-class="nttFade"></div>'))
 })

@@ -190,34 +190,73 @@
             <h2 id="booking-history-title" class="font-inter text-base font-bold leading-tight text-primary-dark-blue">Đăng ký gần đây của tôi</h2>
             <ul class="mt-4 space-y-3">
               <li class="rounded-lg border border-stroke p-3">
-                <div class="flex items-start justify-between gap-3">
+                <div class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                   <div class="min-w-0">
                     <p class="font-roboto text-[10px] font-bold uppercase tracking-wider text-gray">Phòng họp</p>
                     <p class="mt-0.5 font-roboto text-sm font-semibold text-title">Phòng họp 2</p>
                   </div>
-                  <span class="shrink-0 rounded-full bg-secondary-green/10 px-2.5 py-0.5 font-roboto text-xs font-bold text-secondary-green">Đã duyệt</span>
+                  <div class="flex shrink-0 items-center gap-1">
+                    <span class="shrink-0 rounded-full bg-secondary-green/10 px-2.5 py-0.5 font-roboto text-xs font-bold text-secondary-green">Đã duyệt</span>
+                    <div class="flex items-center gap-0.5">
+                      <button type="button" class="flex h-7 w-7 items-center justify-center rounded-md text-gray-500 transition-colors hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow" aria-label="Xem đăng ký" title="Xem đăng ký"><img src="/assets/svgs/icon-eye.svg" alt="" class="h-4 w-4" /></button>
+                      <button type="button" class="flex h-7 w-7 items-center justify-center rounded-md text-gray-500 transition-colors hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow" aria-label="Chỉnh sửa đăng ký" title="Chỉnh sửa đăng ký"><img src="/assets/svgs/icon-edit.svg" alt="" class="h-4 w-4" /></button>
+                      <button type="button" class="flex h-7 w-7 items-center justify-center rounded-md text-gray-500 transition-colors hover:bg-red-50 hover:text-red-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500" aria-label="Xóa đăng ký" title="Xóa đăng ký"><img src="/assets/svgs/icon-trash.svg" alt="" class="h-4 w-4" /></button>
+                    </div>
+                  </div>
                 </div>
                 <p class="mt-1 font-roboto text-xs leading-5 text-gray-700">08/10/2026 · 08:00 – 10:00</p>
               </li>
               <li class="rounded-lg border border-stroke p-3">
-                <div class="flex items-start justify-between gap-3">
+                <div class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                   <div class="min-w-0">
                     <p class="font-roboto text-[10px] font-bold uppercase tracking-wider text-gray">Phòng khách</p>
                     <p class="mt-0.5 font-roboto text-sm font-semibold text-title">Nhà khách · Phòng đôi</p>
                   </div>
-                  <span class="shrink-0 rounded-full bg-primary-yellow/20 px-2.5 py-0.5 font-roboto text-xs font-bold text-primary-dark-blue">Chờ duyệt</span>
+                  <div class="flex shrink-0 items-center gap-1">
+                    <span class="shrink-0 rounded-full bg-primary-yellow/20 px-2.5 py-0.5 font-roboto text-xs font-bold text-primary-dark-blue">Chờ duyệt</span>
+                    <div class="flex items-center gap-0.5">
+                      <button type="button" class="flex h-7 w-7 items-center justify-center rounded-md text-gray-500 transition-colors hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow" aria-label="Xem đăng ký" title="Xem đăng ký"><img src="/assets/svgs/icon-eye.svg" alt="" class="h-4 w-4" /></button>
+                      <button type="button" class="flex h-7 w-7 items-center justify-center rounded-md text-gray-500 transition-colors hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow" aria-label="Chỉnh sửa đăng ký" title="Chỉnh sửa đăng ký"><img src="/assets/svgs/icon-edit.svg" alt="" class="h-4 w-4" /></button>
+                      <button type="button" class="flex h-7 w-7 items-center justify-center rounded-md text-gray-500 transition-colors hover:bg-red-50 hover:text-red-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500" aria-label="Xóa đăng ký" title="Xóa đăng ký"><img src="/assets/svgs/icon-trash.svg" alt="" class="h-4 w-4" /></button>
+                    </div>
+                  </div>
                 </div>
                 <p class="mt-1 font-roboto text-xs leading-5 text-gray-700">15/10/2026 – 17/10/2026 · 2 đêm</p>
               </li>
               <li class="rounded-lg border border-stroke p-3">
-                <div class="flex items-start justify-between gap-3">
+                <div class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                   <div class="min-w-0">
                     <p class="font-roboto text-[10px] font-bold uppercase tracking-wider text-gray">Xe công vụ</p>
                     <p class="mt-0.5 font-roboto text-sm font-semibold text-title">Xe 7 chỗ · Đi Long An</p>
                   </div>
-                  <span class="shrink-0 rounded-full bg-secondary-green/10 px-2.5 py-0.5 font-roboto text-xs font-bold text-secondary-green">Đã duyệt</span>
+                  <div class="flex shrink-0 items-center gap-1">
+                    <span class="shrink-0 rounded-full bg-secondary-green/10 px-2.5 py-0.5 font-roboto text-xs font-bold text-secondary-green">Đã duyệt</span>
+                    <div class="flex items-center gap-0.5">
+                      <button type="button" class="flex h-7 w-7 items-center justify-center rounded-md text-gray-500 transition-colors hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow" aria-label="Xem đăng ký" title="Xem đăng ký"><img src="/assets/svgs/icon-eye.svg" alt="" class="h-4 w-4" /></button>
+                      <button type="button" class="flex h-7 w-7 items-center justify-center rounded-md text-gray-500 transition-colors hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow" aria-label="Chỉnh sửa đăng ký" title="Chỉnh sửa đăng ký"><img src="/assets/svgs/icon-edit.svg" alt="" class="h-4 w-4" /></button>
+                      <button type="button" class="flex h-7 w-7 items-center justify-center rounded-md text-gray-500 transition-colors hover:bg-red-50 hover:text-red-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500" aria-label="Xóa đăng ký" title="Xóa đăng ký"><img src="/assets/svgs/icon-trash.svg" alt="" class="h-4 w-4" /></button>
+                    </div>
+                  </div>
                 </div>
                 <p class="mt-1 font-roboto text-xs leading-5 text-gray-700">26/09/2026 · 06:30 – 17:00</p>
+              </li>
+              <li class="rounded-lg border border-stroke p-3">
+                <div class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                  <div class="min-w-0">
+                    <p class="font-roboto text-[10px] font-bold uppercase tracking-wider text-gray">Xe công vụ</p>
+                    <p class="mt-0.5 font-roboto text-sm font-semibold text-title">Xe 16 chỗ · Đi Cần Thơ</p>
+                  </div>
+                  <div class="flex shrink-0 items-center gap-1">
+                    <span class="shrink-0 rounded-full bg-red-100 px-2.5 py-0.5 font-roboto text-xs font-bold text-red-700">Không được duyệt</span>
+                    <div class="flex items-center gap-0.5">
+                      <button type="button" class="flex h-7 w-7 items-center justify-center rounded-md text-gray-500 transition-colors hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow" aria-label="Xem đăng ký" title="Xem đăng ký"><img src="/assets/svgs/icon-eye.svg" alt="" class="h-4 w-4" /></button>
+                      <button type="button" class="flex h-7 w-7 items-center justify-center rounded-md text-gray-500 transition-colors hover:bg-primary-dark-blue/5 hover:text-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow" aria-label="Chỉnh sửa đăng ký" title="Chỉnh sửa đăng ký"><img src="/assets/svgs/icon-edit.svg" alt="" class="h-4 w-4" /></button>
+                      <button type="button" class="flex h-7 w-7 items-center justify-center rounded-md text-gray-500 transition-colors hover:bg-red-50 hover:text-red-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500" aria-label="Xóa đăng ký" title="Xóa đăng ký"><img src="/assets/svgs/icon-trash.svg" alt="" class="h-4 w-4" /></button>
+                    </div>
+                  </div>
+                </div>
+                <p class="mt-1 font-roboto text-xs leading-5 text-gray-700">20/10/2026 · 06:00 – 18:00</p>
+                <p class="mt-2 rounded-md bg-red-50 px-2.5 py-2 font-roboto text-xs leading-5 text-red-700"><strong>Lý do từ chối:</strong> Không còn xe phù hợp trong thời gian đăng ký.</p>
               </li>
             </ul>
           </article>
