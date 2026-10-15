@@ -172,12 +172,13 @@ test('service booking page stacks the three static registration forms behind sha
   for (const title of ['Thông tin đăng ký', 'Thông tin lưu trú', 'Thông tin chuyến đi']) {
     assert.match(page, new RegExp(`@shared/components/common/section-title\\.html" data-title="${title}"`))
   }
-  const meetingFields = ['room', 'date', 'start_time', 'end_time', 'purpose', 'chair', 'attendees', 'projector']
+  const meetingFields = ['room', 'date', 'start_time', 'end_time', 'purpose', 'chair', 'attendees', 'attendee_list', 'projector']
   const guestFields = ['guest_room_type', 'guest_count', 'check_in', 'check_out', 'guest_name', 'guest_document', 'guest_organization', 'host_unit', 'stay_purpose', 'breakfast']
   const vehicleFields = ['vehicle_type', 'passengers', 'depart_date', 'depart_time', 'return_date', 'return_time', 'pickup_point', 'destination', 'trip_leader', 'trip_purpose', 'overnight']
   for (const name of [...meetingFields, ...guestFields, ...vehicleFields]) {
     assert.match(page, new RegExp(`data-name="${name}"`))
   }
+  assert.match(page, /data-id="booking-attendee-list" data-name="attendee_list" data-type="text" data-label="Thành phần tham dự"[^>]*data-placeholder="Tên người tham dự hoặc đơn vị"/)
   for (const name of ['full_name', 'phone', 'unit']) {
     assert.doesNotMatch(page, new RegExp(`data-name="${name}"`), `${name} now lives in the account sidebar`)
   }

@@ -58,11 +58,12 @@
                 <div data-include="@shared/components/form/field.html" data-id="booking-start" data-name="start_time" data-type="time" data-label="Giờ bắt đầu" data-required-text="*" data-icon="/assets/svgs/icon-clock.svg" data-attrs="required"></div>
                 <div data-include="@shared/components/form/field.html" data-id="booking-end" data-name="end_time" data-type="time" data-label="Giờ kết thúc" data-required-text="*" data-icon="/assets/svgs/icon-clock.svg" data-attrs="required"></div>
               </div>
-              <div data-include="@shared/components/form/field.html" data-variant="2" data-id="booking-purpose" data-name="purpose" data-rows="3" data-label="Nội dung cuộc họp" data-required-text="*" data-icon="/assets/svgs/icon-edit.svg" data-placeholder="Nội dung hoặc tên chương trình" data-attrs="required" data-control-class="!min-h-[7rem]"></div>
               <div class="iuh-form-grid">
                 <div data-include="@shared/components/form/field.html" data-id="booking-chair" data-name="chair" data-type="text" data-label="Người chủ trì" data-required-text="*" data-icon="/assets/svgs/icon-user.svg" data-placeholder="Họ và tên" data-attrs="required"></div>
                 <div data-include="@shared/components/form/field.html" data-id="booking-attendees" data-name="attendees" data-type="number" data-label="Số người tham dự" data-required-text="*" data-icon="/assets/svgs/icon-users.svg" data-placeholder="Số người" data-attrs="required min=1"></div>
               </div>
+              <div data-include="@shared/components/form/field.html" data-variant="2" data-id="booking-attendee-list" data-name="attendee_list" data-rows="3" data-label="Thành phần tham dự" data-icon="/assets/svgs/icon-users.svg" data-placeholder="Tên người tham dự hoặc đơn vị"></div>
+              <div data-include="@shared/components/form/field.html" data-variant="2" data-id="booking-purpose" data-name="purpose" data-rows="3" data-label="Nội dung cuộc họp" data-required-text="*" data-icon="/assets/svgs/icon-edit.svg" data-placeholder="Nội dung hoặc tên chương trình" data-attrs="required" data-control-class="!min-h-[7rem]"></div>
               <div class="rounded-lg border border-primary-dark-blue/10 bg-secondary-blue-light/40 p-3">
                 <p class="mb-2 font-roboto text-sm font-medium text-gray-700">Trang thiết bị</p>
                 <div data-include="@shared/components/form/choice.html" data-variant="2" data-name="projector" data-value="yes" data-text="Cần sử dụng máy chiếu" data-class="border border-primary-dark-blue/10"></div>
