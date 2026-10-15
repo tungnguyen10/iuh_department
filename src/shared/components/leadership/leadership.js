@@ -91,8 +91,8 @@ export class LeaderCard {
       }
       tempImg.onerror = () => {
         console.warn('[LeaderCard] Failed to load image:', photoSrc)
-        // Reveal default image smoothly
-        img.style.cssText = 'opacity: 1; filter: blur(0); transform: scale(1)'
+        img.remove()
+        this.renderInitials()
       }
       tempImg.src = photoSrc
       
@@ -101,7 +101,10 @@ export class LeaderCard {
       return // Skip initials generation
     }
     
-    // No valid image - use initials mode
+    this.renderInitials()
+  }
+
+  renderInitials() {
     // Check if avatar already has custom background color
     const hasCustomBg = this.avatar.classList.toString().match(BG_CLASS_REGEX)
     
