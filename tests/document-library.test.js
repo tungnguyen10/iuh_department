@@ -4,7 +4,10 @@ import test from 'node:test'
 import {
   countDocumentsByType,
   filterDocumentRecords,
+  getPaginationItems,
   normalizeDocumentSearch,
+  paginateDocumentRecords,
+  pageForRecord,
   rankDocumentRecords,
   readDocumentFilters,
   tokenizeDocumentQuery,
@@ -202,11 +205,61 @@ test('document filters round-trip through URL params and drop unknown values', (
   assert.equal(writeDocumentFilters({ query: '', type: 'all', area: '', year: '' }).toString(), '')
 
   const allowed = { types: ['document', 'form'], areas: ['x', 'y'], years: ['2025', '2026'] }
-  assert.deepEqual(readDocumentFilters(params, allowed), { query: 'nâng bậc', type: 'form', area: 'x', year: '' })
+  assert.deepEqual(readDocumentFilters(params, allowed), { query: 'nâng bậc', type: 'form', area: 'x', year: '', page: 1 })
   assert.deepEqual(
     readDocumentFilters(new URLSearchParams('type=evil&area=z&year=1999&q=' + 'a'.repeat(500)), allowed),
-    { query: 'a'.repeat(120), type: 'all', area: '', year: '' },
+    { query: 'a'.repeat(120), type: 'all', area: '', year: '', page: 1 },
   )
+})
+
+const numbered = Array.from({ length: 45 }, (_, index) => ({ id: `r-${index + 1}` }))
+
+test('paginateDocumentRecords slices one page and reports the visible range', () => {
+  const first = paginateDocumentRecords(numbered, 1, 20)
+  assert.deepEqual(first.items.map(({ id }) => id), numbered.slice(0, 20).map(({ id }) => id))
+  assert.deepEqual({ page: first.page, pageCount: first.pageCount, total: first.total, start: first.start, end: first.end }, { page: 1, pageCount: 3, total: 45, start: 1, end: 20 })
+
+  const last = paginateDocumentRecords(numbered, 3, 20)
+  assert.equal(last.items.length, 5)
+  assert.deepEqual({ start: last.start, end: last.end }, { start: 41, end: 45 })
+})
+
+test('paginateDocumentRecords clamps invalid pages and handles empty lists', () => {
+  assert.equal(paginateDocumentRecords(numbered, 99, 20).page, 3)
+  assert.equal(paginateDocumentRecords(numbered, 0, 20).page, 1)
+  assert.equal(paginateDocumentRecords(numbered, Number.NaN, 20).page, 1)
+  assert.equal(paginateDocumentRecords(numbered, 1, 0).pageCount, 3)
+
+  const empty = paginateDocumentRecords([], 1, 20)
+  assert.deepEqual({ items: empty.items, page: empty.page, pageCount: empty.pageCount, start: empty.start, end: empty.end }, { items: [], page: 1, pageCount: 1, start: 0, end: 0 })
+})
+
+test('getPaginationItems keeps a stable window with ellipses for long ranges', () => {
+  assert.deepEqual(getPaginationItems(1, 1), [1])
+  assert.deepEqual(getPaginationItems(2, 5), [1, 2, 3, 4, 5])
+  assert.deepEqual(getPaginationItems(1, 10), [1, 2, 3, 4, 5, 'ellipsis', 10])
+  assert.deepEqual(getPaginationItems(4, 10), [1, 2, 3, 4, 5, 'ellipsis', 10])
+  assert.deepEqual(getPaginationItems(5, 10), [1, 'ellipsis', 4, 5, 6, 'ellipsis', 10])
+  assert.deepEqual(getPaginationItems(7, 10), [1, 'ellipsis', 6, 7, 8, 9, 10])
+  assert.deepEqual(getPaginationItems(10, 10), [1, 'ellipsis', 6, 7, 8, 9, 10])
+})
+
+test('pageForRecord finds the page that holds a record or returns 0', () => {
+  assert.equal(pageForRecord(numbered, 'r-1', 20), 1)
+  assert.equal(pageForRecord(numbered, 'r-20', 20), 1)
+  assert.equal(pageForRecord(numbered, 'r-21', 20), 2)
+  assert.equal(pageForRecord(numbered, 'r-45', 20), 3)
+  assert.equal(pageForRecord(numbered, 'missing', 20), 0)
+})
+
+test('the page number only travels through URL params when it is above one and valid', () => {
+  assert.equal(writeDocumentFilters({ query: '', type: 'all', area: '', year: '', page: 1 }).toString(), '')
+  assert.equal(writeDocumentFilters({ query: '', type: 'all', area: '', year: '', page: 3 }).toString(), 'page=3')
+  assert.equal(readDocumentFilters(new URLSearchParams('page=3')).page, 3)
+  assert.equal(readDocumentFilters(new URLSearchParams('page=0')).page, 1)
+  assert.equal(readDocumentFilters(new URLSearchParams('page=-2')).page, 1)
+  assert.equal(readDocumentFilters(new URLSearchParams('page=2abc')).page, 1)
+  assert.equal(readDocumentFilters(new URLSearchParams('page=1e3')).page, 1)
 })
 
 test('document library keeps hidden rows hidden even when the row sets a display utility', async () => {
@@ -225,6 +278,7 @@ test('both document pages opt in to URL state and the active-filter chips', asyn
   for (const page of pages) {
     assert.match(page, /data-document-library data-document-sync-url/)
     assert.match(page, /data-document-active-filters/)
+    assert.match(page, /<nav data-document-pagination aria-label="Phân trang tài liệu" hidden/)
   }
 })
 

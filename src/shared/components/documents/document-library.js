@@ -1,6 +1,7 @@
 const DEBOUNCE_MS = 150
 const MAX_QUERY_LENGTH = 120
-const URL_KEYS = ['q', 'type', 'area', 'year']
+const DEFAULT_PAGE_SIZE = 20
+const URL_KEYS = ['q', 'type', 'area', 'year', 'page']
 
 export const normalizeDocumentSearch = (value = '') => String(value ?? '')
   .normalize('NFD')
@@ -90,11 +91,47 @@ export const countDocumentsByType = (records = [], filters = {}) => {
 
 const pickAllowed = (value, allowed = []) => (value && allowed.includes(value) ? value : '')
 
+const toPositiveInt = (value, fallback) => {
+  const number = Number(value)
+  return Number.isInteger(number) && number > 0 ? number : fallback
+}
+
+export const paginateDocumentRecords = (records = [], page = 1, pageSize = DEFAULT_PAGE_SIZE) => {
+  const size = toPositiveInt(pageSize, DEFAULT_PAGE_SIZE)
+  const total = records.length
+  const pageCount = Math.max(1, Math.ceil(total / size))
+  const current = Math.min(toPositiveInt(page, 1), pageCount)
+  const offset = (current - 1) * size
+
+  return {
+    items: records.slice(offset, offset + size),
+    page: current,
+    pageCount,
+    total,
+    start: total ? offset + 1 : 0,
+    end: Math.min(offset + size, total),
+  }
+}
+
+// Always returns 7 slots when there are more than 7 pages so the bar width stays stable.
+export const getPaginationItems = (page, pageCount) => {
+  if (pageCount <= 7) return Array.from({ length: pageCount }, (_, index) => index + 1)
+  if (page <= 4) return [1, 2, 3, 4, 5, 'ellipsis', pageCount]
+  if (page >= pageCount - 3) return [1, 'ellipsis', pageCount - 4, pageCount - 3, pageCount - 2, pageCount - 1, pageCount]
+  return [1, 'ellipsis', page - 1, page, page + 1, 'ellipsis', pageCount]
+}
+
+export const pageForRecord = (records = [], id = '', pageSize = DEFAULT_PAGE_SIZE) => {
+  const index = records.findIndex((record) => record.id === id)
+  return index < 0 ? 0 : Math.floor(index / toPositiveInt(pageSize, DEFAULT_PAGE_SIZE)) + 1
+}
+
 export const readDocumentFilters = (params, allowed = {}) => ({
   query: (params.get('q') ?? '').trim().slice(0, MAX_QUERY_LENGTH),
   type: pickAllowed(params.get('type'), allowed.types) || 'all',
   area: pickAllowed(params.get('area'), allowed.areas),
   year: pickAllowed(params.get('year'), allowed.years),
+  page: /^\d{1,6}$/.test(params.get('page') ?? '') ? toPositiveInt(params.get('page'), 1) : 1,
 })
 
 export const writeDocumentFilters = (filters = {}) => {
@@ -105,6 +142,7 @@ export const writeDocumentFilters = (filters = {}) => {
   if (filters.type && filters.type !== 'all') params.set('type', filters.type)
   if (filters.area) params.set('area', filters.area)
   if (filters.year) params.set('year', filters.year)
+  if (toPositiveInt(filters.page, 1) > 1) params.set('page', String(toPositiveInt(filters.page, 1)))
 
   return params
 }
@@ -122,6 +160,15 @@ const getRecordFromElement = (element) => ({
 
 const CHIP_CLASS = 'inline-flex items-center gap-2 rounded-full border border-primary-dark-blue/20 bg-secondary-blue-light px-3 py-1.5 font-roboto text-xs font-semibold text-primary-dark-blue transition hover:border-primary-dark-blue/50 focus:outline-none focus:ring-2 focus:ring-primary-yellow motion-reduce:transition-none'
 const COUNT_CLASS = 'ml-2 text-xs font-bold tabular-nums opacity-70'
+const PAGE_BUTTON_CLASS = 'inline-flex h-10 min-w-10 items-center justify-center rounded-lg border border-stroke bg-primary-white px-3 font-roboto text-sm font-semibold text-gray transition hover:border-primary-dark-blue/40 hover:text-primary-dark-blue focus:outline-none focus:ring-2 focus:ring-primary-yellow disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none aria-[current=page]:border-primary-dark-blue aria-[current=page]:bg-primary-dark-blue aria-[current=page]:text-primary-white'
+
+const readHashId = (win) => {
+  try {
+    return decodeURIComponent(win.location.hash.slice(1))
+  } catch {
+    return ''
+  }
+}
 
 export const initDocumentLibrary = (root = document) => {
   const libraries = Array.from(root.querySelectorAll('[data-document-library]'))
@@ -136,6 +183,8 @@ export const initDocumentLibrary = (root = document) => {
     const count = library.querySelector('[data-document-count]')
     const emptyState = library.querySelector('[data-document-empty]')
     const chipsContainer = library.querySelector('[data-document-active-filters]')
+    const paginationNav = library.querySelector('[data-document-pagination]')
+    const pageSize = toPositiveInt(library.dataset.documentPageSize, DEFAULT_PAGE_SIZE)
     const records = Array.from(library.querySelectorAll('[data-document-item]')).map(getRecordFromElement)
     const listParent = records[0]?.element.parentElement
     const canReorder = Boolean(listParent) && records.every(({ element }) => element.parentElement === listParent)
@@ -144,6 +193,7 @@ export const initDocumentLibrary = (root = document) => {
     const listeners = []
     let activeType = typeButtons.find((button) => button.getAttribute('aria-pressed') === 'true')?.dataset.documentTypeFilter || 'all'
     let renderedOrder = [...records]
+    let currentPage = 1
     let timer = 0
 
     queryInput?.setAttribute('enterkeyhint', 'search')
@@ -169,6 +219,7 @@ export const initDocumentLibrary = (root = document) => {
       type: activeType,
       area: areaSelect?.value || '',
       year: yearSelect?.value || '',
+      page: currentPage,
     })
 
     const setActiveType = (type) => {
@@ -235,20 +286,68 @@ export const initDocumentLibrary = (root = document) => {
       chipsContainer.hidden = chips.length === 0
     }
 
+    const renderPagination = ({ page, pageCount }) => {
+      if (!paginationNav) return
+
+      paginationNav.hidden = pageCount <= 1
+      if (pageCount <= 1) {
+        paginationNav.replaceChildren()
+        return
+      }
+
+      const makeButton = (label, target, { current = false, disabled = false, ariaLabel = '' } = {}) => {
+        const button = doc.createElement('button')
+
+        button.type = 'button'
+        button.className = PAGE_BUTTON_CLASS
+        button.textContent = label
+        button.dataset.documentPage = String(target)
+        button.disabled = disabled
+        if (ariaLabel) button.setAttribute('aria-label', ariaLabel)
+        if (current) button.setAttribute('aria-current', 'page')
+
+        return button
+      }
+
+      const makeGap = () => {
+        const gap = doc.createElement('span')
+
+        gap.setAttribute('aria-hidden', 'true')
+        gap.className = 'px-1 font-roboto text-sm text-gray'
+        gap.textContent = '…'
+
+        return gap
+      }
+
+      paginationNav.replaceChildren(
+        makeButton('Trước', page - 1, { disabled: page === 1, ariaLabel: 'Trang trước' }),
+        ...getPaginationItems(page, pageCount).map((item) => (item === 'ellipsis'
+          ? makeGap()
+          : makeButton(String(item), item, { current: item === page, ariaLabel: `Trang ${item}` }))),
+        makeButton('Sau', page + 1, { disabled: page === pageCount, ariaLabel: 'Trang sau' }),
+      )
+    }
+
     const render = ({ syncUrl = true } = {}) => {
       const filters = getFilters()
       const matched = filterDocumentRecords(records, filters)
-      const visible = new Set(matched)
+      const matchedSet = new Set(matched)
+      const ranked = rankDocumentRecords(matched, filters.query)
+      const pageInfo = paginateDocumentRecords(ranked, currentPage, pageSize)
+      const onPage = new Set(pageInfo.items)
       const hasQuery = tokenizeDocumentQuery(filters.query).length > 0
       const chips = getActiveChips(filters)
       const typeCounts = countDocumentsByType(records, filters)
 
+      currentPage = pageInfo.page
+      filters.page = currentPage
+
       records.forEach((record) => {
-        const shouldHide = !visible.has(record)
+        const shouldHide = !onPage.has(record)
         if (record.element.hidden !== shouldHide) record.element.hidden = shouldHide
       })
 
-      applyOrder(rankDocumentRecords(matched, filters.query), visible, hasQuery)
+      applyOrder(ranked, matchedSet, hasQuery)
 
       typeButtons.forEach((button) => {
         const badge = button.querySelector('[data-document-type-count]')
@@ -256,9 +355,13 @@ export const initDocumentLibrary = (root = document) => {
       })
 
       renderChips(chips)
+      renderPagination(pageInfo)
 
-      if (count) count.textContent = chips.length ? `${visible.size} / ${records.length} tài liệu` : `${visible.size} tài liệu`
-      if (emptyState) emptyState.hidden = visible.size !== 0
+      if (count) {
+        const summary = chips.length ? `${matched.length} / ${records.length} tài liệu` : `${matched.length} tài liệu`
+        count.textContent = pageInfo.pageCount > 1 ? `${summary} · hiển thị ${pageInfo.start}–${pageInfo.end}` : summary
+      }
+      if (emptyState) emptyState.hidden = matched.length !== 0
       if (syncUrl) updateUrl(filters)
     }
 
@@ -274,18 +377,43 @@ export const initDocumentLibrary = (root = document) => {
     }
 
     listen(queryInput, 'input', () => {
+      currentPage = 1
       window.clearTimeout(timer)
       timer = window.setTimeout(render, DEBOUNCE_MS)
     })
-    listen(queryInput, 'search', renderNow)
-    listen(areaSelect, 'change', renderNow)
-    listen(yearSelect, 'change', renderNow)
+    listen(queryInput, 'search', () => {
+      currentPage = 1
+      renderNow()
+    })
+    listen(areaSelect, 'change', () => {
+      currentPage = 1
+      renderNow()
+    })
+    listen(yearSelect, 'change', () => {
+      currentPage = 1
+      renderNow()
+    })
 
     typeButtons.forEach((button) => {
       listen(button, 'click', () => {
+        currentPage = 1
         setActiveType(button.dataset.documentTypeFilter || 'all')
         renderNow()
       })
+    })
+
+    listen(paginationNav, 'click', (event) => {
+      const button = event.target.closest('[data-document-page]')
+      if (!button || button.disabled) return
+
+      currentPage = toPositiveInt(button.dataset.documentPage, 1)
+      renderNow()
+      paginationNav.querySelector('[aria-current="page"]')?.focus()
+
+      if (library.getBoundingClientRect().top < 0) {
+        const reduceMotion = doc.defaultView.matchMedia('(prefers-reduced-motion: reduce)').matches
+        library.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' })
+      }
     })
 
     listen(chipsContainer, 'click', (event) => {
@@ -304,6 +432,7 @@ export const initDocumentLibrary = (root = document) => {
       if (chip.dataset.documentChip === 'area' && areaSelect) areaSelect.value = ''
       if (chip.dataset.documentChip === 'year' && yearSelect) yearSelect.value = ''
 
+      currentPage = 1
       renderNow()
       focusTarget?.focus()
     })
@@ -314,6 +443,7 @@ export const initDocumentLibrary = (root = document) => {
         if (areaSelect) areaSelect.value = ''
         if (yearSelect) yearSelect.value = ''
         setActiveType('all')
+        currentPage = 1
         renderNow()
         queryInput?.focus()
       })
@@ -330,9 +460,22 @@ export const initDocumentLibrary = (root = document) => {
       if (areaSelect) areaSelect.value = fromUrl.area
       if (yearSelect) yearSelect.value = fromUrl.year
       setActiveType(fromUrl.type)
+      currentPage = fromUrl.page
+    }
+
+    const hashId = readHashId(doc.defaultView)
+    const hashRecord = hashId ? records.find((record) => record.id === hashId) : null
+
+    if (hashRecord) {
+      const hashPage = pageForRecord(rankDocumentRecords(filterDocumentRecords(records, getFilters()), getFilters().query), hashId, pageSize)
+      if (hashPage) currentPage = hashPage
     }
 
     render({ syncUrl: false })
+
+    if (hashRecord && !hashRecord.element.hidden && paginationNav && !paginationNav.hidden) {
+      hashRecord.element.scrollIntoView({ block: 'start' })
+    }
 
     return {
       destroy: () => {
