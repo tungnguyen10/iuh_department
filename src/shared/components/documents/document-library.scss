@@ -1,0 +1,9 @@
+// `hidden` must win over layout utilities such as `.grid` set on document rows.
+[data-document-library] [hidden] {
+  display: none;
+}
+
+[data-document-library] [data-document-item] {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 7rem;
+}

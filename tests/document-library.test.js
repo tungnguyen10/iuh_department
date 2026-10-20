@@ -2,8 +2,13 @@ import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import test from 'node:test'
 import {
+  countDocumentsByType,
   filterDocumentRecords,
   normalizeDocumentSearch,
+  rankDocumentRecords,
+  readDocumentFilters,
+  tokenizeDocumentQuery,
+  writeDocumentFilters,
 } from '../src/shared/components/documents/document-library.js'
 
 const moduleUrl = new URL(
@@ -158,6 +163,69 @@ test('document pages compose every compatible shared UI primitive', async () => 
   assert.doesNotMatch(detail, /<h2 class="mt-1 font-inter text-lg font-bold text-title">Thông tin phát hành<\/h2>/)
   assert.equal((detail.match(/@shared\/components\/form\/display-row\.html/g) ?? []).length, 6)
   assert.equal((detail.match(/components\/documents\/related-document-card\.html/g) ?? []).length, 3)
+})
+
+const ranked = [
+  { id: 'a', title: 'Quy định chung', code: 'QĐ-01', search: 'Quy định chung về nâng bậc lương QĐ 01', type: 'document', area: 'x', year: '2026' },
+  { id: 'b', title: 'Nâng bậc lương thường xuyên', code: 'BM-18', search: 'Phiếu đề nghị nâng bậc lương thường xuyên BM 18', type: 'form', area: 'x', year: '2025' },
+  { id: 'c', title: 'Giấy đi đường', code: 'BM-09', search: 'Giấy đi đường BM 09', type: 'form', area: 'y', year: '2025' },
+]
+
+test('tokenizeDocumentQuery splits a normalized query into words', () => {
+  assert.deepEqual(tokenizeDocumentQuery('  Nâng  bậc-lương '), ['nang', 'bac', 'luong'])
+  assert.deepEqual(tokenizeDocumentQuery('---'), [])
+})
+
+test('filterDocumentRecords matches every word regardless of order or adjacency', () => {
+  assert.deepEqual(
+    filterDocumentRecords(ranked, { query: 'luong nang' }).map(({ id }) => id),
+    ['a', 'b'],
+  )
+  assert.deepEqual(filterDocumentRecords(ranked, { query: 'luong duong' }), [])
+})
+
+test('rankDocumentRecords puts title matches before body matches and keeps ties stable', () => {
+  const matches = filterDocumentRecords(ranked, { query: 'nang bac luong' })
+
+  assert.deepEqual(rankDocumentRecords(matches, 'nang bac luong').map(({ id }) => id), ['b', 'a'])
+  assert.deepEqual(rankDocumentRecords(ranked, '').map(({ id }) => id), ['a', 'b', 'c'])
+})
+
+test('countDocumentsByType ignores the active type but honours the other filters', () => {
+  assert.deepEqual(countDocumentsByType(ranked, { type: 'form' }), { all: 3, document: 1, form: 2 })
+  assert.deepEqual(countDocumentsByType(ranked, { query: 'luong', year: '2025' }), { all: 1, form: 1 })
+})
+
+test('document filters round-trip through URL params and drop unknown values', () => {
+  const params = writeDocumentFilters({ query: ' nâng bậc ', type: 'form', area: 'x', year: '' })
+  assert.equal(params.toString(), 'q=n%C3%A2ng+b%E1%BA%ADc&type=form&area=x')
+  assert.equal(writeDocumentFilters({ query: '', type: 'all', area: '', year: '' }).toString(), '')
+
+  const allowed = { types: ['document', 'form'], areas: ['x', 'y'], years: ['2025', '2026'] }
+  assert.deepEqual(readDocumentFilters(params, allowed), { query: 'nâng bậc', type: 'form', area: 'x', year: '' })
+  assert.deepEqual(
+    readDocumentFilters(new URLSearchParams('type=evil&area=z&year=1999&q=' + 'a'.repeat(500)), allowed),
+    { query: 'a'.repeat(120), type: 'all', area: '', year: '' },
+  )
+})
+
+test('document library keeps hidden rows hidden even when the row sets a display utility', async () => {
+  const styles = await readSharedFile('components/documents/document-library.scss').catch(() => '')
+
+  assert.match(styles, /\[data-document-library\]\s+\[hidden\]\s*\{\s*display:\s*none/)
+})
+
+test('both document pages opt in to URL state and the active-filter chips', async () => {
+  const idcsRoot = new URL('../src/faculties/idcs/', import.meta.url)
+  const pages = [
+    await readFacultyFile('pages/documents-forms.html'),
+    await readFile(new URL('pages/legal-documents.html', idcsRoot), 'utf8'),
+  ]
+
+  for (const page of pages) {
+    assert.match(page, /data-document-library data-document-sync-url/)
+    assert.match(page, /data-document-active-filters/)
+  }
 })
 
 test('shared link buttons forward native attributes for new-tab document actions', async () => {

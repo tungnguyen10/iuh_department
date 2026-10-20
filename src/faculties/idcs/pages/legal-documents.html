@@ -25,7 +25,7 @@
   </div>
 </section>
 
-<section class="bg-gray-light py-10 md:py-14" data-document-library>
+<section class="bg-gray-light py-10 md:py-14" data-document-library data-document-sync-url>
   <div class="container mx-auto px-4">
     <div class="relative z-20 rounded-lg border border-primary-dark-blue/10 bg-primary-white p-4 shadow-[0_14px_36px_rgba(21,56,152,0.09)] md:p-5 lg:sticky lg:top-20">
       <div class="grid gap-4 lg:grid-cols-[minmax(18rem,1fr)_auto] lg:items-end">
@@ -45,6 +45,7 @@
         <div data-include="@shared/components/form/field.html" data-variant="3" data-id="document-year" data-name="document-year" data-label="Năm ban hành" data-attrs="data-document-year-filter" data-placeholder-value="" data-placeholder-text="Tất cả các năm" data-option1-value="2026" data-option1-text="2026" data-option2-value="2025" data-option2-text="2025" data-option3-value="2024" data-option3-text="2024" data-label-class="!font-roboto !text-xs !font-semibold !uppercase !tracking-[0.12em] !text-gray" data-control-class="!h-12 !py-0"></div>
         <div data-include="@shared/components/button/button.html" data-variant="10" data-type="button" data-attrs="data-document-reset" data-text="Đặt lại bộ lọc" data-icon="/assets/svgs/icon-close.svg" data-class="h-12 sm:col-span-2 lg:col-span-1" data-icon-class="hidden"></div>
       </div>
+      <div data-document-active-filters role="group" aria-label="Bộ lọc đang áp dụng" hidden class="mt-4 flex flex-wrap items-center gap-2"></div>
     </div>
 
     <div class="mt-7 flex items-end justify-between gap-4 border-b border-stroke pb-4">
