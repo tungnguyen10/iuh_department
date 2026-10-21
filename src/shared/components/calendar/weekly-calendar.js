@@ -49,6 +49,13 @@ export const filterScheduleRecords = (records, start, filter = 'all') => {
     .sort((a, b) => `${a.date}T${a.start}`.localeCompare(`${b.date}T${b.start}`))
 }
 
+// Guests only ever see records explicitly marked public; everything else counts toward the locked total.
+export const splitScheduleByAccess = (records, auth = 'user') => {
+  if (auth !== 'guest') return { visible: records, lockedCount: 0 }
+  const visible = records.filter(record => record.visibility === 'public')
+  return { visible, lockedCount: records.length - visible.length }
+}
+
 const instances = new WeakMap()
 
 // data-schedule-date / data-initial-week are authored as dd/mm/yyyy; convert to the yyyy-mm-dd used internally.
@@ -114,6 +121,7 @@ const renderEventElement = (li, record) => {
 
 export const initWeeklyCalendar = (root = document) => Array.from(root.querySelectorAll('[data-weekly-calendar]')).map(calendar => {
   if (instances.has(calendar)) return instances.get(calendar)
+  const auth = calendar.closest('[data-auth]')?.dataset.auth || 'user'
   const records = Array.from(calendar.querySelectorAll('[data-schedule-event]')).map(element => ({
     date: parseAttrDate(element.dataset.scheduleDate),
     start: element.dataset.scheduleStart,
@@ -125,11 +133,14 @@ export const initWeeklyCalendar = (root = document) => Array.from(root.querySele
     title: element.dataset.scheduleTitle,
     location: element.dataset.scheduleLocation,
     unit: element.dataset.scheduleUnit,
+    visibility: element.dataset.scheduleVisibility === 'public' ? 'public' : 'internal',
     element,
   }))
   const list = calendar.querySelector('[data-schedule-list]')
   const weekLabel = calendar.querySelector('[data-schedule-week]')
   const empty = calendar.querySelector('[data-schedule-empty]')
+  const lockedRow = calendar.querySelector('[data-schedule-locked]')
+  const lockedPanel = calendar.querySelector('[data-schedule-locked-panel]')
   const status = calendar.querySelector('[data-schedule-status]')
   const filters = Array.from(calendar.querySelectorAll('[data-schedule-filter]'))
   let start = calendar.dataset.initialWeek ? parseAttrDate(calendar.dataset.initialWeek) : currentScheduleWeekStart()
@@ -139,23 +150,41 @@ export const initWeeklyCalendar = (root = document) => Array.from(root.querySele
   records.forEach(record => renderEventElement(record.element, record))
 
   const render = () => {
-    const visible = filterScheduleRecords(records, start, filter)
+    const { visible, lockedCount } = splitScheduleByAccess(filterScheduleRecords(records, start, filter), auth)
     const visibleSet = new Set(visible)
     records.forEach(record => {
       record.element.hidden = !visibleSet.has(record)
       record.element.classList.toggle('hidden', !visibleSet.has(record))
     })
+    const showLockedRow = lockedCount > 0 && visible.length > 0
     // Move existing nodes rather than injecting HTML; no duplicate IDs or SVG reloads.
     visible.forEach((record, index) => {
-      record.element.querySelector('[data-schedule-line]').classList.toggle('hidden', index === visible.length - 1)
+      record.element.querySelector('[data-schedule-line]').classList.toggle('hidden', index === visible.length - 1 && !showLockedRow)
       list.append(record.element)
     })
+    if (lockedRow) {
+      lockedRow.hidden = !showLockedRow
+      lockedRow.classList.toggle('hidden', !showLockedRow)
+      if (showLockedRow) {
+        lockedRow.querySelector('[data-schedule-locked-count]').textContent = lockedCount
+        list.append(lockedRow)
+      }
+    }
     weekLabel.textContent = formatScheduleWeek(start)
     weekLabel.dateTime = start
-    empty.hidden = visible.length > 0
-    empty.classList.toggle('hidden', visible.length > 0)
+    const showEmpty = visible.length === 0 && lockedCount === 0
+    const showLockedPanel = visible.length === 0 && lockedCount > 0
+    empty.hidden = !showEmpty
+    empty.classList.toggle('hidden', !showEmpty)
+    if (lockedPanel) {
+      lockedPanel.hidden = !showLockedPanel
+      lockedPanel.classList.toggle('hidden', !showLockedPanel)
+      if (showLockedPanel) lockedPanel.querySelector('[data-schedule-locked-count]').textContent = lockedCount
+    }
     const label = filters.find(button => button.dataset.scheduleFilter === filter)?.textContent.trim() || ''
-    status.textContent = `${label}: ${visible.length} mục. ${formatScheduleWeek(start)}.`
+    status.textContent = lockedCount > 0
+      ? `${label}: ${visible.length} mục công khai, ${lockedCount} lịch nội bộ cần đăng nhập. ${formatScheduleWeek(start)}.`
+      : `${label}: ${visible.length} mục. ${formatScheduleWeek(start)}.`
     filters.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.scheduleFilter === filter)))
   }
 

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { addScheduleDays, currentScheduleWeekStart, formatScheduleWeek, scheduleWeekday, filterScheduleRecords } from '../src/shared/components/calendar/weekly-calendar.js'
+import { addScheduleDays, currentScheduleWeekStart, formatScheduleWeek, scheduleWeekday, filterScheduleRecords, splitScheduleByAccess } from '../src/shared/components/calendar/weekly-calendar.js'
 
 const records = [
   { date: '2026-09-12', start: '09:00', type: 'training', room: true },
@@ -70,4 +70,28 @@ test('default week is the Monday–Sunday week containing today in Vietnam time'
   // 17:00Z Sunday is already Monday 00:00 in Vietnam, so the week rolls over.
   assert.equal(currentScheduleWeekStart(new Date('2026-10-18T17:00:00Z')), '2026-10-19')
   assert.equal(currentScheduleWeekStart(new Date('2026-12-31T23:00:00Z')), '2026-12-28')
+})
+test('logged-in staff see every record regardless of visibility', () => {
+  const mixed = [
+    { date: '2026-10-20', start: '08:30', visibility: 'public' },
+    { date: '2026-10-21', start: '08:00', visibility: 'internal' },
+    { date: '2026-10-22', start: '08:00' },
+  ]
+  assert.deepEqual(splitScheduleByAccess(mixed, 'user'), { visible: mixed, lockedCount: 0 })
+  // No auth attribute at all defaults to the current, unrestricted behavior.
+  assert.deepEqual(splitScheduleByAccess(mixed), { visible: mixed, lockedCount: 0 })
+})
+test('guests only see records explicitly marked public; untagged records count as locked', () => {
+  const publicEvent = { date: '2026-10-20', start: '08:30', visibility: 'public' }
+  const internalEvent = { date: '2026-10-21', start: '08:00', visibility: 'internal' }
+  const untaggedEvent = { date: '2026-10-22', start: '08:00' }
+  const result = splitScheduleByAccess([publicEvent, internalEvent, untaggedEvent], 'guest')
+  assert.deepEqual(result, { visible: [publicEvent], lockedCount: 2 })
+})
+test('guest view with no public records still reports the full locked count', () => {
+  const records = [
+    { date: '2026-10-21', start: '08:00', visibility: 'internal' },
+    { date: '2026-10-21', start: '13:00', visibility: 'internal' },
+  ]
+  assert.deepEqual(splitScheduleByAccess(records, 'guest'), { visible: [], lockedCount: 2 })
 })
