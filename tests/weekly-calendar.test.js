@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { addScheduleDays, currentScheduleWeekStart, formatScheduleWeek, scheduleWeekday, filterScheduleRecords } from '../src/shared/components/calendar/weekly-calendar.js'
+import { addScheduleDays, currentScheduleWeekStart, formatScheduleWeek, scheduleWeekday, filterScheduleRecords, scheduleViewState } from '../src/shared/components/calendar/weekly-calendar.js'
 
 const records = [
   { date: '2026-09-12', start: '09:00', type: 'training', room: true },
@@ -9,6 +9,12 @@ const records = [
   { date: '2026-09-11', start: '13:30', type: 'conference', room: true },
 ]
 
+test('guests always see the login state; authenticated users see list or empty', () => {
+  assert.equal(scheduleViewState({ authenticated: false, count: 0 }), 'login')
+  assert.equal(scheduleViewState({ authenticated: false, count: 5 }), 'login')
+  assert.equal(scheduleViewState({ authenticated: true, count: 0 }), 'empty')
+  assert.equal(scheduleViewState({ authenticated: true, count: 3 }), 'list')
+})
 test('weekly calendar shows all events chronologically and does not mutate source', () => {
   assert.deepEqual(filterScheduleRecords(records, '2026-09-08', 'all').map(r => r.date), ['2026-09-09', '2026-09-10', '2026-09-11', '2026-09-12'])
   assert.equal(records[0].date, '2026-09-12')

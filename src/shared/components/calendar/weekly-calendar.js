@@ -51,6 +51,11 @@ export const filterScheduleRecords = (records, start, filter = 'all') => {
 
 const instances = new WeakMap()
 
+export const scheduleViewState = ({ authenticated, count }) => {
+  if (!authenticated) return 'login'
+  return count > 0 ? 'list' : 'empty'
+}
+
 // data-schedule-date / data-initial-week are authored as dd/mm/yyyy; convert to the yyyy-mm-dd used internally.
 const parseAttrDate = (value) => {
   const match = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(value)
@@ -114,6 +119,9 @@ const renderEventElement = (li, record) => {
 
 export const initWeeklyCalendar = (root = document) => Array.from(root.querySelectorAll('[data-weekly-calendar]')).map(calendar => {
   if (instances.has(calendar)) return instances.get(calendar)
+  const authenticated = calendar.dataset.authenticated === 'true'
+  // Defensive: BE should not render events for guests, but never expose any that slipped through.
+  if (!authenticated) calendar.querySelectorAll('[data-schedule-event]').forEach(element => element.remove())
   const records = Array.from(calendar.querySelectorAll('[data-schedule-event]')).map(element => ({
     date: parseAttrDate(element.dataset.scheduleDate),
     start: element.dataset.scheduleStart,
@@ -130,8 +138,10 @@ export const initWeeklyCalendar = (root = document) => Array.from(root.querySele
   const list = calendar.querySelector('[data-schedule-list]')
   const weekLabel = calendar.querySelector('[data-schedule-week]')
   const empty = calendar.querySelector('[data-schedule-empty]')
+  const login = calendar.querySelector('[data-schedule-login]')
   const status = calendar.querySelector('[data-schedule-status]')
   const filters = Array.from(calendar.querySelectorAll('[data-schedule-filter]'))
+  const shifts = Array.from(calendar.querySelectorAll('[data-schedule-shift]'))
   let start = calendar.dataset.initialWeek ? parseAttrDate(calendar.dataset.initialWeek) : currentScheduleWeekStart()
   let filter = 'all'
   const listeners = []
@@ -152,8 +162,20 @@ export const initWeeklyCalendar = (root = document) => Array.from(root.querySele
     })
     weekLabel.textContent = formatScheduleWeek(start)
     weekLabel.dateTime = start
-    empty.hidden = visible.length > 0
-    empty.classList.toggle('hidden', visible.length > 0)
+    const state = scheduleViewState({ authenticated, count: visible.length })
+    list.hidden = state === 'login'
+    list.classList.toggle('hidden', state === 'login')
+    empty.hidden = state !== 'empty'
+    empty.classList.toggle('hidden', state !== 'empty')
+    if (login) {
+      login.hidden = state !== 'login'
+      login.classList.toggle('hidden', state !== 'login')
+      login.classList.toggle('flex', state === 'login')
+    }
+    if (state === 'login') {
+      status.textContent = 'Đăng nhập để xem lịch sử dụng tài nguyên.'
+      return
+    }
     const label = filters.find(button => button.dataset.scheduleFilter === filter)?.textContent.trim() || ''
     status.textContent = `${label}: ${visible.length} mục. ${formatScheduleWeek(start)}.`
     filters.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.scheduleFilter === filter)))
@@ -164,10 +186,11 @@ export const initWeeklyCalendar = (root = document) => Array.from(root.querySele
     listeners.push(() => element.removeEventListener(eventName, callback))
   }
   filters.forEach(button => listen(button, 'click', () => { filter = button.dataset.scheduleFilter; render() }))
-  calendar.querySelectorAll('[data-schedule-shift]').forEach(button => listen(button, 'click', () => {
+  shifts.forEach(button => listen(button, 'click', () => {
     start = addScheduleDays(start, Number(button.dataset.scheduleShift) * 7)
     render()
   }))
+  if (!authenticated) [...filters, ...shifts].forEach(button => { button.disabled = true })
   const instance = {
     render,
     destroy: () => { listeners.forEach(remove => remove()); instances.delete(calendar) },
