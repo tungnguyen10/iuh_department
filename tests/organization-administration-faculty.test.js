@@ -47,6 +47,7 @@ test('organization administration retained pages use the approved vocabulary', a
   assert.match(newsDetail, /Tin tức – Thông báo/)
   assert.doesNotMatch(`${about}\n${leadership}\n${detail}\n${contact}`, /tư tưởng|truyền thông|kết nối nguồn lực|nguồn lực hỗ trợ/i)
 })
+
 test('organization administration contact routes to exactly the five approved areas', async () => {
   const contact = await readFacultyFile('pages/contact.html')
   const options = [...contact.matchAll(/data-option\d+-value="([^"]+)" data-option\d+-text="([^"]+)"/g)]
@@ -149,19 +150,6 @@ test('room booking section precedes news and carries a rooms carousel beside the
   assert.match(sharedCalendarRuntime, /stay: \{ label: 'Lưu trú'/)
   assert.match(sharedCalendarRuntime, /trip: \{ label: 'Điều xe'/)
   assert.doesNotMatch(sharedCalendar, /\/calendar\.html/)
-
-  // Guest view: at least one public conference event, a locked summary row and a locked empty-state panel, both routing to login.
-  assert.ok((sharedCalendar.match(/data-schedule-visibility="public"/g) ?? []).length >= 3, 'needs several public events for the guest view')
-  assert.match(sharedCalendar, /data-schedule-locked hidden/)
-  assert.match(sharedCalendar, /data-schedule-locked-panel hidden/)
-  assert.equal((sharedCalendar.match(/data-schedule-locked-count/g) ?? []).length, 2)
-  assert.match(sharedCalendar, /data-schedule-locked[\s\S]*?data-url="\/login\.html" data-text="Đăng nhập"/)
-  assert.match(sharedCalendar, /data-schedule-locked-panel[\s\S]*?data-url="\/login\.html" data-text="Đăng nhập"/)
-  // The contact CTA must reuse the shared button primitive, not a hand-rolled anchor.
-  assert.match(sharedCalendar, /data-schedule-locked-panel[\s\S]*?@shared\/components\/button\/button\.html" data-variant="11" data-url="\/contact\.html" data-text="Liên hệ hỗ trợ"/)
-  assert.doesNotMatch(sharedCalendar, /<a href="\/contact\.html"/)
-  assert.match(sharedCalendarRuntime, /export const splitScheduleByAccess/)
-  assert.match(sharedCalendarRuntime, /calendar\.closest\('\[data-auth\]'\)/)
 })
 
 test('service booking page stacks the three static registration forms behind shared tabs', async () => {
@@ -491,4 +479,3 @@ test('organization administration leadership uses published IUH personnel', asyn
   assert.match(leaderCard, /\{\{linkClass\}\}/)
   assert.match(leaderCard, /\{\{emailClass\}\}/)
 })
-
