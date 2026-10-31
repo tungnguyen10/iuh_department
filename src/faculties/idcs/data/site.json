@@ -1,5 +1,10 @@
 {
   "version": 1,
+  "layout": {
+    "beforeFooter": [
+      { "include": "@shared/components/partners/index.html", "class": "nttFade" }
+    ]
+  },
   "identity": {
     "unitName": "Trung tâm IDCS",
     "unitFullName": "Trung tâm Kỹ thuật hỗ trợ phát triển công nghiệp khu vực phía Nam",

@@ -13,7 +13,8 @@ const facultyNames = {
   'organization-administration': 'Phòng Tổ chức – Hành chính',
   idcs: 'Trung tâm IDCS',
 }
-const canonicalBodyHash = 'c9a79d6b3d0d4a429b4c8dc81ef49bb0f94fe16d88623c00f936c5f22997d9d9'
+// Updated when the breadcrumb stopped repeating "Trang chủ" as a parent level.
+const canonicalBodyHash = 'fd5ab4720c66f2ee49c873baf1556f95df9a9c5a073cfff418e2f2c6e38f7dbb'
 const imageHashes = [
   'a974527c59f5f776669508aaba96c35246ad50589f8dc2aa0add78e446cfeeee',
   '66918f7c7aed99fbf61cdd89515423b04c1f1b66e53cdf88b2ea1c1e3e1c38ef',
@@ -32,7 +33,12 @@ test('all faculty homepages and partner routes delegate to shared canonical part
       readFile(pathUrl(`src/faculties/${facultyId}/pages/partners.html`), 'utf8'),
     ])
 
-    assert.match(home, /data-include="@shared\/components\/partners\/index\.html"/)
+    if (facultyId === 'idcs') {
+      const site = JSON.parse(await readFile(pathUrl('src/faculties/idcs/data/site.json'), 'utf8'))
+      assert.ok(site.layout.beforeFooter.some((entry) => entry.include === '@shared/components/partners/index.html'))
+    } else {
+      assert.match(home, /data-include="@shared\/components\/partners\/index\.html"/)
+    }
     assert.doesNotMatch(home, /@faculty\/components\/home\/partners/)
     assert.match(partners, /data-include="@shared\/components\/partners\/page\.html"/)
     assert.match(partners, new RegExp(`LAYOUT: description="[^"]*${facultyNames[facultyId]}`))

@@ -1,4 +1,5 @@
-header {
+// Scoped to the site header so <header> elements inside page content stay static.
+header.header-wrapper {
   position: sticky;
   top: 0;
   z-index: 9999;

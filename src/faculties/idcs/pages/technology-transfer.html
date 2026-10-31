@@ -4,53 +4,132 @@
 <!-- LAYOUT: url="https://iuh.edu.vn/technology-transfer" -->
 <!-- LAYOUT: ogImage="/assets/images/idcs-technology-transfer.jpg" -->
 
-<div data-include="@shared/components/common/breadcrumb.html" data-parent-page1="Trang chủ" data-parent-link1="/" data-current-page="Chuyển giao công nghệ" data-parent-page2="" data-parent-link2="" data-parent-page2-class=""></div>
+<div data-include="@shared/components/common/breadcrumb.html" data-parent-page1="Dịch vụ" data-parent-link1="/#services" data-parent-page1-class="" data-parent-page2="" data-parent-link2="" data-parent-page2-class="hidden" data-current-page="Chuyển giao công nghệ"></div>
 
-<section class="relative overflow-hidden bg-primary-dark-blue">
-  <div data-include="@shared/components/common/core-deco.html" data-class="pointer-events-none absolute -right-12 bottom-0 w-40 opacity-15 sm:-right-20 sm:w-52 md:w-64"></div>
-  <div class="container relative mx-auto px-4 py-12 md:py-16">
-    <div class="nttFade max-w-3xl">
-      <div data-include="@shared/components/common/page-hero-title.html" data-eyebrow="Chuyển giao công nghệ" data-title="Đưa giải pháp kỹ thuật từ nghiên cứu vào sản xuất" data-description="IDCS kết nối năng lực nghiên cứu của IUH với nhu cầu đổi mới của doanh nghiệp, thúc đẩy việc thử nghiệm, hoàn thiện và ứng dụng giải pháp công nghệ trong thực tế." data-class="!mb-0 !block" data-eyebrow-class="!border-l-2 !border-primary-yellow !pl-3 !text-sm !font-semibold !tracking-[0.16em] !text-primary-yellow" data-title-class="!mt-5 !text-primary-white md:!text-5xl" data-description-class="!mt-5 !max-w-2xl !text-base !leading-7 !text-primary-white/80 md:!text-lg"></div>
-    </div>
-  </div>
-</section>
+<!-- 1. Hero -->
+<div data-include="@faculty/components/service/hero.html" data-image="/assets/images/idcs-technology-transfer.jpg" data-eyebrow="Chuyển giao công nghệ" data-title="Đưa giải pháp kỹ thuật từ nghiên cứu vào sản xuất" data-description="IDCS kết nối năng lực nghiên cứu của IUH với nhu cầu đổi mới của doanh nghiệp: giải pháp được kiểm chứng cùng nhau trước khi bàn giao để doanh nghiệp tự vận hành." data-cta1-url="#propose" data-cta1-text="Đề xuất bài toán công nghệ" data-cta2-url="#pipeline" data-cta2-text="Xem lộ trình chuyển giao" data-stat1-value="6" data-stat1-label="Giai đoạn chuyển giao" data-stat2-value="6" data-stat2-label="Lĩnh vực ưu tiên" data-stat3-value="3" data-stat3-label="Bên cùng tham gia"></div>
 
-<section id="pipeline" class="scroll-mt-20 bg-primary-white py-12 md:py-16">
+<!-- 2. Lộ trình chuyển giao -->
+<section id="pipeline" class="scroll-mt-20 py-12 md:py-20">
   <div class="container mx-auto px-4">
-    <div class="nttFade">
+    <div class="nttFade grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-end">
       <div data-include="@shared/components/common/section-title.html" data-subtitle="Lộ trình chuyển giao" data-title="Sáu giai đoạn từ nghiên cứu đến sản xuất" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !max-w-xl !text-title" data-description-class="hidden"></div>
+      <p class="max-w-xl font-roboto text-base leading-7 text-gray-700 lg:justify-self-end">Vai trò dẫn dắt chuyển dần từ nhà trường sang doanh nghiệp. Ở giữa là giai đoạn hai bên cùng kiểm chứng trước khi đưa vào vận hành chính thức.</p>
     </div>
 
-    <ol class="nttFade mt-8 max-w-2xl">
-      <div data-include="@faculty/components/home/process-step.html" data-variant="2" data-index="01" data-title="Nghiên cứu" data-description="Xác định hướng giải pháp dựa trên năng lực nghiên cứu của nhà trường."></div>
-      <div data-include="@faculty/components/home/process-step.html" data-variant="2" data-index="02" data-title="Thiết kế kỹ thuật" data-description="Thiết kế phương án kỹ thuật phù hợp điều kiện sản xuất."></div>
-      <div data-include="@faculty/components/home/process-step.html" data-variant="2" data-index="03" data-title="Chế thử" data-description="Chế tạo mẫu để kiểm chứng thiết kế trước khi chạy thử."></div>
-      <div data-include="@faculty/components/home/process-step.html" data-variant="2" data-index="04" data-title="Chạy thử" data-description="Vận hành thử ở quy mô nhỏ, hiệu chỉnh và đánh giá tính khả thi."></div>
-      <div data-include="@faculty/components/home/process-step.html" data-variant="2" data-index="05" data-title="Chuyển giao" data-description="Bàn giao công nghệ kèm tài liệu và đào tạo vận hành."></div>
-      <div data-include="@faculty/components/home/process-step.html" data-variant="2" data-index="06" data-title="Sản xuất" data-description="Doanh nghiệp vận hành chính thức và theo dõi hiệu quả."></div>
+    <ol class="iuh-handoff nttFade mt-10 md:mt-14" aria-label="Lộ trình chuyển giao công nghệ">
+      <li class="iuh-handoff__phase">
+        <p class="iuh-handoff__owner"><span class="iuh-handoff__owner-key">Giai đoạn 1</span>IUH dẫn dắt</p>
+        <ol class="iuh-handoff__steps">
+          <div data-include="@faculty/components/home/process-step.html" data-variant="3" data-index="01" data-title="Nghiên cứu" data-description="Xác định hướng giải pháp dựa trên năng lực nghiên cứu của nhà trường."></div>
+          <div data-include="@faculty/components/home/process-step.html" data-variant="3" data-index="02" data-title="Thiết kế kỹ thuật" data-description="Thiết kế phương án kỹ thuật phù hợp điều kiện sản xuất."></div>
+        </ol>
+      </li>
+      <li class="iuh-handoff__phase">
+        <p class="iuh-handoff__owner"><span class="iuh-handoff__owner-key">Giai đoạn 2</span>Cùng kiểm chứng</p>
+        <ol class="iuh-handoff__steps">
+          <div data-include="@faculty/components/home/process-step.html" data-variant="3" data-index="03" data-title="Chế thử" data-description="Chế tạo mẫu để kiểm chứng thiết kế trước khi chạy thử."></div>
+          <div data-include="@faculty/components/home/process-step.html" data-variant="3" data-index="04" data-title="Chạy thử" data-description="Vận hành thử ở quy mô nhỏ, hiệu chỉnh và đánh giá tính khả thi."></div>
+        </ol>
+      </li>
+      <li class="iuh-handoff__phase">
+        <p class="iuh-handoff__owner"><span class="iuh-handoff__owner-key">Giai đoạn 3</span>Doanh nghiệp vận hành</p>
+        <ol class="iuh-handoff__steps">
+          <div data-include="@faculty/components/home/process-step.html" data-variant="3" data-index="05" data-title="Chuyển giao" data-description="Bàn giao công nghệ kèm tài liệu và đào tạo vận hành."></div>
+          <div data-include="@faculty/components/home/process-step.html" data-variant="3" data-index="06" data-title="Sản xuất" data-description="Doanh nghiệp vận hành chính thức và theo dõi hiệu quả."></div>
+        </ol>
+      </li>
     </ol>
   </div>
 </section>
 
-<section id="focus-areas" class="scroll-mt-20 bg-gray-light py-12 md:py-16">
-  <div class="container mx-auto px-4">
-    <div class="nttFade">
-      <div data-include="@shared/components/common/section-title.html" data-subtitle="Lĩnh vực kỹ thuật quan tâm" data-title="Nhóm lĩnh vực ưu tiên tiếp nhận đề bài" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !max-w-xl !text-title" data-description-class="hidden"></div>
+<!-- 3. Lĩnh vực ưu tiên -->
+<section id="focus-areas" class="scroll-mt-20 bg-gray-light py-12 md:py-20">
+  <div class="container mx-auto grid gap-10 px-4 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-14">
+    <div class="nttFade lg:sticky lg:top-28 lg:self-start">
+      <div data-include="@shared/components/common/section-title.html" data-subtitle="Lĩnh vực kỹ thuật quan tâm" data-title="Nhóm lĩnh vực ưu tiên tiếp nhận đề bài" data-description="Đây là các lĩnh vực IUH có thế mạnh đào tạo và nghiên cứu. Phạm vi triển khai cụ thể được trao đổi theo từng trường hợp." data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !text-title" data-description-class="!mt-4 !text-base !leading-7"></div>
+      <figure class="mt-8 hidden overflow-hidden rounded-lg lg:block">
+        <img src="/assets/images/idcs-equipment.jpg" alt="Thiết bị kỹ thuật tại phòng thí nghiệm IUH" width="1600" height="1066" class="aspect-[4/3] w-full object-cover" loading="lazy" decoding="async" />
+      </figure>
     </div>
 
-    <ul class="nttFade mt-8 grid grid-cols-2 gap-px border border-stroke bg-stroke sm:grid-cols-3">
-      <li class="bg-primary-white px-4 py-5 text-center font-inter text-sm font-bold text-title sm:text-base">Cơ khí chế tạo</li>
-      <li class="bg-primary-white px-4 py-5 text-center font-inter text-sm font-bold text-title sm:text-base">Khuôn mẫu &amp; dụng cụ</li>
-      <li class="bg-primary-white px-4 py-5 text-center font-inter text-sm font-bold text-title sm:text-base">Cơ điện tử</li>
-      <li class="bg-primary-white px-4 py-5 text-center font-inter text-sm font-bold text-title sm:text-base">Tự động hóa</li>
-      <li class="bg-primary-white px-4 py-5 text-center font-inter text-sm font-bold text-title sm:text-base">Điện – Điện tử</li>
-      <li class="bg-primary-white px-4 py-5 text-center font-inter text-sm font-bold text-title sm:text-base">Vật liệu mới</li>
+    <ul class="nttFade grid gap-4 sm:grid-cols-2">
+      <li class="group rounded-lg border border-stroke bg-primary-white p-6 transition-colors duration-300 hover:border-primary-dark-blue hover:bg-primary-dark-blue">
+        <p class="font-inter text-3xl font-extrabold leading-none tabular-nums text-primary-yellow">01</p>
+        <h3 class="mt-4 font-inter text-lg font-bold text-title transition-colors group-hover:text-primary-white">Cơ khí chế tạo</h3>
+        <p class="mt-1.5 font-roboto text-sm leading-6 text-gray-700 transition-colors group-hover:text-primary-white/75">Gia công, chế tạo chi tiết và cụm máy phục vụ sản xuất.</p>
+      </li>
+      <li class="group rounded-lg border border-stroke bg-primary-white p-6 transition-colors duration-300 hover:border-primary-dark-blue hover:bg-primary-dark-blue">
+        <p class="font-inter text-3xl font-extrabold leading-none tabular-nums text-primary-yellow">02</p>
+        <h3 class="mt-4 font-inter text-lg font-bold text-title transition-colors group-hover:text-primary-white">Khuôn mẫu &amp; dụng cụ</h3>
+        <p class="mt-1.5 font-roboto text-sm leading-6 text-gray-700 transition-colors group-hover:text-primary-white/75">Thiết kế, cải tiến khuôn và đồ gá cho dây chuyền.</p>
+      </li>
+      <li class="group rounded-lg border border-stroke bg-primary-white p-6 transition-colors duration-300 hover:border-primary-dark-blue hover:bg-primary-dark-blue">
+        <p class="font-inter text-3xl font-extrabold leading-none tabular-nums text-primary-yellow">03</p>
+        <h3 class="mt-4 font-inter text-lg font-bold text-title transition-colors group-hover:text-primary-white">Cơ điện tử</h3>
+        <p class="mt-1.5 font-roboto text-sm leading-6 text-gray-700 transition-colors group-hover:text-primary-white/75">Tích hợp cơ khí, điện và điều khiển trong thiết bị.</p>
+      </li>
+      <li class="group rounded-lg border border-stroke bg-primary-white p-6 transition-colors duration-300 hover:border-primary-dark-blue hover:bg-primary-dark-blue">
+        <p class="font-inter text-3xl font-extrabold leading-none tabular-nums text-primary-yellow">04</p>
+        <h3 class="mt-4 font-inter text-lg font-bold text-title transition-colors group-hover:text-primary-white">Tự động hóa</h3>
+        <p class="mt-1.5 font-roboto text-sm leading-6 text-gray-700 transition-colors group-hover:text-primary-white/75">Tự động hóa công đoạn, giảm thao tác thủ công.</p>
+      </li>
+      <li class="group rounded-lg border border-stroke bg-primary-white p-6 transition-colors duration-300 hover:border-primary-dark-blue hover:bg-primary-dark-blue">
+        <p class="font-inter text-3xl font-extrabold leading-none tabular-nums text-primary-yellow">05</p>
+        <h3 class="mt-4 font-inter text-lg font-bold text-title transition-colors group-hover:text-primary-white">Điện – Điện tử</h3>
+        <p class="mt-1.5 font-roboto text-sm leading-6 text-gray-700 transition-colors group-hover:text-primary-white/75">Mạch điều khiển, thiết bị đo và hệ thống điện công nghiệp.</p>
+      </li>
+      <li class="group rounded-lg border border-stroke bg-primary-white p-6 transition-colors duration-300 hover:border-primary-dark-blue hover:bg-primary-dark-blue">
+        <p class="font-inter text-3xl font-extrabold leading-none tabular-nums text-primary-yellow">06</p>
+        <h3 class="mt-4 font-inter text-lg font-bold text-title transition-colors group-hover:text-primary-white">Vật liệu mới</h3>
+        <p class="mt-1.5 font-roboto text-sm leading-6 text-gray-700 transition-colors group-hover:text-primary-white/75">Ứng dụng vật liệu thay thế để nâng chất lượng, giảm chi phí.</p>
+      </li>
     </ul>
+  </div>
+</section>
 
-    <p class="mt-5 font-roboto text-xs leading-5 text-gray">Phạm vi triển khai cụ thể cho từng lĩnh vực được trao đổi theo từng trường hợp.</p>
+<!-- 4. Vai trò các bên -->
+<section id="roles" class="scroll-mt-20 py-12 md:py-20">
+  <div class="container mx-auto px-4">
+    <div class="nttFade grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-end">
+      <div data-include="@shared/components/common/section-title.html" data-subtitle="Vai trò các bên" data-title="Ba bên, một mục tiêu: công nghệ vận hành được" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !max-w-xl !text-title" data-description-class="hidden"></div>
+      <p class="max-w-xl font-roboto text-base leading-7 text-gray-700 lg:justify-self-end">IDCS đứng giữa nhà trường và doanh nghiệp, giữ cho đề bài, tiến độ và trách nhiệm của mỗi bên luôn rõ ràng.</p>
+    </div>
 
-    <div class="nttFade mt-8">
-      <div data-include="@shared/components/button/button.html" data-variant="6" data-url="/contact.html" data-text="Đề xuất bài toán công nghệ" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div>
+    <div class="nttFade mt-10 grid gap-6 lg:grid-cols-3 lg:items-stretch">
+      <article class="flex flex-col rounded-lg border border-stroke bg-primary-white p-7">
+        <span class="flex size-12 items-center justify-center rounded-full bg-secondary-blue-light text-primary-dark-blue"><img src="/assets/svgs/icon-graduation-cap.svg" alt="" class="size-6" /></span>
+        <h3 class="mt-5 font-inter text-xl font-bold text-title">Trường Đại học Công nghiệp TP.HCM</h3>
+        <ul class="mt-4 grid gap-2.5 font-roboto text-sm leading-6 text-gray-700">
+          <li class="flex items-start gap-2"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-1 size-4 shrink-0 text-primary-dark-blue" />Chuyên gia, nhóm nghiên cứu theo lĩnh vực</li>
+          <li class="flex items-start gap-2"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-1 size-4 shrink-0 text-primary-dark-blue" />Phòng thí nghiệm, xưởng để chế thử</li>
+          <li class="flex items-start gap-2"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-1 size-4 shrink-0 text-primary-dark-blue" />Đào tạo người vận hành</li>
+        </ul>
+      </article>
+      <article class="relative flex flex-col rounded-lg bg-primary-dark-blue p-7 shadow-[0_14px_34px_rgba(21,56,152,0.18)]">
+        <span class="absolute right-6 top-6 rounded bg-primary-yellow px-2.5 py-1 font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Đầu mối</span>
+        <span class="flex size-12 items-center justify-center rounded-full bg-primary-yellow text-primary-dark-blue"><img src="/assets/svgs/icon-handshake.svg" alt="" class="size-6" /></span>
+        <h3 class="mt-5 font-inter text-xl font-bold text-primary-white">Trung tâm IDCS</h3>
+        <ul class="mt-4 grid gap-2.5 font-roboto text-sm leading-6 text-primary-white/80">
+          <li class="flex items-start gap-2"><span aria-hidden="true" class="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary-yellow"></span>Tiếp nhận và làm rõ đề bài với doanh nghiệp</li>
+          <li class="flex items-start gap-2"><span aria-hidden="true" class="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary-yellow"></span>Kết nối đúng chuyên gia, đúng phòng thí nghiệm</li>
+          <li class="flex items-start gap-2"><span aria-hidden="true" class="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary-yellow"></span>Quản lý tiến độ, nghiệm thu từng giai đoạn</li>
+        </ul>
+      </article>
+      <article class="flex flex-col rounded-lg border border-stroke bg-primary-white p-7">
+        <span class="flex size-12 items-center justify-center rounded-full bg-secondary-blue-light text-primary-dark-blue"><img src="/assets/svgs/icon-building.svg" alt="" class="size-6" /></span>
+        <h3 class="mt-5 font-inter text-xl font-bold text-title">Doanh nghiệp</h3>
+        <ul class="mt-4 grid gap-2.5 font-roboto text-sm leading-6 text-gray-700">
+          <li class="flex items-start gap-2"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-1 size-4 shrink-0 text-primary-dark-blue" />Đề bài, dữ liệu và điều kiện sản xuất thực tế</li>
+          <li class="flex items-start gap-2"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-1 size-4 shrink-0 text-primary-dark-blue" />Mặt bằng, nhân sự tham gia chạy thử</li>
+          <li class="flex items-start gap-2"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-1 size-4 shrink-0 text-primary-dark-blue" />Tiếp nhận, vận hành và nhân rộng</li>
+        </ul>
+      </article>
     </div>
   </div>
 </section>
+
+<div data-include="@faculty/components/service/related-services.html" data-transfer-class="hidden" data-class="bg-gray-light"></div>
+
+<!-- 5. Đề xuất bài toán -->
+<div data-include="@faculty/components/service/cta-band.html" data-id="propose" data-eyebrow="Đề xuất bài toán" data-title="Doanh nghiệp có một bài toán công nghệ?" data-description="Đề bài càng cụ thể, Trung tâm càng nhanh tìm được nhóm chuyên gia phù hợp để đánh giá tính khả thi." data-button-url="/contact.html" data-button-text="Đề xuất bài toán công nghệ" data-step1-title="Gửi đề bài" data-step1-text="Mô tả vấn đề kỹ thuật, kết quả mong muốn và điều kiện hiện có." data-step2-title="Đánh giá khả thi" data-step2-text="IDCS kết nối chuyên gia IUH để đánh giá và đề xuất hướng giải pháp." data-step3-title="Thống nhất lộ trình" data-step3-text="Hai bên thống nhất phạm vi, các mốc chế thử, chạy thử và chuyển giao."></div>

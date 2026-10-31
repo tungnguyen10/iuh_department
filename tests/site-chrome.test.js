@@ -180,6 +180,16 @@ test('site renderer renders escaped identity, recursive navigation, links and fo
   assert.doesNotMatch(html, /\{\{[^}]+\}\}/)
 })
 
+test('site data validator checks layout.beforeFooter entries', async () => {
+  const { validateSiteData } = await import(loaderUrl)
+  const opts = { facultyId: 'broken-faculty', pageRoutes: routes }
+  const entry = { include: '@shared/components/partners/index.html', class: 'nttFade' }
+
+  assert.doesNotThrow(() => validateSiteData({ ...fixture, layout: { beforeFooter: [entry] } }, opts))
+  assert.throws(() => validateSiteData({ ...fixture, layout: {} }, opts), /broken-faculty.*beforeFooter/)
+  assert.throws(() => validateSiteData({ ...fixture, layout: { beforeFooter: [{ include: '../evil.html' }] } }, opts), /broken-faculty.*include/)
+})
+
 test('site data validator reports faculty-aware errors', async () => {
   const { validateSiteData } = await import(loaderUrl)
 

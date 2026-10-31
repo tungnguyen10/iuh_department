@@ -4,69 +4,109 @@
 <!-- LAYOUT: url="https://iuh.edu.vn/industrial-support" -->
 <!-- LAYOUT: ogImage="/assets/images/idcs-facility.jpg" -->
 
-<div data-include="@shared/components/common/breadcrumb.html" data-parent-page1="Trang chủ" data-parent-link1="/" data-current-page="Hỗ trợ phát triển công nghiệp" data-parent-page2="" data-parent-link2="" data-parent-page2-class=""></div>
+<div data-include="@shared/components/common/breadcrumb.html" data-parent-page1="Dịch vụ" data-parent-link1="/#services" data-parent-page1-class="" data-parent-page2="" data-parent-link2="" data-parent-page2-class="hidden" data-current-page="Hỗ trợ phát triển công nghiệp"></div>
 
-<section class="relative overflow-hidden bg-primary-dark-blue">
-  <div data-include="@shared/components/common/core-deco.html" data-class="pointer-events-none absolute -right-12 bottom-0 w-40 opacity-15 sm:-right-20 sm:w-52 md:w-64"></div>
-  <div class="container relative mx-auto px-4 py-12 md:py-16">
-    <div class="nttFade max-w-3xl">
-      <div data-include="@shared/components/common/page-hero-title.html" data-eyebrow="Hỗ trợ phát triển công nghiệp" data-title="Đồng hành cùng doanh nghiệp tham gia chuỗi cung ứng" data-description="Kết nối nguồn lực từ nhà trường, chuyên gia và hệ sinh thái công nghiệp để hỗ trợ doanh nghiệp nâng cao năng lực và mở rộng cơ hội hợp tác." data-class="!mb-0 !block" data-eyebrow-class="!border-l-2 !border-primary-yellow !pl-3 !text-sm !font-semibold !tracking-[0.16em] !text-primary-yellow" data-title-class="!mt-5 !text-primary-white md:!text-5xl" data-description-class="!mt-5 !max-w-2xl !text-base !leading-7 !text-primary-white/80 md:!text-lg"></div>
+<!-- 1. Hero -->
+<div data-include="@faculty/components/service/hero.html" data-image="/assets/images/idc-news-vitw.jpg" data-eyebrow="Hỗ trợ phát triển công nghiệp" data-title="Đồng hành cùng doanh nghiệp tham gia chuỗi cung ứng" data-description="Kết nối nguồn lực từ nhà trường, chuyên gia và hệ sinh thái công nghiệp để doanh nghiệp nâng cao năng lực và mở rộng cơ hội hợp tác." data-cta1-url="#connect" data-cta1-text="Gửi nhu cầu cho IDCS" data-cta2-url="#needs" data-cta2-text="Tìm hướng hỗ trợ phù hợp" data-stat1-value="5" data-stat1-label="Hướng hỗ trợ" data-stat2-value="51" data-stat2-label="Doanh nghiệp được hỗ trợ (2021)" data-stat3-value="6" data-stat3-label="Nhóm nhu cầu được phân luồng"></div>
+
+<!-- 2. Nhóm hoạt động -->
+<section id="pillars" class="scroll-mt-20 py-12 md:py-20">
+  <div class="container mx-auto px-4">
+    <div class="nttFade grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-end">
+      <div data-include="@shared/components/common/section-title.html" data-subtitle="Nhóm hoạt động" data-title="Năm hướng hỗ trợ doanh nghiệp công nghiệp" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !max-w-xl !text-title" data-description-class="hidden"></div>
+      <p class="max-w-xl font-roboto text-base leading-7 text-gray-700 lg:justify-self-end">Trọng tâm là giúp doanh nghiệp Việt Nam đủ năng lực trở thành nhà cung ứng tin cậy trong chuỗi giá trị công nghiệp.</p>
+    </div>
+
+    <div class="nttFade mt-10 grid gap-6 lg:grid-cols-3">
+      <article class="group relative flex min-h-[26rem] flex-col justify-end overflow-hidden rounded-lg bg-primary-dark-blue lg:row-span-2">
+        <img src="/assets/images/idc-news-samsung.jpg" alt="Dây chuyền sản xuất điện tử của doanh nghiệp trong chuỗi cung ứng" width="1200" height="800" class="absolute inset-0 h-full w-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
+        <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-primary-dark-blue via-primary-dark-blue/70 to-primary-dark-blue/0"></div>
+        <div class="relative p-7 md:p-8">
+          <span class="rounded bg-primary-yellow px-2.5 py-1 font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Trọng tâm</span>
+          <h3 class="mt-4 font-inter text-2xl font-bold text-primary-white">Phát triển nhà cung ứng</h3>
+          <p class="mt-3 font-roboto text-base leading-7 text-primary-white/80">Nâng năng lực doanh nghiệp Việt Nam về chất lượng, giao hàng và quản trị để đáp ứng yêu cầu của buyer và chuỗi cung ứng.</p>
+        </div>
+      </article>
+
+      <article class="flex gap-5 rounded-lg border border-stroke bg-primary-white p-6 transition-shadow hover:shadow-[0_14px_34px_rgba(21,56,152,0.12)]">
+        <span class="flex size-12 shrink-0 items-center justify-center rounded-full bg-secondary-blue-light text-primary-dark-blue"><img src="/assets/svgs/icon-handshake.svg" alt="" class="size-6" /></span>
+        <div><h3 class="font-inter text-lg font-bold text-title">Kết nối buyer – nhà cung ứng</h3><p class="mt-1.5 font-roboto text-sm leading-6 text-gray-700">Kết nối doanh nghiệp sản xuất với buyer, doanh nghiệp FDI và đối tác công nghiệp.</p></div>
+      </article>
+      <article class="flex gap-5 rounded-lg border border-stroke bg-primary-white p-6 transition-shadow hover:shadow-[0_14px_34px_rgba(21,56,152,0.12)]">
+        <span class="flex size-12 shrink-0 items-center justify-center rounded-full bg-secondary-blue-light text-primary-dark-blue"><img src="/assets/svgs/icon-award.svg" alt="" class="size-6" /></span>
+        <div><h3 class="font-inter text-lg font-bold text-title">Tiêu chuẩn &amp; sẵn sàng xuất khẩu</h3><p class="mt-1.5 font-roboto text-sm leading-6 text-gray-700">Hỗ trợ tiếp cận tiêu chuẩn, chứng nhận và yêu cầu của thị trường.</p></div>
+      </article>
+      <article class="flex gap-5 rounded-lg border border-stroke bg-primary-white p-6 transition-shadow hover:shadow-[0_14px_34px_rgba(21,56,152,0.12)]">
+        <span class="flex size-12 shrink-0 items-center justify-center rounded-full bg-secondary-blue-light text-primary-dark-blue"><img src="/assets/svgs/icon-globe.svg" alt="" class="size-6" /></span>
+        <div><h3 class="font-inter text-lg font-bold text-title">Hợp tác quốc tế</h3><p class="mt-1.5 font-roboto text-sm leading-6 text-gray-700">Đào tạo, tư vấn cùng chuyên gia và kết nối mạng lưới đối tác quốc tế.</p></div>
+      </article>
+      <article class="flex gap-5 rounded-lg border border-stroke bg-primary-white p-6 transition-shadow hover:shadow-[0_14px_34px_rgba(21,56,152,0.12)]">
+        <span class="flex size-12 shrink-0 items-center justify-center rounded-full bg-secondary-blue-light text-primary-dark-blue"><img src="/assets/svgs/icon-briefcase.svg" alt="" class="size-6" /></span>
+        <div><h3 class="font-inter text-lg font-bold text-title">Phát triển doanh nghiệp SME</h3><p class="mt-1.5 font-roboto text-sm leading-6 text-gray-700">Đồng hành nâng cao năng lực quản trị và kỹ thuật cho doanh nghiệp vừa và nhỏ.</p></div>
+      </article>
     </div>
   </div>
 </section>
 
-<section id="pillars" class="scroll-mt-20 bg-primary-white py-12 md:py-16">
+<!-- 3. Hoạt động trong hệ sinh thái -->
+<section id="ecosystem" class="scroll-mt-20 bg-gray-light py-12 md:py-20">
   <div class="container mx-auto px-4">
-    <div class="nttFade">
-      <div data-include="@shared/components/common/section-title.html" data-subtitle="Nhóm hoạt động" data-title="Năm hướng hỗ trợ doanh nghiệp công nghiệp" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !max-w-xl !text-title" data-description-class="hidden"></div>
+    <div class="nttFade flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div data-include="@shared/components/common/section-title.html" data-subtitle="Hệ sinh thái công nghiệp" data-title="Hoạt động kết nối đáng chú ý" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !max-w-xl !text-title" data-description-class="hidden"></div>
+      <div class="shrink-0">
+        <div data-include="@shared/components/button/button.html" data-variant="13" data-url="/news.html" data-text="Xem tất cả tin tức" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div>
+      </div>
     </div>
 
-    <ul class="nttFade mt-8 grid gap-px border border-stroke bg-stroke sm:grid-cols-2">
-      <li class="bg-primary-white p-6">
-        <h2 class="font-inter text-xl font-bold text-title">Phát triển nhà cung ứng</h2>
-        <p class="mt-2 font-roboto leading-7 text-gray-700">Nâng năng lực doanh nghiệp Việt Nam đáp ứng yêu cầu của buyer và chuỗi cung ứng.</p>
-      </li>
-      <li class="bg-primary-white p-6">
-        <h2 class="font-inter text-xl font-bold text-title">Kết nối buyer – nhà cung ứng</h2>
-        <p class="mt-2 font-roboto leading-7 text-gray-700">Kết nối doanh nghiệp sản xuất với buyer, doanh nghiệp FDI và đối tác công nghiệp.</p>
-      </li>
-      <li class="bg-primary-white p-6">
-        <h2 class="font-inter text-xl font-bold text-title">Tiêu chuẩn &amp; sẵn sàng xuất khẩu</h2>
-        <p class="mt-2 font-roboto leading-7 text-gray-700">Hỗ trợ doanh nghiệp tiếp cận tiêu chuẩn, chứng nhận và yêu cầu của thị trường.</p>
-      </li>
-      <li class="bg-primary-white p-6">
-        <h2 class="font-inter text-xl font-bold text-title">Hợp tác quốc tế</h2>
-        <p class="mt-2 font-roboto leading-7 text-gray-700">Đào tạo, tư vấn, chuyên gia và kết nối với mạng lưới đối tác quốc tế.</p>
-      </li>
-      <li class="bg-primary-white p-6 sm:col-span-2">
-        <h2 class="font-inter text-xl font-bold text-title">Phát triển doanh nghiệp SME</h2>
-        <p class="mt-2 font-roboto leading-7 text-gray-700">Đồng hành nâng cao năng lực quản trị và kỹ thuật cho doanh nghiệp vừa và nhỏ.</p>
-      </li>
+    <div class="nttFade mt-10 grid gap-6 md:grid-cols-3">
+      <a href="/news-detail.html?slug=vitw-2026-va-hanoi-mip-fair-ket-noi-cong-nghiep-cong-nghe" class="group flex flex-col overflow-hidden rounded-lg border border-stroke bg-primary-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(21,56,152,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow motion-reduce:transform-none">
+        <span class="block overflow-hidden"><img src="/assets/images/idc-news-vitw.jpg" alt="" width="1200" height="800" class="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" /></span>
+        <span class="flex flex-1 flex-col p-6">
+          <span class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Sự kiện công nghiệp · 09/2026</span>
+          <span class="mt-2 font-inter text-lg font-bold leading-snug text-title group-hover:text-primary-dark-blue">VITW 2026 và Hanoi MIP Fair: kết nối công nghiệp, công nghệ</span>
+          <span class="mt-2 font-roboto text-sm leading-6 text-gray-700">Không gian để doanh nghiệp tìm nhà cung ứng và đối tác công nghệ.</span>
+        </span>
+      </a>
+      <a href="/news-detail.html?slug=samsung-mo-rong-dau-an-dau-tu-trong-he-sinh-thai-cong-nghe-viet-nam" class="group flex flex-col overflow-hidden rounded-lg border border-stroke bg-primary-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(21,56,152,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow motion-reduce:transform-none">
+        <span class="block overflow-hidden"><img src="/assets/images/idc-news-samsung.jpg" alt="" width="1200" height="800" class="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" /></span>
+        <span class="flex flex-1 flex-col p-6">
+          <span class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Công nghiệp hỗ trợ · 10/2026</span>
+          <span class="mt-2 font-inter text-lg font-bold leading-snug text-title group-hover:text-primary-dark-blue">Samsung mở rộng hợp tác với doanh nghiệp Việt</span>
+          <span class="mt-2 font-roboto text-sm leading-6 text-gray-700">Kết nối nhà cung ứng, tư vấn cải tiến và xây dựng nhà máy thông minh.</span>
+        </span>
+      </a>
+      <a href="/news-detail.html?slug=khuyen-cong-gan-voi-phat-trien-cong-nghiep-dia-phuong" class="group flex flex-col overflow-hidden rounded-lg border border-stroke bg-primary-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(21,56,152,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow motion-reduce:transform-none">
+        <span class="block overflow-hidden"><img src="/assets/images/idc-news-khuyen-cong.jpg" alt="" width="1200" height="800" class="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" /></span>
+        <span class="flex flex-1 flex-col p-6">
+          <span class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Chính sách công nghiệp · 10/2026</span>
+          <span class="mt-2 font-inter text-lg font-bold leading-snug text-title group-hover:text-primary-dark-blue">Khuyến công gắn với năng suất và phát triển công nghiệp địa phương</span>
+          <span class="mt-2 font-roboto text-sm leading-6 text-gray-700">Đánh giá hỗ trợ bằng thay đổi thực tế tại doanh nghiệp.</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Phân luồng nhu cầu -->
+<section id="needs" class="scroll-mt-20 py-12 md:py-20">
+  <div class="container mx-auto px-4">
+    <div class="nttFade grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-end">
+      <div data-include="@shared/components/common/section-title.html" data-subtitle="Bắt đầu từ bài toán của bạn" data-title="Bạn đang gặp bài toán nào?" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !text-title" data-description-class="hidden"></div>
+      <p class="max-w-xl font-roboto text-base leading-7 text-gray-700 lg:justify-self-end">Chọn nhóm nhu cầu gần nhất với doanh nghiệp để được chuyển tới đúng nhóm chuyên môn của Trung tâm.</p>
+    </div>
+
+    <ul class="nttFade mt-10 grid gap-px overflow-hidden rounded-lg border border-stroke bg-stroke sm:grid-cols-2 lg:grid-cols-3">
+      <li><a href="/training.html" class="group flex h-full items-center justify-between gap-4 bg-primary-white p-6 transition-colors hover:bg-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-yellow"><span><span class="block font-roboto text-xs font-bold uppercase tracking-[0.14em] text-gray group-hover:text-primary-yellow">Đào tạo ngắn hạn</span><span class="mt-1.5 block font-inter text-base font-bold text-title group-hover:text-primary-white">Cần nâng cao năng lực nhân sự</span></span><img src="/assets/svgs/icon-arrow-right.svg" alt="" class="size-5 shrink-0 transition-transform text-primary-dark-blue group-hover:translate-x-1 group-hover:text-primary-yellow motion-reduce:transform-none" /></a></li>
+      <li><a href="/consulting.html" class="group flex h-full items-center justify-between gap-4 bg-primary-white p-6 transition-colors hover:bg-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-yellow"><span><span class="block font-roboto text-xs font-bold uppercase tracking-[0.14em] text-gray group-hover:text-primary-yellow">Tư vấn cải tiến</span><span class="mt-1.5 block font-inter text-base font-bold text-title group-hover:text-primary-white">Cần cải tiến quy trình sản xuất</span></span><img src="/assets/svgs/icon-arrow-right.svg" alt="" class="size-5 shrink-0 transition-transform text-primary-dark-blue group-hover:translate-x-1 group-hover:text-primary-yellow motion-reduce:transform-none" /></a></li>
+      <li><a href="/services.html" class="group flex h-full items-center justify-between gap-4 bg-primary-white p-6 transition-colors hover:bg-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-yellow"><span><span class="block font-roboto text-xs font-bold uppercase tracking-[0.14em] text-gray group-hover:text-primary-yellow">Dịch vụ đo kiểm</span><span class="mt-1.5 block font-inter text-base font-bold text-title group-hover:text-primary-white">Cần kiểm tra, đánh giá kỹ thuật</span></span><img src="/assets/svgs/icon-arrow-right.svg" alt="" class="size-5 shrink-0 transition-transform text-primary-dark-blue group-hover:translate-x-1 group-hover:text-primary-yellow motion-reduce:transform-none" /></a></li>
+      <li><a href="/technology-transfer.html" class="group flex h-full items-center justify-between gap-4 bg-primary-white p-6 transition-colors hover:bg-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-yellow"><span><span class="block font-roboto text-xs font-bold uppercase tracking-[0.14em] text-gray group-hover:text-primary-yellow">Chuyển giao công nghệ</span><span class="mt-1.5 block font-inter text-base font-bold text-title group-hover:text-primary-white">Cần tìm giải pháp công nghệ</span></span><img src="/assets/svgs/icon-arrow-right.svg" alt="" class="size-5 shrink-0 transition-transform text-primary-dark-blue group-hover:translate-x-1 group-hover:text-primary-yellow motion-reduce:transform-none" /></a></li>
+      <li><a href="#connect" class="group flex h-full items-center justify-between gap-4 bg-primary-white p-6 transition-colors hover:bg-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-yellow"><span><span class="block font-roboto text-xs font-bold uppercase tracking-[0.14em] text-gray group-hover:text-primary-yellow">Phát triển nhà cung ứng</span><span class="mt-1.5 block font-inter text-base font-bold text-title group-hover:text-primary-white">Cần trở thành nhà cung ứng</span></span><img src="/assets/svgs/icon-arrow-right.svg" alt="" class="size-5 shrink-0 transition-transform text-primary-dark-blue group-hover:translate-x-1 group-hover:text-primary-yellow motion-reduce:transform-none" /></a></li>
+      <li><a href="/contact.html" class="group flex h-full items-center justify-between gap-4 bg-primary-white p-6 transition-colors hover:bg-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-yellow"><span><span class="block font-roboto text-xs font-bold uppercase tracking-[0.14em] text-gray group-hover:text-primary-yellow">Liên hệ</span><span class="mt-1.5 block font-inter text-base font-bold text-title group-hover:text-primary-white">Cần chuyên gia tư vấn</span></span><img src="/assets/svgs/icon-arrow-right.svg" alt="" class="size-5 shrink-0 transition-transform text-primary-dark-blue group-hover:translate-x-1 group-hover:text-primary-yellow motion-reduce:transform-none" /></a></li>
     </ul>
   </div>
 </section>
 
-<section id="needs" class="scroll-mt-20 bg-secondary-blue-light/40 py-12 md:py-16">
-  <div class="container mx-auto px-4">
-    <div class="nttFade grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
-      <div>
-        <div data-include="@shared/components/common/section-title.html" data-subtitle="Bắt đầu từ bài toán của bạn" data-title="Bạn đang gặp bài toán nào?" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !text-title" data-description-class="hidden"></div>
-        <p class="mt-4 max-w-xl font-roboto text-base leading-7 text-gray-700">Chọn nhóm nhu cầu gần nhất với doanh nghiệp của bạn để được phân luồng tới đúng nhóm chuyên môn của Trung tâm.</p>
-      </div>
+<div data-include="@faculty/components/service/related-services.html" data-industrial-class="hidden" data-class="bg-gray-light"></div>
 
-      <div class="border border-stroke bg-primary-white p-7 md:p-9">
-        <ul class="divide-y divide-stroke border-y border-stroke">
-          <li><a href="/training.html" class="group flex items-center gap-3 py-4 font-roboto text-sm leading-6 text-gray-700 transition-colors hover:text-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow md:text-base"><img src="/assets/svgs/icon-arrow-right.svg" alt="" class="size-5 shrink-0 transition-transform group-hover:translate-x-1 motion-reduce:transform-none" />Cần nâng cao năng lực nhân sự</a></li>
-          <li><a href="/consulting.html" class="group flex items-center gap-3 py-4 font-roboto text-sm leading-6 text-gray-700 transition-colors hover:text-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow md:text-base"><img src="/assets/svgs/icon-arrow-right.svg" alt="" class="size-5 shrink-0 transition-transform group-hover:translate-x-1 motion-reduce:transform-none" />Cần cải tiến quy trình sản xuất</a></li>
-          <li><a href="/services.html" class="group flex items-center gap-3 py-4 font-roboto text-sm leading-6 text-gray-700 transition-colors hover:text-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow md:text-base"><img src="/assets/svgs/icon-arrow-right.svg" alt="" class="size-5 shrink-0 transition-transform group-hover:translate-x-1 motion-reduce:transform-none" />Cần kiểm tra, đánh giá kỹ thuật</a></li>
-          <li><a href="/technology-transfer.html" class="group flex items-center gap-3 py-4 font-roboto text-sm leading-6 text-gray-700 transition-colors hover:text-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow md:text-base"><img src="/assets/svgs/icon-arrow-right.svg" alt="" class="size-5 shrink-0 transition-transform group-hover:translate-x-1 motion-reduce:transform-none" />Cần tìm giải pháp công nghệ</a></li>
-          <li><a href="/contact.html" class="group flex items-center gap-3 py-4 font-roboto text-sm leading-6 text-gray-700 transition-colors hover:text-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow md:text-base"><img src="/assets/svgs/icon-arrow-right.svg" alt="" class="size-5 shrink-0 transition-transform group-hover:translate-x-1 motion-reduce:transform-none" />Cần phát triển thành nhà cung ứng</a></li>
-          <li><a href="/contact.html" class="group flex items-center gap-3 py-4 font-roboto text-sm leading-6 text-gray-700 transition-colors hover:text-primary-dark-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow md:text-base"><img src="/assets/svgs/icon-arrow-right.svg" alt="" class="size-5 shrink-0 transition-transform group-hover:translate-x-1 motion-reduce:transform-none" />Cần chuyên gia tư vấn</a></li>
-        </ul>
-        <div class="mt-7">
-          <div data-include="@shared/components/button/button.html" data-variant="4" data-url="/contact.html" data-text="Gửi nhu cầu cho IDCS" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- 5. Kết nối -->
+<div data-include="@faculty/components/service/cta-band.html" data-id="connect" data-eyebrow="Kết nối với IDCS" data-title="Cùng xây lộ trình trở thành nhà cung ứng" data-description="Chia sẻ hiện trạng và mục tiêu của doanh nghiệp, Trung tâm sẽ đề xuất các hoạt động hỗ trợ phù hợp." data-button-url="/contact.html" data-button-text="Gửi nhu cầu cho IDCS" data-step1-title="Chia sẻ hiện trạng" data-step1-text="Sản phẩm, năng lực sản xuất và khách hàng mục tiêu của doanh nghiệp." data-step2-title="Đánh giá khoảng cách" data-step2-text="Đối chiếu với yêu cầu của buyer để xác định điểm cần nâng cấp." data-step3-title="Lộ trình hỗ trợ" data-step3-text="Kết hợp đào tạo, tư vấn, đo kiểm và kết nối theo từng giai đoạn."></div>

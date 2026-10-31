@@ -1,0 +1,19 @@
+<section class="relative overflow-hidden bg-primary-dark-blue">
+  <img src="{{image}}" alt="" width="1200" height="900" class="absolute inset-0 h-full w-full object-cover opacity-25" decoding="async" />
+  <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-r from-primary-dark-blue via-primary-dark-blue/90 to-primary-dark-blue/40"></div>
+  <div data-include="@shared/components/common/core-deco.html" data-class="pointer-events-none absolute -right-12 bottom-0 w-40 opacity-15 sm:-right-20 sm:w-52 md:w-64"></div>
+  <div class="container relative mx-auto px-4 py-12 md:py-20">
+    <div class="nttFade max-w-3xl">
+      <div data-include="@shared/components/common/page-hero-title.html" data-eyebrow="{{eyebrow}}" data-title="{{title}}" data-description="{{description}}" data-class="!mb-0 !block" data-eyebrow-class="!border-l-2 !border-primary-yellow !pl-3 !text-sm !font-semibold !tracking-[0.16em] !text-primary-yellow" data-title-class="!mt-5 !text-primary-white md:!text-5xl" data-description-class="!mt-5 !max-w-2xl !text-base !leading-7 !text-primary-white/80 md:!text-lg"></div>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <div data-include="@shared/components/button/button.html" data-variant="6" data-url="{{cta1Url}}" data-text="{{cta1Text}}" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div>
+        <div data-include="@shared/components/button/button.html" data-variant="8" data-url="{{cta2Url}}" data-text="{{cta2Text}}" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div>
+      </div>
+    </div>
+    <dl class="nttFade mt-10 grid grid-cols-3 gap-px overflow-hidden rounded-lg border border-primary-white/15 bg-primary-white/10 md:mt-14 lg:max-w-3xl">
+      <div class="flex flex-col-reverse justify-end bg-primary-dark-blue px-5 py-5"><dt class="mt-2 font-roboto text-xs uppercase leading-5 tracking-[0.12em] text-primary-white/70">{{stat1Label}}</dt><dd class="font-inter text-3xl font-extrabold leading-none text-primary-yellow">{{stat1Value}}</dd></div>
+      <div class="flex flex-col-reverse justify-end bg-primary-dark-blue px-5 py-5"><dt class="mt-2 font-roboto text-xs uppercase leading-5 tracking-[0.12em] text-primary-white/70">{{stat2Label}}</dt><dd class="font-inter text-3xl font-extrabold leading-none text-primary-yellow">{{stat2Value}}</dd></div>
+      <div class="flex flex-col-reverse justify-end bg-primary-dark-blue px-5 py-5"><dt class="mt-2 font-roboto text-xs uppercase leading-5 tracking-[0.12em] text-primary-white/70">{{stat3Label}}</dt><dd class="font-inter text-3xl font-extrabold leading-none text-primary-yellow">{{stat3Value}}</dd></div>
+    </dl>
+  </div>
+</section>

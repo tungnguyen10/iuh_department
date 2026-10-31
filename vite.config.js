@@ -132,6 +132,22 @@ const mapSrcRequests = (paths) => ({
   },
 })
 
+// Included HTML lives outside Vite's root, so Tailwind would keep serving CSS generated before the edit.
+const refreshIncludedHtml = (paths) => ({
+  name: 'refresh-included-html',
+  apply: 'serve',
+  configureServer(server) {
+    server.watcher.add([paths.sharedRoot, paths.selectedFacultyRoot])
+    server.watcher.on('change', (file) => {
+      if (!file.endsWith('.html')) return
+      for (const mod of server.moduleGraph.idToModuleMap.values()) {
+        if (/\.s?css(?:$|\?)/.test(mod.id ?? '')) server.moduleGraph.invalidateModule(mod)
+      }
+      server.ws.send({ type: 'full-reload' })
+    })
+  },
+})
+
 const firstExisting = (...candidates) => candidates.find((candidate) => candidate && existsSync(candidate)) || null
 
 const mapUrlToFsPath = (url, paths) => {
@@ -234,7 +250,15 @@ const getLayoutTemplate = () => {
   return layoutCache
 }
 
-const layoutPlugin = (base, mainScript) => ({
+const renderBeforeFooter = (site, html) => {
+  if (/<!--\s*LAYOUT:\s*beforeFooter="off"\s*-->/.test(html)) return ''
+  const entries = site?.layout?.beforeFooter || []
+  return entries
+    .map(({ include, class: className }) => `<div data-include="${include}"${className ? ` data-class="${className}"` : ''}></div>`)
+    .join('\n  ')
+}
+
+const layoutPlugin = (base, mainScript, site) => ({
   name: 'layout-plugin',
   transformIndexHtml: {
     order: 'pre', // Chạy TRƯỚC để wrap layout trước khi inject components
@@ -290,7 +314,8 @@ const layoutPlugin = (base, mainScript) => ({
         .replace(/\{\{ogImage\}\}/g, ogImage)
         .replace(/\{\{url\}\}/g, url)
         .replace('{{loadingComponent}}', loadingComponent)
-        .replace('{{content}}', content)
+        .replace('{{beforeFooter}}', () => renderBeforeFooter(site, html))
+        .replace('{{content}}', () => content)
         .replace(/\{\{mainScript\}\}/g, mainScript)
         .replace(/\{\{pageScript\}\}/g, pageScript)
 
@@ -435,13 +460,14 @@ const transformDataInclude = (base, facultyId, facultyDataRoot, site, pageRoutes
             }
             // Nếu file không có comment options thì giữ nguyên (component bình thường không có variants)
             
-            // Replace all {{key}} placeholders with data-key values
+            // Replace all {{key}} / {{key|default}} placeholders with data-key values
             Object.entries(dataAttrs).forEach(([key, value]) => {
               if (key !== 'include' && key !== 'js' && key !== 'variant') {
-                const placeholder = new RegExp(`\\{\\{${key}\\}\\}`, 'g')
-                componentHtml = componentHtml.replace(placeholder, value)
+                const placeholder = new RegExp(`\\{\\{${key}(?:\\|[^}]*)?\\}\\}`, 'g')
+                componentHtml = componentHtml.replace(placeholder, () => value)
               }
             })
+            componentHtml = componentHtml.replace(/\{\{[\w-]+\|([^}]*)\}\}/g, '$1')
 
             // Missing include parameters are optional under the legacy include contract.
             componentHtml = componentHtml.replace(/^\s*<[^>]+>\s*\{\{[^}]+\}\}\s*<\/[^>]+>\s*$/gm, '')
@@ -666,7 +692,8 @@ export default defineConfig(({ mode, command }) => {
     },
     plugins: [
       mapSrcRequests(faculty.paths),
-      layoutPlugin(base, mainScript), // Chạy TRƯỚC để wrap layout
+      refreshIncludedHtml(faculty.paths),
+      layoutPlugin(base, mainScript, site), // Chạy TRƯỚC để wrap layout
       transformDataInclude(base, faculty.selectedFacultyId, faculty.paths.selectedFacultyDataRoot, site, pageRoutes), // Chạy SAU để inject components vào layout
       copyFacultyDataPlugin(outDir, faculty.paths.selectedFacultyDataRoot), // Copy selected faculty data to dist/data
       copyFacultyDocumentsPlugin(outDir, resolve(faculty.paths.selectedFacultyAssetsRoot, 'documents')), // Copy selected faculty documents

@@ -77,6 +77,17 @@ export const validateSiteData = (site, { facultyId, pageRoutes }) => {
   validateLinks(site.search.quickLinks, 'search.quickLinks', facultyId, routes)
   validateLinks(site.search.categories, 'search.categories', facultyId, routes, { icon: true })
 
+  if (site.layout !== undefined) {
+    const beforeFooter = site.layout?.beforeFooter
+    if (!Array.isArray(beforeFooter)) fail(facultyId, 'layout.beforeFooter must be an array')
+    beforeFooter.forEach((entry, index) => {
+      const path = `layout.beforeFooter[${index}]`
+      requireString(entry?.include, `${path}.include`, facultyId)
+      if (!/^@(shared|faculty)\//.test(entry.include)) fail(facultyId, `${path}.include must start with @shared/ or @faculty/`)
+      if (entry.class !== undefined) requireString(entry.class, `${path}.class`, facultyId)
+    })
+  }
+
   return site
 }
 

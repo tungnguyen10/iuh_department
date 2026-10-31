@@ -4,83 +4,150 @@
 <!-- LAYOUT: url="https://iuh.edu.vn/services" -->
 <!-- LAYOUT: ogImage="/assets/images/idcs-equipment.jpg" -->
 
-<div data-include="@shared/components/common/breadcrumb.html" data-parent-page1="Trang chủ" data-parent-link1="/" data-current-page="Dịch vụ đo kiểm" data-parent-page2="" data-parent-link2="" data-parent-page2-class=""></div>
+<div data-include="@shared/components/common/breadcrumb.html" data-parent-page1="Dịch vụ" data-parent-link1="/#services" data-parent-page1-class="" data-parent-page2="" data-parent-link2="" data-parent-page2-class="hidden" data-current-page="Dịch vụ đo kiểm"></div>
 
-<section class="relative overflow-hidden bg-primary-dark-blue">
-  <div data-include="@shared/components/common/core-deco.html" data-class="pointer-events-none absolute -right-12 bottom-0 w-40 opacity-15 sm:-right-20 sm:w-52 md:w-64"></div>
-  <div class="container relative mx-auto px-4 py-12 md:py-16">
-    <div class="nttFade max-w-3xl">
-      <div data-include="@shared/components/common/page-hero-title.html" data-eyebrow="Dịch vụ đo kiểm" data-title="Giải pháp chuyên môn cho nhu cầu thực tế" data-description="Nhóm dịch vụ đo lường, kiểm tra, phân tích và đánh giá kỹ thuật phục vụ kiểm soát chất lượng và cải tiến sản xuất tại doanh nghiệp." data-class="!mb-0 !block" data-eyebrow-class="!border-l-2 !border-primary-yellow !pl-3 !text-sm !font-semibold !tracking-[0.16em] !text-primary-yellow" data-title-class="!mt-5 !text-primary-white md:!text-5xl" data-description-class="!mt-5 !max-w-2xl !text-base !leading-7 !text-primary-white/80 md:!text-lg"></div>
-    </div>
-  </div>
-</section>
+<!-- 1. Hero -->
+<div data-include="@faculty/components/service/hero.html" data-image="/assets/images/idcs-service-measurement.jpg" data-eyebrow="Dịch vụ đo kiểm" data-title="Số liệu kỹ thuật tin cậy cho quyết định sản xuất" data-description="Đo lường, kiểm tra, phân tích và đánh giá kỹ thuật trên hệ thống phòng thí nghiệm của IUH, giúp doanh nghiệp kiểm soát chất lượng và có căn cứ cho cải tiến." data-cta1-url="#request" data-cta1-text="Gửi yêu cầu đo kiểm" data-cta2-url="#catalogue" data-cta2-text="Xem danh mục dịch vụ" data-stat1-value="5" data-stat1-label="Nhóm dịch vụ kỹ thuật" data-stat2-value="350+" data-stat2-label="Phòng thí nghiệm &amp; xưởng IUH" data-stat3-value="01" data-stat3-label="Đầu mối tiếp nhận"></div>
 
-<section id="catalogue" class="scroll-mt-20 bg-primary-white py-12 md:py-16">
+<!-- 2. Danh mục dịch vụ -->
+<section id="catalogue" class="scroll-mt-20 py-12 md:py-20">
   <div class="container mx-auto px-4">
-    <div class="nttFade">
+    <div class="nttFade grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-end">
       <div data-include="@shared/components/common/section-title.html" data-subtitle="Danh mục dịch vụ" data-title="Năm nhóm dịch vụ kỹ thuật" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !max-w-xl !text-title" data-description-class="hidden"></div>
+      <p class="max-w-xl font-roboto text-base leading-7 text-gray-700 lg:justify-self-end">Từ một chi tiết cần đo kích thước đến cả dây chuyền cần đánh giá, mỗi yêu cầu được phân luồng tới nhóm chuyên môn và thiết bị phù hợp.</p>
     </div>
 
-    <ul class="nttFade mt-8 grid gap-px border border-stroke bg-stroke sm:grid-cols-2">
-      <li class="bg-primary-white p-6">
-        <p class="font-inter text-xs font-bold tracking-[0.2em] text-primary-yellow">01</p>
-        <h2 class="mt-3 font-inter text-xl font-bold text-title">Dịch vụ đo lường</h2>
-        <p class="mt-2 font-roboto leading-7 text-gray-700">Đo kích thước, dung sai, đặc tính hình học và thông số cơ – lý – nhiệt của vật liệu, chi tiết và sản phẩm.</p>
-      </li>
-      <li class="bg-primary-white p-6">
-        <p class="font-inter text-xs font-bold tracking-[0.2em] text-primary-yellow">02</p>
-        <h2 class="mt-3 font-inter text-xl font-bold text-title">Dịch vụ kiểm tra</h2>
-        <p class="mt-2 font-roboto leading-7 text-gray-700">Kiểm tra tình trạng thiết bị, dây chuyền và điều kiện vận hành nhằm phát hiện sớm rủi ro kỹ thuật.</p>
-      </li>
-      <li class="bg-primary-white p-6">
-        <p class="font-inter text-xs font-bold tracking-[0.2em] text-primary-yellow">03</p>
-        <h2 class="mt-3 font-inter text-xl font-bold text-title">Dịch vụ phân tích</h2>
-        <p class="mt-2 font-roboto leading-7 text-gray-700">Phân tích thành phần, cấu trúc và đặc tính của mẫu phục vụ kiểm soát nguyên liệu và nghiên cứu phát triển.</p>
-      </li>
-      <li class="bg-primary-white p-6">
-        <p class="font-inter text-xs font-bold tracking-[0.2em] text-primary-yellow">04</p>
-        <h2 class="mt-3 font-inter text-xl font-bold text-title">Dịch vụ đánh giá</h2>
-        <p class="mt-2 font-roboto leading-7 text-gray-700">Đánh giá kỹ thuật phục vụ hồ sơ chất lượng, nghiệm thu và ra quyết định cải tiến.</p>
-      </li>
-      <li class="bg-primary-white p-6 sm:col-span-2">
-        <p class="font-inter text-xs font-bold tracking-[0.2em] text-primary-yellow">05</p>
-        <h2 class="mt-3 font-inter text-xl font-bold text-title">Tư vấn kỹ thuật</h2>
-        <p class="mt-2 font-roboto leading-7 text-gray-700">Diễn giải kết quả đo kiểm và khuyến nghị phương án xử lý phù hợp với điều kiện sản xuất của doanh nghiệp.</p>
-      </li>
-    </ul>
-
-    <p class="mt-5 font-roboto text-xs leading-5 text-gray">Các nhu cầu nằm ngoài nhóm dịch vụ trên được tiếp nhận và phân luồng qua đầu mối của Trung tâm.</p>
-  </div>
-</section>
-
-<section id="equipment" class="scroll-mt-20 bg-gray-light py-12 md:py-16">
-  <div class="container mx-auto px-4">
-    <div class="nttFade grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center">
-      <figure class="relative overflow-hidden rounded-lg border border-stroke bg-primary-white p-3">
-        <!-- Photo: https://iuh.edu.vn/upload/images/baiviet/2026/08/AIoT1.JPG -->
-        <img src="/assets/images/idcs-equipment.jpg" alt="Thiết bị kỹ thuật phục vụ đo kiểm tại Trường Đại học Công nghiệp TP.HCM" width="1600" height="1066" class="aspect-[4/3] w-full rounded-md object-cover" loading="lazy" decoding="async" />
-      </figure>
-
-      <div>
-        <div data-include="@shared/components/common/section-title.html" data-subtitle="Năng lực thiết bị" data-title="Khai thác hệ thống phòng thí nghiệm của Nhà trường" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !text-title" data-description-class="hidden"></div>
-        <p class="mt-4 font-roboto text-base leading-7 text-gray-700">Dịch vụ đo kiểm được thực hiện trên hệ thống phòng thí nghiệm và xưởng thực hành của Trường Đại học Công nghiệp TP.HCM, cùng đội ngũ chuyên gia của Nhà trường.</p>
-        <p class="mt-4 font-roboto text-xs leading-5 text-gray">Danh mục thiết bị chi tiết cho từng hạng mục đo kiểm đang được cập nhật. Doanh nghiệp vui lòng liên hệ để được xác nhận năng lực đáp ứng cho yêu cầu cụ thể.</p>
-        <div class="mt-7">
-          <div data-include="@shared/components/button/button.html" data-variant="13" data-url="/about.html#facilities" data-text="Xem cơ sở vật chất" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div>
+    <div class="nttFade mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <article class="group grid overflow-hidden rounded-lg border-2 border-primary-yellow bg-primary-white shadow-[0_14px_34px_rgba(21,56,152,0.1)] md:col-span-2 md:grid-cols-2">
+        <figure class="relative overflow-hidden">
+          <img src="/assets/images/idcs-service-measurement.jpg" alt="Đo kích thước chi tiết bằng máy đo tọa độ" width="1200" height="900" class="aspect-[16/10] h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 md:aspect-auto" loading="lazy" decoding="async" />
+          <span class="absolute left-4 top-4 rounded bg-primary-yellow px-2.5 py-1 font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Thường được yêu cầu</span>
+        </figure>
+        <div class="flex flex-col p-6 md:p-8">
+          <p class="font-inter text-sm font-bold tracking-[0.2em] text-primary-yellow">01</p>
+          <h3 class="mt-3 font-inter text-2xl font-bold text-title">Dịch vụ đo lường</h3>
+          <p class="mt-3 font-roboto leading-7 text-gray-700">Đo kích thước, dung sai, đặc tính hình học và thông số cơ – lý – nhiệt của vật liệu, chi tiết và sản phẩm.</p>
+          <ul class="mt-auto flex flex-wrap gap-2 pt-6 font-roboto text-xs font-semibold text-primary-dark-blue">
+            <li class="rounded-full bg-secondary-blue-light px-3 py-1">Kích thước &amp; dung sai</li>
+            <li class="rounded-full bg-secondary-blue-light px-3 py-1">Đặc tính hình học</li>
+            <li class="rounded-full bg-secondary-blue-light px-3 py-1">Thông số cơ – lý – nhiệt</li>
+          </ul>
         </div>
+      </article>
+
+      <article class="group flex flex-col overflow-hidden rounded-lg border border-stroke bg-primary-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(21,56,152,0.12)] motion-reduce:transform-none">
+        <div class="overflow-hidden"><img src="/assets/images/idcs-service-inspection.jpg" alt="Kiểm tra tình trạng thiết bị sản xuất" width="1200" height="900" class="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" /></div>
+        <div class="flex flex-1 flex-col p-6">
+          <p class="font-inter text-sm font-bold tracking-[0.2em] text-primary-yellow">02</p>
+          <h3 class="mt-2 font-inter text-xl font-bold text-title">Dịch vụ kiểm tra</h3>
+          <p class="mt-2 font-roboto text-sm leading-6 text-gray-700">Kiểm tra tình trạng thiết bị, dây chuyền và điều kiện vận hành nhằm phát hiện sớm rủi ro kỹ thuật.</p>
+        </div>
+      </article>
+
+      <article class="group flex flex-col overflow-hidden rounded-lg border border-stroke bg-primary-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(21,56,152,0.12)] motion-reduce:transform-none">
+        <div class="overflow-hidden"><img src="/assets/images/idcs-service-analysis.jpg" alt="Phân tích mẫu vật liệu trong phòng thí nghiệm" width="1200" height="900" class="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" /></div>
+        <div class="flex flex-1 flex-col p-6">
+          <p class="font-inter text-sm font-bold tracking-[0.2em] text-primary-yellow">03</p>
+          <h3 class="mt-2 font-inter text-xl font-bold text-title">Dịch vụ phân tích</h3>
+          <p class="mt-2 font-roboto text-sm leading-6 text-gray-700">Phân tích thành phần, cấu trúc và đặc tính của mẫu phục vụ kiểm soát nguyên liệu và nghiên cứu phát triển.</p>
+        </div>
+      </article>
+
+      <article class="group flex flex-col overflow-hidden rounded-lg border border-stroke bg-primary-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(21,56,152,0.12)] motion-reduce:transform-none">
+        <div class="overflow-hidden"><img src="/assets/images/idcs-service-quality.jpg" alt="Đánh giá chất lượng sản phẩm tại xưởng" width="1200" height="900" class="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" /></div>
+        <div class="flex flex-1 flex-col p-6">
+          <p class="font-inter text-sm font-bold tracking-[0.2em] text-primary-yellow">04</p>
+          <h3 class="mt-2 font-inter text-xl font-bold text-title">Dịch vụ đánh giá</h3>
+          <p class="mt-2 font-roboto text-sm leading-6 text-gray-700">Đánh giá kỹ thuật phục vụ hồ sơ chất lượng, nghiệm thu và ra quyết định cải tiến.</p>
+        </div>
+      </article>
+
+      <article class="group flex flex-col overflow-hidden rounded-lg border border-stroke bg-primary-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(21,56,152,0.12)] motion-reduce:transform-none">
+        <div class="overflow-hidden"><img src="/assets/images/idcs-service-testing.jpg" alt="Chuyên gia diễn giải kết quả thử nghiệm" width="1200" height="900" class="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" /></div>
+        <div class="flex flex-1 flex-col p-6">
+          <p class="font-inter text-sm font-bold tracking-[0.2em] text-primary-yellow">05</p>
+          <h3 class="mt-2 font-inter text-xl font-bold text-title">Tư vấn kỹ thuật</h3>
+          <p class="mt-2 font-roboto text-sm leading-6 text-gray-700">Diễn giải kết quả đo kiểm và khuyến nghị phương án xử lý phù hợp với điều kiện sản xuất của doanh nghiệp.</p>
+        </div>
+      </article>
+    </div>
+
+    <p class="nttFade mt-6 font-roboto text-xs leading-5 text-gray">Các nhu cầu nằm ngoài nhóm dịch vụ trên được tiếp nhận và phân luồng qua đầu mối của Trung tâm.</p>
+  </div>
+</section>
+
+<!-- 3. Năng lực thiết bị -->
+<section id="equipment" class="scroll-mt-20 bg-gray-light py-12 md:py-20">
+  <div class="container mx-auto grid gap-10 px-4 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:items-center lg:gap-14">
+    <figure class="nttFade relative">
+      <!-- Photo: https://iuh.edu.vn/upload/images/baiviet/2026/08/AIoT1.JPG -->
+      <img src="/assets/images/idcs-equipment.jpg" alt="Thiết bị kỹ thuật phục vụ đo kiểm tại Trường Đại học Công nghiệp TP.HCM" width="1600" height="1066" class="aspect-[4/3] w-full rounded-lg object-cover" loading="lazy" decoding="async" />
+      <figcaption class="absolute -bottom-5 left-5 right-5 flex items-center gap-4 rounded-lg bg-primary-dark-blue p-5 shadow-lg sm:right-auto sm:max-w-sm">
+        <span class="font-inter text-4xl font-extrabold leading-none text-primary-yellow">350<span class="text-2xl">+</span></span>
+        <span class="font-roboto text-sm leading-5 text-primary-white/85">phòng thí nghiệm và xưởng thực hành của Trường phục vụ đo kiểm</span>
+      </figcaption>
+    </figure>
+
+    <div class="nttFade pt-4 lg:pt-0">
+      <div data-include="@shared/components/common/section-title.html" data-subtitle="Năng lực thiết bị" data-title="Khai thác hệ thống phòng thí nghiệm của Nhà trường" data-description="Dịch vụ được thực hiện trên hạ tầng và đội ngũ chuyên gia của Trường Đại học Công nghiệp TP.HCM." data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !text-title" data-description-class="!mt-4 !text-base !leading-7"></div>
+      <ul class="mt-8 grid gap-px overflow-hidden rounded-lg border border-stroke bg-stroke">
+        <li class="flex gap-4 bg-primary-white p-5">
+          <span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-secondary-blue-light text-primary-dark-blue"><img src="/assets/svgs/icon-building.svg" alt="" class="size-5" /></span>
+          <div><h3 class="font-inter text-base font-bold text-title">Phòng thí nghiệm chuyên ngành</h3><p class="mt-1 font-roboto text-sm leading-6 text-gray-700">Không gian phân tích, thử nghiệm mẫu theo từng lĩnh vực kỹ thuật.</p></div>
+        </li>
+        <li class="flex gap-4 bg-primary-white p-5">
+          <span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-secondary-blue-light text-primary-dark-blue"><img src="/assets/svgs/icon-shield-check.svg" alt="" class="size-5" /></span>
+          <div><h3 class="font-inter text-base font-bold text-title">Thiết bị đo lường chuyên dụng</h3><p class="mt-1 font-roboto text-sm leading-6 text-gray-700">Thiết bị đo kích thước, cơ tính và thông số vận hành được hiệu chuẩn định kỳ.</p></div>
+        </li>
+        <li class="flex gap-4 bg-primary-white p-5">
+          <span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-secondary-blue-light text-primary-dark-blue"><img src="/assets/svgs/icon-users.svg" alt="" class="size-5" /></span>
+          <div><h3 class="font-inter text-base font-bold text-title">Chuyên gia của các khoa, viện</h3><p class="mt-1 font-roboto text-sm leading-6 text-gray-700">Giảng viên, kỹ sư trực tiếp thực hiện và diễn giải kết quả.</p></div>
+        </li>
+      </ul>
+      <p class="mt-4 font-roboto text-xs leading-5 text-gray">Danh mục thiết bị chi tiết đang được cập nhật. Vui lòng liên hệ để được xác nhận năng lực đáp ứng cho yêu cầu cụ thể.</p>
+      <div class="mt-6">
+        <div data-include="@shared/components/button/button.html" data-variant="13" data-url="/about.html#facilities" data-text="Xem cơ sở vật chất" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="request" class="scroll-mt-20 bg-primary-white py-12 md:py-16">
-  <div class="container mx-auto px-4">
+<!-- 4. Chuẩn bị & kết quả bàn giao -->
+<section id="deliverables" class="scroll-mt-20 py-12 md:py-20">
+  <div class="container mx-auto grid gap-10 px-4 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-14">
     <div class="nttFade">
-      <div data-include="@shared/components/common/section-title.html" data-subtitle="Yêu cầu dịch vụ" data-title="Gửi yêu cầu đo kiểm tới Trung tâm" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !max-w-xl !text-title" data-description-class="hidden"></div>
-      <p class="mt-4 max-w-2xl font-roboto text-base leading-7 text-gray-700">Mô tả mẫu, chi tiết hoặc thiết bị cần đo kiểm cùng mục đích sử dụng kết quả để Trung tâm phân luồng đến nhóm chuyên môn phù hợp.</p>
-      <div class="mt-7">
-        <div data-include="@shared/components/button/button.html" data-variant="6" data-url="/contact.html" data-text="Yêu cầu dịch vụ" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div>
+      <div data-include="@shared/components/common/section-title.html" data-subtitle="Trước khi gửi yêu cầu" data-title="Chuẩn bị gì để được phản hồi nhanh?" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !text-title" data-description-class="hidden"></div>
+      <div class="mt-8 rounded-lg border-l-4 border-primary-yellow bg-secondary-yellow-light p-6">
+        <ul class="grid gap-3 font-roboto text-sm leading-6 text-title">
+          <li class="flex items-start gap-2.5"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-1 size-4 shrink-0 text-primary-dark-blue" />Mô tả mẫu, chi tiết hoặc thiết bị cần đo kiểm</li>
+          <li class="flex items-start gap-2.5"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-1 size-4 shrink-0 text-primary-dark-blue" />Thông số hoặc tiêu chuẩn cần đối chiếu (nếu có)</li>
+          <li class="flex items-start gap-2.5"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-1 size-4 shrink-0 text-primary-dark-blue" />Mục đích sử dụng kết quả: kiểm soát nội bộ, nghiệm thu hay cải tiến</li>
+          <li class="flex items-start gap-2.5"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-1 size-4 shrink-0 text-primary-dark-blue" />Số lượng mẫu và thời gian mong muốn nhận kết quả</li>
+        </ul>
       </div>
+    </div>
+
+    <div class="nttFade">
+      <p class="font-roboto text-xs font-bold uppercase tracking-[0.16em] text-primary-dark-blue">Doanh nghiệp nhận được</p>
+      <ol class="mt-4 grid gap-px overflow-hidden rounded-lg border border-stroke bg-stroke">
+        <li class="flex gap-5 bg-primary-white p-6 transition-colors hover:bg-secondary-blue-light/30">
+          <span class="w-12 shrink-0 font-inter text-3xl font-extrabold leading-none tabular-nums text-primary-yellow">01</span>
+          <div><h3 class="font-inter text-lg font-bold text-title">Báo cáo kết quả</h3><p class="mt-1.5 font-roboto text-sm leading-6 text-gray-700">Số liệu đo kiểm kèm điều kiện, phương pháp và thiết bị đã sử dụng.</p></div>
+        </li>
+        <li class="flex gap-5 bg-primary-white p-6 transition-colors hover:bg-secondary-blue-light/30">
+          <span class="w-12 shrink-0 font-inter text-3xl font-extrabold leading-none tabular-nums text-primary-yellow">02</span>
+          <div><h3 class="font-inter text-lg font-bold text-title">Diễn giải kết quả</h3><p class="mt-1.5 font-roboto text-sm leading-6 text-gray-700">Chuyên gia đối chiếu với yêu cầu kỹ thuật và chỉ ra điểm sai lệch.</p></div>
+        </li>
+        <li class="flex gap-5 bg-primary-white p-6 transition-colors hover:bg-secondary-blue-light/30">
+          <span class="w-12 shrink-0 font-inter text-3xl font-extrabold leading-none tabular-nums text-primary-yellow">03</span>
+          <div><h3 class="font-inter text-lg font-bold text-title">Khuyến nghị xử lý</h3><p class="mt-1.5 font-roboto text-sm leading-6 text-gray-700">Phương án khắc phục phù hợp điều kiện sản xuất, có thể nối tiếp bằng tư vấn cải tiến.</p></div>
+        </li>
+      </ol>
     </div>
   </div>
 </section>
+
+<div data-include="@faculty/components/service/related-services.html" data-services-class="hidden" data-class="bg-gray-light"></div>
+
+<!-- 5. Yêu cầu dịch vụ (anchor #request dùng ở trang chủ) -->
+<div data-include="@faculty/components/service/cta-band.html" data-id="request" data-eyebrow="Yêu cầu dịch vụ" data-title="Gửi yêu cầu đo kiểm tới Trung tâm" data-description="Mô tả nhu cầu và mục đích sử dụng kết quả, Trung tâm sẽ phân luồng đến nhóm chuyên môn phù hợp." data-button-url="/contact.html" data-button-text="Yêu cầu dịch vụ" data-step1-title="Gửi mô tả yêu cầu" data-step1-text="Thông tin mẫu, thông số cần đo và mục đích sử dụng kết quả." data-step2-title="Xác nhận năng lực &amp; báo giá" data-step2-text="Trung tâm xác nhận thiết bị, phương pháp, thời gian và chi phí." data-step3-title="Đo kiểm &amp; bàn giao" data-step3-text="Thực hiện đo kiểm, bàn giao báo cáo và giải đáp kết quả."></div>

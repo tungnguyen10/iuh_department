@@ -4,70 +4,173 @@
 <!-- LAYOUT: url="https://iuh.edu.vn/training" -->
 <!-- LAYOUT: ogImage="/assets/images/idcs-training.jpg" -->
 
-<div data-include="@shared/components/common/breadcrumb.html" data-parent-page1="Trang chủ" data-parent-link1="/" data-current-page="Đào tạo ngắn hạn" data-parent-page2="" data-parent-link2="" data-parent-page2-class=""></div>
+<div data-include="@shared/components/common/breadcrumb.html" data-parent-page1="Dịch vụ" data-parent-link1="/#services" data-parent-page1-class="" data-parent-page2="" data-parent-link2="" data-parent-page2-class="hidden" data-current-page="Đào tạo ngắn hạn"></div>
 
-<section class="relative overflow-hidden bg-primary-dark-blue">
-  <div data-include="@shared/components/common/core-deco.html" data-class="pointer-events-none absolute -right-12 bottom-0 w-40 opacity-15 sm:-right-20 sm:w-52 md:w-64"></div>
-  <div class="container relative mx-auto px-4 py-12 md:py-16">
-    <div class="nttFade max-w-3xl">
-      <div data-include="@shared/components/common/page-hero-title.html" data-eyebrow="Đào tạo ngắn hạn" data-title="Nâng cao năng lực kỹ thuật cho đội ngũ doanh nghiệp" data-description="Chương trình đào tạo ngắn hạn được thiết kế theo nhu cầu của từng doanh nghiệp, kết hợp chuyên môn của IUH và kinh nghiệm triển khai tại hiện trường sản xuất." data-class="!mb-0 !block" data-eyebrow-class="!border-l-2 !border-primary-yellow !pl-3 !text-sm !font-semibold !tracking-[0.16em] !text-primary-yellow" data-title-class="!mt-5 !text-primary-white md:!text-5xl" data-description-class="!mt-5 !max-w-2xl !text-base !leading-7 !text-primary-white/80 md:!text-lg"></div>
-    </div>
-  </div>
-</section>
+<!-- 1. Hero -->
+<div data-include="@faculty/components/service/hero.html" data-image="/assets/images/idc-news-task.jpg" data-eyebrow="Đào tạo ngắn hạn" data-title="Nâng cao năng lực kỹ thuật cho đội ngũ doanh nghiệp" data-description="Chương trình đào tạo ngắn hạn được thiết kế theo nhu cầu của từng doanh nghiệp, kết hợp chuyên môn của IUH và kinh nghiệm triển khai tại hiện trường sản xuất." data-cta1-url="#register" data-cta1-text="Gửi nhu cầu đào tạo" data-cta2-url="#programs" data-cta2-text="Xem chương trình" data-stat1-value="5" data-stat1-label="Chương trình định hướng" data-stat2-value="2–5" data-stat2-label="Buổi mỗi chương trình" data-stat3-value="3" data-stat3-label="Hình thức tổ chức"></div>
 
-<section id="programs" class="scroll-mt-20 bg-primary-white py-12 md:py-16">
+<!-- 2. Chương trình -->
+<section id="programs" class="scroll-mt-20 border-t-4 border-primary-yellow bg-secondary-yellow-light py-12 md:py-20">
   <div class="container mx-auto px-4">
-    <div class="nttFade">
+    <div class="nttFade grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-end">
       <div data-include="@shared/components/common/section-title.html" data-subtitle="Các chương trình đào tạo" data-title="Định hướng chương trình theo nhóm năng lực" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !max-w-xl !text-title" data-description-class="hidden"></div>
+      <p class="max-w-xl font-roboto text-base leading-7 text-gray-700 lg:justify-self-end">Mỗi chương trình có thể tổ chức tại doanh nghiệp, tại IUH hoặc kết hợp thực hành, tùy điều kiện của đội ngũ tham gia.</p>
     </div>
 
-    <div class="nttFade mt-8">
-      <div data-include="@faculty/components/home/training/course-card.html" data-variant="2" data-category="Định hướng chương trình" data-title="Nâng cao năng suất &amp; cải tiến quy trình sản xuất" data-description="Chương trình kết hợp đào tạo tại lớp và thực hành tại hiện trường, giúp đội ngũ doanh nghiệp nhận diện lãng phí, chuẩn hóa thao tác và đo lường hiệu quả sau cải tiến." data-duration="05 buổi" data-format="Tại doanh nghiệp" data-audience="Quản lý &amp; kỹ sư sản xuất" data-url="/contact.html" data-image="/assets/images/idcs-training.jpg" data-image-alt="Chương trình đào tạo ngắn hạn tại IUH"></div>
+    <div class="nttFade mt-10 grid gap-6 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-8">
+      <div data-include="@faculty/components/home/training/course-card.html" data-variant="3" data-category="Khóa trọng tâm" data-audience="quản lý &amp; kỹ sư sản xuất" data-title="Nâng cao năng suất &amp; cải tiến quy trình sản xuất" data-description="Kết hợp đào tạo tại lớp và thực hành tại hiện trường, giúp đội ngũ nhận diện lãng phí, chuẩn hóa thao tác và đo lường hiệu quả sau cải tiến." data-point1="Nhận diện lãng phí" data-point2="Chuẩn hóa thao tác" data-point3="Đo hiệu quả sau cải tiến" data-sessions="5" data-duration="05 buổi" data-format="Tại doanh nghiệp" data-image="/assets/images/idc-news-samsung.jpg" data-image-alt="Công nhân thao tác trên dây chuyền lắp ráp điện tử tại nhà máy"></div>
+
+      <div class="grid gap-px overflow-hidden rounded-lg border border-stroke bg-stroke md:grid-cols-2 lg:grid-cols-1">
+        <div data-include="@faculty/components/home/training/course-card.html" data-variant="4" data-audience="Nhân sự QA/QC" data-title="Kiểm soát chất lượng trong sản xuất" data-description="Thiết lập điểm kiểm soát, phân tích lỗi và xử lý sai lệch trên chuyền." data-sessions="3" data-duration="03 buổi" data-format="Tại IUH" data-url="/contact.html"></div>
+        <div data-include="@faculty/components/home/training/course-card.html" data-variant="4" data-audience="Kỹ thuật viên" data-title="Vận hành và bảo trì thiết bị đo lường" data-description="Sử dụng đúng quy trình, hiệu chuẩn định kỳ và bảo dưỡng thiết bị đo." data-sessions="4" data-duration="04 buổi" data-format="Kết hợp thực hành" data-url="/contact.html"></div>
+        <div data-include="@faculty/components/home/training/course-card.html" data-variant="4" data-audience="Quản lý vận hành" data-title="Ứng dụng công nghệ số trong quản lý sản xuất" data-description="Theo dõi sản lượng, dữ liệu vận hành và báo cáo bằng công cụ số." data-sessions="3" data-duration="03 buổi" data-format="Tại doanh nghiệp" data-url="/contact.html"></div>
+        <div data-include="@faculty/components/home/training/course-card.html" data-variant="4" data-audience="Tổ trưởng sản xuất" data-title="Thực hành 5S và quản lý trực quan tại xưởng" data-description="Sắp xếp khu vực làm việc, chuẩn hóa vị trí và duy trì kỷ luật 5S hằng ngày." data-sessions="2" data-duration="02 buổi" data-format="Tại doanh nghiệp" data-url="/contact.html"></div>
+      </div>
     </div>
 
-    <div class="nttFade mt-6 grid gap-6 md:grid-cols-3">
-      <div data-include="@faculty/components/home/training/course-card.html" data-category="Quản lý chất lượng" data-title="Kiểm soát chất lượng trong sản xuất" data-duration="03 buổi" data-format="Tại IUH" data-audience="Nhân sự QA/QC" data-url="/contact.html"></div>
-      <div data-include="@faculty/components/home/training/course-card.html" data-category="Kỹ thuật" data-title="Vận hành và bảo trì thiết bị đo lường" data-duration="04 buổi" data-format="Kết hợp thực hành" data-audience="Kỹ thuật viên" data-url="/contact.html"></div>
-      <div data-include="@faculty/components/home/training/course-card.html" data-category="Công nghệ" data-title="Ứng dụng công nghệ số trong quản lý sản xuất" data-duration="03 buổi" data-format="Tại doanh nghiệp" data-audience="Quản lý vận hành" data-url="/contact.html"></div>
+    <div class="nttFade mt-8 flex flex-col gap-5 border-t border-primary-yellow/40 pt-6 sm:flex-row sm:items-center sm:justify-between">
+      <p class="max-w-2xl font-roboto text-xs leading-5 text-gray">Danh mục mang tính định hướng. Nội dung, thời lượng và hình thức tổ chức được thống nhất với doanh nghiệp trước khi triển khai.</p>
+      <div class="shrink-0">
+        <div data-include="@shared/components/button/button.html" data-variant="4" data-url="#register" data-text="Đề xuất chương trình riêng" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div>
+      </div>
     </div>
-
-    <p class="mt-5 font-roboto text-xs leading-5 text-gray">Danh mục mang tính định hướng. Nội dung, thời lượng và hình thức tổ chức được thống nhất với doanh nghiệp trước khi triển khai.</p>
   </div>
 </section>
 
-<section id="schedule" class="scroll-mt-20 bg-gray-light py-12 md:py-16">
-  <div class="container mx-auto px-4">
-    <div class="nttFade grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
-      <div>
-        <div data-include="@shared/components/common/section-title.html" data-subtitle="Lịch khai giảng" data-title="Thời gian triển khai theo từng chương trình" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !max-w-xl !text-title" data-description-class="hidden"></div>
-        <p class="mt-4 max-w-xl font-roboto text-base leading-7 text-gray-700">Phần lớn chương trình được tổ chức riêng theo yêu cầu của doanh nghiệp, nên thời gian khai giảng được thống nhất sau khi trao đổi về nội dung và quy mô lớp học.</p>
-      </div>
+<!-- 3. Phương pháp -->
+<section class="py-12 md:py-20">
+  <div class="container mx-auto grid gap-10 px-4 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-center lg:gap-14">
+    <figure class="nttFade relative">
+      <img src="/assets/images/idcs-service-measurement.jpg" alt="Máy đo tọa độ dùng trong thực hành đo kiểm" width="1200" height="900" class="aspect-[16/10] w-full rounded-lg object-cover lg:aspect-[4/5]" loading="lazy" decoding="async" />
+      <figcaption class="absolute -bottom-5 left-5 right-5 rounded-lg bg-primary-dark-blue p-5 shadow-lg sm:right-auto sm:max-w-xs">
+        <p class="font-roboto text-xs font-bold uppercase tracking-[0.16em] text-primary-yellow">Nguồn lực IUH</p>
+        <p class="mt-1.5 font-inter text-base font-bold leading-snug text-primary-white">Phòng thí nghiệm và xưởng thực hành của Trường phục vụ trực tiếp cho lớp học.</p>
+      </figcaption>
+    </figure>
 
-      <div class="border border-stroke bg-primary-white p-7">
-        <p class="font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Thông tin đang cập nhật</p>
-        <p class="mt-3 font-roboto leading-7 text-gray-700">Hiện chưa có lịch khai giảng cố định được công bố trên cổng thông tin. Doanh nghiệp vui lòng liên hệ Trung tâm để nhận kế hoạch tổ chức phù hợp với đội ngũ của mình.</p>
-        <div class="mt-6">
-          <div data-include="@shared/components/button/button.html" data-variant="4" data-url="/contact.html" data-text="Hỏi về lịch khai giảng" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div>
+    <div class="nttFade pt-4 lg:pt-0">
+      <div data-include="@shared/components/common/section-title.html" data-subtitle="Phương pháp đào tạo" data-title="Học từ bài toán thật, thực hành trên thiết bị thật" data-description="Ba nguyên tắc xuyên suốt mọi chương trình của IDCS." data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.14em] !text-primary-dark-blue" data-title-class="!mt-2 !text-title" data-description-class="!mt-4 !text-base !leading-7"></div>
+      <ol class="mt-8 grid gap-px overflow-hidden rounded-lg border border-stroke bg-stroke">
+        <li class="flex gap-5 bg-primary-white p-6 transition-colors hover:bg-secondary-blue-light/30">
+          <span class="w-12 shrink-0 font-inter text-3xl font-extrabold leading-none tabular-nums text-primary-yellow">01</span>
+          <div><h3 class="font-inter text-lg font-bold text-title">Theo bài toán doanh nghiệp</h3><p class="mt-1.5 font-roboto text-sm leading-6 text-gray-700">Nội dung được xây dựng từ hiện trạng sản xuất và mục tiêu cụ thể của từng đơn vị.</p></div>
+        </li>
+        <li class="flex gap-5 bg-primary-white p-6 transition-colors hover:bg-secondary-blue-light/30">
+          <span class="w-12 shrink-0 font-inter text-3xl font-extrabold leading-none tabular-nums text-primary-yellow">02</span>
+          <div><h3 class="font-inter text-lg font-bold text-title">Thực hành trên thiết bị thật</h3><p class="mt-1.5 font-roboto text-sm leading-6 text-gray-700">Học viên thao tác trực tiếp trên thiết bị và quy trình sát với vận hành thực tế.</p></div>
+        </li>
+        <li class="flex gap-5 bg-primary-white p-6 transition-colors hover:bg-secondary-blue-light/30">
+          <span class="w-12 shrink-0 font-inter text-3xl font-extrabold leading-none tabular-nums text-primary-yellow">03</span>
+          <div><h3 class="font-inter text-lg font-bold text-title">Đánh giá sau khóa học</h3><p class="mt-1.5 font-roboto text-sm leading-6 text-gray-700">Kết quả được đo lường để doanh nghiệp biết đội ngũ đã áp dụng được gì.</p></div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Hình thức tổ chức -->
+<section class="bg-gray-light py-12 md:py-20">
+  <div class="container mx-auto px-4">
+    <div class="nttFade grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-end">
+      <div data-include="@shared/components/common/section-title.html" data-subtitle="Hình thức tổ chức" data-title="Chọn nơi học phù hợp với đội ngũ của bạn" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !max-w-xl !text-title" data-description-class="hidden"></div>
+      <p class="max-w-xl font-roboto text-base leading-7 text-gray-700 lg:justify-self-end">Cùng một nội dung có thể triển khai theo ba cách. Trung tâm tư vấn hình thức phù hợp dựa trên quy mô lớp, thiết bị cần dùng và lịch sản xuất của doanh nghiệp.</p>
+    </div>
+
+    <div class="nttFade mt-10 grid gap-6 md:grid-cols-3">
+      <article class="group flex flex-col overflow-hidden rounded-lg border border-stroke bg-primary-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(21,56,152,0.12)] motion-reduce:transform-none">
+        <figure class="relative overflow-hidden">
+          <img src="/assets/images/idcs-service-quality.jpg" alt="Đào tạo ngay tại xưởng sản xuất của doanh nghiệp" width="1200" height="900" class="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+          <span class="absolute left-4 top-4 rounded bg-primary-white/95 px-2.5 py-1 font-inter text-xs font-bold tracking-[0.16em] text-primary-dark-blue">01</span>
+        </figure>
+        <div class="relative flex flex-1 flex-col px-6 pb-6 pt-9">
+          <span class="absolute -top-7 left-6 flex size-14 items-center justify-center rounded-full border-4 border-primary-white bg-primary-dark-blue text-primary-white shadow-md"><img src="/assets/svgs/icon-building.svg" alt="" class="size-6" /></span>
+          <h3 class="font-inter text-xl font-bold text-title">Tại doanh nghiệp</h3>
+          <p class="mt-2 font-roboto text-sm leading-6 text-gray-700">Giảng viên đến nhà máy, thực hành ngay trên dây chuyền và quy trình của đơn vị.</p>
+          <div class="mt-auto pt-5">
+            <p class="border-t border-stroke pt-4 font-roboto text-xs font-bold uppercase tracking-[0.14em] text-gray">Phù hợp khi</p>
+            <ul class="mt-2 grid gap-2 font-roboto text-sm text-title">
+              <li class="flex items-start gap-2"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-4 shrink-0 text-primary-dark-blue" />Cần cải tiến trên chính dây chuyền</li>
+              <li class="flex items-start gap-2"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-4 shrink-0 text-primary-dark-blue" />Hạn chế để nhân sự rời xưởng</li>
+            </ul>
+          </div>
         </div>
-      </div>
+      </article>
+
+      <article class="group flex flex-col overflow-hidden rounded-lg border-2 border-primary-yellow bg-primary-white shadow-[0_14px_34px_rgba(21,56,152,0.1)] transition-all duration-300 hover:-translate-y-1 motion-reduce:transform-none">
+        <figure class="relative overflow-hidden">
+          <img src="/assets/images/idcs-facility.jpg" alt="Phòng đào tạo của Trường Đại học Công nghiệp TP.HCM" width="1600" height="1067" class="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+          <span class="absolute left-4 top-4 rounded bg-primary-white/95 px-2.5 py-1 font-inter text-xs font-bold tracking-[0.16em] text-primary-dark-blue">02</span>
+          <span class="absolute right-4 top-4 rounded bg-primary-yellow px-2.5 py-1 font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-dark-blue">Nhiều đơn vị</span>
+        </figure>
+        <div class="relative flex flex-1 flex-col px-6 pb-6 pt-9">
+          <span class="absolute -top-7 left-6 flex size-14 items-center justify-center rounded-full border-4 border-primary-white bg-primary-yellow text-primary-dark-blue shadow-md"><img src="/assets/svgs/icon-graduation-cap.svg" alt="" class="size-6" /></span>
+          <h3 class="font-inter text-xl font-bold text-title">Tại IUH</h3>
+          <p class="mt-2 font-roboto text-sm leading-6 text-gray-700">Học tại phòng đào tạo và xưởng thực hành của Trường, thuận tiện cho nhóm học viên nhiều đơn vị.</p>
+          <div class="mt-auto pt-5">
+            <p class="border-t border-stroke pt-4 font-roboto text-xs font-bold uppercase tracking-[0.14em] text-gray">Phù hợp khi</p>
+            <ul class="mt-2 grid gap-2 font-roboto text-sm text-title">
+              <li class="flex items-start gap-2"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-4 shrink-0 text-primary-dark-blue" />Học viên đến từ nhiều đơn vị</li>
+              <li class="flex items-start gap-2"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-4 shrink-0 text-primary-dark-blue" />Cần không gian lớp học tập trung</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="group flex flex-col overflow-hidden rounded-lg border border-stroke bg-primary-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(21,56,152,0.12)] motion-reduce:transform-none">
+        <figure class="relative overflow-hidden">
+          <img src="/assets/images/idcs-service-testing.jpg" alt="Thực hành trên máy thử nghiệm cơ tính" width="1200" height="900" class="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+          <span class="absolute left-4 top-4 rounded bg-primary-white/95 px-2.5 py-1 font-inter text-xs font-bold tracking-[0.16em] text-primary-dark-blue">03</span>
+        </figure>
+        <div class="relative flex flex-1 flex-col px-6 pb-6 pt-9">
+          <span class="absolute -top-7 left-6 flex size-14 items-center justify-center rounded-full border-4 border-primary-white bg-primary-dark-blue text-primary-white shadow-md"><img src="/assets/svgs/icon-shield-check.svg" alt="" class="size-6" /></span>
+          <h3 class="font-inter text-xl font-bold text-title">Kết hợp thực hành</h3>
+          <p class="mt-2 font-roboto text-sm leading-6 text-gray-700">Lý thuyết tại lớp, thực hành trên thiết bị đo kiểm, sau đó áp dụng tại đơn vị.</p>
+          <div class="mt-auto pt-5">
+            <p class="border-t border-stroke pt-4 font-roboto text-xs font-bold uppercase tracking-[0.14em] text-gray">Phù hợp khi</p>
+            <ul class="mt-2 grid gap-2 font-roboto text-sm text-title">
+              <li class="flex items-start gap-2"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-4 shrink-0 text-primary-dark-blue" />Cần thiết bị đo kiểm chuyên dụng</li>
+              <li class="flex items-start gap-2"><img src="/assets/svgs/icon-check-circle.svg" alt="" class="mt-0.5 size-4 shrink-0 text-primary-dark-blue" />Muốn áp dụng ngay sau khóa học</li>
+            </ul>
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<section id="register" class="scroll-mt-20 bg-primary-white py-12 md:py-16">
-  <div class="container mx-auto px-4">
+<div data-include="@faculty/components/service/related-services.html" data-training-class="hidden" data-class="bg-primary-white"></div>
+
+<!-- 5. Đăng ký + lịch khai giảng -->
+<section id="register" class="relative scroll-mt-20 overflow-hidden bg-primary-dark-blue py-12 md:py-20">
+  <div class="container relative mx-auto grid gap-10 px-4 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-14">
     <div class="nttFade">
-      <div data-include="@shared/components/common/section-title.html" data-subtitle="Đăng ký khóa học" data-title="Ba bước để bắt đầu một chương trình" data-subtitle-class="!font-roboto !text-xs !font-bold !uppercase !tracking-[0.16em] !text-primary-dark-blue" data-title-class="!mt-3 !max-w-xl !text-title" data-description-class="hidden"></div>
+      <p class="font-roboto text-xs font-bold uppercase tracking-[0.16em] text-primary-yellow sm:text-sm">Đăng ký khóa học</p>
+      <h2 class="mt-3 font-inter text-2xl font-bold leading-tight text-primary-white sm:text-3xl md:text-[32px]">Ba bước để bắt đầu một chương trình</h2>
+      <p class="mt-4 font-roboto text-base leading-7 text-primary-white/75">Chỉ cần mô tả nhu cầu, Trung tâm sẽ đề xuất nội dung và kế hoạch phù hợp với đội ngũ của bạn.</p>
+      <div class="mt-7">
+        <div data-include="@shared/components/button/button.html" data-variant="6" data-url="/contact.html" data-text="Gửi nhu cầu đào tạo" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div>
+      </div>
+
+      <div id="schedule" class="mt-10 scroll-mt-24 rounded-lg border-l-4 border-primary-yellow bg-primary-white/10 p-6">
+        <p class="flex items-center gap-2 font-roboto text-xs font-bold uppercase tracking-[0.14em] text-primary-yellow"><img src="/assets/svgs/icon-calendar-clock.svg" alt="" class="size-4" />Lịch khai giảng</p>
+        <p class="mt-2 font-roboto text-sm leading-6 text-primary-white/80">Chưa có lịch cố định. Thời gian khai giảng được thống nhất sau khi trao đổi về nội dung và quy mô lớp học.</p>
+        <a href="/contact.html" class="mt-3 inline-flex items-center gap-1.5 font-roboto text-sm font-semibold text-primary-white underline decoration-primary-yellow underline-offset-4 hover:text-primary-yellow">Hỏi về lịch khai giảng</a>
+      </div>
     </div>
 
-    <ol class="nttFade mt-8 max-w-2xl">
-      <div data-include="@faculty/components/home/process-step.html" data-variant="2" data-index="01" data-title="Gửi nhu cầu đào tạo" data-description="Mô tả đội ngũ cần đào tạo, mục tiêu và bối cảnh sản xuất của doanh nghiệp."></div>
-      <div data-include="@faculty/components/home/process-step.html" data-variant="2" data-index="02" data-title="Thống nhất nội dung" data-description="Trung tâm đề xuất nội dung, thời lượng, hình thức tổ chức và thời gian triển khai."></div>
-      <div data-include="@faculty/components/home/process-step.html" data-variant="2" data-index="03" data-title="Triển khai chương trình" data-description="Tổ chức đào tạo tại doanh nghiệp hoặc tại IUH và đánh giá kết quả sau khóa học."></div>
+    <ol class="nttFade relative grid gap-4 before:absolute before:bottom-10 before:left-[2.875rem] before:top-10 before:w-px before:bg-primary-white/20 before:content-['']">
+      <li class="relative flex gap-5 rounded-lg border border-primary-white/15 bg-primary-dark-blue p-6 transition-colors hover:border-primary-yellow/60">
+        <span class="relative z-10 flex size-[2.75rem] shrink-0 items-center justify-center rounded-full bg-primary-yellow font-inter text-sm font-bold text-primary-dark-blue">01</span>
+        <div><h3 class="font-inter text-lg font-bold text-primary-white">Gửi nhu cầu đào tạo</h3><p class="mt-1.5 font-roboto text-sm leading-6 text-primary-white/75">Mô tả đội ngũ cần đào tạo, mục tiêu và bối cảnh sản xuất của doanh nghiệp.</p></div>
+      </li>
+      <li class="relative flex gap-5 rounded-lg border border-primary-white/15 bg-primary-dark-blue p-6 transition-colors hover:border-primary-yellow/60">
+        <span class="relative z-10 flex size-[2.75rem] shrink-0 items-center justify-center rounded-full border-2 border-primary-yellow bg-primary-dark-blue font-inter text-sm font-bold text-primary-yellow">02</span>
+        <div><h3 class="font-inter text-lg font-bold text-primary-white">Thống nhất nội dung</h3><p class="mt-1.5 font-roboto text-sm leading-6 text-primary-white/75">Trung tâm đề xuất nội dung, thời lượng, hình thức tổ chức và thời gian triển khai.</p></div>
+      </li>
+      <li class="relative flex gap-5 rounded-lg border border-primary-white/15 bg-primary-dark-blue p-6 transition-colors hover:border-primary-yellow/60">
+        <span class="relative z-10 flex size-[2.75rem] shrink-0 items-center justify-center rounded-full border-2 border-primary-yellow bg-primary-dark-blue font-inter text-sm font-bold text-primary-yellow">03</span>
+        <div><h3 class="font-inter text-lg font-bold text-primary-white">Triển khai chương trình</h3><p class="mt-1.5 font-roboto text-sm leading-6 text-primary-white/75">Tổ chức đào tạo tại doanh nghiệp hoặc tại IUH và đánh giá kết quả sau khóa học.</p></div>
+      </li>
     </ol>
-
-    <div class="nttFade mt-8">
-      <div data-include="@shared/components/button/button.html" data-variant="6" data-url="/contact.html" data-text="Gửi nhu cầu đào tạo" data-icon="/assets/svgs/icon-arrow-up-right.svg"></div>
-    </div>
   </div>
 </section>

@@ -57,8 +57,61 @@ test('idcs homepage composes every brief block in order', async () => {
   assert.deepEqual(includes, [
     '@faculty/components/home/carousel/carousel.html',
     ...homeBlocks.map((block) => `@faculty/components/home/${block}/index.html`),
-    '@shared/components/partners/index.html',
   ])
+})
+
+test('idcs injects shared partners before the footer except on the partners page', async () => {
+  const site = JSON.parse(await readFacultyFile('data/site.json'))
+  const partnersPage = await readFacultyFile('pages/partners.html')
+
+  assert.deepEqual(site.layout.beforeFooter, [
+    { include: '@shared/components/partners/index.html', class: 'nttFade' },
+  ])
+  assert.match(partnersPage, /<!--\s*LAYOUT:\s*beforeFooter="off"\s*-->/)
+
+  for (const page of expectedPages.filter((file) => file !== 'partners.html')) {
+    const source = await readFacultyFile(`pages/${page}`)
+    assert.doesNotMatch(source, /@shared\/components\/partners\/index\.html/, `${page} must rely on the layout injection`)
+  }
+})
+
+test('idcs service pages share hero, related services and keep their anchors', async () => {
+  const servicePages = {
+    'training.html': { hide: 'training', anchors: ['programs', 'register', 'schedule'] },
+    'services.html': { hide: 'services', anchors: ['catalogue', 'equipment', 'request'] },
+    'consulting.html': { hide: 'consulting', anchors: ['process', 'topics'] },
+    'technology-transfer.html': { hide: 'transfer', anchors: ['pipeline', 'focus-areas'] },
+    'industrial-support.html': { hide: 'industrial', anchors: ['pillars', 'needs'] },
+  }
+
+  for (const [page, { hide, anchors }] of Object.entries(servicePages)) {
+    const source = await readFacultyFile(`pages/${page}`)
+    assert.match(source, /data-include="@faculty\/components\/service\/hero\.html"/, `${page} must use the service hero`)
+    assert.match(source, new RegExp(`data-include="@faculty/components/service/related-services\\.html" data-${hide}-class="hidden"`), `${page} must hide itself in related services`)
+    assert.doesNotMatch(source, /data-parent-page1="Trang chủ"/, `${page} must not duplicate the home breadcrumb`)
+    for (const anchor of anchors) {
+      assert.match(source, new RegExp(`id="${anchor}"|data-id="${anchor}"`), `${page} is missing #${anchor}`)
+    }
+  }
+})
+
+test('idcs breadcrumbs never repeat home and hide empty parent levels', async () => {
+  for (const page of expectedPages) {
+    const source = await readFacultyFile(`pages/${page}`)
+    const crumbs = [...source.matchAll(/<div data-include="@shared\/components\/common\/breadcrumb\.html"([^>]*)>/g)]
+    if (page === 'index.html' || page === 'partners.html') {
+      assert.equal(crumbs.length, 0, `${page} must not declare its own breadcrumb`)
+      continue
+    }
+    assert.equal(crumbs.length, 1, `${page} must have exactly one breadcrumb`)
+    const attrs = Object.fromEntries([...crumbs[0][1].matchAll(/data-([\w-]+)="([^"]*)"/g)].map((match) => [match[1], match[2]]))
+    assert.ok(attrs['current-page'], `${page} breadcrumb needs a current page`)
+    for (const level of ['1', '2']) {
+      assert.notEqual(attrs[`parent-page${level}`], 'Trang chủ', `${page} repeats home in the breadcrumb`)
+      assert.ok(`parent-page${level}-class` in attrs, `${page} must set parent-page${level}-class`)
+      if (!attrs[`parent-page${level}`]) assert.match(attrs[`parent-page${level}-class`], /\bhidden\b/, `${page} shows an empty breadcrumb level ${level}`)
+    }
+  }
 })
 
 test('idcs hero carousel owns its markup and labels the correct centre', async () => {
