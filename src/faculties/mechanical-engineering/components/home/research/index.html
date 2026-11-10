@@ -1,0 +1,79 @@
+<!-- Research Section -->
+<section data-module="research" class="w-full py-8 md:py-14 bg-[#e3f6fd] relative overflow-hidden">
+  <!-- Animated Background Pattern -->
+  <div data-include="@faculty/components/home/research/research-background.html"
+    data-class="opacity-30"
+    data-pattern="/assets/svgs/pattern-cog.svg">
+  </div>
+  
+  <div class="container mx-auto px-4 flex flex-col items-center relative z-10 ">
+    <!-- Title -->
+    <div data-include="@shared/components/common/section-title.html" 
+      data-title="Nghiên Cứu Khoa Học"
+      data-class="mb-6 md:mb-8"
+      data-title-class="text-title text-center">
+    </div>
+
+    <!-- Research Grid -->
+    <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-5">
+      <!-- Featured Card (Left) -->
+      <div class="w-full">
+        <div data-include="@faculty/components/home/research/research-featured.html"
+          data-image="/assets/images/news-3.jpg"
+          data-imageAlt="Hội nghị quốc tế MEMS MAMM2024"
+          data-title="Hội nghị quốc tế MAMM2024 về công nghệ MEMS"
+          data-description="Khoa Công nghệ Cơ khí tổ chức hội nghị quốc tế MAMM2024, kết nối các nhà khoa học trong và ngoài nước về vi cơ điện tử (MEMS), sản xuất bán dẫn và cơ khí chính xác."
+          data-category="Hội nghị khoa học"
+          data-date="20/05/2025"
+          data-link="news-detail.html?slug=thac-si-ky-thuat-co-khi-be-phong-ky-su"
+          data-class="">
+        </div>
+      </div>
+
+      <!-- Research Cards Grid (Right) -->
+      <div class="w-full">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+          <div data-include="@faculty/components/home/research/research-card.html"
+            data-image="/assets/images/lab-mems.jpg"
+            data-imageAlt="Thiết kế vi mạch MEMS"
+            data-title="Thiết kế và chế tạo cảm biến MEMS"
+            data-category="MEMS - Bán dẫn"
+            data-date="15/08/2026"
+            data-link="news-detail.html?slug=thac-si-ky-thuat-co-khi-be-phong-ky-su"
+            data-class="">
+          </div>
+          <div data-include="@faculty/components/home/research/research-card.html"
+            data-image="/assets/images/lab-smart-factory.jpg"
+            data-imageAlt="Nhà máy thông minh 4.0"
+            data-title="Ứng dụng digital twin trong nhà máy thông minh"
+            data-category="Sản xuất thông minh"
+            data-date="02/07/2026"
+            data-link="news-detail.html?slug=sinh-vien-co-khi-len-song-taiwan-plus"
+            data-class="">
+          </div>
+          <div data-include="@faculty/components/home/research/research-card.html"
+            data-image="/assets/images/lab-cnc.jpg"
+            data-imageAlt="Gia công CNC chính xác"
+            data-title="Tối ưu chế độ cắt khi gia công CNC vật liệu khó gia công"
+            data-category="Cơ khí chính xác"
+            data-date="18/05/2026"
+            data-link="news-detail.html?slug=thac-si-ky-thuat-co-khi-nganh-hoc-then-chot"
+            data-class="">
+          </div>
+          <div data-include="@faculty/components/home/research/research-card.html"
+            data-image="/assets/images/lab-practice.jpg"
+            data-imageAlt="Chip vi cơ điện tử"
+            data-title="Robot và cơ cấu vi cơ ứng dụng trong y sinh"
+            data-category="Cơ khí y sinh"
+            data-date="10/04/2026"
+            data-link="news-detail.html?slug=thac-si-ky-thuat-co-khi-be-phong-ky-su"
+            data-class="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Inner shadow overlay -->
+  <div class="absolute inset-0 shadow-[inset_1px_1px_20px_0_rgba(0,0,0,0.07)] pointer-events-none"></div>
+</section>

@@ -1,0 +1,59 @@
+<!-- Admission Section -->
+<div data-module="admission" class="w-full py-8 md:py-14 {{class}}">
+  <div class="container mx-auto px-4">
+    <!-- Section Title -->
+    <div data-include="@shared/components/common/section-title.html" 
+      data-title="Thông tin tuyển sinh"
+      data-class="mb-6 md:mb-8"
+      data-title-class="text-title text-center" >
+    </div>
+    
+    <!-- Admission Cards Carousel -->
+    <div class="admission-swiper">
+      <div class="swiper-wrapper">
+        <!-- Slide 1 -->
+        <div class="swiper-slide">
+          <div data-include="@faculty/components/home/admission/admission-card.html"
+            data-image="/assets/images/lab-cnc.jpg"
+            data-imageAlt="Tuyển sinh Khoa Công nghệ Cơ khí IUH"
+            data-title="Tuyển sinh Đại học - Hệ Chính quy 2026"
+            data-description="Khoa Công nghệ Cơ khí tuyển sinh các ngành Công nghệ kỹ thuật cơ khí (7510201), Công nghệ chế tạo máy (7510202) và Công nghệ kỹ thuật cơ điện tử (7510203), có chương trình tăng cường tiếng Anh. Tổ hợp xét tuyển: Toán, Vật lý và một môn tự chọn."
+            data-date="Tháng 3 - 2026"
+            data-registerUrl="#">
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="swiper-slide">
+          <div data-include="@faculty/components/home/admission/admission-card.html"
+            data-image="/assets/images/news-3.jpg"
+            data-imageAlt="Tuyển sinh Thạc sĩ Kỹ thuật Cơ khí IUH"
+            data-title="Chương trình Thạc sĩ Kỹ thuật Cơ khí"
+            data-description="Chương trình thạc sĩ xét tuyển, định hướng cơ khí chính xác và sản xuất thông minh, công nghệ MEMS - bán dẫn, cơ khí ứng dụng trong y sinh và tự động hóa. Học bổng đến 100% toàn khóa cho học viên có công bố ISI/Scopus."
+            data-date="Tháng 4 - 2026"
+            data-registerUrl="#">
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="swiper-slide">
+          <div data-include="@faculty/components/home/admission/admission-card.html"
+            data-image="/assets/images/lab-smart-factory.jpg"
+            data-imageAlt="Chương trình chuyển tiếp quốc tế ngành Kỹ thuật cơ khí"
+            data-title="Chương trình chuyển tiếp quốc tế 2026"
+            data-description="Chương trình chuyển tiếp với Angelo State University (Hoa Kỳ) ngành Kỹ thuật cơ khí: học 1 năm tại IUH và 3 năm tại ASU, nhận bằng do đại học Hoa Kỳ cấp."
+            data-date="Tháng 5 - 2026"
+            data-registerUrl="#">
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation buttons -->
+      <!-- <div class="swiper-button-next admission-nav-next"></div>
+      <div class="swiper-button-prev admission-nav-prev"></div> -->
+
+      <!-- Pagination -->
+      <div class="admission-pagination swiper-pagination !relative !bottom-0 mt-4 md:mt-6"></div>
+    </div>
+  </div>
+</div>

@@ -104,10 +104,10 @@ export const createNewsRenderer = ({ base, items, sectionMeta }) => {
           <img src="${image(item)}" alt="${escapeHtml(item.imageAlt || item.title)}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
         </div>
         <div class="flex-1 flex flex-col gap-2 md:gap-2.5 min-w-0">
-          <h3 class="font-roboto font-medium text-sm md:text-base leading-normal text-gray-900 group-hover:text-primary-dark-blue transition-colors duration-200 line-clamp-2 overflow-hidden text-ellipsis">${escapeHtml(item.title)}</h3>
-          <div class="flex gap-2.5 items-center">
-            <div class="inline-flex items-center gap-1 md:gap-1.5 bg-danger-light rounded-[5px] px-1.5 py-[3px] self-start">
-              <img src="${icon('icon-calendar-check.svg')}" alt="" class="w-4 h-4 md:w-5 md:h-5 text-danger" />
+          <h3 class="font-roboto font-medium text-sm md:text-base leading-normal text-gray-900 group-hover:text-primary-dark-blue transition-colors duration-200 line-clamp-3 overflow-hidden">${escapeHtml(item.title)}</h3>
+          <div class="flex flex-wrap gap-x-2.5 gap-y-1.5 items-center">
+            <div class="inline-flex items-center gap-1 md:gap-1.5 bg-danger-light rounded-[5px] px-1.5 py-[3px] self-start whitespace-nowrap">
+              <img src="${icon('icon-calendar-check.svg')}" alt="" class="w-4 h-4 md:w-5 md:h-5 text-danger shrink-0" />
               <span class="font-roboto font-medium text-xs md:text-sm text-danger">${escapeHtml(item.date || '')}</span>
             </div>
             <div class="px-3 py-1 rounded-md text-xs text-danger bg-danger-light capitalize animate-flash-badge">new</div>

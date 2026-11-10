@@ -1,0 +1,57 @@
+<!-- Infrastructure Section Component -->
+<section data-module="infrastructure" id="infrastructure-section" class="w-full bg-gradient-to-b from-secondary-blue-light to-primary-white py-12 sm:py-16 md:py-20 lg:py-24 {{class}}">
+    <div class="container mx-auto px-4 ">
+        <!-- Single Grid Container for all items -->
+        <div class="grid grid-cols-12 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5">
+            <!-- Left Content Block - Desktop: col 1, row 1 / Mobile: full row -->
+            <div class="col-span-12 sm:col-span-2 lg:col-span-1 flex flex-col gap-3 sm:gap-4 pr-0 lg:pr-4 py-4 sm:py-5 md:py-6 lg:py-8 lg:col-start-1 lg:row-start-1">
+                <h2 class="font-inter text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold text-title leading-tight">
+                    Cơ sở vật chất
+                </h2>
+                <p class="font-roboto font-normal text-sm sm:text-base md:text-base lg:text-lg leading-relaxed text-black text-justify">
+                    Hệ thống cơ sở vật chất khang trang, trang thiết bị hiện đại, phục vụ hiệu quả cho đào tạo, nghiên cứu và phát triển chuyên môn trong lĩnh vực cơ khí: xưởng tiện, phay, CNC 3 - 5 trục, cắt dây EDM, gò - hàn, phòng CAD/CAM và nhà máy thông minh 4.0.
+                </p>
+            </div>
+
+            <!-- Image Card 1 - Mobile: 4 cols (1/3) -->
+            <div data-include="@faculty/components/home/infrastructure/infrastructure-card.html" 
+                data-image="/assets/images/intro-image.jpg"
+                data-alt="Xưởng tiện, phay CNC"
+                data-title="Xưởng tiện, phay CNC"
+                data-link="about.html"
+                data-class="col-span-4 sm:col-span-1 lg:col-start-2 lg:row-start-1"></div>
+
+            <!-- Image Card 2 - Mobile: 8 cols (2/3) -->
+            <div data-include="@faculty/components/home/infrastructure/infrastructure-card.html" 
+                data-image="/assets/images/lab-smart-factory.jpg"
+                data-alt="Phòng thí nghiệm nhà máy thông minh 4.0"
+                data-title="Phòng thí nghiệm nhà máy thông minh 4.0"
+                data-link="news-detail.html"
+                data-class="col-span-8 sm:col-span-1 lg:col-start-3 lg:row-start-1"></div>
+
+            <!-- Image Card 3 - Mobile: 8 cols (2/3) -->
+            <div data-include="@faculty/components/home/infrastructure/infrastructure-card.html" 
+                data-image="/assets/images/lab-cnc.jpg"
+                data-alt="Trung tâm gia công Mazak"
+                data-title="Trung tâm gia công CNC Mazak"
+                data-link="news.html"
+                data-class="col-span-8 sm:col-span-1 lg:col-start-1 lg:row-start-2"></div>
+
+            <!-- Image Card 4 - Mobile: 4 cols (1/3) -->
+            <div data-include="@faculty/components/home/infrastructure/infrastructure-card.html" 
+                data-image="/assets/images/lab-practice.jpg"
+                data-alt="Chip MEMS do học viên nghiên cứu"
+                data-title="Phòng nghiên cứu MEMS - bán dẫn"
+                data-link="leadership.html"
+                data-class="col-span-4 sm:col-span-1 lg:col-start-2 lg:row-start-2"></div>
+
+            <!-- Image Card 5 - Mobile: full width -->
+            <div data-include="@faculty/components/home/infrastructure/infrastructure-card.html" 
+                data-image="/assets/images/activities-1.jpg"
+                data-alt="Phòng thực hành Khoa Công nghệ Cơ khí"
+                data-title="Phòng thực hành cơ điện tử"
+                data-link="leadership-detail.html"
+                data-class="col-span-12 sm:col-span-2 lg:col-span-1 lg:col-start-3 lg:row-start-2"></div>
+        </div>
+    </div>
+</section>

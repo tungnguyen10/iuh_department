@@ -1,0 +1,103 @@
+{
+  "section": {
+    "title": "Tin tức - Sự kiện",
+    "description": "Cập nhật thông báo, hoạt động đào tạo, nghiên cứu và sinh hoạt sinh viên của Khoa Công nghệ Cơ khí."
+  },
+  "items": [
+    {
+      "id": 1,
+      "slug": "trung-thu-am-ap-nhung-doi-tay-co-khi",
+      "title": "10 năm Trung thu ấm áp của sinh viên IUH: Những đôi tay Cơ khí làm nên mùa trăng",
+      "excerpt": "Đoàn - Hội Khoa Công nghệ Cơ khí tổ chức chương trình Trung thu ấm áp lần thứ 10 tại xã Thuận Mỹ, tỉnh Tây Ninh với gần 1.400 học sinh tham gia.",
+      "category": "Sinh viên",
+      "date": "29 tháng 9, 2026",
+      "image": "/assets/images/news-1.jpg",
+      "imageAlt": "Sinh viên Khoa Công nghệ Cơ khí tổ chức Trung thu cho thiếu nhi",
+      "caption": "Chương trình Trung thu ấm áp lần thứ 10 của sinh viên Khoa Công nghệ Cơ khí",
+      "content": [
+        { "type": "paragraph", "text": "Hơn 1.400 học sinh tham gia sân chơi thiếu nhi, 200 em nhận quà Trung thu và 85 sinh viên, tình nguyện viên cùng góp sức trong hai ngày hoạt động tại xã Thuận Mỹ, tỉnh Tây Ninh, đánh dấu lần thứ 10 chương trình Trung thu ấm áp của sinh viên Khoa Công nghệ Cơ khí, Trường Đại học Công nghiệp TP.HCM (IUH)." },
+        { "type": "paragraph", "text": "Từ những chiếc bánh Trung thu mang logo IUH do chính tay sinh viên chuẩn bị đến các trò chơi dân gian, đèn lồng và phần quà, chương trình mang đến cho các em thiếu nhi một mùa trăng đầy màu sắc." },
+        { "type": "info", "title": "Nguồn tin", "text": "Theo iuh.edu.vn - chuyên mục Sinh viên tình nguyện." }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "iuh-ky-ket-hop-tac-tap-doan-dai-dung",
+      "title": "IUH ký kết hợp tác với tập đoàn hàng đầu lĩnh vực cơ khí xây dựng và kết cấu thép tại Việt Nam",
+      "excerpt": "Trường Đại học Công nghiệp TP.HCM và Tập đoàn Đại Dũng hợp tác đào tạo, thực tập, chuyển giao công nghệ và tuyển dụng cho sinh viên Khoa Công nghệ Cơ khí.",
+      "category": "Hợp tác",
+      "date": "06 tháng 2, 2026",
+      "image": "/assets/images/news-2.jpg",
+      "imageAlt": "Lễ ký kết hợp tác giữa IUH và Tập đoàn Đại Dũng",
+      "caption": "Lễ ký kết hợp tác giữa IUH và Tập đoàn Đại Dũng",
+      "content": [
+        { "type": "paragraph", "text": "Lễ ký kết hợp tác giữa Trường Đại học Công nghiệp TP.HCM và Tập đoàn Đại Dũng diễn ra thành công vào sáng ngày 05/01/2026, với sự tham dự của PGS.TS Đàm Sao Mai - Phó Hiệu trưởng, PGS.TS Nguyễn Đức Nam - Trưởng khoa Công nghệ Cơ khí cùng lãnh đạo Tập đoàn Đại Dũng." },
+        { "type": "heading", "level": 2, "text": "Nội dung hợp tác" },
+        { "type": "list", "items": ["Triển khai các chương trình đào tạo gắn với thực tiễn sản xuất kết cấu thép và cơ khí xây dựng.", "Phối hợp tổ chức tham quan, thực tập và chuyển giao công nghệ.", "Ưu tiên tuyển dụng sinh viên tốt nghiệp; chuyên gia doanh nghiệp tham gia giảng dạy.", "Sinh viên thực tập tại Tập đoàn được cấp chứng nhận."] },
+        { "type": "paragraph", "text": "Sau lễ ký kết, đại biểu tham quan hệ thống phòng thực hành, xưởng gia công của Khoa Công nghệ Cơ khí." }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "thac-si-ky-thuat-co-khi-be-phong-ky-su",
+      "title": "Thạc sĩ Kỹ thuật Cơ khí tại IUH - Bệ phóng cho kỹ sư thời đại công nghệ",
+      "excerpt": "Chương trình Thạc sĩ Kỹ thuật Cơ khí định hướng cơ khí chính xác, sản xuất thông minh, MEMS - bán dẫn và cơ khí ứng dụng trong y sinh.",
+      "category": "Đào tạo",
+      "date": "20 tháng 5, 2025",
+      "image": "/assets/images/news-3.jpg",
+      "imageAlt": "Hội nghị quốc tế MEMS MAMM2024 do Khoa Công nghệ Cơ khí tổ chức",
+      "content": [
+        { "type": "paragraph", "text": "Trong kỷ nguyên chuyển đổi số và công nghiệp 4.0, khi các lĩnh vực như bán dẫn, sản xuất thông minh, cơ khí chính xác hay công nghệ MEMS ngày càng giữ vai trò thiết yếu, chương trình Thạc sĩ Kỹ thuật Cơ khí được thiết kế bài bản, hiện đại và hội nhập." },
+        { "type": "paragraph", "text": "Cơ khí vốn là nền tảng cốt lõi của mọi ngành công nghiệp, từ chế tạo cơ bản, sản xuất thiết bị công nghiệp đến các lĩnh vực công nghệ cao như chế tạo ô tô, thiết bị hàng không, vi mạch, bán dẫn và robot y sinh." },
+        { "type": "heading", "level": 2, "text": "Ba trụ cột đào tạo" },
+        { "type": "list", "items": ["Cơ khí chính xác và sản xuất thông minh.", "Công nghệ MEMS và sản xuất bán dẫn.", "Ứng dụng cơ khí trong y sinh và tự động hóa."] },
+        { "type": "paragraph", "text": "Một trong những điểm nhấn là nhà máy thông minh mô phỏng theo công nghiệp 4.0, được chuyển giao từ Tập đoàn Siemens (Đức), hỗ trợ các chương trình đào tạo của khoa hướng tới chuẩn kiểm định quốc tế ABET." },
+        { "type": "info", "title": "Học bổng", "text": "Học bổng 100% học kỳ đầu cho cựu sinh viên IUH tốt nghiệp loại giỏi; giảm 15% học phí mỗi kỳ cho cựu sinh viên IUH; học bổng 100% toàn khóa cho học viên có công bố ISI/Scopus với vai trò tác giả chính." }
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "doi-tuyen-olympic-co-hoc-toan-quoc-lan-thu-35",
+      "title": "Đội tuyển Olympic Cơ học Khoa Công nghệ Cơ khí ghi dấu ấn tại Kỳ thi Olympic Cơ học toàn quốc lần thứ 35",
+      "excerpt": "Sinh viên Khoa Công nghệ Cơ khí tham dự Kỳ thi Olympic Cơ học toàn quốc lần thứ 35 và đạt nhiều thành tích đáng tự hào.",
+      "category": "Thành tích",
+      "date": "12 tháng 5, 2025",
+      "image": "/assets/images/news-4.png",
+      "imageAlt": "Đội tuyển Olympic Cơ học Khoa Công nghệ Cơ khí",
+      "content": [
+        { "type": "paragraph", "text": "Đội tuyển Olympic Cơ học của Khoa Công nghệ Cơ khí đã tham dự Kỳ thi Olympic Cơ học toàn quốc lần thứ 35 và ghi dấu ấn mạnh mẽ trước các đội tuyển đến từ nhiều trường đại học kỹ thuật trên cả nước." },
+        { "type": "paragraph", "text": "Kết quả là minh chứng cho quá trình ôn luyện nghiêm túc của sinh viên cùng sự đồng hành tận tâm của đội ngũ giảng viên các bộ môn Cơ sở - Thiết kế và Chế tạo máy." },
+        { "type": "info", "title": "Tham gia đội tuyển", "text": "Sinh viên quan tâm có thể liên hệ văn phòng khoa để đăng ký tham gia đội tuyển Olympic Cơ học các năm tiếp theo." }
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "sinh-vien-co-khi-len-song-taiwan-plus",
+      "title": "Sinh viên Khoa Cơ khí - IUH lên sóng Đài truyền hình Taiwan Plus",
+      "excerpt": "Phóng sự của Taiwan Plus giới thiệu sinh viên Cơ điện tử và học viên cao học Khoa Công nghệ Cơ khí cùng phòng thí nghiệm nhà máy thông minh.",
+      "category": "Hợp tác",
+      "date": "06 tháng 9, 2024",
+      "image": "/assets/images/news-5.jpg",
+      "imageAlt": "Sinh viên Khoa Cơ khí trong phóng sự Taiwan Plus",
+      "content": [
+        { "type": "paragraph", "text": "Đài truyền hình Taiwan Plus đã thực hiện phóng sự về sinh viên ngành Công nghệ Kỹ thuật Cơ điện tử Thăng Nhất Huy và học viên cao học Lê Hữu Anh của Khoa Công nghệ Cơ khí." },
+        { "type": "paragraph", "text": "Cơ điện tử được giới thiệu là sự kết hợp giữa kỹ thuật cơ khí, điện tử và khoa học máy tính. Phóng sự cũng ghi lại phòng thí nghiệm nhà máy thông minh trị giá hàng triệu USD nơi sinh viên học tập và nghiên cứu." }
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "thac-si-ky-thuat-co-khi-nganh-hoc-then-chot",
+      "title": "Thạc sĩ Kỹ thuật Cơ khí - Ngành học then chốt toàn cầu",
+      "excerpt": "Chương trình đào tạo thạc sĩ hướng đến nghiên cứu - phát triển và giảng dạy, với phòng thí nghiệm 4.0 do Siemens và ABB phối hợp đầu tư.",
+      "category": "Tuyển sinh",
+      "date": "19 tháng 3, 2024",
+      "image": "/assets/images/news-6.jpg",
+      "imageAlt": "Thạc sĩ Kỹ thuật Cơ khí tại IUH",
+      "content": [
+        { "type": "paragraph", "text": "Chương trình Thạc sĩ Kỹ thuật Cơ khí đào tạo nguồn nhân lực có năng lực nghiên cứu - phát triển, thiết kế và giảng dạy trong lĩnh vực cơ khí và sản xuất thông minh." },
+        { "type": "paragraph", "text": "Học viên được học tập tại phòng thí nghiệm 4.0 do Siemens và ABB phối hợp đầu tư, tiếp cận các công nghệ tự động hóa, CAD/CAM/CNC và hệ thống sản xuất hiện đại." },
+        { "type": "list", "items": ["Hình thức xét tuyển thay cho thi tuyển.", "Lịch học linh hoạt, phù hợp người đi làm.", "Cơ hội tham gia đề tài, dự án hợp tác quốc tế."] }
+      ]
+    }
+  ]
+}

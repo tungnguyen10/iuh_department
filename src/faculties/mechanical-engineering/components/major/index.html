@@ -1,0 +1,63 @@
+<div data-module="major" class="w-full relative overflow-hidden {{class}}">
+    <!-- Background Image + Overlay -->
+    <div class="absolute inset-0 -z-10">
+        <img src="/assets/images/bg-major.jpg" alt="" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-b from-primary-dark-blue/85 to-primary-dark-blue/85"></div>
+    </div>
+
+    <div class="container mx-auto px-4 flex flex-col lg:flex-row  pb-8 lg:pb-14 relative">
+        <div class="w-full lg:w-4/12 text-primary-white flex flex-col gap-4 lg:items-start shrink-0 pt-8 lg:pt-14">
+            <div data-include="@shared/components/common/section-title.html" data-title="Chuyên ngành đào tạo"
+                data-title-class="text-primary-white" data-class="mt-1"></div>
+            <p class="text-sm lg:text-base leading-relaxed">
+                Các ngành thuộc Khoa Công nghệ Cơ khí trang bị nền tảng vững chắc về cơ học, thiết kế và công nghệ
+                chế tạo, kết hợp thực hành chuyên sâu trên hệ thống máy CNC, CAD/CAM và nhà máy thông minh 4.0.
+                Sinh viên ra trường đáp ứng nhu cầu nhân lực của các doanh nghiệp sản xuất, cơ khí chính xác, tự
+                động hóa và bán dẫn.
+            </p>
+            <div id="mobile-carousel-container" class="-mr-4"></div>
+            <div data-include="@shared/components/button/button.html" data-variant="1" data-url="/majors.html" data-text="Xem tất cả"
+                data-class=""></div>
+        </div>
+        <div id="desktop-carousel-container" class="flex-1 w-full lg:w-8/12 pt-6 -mt-4 lg:mt-0 lg:pl-8 lg:-mr-3 lg:pr-3 lg:pt-14 overflow-hidden">
+            <div class="major-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div data-include="@faculty/components/major/major-card.html" data-image="/assets/images/intro-image.jpg"
+                            data-title="CÔNG NGHỆ KỸ THUẬT CƠ KHÍ"
+                            data-description="Đào tạo kỹ sư có năng lực thiết kế, tính toán, chế tạo và vận hành máy móc, thiết bị cơ khí; làm chủ các công cụ CAD/CAE và quy trình sản xuất công nghiệp. Mã ngành 7510201, có chương trình tăng cường tiếng Anh."
+                            data-link="/major-detail.html"
+                            data-class="">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-include="@faculty/components/major/major-card.html" data-image="/assets/images/lab-cnc.jpg"
+                            data-title="CÔNG NGHỆ CHẾ TẠO MÁY"
+                            data-description="Đào tạo kỹ sư làm chủ công nghệ gia công cắt gọt, lập trình CNC 3 - 5 trục, CAD/CAM, cắt dây EDM và đo lường chính xác, đáp ứng yêu cầu của các nhà máy cơ khí chính xác. Mã ngành 7510202."
+                            data-link="/major-detail.html"
+                            data-class=""></div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-include="@faculty/components/major/major-card.html" data-image="/assets/images/lab-smart-factory.jpg"
+                            data-title="CÔNG NGHỆ KỸ THUẬT CƠ ĐIỆN TỬ"
+                            data-description="Sự kết hợp giữa kỹ thuật cơ khí, điện tử và khoa học máy tính: thiết kế robot, hệ thống tự động, PLC, khí nén - thủy lực, thực hành tại nhà máy thông minh 4.0 chuyển giao từ Siemens. Mã ngành 7510203."
+                            data-link="/major-detail.html"
+                            data-class="">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-include="@faculty/components/major/major-card.html" data-image="/assets/images/news-3.jpg"
+                            data-title="THẠC SĨ KỸ THUẬT CƠ KHÍ"
+                            data-description="Chương trình sau đại học định hướng ứng dụng và nghiên cứu với ba trụ cột: cơ khí chính xác và sản xuất thông minh; công nghệ MEMS và sản xuất bán dẫn; ứng dụng cơ khí trong y sinh và tự động hóa."
+                            data-link="/major-detail.html"
+                            data-class=""></div>
+                    </div>
+                </div>
+                <!-- Pagination -->
+                <div class="major-pagination swiper-pagination !relative !bottom-0 mt-4"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

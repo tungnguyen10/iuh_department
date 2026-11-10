@@ -1,0 +1,41 @@
+<!-- Major Card Component with Flip Effect -->
+<div class="major-card group h-[370px] w-full cursor-pointer {{class}}">
+    <div class="major-card__inner relative w-full h-full transition-transform duration-700 ease-in-out">
+        <!-- Front Side -->
+        <div class="major-card__front absolute inset-0 bg-primary-white rounded-[10px] p-2.5 overflow-hidden shadow-[2px_2px_15px_0px_rgba(21,56,152,0.2)]">
+            <div class="relative h-[260px] overflow-hidden rounded-[5px]">
+                <img src="{{image}}" alt="{{title}}" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex flex-col gap-2.5 mt-[15px]">
+                <div class="flex items-center gap-1.5 bg-secondary-blue-light rounded-[5px] px-2.5 py-1.5 w-fit">
+                    <img src="/assets/svgs/graduation-cap.svg" alt="" class="w-6 h-6 text-primary-dark-blue" />
+                    <span class="text-base font-medium text-primary-dark-blue">Chuyên ngành</span>
+                </div>
+                <h3 class="text-xl font-roboto font-medium text-gray-900 overflow-hidden text-ellipsis whitespace-nowrap line-clamp-1">{{title}}</h3>
+            </div>
+        </div>
+
+        <!-- Back Side -->
+        <div class="major-card__back absolute inset-0 rounded-[10px] overflow-hidden shadow-[2px_2px_15px_0px_rgba(21,56,152,0.2)]">
+            <img src="{{image}}" alt="{{title}}" class="absolute inset-0 w-full h-full object-cover rounded-[10px]" />
+            <div class="absolute inset-0 bg-gradient-to-b from-[rgba(21,56,152,0.4)] to-[rgba(21,56,152,0.95)] rounded-[10px] border border-secondary-blue-light"></div>
+            <div class="absolute inset-0 flex flex-col justify-end gap-[25px] px-[25px] py-[30px]">
+                <div class="flex flex-col gap-[15px]">
+                    <div class="flex flex-col gap-2.5">
+                        <div class="flex items-center gap-1.5 bg-secondary-blue rounded-[5px] px-2.5 py-1.5 w-fit">
+                            <img src="/assets/svgs/graduation-cap.svg" alt="" class="w-6 h-6 text-primary-dark-blue" />
+                            <span class="text-base font-medium text-primary-dark-blue">Chuyên ngành</span>
+                        </div>
+                        <h3 class="text-xl font-roboto font-medium text-primary-white overflow-hidden text-ellipsis whitespace-pre-wrap line-clamp-1">{{title}}</h3>
+                    </div>
+                    <p class="text-base font-normal text-primary-white text-justify whitespace-pre-wrap line-clamp-4">{{description}}</p>
+                </div>
+                <!-- Button Component -->
+                <a href="{{link}}" class="group/btn inline-flex items-center justify-center gap-2.5 px-2.5 py-2.5 rounded-[5px] font-roboto font-medium text-base transition-all duration-500 ease-in-out cursor-pointer bg-white border border-white text-primary-dark-blue hover:bg-primary-dark-blue hover:text-primary-white hover:shadow-md w-full">
+                    <span class="shrink-0">Đăng ký học ngay</span>
+                    <img src="/assets/svgs/icon-arrow-up-right.svg" alt="arrow" class="w-6 h-6 shrink-0 transition-all duration-500 ease-in-out group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

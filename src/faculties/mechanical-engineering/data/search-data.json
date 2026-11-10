@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "title": "Thông báo tuyển sinh Đại học Khoa Công nghệ Cơ khí năm 2026",
+    "excerpt": "Khoa Công nghệ Cơ khí - IUH tuyển sinh các ngành Công nghệ kỹ thuật cơ khí (7510201), Công nghệ chế tạo máy (7510202) và Công nghệ kỹ thuật cơ điện tử (7510203).",
+    "category": "Tuyển sinh",
+    "date": "10/01/2026",
+    "url": "/majors.html"
+  },
+  {
+    "id": 2,
+    "title": "Ngành Công nghệ kỹ thuật cơ khí",
+    "excerpt": "Đào tạo kỹ sư thiết kế, tính toán, chế tạo và vận hành máy móc, thiết bị cơ khí; có chương trình tăng cường tiếng Anh và chuyển tiếp quốc tế.",
+    "category": "Chuyên ngành",
+    "date": "05/01/2026",
+    "url": "/majors.html"
+  },
+  {
+    "id": 3,
+    "title": "Ngành Công nghệ chế tạo máy",
+    "excerpt": "Sinh viên làm chủ công nghệ gia công cắt gọt, CAD/CAM/CNC 3 - 5 trục, cắt dây EDM và đo lường chính xác tại hệ thống xưởng hiện đại.",
+    "category": "Chuyên ngành",
+    "date": "05/01/2026",
+    "url": "/majors.html"
+  },
+  {
+    "id": 4,
+    "title": "Ngành Công nghệ kỹ thuật cơ điện tử",
+    "excerpt": "Kết hợp cơ khí, điện tử và khoa học máy tính: robot, PLC, khí nén - thủy lực và nhà máy thông minh 4.0 chuyển giao từ Siemens.",
+    "category": "Chuyên ngành",
+    "date": "05/01/2026",
+    "url": "/majors.html"
+  },
+  {
+    "id": 5,
+    "title": "Thạc sĩ Kỹ thuật Cơ khí",
+    "excerpt": "Chương trình thạc sĩ định hướng cơ khí chính xác, sản xuất thông minh, MEMS - bán dẫn và cơ khí ứng dụng trong y sinh, tự động hóa.",
+    "category": "Chuyên ngành",
+    "date": "20/05/2025",
+    "url": "/news-detail.html?slug=thac-si-ky-thuat-co-khi-be-phong-ky-su"
+  },
+  {
+    "id": 6,
+    "title": "Lịch thi kết thúc học phần - Học kỳ 1 năm học 2026-2027",
+    "excerpt": "Thông báo lịch thi kết thúc học phần học kỳ 1 năm học 2026-2027 cho sinh viên Khoa Công nghệ Cơ khí. Kiểm tra lịch và phòng thi trên hệ thống Portal.",
+    "category": "Thông báo",
+    "date": "20/11/2026",
+    "url": "/students.html"
+  },
+  {
+    "id": 7,
+    "title": "IUH ký kết hợp tác với Tập đoàn Đại Dũng",
+    "excerpt": "Hợp tác đào tạo, thực tập, chuyển giao công nghệ và tuyển dụng trong lĩnh vực cơ khí xây dựng và kết cấu thép.",
+    "category": "Hợp tác",
+    "date": "06/02/2026",
+    "url": "/news-detail.html?slug=iuh-ky-ket-hop-tac-tap-doan-dai-dung"
+  },
+  {
+    "id": 8,
+    "title": "10 năm Trung thu ấm áp: Những đôi tay Cơ khí làm nên mùa trăng",
+    "excerpt": "Đoàn - Hội Khoa Công nghệ Cơ khí tổ chức Trung thu ấm áp lần thứ 10 cho gần 1.400 học sinh tại xã Thuận Mỹ, tỉnh Tây Ninh.",
+    "category": "Sự kiện",
+    "date": "29/09/2026",
+    "url": "/news-detail.html?slug=trung-thu-am-ap-nhung-doi-tay-co-khi"
+  },
+  {
+    "id": 9,
+    "title": "Học bổng khuyến khích học tập kỳ 1 năm học 2026-2027",
+    "excerpt": "Công bố kết quả học bổng khuyến khích học tập cho sinh viên Khoa Công nghệ Cơ khí đạt thành tích xuất sắc học kỳ 1.",
+    "category": "Học bổng",
+    "date": "10/09/2026",
+    "url": "/students.html"
+  },
+  {
+    "id": 10,
+    "title": "Thực tập tại doanh nghiệp đối tác",
+    "excerpt": "Sinh viên Cơ khí, Chế tạo máy và Cơ điện tử được thực tập tại các doanh nghiệp đối tác như Tập đoàn Đại Dũng và các nhà máy sản xuất trong khu công nghiệp.",
+    "category": "Đào tạo",
+    "date": "01/09/2026",
+    "url": "/partners.html"
+  },
+  {
+    "id": 11,
+    "title": "Giới thiệu Khoa Công nghệ Cơ khí - IUH",
+    "excerpt": "Khoa Công nghệ Cơ khí được thành lập năm 2005, tiền thân là các ban Máy công cụ, Nguội, Gò - Hàn - Rèn của Trường Trung học Kỹ thuật Don Bosco từ năm 1968.",
+    "category": "Giới thiệu",
+    "date": "01/01/2026",
+    "url": "/about.html"
+  },
+  {
+    "id": 12,
+    "title": "Đội ngũ giảng viên Khoa Công nghệ Cơ khí",
+    "excerpt": "Khoa có 78 giảng viên, trong đó có 3 Phó Giáo sư và 13 Tiến sĩ, cùng 8 Tiến sĩ thỉnh giảng, công tác tại 4 bộ môn và 2 xưởng thực hành.",
+    "category": "Giảng viên",
+    "date": "01/01/2026",
+    "url": "/leadership.html"
+  }
+]

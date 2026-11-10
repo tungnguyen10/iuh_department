@@ -1,0 +1,26 @@
+// Infrastructure Component Styles
+// Minimal custom styles - most styling is in Tailwind
+
+.infrastructure-card {
+  // No additional styles needed - all in Tailwind
+}
+
+// Container for the infrastructure section
+#infrastructure-section {
+  .container {
+    position: relative;
+  }
+
+  // Responsive adjustments
+  @media (max-width: 640px) {
+    .infrastructure-card {
+      border-radius: 0.5rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .infrastructure-card {
+      border-radius: 0.5rem;
+    }
+  }
+}

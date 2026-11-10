@@ -26,14 +26,14 @@
     <div class="flex-1 flex flex-col gap-2 md:gap-2.5 min-w-0">
       <!-- Title -->
       <h3
-        class="font-roboto font-medium text-sm md:text-base leading-normal text-gray-900 group-hover:text-primary-dark-blue transition-colors duration-200 line-clamp-2 overflow-hidden text-ellipsis">
+        class="font-roboto font-medium text-sm md:text-base leading-normal text-gray-900 group-hover:text-primary-dark-blue transition-colors duration-200 line-clamp-3 overflow-hidden">
         {{title}}
       </h3>
 
-      <div class="flex gap-2.5 items-center">
+      <div class="flex flex-wrap gap-x-2.5 gap-y-1.5 items-center">
         <!-- Date Badge -->
-        <div class="inline-flex items-center gap-1 md:gap-1.5 bg-danger-light rounded-[5px] px-1.5 py-[3px] self-start">
-          <img src="/assets/svgs/icon-calendar-check.svg" alt="" class="w-4 h-4 md:w-5 md:h-5 text-danger" />
+        <div class="inline-flex items-center gap-1 md:gap-1.5 bg-danger-light rounded-[5px] px-1.5 py-[3px] self-start whitespace-nowrap">
+          <img src="/assets/svgs/icon-calendar-check.svg" alt="" class="w-4 h-4 md:w-5 md:h-5 text-danger shrink-0" />
           <span class="font-roboto font-medium text-xs md:text-sm text-danger">{{date}}</span>
         </div>
         <div class="px-3 py-1 rounded-md text-xs text-danger bg-danger-light capitalize animate-flash-badge">

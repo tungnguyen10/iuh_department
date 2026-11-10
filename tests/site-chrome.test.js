@@ -91,6 +91,7 @@ test('shared footer renders every configured field for every faculty', async () 
 
   for (const facultyId of [
     'health-science',
+    'mechanical-engineering',
     'dormitory-management',
     'political-student-affairs',
     'organization-administration',
@@ -231,7 +232,7 @@ test('site data loader fails clearly for missing and malformed JSON', async () =
 })
 
 test('all faculty site configs use one schema and shared chrome wrappers', async () => {
-  for (const facultyId of ['health-science', 'dormitory-management', 'political-student-affairs', 'organization-administration']) {
+  for (const facultyId of ['health-science', 'mechanical-engineering', 'dormitory-management', 'political-student-affairs', 'organization-administration']) {
     const root = new URL(`../src/faculties/${facultyId}/`, import.meta.url)
     const [siteSource, config, header, footer] = await Promise.all([
       readFile(new URL('data/site.json', root), 'utf8'),

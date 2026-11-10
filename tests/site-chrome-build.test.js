@@ -10,6 +10,7 @@ const repoRoot = resolve(new URL('..', import.meta.url).pathname)
 const srcRoot = join(repoRoot, 'src')
 const faculties = {
   'health-science': 13,
+  'mechanical-engineering': 13,
   'dormitory-management': 14,
   'political-student-affairs': 8,
   'organization-administration': 13,

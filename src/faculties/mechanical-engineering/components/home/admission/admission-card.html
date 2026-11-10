@@ -1,0 +1,64 @@
+<!-- Admission Card Component -->
+<div
+  class="group bg-primary-white flex flex-col items-start py-1.5 sm:py-2 md:py-2.5 rounded-lg md:rounded-[10px] shadow-[1px_1px_6px_0_rgba(0,0,0,0.06)] sm:shadow-[1px_1px_8px_0_rgba(0,0,0,0.08)] md:shadow-[1px_1px_10px_0_rgba(0,0,0,0.1)] w-full transition-all duration-300 border border-transparent hover:border-secondary-blue hover:shadow-[2px_2px_12px_0_rgba(21,56,152,0.15)] sm:hover:shadow-[2px_2px_15px_0_rgba(21,56,152,0.2)] cursor-pointer relative {{class}}">
+  <div class="flex flex-col gap-1.5 sm:gap-2 md:gap-2.5 md:items-center w-full">
+    <!-- Main Content -->
+    <div
+      class="flex flex-col md:flex-row gap-2.5 sm:gap-3 md:gap-4 lg:gap-[15px] items-stretch w-full px-1.5 sm:px-2 md:px-2.5">
+      <!-- Image -->
+      <div class="relative rounded-[5px] w-full md:w-[200px] lg:w-[250px] md:min-w-[200px] lg:min-w-[250px] shrink-0 aspect-[16/9] md:aspect-auto overflow-hidden">
+        <img src="{{image}}" alt="{{imageAlt}}" class="absolute md:relative inset-0 w-full h-full object-cover group-hover:scale-110 group-hover:brightness-110 transition-all duration-700 ease-out" />
+        <!-- Date Badge -->
+        <div class="absolute bottom-2 right-2 flex gap-1.5 items-center bg-primary-dark-blue/90 backdrop-blur-md px-3 py-1.5 rounded-lg shadow-lg border border-primary-dark-blue/30 transition-all duration-500 ease-out group-hover:bg-primary-yellow group-hover:border-primary-yellow group-hover:-translate-y-1 group-hover:shadow-[0_8px_30px_rgba(255,196,0,0.6)]">
+          <img src="/assets/svgs/icon-calendar-clock.svg" alt="calendar" class="w-4 h-4 md:w-5 md:h-5 transition-all duration-500 ease-out text-primary-white group-hover:text-primary-dark-blue">
+          <span class="font-roboto font-bold text-xs text-primary-white group-hover:text-primary-dark-blue whitespace-nowrap transition-all duration-300">{{date}}</span>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div
+        class="flex flex-col flex-1 items-start justify-between w-full min-h-full py-0.5 sm:py-1 gap-3 sm:gap-4 md:gap-5">
+        <!-- Top Section -->
+        <div class="flex flex-col gap-2 sm:gap-2.5 md:gap-3 items-start w-full">
+          <!-- Title -->
+          <h3
+            class="font-roboto font-medium text-base sm:text-lg md:text-xl text-title group-hover:text-primary-dark-blue leading-normal overflow-hidden text-ellipsis w-full line-clamp-2 transition-colors duration-300">
+            {{title}}
+          </h3>
+
+          <!-- Divider -->
+          <div class="h-0 w-full border-t-2 border-stroke group-hover:border-secondary-blue transition-colors duration-300"></div>
+
+          <!-- Description -->
+          <p class="font-roboto font-normal text-xs sm:text-sm md:text-base text-gray leading-relaxed line-clamp-3 sm:line-clamp-4 md:line-clamp-5 w-full">
+            {{description}}
+          </p>
+        </div>
+
+        <!-- Bottom Section - CTA -->
+        <div class="flex items-center gap-2 sm:gap-2.5 w-full">
+          <a href="{{registerUrl}}"
+            class="bg-secondary-blue border border-secondary-blue hover:bg-primary-yellow hover:border-primary-yellow flex items-center justify-center gap-1.5 sm:gap-2 h-[38px] sm:h-[42px] md:h-[46px] px-3 sm:px-4 md:px-5 rounded-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 group/btn flex-1 relative overflow-hidden before:absolute before:inset-0 before:bg-primary-yellow before:scale-x-0 before:origin-left hover:before:scale-x-100 before:transition-transform before:duration-300 before:-z-10">
+            <p
+              class="font-roboto font-medium text-xs sm:text-sm md:text-base text-primary-dark-blue leading-normal whitespace-nowrap transition-all duration-300 relative z-10">
+              Đăng ký ngay
+            </p>
+            <img src="/assets/svgs/icon-arrow-up-right.svg" alt="arrow"
+              class="w-4 h-4 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 transition-all duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 text-primary-dark-blue relative z-10" />
+          </a>
+          
+          <!-- Info Badge (Optional - Remove if not needed)
+          <div class="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 sm:py-2 bg-secondary-green/10 group-hover:bg-secondary-green/20 rounded-md border border-secondary-green/30 group-hover:border-secondary-green/50 transition-all duration-300 flex-shrink-0">
+            <span class="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-green opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-secondary-green"></span>
+            </span>
+            <p class="font-roboto font-medium text-[10px] sm:text-xs md:text-sm text-secondary-green leading-normal whitespace-nowrap">
+              Đang tuyển sinh
+            </p>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
