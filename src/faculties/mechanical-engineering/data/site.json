@@ -16,11 +16,14 @@
   ],
   "navigation": [
     { "text": "GIỚI THIỆU", "children": [
+      { "text": "Trang chủ", "href": "/" },
       { "text": "Giới thiệu khoa", "href": "/about.html" },
+      { "text": "Ban lãnh đạo khoa", "href": "/leadership.html" },
       { "text": "Liên hệ", "href": "/contact.html" }
     ] },
     { "text": "TỔ CHỨC", "children": [
       { "text": "Ban lãnh đạo khoa", "href": "/leadership.html" },
+      { "text": "Chi tiết lãnh đạo", "href": "/leadership-detail.html" },
       { "text": "Bộ môn - Xưởng thực hành", "href": "/majors.html" },
       { "text": "Giảng viên", "href": "/leadership.html" }
     ] },
@@ -40,6 +43,7 @@
     ] },
     { "text": "HOẠT ĐỘNG", "children": [
       { "text": "Tin tức - Sự kiện", "href": "/news.html" },
+      { "text": "Chi tiết tin tức", "href": "/news-detail.html" },
       { "text": "Kết nối doanh nghiệp", "href": "/partners.html" }
     ] },
     { "text": "SINH VIÊN", "children": [

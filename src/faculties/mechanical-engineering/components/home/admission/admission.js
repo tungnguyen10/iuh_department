@@ -15,7 +15,7 @@ export function initAdmissionSwiper() {
 
   const swiperInstance = new Swiper('.admission-swiper', {
     modules: [Pagination, Navigation, Autoplay],
-    slidesPerView: 1.2, // Mobile: 1.2 slides
+    slidesPerView: 1,
     spaceBetween: 16,
     centeredSlides: false,
     observer: true,
@@ -35,9 +35,8 @@ export function initAdmissionSwiper() {
       prevEl: '.admission-nav-prev',
     },
     breakpoints: {
-      // Tablet: 1.3 slides
       640: {
-        slidesPerView: 1.3,
+        slidesPerView: 1,
         spaceBetween: 20,
       },
       // Desktop: 2 slides

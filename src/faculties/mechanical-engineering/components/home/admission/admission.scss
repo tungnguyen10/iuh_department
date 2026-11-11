@@ -4,6 +4,21 @@
   position: relative;
   overflow: hidden;
 
+  .swiper-slide {
+    height: auto;
+
+    > .group {
+      height: 100%;
+
+      // Cho nội dung giãn đầy thẻ để nút CTA nằm sát đáy
+      > div,
+      > div > div {
+        flex: 1;
+        width: 100%;
+      }
+    }
+  }
+
   // Navigation
   .admission-nav-next,
   .admission-nav-prev {
